@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "l2foundation:block/layline_charger"
+    }
+  }
+}

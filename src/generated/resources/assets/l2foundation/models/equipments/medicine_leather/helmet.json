@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "l2foundation:item/equipments/medicine_leather/helmet",
+    "layer1": "l2foundation:item/equipments/medicine_leather/helmet_overlay"
+  }
+}

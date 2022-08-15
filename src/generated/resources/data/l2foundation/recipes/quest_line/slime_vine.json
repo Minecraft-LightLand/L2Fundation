@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "minecraft:vine"
+    },
+    "B": {
+      "item": "l2foundation:questline/unstable_slime"
+    }
+  },
+  "pattern": [
+    "B B",
+    " A ",
+    "B B"
+  ],
+  "result": {
+    "item": "l2foundation:slime_vine"
+  }
+}

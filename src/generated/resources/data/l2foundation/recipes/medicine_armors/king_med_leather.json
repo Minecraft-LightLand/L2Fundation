@@ -1,0 +1,20 @@
+{
+  "type": "l2foundation:medicine_armor",
+  "key": {
+    "O": {
+      "item": "l2foundation:king_leather"
+    },
+    "X": {
+      "item": "l2foundation:medicine_leather"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XOX",
+    "XXX"
+  ],
+  "result": {
+    "count": 8,
+    "item": "l2foundation:king_med_leather"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "F": {
+      "item": "minecraft:poppy"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "V": {
+      "item": "minecraft:vine"
+    }
+  },
+  "pattern": [
+    "FVF",
+    "FLF",
+    "FVF"
+  ],
+  "result": {
+    "item": "l2foundation:medicine_leather",
+    "nbt": "{CustomPotionEffects:[{Ambient:0b,Amplifier:1b,CurativeItems:[{Count:1b,id:\"minecraft:milk_bucket\"}],Duration:100,Id:5,ShowIcon:1b,ShowParticles:1b,\"forge:id\":\"minecraft:strength\"}]}"
+  }
+}

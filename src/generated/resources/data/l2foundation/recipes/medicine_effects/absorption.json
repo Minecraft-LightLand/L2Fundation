@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "F": {
+      "item": "minecraft:blue_orchid"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "V": {
+      "item": "minecraft:vine"
+    }
+  },
+  "pattern": [
+    "FVF",
+    "FLF",
+    "FVF"
+  ],
+  "result": {
+    "item": "l2foundation:medicine_leather",
+    "nbt": "{CustomPotionEffects:[{Ambient:0b,Amplifier:0b,CurativeItems:[{Count:1b,id:\"minecraft:milk_bucket\"}],Duration:200,Id:22,ShowIcon:1b,ShowParticles:1b,\"forge:id\":\"minecraft:absorption\"}]}"
+  }
+}

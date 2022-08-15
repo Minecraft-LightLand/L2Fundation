@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "l2foundation:block/layroot_block"
+    }
+  }
+}

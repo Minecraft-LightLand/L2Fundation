@@ -56,7 +56,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "l2foundation:questline/layline_orb"
+          "name": "l2foundation:layline_orb"
         }
       ],
       "rolls": 1.0

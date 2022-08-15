@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "X": {
-      "item": "l2foundation:generated/knightsteel/ingot"
+      "item": "l2foundation:knightsteel_ingot"
     }
   },
   "pattern": [

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_generated_steel_ingot": {
+    "has_steel_ingot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "l2foundation:generated/steel/ingot"
+              "l2foundation:steel_ingot"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_generated_steel_ingot",
+      "has_steel_ingot",
       "has_the_recipe"
     ]
   ],

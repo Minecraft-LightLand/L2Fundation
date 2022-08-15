@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_generated_knightsteel_ingot": {
+    "has_knightsteel_ingot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "l2foundation:generated/knightsteel/ingot"
+              "l2foundation:knightsteel_ingot"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_generated_knightsteel_ingot",
+      "has_knightsteel_ingot",
       "has_the_recipe"
     ]
   ],

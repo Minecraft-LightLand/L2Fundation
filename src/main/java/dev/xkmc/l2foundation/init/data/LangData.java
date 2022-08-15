@@ -59,8 +59,8 @@ public class LangData {
 			pvd.accept(L2Foundation.MODID + "." + id.id,
 					RegistrateLangProvider.toEnglishName(str) + getParams(id.count));
 		}
-		pvd.accept("itemGroup.l2fundation.material", "L2Fundation Materials");
-		pvd.accept("itemGroup.l2fundation.generated", "L2Fundation Equipments");
+		pvd.accept("itemGroup.l2foundation.material", "L2Fundation Materials");
+		pvd.accept("itemGroup.l2foundation.generated", "L2Fundation Equipments");
 
 		List<Item> list = List.of(Items.POTION, Items.SPLASH_POTION, Items.LINGERING_POTION);
 		for (RegistryEntry<? extends Potion> ent : LFEffects.POTION_LIST) {

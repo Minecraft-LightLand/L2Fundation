@@ -1,0 +1,16 @@
+{
+  "type": "l2foundation:medicine_armor",
+  "key": {
+    "A": {
+      "item": "l2foundation:medicine_leather"
+    }
+  },
+  "pattern": [
+    "A A",
+    "AAA",
+    "AAA"
+  ],
+  "result": {
+    "item": "l2foundation:medicine_leather_leggings"
+  }
+}

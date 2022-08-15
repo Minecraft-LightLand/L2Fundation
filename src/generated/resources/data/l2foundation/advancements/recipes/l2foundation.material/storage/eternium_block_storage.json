@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_generated_eternium_ingot": {
+    "has_eternium_ingot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "l2foundation:generated/eternium/ingot"
+              "l2foundation:eternium_ingot"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_generated_eternium_ingot",
+      "has_eternium_ingot",
       "has_the_recipe"
     ]
   ],

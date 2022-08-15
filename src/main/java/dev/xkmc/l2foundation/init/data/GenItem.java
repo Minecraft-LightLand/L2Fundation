@@ -6,8 +6,11 @@ import dev.xkmc.l2foundation.init.L2Foundation;
 import dev.xkmc.l2foundation.init.registrate.LFItems;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.repack.registrate.builders.ItemBuilder;
+import dev.xkmc.l2library.repack.registrate.providers.DataGenContext;
+import dev.xkmc.l2library.repack.registrate.providers.RegistrateItemModelProvider;
 import dev.xkmc.l2library.repack.registrate.util.entry.BlockEntry;
 import dev.xkmc.l2library.repack.registrate.util.entry.ItemEntry;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
@@ -48,13 +51,11 @@ public class GenItem {
 		};
 	}
 
-	public static final ToolConfig TOOL_DEF = new ToolConfig(a -> a.defaultLang()
-			.model((ctx, pvd) -> pvd.handheld(ctx::getEntry)), fromToolGen(TOOL_GEN_FUNC));
-	public static final ToolConfig TOOL_GEN = new ToolConfig(a -> a.defaultLang()
-			.model((ctx, pvd) -> pvd.handheld(ctx::getEntry)), GenItem::genGenericTool);
-	public static final ArmorConfig ARMOR_DEF = new ArmorConfig(a -> a.defaultLang().defaultModel(),
+	public static final ToolConfig TOOL_DEF = new ToolConfig(fromToolGen(TOOL_GEN_FUNC));
+	public static final ToolConfig TOOL_GEN = new ToolConfig(GenItem::genGenericTool);
+	public static final ArmorConfig ARMOR_DEF = new ArmorConfig(
 			(mat, slot, prop) -> new ArmorItem(mat.mat, slot, prop));
-	public static final ArmorConfig ARMOR_GEN = new ArmorConfig(a -> a.defaultLang().defaultModel(),
+	public static final ArmorConfig ARMOR_GEN = new ArmorConfig(
 			(mat, slot, prop) -> new GenericArmorItem(mat.mat, slot, prop, mat.armor_extra));
 
 	public enum Mats {
@@ -121,7 +122,7 @@ public class GenItem {
 			this.id = name;
 			this.tier = new ForgeTier(level, tool.durability, tool.speed, 0, tool.enchant,
 					getBlockTag(level), ing);
-			this.mat = new ArmorMat(name, armor.durability, armor.protection,
+			this.mat = new ArmorMat(armorPrefix(), armor.durability, armor.protection,
 					armor.enchant, equip_sound, armor.tough, armor.kb, ing);
 			this.tool_config = tool_config;
 			this.armor_config = armor_config;
@@ -185,10 +186,10 @@ public class GenItem {
 
 	}
 
-	public record ToolConfig(EntryProcessor func, ToolFactory sup) {
+	public record ToolConfig(ToolFactory sup) {
 	}
 
-	public record ArmorConfig(EntryProcessor func, ArmorFactory sup) {
+	public record ArmorConfig(ArmorFactory sup) {
 	}
 
 	private static TagKey<Block> getBlockTag(int level) {
@@ -214,15 +215,17 @@ public class GenItem {
 			Mats mat = Mats.values()[i];
 			String id = mat.id;
 			BiFunction<String, EquipmentSlot, ItemEntry> armor_gen = (str, slot) ->
-					mat.armor_config.func.apply(L2Foundation.REGISTRATE.item("generated/" + id + "/" + str,
-							p -> mat.armor_config.sup.get(mat, slot, p))).register();
+					L2Foundation.REGISTRATE.item(id + "_" + str, p -> mat.armor_config.sup.get(mat, slot, p))
+							.model((ctx, pvd) -> generatedModel(ctx, pvd, id, str))
+							.defaultLang().register();
 			ans[i][3] = armor_gen.apply("helmet", EquipmentSlot.HEAD);
 			ans[i][2] = armor_gen.apply("chestplate", EquipmentSlot.CHEST);
 			ans[i][1] = armor_gen.apply("leggings", EquipmentSlot.LEGS);
 			ans[i][0] = armor_gen.apply("boots", EquipmentSlot.FEET);
 			BiFunction<String, Tools, ItemEntry> tool_gen = (str, tool) ->
-					mat.tool_config.func.apply(L2Foundation.REGISTRATE.item("generated/" + id + "/" + str,
-							p -> mat.tool_config.sup.get(mat, tool, p))).register();
+					L2Foundation.REGISTRATE.item(id + "_" + str, p -> mat.tool_config.sup.get(mat, tool, p))
+							.model((ctx, pvd) -> handHeld(ctx, pvd, id, str))
+							.defaultLang().register();
 			for (int j = 0; j < Tools.values().length; j++) {
 				Tools tool = Tools.values()[j];
 				ans[i][4 + j] = tool_gen.apply(tool.name().toLowerCase(Locale.ROOT), tool);
@@ -235,7 +238,10 @@ public class GenItem {
 		int n = Mats.values().length;
 		ItemEntry[] ans = new ItemEntry[n];
 		for (int i = 0; i < n; i++) {
-			ans[i] = L2Foundation.REGISTRATE.item("generated/" + Mats.values()[i].id + "/" + suffix, Item::new).defaultModel().defaultLang().register();
+			String id = Mats.values()[i].id;
+			ans[i] = L2Foundation.REGISTRATE.item(id + "_" + suffix, Item::new)
+					.model((ctx, pvd) -> generatedModel(ctx, pvd, id, suffix))
+					.defaultLang().register();
 		}
 		return ans;
 	}
@@ -248,6 +254,14 @@ public class GenItem {
 					.defaultLoot().defaultBlockstate().simpleItem().defaultLang().register();
 		}
 		return ans;
+	}
+
+	public static <T extends Item> void generatedModel(DataGenContext<Item, T> ctx, RegistrateItemModelProvider pvd, String id, String suf) {
+		pvd.generated(ctx, new ResourceLocation(L2Foundation.MODID, "item/generated/" + id + "/" + suf));
+	}
+
+	public static <T extends Item> void handHeld(DataGenContext<Item, T> ctx, RegistrateItemModelProvider pvd, String id, String suf) {
+		pvd.handheld(ctx, new ResourceLocation(L2Foundation.MODID, "item/generated/" + id + "/" + suf));
 	}
 
 }

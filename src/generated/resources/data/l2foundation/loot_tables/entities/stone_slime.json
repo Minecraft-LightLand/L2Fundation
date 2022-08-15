@@ -72,7 +72,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "l2foundation:questline/dirty_slime"
+          "name": "l2foundation:dirty_slime"
         }
       ],
       "rolls": 1.0

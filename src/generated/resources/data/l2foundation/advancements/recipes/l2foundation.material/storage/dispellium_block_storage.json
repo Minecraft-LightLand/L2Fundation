@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_generated_dispellium_ingot": {
+    "has_dispellium_ingot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "l2foundation:generated/dispellium/ingot"
+              "l2foundation:dispellium_ingot"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_generated_dispellium_ingot",
+      "has_dispellium_ingot",
       "has_the_recipe"
     ]
   ],

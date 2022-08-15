@@ -93,39 +93,39 @@ public class LFItems {
 			KING_MED_LEATHER = REGISTRATE.item("king_med_leather", p -> new MedicineLeather(100, p))
 					.color(() -> () -> (stack, val) -> val > 0 ? -1 : ((DyeableLeatherItem) stack.getItem()).getColor(stack))
 					.defaultModel().defaultLang().register();
-			MEDICINE_ARMOR = genArmor("equipments/medicine_leather/",
+			MEDICINE_ARMOR = genArmor("medicine_leather",
 					(slot, p) -> new MedicineArmor(ArmorMat.MEDICINE_LEATHER, slot, p), e -> e.model(LFItems::createDoubleLayerModel)
 							.color(() -> () -> (stack, val) -> val > 0 ? -1 : ((DyeableLeatherItem) stack.getItem()).getColor(stack)));
-			KING_MED_ARMOR = genArmor("equipments/king_leather/",
+			KING_MED_ARMOR = genArmor("king_leather",
 					(slot, p) -> new MedicineArmor(ArmorMat.KING_LEATHER, slot, p), e -> e.model(LFItems::createDoubleLayerModel)
 							.color(() -> () -> (stack, val) -> val > 0 ? -1 : ((DyeableLeatherItem) stack.getItem()).getColor(stack)));
 		}
 		{
-			LAYLINE_ORB = simpleItem("questline/layline_orb");
-			CURSED_DROPLET = simpleItem("questline/cursed_droplet");
-			KNIGHT_SCRAP = simpleItem("questline/knight_scrap");
-			DISPELL_DUST = simpleItem("questline/dispell_dust");
-			OLDROOT = simpleItem("questline/oldroot");
-			LAYLINE_HEART = simpleItem("questline/layline_heart");
-			ACID_SLIME = simpleItem("questline/acid_slime");
-			DIRTY_SLIME = simpleItem("questline/dirty_slime");
-			UNSTABLE_SLIME = simpleItem("questline/unstable_slime");
-			BOSS_SLIME = simpleItem("questline/boss_slime");
-			GOOD_SOUL = simpleItem("questline/good_soul");
-			BAD_SOUL = simpleItem("questline/bad_soul");
-			HOLY_POWDER = simpleItem("questline/holy_powder");
+			LAYLINE_ORB = simpleItem("layline_orb", "questline");
+			CURSED_DROPLET = simpleItem("cursed_droplet", "questline");
+			KNIGHT_SCRAP = simpleItem("knight_scrap", "questline");
+			DISPELL_DUST = simpleItem("dispell_dust", "questline");
+			OLDROOT = simpleItem("oldroot", "questline");
+			LAYLINE_HEART = simpleItem("layline_heart", "questline");
+			ACID_SLIME = simpleItem("acid_slime", "questline");
+			DIRTY_SLIME = simpleItem("dirty_slime", "questline");
+			UNSTABLE_SLIME = simpleItem("unstable_slime", "questline");
+			BOSS_SLIME = simpleItem("boss_slime", "questline");
+			GOOD_SOUL = simpleItem("good_soul", "questline");
+			BAD_SOUL = simpleItem("bad_soul", "questline");
+			HOLY_POWDER = simpleItem("holy_powder", "questline");
 
-			CLEANSE_WATER_BOTTLE = REGISTRATE.item("questline/cleanse_water_bottle", p -> new DispellWaterBottle(
+			CLEANSE_WATER_BOTTLE = REGISTRATE.item("cleanse_water_bottle", p -> new DispellWaterBottle(
 							p.craftRemainder(Items.GLASS_BOTTLE).food(new FoodProperties.Builder().nutrition(1).saturationMod(2).alwaysEat().build()).stacksTo(16)))
-					.defaultModel().defaultLang().register();
-			HOLY_WATER_BOTTLE = REGISTRATE.item("questline/holy_water_bottle", p -> new DispellWaterBottle(
+					.model((ctx, pvd) -> simpleModel(ctx, pvd, "questline")).defaultLang().register();
+			HOLY_WATER_BOTTLE = REGISTRATE.item("holy_water_bottle", p -> new DispellWaterBottle(
 							p.craftRemainder(Items.GLASS_BOTTLE).food(new FoodProperties.Builder().nutrition(1).saturationMod(2).alwaysEat().build()).stacksTo(16)))
-					.defaultModel().defaultLang().register();
+					.model((ctx, pvd) -> simpleModel(ctx, pvd, "questline")).defaultLang().register();
+			SLIME_TENTACLE = REGISTRATE.item("slime_tentacle", SlimeTentacleItem::new)
+					.model((ctx, pvd) -> simpleModel(ctx, pvd, "questline")).defaultLang().register();
 
 			//TODO CLEANSE_WATER = REGISTRATE.virtualFluid("cleanse_water").defaultLang().register();
 			//TODO HOLY_WATER = REGISTRATE.virtualFluid("holy_water").defaultLang().register();
-			SLIME_TENTACLE = REGISTRATE.item("questline/slime_tentacle", SlimeTentacleItem::new)
-					.defaultModel().defaultLang().register();
 		}
 		{
 			registerEgg("layline_zombie_spawn_egg", 0, 0, () -> LFEntities.ET_LAYLINE_ZOMBIE);
@@ -160,12 +160,25 @@ public class LFItems {
 
 	public static <T extends Item> void createDoubleLayerModel(DataGenContext<Item, T> ctx, RegistrateItemModelProvider pvd) {
 		ItemModelBuilder builder = pvd.withExistingParent(ctx.getName(), "minecraft:generated");
-		builder.texture("layer0", "item/" + ctx.getName());
-		builder.texture("layer1", "item/" + ctx.getName() + "_overlay");
+		String name = ctx.getName();
+		var arr = name.toCharArray();
+		arr[name.lastIndexOf('_')] = '/';
+		name = new String(arr);
+		builder.texture("layer0", "item/equipments/" + name);
+		builder.texture("layer1", "item/equipments/" + name + "_overlay");
+	}
+
+	public static ItemEntry<Item> simpleItem(String id, String path) {
+		return REGISTRATE.item(id, Item::new).model((ctx, pvd) -> simpleModel(ctx, pvd, path))
+				.defaultLang().register();
 	}
 
 	public static ItemEntry<Item> simpleItem(String id) {
 		return REGISTRATE.item(id, Item::new).defaultModel().defaultLang().register();
+	}
+
+	public static <T extends Item> void simpleModel(DataGenContext<Item, T> ctx, RegistrateItemModelProvider pvd, String path) {
+		pvd.generated(ctx, new ResourceLocation(L2Foundation.MODID, "item/" + path + "/" + ctx.getName()));
 	}
 
 	public static class ArmorItems<T extends ArmorItem> {
@@ -175,10 +188,10 @@ public class LFItems {
 
 		public ArmorItems(L2Registrate reg, String id, BiFunction<EquipmentSlot, Item.Properties, T> sup, Function<ItemBuilder<T, L2Registrate>, ItemBuilder<T, L2Registrate>> func) {
 			this.prefix = reg.getModid() + ":" + id;
-			armors[0] = func.apply(reg.item(id + "helmet", p -> sup.apply(EquipmentSlot.HEAD, p))).defaultLang().register();
-			armors[1] = func.apply(reg.item(id + "chestplate", p -> sup.apply(EquipmentSlot.CHEST, p))).defaultLang().register();
-			armors[2] = func.apply(reg.item(id + "leggings", p -> sup.apply(EquipmentSlot.LEGS, p))).defaultLang().register();
-			armors[3] = func.apply(reg.item(id + "boots", p -> sup.apply(EquipmentSlot.FEET, p))).defaultLang().register();
+			armors[0] = func.apply(reg.item(id + "_helmet", p -> sup.apply(EquipmentSlot.HEAD, p))).defaultLang().register();
+			armors[1] = func.apply(reg.item(id + "_chestplate", p -> sup.apply(EquipmentSlot.CHEST, p))).defaultLang().register();
+			armors[2] = func.apply(reg.item(id + "_leggings", p -> sup.apply(EquipmentSlot.LEGS, p))).defaultLang().register();
+			armors[3] = func.apply(reg.item(id + "_boots", p -> sup.apply(EquipmentSlot.FEET, p))).defaultLang().register();
 		}
 
 	}

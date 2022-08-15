@@ -30,7 +30,7 @@
               "function": "minecraft:looting_enchant"
             }
           ],
-          "name": "l2foundation:questline/knight_scrap"
+          "name": "l2foundation:knight_scrap"
         }
       ],
       "rolls": 1.0
@@ -61,7 +61,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "l2foundation:questline/cursed_droplet"
+          "name": "l2foundation:cursed_droplet"
         }
       ],
       "rolls": 1.0

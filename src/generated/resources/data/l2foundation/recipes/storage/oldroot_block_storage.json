@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "X": {
-      "item": "l2foundation:generated/oldroot/ingot"
+      "item": "l2foundation:oldroot_ingot"
     }
   },
   "pattern": [

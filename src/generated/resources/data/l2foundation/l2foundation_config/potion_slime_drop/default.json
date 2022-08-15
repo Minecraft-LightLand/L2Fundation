@@ -4,7 +4,7 @@
     "armor_reduce": {
       "amplifier": 0,
       "chance": 0.1,
-      "drop": "l2foundation:questline/acid_slime",
+      "drop": "l2foundation:acid_slime",
       "duration": 100,
       "effect": "l2foundation:armor_reduce",
       "weight": 50

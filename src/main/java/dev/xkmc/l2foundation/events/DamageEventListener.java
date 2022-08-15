@@ -7,11 +7,12 @@ import dev.xkmc.l2library.init.events.attack.AttackListener;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import org.jetbrains.annotations.Nullable;
 
 public class DamageEventListener implements AttackListener {
 
 	@Override
-	public void onAttack(AttackCache cache, ItemStack weapon) {
+	public void onAttack(AttackCache cache, @Nullable ItemStack weapon) {
 		LivingAttackEvent event = cache.getLivingAttackEvent();
 		assert event != null;
 		DamageSource source = event.getSource();

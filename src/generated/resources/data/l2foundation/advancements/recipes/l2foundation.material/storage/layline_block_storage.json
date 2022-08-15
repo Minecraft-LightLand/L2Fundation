@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_generated_layline_ingot": {
+    "has_layline_ingot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "l2foundation:generated/layline/ingot"
+              "l2foundation:layline_ingot"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_generated_layline_ingot",
+      "has_layline_ingot",
       "has_the_recipe"
     ]
   ],

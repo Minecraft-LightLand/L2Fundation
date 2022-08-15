@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "X": {
-      "item": "l2foundation:generated/layline/ingot"
+      "item": "l2foundation:layline_ingot"
     }
   },
   "pattern": [

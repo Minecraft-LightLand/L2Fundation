@@ -51,7 +51,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "l2foundation:questline/unstable_slime"
+          "name": "l2foundation:unstable_slime"
         }
       ],
       "rolls": 1.0

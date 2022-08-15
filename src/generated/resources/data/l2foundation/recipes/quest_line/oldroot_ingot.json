@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": {
+      "item": "l2foundation:layline_ingot"
+    },
+    "S": {
+      "item": "l2foundation:oldroot"
+    }
+  },
+  "pattern": [
+    " S ",
+    "SCS",
+    " S "
+  ],
+  "result": {
+    "item": "l2foundation:oldroot_ingot"
+  }
+}

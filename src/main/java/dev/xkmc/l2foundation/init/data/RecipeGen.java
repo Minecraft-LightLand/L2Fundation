@@ -50,8 +50,6 @@ public class RecipeGen {
 		currentFolder = "quest_line/";
 		{
 			full(pvd, GenItem.Mats.STEEL.getIngot(), LFItems.KNIGHT_SCRAP.get(), Items.GOLD_NUGGET, GenItem.Mats.HEAVYSTEEL.getIngot(), 1);
-			// TODO full(pvd, LLItems.ENC_GOLD_NUGGET.get(), LLBlocks.LAYLINE_HEAD.get().asItem(), GenItem.Mats.STEEL.getNugget(), GenItem.Mats.LAYLINE.getIngot(), 1);
-			// TODO full(pvd, LLItems.ENC_GOLD_NUGGET.get(), LLBlocks.LAYROOT_HEAD.get().asItem(), Items.IRON_NUGGET, GenItem.Mats.LAYROOT.getIngot(), 1);
 			cross(pvd, GenItem.Mats.LAYLINE.getIngot(), LFItems.OLDROOT.get(), GenItem.Mats.OLDROOT.getIngot(), 1);
 			unlock(pvd, new ShapedRecipeBuilder(LFBlocks.SLIME_CARPET.get(), 8)::unlockedBy,
 					LFItems.UNSTABLE_SLIME.get()).pattern("ABA")

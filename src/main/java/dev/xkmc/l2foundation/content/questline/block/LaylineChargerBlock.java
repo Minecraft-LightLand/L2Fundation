@@ -28,15 +28,6 @@ public class LaylineChargerBlock extends Block {
 				level.setBlockAndUpdate(pos.below(), LFBlocks.LAYLINE_HEAD.getDefaultState());
 				return InteractionResult.SUCCESS;
 			}
-			/* TODO
-			if (stack.getItem() instanceof IArcaneItem) {
-				if (ArcaneItemUseHelper.getArcaneMana(stack) >= 20) {
-					ArcaneItemUseHelper.addArcaneMana(stack, -20);
-					level.setBlockAndUpdate(pos.below(), LLBlocks.LAYLINE_HEAD.getDefaultState());
-					return InteractionResult.SUCCESS;
-				}
-				return InteractionResult.FAIL;
-			}*/
 		}
 		return InteractionResult.PASS;
 	}

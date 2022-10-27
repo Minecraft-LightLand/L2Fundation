@@ -4,6 +4,7 @@ import dev.xkmc.l2foundation.content.item.generic.ArmorMat;
 import dev.xkmc.l2foundation.content.item.generic.ExtraArmorConfig;
 import dev.xkmc.l2foundation.content.item.generic.ExtraToolConfig;
 import dev.xkmc.l2foundation.init.L2Foundation;
+import dev.xkmc.l2foundation.init.registrate.LFBlocks;
 import dev.xkmc.l2foundation.init.registrate.LFItems;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -12,6 +13,7 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.ForgeTier;
 
 import java.util.function.Supplier;
@@ -103,6 +105,10 @@ public enum FoundationMats {
 
 	public Item getNugget() {
 		return LFItems.MAT_NUGGETS[ordinal()].get();
+	}
+
+	public Block getBlock() {
+		return LFBlocks.GEN_BLOCK[ordinal()].get();
 	}
 
 	public String armorPrefix() {

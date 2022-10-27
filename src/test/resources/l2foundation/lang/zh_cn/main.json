@@ -1,42 +1,41 @@
 {
   "effect.l2foundation": {
-	"armor_breaker": "护甲破坏",
-	"armor_reduce": "护甲薄弱",
-	"blood_thirst": "嗜血",
-	"emerald": "绿宝石水花",
-	"flame": "业火",
-	"frozen": "冰冻",
-	"heavy": "负重",
-	"no_knockback": "霸体",
+	"armor_reduce": "破甲",
+	"flame": "魂火",
+	"frozen": "寒流",
+	"stone_cage": "禁锢",
 	"quick_pull": "快速拉弓",
-	"run_bow": "疾行射手",
-	"target_attracted": "被嘲讽",
-	"target_attractor": "嘲讽",
-	"target_hide": "完全隐身",
-	"target_remove": "混乱",
-	"water_trap": "水牢",
-	"cleanse": "净化",
-	"dispell": "破魔"
-  },
-  "entity.l2foundation": {
-	"layline_skeleton": "地脉侵蚀的骸骨",
-	"layline_zombie": "地脉侵蚀的躯壳",
-	"cursed_knight": "被诅咒的骑士",
-	"cursed_archer": "被诅咒的射手",
-	"cursed_shield": "被诅咒的重盾",
-	"potion_slime": "被药水污染的史莱姆",
-	"stone_slime": "石莱姆",
-	"vine_slime": "藤蔓史莱姆",
-	"carpet_slime": "不稳定史莱姆",
-	"boss_slime": "史莱姆王",
-	"slime_tentacle": "史莱姆触手"
+	"run_bow": "移动射击",
+	"emerald": "绿宝石水花"
   },
   "itemGroup.l2foundation": {
-	"material": "道具材料",
-	"generated": "通用装备"
+	"generated": "道具材料"
   },
-  "fluid.l2foundation": {
-	"cleanse_water": "净化水",
-	"holy_water": "圣水"
+  "item.minecraft.tipped_arrow.effect": {
+	"flame": "燃魂之箭",
+	"long_flame": "燃魂之箭",
+	"strong_flame": "燃魂之箭",
+	"frozen": "冰封之箭",
+	"long_frozen": "冰封之箭",
+	"stone_cage": "禁锢之箭",
+	"long_stone_cage": "禁锢之箭",
+	"run_bow": "移动射击之箭",
+	"long_run_bow": "移动射击之箭",
+	"strong_run_bow": "移动射击之箭",
+	"quick_pull": "快速拉弓之箭",
+	"long_quick_pull": "快速拉弓之箭",
+	"strong_quick_pull": "快速拉弓之箭",
+	"levitation": "悬浮之箭",
+	"long_levitation": "悬浮之箭",
+	"resistance": "抗性之箭",
+	"long_resistance": "抗性之箭",
+	"strong_resistance": "抗性之箭"
+  },
+  "enchantment.l2foundation": {
+	"environment_reject": "环境免疫",
+	"explosion_reject": "爆炸免疫",
+	"fire_reject": "火焰免疫",
+	"magic_reject": "魔法免疫",
+	"projectile_reject": "弹射物免疫"
   }
 }

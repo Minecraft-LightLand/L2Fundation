@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "1": {
+      "item": "l2foundation:void_eye"
+    },
+    "2": {
+      "type": "l2library:enchantment",
+      "enchantment": "minecraft:protection",
+      "min_level": 4
+    },
+    "B": {
+      "item": "l2foundation:resonant_feather"
+    },
+    "C": {
+      "item": "l2foundation:force_field"
+    }
+  },
+  "pattern": [
+    "1B1",
+    "BCB",
+    "2B2"
+  ],
+  "result": {
+    "item": "minecraft:enchanted_book",
+    "nbt": {
+      "StoredEnchantments": [
+        {
+          "id": "l2foundation:magic_reject",
+          "lvl": 1
+        }
+      ]
+    }
+  }
+}

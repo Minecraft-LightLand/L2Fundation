@@ -1,5 +1,18 @@
 {
   "item.l2foundation": {
+	"wind_capture_bottle": "捕风瓶",
+	"void_eye": "虚空之眼",
+	"captured_wind": "千风精华",
+	"captured_shulker_bullet": "瓶中潜影弹",
+	"sun_membrane": "逐日之翼",
+	"explosion_shard": "破灭残片",
+	"hard_ice": "告死寒霜",
+	"soul_flame": "灵魂火种",
+	"storm_core": "烈空结晶",
+	"blackstone_core": "黑石核心",
+	"resonant_feather": "共振之羽",
+	"space_shard": "空间碎片",
+	"force_field": "守护力场"
   },
   "block.l2foundation": {
 	"eternal_anvil": "永恒铁砧"
@@ -67,6 +80,40 @@
 		},
 		{
 		  "block": "块"
+		}
+	  ]
+	},
+	"potion": {
+	  "path": "item.minecraft",
+	  "use_dot": true,
+	  "list": [
+		{
+		  "lingering_potion": "滞留型",
+		  "potion": "",
+		  "splash_potion": "喷溅型"
+		},
+		{
+		  "effect": ""
+		},
+		{
+		  "flame": "燃魂药水",
+		  "long_flame": "燃魂药水",
+		  "strong_flame": "燃魂药水",
+		  "frozen": "冰封药水",
+		  "long_frozen": "冰封药水",
+		  "stone_cage": "禁锢药水",
+		  "long_stone_cage": "禁锢药水",
+		  "run_bow": "移动射击药水",
+		  "long_run_bow": "移动射击药水",
+		  "strong_run_bow": "移动射击药水",
+		  "quick_pull": "快速拉弓药水",
+		  "long_quick_pull": "快速拉弓药水",
+		  "strong_quick_pull": "快速拉弓药水",
+		  "levitation": "悬浮药水",
+		  "long_levitation": "悬浮药水",
+		  "resistance": "抗性药水",
+		  "long_resistance": "抗性药水",
+		  "strong_resistance": "抗性药水"
 		}
 	  ]
 	}

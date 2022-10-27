@@ -1,19 +1,23 @@
 package dev.xkmc.l2foundation.init.data;
 
+import dev.xkmc.l2foundation.content.enchantment.EnchantmentRecipeBuilder;
+import dev.xkmc.l2foundation.init.L2Foundation;
+import dev.xkmc.l2foundation.init.registrate.LFBlocks;
+import dev.xkmc.l2foundation.init.registrate.LFEnchantments;
+import dev.xkmc.l2foundation.init.registrate.LFItems;
+import dev.xkmc.l2library.base.ingredients.EnchantmentIngredient;
 import dev.xkmc.l2library.repack.registrate.providers.RegistrateRecipeProvider;
 import dev.xkmc.l2library.repack.registrate.util.DataIngredient;
 import dev.xkmc.l2library.repack.registrate.util.entry.BlockEntry;
 import dev.xkmc.l2library.repack.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2library.repack.registrate.util.nullness.NonNullSupplier;
-import dev.xkmc.l2foundation.init.L2Foundation;
-import dev.xkmc.l2foundation.init.registrate.LFBlocks;
-import dev.xkmc.l2foundation.init.registrate.LFItems;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -37,39 +41,108 @@ public class RecipeGen {
 				storage(pvd, LFItems.MAT_NUGGETS[i], LFItems.MAT_INGOTS[i], LFBlocks.GEN_BLOCK[i]);
 			}
 		}
+
+		currentFolder = "craft/";
+		{
+			unlock(pvd, new ShapelessRecipeBuilder(LFItems.WIND_BOTTLE.get(), 1)::unlockedBy, Items.GLASS_BOTTLE)
+					.requires(Items.GLASS_BOTTLE)
+					.requires(Items.PHANTOM_MEMBRANE)
+					.save(pvd);
+
+			unlock(pvd, new ShapedRecipeBuilder(LFBlocks.ETERNAL_ANVIL.get(), 1)::unlockedBy, FoundationMats.ETERNIUM.getIngot())
+					.pattern("AAA").pattern(" B ").pattern("BBB")
+					.define('A', FoundationMats.ETERNIUM.getBlock())
+					.define('B', FoundationMats.ETERNIUM.getIngot())
+					.save(pvd);
+
+			unlock(pvd, new ShapedRecipeBuilder(FoundationMats.ETERNIUM.getIngot(), 1)::unlockedBy, Items.NETHERITE_INGOT)
+					.pattern("3B4").pattern("BAB").pattern("1B2")
+					.define('A', Items.NETHERITE_INGOT)
+					.define('B', Items.ANVIL)
+					.define('1', new EnchantmentIngredient(Enchantments.MENDING, 1))
+					.define('2', new EnchantmentIngredient(Enchantments.INFINITY_ARROWS, 1))
+					.define('3', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
+					.define('4', new EnchantmentIngredient(Enchantments.UNBREAKING, 3))
+					.save(pvd);
+
+		}
+
+		currentFolder = "vanilla/";
+		// misc
+		{
+			unlock(pvd, new ShapelessRecipeBuilder(Items.ECHO_SHARD, 1)::unlockedBy, LFItems.RESONANT_FEATHER.get())
+					.requires(LFItems.RESONANT_FEATHER.get())
+					.requires(Items.AMETHYST_SHARD)
+					.save(pvd);
+			unlock(pvd, new ShapedRecipeBuilder(Items.ELYTRA, 1)::unlockedBy, LFItems.SUN_MEMBRANE.get())
+					.pattern("ABA").pattern("C C").pattern("D D")
+					.define('A', LFItems.EXPLOSION_SHARD.get())
+					.define('B', LFItems.CAPTURED_WIND.get())
+					.define('C', LFItems.SUN_MEMBRANE.get())
+					.define('D', LFItems.RESONANT_FEATHER.get())
+					.save(pvd);
+			unlock(pvd, new ShapedRecipeBuilder(Items.ANCIENT_DEBRIS, 1)::unlockedBy, LFItems.EXPLOSION_SHARD.get())
+					.pattern("ABA").pattern("ACA").pattern("ADA")
+					.define('A', LFItems.EXPLOSION_SHARD.get())
+					.define('B', Items.NETHER_STAR)
+					.define('C', Items.CRYING_OBSIDIAN)
+					.define('D', LFItems.FORCE_FIELD.get())
+					.save(pvd);
+			unlock(pvd, new ShapedRecipeBuilder(Items.GILDED_BLACKSTONE, 1)::unlockedBy, LFItems.BLACKSTONE_CORE.get())
+					.pattern("ABA").pattern("BCB").pattern("ABA")
+					.define('A', Items.BLACKSTONE)
+					.define('B', Items.GOLD_INGOT)
+					.define('C', LFItems.BLACKSTONE_CORE.get())
+					.save(pvd);
+		}
+
+		currentFolder = "enchantments/";
+		// enchantments
+		{
+			unlock(pvd, new EnchantmentRecipeBuilder(LFEnchantments.ENCH_PROJECTILE.get(), 1)::unlockedBy, LFItems.FORCE_FIELD.get())
+					.pattern("1B1").pattern("BCB").pattern("2B2")
+					.define('1', new EnchantmentIngredient(Enchantments.PROJECTILE_PROTECTION, 4))
+					.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
+					.define('B', LFItems.FORCE_FIELD.get())
+					.define('C', new EnchantmentIngredient(Enchantments.INFINITY_ARROWS, 1))
+					.save(pvd);
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LFEnchantments.ENCH_EXPLOSION.get(), 1)::unlockedBy, LFItems.EXPLOSION_SHARD.get())
+					.pattern("1B1").pattern("BCB").pattern("2B2")
+					.define('1', new EnchantmentIngredient(Enchantments.BLAST_PROTECTION, 4))
+					.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
+					.define('B', LFItems.EXPLOSION_SHARD.get())
+					.define('C', Items.CRYING_OBSIDIAN)
+					.save(pvd);
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LFEnchantments.ENCH_FIRE.get(), 1)::unlockedBy, LFItems.SUN_MEMBRANE.get())
+					.pattern("1B1").pattern("BCB").pattern("2B2")
+					.define('1', new EnchantmentIngredient(Enchantments.FIRE_PROTECTION, 4))
+					.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
+					.define('B', LFItems.SOUL_FLAME.get())
+					.define('C', LFItems.HARD_ICE.get())
+					.save(pvd);
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LFEnchantments.ENCH_ENVIRONMENT.get(), 1)::unlockedBy, LFItems.VOID_EYE.get())
+					.pattern("1B1").pattern("BCB").pattern("2B2")
+					.define('1', LFItems.SUN_MEMBRANE.get())
+					.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
+					.define('B', LFItems.VOID_EYE.get())
+					.define('C', LFItems.CAPTURED_WIND.get())
+					.save(pvd);
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LFEnchantments.ENCH_MAGIC.get(), 1)::unlockedBy, LFItems.RESONANT_FEATHER.get())
+					.pattern("1B1").pattern("BCB").pattern("2B2")
+					.define('1', LFItems.VOID_EYE.get())
+					.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
+					.define('B', LFItems.RESONANT_FEATHER.get())
+					.define('C', LFItems.FORCE_FIELD.get())
+					.save(pvd);
+		}
 	}
 
 	private static ResourceLocation getID(Item item) {
 		return new ResourceLocation(L2Foundation.MODID, currentFolder + ForgeRegistries.ITEMS.getKey(item).getPath());
-	}
-
-	private static ResourceLocation getID(Item item, String suffix) {
-		return new ResourceLocation(L2Foundation.MODID, currentFolder + ForgeRegistries.ITEMS.getKey(item).getPath() + suffix);
-	}
-
-	private static ResourceLocation getID(String suffix) {
-		return new ResourceLocation(L2Foundation.MODID, currentFolder + suffix);
-	}
-
-	private static void cross(RegistrateRecipeProvider pvd, Item core, Item side, Item out, int count) {
-		unlock(pvd, new ShapedRecipeBuilder(out, count)::unlockedBy, core)
-				.pattern(" S ").pattern("SCS").pattern(" S ")
-				.define('S', side).define('C', core)
-				.save(pvd, getID(out));
-	}
-
-	private static void full(RegistrateRecipeProvider pvd, Item core, Item side, Item corner, Item out, int count) {
-		unlock(pvd, new ShapedRecipeBuilder(out, count)::unlockedBy, core)
-				.pattern("CSC").pattern("SAS").pattern("CSC")
-				.define('A', core).define('S', side).define('C', corner)
-				.save(pvd, getID(out));
-	}
-
-	private static void circle(RegistrateRecipeProvider pvd, Item core, Item side, Item out, int count) {
-		unlock(pvd, new ShapedRecipeBuilder(out, count)::unlockedBy, core)
-				.pattern("SSS").pattern("SAS").pattern("SSS")
-				.define('A', core).define('S', side)
-				.save(pvd, getID(out));
 	}
 
 	private static void storage(RegistrateRecipeProvider pvd, ItemEntry<?> nugget, ItemEntry<?> ingot, BlockEntry<?> block) {

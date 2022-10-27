@@ -9,7 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import org.jetbrains.annotations.Nullable;
 
-public class DamageEventListener implements AttackListener {
+public class ToolDamageListener implements AttackListener {
 
 	@Override
 	public void onAttack(AttackCache cache, @Nullable ItemStack weapon) {

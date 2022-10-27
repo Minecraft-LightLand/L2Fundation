@@ -1,14 +1,11 @@
 package dev.xkmc.l2foundation.init;
 
-import dev.xkmc.l2foundation.events.DamageEventListener;
-import dev.xkmc.l2foundation.events.ItemUseEventHandler;
+import dev.xkmc.l2foundation.events.*;
 import dev.xkmc.l2foundation.init.data.GenItem;
+import dev.xkmc.l2foundation.init.data.LFConfig;
 import dev.xkmc.l2foundation.init.data.LangData;
 import dev.xkmc.l2foundation.init.data.RecipeGen;
-import dev.xkmc.l2foundation.init.registrate.LFBlocks;
-import dev.xkmc.l2foundation.init.registrate.LFEffects;
-import dev.xkmc.l2foundation.init.registrate.LFItems;
-import dev.xkmc.l2foundation.init.registrate.LFParticle;
+import dev.xkmc.l2foundation.init.registrate.*;
 import dev.xkmc.l2foundation.network.NetworkManager;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.base.effects.EffectSyncEvents;
@@ -43,13 +40,19 @@ public class L2Foundation {
 		LFItems.register();
 		LFEffects.register();
 		LFParticle.register();
+		LFEnchantments.register();
 		NetworkManager.register();
+		REGISTRATE.addDataGenerator(ProviderType.LANG, LangData::addTranslations);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, RecipeGen::genRecipe);
 	}
 
 	private static void registerForgeEvents() {
+		LFConfig.init();
 		MinecraftForge.EVENT_BUS.register(ItemUseEventHandler.class);
-		AttackEventHandler.LISTENERS.add(new DamageEventListener());
+		MinecraftForge.EVENT_BUS.register(MaterialEventHandler.class);
+		MinecraftForge.EVENT_BUS.register(EnchantmentEventHandler.class);
+		AttackEventHandler.LISTENERS.add(new ToolDamageListener());
+		AttackEventHandler.LISTENERS.add(new MaterialDamageListener());
 	}
 
 	private static void registerModBusEvents(IEventBus bus) {
@@ -77,7 +80,6 @@ public class L2Foundation {
 	}
 
 	public static void gatherData(GatherDataEvent event) {
-		LangData.addTranslations(REGISTRATE::addRawLang);
 	}
 
 	public static void onParticleRegistryEvent(RegisterParticleProvidersEvent event) {

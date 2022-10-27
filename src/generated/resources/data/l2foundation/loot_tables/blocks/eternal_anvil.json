@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:air"
+          "name": "l2foundation:eternal_anvil"
         }
       ],
       "rolls": 1.0

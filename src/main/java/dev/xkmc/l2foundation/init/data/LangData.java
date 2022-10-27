@@ -52,15 +52,24 @@ public class LangData {
 
 	}
 
-	public static void addTranslations(BiConsumer<String, String> pvd) {
+	public static void addTranslations(RegistrateLangProvider pvd) {
 		for (IDS id : IDS.values()) {
 			String[] strs = id.id.split("\\.");
 			String str = strs[strs.length - 1];
-			pvd.accept(L2Foundation.MODID + "." + id.id,
+			pvd.add(L2Foundation.MODID + "." + id.id,
 					RegistrateLangProvider.toEnglishName(str) + getParams(id.count));
 		}
 
-		pvd.accept("itemGroup.l2foundation.generated", "L2Fundation Items");
+		pvd.add("itemGroup.l2foundation.generated", "L2Fundation Items");
+		pvd.add("death.attack.soul_flame", "%s has its soul burnt out");
+		pvd.add("death.attack.soul_flame.player", "%s has its soul burnt out by %s");
+		List<Item> list = List.of(Items.POTION, Items.SPLASH_POTION, Items.LINGERING_POTION, Items.TIPPED_ARROW);
+		for (RegistryEntry<? extends Potion> ent : LFEffects.POTION_LIST) {
+			for (Item item : list) {
+				String str = ent.get().getName(item.getDescriptionId() + ".effect.");
+				pvd.add(str, RegistrateLangProvider.toEnglishName(ent.get().getName("")));
+			}
+		}
 	}
 
 	private static String getParams(int count) {

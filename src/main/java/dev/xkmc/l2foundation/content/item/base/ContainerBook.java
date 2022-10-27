@@ -1,4 +1,4 @@
-package dev.xkmc.l2foundation.content.item.misc;
+package dev.xkmc.l2foundation.content.item.base;
 
 import dev.xkmc.l2library.repack.registrate.util.entry.MenuEntry;
 import dev.xkmc.l2foundation.init.data.LangData;

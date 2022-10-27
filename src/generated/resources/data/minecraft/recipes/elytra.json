@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "l2foundation:explosion_shard"
+    },
+    "B": {
+      "item": "l2foundation:captured_wind"
+    },
+    "C": {
+      "item": "l2foundation:sun_membrane"
+    },
+    "D": {
+      "item": "l2foundation:resonant_feather"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "C C",
+    "D D"
+  ],
+  "result": {
+    "item": "minecraft:elytra"
+  }
+}

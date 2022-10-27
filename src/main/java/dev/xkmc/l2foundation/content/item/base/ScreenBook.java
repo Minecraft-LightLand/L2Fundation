@@ -1,4 +1,4 @@
-package dev.xkmc.l2foundation.content.item.misc;
+package dev.xkmc.l2foundation.content.item.base;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;

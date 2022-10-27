@@ -141,14 +141,14 @@ public class GenItem {
 		return ans;
 	}
 
-	public ItemEntry<Item>[] genMats(String suffix) {
+	public ItemEntry<Item>[] genMats(String suffix, TagKey<Item> tag) {
 		int n = FoundationMats.values().length;
 		ItemEntry[] ans = new ItemEntry[n];
 		for (int i = 0; i < n; i++) {
 			String id = FoundationMats.values()[i].id;
 			ans[i] = registrate.item(id + "_" + suffix, Item::new)
 					.model((ctx, pvd) -> generatedModel(ctx, pvd, id, suffix))
-					.defaultLang().register();
+					.tag(tag).defaultLang().register();
 		}
 		return ans;
 	}
@@ -158,7 +158,9 @@ public class GenItem {
 		BlockEntry[] ans = new BlockEntry[n];
 		for (int i = 0; i < n; i++) {
 			ans[i] = registrate.block(FoundationMats.values()[i].id + "_block", p -> new Block(Block.Properties.copy(Blocks.IRON_BLOCK)))
-					.defaultLoot().defaultBlockstate().simpleItem().defaultLang().register();
+					.defaultLoot().defaultBlockstate()
+					.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL, Tags.Blocks.STORAGE_BLOCKS)
+					.item().tag(Tags.Items.STORAGE_BLOCKS).build().defaultLang().register();
 		}
 		return ans;
 	}

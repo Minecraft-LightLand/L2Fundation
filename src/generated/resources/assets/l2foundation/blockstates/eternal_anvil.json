@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "l2foundation:block/eternal_anvil",
+      "y": 90
+    },
+    "facing=north": {
       "model": "l2foundation:block/eternal_anvil"
+    },
+    "facing=south": {
+      "model": "l2foundation:block/eternal_anvil",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "l2foundation:block/eternal_anvil",
+      "y": 270
     }
   }
 }

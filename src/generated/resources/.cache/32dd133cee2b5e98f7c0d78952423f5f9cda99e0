@@ -1,6 +1,6 @@
-// 1.19.2	2022-10-26T20:27:34.454948	Registrate Provider for l2foundation [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2022-10-26T21:30:49.999237	Registrate Provider for l2foundation [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 5bce9fb5fcb92377a7cf7dda5e3a92c49c6b783a assets/l2foundation/blockstates/dispellium_block.json
-fada3945c75c34ba66485fa2d48cb85866130466 assets/l2foundation/blockstates/eternal_anvil.json
+e78f2fdf6383d750659cd3f1bcea37417fc6a41e assets/l2foundation/blockstates/eternal_anvil.json
 e313c542be695fcb40111040d9e2a10f5a8dcccd assets/l2foundation/blockstates/eternium_block.json
 598b423eed365db7e8da0a7254a75a76bafcc648 assets/l2foundation/blockstates/heavysteel_block.json
 ba951149114027c3eabbdb8ddc809ac8a2f22672 assets/l2foundation/blockstates/knightsteel_block.json
@@ -129,6 +129,10 @@ f35cdfaffc201eb5f3d97e5e761db103e2ea5684 assets/l2foundation/models/item/storm_c
 d2a35df24d0cfdb7da6274013f48c77c27ee98db assets/l2foundation/models/item/sun_membrane.json
 04add849daaad4439914be2b93c545873b5925b9 assets/l2foundation/models/item/void_eye.json
 80370bcc2225d52de437894dfd97011a423583a8 assets/l2foundation/models/item/wind_capture_bottle.json
+da4b54beaa0d28acbff534ab0a0322cbd50a2e6b data/forge/tags/blocks/storage_blocks.json
+b7cd111021e20378b129bd3729eb4103dcdc8eab data/forge/tags/items/ingots.json
+ec30d0474fd8eac0067ed5b65a6ba3734cc58f39 data/forge/tags/items/nuggets.json
+da4b54beaa0d28acbff534ab0a0322cbd50a2e6b data/forge/tags/items/storage_blocks.json
 acd37fcc5af150e55bea34070d26ecc8025af6bb data/l2foundation/advancements/recipes/enchantments/environment_reject.json
 848782657f86de9bcf0dd02969a16aafacb953c6 data/l2foundation/advancements/recipes/enchantments/explosion_reject.json
 3e8dbff689942bb8aabe39f260292092dcaeac11 data/l2foundation/advancements/recipes/enchantments/fire_reject.json
@@ -370,3 +374,7 @@ faa15d4f0b37d09f14cb233ef2cd6686835b0864 data/minecraft/advancements/recipes/tra
 c33457e9e5d6fe2b298610ddcba22c2d58e03c0b data/minecraft/recipes/echo_shard.json
 f98f2310d3c1d422b3a84322615690c30db1e8a9 data/minecraft/recipes/elytra.json
 032cc9254f8239e4f0446df0b8d5c4b761c7057e data/minecraft/recipes/gilded_blackstone.json
+bbf60c3aaeb7e56a94b80dc9f62b7364ce75765d data/minecraft/tags/blocks/anvil.json
+d3f22a0224b84d9794295da79dff212ac23b324e data/minecraft/tags/blocks/mineable/pickaxe.json
+d3f22a0224b84d9794295da79dff212ac23b324e data/minecraft/tags/blocks/needs_stone_tool.json
+bbf60c3aaeb7e56a94b80dc9f62b7364ce75765d data/minecraft/tags/items/anvil.json

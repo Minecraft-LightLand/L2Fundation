@@ -9,6 +9,7 @@ import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.common.Tags;
 
 import java.util.function.Supplier;
 
@@ -50,8 +51,8 @@ public class LFItems {
 
 	static {
 
-		MAT_INGOTS = L2Foundation.MATS.genMats("ingot");
-		MAT_NUGGETS = L2Foundation.MATS.genMats("nugget");
+		MAT_INGOTS = L2Foundation.MATS.genMats("ingot", Tags.Items.INGOTS);
+		MAT_NUGGETS = L2Foundation.MATS.genMats("nugget", Tags.Items.NUGGETS);
 		{
 			WIND_BOTTLE = REGISTRATE.item("wind_capture_bottle", WindBottle::new).register(); // tested
 			VOID_EYE = REGISTRATE.item("void_eye", ShadowSteelItem::new).register(); // kill aggroed enderman 16 blocks in void

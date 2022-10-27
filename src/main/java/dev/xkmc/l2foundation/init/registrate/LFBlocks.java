@@ -2,6 +2,8 @@ package dev.xkmc.l2foundation.init.registrate;
 
 import dev.xkmc.l2foundation.init.L2Foundation;
 import dev.xkmc.l2library.repack.registrate.util.entry.BlockEntry;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.AnvilBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -18,8 +20,8 @@ public class LFBlocks {
 
 	public static final BlockEntry<AnvilBlock> ETERNAL_ANVIL = L2Foundation.REGISTRATE
 			.block("eternal_anvil", p -> new AnvilBlock(BlockBehaviour.Properties.copy(Blocks.ANVIL)))
-			.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.getEntry(), pvd.models().withExistingParent(ctx.getName(), "anvil")))
-			.item().build().register();
+			.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.getEntry(), pvd.models().withExistingParent(ctx.getName(), "anvil")))
+			.tag(BlockTags.ANVIL, BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL).item().tag(ItemTags.ANVIL).build().register();
 
 	public static final BlockEntry<Block>[] GEN_BLOCK = L2Foundation.MATS.genBlockMats();
 

@@ -1,6 +1,5 @@
 package dev.xkmc.l2foundation.init.data;
 
-import dev.xkmc.l2library.base.recipe.ResultTagShapedBuilder;
 import dev.xkmc.l2library.repack.registrate.providers.RegistrateRecipeProvider;
 import dev.xkmc.l2library.repack.registrate.util.DataIngredient;
 import dev.xkmc.l2library.repack.registrate.util.entry.BlockEntry;
@@ -13,17 +12,11 @@ import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.List;
 import java.util.function.BiFunction;
 
 public class RecipeGen {
@@ -35,55 +28,15 @@ public class RecipeGen {
 		// gen tool and storage
 		{
 			currentFolder = "generated_tools/";
-			for (int i = 0; i < GenItem.Mats.values().length; i++) {
+			for (int i = 0; i < FoundationMats.values().length; i++) {
 				genTools(pvd, i, Items.STICK);
 			}
 
 			currentFolder = "storage/";
-			for (int i = 0; i < GenItem.Mats.values().length; i++) {
+			for (int i = 0; i < FoundationMats.values().length; i++) {
 				storage(pvd, LFItems.MAT_NUGGETS[i], LFItems.MAT_INGOTS[i], LFBlocks.GEN_BLOCK[i]);
 			}
-
-			storage(pvd, LFItems.LEAD_NUGGET, LFItems.LEAD_INGOT, LFBlocks.LEAD_BLOCK);
 		}
-
-		currentFolder = "quest_line/";
-		{
-			full(pvd, GenItem.Mats.STEEL.getIngot(), LFItems.KNIGHT_SCRAP.get(), Items.GOLD_NUGGET, GenItem.Mats.HEAVYSTEEL.getIngot(), 1);
-			cross(pvd, GenItem.Mats.LAYLINE.getIngot(), LFItems.OLDROOT.get(), GenItem.Mats.OLDROOT.getIngot(), 1);
-			unlock(pvd, new ShapedRecipeBuilder(LFBlocks.SLIME_CARPET.get(), 8)::unlockedBy,
-					LFItems.UNSTABLE_SLIME.get()).pattern("ABA")
-					.define('A', Items.SLIME_BALL).define('B', LFItems.UNSTABLE_SLIME.get())
-					.save(pvd, getID(LFBlocks.SLIME_CARPET.get().asItem()));
-			unlock(pvd, new ShapedRecipeBuilder(LFBlocks.SLIME_VINE.get(), 1)::unlockedBy,
-					LFItems.UNSTABLE_SLIME.get()).pattern("B B").pattern(" A ").pattern("B B")
-					.define('A', Items.VINE).define('B', LFItems.UNSTABLE_SLIME.get())
-					.save(pvd, getID(LFBlocks.SLIME_VINE.get().asItem()));
-		}
-
-		currentFolder = "medicine_effects/";
-		{
-			medicine(pvd, Items.BLUE_ORCHID, MobEffects.ABSORPTION, 0, 200);
-			medicine(pvd, Items.AZURE_BLUET, MobEffects.DIG_SPEED, 2, 200);
-			medicine(pvd, Items.LILY_OF_THE_VALLEY, MobEffects.HEAL, 0, 1);
-			medicine(pvd, Items.OXEYE_DAISY, MobEffects.REGENERATION, 1, 200);
-			medicine(pvd, Items.ALLIUM, MobEffects.DAMAGE_RESISTANCE, 1, 100);
-			medicine(pvd, Items.DANDELION, MobEffects.SATURATION, 0, 10);
-			medicine(pvd, Items.CORNFLOWER, MobEffects.MOVEMENT_SPEED, 1, 100);
-			medicine(pvd, Items.POPPY, MobEffects.DAMAGE_BOOST, 1, 100);
-		}
-
-		currentFolder = "medicine_armors/";
-		{
-			unlock(pvd, new MedArmorBuilder(LFItems.KING_MED_LEATHER.get(), 8)::unlockedBy, LFItems.KING_LEATHER.get())
-					.pattern("XXX").pattern("XOX").pattern("XXX")
-					.define('X', LFItems.MEDICINE_LEATHER.get())
-					.define('O', LFItems.KING_LEATHER.get())
-					.save(pvd, getID(LFItems.KING_MED_LEATHER.get()));
-			medArmor(pvd, LFItems.MEDICINE_LEATHER.get(), LFItems.MEDICINE_ARMOR);
-			medArmor(pvd, LFItems.KING_MED_LEATHER.get(), LFItems.KING_MED_ARMOR);
-		}
-
 	}
 
 	private static ResourceLocation getID(Item item) {
@@ -157,30 +110,6 @@ public class RecipeGen {
 
 	private static <T> T unlock(RegistrateRecipeProvider pvd, BiFunction<String, InventoryChangeTrigger.TriggerInstance, T> func, Item item) {
 		return func.apply("has_" + pvd.safeName(item), DataIngredient.items(item).getCritereon(pvd));
-	}
-
-	/* special */
-
-	private static void medicine(RegistrateRecipeProvider pvd, Item flower, MobEffect eff, int amp, int duration) {
-		Item item = LFItems.MEDICINE_LEATHER.get();
-		ItemStack stack = new ItemStack(item);
-		MobEffectInstance ins = new MobEffectInstance(eff, duration, amp);
-		PotionUtils.setCustomEffects(stack, List.of(ins));
-		unlock(pvd, new ResultTagShapedBuilder(stack)::unlockedBy, flower)
-				.pattern("FVF").pattern("FLF").pattern("FVF").define('V', Items.VINE)
-				.define('F', flower).define('L', Items.LEATHER)
-				.save(pvd, getID(ForgeRegistries.MOB_EFFECTS.getKey(eff).getPath()));
-	}
-
-	private static void medArmor(RegistrateRecipeProvider pvd, Item input, LFItems.ArmorItems<?> out) {
-		unlock(pvd, new MedArmorBuilder(out.armors[0].get(), 1)::unlockedBy, input)
-				.pattern("A A").pattern("A A").define('A', input).save(pvd, getID(out.armors[0].get()));
-		unlock(pvd, new MedArmorBuilder(out.armors[1].get(), 1)::unlockedBy, input)
-				.pattern("AAA").pattern("A A").pattern("A A").define('A', input).save(pvd, getID(out.armors[1].get()));
-		unlock(pvd, new MedArmorBuilder(out.armors[2].get(), 1)::unlockedBy, input)
-				.pattern("A A").pattern("AAA").pattern("AAA").define('A', input).save(pvd, getID(out.armors[2].get()));
-		unlock(pvd, new MedArmorBuilder(out.armors[3].get(), 1)::unlockedBy, input)
-				.pattern("AAA").pattern("A A").define('A', input).save(pvd, getID(out.armors[3].get()));
 	}
 
 }

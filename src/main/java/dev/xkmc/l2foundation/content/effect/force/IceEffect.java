@@ -25,6 +25,6 @@ public class IceEffect extends InherentEffect implements IconOverlayEffect {
 
 	@Override
 	public ResourceLocation getIcon() {
-		return new ResourceLocation(L2Foundation.MODID, "textures/effect_overlay/flame.png");
+		return new ResourceLocation(L2Foundation.MODID, "textures/effect_overlay/ice.png");
 	}
 }

@@ -1,9 +1,8 @@
 package dev.xkmc.l2foundation.content.effect.force;
 
+import dev.xkmc.l2foundation.init.L2Foundation;
 import dev.xkmc.l2library.base.effects.api.IconOverlayEffect;
 import dev.xkmc.l2library.base.effects.api.InherentEffect;
-import dev.xkmc.l2foundation.init.L2Foundation;
-import dev.xkmc.l2foundation.util.DamageUtil;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -17,7 +16,7 @@ public class FlameEffect extends InherentEffect implements IconOverlayEffect {
 
 	@Override
 	public void applyEffectTick(LivingEntity target, int level) {
-		DamageUtil.dealDamage(target, DamageSource.IN_FIRE, 2 << level);
+		target.hurt(DamageSource.IN_FIRE, 2 << level);
 	}
 
 	@Override

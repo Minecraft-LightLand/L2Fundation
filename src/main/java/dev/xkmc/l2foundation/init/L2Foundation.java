@@ -2,13 +2,13 @@ package dev.xkmc.l2foundation.init;
 
 import dev.xkmc.l2foundation.events.DamageEventListener;
 import dev.xkmc.l2foundation.events.ItemUseEventHandler;
-import dev.xkmc.l2foundation.events.MiscEventHandler;
-import dev.xkmc.l2foundation.init.data.ConfigGenDispatcher;
+import dev.xkmc.l2foundation.init.data.GenItem;
 import dev.xkmc.l2foundation.init.data.LangData;
 import dev.xkmc.l2foundation.init.data.RecipeGen;
-import dev.xkmc.l2foundation.init.registrate.*;
-import dev.xkmc.l2foundation.init.worldgenreg.StructureRegistrate;
-import dev.xkmc.l2foundation.init.worldgenreg.WorldGenRegistrate;
+import dev.xkmc.l2foundation.init.registrate.LFBlocks;
+import dev.xkmc.l2foundation.init.registrate.LFEffects;
+import dev.xkmc.l2foundation.init.registrate.LFItems;
+import dev.xkmc.l2foundation.init.registrate.LFParticle;
 import dev.xkmc.l2foundation.network.NetworkManager;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.base.effects.EffectSyncEvents;
@@ -35,24 +35,20 @@ public class L2Foundation {
 	public static final String MODID = "l2foundation";
 	public static final Logger LOGGER = LogManager.getLogger();
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
+	public static final GenItem MATS = new GenItem(MODID, REGISTRATE);
 
 	private static void registerRegistrates() {
 		ForgeMod.enableMilkFluid();
 		LFBlocks.register();
-		LFEntities.register();
 		LFItems.register();
-		LFRecipes.register();
 		LFEffects.register();
 		LFParticle.register();
-		WorldGenRegistrate.register();
-		StructureRegistrate.register();
 		NetworkManager.register();
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, RecipeGen::genRecipe);
 	}
 
 	private static void registerForgeEvents() {
 		MinecraftForge.EVENT_BUS.register(ItemUseEventHandler.class);
-		MinecraftForge.EVENT_BUS.register(MiscEventHandler.class);
 		AttackEventHandler.LISTENERS.add(new DamageEventListener());
 	}
 
@@ -60,7 +56,6 @@ public class L2Foundation {
 		bus.addListener(L2Foundation::setup);
 		bus.addListener(EventPriority.LOWEST, L2Foundation::gatherData);
 		bus.addListener(L2Foundation::onParticleRegistryEvent);
-		bus.addListener(LFEntities::registerEntityAttributes);
 	}
 
 	public L2Foundation() {
@@ -74,18 +69,15 @@ public class L2Foundation {
 
 	private static void setup(final FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
-			EffectSyncEvents.TRACKED.add(LFEffects.WATER_TRAP.get());
 			EffectSyncEvents.TRACKED.add(LFEffects.FLAME.get());
 			EffectSyncEvents.TRACKED.add(LFEffects.EMERALD.get());
 			EffectSyncEvents.TRACKED.add(LFEffects.ICE.get());
 			LFEffects.registerBrewingRecipe();
 		});
-		StructureRegistrate.commonSetup(event);
 	}
 
 	public static void gatherData(GatherDataEvent event) {
 		LangData.addTranslations(REGISTRATE::addRawLang);
-		event.getGenerator().addProvider(true, new ConfigGenDispatcher(event.getGenerator()));
 	}
 
 	public static void onParticleRegistryEvent(RegisterParticleProvidersEvent event) {

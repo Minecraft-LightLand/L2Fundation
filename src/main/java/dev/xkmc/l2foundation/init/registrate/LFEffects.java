@@ -6,8 +6,6 @@ import dev.xkmc.l2foundation.content.effect.force.FlameEffect;
 import dev.xkmc.l2foundation.content.effect.force.IceEffect;
 import dev.xkmc.l2foundation.content.effect.force.StoneCageEffect;
 import dev.xkmc.l2foundation.content.effect.skill.EmeraldPopeEffect;
-import dev.xkmc.l2foundation.content.effect.skill.QuickPullEffect;
-import dev.xkmc.l2foundation.content.effect.skill.RunBowEffect;
 import dev.xkmc.l2foundation.init.L2Foundation;
 import dev.xkmc.l2library.repack.registrate.builders.NoConfigBuilder;
 import dev.xkmc.l2library.repack.registrate.util.entry.RegistryEntry;
@@ -36,8 +34,6 @@ public class LFEffects {
 	public static final RegistryEntry<FlameEffect> FLAME = genEffect("flame", () -> new FlameEffect(MobEffectCategory.HARMFUL, 0xFF0000));
 	public static final RegistryEntry<IceEffect> ICE = genEffect("frozen", () -> new IceEffect(MobEffectCategory.HARMFUL, 0x7f7fff));
 	public static final RegistryEntry<ArmorReduceEffect> ARMOR_REDUCE = genEffect("armor_reduce", () -> new ArmorReduceEffect(MobEffectCategory.HARMFUL, 0xFFFFFF));
-	public static final RegistryEntry<MobEffect> RUN_BOW = genEffect("run_bow", () -> new RunBowEffect(MobEffectCategory.BENEFICIAL, 0xffffff));
-	public static final RegistryEntry<QuickPullEffect> QUICK_PULL = genEffect("quick_pull", () -> new QuickPullEffect(MobEffectCategory.BENEFICIAL, 0xFFFFFF));
 	public static final RegistryEntry<StoneCageEffect> STONE_CAGE = genEffect("stone_cage", () -> new StoneCageEffect(MobEffectCategory.HARMFUL, 0x000000));
 
 	public static final List<RegistryEntry<? extends Potion>> POTION_LIST = new ArrayList<>();
@@ -57,8 +53,6 @@ public class LFEffects {
 		regPotion3("flame", FLAME::get, LFItems.SOUL_FLAME::get, 400, 600, 1200, 0, 1);
 		regPotion2("frozen", ICE::get, LFItems.HARD_ICE, 3600, 9600);
 		regPotion2("stone_cage", STONE_CAGE::get, LFItems.BLACKSTONE_CORE, 1200, 3600);
-		regPotion3("run_bow", RUN_BOW, LFItems.CAPTURED_WIND, 600, 1200, 3600, 0, 1);
-		regPotion3("quick_pull", QUICK_PULL::get, LFItems.STORM_CORE, 600, 1200, 3600, 0, 1);
 		regPotion2("levitation", () -> MobEffects.LEVITATION, LFItems.CAPTURED_BULLET, 200, 600);
 		regPotion3("resistance", () -> MobEffects.DAMAGE_RESISTANCE, LFItems.EXPLOSION_SHARD, 400, 600, 1200, 1, 2);
 	}

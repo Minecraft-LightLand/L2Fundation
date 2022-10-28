@@ -48,7 +48,6 @@
 	  "path": "item.l2foundation",
 	  "list": [
 		{
-		  "lead": "铅",
 		  "steel": "钢",
 		  "layroot": "铁木",
 		  "layline": "地脉",
@@ -68,7 +67,6 @@
 	  "path": "block.l2foundation",
 	  "list": [
 		{
-		  "lead": "铅",
 		  "steel": "钢",
 		  "layroot": "铁木",
 		  "layline": "地脉",

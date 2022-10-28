@@ -17,19 +17,19 @@ import java.util.Locale;
 public class LangData {
 
 	public enum IDS {
-		WIND_BOTTLE("wind_bottle", "Used to obtain Captured Wind or Captured Bullet.", 0),
-		VOID_EYE("void_eye", "Obtained by killing an angry Enderman %s block below the void.", 1),
-		SUN_MEMBRANE("sun_membrane", "Obtained by killing a sun-burning Phantom %s blocks above max build height.", 1),
-		SOUL_FLAME("soul_flame", "Obtained by killing a ghast with soul flame.", 0),
-		CAPTURED_WIND("captured_wind", "Obtained by right clicking Wind Bottle when moving faster than %s blocks per second.", 1),
-		CAPTURED_BULLET("captured_shulker_bullet", "Obtained by right clicking shulker bullet with Wind Bottle.", 0),
-		EXPLOSION_SHARD("explosion_shard", "Obtained by surviving an explosion damage of at least %s.", 1),
-		HARD_ICE("hard_ice", "Obtained by killing a Drowned with Powdered Snow.", 0),
-		STORM_CORE("storm_core", "Obtained by killing a Phantom with explosion.", 0),
-		BLACKSTONE_CORE("blackstone_core", "Obtained by killing a Guardian that has Stone Cage effect.", 0),
-		RESONANT_FEATHER("resonant_feather", "Obtained when Warden kills a chicken with sonic boom.", 0),
-		SPACE_SHARD("space_shard", "Obtained by causing a projectile damage of at least %s.", 1),
-		FORCE_FIELD("force_field", "Obtained by killing a wither with arrow.", 0);
+		WIND_BOTTLE("tooltip.misc.wind_bottle", "Used to obtain Captured Wind or Captured Bullet.", 0),
+		VOID_EYE("tooltip.misc.void_eye", "Obtained by killing an angry Enderman %s block below the void.", 1),
+		SUN_MEMBRANE("tooltip.misc.sun_membrane", "Obtained by killing a sun-burning Phantom %s blocks above max build height.", 1),
+		SOUL_FLAME("tooltip.misc.soul_flame", "Obtained by killing a ghast with soul flame.", 0),
+		CAPTURED_WIND("tooltip.misc.captured_wind", "Obtained by right clicking Wind Bottle when moving faster than %s blocks per second.", 1),
+		CAPTURED_BULLET("tooltip.misc.captured_shulker_bullet", "Obtained by right clicking shulker bullet with Wind Bottle.", 0),
+		EXPLOSION_SHARD("tooltip.misc.explosion_shard", "Obtained by surviving an explosion damage of at least %s.", 1),
+		HARD_ICE("tooltip.misc.hard_ice", "Obtained by killing a Drowned with Powdered Snow.", 0),
+		STORM_CORE("tooltip.misc.storm_core", "Obtained by killing a Phantom with explosion.", 0),
+		BLACKSTONE_CORE("tooltip.misc.blackstone_core", "Obtained by killing a Guardian that has Stone Cage effect.", 0),
+		RESONANT_FEATHER("tooltip.misc.resonant_feather", "Obtained when Warden kills a chicken with sonic boom.", 0),
+		SPACE_SHARD("tooltip.misc.space_shard", "Obtained by causing a projectile damage of at least %s.", 1),
+		FORCE_FIELD("tooltip.misc.force_field", "Obtained by killing a wither with arrow.", 0);
 
 		final String id, def;
 		final int count;
@@ -68,8 +68,7 @@ public class LangData {
 		for (IDS id : IDS.values()) {
 			String[] strs = id.id.split("\\.");
 			String str = strs[strs.length - 1];
-			pvd.add(L2Foundation.MODID + "." + id.id,
-					RegistrateLangProvider.toEnglishName(str) + getParams(id.count));
+			pvd.add(L2Foundation.MODID + "." + id.id, id.def);
 		}
 
 		pvd.add("itemGroup.l2foundation.generated", "L2Fundation Items");

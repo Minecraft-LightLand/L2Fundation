@@ -51,10 +51,10 @@ public class LFEffects {
 
 	public static void register() {
 		regPotion3("flame", FLAME::get, LFItems.SOUL_FLAME::get, 400, 600, 1200, 0, 1);
-		regPotion2("frozen", ICE::get, LFItems.HARD_ICE, 3600, 9600);
-		regPotion2("stone_cage", STONE_CAGE::get, LFItems.BLACKSTONE_CORE, 1200, 3600);
-		regPotion2("levitation", () -> MobEffects.LEVITATION, LFItems.CAPTURED_BULLET, 200, 600);
-		regPotion3("resistance", () -> MobEffects.DAMAGE_RESISTANCE, LFItems.EXPLOSION_SHARD, 400, 600, 1200, 1, 2);
+		regPotion2("frozen", ICE::get, LFItems.HARD_ICE::get, 3600, 9600);
+		regPotion2("stone_cage", STONE_CAGE::get, LFItems.BLACKSTONE_CORE::get, 1200, 3600);
+		regPotion2("levitation", () -> MobEffects.LEVITATION, LFItems.CAPTURED_BULLET::get, 200, 600);
+		regPotion3("resistance", () -> MobEffects.DAMAGE_RESISTANCE, LFItems.EXPLOSION_SHARD::get, 400, 600, 1200, 1, 2);
 	}
 
 	private static <T extends Potion> RegistryEntry<T> genPotion(String name, NonNullSupplier<T> sup) {

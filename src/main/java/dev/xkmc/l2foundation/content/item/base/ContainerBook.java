@@ -1,7 +1,7 @@
 package dev.xkmc.l2foundation.content.item.base;
 
-import dev.xkmc.l2library.repack.registrate.util.entry.MenuEntry;
 import dev.xkmc.l2foundation.init.data.LangData;
+import dev.xkmc.l2library.repack.registrate.util.entry.MenuEntry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;

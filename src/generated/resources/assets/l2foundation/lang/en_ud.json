@@ -169,5 +169,18 @@
   "item.minecraft.tipped_arrow.effect.stone_cage": "ǝbɐƆ ǝuoʇS",
   "item.minecraft.tipped_arrow.effect.strong_flame": "ǝɯɐןℲ buoɹʇS",
   "item.minecraft.tipped_arrow.effect.strong_resistance": "ǝɔuɐʇsısǝᴚ buoɹʇS",
-  "itemGroup.l2foundation.generated": "sɯǝʇI uoıʇɐpunℲᄅꞀ"
+  "itemGroup.l2foundation.generated": "sɯǝʇI uoıʇɐpunℲᄅꞀ",
+  "l2foundation.blackstone_core": "ǝɹoƆ ǝuoʇsʞɔɐןᗺ",
+  "l2foundation.captured_shulker_bullet": "ʇǝןןnᗺ ɹǝʞןnɥS pǝɹnʇdɐƆ",
+  "l2foundation.captured_wind": "%s :puıM pǝɹnʇdɐƆ",
+  "l2foundation.explosion_shard": "%s :pɹɐɥS uoısoןdxƎ",
+  "l2foundation.force_field": "pןǝıℲ ǝɔɹoℲ",
+  "l2foundation.hard_ice": "ǝɔI pɹɐH",
+  "l2foundation.resonant_feather": "ɹǝɥʇɐǝℲ ʇuɐuosǝᴚ",
+  "l2foundation.soul_flame": "ǝɯɐןℲ ןnoS",
+  "l2foundation.space_shard": "%s :pɹɐɥS ǝɔɐdS",
+  "l2foundation.storm_core": "ǝɹoƆ ɯɹoʇS",
+  "l2foundation.sun_membrane": "%s :ǝuɐɹqɯǝW unS",
+  "l2foundation.void_eye": "%s :ǝʎƎ pıoΛ",
+  "l2foundation.wind_bottle": "ǝןʇʇoᗺ puıM"
 }

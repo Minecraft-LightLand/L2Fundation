@@ -55,10 +55,11 @@ public class RecipeGen {
 					.define('B', FoundationMats.ETERNIUM.getIngot())
 					.save(pvd);
 
-			unlock(pvd, new ShapedRecipeBuilder(FoundationMats.ETERNIUM.getIngot(), 1)::unlockedBy, Items.NETHERITE_INGOT)
-					.pattern("3B4").pattern("BAB").pattern("1B2")
-					.define('A', Items.NETHERITE_INGOT)
+			unlock(pvd, new ShapedRecipeBuilder(FoundationMats.ETERNIUM.getNugget(), 1)::unlockedBy, LFItems.EXPLOSION_SHARD.get())
+					.pattern("3C4").pattern("BAB").pattern("1C2")
+					.define('A', LFItems.EXPLOSION_SHARD.get())
 					.define('B', Items.ANVIL)
+					.define('C', Items.ENDER_PEARL)
 					.define('1', new EnchantmentIngredient(Enchantments.MENDING, 1))
 					.define('2', new EnchantmentIngredient(Enchantments.INFINITY_ARROWS, 1))
 					.define('3', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
@@ -73,27 +74,28 @@ public class RecipeGen {
 			unlock(pvd, new ShapelessRecipeBuilder(Items.ECHO_SHARD, 1)::unlockedBy, LFItems.RESONANT_FEATHER.get())
 					.requires(LFItems.RESONANT_FEATHER.get())
 					.requires(Items.AMETHYST_SHARD)
-					.save(pvd);
+					.requires(Items.SCULK, 4)
+					.save(pvd, getID(Items.ECHO_SHARD));
 			unlock(pvd, new ShapedRecipeBuilder(Items.ELYTRA, 1)::unlockedBy, LFItems.SUN_MEMBRANE.get())
 					.pattern("ABA").pattern("C C").pattern("D D")
 					.define('A', LFItems.EXPLOSION_SHARD.get())
 					.define('B', LFItems.CAPTURED_WIND.get())
 					.define('C', LFItems.SUN_MEMBRANE.get())
 					.define('D', LFItems.RESONANT_FEATHER.get())
-					.save(pvd);
+					.save(pvd, getID(Items.ELYTRA));
 			unlock(pvd, new ShapedRecipeBuilder(Items.ANCIENT_DEBRIS, 1)::unlockedBy, LFItems.EXPLOSION_SHARD.get())
 					.pattern("ABA").pattern("ACA").pattern("ADA")
 					.define('A', LFItems.EXPLOSION_SHARD.get())
 					.define('B', Items.NETHER_STAR)
 					.define('C', Items.CRYING_OBSIDIAN)
 					.define('D', LFItems.FORCE_FIELD.get())
-					.save(pvd);
+					.save(pvd, getID(Items.ANCIENT_DEBRIS));
 			unlock(pvd, new ShapedRecipeBuilder(Items.GILDED_BLACKSTONE, 1)::unlockedBy, LFItems.BLACKSTONE_CORE.get())
 					.pattern("ABA").pattern("BCB").pattern("ABA")
 					.define('A', Items.BLACKSTONE)
 					.define('B', Items.GOLD_INGOT)
 					.define('C', LFItems.BLACKSTONE_CORE.get())
-					.save(pvd);
+					.save(pvd, getID(Items.GILDED_BLACKSTONE));
 		}
 
 		currentFolder = "enchantments/";

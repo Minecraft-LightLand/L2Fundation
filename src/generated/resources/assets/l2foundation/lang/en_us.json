@@ -169,5 +169,18 @@
   "item.minecraft.tipped_arrow.effect.stone_cage": "Stone Cage",
   "item.minecraft.tipped_arrow.effect.strong_flame": "Strong Flame",
   "item.minecraft.tipped_arrow.effect.strong_resistance": "Strong Resistance",
-  "itemGroup.l2foundation.generated": "L2Fundation Items"
+  "itemGroup.l2foundation.generated": "L2Fundation Items",
+  "l2foundation.blackstone_core": "Blackstone Core",
+  "l2foundation.captured_shulker_bullet": "Captured Shulker Bullet",
+  "l2foundation.captured_wind": "Captured Wind: %s",
+  "l2foundation.explosion_shard": "Explosion Shard: %s",
+  "l2foundation.force_field": "Force Field",
+  "l2foundation.hard_ice": "Hard Ice",
+  "l2foundation.resonant_feather": "Resonant Feather",
+  "l2foundation.soul_flame": "Soul Flame",
+  "l2foundation.space_shard": "Space Shard: %s",
+  "l2foundation.storm_core": "Storm Core",
+  "l2foundation.sun_membrane": "Sun Membrane: %s",
+  "l2foundation.void_eye": "Void Eye: %s",
+  "l2foundation.wind_bottle": "Wind Bottle"
 }

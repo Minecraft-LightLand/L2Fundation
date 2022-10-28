@@ -1,16 +1,18 @@
 package dev.xkmc.l2foundation.content.item.misc;
 
 import dev.xkmc.l2foundation.init.registrate.LFItems;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class WindBottle extends Item {
+import java.util.function.Supplier;
 
-	public WindBottle(Properties properties) {
-		super(properties);
+public class WindBottle extends TooltipItem {
+
+	public WindBottle(Properties properties, Supplier<MutableComponent> sup) {
+		super(properties, sup);
 	}
 
 	@Override

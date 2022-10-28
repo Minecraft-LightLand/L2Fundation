@@ -1,8 +1,8 @@
 package dev.xkmc.l2foundation.content.effect.skill;
 
+import dev.xkmc.l2foundation.init.registrate.LFParticle;
 import dev.xkmc.l2library.base.effects.api.FirstPlayerRenderEffect;
 import dev.xkmc.l2library.util.Proxy;
-import dev.xkmc.l2foundation.init.registrate.LFParticle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.resources.ResourceLocation;

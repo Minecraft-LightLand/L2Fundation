@@ -19,12 +19,15 @@ public class LFConfig {
 
 	public static class Common {
 
+		public final ForgeConfigSpec.DoubleValue windSpeed;
 		public final ForgeConfigSpec.IntValue belowVoid;
 		public final ForgeConfigSpec.IntValue phantomHeight;
 		public final ForgeConfigSpec.IntValue explosionDamage;
 		public final ForgeConfigSpec.IntValue spaceDamage;
 
 		Common(ForgeConfigSpec.Builder builder) {
+			windSpeed = builder.comment("Requirement for obtaining Captured Wind. Unit: Block per Tick")
+					.defineInRange("windSpeed", 10, 0.1, 100);
 			belowVoid = builder.comment("Requirement for void eye drop")
 					.defineInRange("belowVoid", 16, 0, 128);
 			phantomHeight = builder.comment("Requirement for sun membrane drop")

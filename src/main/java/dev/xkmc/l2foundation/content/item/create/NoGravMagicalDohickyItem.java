@@ -1,25 +1,22 @@
 package dev.xkmc.l2foundation.content.item.create;
 
-import net.minecraft.core.NonNullList;
+import dev.xkmc.l2foundation.content.item.misc.TooltipItem;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
-public class NoGravMagicalDohickyItem extends Item {
+import java.util.function.Supplier;
 
-	public NoGravMagicalDohickyItem(Properties properties) {
-		super(properties);
-	}
+public class NoGravMagicalDohickyItem extends TooltipItem {
 
-	@Override
-	public void fillItemCategory(CreativeModeTab pCategory, NonNullList<ItemStack> pItems) {
+	public NoGravMagicalDohickyItem(Properties properties, Supplier<MutableComponent> sup) {
+		super(properties, sup);
 	}
 
 	@Override

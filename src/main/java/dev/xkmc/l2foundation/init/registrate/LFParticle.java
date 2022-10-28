@@ -1,8 +1,8 @@
 package dev.xkmc.l2foundation.init.registrate;
 
-import dev.xkmc.l2library.repack.registrate.util.entry.RegistryEntry;
 import dev.xkmc.l2foundation.content.particle.EmeraldParticle;
 import dev.xkmc.l2foundation.init.L2Foundation;
+import dev.xkmc.l2library.repack.registrate.util.entry.RegistryEntry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.api.distmarker.Dist;

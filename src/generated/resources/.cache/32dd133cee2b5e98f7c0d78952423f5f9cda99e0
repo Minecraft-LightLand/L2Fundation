@@ -1,4 +1,4 @@
-// 1.19.2	2022-10-26T21:30:49.999237	Registrate Provider for l2foundation [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2022-10-27T19:31:32.493627	Registrate Provider for l2foundation [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 5bce9fb5fcb92377a7cf7dda5e3a92c49c6b783a assets/l2foundation/blockstates/dispellium_block.json
 e78f2fdf6383d750659cd3f1bcea37417fc6a41e assets/l2foundation/blockstates/eternal_anvil.json
 e313c542be695fcb40111040d9e2a10f5a8dcccd assets/l2foundation/blockstates/eternium_block.json
@@ -8,8 +8,8 @@ ba951149114027c3eabbdb8ddc809ac8a2f22672 assets/l2foundation/blockstates/knights
 c1d990d6e70cce4c333b9d133cbb0311a4f511db assets/l2foundation/blockstates/layroot_block.json
 7749288601a11967700e01244d9e05ada7b77347 assets/l2foundation/blockstates/oldroot_block.json
 b4ac42502ac4fae4176cd0b46e891e1dc2070ec8 assets/l2foundation/blockstates/steel_block.json
-89609f20785ef7ed54af57d542470665f79f90d0 assets/l2foundation/lang/en_ud.json
-a9aae810ff6eff631777c418015a8810125b6962 assets/l2foundation/lang/en_us.json
+79e78b61e1108ddd50ba7a6c3e6b1de84f9057f6 assets/l2foundation/lang/en_ud.json
+03fd8d88e051c7859301939ce3f5932fcffdd33e assets/l2foundation/lang/en_us.json
 4617bfbeb07ab2f7d35335ccc412836749352424 assets/l2foundation/models/block/dispellium_block.json
 9c9a8fcc0fe537da5794094e45fc4ca8d397d73f assets/l2foundation/models/block/eternal_anvil.json
 26be1ef5011e8a87c922dea7bbf2c09713a3c1e8 assets/l2foundation/models/block/eternium_block.json
@@ -133,13 +133,15 @@ da4b54beaa0d28acbff534ab0a0322cbd50a2e6b data/forge/tags/blocks/storage_blocks.j
 b7cd111021e20378b129bd3729eb4103dcdc8eab data/forge/tags/items/ingots.json
 ec30d0474fd8eac0067ed5b65a6ba3734cc58f39 data/forge/tags/items/nuggets.json
 da4b54beaa0d28acbff534ab0a0322cbd50a2e6b data/forge/tags/items/storage_blocks.json
+d9b13f00025a3dfa91e7104ea156e8f4a08f8e24 data/l2foundation/advancements/recipes/building_blocks/vanilla/ancient_debris.json
+8d57c6d63de972eb9e11e53d6213e706a5e830cc data/l2foundation/advancements/recipes/building_blocks/vanilla/gilded_blackstone.json
 acd37fcc5af150e55bea34070d26ecc8025af6bb data/l2foundation/advancements/recipes/enchantments/environment_reject.json
 848782657f86de9bcf0dd02969a16aafacb953c6 data/l2foundation/advancements/recipes/enchantments/explosion_reject.json
 3e8dbff689942bb8aabe39f260292092dcaeac11 data/l2foundation/advancements/recipes/enchantments/fire_reject.json
 e64d2a1dcf03a6c54440cc94344a11b02d7702f3 data/l2foundation/advancements/recipes/enchantments/magic_reject.json
 fd7bf2621eb1a3133eeca090342786950ca52b08 data/l2foundation/advancements/recipes/enchantments/projectile_reject.json
 e14d7d7180eb1df58a944dff2aca1aa5e176ad9f data/l2foundation/advancements/recipes/l2foundation.generated/eternal_anvil.json
-31033da4e10129acbf4bc3278a76430757d2288c data/l2foundation/advancements/recipes/l2foundation.generated/eternium_ingot.json
+dd414f47dd7af0cbfc2dbbe90a0104b77620f238 data/l2foundation/advancements/recipes/l2foundation.generated/eternium_nugget.json
 7b22bcea0463de376e2d46607396c0c5cf61012c data/l2foundation/advancements/recipes/l2foundation.generated/generated_tools/dispellium_axe.json
 a406a061e73e12602e8e1f945e7b3ac80aa2be1d data/l2foundation/advancements/recipes/l2foundation.generated/generated_tools/dispellium_boots.json
 8938d6a1aacb59da34a98ccf32aab8d491adae09 data/l2foundation/advancements/recipes/l2foundation.generated/generated_tools/dispellium_chestplate.json
@@ -245,6 +247,8 @@ b392e87f0066f868e4fbec4a91303a3d7e70ca3c data/l2foundation/advancements/recipes/
 a04b0e447a400fd31743c84cf4059f0ebb55ead3 data/l2foundation/advancements/recipes/l2foundation.generated/storage/steel_ingot_storage.json
 12d6f3ebfb86d6461e18213898b6b77f156327ad data/l2foundation/advancements/recipes/l2foundation.generated/storage/steel_ingot_unpack.json
 0be74bef3ba9eb0cb5fd75c6a2d039c8da1fda71 data/l2foundation/advancements/recipes/l2foundation.generated/wind_capture_bottle.json
+cfb033c4467d8b72f8926f0ab5e19a2d9555926d data/l2foundation/advancements/recipes/misc/vanilla/echo_shard.json
+de8ea394aa335829e62e8989023e84bcfb836b53 data/l2foundation/advancements/recipes/transportation/vanilla/elytra.json
 90ad199afa9c0115e0757c5aaff8e60a82dc9066 data/l2foundation/loot_tables/blocks/dispellium_block.json
 a27b024771d22d02f51843bd121ad6d293988eaf data/l2foundation/loot_tables/blocks/eternal_anvil.json
 d2c1e7d78ab3d096a87719951333fa2ee272e0ef data/l2foundation/loot_tables/blocks/eternium_block.json
@@ -256,7 +260,7 @@ c6e04bbe8ecc1708841abd9bfa17d42406df489b data/l2foundation/loot_tables/blocks/ol
 60402cbe04a167fae309ab2007a70619629a3061 data/l2foundation/loot_tables/blocks/steel_block.json
 003c4186ea61ab4695970a19a4ea3f4754a34901 data/l2foundation/recipes/environment_reject.json
 08677d75812dd7002057fe5d89ee471bd87fed1e data/l2foundation/recipes/eternal_anvil.json
-ec0671ca534e0bc60dc714e5fb37fb73216c518a data/l2foundation/recipes/eternium_ingot.json
+1ac54f7df3102a9ac8cfa80f60da0f579e70e937 data/l2foundation/recipes/eternium_nugget.json
 4f06db146eb8f3bca5b3b31eab93e52b855d9ed1 data/l2foundation/recipes/explosion_reject.json
 799e96e86fc22527f4f6075df3b8c1004489819d data/l2foundation/recipes/fire_reject.json
 0679e36a2ac4cf6e0ebec08172df74b185313b3f data/l2foundation/recipes/generated_tools/dispellium_axe.json
@@ -365,15 +369,11 @@ bf4c3d78e7d9a8d8295de61f87aa0b2d9641caae data/l2foundation/recipes/storage/steel
 d55e4854ed16136b3dbd22e44ce02eb5c89c1f44 data/l2foundation/recipes/storage/steel_block_unpack.json
 8e5e5274cee0b6a9aaec8b09ced9560c6d02dbda data/l2foundation/recipes/storage/steel_ingot_storage.json
 9383e580d92e0c21abf34ffc5d300c0688234a57 data/l2foundation/recipes/storage/steel_ingot_unpack.json
+1a15c5cf127f4a884e0a7de88fc266cf8083f3c2 data/l2foundation/recipes/vanilla/ancient_debris.json
+85ba73e6d0aec85480bc68f917fe3fd04773e60e data/l2foundation/recipes/vanilla/echo_shard.json
+f98f2310d3c1d422b3a84322615690c30db1e8a9 data/l2foundation/recipes/vanilla/elytra.json
+032cc9254f8239e4f0446df0b8d5c4b761c7057e data/l2foundation/recipes/vanilla/gilded_blackstone.json
 b4c792f811d139b778beba005600b3dd7c960910 data/l2foundation/recipes/wind_capture_bottle.json
-1710a421bd05485dd3992e368f393ab834d4ce8e data/minecraft/advancements/recipes/building_blocks/ancient_debris.json
-7cc20924284ddfb43fccd5b5ede5fb0b505d1df8 data/minecraft/advancements/recipes/building_blocks/gilded_blackstone.json
-306e238a5f09589b5a9d28d147096fcf1b19db03 data/minecraft/advancements/recipes/misc/echo_shard.json
-faa15d4f0b37d09f14cb233ef2cd6686835b0864 data/minecraft/advancements/recipes/transportation/elytra.json
-1a15c5cf127f4a884e0a7de88fc266cf8083f3c2 data/minecraft/recipes/ancient_debris.json
-c33457e9e5d6fe2b298610ddcba22c2d58e03c0b data/minecraft/recipes/echo_shard.json
-f98f2310d3c1d422b3a84322615690c30db1e8a9 data/minecraft/recipes/elytra.json
-032cc9254f8239e4f0446df0b8d5c4b761c7057e data/minecraft/recipes/gilded_blackstone.json
 bbf60c3aaeb7e56a94b80dc9f62b7364ce75765d data/minecraft/tags/blocks/anvil.json
 d3f22a0224b84d9794295da79dff212ac23b324e data/minecraft/tags/blocks/mineable/pickaxe.json
 d3f22a0224b84d9794295da79dff212ac23b324e data/minecraft/tags/blocks/needs_stone_tool.json

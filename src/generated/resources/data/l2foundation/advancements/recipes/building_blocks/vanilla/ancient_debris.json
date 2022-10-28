@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:ancient_debris"
+        "recipe": "l2foundation:vanilla/ancient_debris"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:ancient_debris"
+      "l2foundation:vanilla/ancient_debris"
     ]
   }
 }

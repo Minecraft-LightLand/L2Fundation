@@ -22,18 +22,21 @@
       "min_level": 3
     },
     "A": {
-      "item": "minecraft:netherite_ingot"
+      "item": "l2foundation:explosion_shard"
     },
     "B": {
       "item": "minecraft:anvil"
+    },
+    "C": {
+      "item": "minecraft:ender_pearl"
     }
   },
   "pattern": [
-    "3B4",
+    "3C4",
     "BAB",
-    "1B2"
+    "1C2"
   ],
   "result": {
-    "item": "l2foundation:eternium_ingot"
+    "item": "l2foundation:eternium_nugget"
   }
 }

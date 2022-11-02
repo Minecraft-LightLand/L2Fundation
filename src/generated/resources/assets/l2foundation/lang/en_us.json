@@ -176,7 +176,7 @@
   "l2foundation.tooltip.misc.explosion_shard": "Obtained by surviving an explosion damage of at least %s.",
   "l2foundation.tooltip.misc.force_field": "Obtained by killing a wither with arrow.",
   "l2foundation.tooltip.misc.hard_ice": "Obtained by killing a Drowned with Powdered Snow.",
-  "l2foundation.tooltip.misc.resonant_feather": "Obtained when Warden kills a chicken with sonic boom.",
+  "l2foundation.tooltip.misc.resonant_feather": "Obtained when a chicken survives a sonic boom attack.",
   "l2foundation.tooltip.misc.soul_flame": "Obtained by killing a ghast with soul flame.",
   "l2foundation.tooltip.misc.space_shard": "Obtained by causing a projectile damage of at least %s.",
   "l2foundation.tooltip.misc.storm_core": "Obtained by killing a Phantom with explosion.",

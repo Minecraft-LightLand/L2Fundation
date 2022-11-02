@@ -41,7 +41,7 @@
 	"explosion_shard": "承受%s的爆炸伤害并存活获得",
 	"force_field": "通过弹射物伤害杀死凋零获得",
 	"hard_ice": "用细雪冻死溺尸获得",
-	"resonant_feather": "让音爆杀死鸡获得",
+	"resonant_feather": "鸡受到音爆攻击而存活时掉落",
 	"soul_flame": "用魂火烧死恶魂获得",
 	"space_shard": "造成%s的弓箭伤害获得",
 	"storm_core": "炸死幻翼获得",

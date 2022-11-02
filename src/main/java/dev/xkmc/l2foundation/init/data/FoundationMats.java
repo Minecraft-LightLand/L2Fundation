@@ -11,6 +11,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
@@ -115,4 +116,7 @@ public enum FoundationMats {
 		return L2Foundation.MODID + ":" + id;
 	}
 
+	public Item getStick() {
+		return tool_extra.stick.get();
+	}
 }

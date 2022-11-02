@@ -33,7 +33,9 @@ public class RecipeGen {
 		{
 			currentFolder = "generated_tools/";
 			for (int i = 0; i < FoundationMats.values().length; i++) {
-				genTools(pvd, i, Items.STICK);
+				FoundationMats mat = FoundationMats.values()[i];
+				ItemEntry<?>[] arr = LFItems.GEN_ITEM[i];
+				genTools(pvd, mat, arr);
 			}
 
 			currentFolder = "storage/";
@@ -160,27 +162,31 @@ public class RecipeGen {
 				.requires(to.get()).save(pvd, getID(to.get().asItem()) + "_unpack");
 	}
 
-	private static void genTools(RegistrateRecipeProvider pvd, int i, Item stick) {
-		Item item = LFItems.MAT_INGOTS[i].get();
-		ItemEntry<?>[] arr = LFItems.GEN_ITEM[i];
+	private static void genTools(RegistrateRecipeProvider pvd, FoundationMats mat, ItemEntry<?>[] arr) {
+		Item ingot = mat.getIngot();
+		Item nugget = mat.getNugget();
+		Item stick = mat.getStick();
 		unlock(pvd, new ShapedRecipeBuilder(arr[0].get(), 1)::unlockedBy, arr[0].get())
-				.pattern("A A").pattern("A A").define('A', item).save(pvd, getID(arr[0].get()));
+				.pattern("A A").pattern("A A").define('A', ingot).save(pvd, getID(arr[0].get()));
 		unlock(pvd, new ShapedRecipeBuilder(arr[1].get(), 1)::unlockedBy, arr[1].get())
-				.pattern("AAA").pattern("A A").pattern("A A").define('A', item).save(pvd, getID(arr[1].get()));
+				.pattern("AAA").pattern("A A").pattern("A A").define('A', ingot).save(pvd, getID(arr[1].get()));
 		unlock(pvd, new ShapedRecipeBuilder(arr[2].get(), 1)::unlockedBy, arr[2].get())
-				.pattern("A A").pattern("AAA").pattern("AAA").define('A', item).save(pvd, getID(arr[2].get()));
+				.pattern("A A").pattern("AAA").pattern("AAA").define('A', ingot).save(pvd, getID(arr[2].get()));
 		unlock(pvd, new ShapedRecipeBuilder(arr[3].get(), 1)::unlockedBy, arr[3].get())
-				.pattern("AAA").pattern("A A").define('A', item).save(pvd, getID(arr[3].get()));
+				.pattern("AAA").pattern("A A").define('A', ingot).save(pvd, getID(arr[3].get()));
 		unlock(pvd, new ShapedRecipeBuilder(arr[4].get(), 1)::unlockedBy, arr[4].get())
-				.pattern("A").pattern("A").pattern("B").define('A', item).define('B', stick).save(pvd, getID(arr[4].get()));
+				.pattern("A").pattern("A").pattern("B").define('A', ingot).define('B', stick).save(pvd, getID(arr[4].get()));
 		unlock(pvd, new ShapedRecipeBuilder(arr[5].get(), 1)::unlockedBy, arr[5].get())
-				.pattern("AA").pattern("AB").pattern(" B").define('A', item).define('B', stick).save(pvd, getID(arr[5].get()));
+				.pattern("AA").pattern("AB").pattern(" B").define('A', ingot).define('B', stick).save(pvd, getID(arr[5].get()));
 		unlock(pvd, new ShapedRecipeBuilder(arr[6].get(), 1)::unlockedBy, arr[6].get())
-				.pattern("A").pattern("B").pattern("B").define('A', item).define('B', stick).save(pvd, getID(arr[6].get()));
+				.pattern("A").pattern("B").pattern("B").define('A', ingot).define('B', stick).save(pvd, getID(arr[6].get()));
 		unlock(pvd, new ShapedRecipeBuilder(arr[7].get(), 1)::unlockedBy, arr[7].get())
-				.pattern("AAA").pattern(" B ").pattern(" B ").define('A', item).define('B', stick).save(pvd, getID(arr[7].get()));
+				.pattern("AAA").pattern(" B ").pattern(" B ").define('A', ingot).define('B', stick).save(pvd, getID(arr[7].get()));
 		unlock(pvd, new ShapedRecipeBuilder(arr[8].get(), 1)::unlockedBy, arr[8].get())
-				.pattern("AA").pattern(" B").pattern(" B").define('A', item).define('B', stick).save(pvd, getID(arr[8].get()));
+				.pattern("AA").pattern(" B").pattern(" B").define('A', ingot).define('B', stick).save(pvd, getID(arr[8].get()));
+		for (int j = 0; j < 9; j++) {
+			pvd.smelting(DataIngredient.items(arr[j].get()), () -> nugget, 0.1f);
+		}
 	}
 
 	private static <T> T unlock(RegistrateRecipeProvider pvd, BiFunction<String, InventoryChangeTrigger.TriggerInstance, T> func, Item item) {

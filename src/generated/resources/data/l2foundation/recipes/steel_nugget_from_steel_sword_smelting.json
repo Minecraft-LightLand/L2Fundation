@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "l2foundation:steel_sword"
+  },
+  "result": "l2foundation:steel_nugget"
+}

@@ -58,7 +58,6 @@ public class L2Foundation {
 	private static void registerModBusEvents(IEventBus bus) {
 		bus.addListener(L2Foundation::setup);
 		bus.addListener(EventPriority.LOWEST, L2Foundation::gatherData);
-		bus.addListener(L2Foundation::onParticleRegistryEvent);
 	}
 
 	public L2Foundation() {
@@ -80,10 +79,6 @@ public class L2Foundation {
 	}
 
 	public static void gatherData(GatherDataEvent event) {
-	}
-
-	public static void onParticleRegistryEvent(RegisterParticleProvidersEvent event) {
-		LFParticle.registerClient();
 	}
 
 }

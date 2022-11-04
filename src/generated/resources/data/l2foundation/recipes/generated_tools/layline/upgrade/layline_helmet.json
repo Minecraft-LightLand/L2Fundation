@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "l2foundation:layline_block"
+  },
+  "base": {
+    "tag": "forge:armors/helmets"
+  },
+  "result": {
+    "item": "l2foundation:layline_helmet"
+  }
+}

@@ -49,7 +49,17 @@ public class GenItem {
 	public static final ArmorConfig ARMOR_GEN = new ArmorConfig((mat, slot, prop) -> new GenericArmorItem(mat.mat, slot, prop, mat.armor_extra));
 
 	public enum Tools {
-		SWORD, AXE, SHOVEL, PICKAXE, HOE
+		SWORD(Tags.Items.TOOLS_SWORDS),
+		AXE(Tags.Items.TOOLS_AXES),
+		SHOVEL(Tags.Items.TOOLS_SHOVELS),
+		PICKAXE(Tags.Items.TOOLS_PICKAXES),
+		HOE(Tags.Items.TOOLS_HOES);
+
+		final TagKey<Item> tag;
+
+		Tools(TagKey<Item> tag) {
+			this.tag = tag;
+		}
 	}
 
 	public record ToolStats(int durability, int speed, int[] add_dmg, float[] add_speed, int enchant) {
@@ -121,17 +131,17 @@ public class GenItem {
 		for (int i = 0; i < n; i++) {
 			FoundationMats mat = FoundationMats.values()[i];
 			String id = mat.id;
-			BiFunction<String, EquipmentSlot, ItemEntry> armor_gen = (str, slot) ->
+			BiFunction<String, EquipmentSlot, ItemBuilder> armor_gen = (str, slot) ->
 					registrate.item(id + "_" + str, p -> mat.armor_config.sup.get(mat, slot, p))
 							.model((ctx, pvd) -> generatedModel(ctx, pvd, id, str))
-							.defaultLang().register();
-			ans[i][3] = armor_gen.apply("helmet", EquipmentSlot.HEAD);
-			ans[i][2] = armor_gen.apply("chestplate", EquipmentSlot.CHEST);
-			ans[i][1] = armor_gen.apply("leggings", EquipmentSlot.LEGS);
-			ans[i][0] = armor_gen.apply("boots", EquipmentSlot.FEET);
+							.defaultLang();
+			ans[i][3] = armor_gen.apply("helmet", EquipmentSlot.HEAD).tag(Tags.Items.ARMORS_HELMETS).register();
+			ans[i][2] = armor_gen.apply("chestplate", EquipmentSlot.CHEST).tag(Tags.Items.ARMORS_CHESTPLATES).register();
+			ans[i][1] = armor_gen.apply("leggings", EquipmentSlot.LEGS).tag(Tags.Items.ARMORS_LEGGINGS).register();
+			ans[i][0] = armor_gen.apply("boots", EquipmentSlot.FEET).tag(Tags.Items.ARMORS_BOOTS).register();
 			BiFunction<String, Tools, ItemEntry> tool_gen = (str, tool) ->
 					registrate.item(id + "_" + str, p -> mat.tool_config.sup.get(mat, tool, p))
-							.model((ctx, pvd) -> handHeld(ctx, pvd, id, str))
+							.model((ctx, pvd) -> handHeld(ctx, pvd, id, str)).tag(tool.tag)
 							.defaultLang().register();
 			for (int j = 0; j < Tools.values().length; j++) {
 				Tools tool = Tools.values()[j];

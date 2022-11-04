@@ -14,13 +14,20 @@ import dev.xkmc.l2library.repack.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.data.recipes.UpgradeRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.Locale;
 import java.util.function.BiFunction;
 
 public class RecipeGen {
@@ -31,7 +38,6 @@ public class RecipeGen {
 
 		// gen tool and storage
 		{
-			currentFolder = "generated_tools/";
 			for (int i = 0; i < FoundationMats.values().length; i++) {
 				FoundationMats mat = FoundationMats.values()[i];
 				ItemEntry<?>[] arr = LFItems.GEN_ITEM[i];
@@ -163,8 +169,8 @@ public class RecipeGen {
 	}
 
 	private static void genTools(RegistrateRecipeProvider pvd, FoundationMats mat, ItemEntry<?>[] arr) {
+		currentFolder = "generated_tools/" + mat.name().toLowerCase(Locale.ROOT) + "/craft/";
 		Item ingot = mat.getIngot();
-		Item nugget = mat.getNugget();
 		Item stick = mat.getStick();
 		unlock(pvd, new ShapedRecipeBuilder(arr[0].get(), 1)::unlockedBy, arr[0].get())
 				.pattern("A A").pattern("A A").define('A', ingot).save(pvd, getID(arr[0].get()));
@@ -184,13 +190,36 @@ public class RecipeGen {
 				.pattern("AAA").pattern(" B ").pattern(" B ").define('A', ingot).define('B', stick).save(pvd, getID(arr[7].get()));
 		unlock(pvd, new ShapedRecipeBuilder(arr[8].get(), 1)::unlockedBy, arr[8].get())
 				.pattern("AA").pattern(" B").pattern(" B").define('A', ingot).define('B', stick).save(pvd, getID(arr[8].get()));
+		currentFolder = "generated_tools/" + mat.name().toLowerCase(Locale.ROOT) + "/recycle/";
+		Item nugget = mat.getNugget();
 		for (int j = 0; j < 9; j++) {
-			pvd.smelting(DataIngredient.items(arr[j].get()), () -> nugget, 0.1f);
+			smelting(pvd, arr[j].get(), nugget, 0.1f);
 		}
+		currentFolder = "generated_tools/" + mat.name().toLowerCase(Locale.ROOT) + "/upgrade/";
+		Item block = mat.getBlock().asItem();
+		smithing(pvd, Tags.Items.ARMORS_BOOTS, block, arr[0].get());
+		smithing(pvd, Tags.Items.ARMORS_LEGGINGS, block, arr[1].get());
+		smithing(pvd, Tags.Items.ARMORS_CHESTPLATES, block, arr[2].get());
+		smithing(pvd, Tags.Items.ARMORS_HELMETS, block, arr[3].get());
+		smithing(pvd, Tags.Items.TOOLS_SWORDS, block, arr[4].get());
+		smithing(pvd, Tags.Items.TOOLS_AXES, block, arr[5].get());
+		smithing(pvd, Tags.Items.TOOLS_SHOVELS, block, arr[6].get());
+		smithing(pvd, Tags.Items.TOOLS_PICKAXES, block, arr[7].get());
+		smithing(pvd, Tags.Items.TOOLS_HOES, block, arr[8].get());
+
 	}
 
-	private static <T> T unlock(RegistrateRecipeProvider pvd, BiFunction<String, InventoryChangeTrigger.TriggerInstance, T> func, Item item) {
+	public static <T> T unlock(RegistrateRecipeProvider pvd, BiFunction<String, InventoryChangeTrigger.TriggerInstance, T> func, Item item) {
 		return func.apply("has_" + pvd.safeName(item), DataIngredient.items(item).getCritereon(pvd));
+	}
+
+	public static void smithing(RegistrateRecipeProvider pvd, TagKey<Item> in, Item mat, Item out) {
+		unlock(pvd, UpgradeRecipeBuilder.smithing(Ingredient.of(in), Ingredient.of(mat), out)::unlocks, mat).save(pvd, getID(out));
+	}
+
+	public static void smelting(RegistrateRecipeProvider pvd, Item source, Item result, float experience) {
+		unlock(pvd, SimpleCookingRecipeBuilder.cooking(Ingredient.of(source), result, experience, 200, RecipeSerializer.SMELTING_RECIPE)::unlockedBy, source)
+				.save(pvd, getID(source));
 	}
 
 }

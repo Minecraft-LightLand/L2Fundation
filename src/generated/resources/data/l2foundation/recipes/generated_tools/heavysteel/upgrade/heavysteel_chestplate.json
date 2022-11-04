@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "l2foundation:heavysteel_block"
+  },
+  "base": {
+    "tag": "forge:armors/chestplates"
+  },
+  "result": {
+    "item": "l2foundation:heavysteel_chestplate"
+  }
+}

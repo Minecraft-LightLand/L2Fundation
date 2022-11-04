@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "l2foundation:eternium_block"
+  },
+  "base": {
+    "tag": "forge:armors/leggings"
+  },
+  "result": {
+    "item": "l2foundation:eternium_leggings"
+  }
+}

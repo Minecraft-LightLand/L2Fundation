@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_resonant_feather": {
+    "has_force_field": {
       "conditions": {
         "items": [
           {
             "items": [
-              "l2foundation:resonant_feather"
+              "l2foundation:force_field"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "l2foundation:vanilla/echo_shard"
+        "recipe": "l2foundation:enchantments/projectile_reject"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_resonant_feather",
+      "has_force_field",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "l2foundation:vanilla/echo_shard"
+      "l2foundation:enchantments/projectile_reject"
     ]
   }
 }

@@ -1,34 +1,34 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "l2foundation:environment_reject"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    },
-    "has_void_eye": {
+    "has_resonant_feather": {
       "conditions": {
         "items": [
           {
             "items": [
-              "l2foundation:void_eye"
+              "l2foundation:resonant_feather"
             ]
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "l2foundation:enchantments/magic_reject"
+      },
+      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_void_eye",
+      "has_resonant_feather",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "l2foundation:environment_reject"
+      "l2foundation:enchantments/magic_reject"
     ]
   }
 }

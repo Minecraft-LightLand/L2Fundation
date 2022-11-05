@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "l2foundation:vanilla/elytra"
+        "recipe": "l2foundation:vanilla/renew/elytra"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "l2foundation:vanilla/elytra"
+      "l2foundation:vanilla/renew/elytra"
     ]
   }
 }

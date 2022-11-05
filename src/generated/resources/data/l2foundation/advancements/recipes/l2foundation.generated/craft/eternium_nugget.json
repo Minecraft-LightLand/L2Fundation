@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_sun_membrane": {
+    "has_explosion_shard": {
       "conditions": {
         "items": [
           {
             "items": [
-              "l2foundation:sun_membrane"
+              "l2foundation:explosion_shard"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "l2foundation:fire_reject"
+        "recipe": "l2foundation:craft/eternium_nugget"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_sun_membrane",
+      "has_explosion_shard",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "l2foundation:fire_reject"
+      "l2foundation:craft/eternium_nugget"
     ]
   }
 }

@@ -22,6 +22,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.Tags;
@@ -55,13 +56,13 @@ public class RecipeGen {
 			unlock(pvd, new ShapelessRecipeBuilder(LFItems.WIND_BOTTLE.get(), 1)::unlockedBy, Items.GLASS_BOTTLE)
 					.requires(Items.GLASS_BOTTLE)
 					.requires(Items.PHANTOM_MEMBRANE)
-					.save(pvd);
+					.save(pvd, getID(LFItems.WIND_BOTTLE.get()));
 
 			unlock(pvd, new ShapedRecipeBuilder(LFBlocks.ETERNAL_ANVIL.get(), 1)::unlockedBy, FoundationMats.ETERNIUM.getIngot())
 					.pattern("AAA").pattern(" B ").pattern("BBB")
 					.define('A', FoundationMats.ETERNIUM.getBlock())
 					.define('B', FoundationMats.ETERNIUM.getIngot())
-					.save(pvd);
+					.save(pvd, getID(LFBlocks.ETERNAL_ANVIL.get().asItem()));
 
 			unlock(pvd, new ShapedRecipeBuilder(FoundationMats.ETERNIUM.getNugget(), 1)::unlockedBy, LFItems.EXPLOSION_SHARD.get())
 					.pattern("3C4").pattern("BAB").pattern("1C2")
@@ -72,11 +73,11 @@ public class RecipeGen {
 					.define('2', new EnchantmentIngredient(Enchantments.INFINITY_ARROWS, 1))
 					.define('3', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
 					.define('4', new EnchantmentIngredient(Enchantments.UNBREAKING, 3))
-					.save(pvd);
+					.save(pvd, getID(FoundationMats.ETERNIUM.getNugget()));
 
 		}
 
-		currentFolder = "vanilla/";
+		currentFolder = "vanilla/renew/";
 		// misc
 		{
 			unlock(pvd, new ShapelessRecipeBuilder(Items.ECHO_SHARD, 1)::unlockedBy, LFItems.RESONANT_FEATHER.get())
@@ -115,7 +116,7 @@ public class RecipeGen {
 					.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
 					.define('B', LFItems.FORCE_FIELD.get())
 					.define('C', new EnchantmentIngredient(Enchantments.INFINITY_ARROWS, 1))
-					.save(pvd);
+					.save(pvd, getID(LFEnchantments.ENCH_PROJECTILE.get()));
 
 			unlock(pvd, new EnchantmentRecipeBuilder(LFEnchantments.ENCH_EXPLOSION.get(), 1)::unlockedBy, LFItems.EXPLOSION_SHARD.get())
 					.pattern("1B1").pattern("BCB").pattern("2B2")
@@ -123,7 +124,7 @@ public class RecipeGen {
 					.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
 					.define('B', LFItems.EXPLOSION_SHARD.get())
 					.define('C', Items.CRYING_OBSIDIAN)
-					.save(pvd);
+					.save(pvd, getID(LFEnchantments.ENCH_EXPLOSION.get()));
 
 			unlock(pvd, new EnchantmentRecipeBuilder(LFEnchantments.ENCH_FIRE.get(), 1)::unlockedBy, LFItems.SUN_MEMBRANE.get())
 					.pattern("1B1").pattern("BCB").pattern("2B2")
@@ -131,7 +132,7 @@ public class RecipeGen {
 					.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
 					.define('B', LFItems.SOUL_FLAME.get())
 					.define('C', LFItems.HARD_ICE.get())
-					.save(pvd);
+					.save(pvd, getID(LFEnchantments.ENCH_FIRE.get()));
 
 			unlock(pvd, new EnchantmentRecipeBuilder(LFEnchantments.ENCH_ENVIRONMENT.get(), 1)::unlockedBy, LFItems.VOID_EYE.get())
 					.pattern("1B1").pattern("BCB").pattern("2B2")
@@ -139,7 +140,7 @@ public class RecipeGen {
 					.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
 					.define('B', LFItems.VOID_EYE.get())
 					.define('C', LFItems.CAPTURED_WIND.get())
-					.save(pvd);
+					.save(pvd, getID(LFEnchantments.ENCH_ENVIRONMENT.get()));
 
 			unlock(pvd, new EnchantmentRecipeBuilder(LFEnchantments.ENCH_MAGIC.get(), 1)::unlockedBy, LFItems.RESONANT_FEATHER.get())
 					.pattern("1B1").pattern("BCB").pattern("2B2")
@@ -147,8 +148,12 @@ public class RecipeGen {
 					.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
 					.define('B', LFItems.RESONANT_FEATHER.get())
 					.define('C', LFItems.FORCE_FIELD.get())
-					.save(pvd);
+					.save(pvd, getID(LFEnchantments.ENCH_MAGIC.get()));
 		}
+	}
+
+	private static ResourceLocation getID(Enchantment item) {
+		return new ResourceLocation(L2Foundation.MODID, currentFolder + ForgeRegistries.ENCHANTMENTS.getKey(item).getPath());
 	}
 
 	private static ResourceLocation getID(Item item) {
@@ -168,7 +173,7 @@ public class RecipeGen {
 				.requires(to.get()).save(pvd, getID(to.get().asItem()) + "_unpack");
 	}
 
-	private static void genTools(RegistrateRecipeProvider pvd, FoundationMats mat, ItemEntry<?>[] arr) {
+	public static void genTools(RegistrateRecipeProvider pvd, FoundationMats mat, ItemEntry<?>[] arr) {
 		currentFolder = "generated_tools/" + mat.name().toLowerCase(Locale.ROOT) + "/craft/";
 		Item ingot = mat.getIngot();
 		Item stick = mat.getStick();

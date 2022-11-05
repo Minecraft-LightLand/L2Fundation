@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_force_field": {
+    "has_blackstone_core": {
       "conditions": {
         "items": [
           {
             "items": [
-              "l2foundation:force_field"
+              "l2foundation:blackstone_core"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "l2foundation:projectile_reject"
+        "recipe": "l2foundation:vanilla/renew/gilded_blackstone"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_force_field",
+      "has_blackstone_core",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "l2foundation:projectile_reject"
+      "l2foundation:vanilla/renew/gilded_blackstone"
     ]
   }
 }

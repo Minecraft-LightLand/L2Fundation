@@ -74,4 +74,10 @@ public class GenericAxeItem extends AxeItem implements GenericTieredItem {
 		return config.modify(super.getAttributeModifiers(slot, stack), slot, stack);
 	}
 
+	@Override
+	public float getDestroySpeed(ItemStack stack, BlockState state) {
+		float old = super.getDestroySpeed(stack, state);
+		return old == 1.0f ? 1.0f : config.getDestroySpeed(stack, state, old);
+	}
+
 }

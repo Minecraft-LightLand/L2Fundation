@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_explosion_shard": {
+    "has_eternium_ingot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "l2foundation:explosion_shard"
+              "l2foundation:eternium_ingot"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "l2foundation:explosion_reject"
+        "recipe": "l2foundation:craft/eternal_anvil"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_explosion_shard",
+      "has_eternium_ingot",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "l2foundation:explosion_reject"
+      "l2foundation:craft/eternal_anvil"
     ]
   }
 }

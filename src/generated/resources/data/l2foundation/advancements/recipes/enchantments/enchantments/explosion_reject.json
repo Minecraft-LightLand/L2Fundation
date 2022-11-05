@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_resonant_feather": {
+    "has_explosion_shard": {
       "conditions": {
         "items": [
           {
             "items": [
-              "l2foundation:resonant_feather"
+              "l2foundation:explosion_shard"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "l2foundation:magic_reject"
+        "recipe": "l2foundation:enchantments/explosion_reject"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_resonant_feather",
+      "has_explosion_shard",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "l2foundation:magic_reject"
+      "l2foundation:enchantments/explosion_reject"
     ]
   }
 }

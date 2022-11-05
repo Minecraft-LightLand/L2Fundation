@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "l2foundation:eternium_nugget"
+        "recipe": "l2foundation:vanilla/renew/ancient_debris"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "l2foundation:eternium_nugget"
+      "l2foundation:vanilla/renew/ancient_debris"
     ]
   }
 }

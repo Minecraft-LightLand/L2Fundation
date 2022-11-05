@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_blackstone_core": {
+    "has_resonant_feather": {
       "conditions": {
         "items": [
           {
             "items": [
-              "l2foundation:blackstone_core"
+              "l2foundation:resonant_feather"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "l2foundation:vanilla/gilded_blackstone"
+        "recipe": "l2foundation:vanilla/renew/echo_shard"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_blackstone_core",
+      "has_resonant_feather",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "l2foundation:vanilla/gilded_blackstone"
+      "l2foundation:vanilla/renew/echo_shard"
     ]
   }
 }

@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "l2foundation:wind_capture_bottle"
+        "recipe": "l2foundation:craft/wind_capture_bottle"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "l2foundation:wind_capture_bottle"
+      "l2foundation:craft/wind_capture_bottle"
     ]
   }
 }

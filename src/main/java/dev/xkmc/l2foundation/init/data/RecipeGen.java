@@ -28,13 +28,30 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.function.BiFunction;
 
 public class RecipeGen {
 
+	@SuppressWarnings("unchecked")
+	private static TagKey<Item>[] TOOLS = List.of(
+			Tags.Items.ARMORS_BOOTS,
+			Tags.Items.ARMORS_LEGGINGS,
+			Tags.Items.ARMORS_CHESTPLATES,
+			Tags.Items.ARMORS_HELMETS,
+			Tags.Items.TOOLS_SWORDS,
+			Tags.Items.TOOLS_AXES,
+			Tags.Items.TOOLS_SHOVELS,
+			Tags.Items.TOOLS_PICKAXES,
+			Tags.Items.TOOLS_HOES
+	).toArray(TagKey[]::new);
+
+	private static String[] TOOL_NAME = {"boots", "leggings", "chestplate", "helmet", "sword", "axe", "shovel", "pickaxe", "hoe"};
+
 	private static String currentFolder = "";
 
+	@SuppressWarnings("ConstantConditions")
 	public static void genRecipe(RegistrateRecipeProvider pvd) {
 
 		// gen tool and storage
@@ -105,6 +122,14 @@ public class RecipeGen {
 					.define('B', Items.GOLD_INGOT)
 					.define('C', LFItems.BLACKSTONE_CORE.get())
 					.save(pvd, getID(Items.GILDED_BLACKSTONE));
+		}
+		currentFolder = "vanilla/upgrade/";
+		{
+			for (int i = 0; i < 9; i++) {
+				smithing(pvd, TOOLS[i], Items.IRON_BLOCK, ForgeRegistries.ITEMS.getValue(new ResourceLocation("iron_" + TOOL_NAME[i])));
+				smithing(pvd, TOOLS[i], Items.GOLD_BLOCK, ForgeRegistries.ITEMS.getValue(new ResourceLocation("golden_" + TOOL_NAME[i])));
+				smithing(pvd, TOOLS[i], Items.DIAMOND_BLOCK, ForgeRegistries.ITEMS.getValue(new ResourceLocation("diamond_" + TOOL_NAME[i])));
+			}
 		}
 
 		currentFolder = "enchantments/";
@@ -197,20 +222,14 @@ public class RecipeGen {
 				.pattern("AA").pattern(" B").pattern(" B").define('A', ingot).define('B', stick).save(pvd, getID(arr[8].get()));
 		currentFolder = "generated_tools/" + mat.name().toLowerCase(Locale.ROOT) + "/recycle/";
 		Item nugget = mat.getNugget();
-		for (int j = 0; j < 9; j++) {
-			smelting(pvd, arr[j].get(), nugget, 0.1f);
+		for (int i = 0; i < 9; i++) {
+			smelting(pvd, arr[i].get(), nugget, 0.1f);
 		}
 		currentFolder = "generated_tools/" + mat.name().toLowerCase(Locale.ROOT) + "/upgrade/";
 		Item block = mat.getBlock().asItem();
-		smithing(pvd, Tags.Items.ARMORS_BOOTS, block, arr[0].get());
-		smithing(pvd, Tags.Items.ARMORS_LEGGINGS, block, arr[1].get());
-		smithing(pvd, Tags.Items.ARMORS_CHESTPLATES, block, arr[2].get());
-		smithing(pvd, Tags.Items.ARMORS_HELMETS, block, arr[3].get());
-		smithing(pvd, Tags.Items.TOOLS_SWORDS, block, arr[4].get());
-		smithing(pvd, Tags.Items.TOOLS_AXES, block, arr[5].get());
-		smithing(pvd, Tags.Items.TOOLS_SHOVELS, block, arr[6].get());
-		smithing(pvd, Tags.Items.TOOLS_PICKAXES, block, arr[7].get());
-		smithing(pvd, Tags.Items.TOOLS_HOES, block, arr[8].get());
+		for (int i = 0; i < 9; i++) {
+			smithing(pvd, TOOLS[i], block, arr[i].get());
+		}
 
 	}
 

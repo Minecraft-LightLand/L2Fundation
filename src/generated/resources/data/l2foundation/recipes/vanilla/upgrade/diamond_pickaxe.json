@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "minecraft:diamond_block"
+  },
+  "base": {
+    "tag": "forge:tools/pickaxes"
+  },
+  "result": {
+    "item": "minecraft:diamond_pickaxe"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "minecraft:iron_block"
+  },
+  "base": {
+    "tag": "forge:tools/axes"
+  },
+  "result": {
+    "item": "minecraft:iron_axe"
+  }
+}

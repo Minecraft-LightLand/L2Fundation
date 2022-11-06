@@ -48,7 +48,7 @@ public class LFItems {
 
 	public static final ItemEntry<TooltipItem> WIND_BOTTLE, VOID_EYE, SUN_MEMBRANE, SOUL_FLAME,
 			CAPTURED_WIND, CAPTURED_BULLET, EXPLOSION_SHARD, HARD_ICE,
-			STORM_CORE, BLACKSTONE_CORE, RESONANT_FEATHER, SPACE_SHARD, FORCE_FIELD;
+			STORM_CORE, BLACKSTONE_CORE, RESONANT_FEATHER, SPACE_SHARD, FORCE_FIELD, WARDEN_BONE_SHARD;
 
 	public static final ItemEntry<Item>[] MAT_INGOTS, MAT_NUGGETS;
 	public static final ItemEntry<Item>[][] GEN_ITEM;
@@ -71,6 +71,7 @@ public class LFItems {
 			RESONANT_FEATHER = simpleItem("resonant_feather", TooltipItem::new, Rarity.EPIC, LangData.IDS.RESONANT_FEATHER::get); // let chicken survive sonic boom
 			SPACE_SHARD = simpleItem("space_shard", TooltipItem::new, Rarity.EPIC, () -> LangData.IDS.SPACE_SHARD.get(LFConfig.COMMON.spaceDamage.get())); // deal 500 arrow damage
 			FORCE_FIELD = simpleItem("force_field", TooltipItem::new, Rarity.EPIC, LangData.IDS.FORCE_FIELD::get); //kill wither with arrow
+			WARDEN_BONE_SHARD = simpleItem("warden_bone_shard", TooltipItem::new, Rarity.RARE, LangData.IDS.WARDEN_BONE_SHARD::get);
 		}
 		GEN_ITEM = L2Foundation.MATS.genItem();
 	}

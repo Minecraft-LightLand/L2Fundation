@@ -1,12 +1,9 @@
 {
   "values": [
-    "l2foundation:steel_helmet",
-    "l2foundation:layroot_helmet",
-    "l2foundation:layline_helmet",
-    "l2foundation:oldroot_helmet",
-    "l2foundation:knightsteel_helmet",
-    "l2foundation:dispellium_helmet",
-    "l2foundation:heavysteel_helmet",
+    "l2foundation:totemium_helmet",
+    "l2foundation:neptunium_helmet",
+    "l2foundation:shulkium_helmet",
+    "l2foundation:sculkium_helmet",
     "l2foundation:eternium_helmet"
   ]
 }

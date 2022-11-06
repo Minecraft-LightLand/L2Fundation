@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "l2foundation:sculkium_ingot"
+    },
+    "B": {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "pattern": [
+    "A",
+    "B",
+    "B"
+  ],
+  "result": {
+    "item": "l2foundation:sculkium_shovel"
+  }
+}

@@ -10,6 +10,7 @@ import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.monster.Ghast;
 import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.monster.piglin.PiglinBrute;
+import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ShulkerBullet;
 import net.minecraft.world.level.Level;
@@ -57,6 +58,11 @@ public class MaterialEventHandler {
 		if (event.getEntity() instanceof WitherBoss wither) {
 			if (!wither.getLevel().isClientSide() && event.getSource().isProjectile()) {
 				wither.spawnAtLocation(LFItems.FORCE_FIELD.asStack());
+			}
+		}
+		if (event.getEntity() instanceof Warden wither) {
+			if (!wither.getLevel().isClientSide() && event.getSource().getEntity() instanceof Player) {
+				wither.spawnAtLocation(LFItems.WARDEN_BONE_SHARD.asStack());
 			}
 		}
 		if (event.getEntity() instanceof Ghast ghast) {

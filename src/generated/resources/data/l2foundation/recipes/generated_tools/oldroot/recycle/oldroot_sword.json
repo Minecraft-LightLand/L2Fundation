@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "cookingtime": 200,
-  "experience": 0.1,
-  "ingredient": {
-    "item": "l2foundation:oldroot_sword"
-  },
-  "result": "l2foundation:oldroot_nugget"
-}

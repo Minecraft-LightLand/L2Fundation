@@ -1,12 +1,9 @@
 {
   "values": [
-    "l2foundation:steel_pickaxe",
-    "l2foundation:layroot_pickaxe",
-    "l2foundation:layline_pickaxe",
-    "l2foundation:oldroot_pickaxe",
-    "l2foundation:knightsteel_pickaxe",
-    "l2foundation:dispellium_pickaxe",
-    "l2foundation:heavysteel_pickaxe",
+    "l2foundation:totemium_pickaxe",
+    "l2foundation:neptunium_pickaxe",
+    "l2foundation:shulkium_pickaxe",
+    "l2foundation:sculkium_pickaxe",
     "l2foundation:eternium_pickaxe"
   ]
 }

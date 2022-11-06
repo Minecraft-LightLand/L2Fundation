@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "l2foundation:totemium_block"
+  },
+  "base": {
+    "tag": "forge:armors/boots"
+  },
+  "result": {
+    "item": "l2foundation:totemium_boots"
+  }
+}

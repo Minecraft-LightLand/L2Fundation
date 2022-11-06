@@ -1,12 +1,9 @@
 {
   "values": [
-    "l2foundation:steel_sword",
-    "l2foundation:layroot_sword",
-    "l2foundation:layline_sword",
-    "l2foundation:oldroot_sword",
-    "l2foundation:knightsteel_sword",
-    "l2foundation:dispellium_sword",
-    "l2foundation:heavysteel_sword",
+    "l2foundation:totemium_sword",
+    "l2foundation:neptunium_sword",
+    "l2foundation:shulkium_sword",
+    "l2foundation:sculkium_sword",
     "l2foundation:eternium_sword"
   ]
 }

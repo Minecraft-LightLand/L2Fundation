@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "cookingtime": 200,
-  "experience": 0.1,
-  "ingredient": {
-    "item": "l2foundation:layline_hoe"
-  },
-  "result": "l2foundation:layline_nugget"
-}

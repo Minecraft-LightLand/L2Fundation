@@ -1,12 +1,9 @@
 {
   "values": [
-    "l2foundation:steel_chestplate",
-    "l2foundation:layroot_chestplate",
-    "l2foundation:layline_chestplate",
-    "l2foundation:oldroot_chestplate",
-    "l2foundation:knightsteel_chestplate",
-    "l2foundation:dispellium_chestplate",
-    "l2foundation:heavysteel_chestplate",
+    "l2foundation:totemium_chestplate",
+    "l2foundation:neptunium_chestplate",
+    "l2foundation:shulkium_chestplate",
+    "l2foundation:sculkium_chestplate",
     "l2foundation:eternium_chestplate"
   ]
 }

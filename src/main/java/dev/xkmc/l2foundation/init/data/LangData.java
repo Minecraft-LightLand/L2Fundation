@@ -29,7 +29,8 @@ public class LangData {
 		BLACKSTONE_CORE("tooltip.misc.blackstone_core", "Obtained by killing a Piglin Brute that has Stone Cage effect.", 0),
 		RESONANT_FEATHER("tooltip.misc.resonant_feather", "Obtained when a chicken survives a sonic boom attack.", 0),
 		SPACE_SHARD("tooltip.misc.space_shard", "Obtained by causing a projectile damage of at least %s.", 1),
-		FORCE_FIELD("tooltip.misc.force_field", "Obtained by killing a wither with arrow.", 0);
+		FORCE_FIELD("tooltip.misc.force_field", "Obtained by killing a wither with arrow.", 0),
+		WARDEN_BONE_SHARD("tooltip.misc.warden_bone_shard", "Dropped when Warden is killed by player.", 0);
 
 		final String id, def;
 		final int count;

@@ -1,12 +1,9 @@
 {
   "values": [
-    "l2foundation:steel_block",
-    "l2foundation:layroot_block",
-    "l2foundation:layline_block",
-    "l2foundation:oldroot_block",
-    "l2foundation:knightsteel_block",
-    "l2foundation:dispellium_block",
-    "l2foundation:heavysteel_block",
+    "l2foundation:totemium_block",
+    "l2foundation:neptunium_block",
+    "l2foundation:shulkium_block",
+    "l2foundation:sculkium_block",
     "l2foundation:eternium_block"
   ]
 }

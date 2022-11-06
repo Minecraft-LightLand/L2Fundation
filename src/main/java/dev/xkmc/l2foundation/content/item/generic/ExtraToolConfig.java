@@ -1,6 +1,7 @@
 package dev.xkmc.l2foundation.content.item.generic;
 
 import com.google.common.collect.Multimap;
+import dev.xkmc.l2foundation.init.data.IGeneralMats;
 import dev.xkmc.l2library.base.effects.EffectUtil;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -16,6 +17,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class ExtraToolConfig {
@@ -24,7 +26,8 @@ public class ExtraToolConfig {
 	public double repair_chance = 0, damage_chance = 1;
 	public boolean canBeDepleted = true, bypassArmor, bypassMagic;
 	public List<MobEffectInstance> effects = new ArrayList<>();
-	public Supplier<Item> stick = () -> Items.STICK;
+	public Function<IGeneralMats, Item> stick = e -> Items.STICK;
+	public boolean reversed = false;
 
 	public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, T entity) {
 		double raw = amount * damage_chance;
@@ -72,6 +75,12 @@ public class ExtraToolConfig {
 
 	public ExtraToolConfig setBypassMagic() {
 		bypassMagic = true;
+		return this;
+	}
+
+	public ExtraToolConfig setStick(Function<IGeneralMats, Item> sup, boolean reverse){
+		this.stick = sup;
+		this.reversed = reverse;
 		return this;
 	}
 

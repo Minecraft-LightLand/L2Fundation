@@ -92,6 +92,17 @@ public class RecipeGen {
 					.define('4', new EnchantmentIngredient(Enchantments.UNBREAKING, 3))
 					.save(pvd, getID(FoundationMats.ETERNIUM.getNugget()));
 
+			blasting(pvd, Items.TOTEM_OF_UNDYING, FoundationMats.TOTEMIUM.getIngot(), 1);
+			blasting(pvd, Items.TRIDENT, FoundationMats.NEPTUNIUM.getIngot(), 1);
+
+			unlock(pvd, new ShapelessRecipeBuilder(FoundationMats.SHULKIUM.getBlock(), 1)::unlockedBy, LFItems.CAPTURED_BULLET.get())
+					.requires(Items.SHULKER_SHELL, 2).requires(LFItems.CAPTURED_BULLET.get()).requires(Items.IRON_BLOCK)
+					.save(pvd, getID(FoundationMats.SHULKIUM.getBlock().asItem()));
+
+			unlock(pvd, new ShapelessRecipeBuilder(FoundationMats.SCULKIUM.getIngot(), 2)::unlockedBy, LFItems.WARDEN_BONE_SHARD.get())
+					.requires(Items.ECHO_SHARD).requires(LFItems.WARDEN_BONE_SHARD.get(), 2)
+					.save(pvd, getID(FoundationMats.SCULKIUM.getIngot()));
+
 		}
 
 		currentFolder = "vanilla/renew/";
@@ -122,7 +133,13 @@ public class RecipeGen {
 					.define('B', Items.GOLD_INGOT)
 					.define('C', LFItems.BLACKSTONE_CORE.get())
 					.save(pvd, getID(Items.GILDED_BLACKSTONE));
+			unlock(pvd, new ShapedRecipeBuilder(Items.REINFORCED_DEEPSLATE,1)::unlockedBy, LFItems.WARDEN_BONE_SHARD.get())
+					.pattern(" B ").pattern("BAB").pattern(" B ")
+					.define('A', Items.DEEPSLATE)
+					.define('B', LFItems.WARDEN_BONE_SHARD.get())
+					.save(pvd, getID(Items.REINFORCED_DEEPSLATE));
 		}
+
 		currentFolder = "vanilla/upgrade/";
 		{
 			for (int i = 0; i < 9; i++) {
@@ -200,26 +217,32 @@ public class RecipeGen {
 
 	public static void genTools(RegistrateRecipeProvider pvd, FoundationMats mat, ItemEntry<?>[] arr) {
 		currentFolder = "generated_tools/" + mat.name().toLowerCase(Locale.ROOT) + "/craft/";
-		Item ingot = mat.getIngot();
-		Item stick = mat.getStick();
-		unlock(pvd, new ShapedRecipeBuilder(arr[0].get(), 1)::unlockedBy, arr[0].get())
-				.pattern("A A").pattern("A A").define('A', ingot).save(pvd, getID(arr[0].get()));
-		unlock(pvd, new ShapedRecipeBuilder(arr[1].get(), 1)::unlockedBy, arr[1].get())
-				.pattern("AAA").pattern("A A").pattern("A A").define('A', ingot).save(pvd, getID(arr[1].get()));
-		unlock(pvd, new ShapedRecipeBuilder(arr[2].get(), 1)::unlockedBy, arr[2].get())
-				.pattern("A A").pattern("AAA").pattern("AAA").define('A', ingot).save(pvd, getID(arr[2].get()));
-		unlock(pvd, new ShapedRecipeBuilder(arr[3].get(), 1)::unlockedBy, arr[3].get())
-				.pattern("AAA").pattern("A A").define('A', ingot).save(pvd, getID(arr[3].get()));
-		unlock(pvd, new ShapedRecipeBuilder(arr[4].get(), 1)::unlockedBy, arr[4].get())
-				.pattern("A").pattern("A").pattern("B").define('A', ingot).define('B', stick).save(pvd, getID(arr[4].get()));
-		unlock(pvd, new ShapedRecipeBuilder(arr[5].get(), 1)::unlockedBy, arr[5].get())
-				.pattern("AA").pattern("AB").pattern(" B").define('A', ingot).define('B', stick).save(pvd, getID(arr[5].get()));
-		unlock(pvd, new ShapedRecipeBuilder(arr[6].get(), 1)::unlockedBy, arr[6].get())
-				.pattern("A").pattern("B").pattern("B").define('A', ingot).define('B', stick).save(pvd, getID(arr[6].get()));
-		unlock(pvd, new ShapedRecipeBuilder(arr[7].get(), 1)::unlockedBy, arr[7].get())
-				.pattern("AAA").pattern(" B ").pattern(" B ").define('A', ingot).define('B', stick).save(pvd, getID(arr[7].get()));
-		unlock(pvd, new ShapedRecipeBuilder(arr[8].get(), 1)::unlockedBy, arr[8].get())
-				.pattern("AA").pattern(" B").pattern(" B").define('A', ingot).define('B', stick).save(pvd, getID(arr[8].get()));
+		{
+			Item ingot = mat.getIngot();
+			unlock(pvd, new ShapedRecipeBuilder(arr[0].get(), 1)::unlockedBy, arr[0].get())
+					.pattern("A A").pattern("A A").define('A', ingot).save(pvd, getID(arr[0].get()));
+			unlock(pvd, new ShapedRecipeBuilder(arr[1].get(), 1)::unlockedBy, arr[1].get())
+					.pattern("AAA").pattern("A A").pattern("A A").define('A', ingot).save(pvd, getID(arr[1].get()));
+			unlock(pvd, new ShapedRecipeBuilder(arr[2].get(), 1)::unlockedBy, arr[2].get())
+					.pattern("A A").pattern("AAA").pattern("AAA").define('A', ingot).save(pvd, getID(arr[2].get()));
+			unlock(pvd, new ShapedRecipeBuilder(arr[3].get(), 1)::unlockedBy, arr[3].get())
+					.pattern("AAA").pattern("A A").define('A', ingot).save(pvd, getID(arr[3].get()));
+		}
+		{
+
+			Item ingot = mat.getToolIngot();
+			Item stick = mat.getToolStick();
+			unlock(pvd, new ShapedRecipeBuilder(arr[4].get(), 1)::unlockedBy, arr[4].get())
+					.pattern("A").pattern("A").pattern("B").define('A', ingot).define('B', stick).save(pvd, getID(arr[4].get()));
+			unlock(pvd, new ShapedRecipeBuilder(arr[5].get(), 1)::unlockedBy, arr[5].get())
+					.pattern("AA").pattern("AB").pattern(" B").define('A', ingot).define('B', stick).save(pvd, getID(arr[5].get()));
+			unlock(pvd, new ShapedRecipeBuilder(arr[6].get(), 1)::unlockedBy, arr[6].get())
+					.pattern("A").pattern("B").pattern("B").define('A', ingot).define('B', stick).save(pvd, getID(arr[6].get()));
+			unlock(pvd, new ShapedRecipeBuilder(arr[7].get(), 1)::unlockedBy, arr[7].get())
+					.pattern("AAA").pattern(" B ").pattern(" B ").define('A', ingot).define('B', stick).save(pvd, getID(arr[7].get()));
+			unlock(pvd, new ShapedRecipeBuilder(arr[8].get(), 1)::unlockedBy, arr[8].get())
+					.pattern("AA").pattern(" B").pattern(" B").define('A', ingot).define('B', stick).save(pvd, getID(arr[8].get()));
+		}
 		currentFolder = "generated_tools/" + mat.name().toLowerCase(Locale.ROOT) + "/recycle/";
 		Item nugget = mat.getNugget();
 		for (int i = 0; i < 9; i++) {
@@ -243,6 +266,11 @@ public class RecipeGen {
 
 	public static void smelting(RegistrateRecipeProvider pvd, Item source, Item result, float experience) {
 		unlock(pvd, SimpleCookingRecipeBuilder.cooking(Ingredient.of(source), result, experience, 200, RecipeSerializer.SMELTING_RECIPE)::unlockedBy, source)
+				.save(pvd, getID(source));
+	}
+
+	public static void blasting(RegistrateRecipeProvider pvd, Item source, Item result, float experience) {
+		unlock(pvd, SimpleCookingRecipeBuilder.cooking(Ingredient.of(source), result, experience, 200, RecipeSerializer.BLASTING_RECIPE)::unlockedBy, source)
 				.save(pvd, getID(source));
 	}
 

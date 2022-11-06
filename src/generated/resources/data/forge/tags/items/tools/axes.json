@@ -1,12 +1,9 @@
 {
   "values": [
-    "l2foundation:steel_axe",
-    "l2foundation:layroot_axe",
-    "l2foundation:layline_axe",
-    "l2foundation:oldroot_axe",
-    "l2foundation:knightsteel_axe",
-    "l2foundation:dispellium_axe",
-    "l2foundation:heavysteel_axe",
+    "l2foundation:totemium_axe",
+    "l2foundation:neptunium_axe",
+    "l2foundation:shulkium_axe",
+    "l2foundation:sculkium_axe",
     "l2foundation:eternium_axe"
   ]
 }

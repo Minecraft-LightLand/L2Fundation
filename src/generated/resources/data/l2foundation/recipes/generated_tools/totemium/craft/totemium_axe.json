@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "minecraft:emerald"
+    },
+    "B": {
+      "item": "l2foundation:totemium_ingot"
+    }
+  },
+  "pattern": [
+    "AA",
+    "AB",
+    " B"
+  ],
+  "result": {
+    "item": "l2foundation:totemium_axe"
+  }
+}

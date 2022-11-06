@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_shulkium_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "l2foundation:shulkium_block"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "l2foundation:generated_tools/shulkium/upgrade/shulkium_chestplate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_shulkium_block",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "l2foundation:generated_tools/shulkium/upgrade/shulkium_chestplate"
+    ]
+  }
+}

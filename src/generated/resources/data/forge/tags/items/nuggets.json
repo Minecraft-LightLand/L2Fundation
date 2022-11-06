@@ -1,12 +1,9 @@
 {
   "values": [
-    "l2foundation:steel_nugget",
-    "l2foundation:layroot_nugget",
-    "l2foundation:layline_nugget",
-    "l2foundation:oldroot_nugget",
-    "l2foundation:knightsteel_nugget",
-    "l2foundation:dispellium_nugget",
-    "l2foundation:heavysteel_nugget",
+    "l2foundation:totemium_nugget",
+    "l2foundation:neptunium_nugget",
+    "l2foundation:shulkium_nugget",
+    "l2foundation:sculkium_nugget",
     "l2foundation:eternium_nugget"
   ]
 }

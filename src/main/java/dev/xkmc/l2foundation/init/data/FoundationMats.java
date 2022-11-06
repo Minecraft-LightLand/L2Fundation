@@ -1,17 +1,18 @@
 package dev.xkmc.l2foundation.init.data;
 
+import dev.xkmc.l2foundation.content.item.equipments.*;
 import dev.xkmc.l2foundation.content.item.generic.ArmorMat;
 import dev.xkmc.l2foundation.content.item.generic.ExtraArmorConfig;
 import dev.xkmc.l2foundation.content.item.generic.ExtraToolConfig;
 import dev.xkmc.l2foundation.init.L2Foundation;
 import dev.xkmc.l2foundation.init.registrate.LFBlocks;
 import dev.xkmc.l2foundation.init.registrate.LFItems;
+import dev.xkmc.l2library.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
@@ -19,50 +20,35 @@ import net.minecraftforge.common.ForgeTier;
 
 import java.util.function.Supplier;
 
-public enum FoundationMats {
-	STEEL("steel", 2, SoundEvents.ARMOR_EQUIP_IRON,
-			new GenItem.ToolStats(500, 6, new int[]{6, 9, 4, 4, 1},
+public enum FoundationMats implements IGeneralMats {
+	TOTEMIUM("totemium", 3, SoundEvents.ARMOR_EQUIP_GOLD,
+			new GenItem.ToolStats(1000, 12, new int[]{7, 10, 4, 4, 1},
+					new float[]{1.6f, 0.9f, 1f, 1.2f, 3f}, 22),
+			new GenItem.ArmorStats(15, new int[]{2, 5, 6, 2}, 0, 0, 25),
+			GenItem.TOOL_GEN, GenItem.ARMOR_GEN,
+			new TotemiumTool().setStick(e -> Items.EMERALD, true), new TotemiumArmor()),
+	NEPTUNIUM("neptunium", 4, SoundEvents.ARMOR_EQUIP_GOLD,
+			new GenItem.ToolStats(1500, 8, new int[]{7, 10, 4, 4, 1},
 					new float[]{1.6f, 0.9f, 1f, 1.2f, 3f}, 14),
-			new GenItem.ArmorStats(20, new int[]{2, 5, 6, 2}, 1, 0, 9),
-			GenItem.TOOL_DEF, GenItem.ARMOR_DEF, new ExtraToolConfig(), new ExtraArmorConfig()),
-	LAYROOT("layroot", 2, SoundEvents.ARMOR_EQUIP_IRON,
-			new GenItem.ToolStats(300, 6, new int[]{6, 9, 4, 4, 1},
-					new float[]{1.8f, 1.0f, 1.1f, 1.3f, 3.3f}, 18),
-			new GenItem.ArmorStats(20, new int[]{2, 5, 6, 2}, 0, 0, 19),
-			GenItem.TOOL_GEN, GenItem.ARMOR_GEN, new ExtraToolConfig().repairChance(1e-2),
-			new ExtraArmorConfig().repairChance(1e-2)),
-	LAYLINE("layline", 2, SoundEvents.ARMOR_EQUIP_IRON,
-			new GenItem.ToolStats(500, 8, new int[]{6, 9, 4, 4, 2},
-					new float[]{2.0f, 1.1f, 1.3f, 1.5f, 3.6f}, 20),
-			new GenItem.ArmorStats(25, new int[]{2, 5, 6, 2}, 1, 0, 22),
-			GenItem.TOOL_GEN, GenItem.ARMOR_GEN, new ExtraToolConfig().repairChance(2e-2),
-			new ExtraArmorConfig().repairChance(2e-2)),
-	OLDROOT("oldroot", 3, SoundEvents.ARMOR_EQUIP_IRON,
-			new GenItem.ToolStats(700, 10, new int[]{7, 10, 4, 4, 3},
-					new float[]{2.0f, 1.1f, 1.5f, 1.7f, 4f}, 22),
-			new GenItem.ArmorStats(30, new int[]{2, 5, 6, 2}, 2, 0, 25),
-			GenItem.TOOL_GEN, GenItem.ARMOR_GEN, new ExtraToolConfig().repairChance(4e-2),
-			new ExtraArmorConfig().repairChance(4e-2)),
-	KNIGHTSTEEL("knightsteel", 3, SoundEvents.ARMOR_EQUIP_IRON,
-			new GenItem.ToolStats(500, 6, new int[]{6, 9, 4, 4, 1},
-					new float[]{1.6f, 0.9f, 1f, 1.2f, 3f}, 18),
-			new GenItem.ArmorStats(25, new int[]{2, 5, 6, 2}, 2, 0.1f, 12),
-			GenItem.TOOL_DEF, GenItem.ARMOR_DEF, new ExtraToolConfig(), new ExtraArmorConfig()),
-	DISPELLIUM("dispellium", 2, SoundEvents.ARMOR_EQUIP_IRON,
-			new GenItem.ToolStats(250, 6, new int[]{6, 9, 4, 4, 1},
-					new float[]{1.6f, 0.9f, 1f, 1.2f, 3f}, 0),
-			new GenItem.ArmorStats(15, new int[]{2, 5, 6, 2}, 0, 0, 0),
-			GenItem.TOOL_GEN, GenItem.ARMOR_GEN, new ExtraToolConfig().setBypassMagic(),
-			new ExtraArmorConfig().setMagicImmune(40)),
-	HEAVYSTEEL("heavysteel", 3, SoundEvents.ARMOR_EQUIP_IRON,
-			new GenItem.ToolStats(700, 5, new int[]{10, 14, 4, 4, 1},
-					new float[]{1f, 0.7f, 0.8f, 1f, 2f}, 14),
-			new GenItem.ArmorStats(30, new int[]{3, 5, 6, 3}, 3, 0.2f, 9),
-			GenItem.TOOL_DEF, GenItem.ARMOR_DEF, new ExtraToolConfig(), new ExtraArmorConfig()),
-	ETERNIUM("eternium", 2, SoundEvents.ARMOR_EQUIP_IRON,
-			new GenItem.ToolStats(9999, 6, new int[]{6, 9, 4, 4, 1},
-					new float[]{1.6f, 0.9f, 1f, 1.2f, 3f}, 18),
-			new GenItem.ArmorStats(9999, new int[]{2, 5, 6, 2}, 0, 0, 19),
+			new GenItem.ArmorStats(33, new int[]{3, 6, 8, 3}, 2, 0, 9),
+			GenItem.TOOL_GEN, GenItem.ARMOR_GEN,
+			new NeptuniumTool().setStick(e -> Items.PRISMARINE_SHARD, false), new NeptuniumArmor()),
+	SHULKIUM("shulkium", 4, SoundEvents.ARMOR_EQUIP_IRON,
+			new GenItem.ToolStats(4000, 8, new int[]{7, 10, 4, 4, 1},
+					new float[]{1.6f, 0.9f, 1f, 1.2f, 3f}, 14),
+			new GenItem.ArmorStats(400, new int[]{3, 6, 8, 3}, 2, 0, 9),
+			GenItem.TOOL_GEN, GenItem.ARMOR_GEN,
+			new ShulkiumTool().setStick(e -> Items.IRON_INGOT, false), new ShulkiumArmor()),
+	SCULKIUM("sculkium", 4, SoundEvents.ARMOR_EQUIP_IRON,
+			new GenItem.ToolStats(2000, 12, new int[]{9, 12, 5, 5, 4},
+					new float[]{1.8f, 1.2f, 1.2f, 1.4f, 3f}, 15),
+			new GenItem.ArmorStats(40, new int[]{5, 9, 10, 6}, 4, 0, 15),
+			GenItem.TOOL_GEN, GenItem.ARMOR_GEN,
+			new SculkiumTool().setStick(e -> Items.NETHERITE_INGOT, false), new SculkiumArmor()),
+	ETERNIUM("eternium", 4, SoundEvents.ARMOR_EQUIP_IRON,
+			new GenItem.ToolStats(9999, 8, new int[]{7, 10, 4, 4, 1},
+					new float[]{1.6f, 0.9f, 1f, 1.2f, 3f}, 1),
+			new GenItem.ArmorStats(9999, new int[]{3, 6, 8, 3}, 2, 0, 1),
 			GenItem.TOOL_GEN, GenItem.ARMOR_GEN, new ExtraToolConfig().damageChance(0).repairChance(1),
 			new ExtraArmorConfig().damageChance(0).repairChance(1));
 
@@ -92,14 +78,6 @@ public enum FoundationMats {
 		this.armor_extra = armor_extra;
 	}
 
-	public Item getArmor(EquipmentSlot slot) {
-		return LFItems.GEN_ITEM[ordinal()][slot.getIndex()].get();
-	}
-
-	public Item getTool(GenItem.Tools tool) {
-		return LFItems.GEN_ITEM[ordinal()][4 + tool.ordinal()].get();
-	}
-
 	public Item getIngot() {
 		return LFItems.MAT_INGOTS[ordinal()].get();
 	}
@@ -116,7 +94,14 @@ public enum FoundationMats {
 		return L2Foundation.MODID + ":" + id;
 	}
 
-	public Item getStick() {
-		return tool_extra.stick.get();
+	@Override
+	public ExtraToolConfig getExtraToolConfig() {
+		return tool_extra;
 	}
+
+	@Override
+	public ItemEntry<Item>[][] getGenerated() {
+		return LFItems.GEN_ITEM;
+	}
+
 }

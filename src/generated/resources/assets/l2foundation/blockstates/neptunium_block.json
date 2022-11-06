@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "l2foundation:block/neptunium_block"
+    }
+  }
+}

@@ -30,7 +30,7 @@ public class MaterialDamageListener implements AttackListener {
 				}
 			}
 		}
-		if (event.getSource().isProjectile() && event.getSource().getEntity() instanceof Player player) {
+		if (event.getSource().isProjectile() && event.getSource().getEntity() instanceof Player) {
 			if (cache.getDamageOriginal() >= LFConfig.COMMON.spaceDamage.get()) {
 				cache.getAttackTarget().spawnAtLocation(LFItems.SPACE_SHARD.asStack());
 			}

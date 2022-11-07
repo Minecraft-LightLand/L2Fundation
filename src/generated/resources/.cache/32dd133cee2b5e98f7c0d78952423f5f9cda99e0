@@ -1,4 +1,4 @@
-// 1.19.2	2022-11-06T15:55:48.194859	Registrate Provider for l2foundation [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2022-11-06T16:54:02.100322	Registrate Provider for l2foundation [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 e78f2fdf6383d750659cd3f1bcea37417fc6a41e assets/l2foundation/blockstates/eternal_anvil.json
 e313c542be695fcb40111040d9e2a10f5a8dcccd assets/l2foundation/blockstates/eternium_block.json
 7eb95eafad863ddc45bf948b97823b2e406bfeb6 assets/l2foundation/blockstates/neptunium_block.json
@@ -505,7 +505,8 @@ b4363c8a1aea383f18403d38006ddde0ab74497c data/l2foundation/recipes/vanilla/upgra
 0e17ad3144f69ca1d0ee720a519c2013fd90e15c data/l2foundation/recipes/vanilla/upgrade/iron_pickaxe.json
 15f26c8d78cf96aeddb955062e008d0f422ef315 data/l2foundation/recipes/vanilla/upgrade/iron_shovel.json
 075dfbcfca870a9b72b118a0ceb07bf3c1acc81d data/l2foundation/recipes/vanilla/upgrade/iron_sword.json
+bfdfab925d3aae515709e426b963be6ae6fc0d4b data/l2foundation/tags/blocks/requires_sculk_tool.json
 bbf60c3aaeb7e56a94b80dc9f62b7364ce75765d data/minecraft/tags/blocks/anvil.json
-3d1bb91dbcc3d1740e3cfa550a3e74f410f5b9fd data/minecraft/tags/blocks/mineable/pickaxe.json
+b0ed41c5e8cb479b50ea3c2d1f8bfb99b70da54f data/minecraft/tags/blocks/mineable/pickaxe.json
 3d1bb91dbcc3d1740e3cfa550a3e74f410f5b9fd data/minecraft/tags/blocks/needs_stone_tool.json
 bbf60c3aaeb7e56a94b80dc9f62b7364ce75765d data/minecraft/tags/items/anvil.json

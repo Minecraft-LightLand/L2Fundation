@@ -1,5 +1,6 @@
 package dev.xkmc.l2foundation.content.item.equipments;
 
+import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import dev.xkmc.l2foundation.content.item.generic.ExtraArmorConfig;
 import dev.xkmc.l2library.base.effects.EffectUtil;
@@ -13,22 +14,24 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.common.ForgeMod;
 
 import java.util.Locale;
 
 public class NeptuniumArmor extends ExtraArmorConfig {
 
-	private static final String KEY = "UserInWater", NAME_ARMOR = "neptonium_armor", NAME_TOUGH = "neptonium_toughness", NAME_SPEED = "neptonium_speed";
+	private static final String KEY = "UserInWater", NAME_ARMOR = "neptunium_armor", NAME_TOUGH = "neptunium_toughness", NAME_SPEED = "neptunium_speed", NAME_SWIM = "neptunium_swim";
 
 	private static final AttributeModifier[] ARMOR = makeModifiers(NAME_ARMOR, 4d, 6d, AttributeModifier.Operation.ADDITION);
 	private static final AttributeModifier[] TOUGH = makeModifiers(NAME_TOUGH, 2d, 3d, AttributeModifier.Operation.ADDITION);
-	private static final AttributeModifier[] SPEED = makeModifiers(NAME_SPEED, 1.1d, 1.15d, AttributeModifier.Operation.MULTIPLY_BASE);
+	private static final AttributeModifier[] SPEED = makeModifiers(NAME_SPEED, 0.1d, 0.15d, AttributeModifier.Operation.MULTIPLY_BASE);
+	private static final AttributeModifier[] SWIM = makeModifiers(NAME_SWIM, 0.1d, 0.15d, AttributeModifier.Operation.MULTIPLY_BASE);
 
 	private static AttributeModifier[] makeModifiers(String name, double val, double val2, AttributeModifier.Operation op) {
 		AttributeModifier[] ans = new AttributeModifier[4];
 		for (int i = 0; i < 4; i++) {
 			EquipmentSlot slot = EquipmentSlot.byTypeAndIndex(EquipmentSlot.Type.ARMOR, i);
-			double v = slot == EquipmentSlot.CHEST || slot == EquipmentSlot.LEGS ? val : val2;
+			double v = slot == EquipmentSlot.CHEST || slot == EquipmentSlot.LEGS ? val2 : val;
 			String str = name + "/" + slot.getName().toLowerCase(Locale.ROOT);
 			ans[i] = new AttributeModifier(MathHelper.getUUIDFromString(str), str, v, op);
 		}
@@ -55,6 +58,7 @@ public class NeptuniumArmor extends ExtraArmorConfig {
 			map.put(Attributes.ARMOR_TOUGHNESS, TOUGH[slot.getIndex()]);
 			map.put(Attributes.MOVEMENT_SPEED, SPEED[slot.getIndex()]);
 		}
+		map.put(ForgeMod.SWIM_SPEED.get(), SWIM[slot.getIndex()]);
 		return map;
 	}
 }

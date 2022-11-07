@@ -1,5 +1,6 @@
 package dev.xkmc.l2foundation.content.item.generic;
 
+import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
@@ -71,7 +72,11 @@ public class GenericSwordItem extends SwordItem implements GenericTieredItem {
 
 	@Override
 	public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
-		return config.modify(super.getAttributeModifiers(slot, stack), slot, stack);
+		var parent = super.getAttributeModifiers(slot, stack);
+		if (slot != EquipmentSlot.MAINHAND) return parent;
+		Multimap<Attribute, AttributeModifier> cur = HashMultimap.create();
+		cur.putAll(parent);
+		return config.modify(cur, slot, stack);
 	}
 
 	@Override

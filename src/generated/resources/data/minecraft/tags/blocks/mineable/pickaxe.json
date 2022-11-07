@@ -5,6 +5,7 @@
     "l2foundation:neptunium_block",
     "l2foundation:shulkium_block",
     "l2foundation:sculkium_block",
-    "l2foundation:eternium_block"
+    "l2foundation:eternium_block",
+    "minecraft:reinforced_deepslate"
   ]
 }

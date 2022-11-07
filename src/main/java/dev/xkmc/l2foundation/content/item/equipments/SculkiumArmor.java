@@ -23,7 +23,7 @@ public class SculkiumArmor extends ExtraArmorConfig {
 		AttributeModifier[] ans = new AttributeModifier[4];
 		for (int i = 0; i < 4; i++) {
 			EquipmentSlot slot = EquipmentSlot.byTypeAndIndex(EquipmentSlot.Type.ARMOR, i);
-			double v = slot == EquipmentSlot.CHEST || slot == EquipmentSlot.LEGS ? val : val2;
+			double v = slot == EquipmentSlot.CHEST || slot == EquipmentSlot.LEGS ? val2 : val;
 			String str = name + "/" + slot.getName().toLowerCase(Locale.ROOT);
 			ans[i] = new AttributeModifier(MathHelper.getUUIDFromString(str), str, v, op);
 		}

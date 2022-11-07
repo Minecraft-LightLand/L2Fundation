@@ -1,10 +1,7 @@
 package dev.xkmc.l2foundation.init;
 
 import dev.xkmc.l2foundation.events.*;
-import dev.xkmc.l2foundation.init.data.GenItem;
-import dev.xkmc.l2foundation.init.data.LFConfig;
-import dev.xkmc.l2foundation.init.data.LangData;
-import dev.xkmc.l2foundation.init.data.RecipeGen;
+import dev.xkmc.l2foundation.init.data.*;
 import dev.xkmc.l2foundation.init.registrate.*;
 import dev.xkmc.l2foundation.network.NetworkManager;
 import dev.xkmc.l2library.base.L2Registrate;
@@ -44,6 +41,8 @@ public class L2Foundation {
 		NetworkManager.register();
 		REGISTRATE.addDataGenerator(ProviderType.LANG, LangData::addTranslations);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, RecipeGen::genRecipe);
+		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, TagGen::onBlockTagGen);
+		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, TagGen::onItemTagGen);
 	}
 
 	private static void registerForgeEvents() {

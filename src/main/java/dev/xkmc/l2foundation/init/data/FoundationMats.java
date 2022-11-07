@@ -44,7 +44,8 @@ public enum FoundationMats implements IGeneralMats {
 					new float[]{1.8f, 1.2f, 1.2f, 1.4f, 3f}, 15),
 			new GenItem.ArmorStats(40, new int[]{5, 9, 10, 6}, 4, 0, 15),
 			GenItem.TOOL_GEN, GenItem.ARMOR_GEN,
-			new SculkiumTool().setStick(e -> Items.NETHERITE_INGOT, false), new SculkiumArmor()),
+			new SculkiumTool().setStick(e -> Items.NETHERITE_INGOT, false)
+					.setTier(e -> TagGen.REQUIRES_SCULK_TOOL), new SculkiumArmor()),
 	ETERNIUM("eternium", 4, SoundEvents.ARMOR_EQUIP_IRON,
 			new GenItem.ToolStats(9999, 8, new int[]{7, 10, 4, 4, 1},
 					new float[]{1.6f, 0.9f, 1f, 1.2f, 3f}, 1),
@@ -68,7 +69,7 @@ public enum FoundationMats implements IGeneralMats {
 		Supplier<Ingredient> ing = () -> Ingredient.of(LFItems.MAT_INGOTS[ordinal()].get());
 		this.id = name;
 		this.tier = new ForgeTier(level, tool.durability(), tool.speed(), 0, tool.enchant(),
-				GenItem.getBlockTag(level), ing);
+				tool_extra.getTier(level), ing);
 		this.mat = new ArmorMat(armorPrefix(), armor.durability(), armor.protection(),
 				armor.enchant(), equip_sound, armor.tough(), armor.kb(), ing);
 		this.tool_config = tool_config;

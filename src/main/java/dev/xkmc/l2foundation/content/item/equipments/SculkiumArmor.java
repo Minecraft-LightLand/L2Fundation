@@ -15,8 +15,8 @@ public class SculkiumArmor extends ExtraArmorConfig {
 
 	private static final String NAME_SPEED = "sculkium_speed", NAME_HASTE = "sculkium_haste", NAME_HEALTH = "sculkium_health";
 
-	private static final AttributeModifier[] HASTE = makeModifiers(NAME_HASTE, 1.06d, 1.09d, AttributeModifier.Operation.MULTIPLY_BASE);
-	private static final AttributeModifier[] SPEED = makeModifiers(NAME_SPEED, 1.1d, 1.15d, AttributeModifier.Operation.MULTIPLY_BASE);
+	private static final AttributeModifier[] HASTE = makeModifiers(NAME_HASTE, 0.06d, 0.09d, AttributeModifier.Operation.MULTIPLY_BASE);
+	private static final AttributeModifier[] SPEED = makeModifiers(NAME_SPEED, 0.1d, 0.15d, AttributeModifier.Operation.MULTIPLY_BASE);
 	private static final AttributeModifier[] HEALTH = makeModifiers(NAME_SPEED, 2, 3, AttributeModifier.Operation.ADDITION);
 
 	private static AttributeModifier[] makeModifiers(String name, double val, double val2, AttributeModifier.Operation op) {
@@ -32,7 +32,6 @@ public class SculkiumArmor extends ExtraArmorConfig {
 
 	@Override
 	public Multimap<Attribute, AttributeModifier> modify(Multimap<Attribute, AttributeModifier> map, EquipmentSlot slot, ItemStack stack) {
-		if (slot != stack.getEquipmentSlot()) return map;
 		if (slot == EquipmentSlot.HEAD || slot == EquipmentSlot.CHEST)
 			map.put(Attributes.ATTACK_SPEED, HASTE[slot.getIndex()]);
 		else

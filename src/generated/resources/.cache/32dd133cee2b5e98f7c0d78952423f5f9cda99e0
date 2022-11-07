@@ -1,4 +1,4 @@
-// 1.19.2	2022-11-06T15:37:52.584465	Registrate Provider for l2foundation [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2022-11-06T15:55:48.194859	Registrate Provider for l2foundation [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 e78f2fdf6383d750659cd3f1bcea37417fc6a41e assets/l2foundation/blockstates/eternal_anvil.json
 e313c542be695fcb40111040d9e2a10f5a8dcccd assets/l2foundation/blockstates/eternium_block.json
 7eb95eafad863ddc45bf948b97823b2e406bfeb6 assets/l2foundation/blockstates/neptunium_block.json
@@ -127,7 +127,7 @@ a6c0abfa1d09fd59bf7dc2a5f6e3b497d9454b74 data/l2foundation/advancements/recipes/
 51ba932d9ad0d4d114766b5b26a9674f798b6732 data/l2foundation/advancements/recipes/l2foundation.generated/craft/eternal_anvil.json
 51aaa095e316fd2f94f13f61820cc50298d203b1 data/l2foundation/advancements/recipes/l2foundation.generated/craft/eternium_nugget.json
 7abd0fbc24002eaa111bdf7d87cba4f044ae8d3b data/l2foundation/advancements/recipes/l2foundation.generated/craft/sculkium_ingot.json
-2d2888b0a5716c82e091247c8bac6f273d745b6c data/l2foundation/advancements/recipes/l2foundation.generated/craft/shulkium_block.json
+c0893c78c7387e8e30156e0a525845c9ee6f2b24 data/l2foundation/advancements/recipes/l2foundation.generated/craft/shulkium_ingot.json
 0b63aec1d05653fdd28013bbcce025601a2bb799 data/l2foundation/advancements/recipes/l2foundation.generated/craft/totem_of_undying.json
 e9d36e2f1e6468f062ec17ba4fc19dc2099bc502 data/l2foundation/advancements/recipes/l2foundation.generated/craft/trident.json
 b5f456cd4e5b8f9415a8277aa3af4b4b122c367e data/l2foundation/advancements/recipes/l2foundation.generated/craft/wind_capture_bottle.json
@@ -308,8 +308,8 @@ d2c1e7d78ab3d096a87719951333fa2ee272e0ef data/l2foundation/loot_tables/blocks/et
 e93cb54459200952db8ce9993bbe130c4e65f76c data/l2foundation/loot_tables/blocks/totemium_block.json
 08677d75812dd7002057fe5d89ee471bd87fed1e data/l2foundation/recipes/craft/eternal_anvil.json
 1ac54f7df3102a9ac8cfa80f60da0f579e70e937 data/l2foundation/recipes/craft/eternium_nugget.json
-929685ee535e1fb63d97f558f159236c48d7d0e7 data/l2foundation/recipes/craft/sculkium_ingot.json
-186f784faebdb078a9a46af03a0b90e77921d560 data/l2foundation/recipes/craft/shulkium_block.json
+53d8706f6a8e0e327008f52fe203019d0c00799b data/l2foundation/recipes/craft/sculkium_ingot.json
+da515998d87050d5941d32593e87186aeba376c7 data/l2foundation/recipes/craft/shulkium_ingot.json
 540372b5c50a2ebbe1780abefd71fc5f0bae4422 data/l2foundation/recipes/craft/totem_of_undying.json
 d86da31c3a04e45cea41e8cfd132d347a93bceff data/l2foundation/recipes/craft/trident.json
 b4c792f811d139b778beba005600b3dd7c960910 data/l2foundation/recipes/craft/wind_capture_bottle.json

@@ -50,7 +50,6 @@ public class NeptuniumArmor extends ExtraArmorConfig {
 
 	@Override
 	public Multimap<Attribute, AttributeModifier> modify(Multimap<Attribute, AttributeModifier> map, EquipmentSlot slot, ItemStack stack) {
-		if (slot != stack.getEquipmentSlot()) return map;
 		if (stack.getOrCreateTag().getBoolean(KEY)) {
 			map.put(Attributes.ARMOR, ARMOR[slot.getIndex()]);
 			map.put(Attributes.ARMOR_TOUGHNESS, TOUGH[slot.getIndex()]);

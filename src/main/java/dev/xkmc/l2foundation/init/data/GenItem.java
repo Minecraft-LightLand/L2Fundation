@@ -107,7 +107,9 @@ public class GenItem {
 			case 1 -> BlockTags.NEEDS_STONE_TOOL;
 			case 2 -> BlockTags.NEEDS_IRON_TOOL;
 			case 3 -> BlockTags.NEEDS_DIAMOND_TOOL;
+			case 10 -> Tags.Blocks.
 			default -> Tags.Blocks.NEEDS_NETHERITE_TOOL;
+
 		};
 	}
 

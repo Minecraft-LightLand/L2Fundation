@@ -5,12 +5,13 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "l2foundation.refmap.json",
   "mixins": [
-    "AnvilBlockMixin"
+	"AnvilBlockMixin",
+	"BlockBehaviorMixin"
   ],
   "client": [
   ],
   "injectors": {
-    "defaultRequire": 1
+	"defaultRequire": 1
   },
   "minVersion": "0.8"
 }

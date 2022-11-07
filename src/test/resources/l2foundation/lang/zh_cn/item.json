@@ -12,7 +12,8 @@
 	"blackstone_core": "黑石核心",
 	"resonant_feather": "共振之羽",
 	"space_shard": "空间碎片",
-	"force_field": "守护力场"
+	"force_field": "守护力场",
+	"warden_bone_shard": "强化骨片"
   },
   "block.l2foundation": {
 	"eternal_anvil": "永恒铁砧"
@@ -22,13 +23,10 @@
 	  "path": "item.l2foundation",
 	  "list": [
 		{
-		  "steel": "钢",
-		  "layroot": "铁木",
-		  "layline": "地脉",
-		  "oldroot": "古木",
-		  "knightsteel": "骑士",
-		  "heavysteel": "重装",
-		  "dispellium": "破魔",
+		  "totemium": "生命",
+		  "neptunium": "海神",
+		  "shulkium": "潜影",
+		  "sculkium": "幽匿",
 		  "eternium": "永恒"
 		},
 		{
@@ -48,14 +46,11 @@
 	  "path": "item.l2foundation",
 	  "list": [
 		{
-		  "steel": "钢",
-		  "layroot": "铁木",
-		  "layline": "地脉",
-		  "oldroot": "古木",
-		  "knightsteel": "骑士钢",
-		  "heavysteel": "重装钢",
-		  "dispellium": "破魔钢",
-		  "eternium": "永恒钢"
+		  "totemium": "生命",
+		  "neptunium": "海神",
+		  "shulkium": "潜影",
+		  "sculkium": "幽匿",
+		  "eternium": "永恒"
 		},
 		{
 		  "ingot": "锭",
@@ -67,14 +62,11 @@
 	  "path": "block.l2foundation",
 	  "list": [
 		{
-		  "steel": "钢",
-		  "layroot": "铁木",
-		  "layline": "地脉",
-		  "oldroot": "古木",
-		  "knightsteel": "骑士",
-		  "heavysteel": "重装",
-		  "dispellium": "破魔钢",
-		  "eternium": "永恒钢"
+		  "totemium": "生命",
+		  "neptunium": "海神",
+		  "shulkium": "潜影",
+		  "sculkium": "幽匿",
+		  "eternium": "永恒"
 		},
 		{
 		  "block": "块"

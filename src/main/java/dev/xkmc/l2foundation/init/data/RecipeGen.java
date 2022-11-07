@@ -95,12 +95,12 @@ public class RecipeGen {
 			blasting(pvd, Items.TOTEM_OF_UNDYING, FoundationMats.TOTEMIUM.getIngot(), 1);
 			blasting(pvd, Items.TRIDENT, FoundationMats.NEPTUNIUM.getIngot(), 1);
 
-			unlock(pvd, new ShapelessRecipeBuilder(FoundationMats.SHULKIUM.getBlock(), 1)::unlockedBy, LFItems.CAPTURED_BULLET.get())
-					.requires(Items.SHULKER_SHELL, 2).requires(LFItems.CAPTURED_BULLET.get()).requires(Items.IRON_BLOCK)
-					.save(pvd, getID(FoundationMats.SHULKIUM.getBlock().asItem()));
+			unlock(pvd, new ShapelessRecipeBuilder(FoundationMats.SHULKIUM.getIngot(), 1)::unlockedBy, LFItems.CAPTURED_BULLET.get())
+					.requires(Items.SHULKER_SHELL, 2).requires(LFItems.CAPTURED_BULLET.get()).requires(Items.IRON_INGOT)
+					.save(pvd, getID(FoundationMats.SHULKIUM.getIngot()));
 
 			unlock(pvd, new ShapelessRecipeBuilder(FoundationMats.SCULKIUM.getIngot(), 2)::unlockedBy, LFItems.WARDEN_BONE_SHARD.get())
-					.requires(Items.ECHO_SHARD).requires(LFItems.WARDEN_BONE_SHARD.get(), 2)
+					.requires(Items.ECHO_SHARD).requires(LFItems.WARDEN_BONE_SHARD.get(), 2).requires(Items.COPPER_INGOT)
 					.save(pvd, getID(FoundationMats.SCULKIUM.getIngot()));
 
 		}

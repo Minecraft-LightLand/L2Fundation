@@ -11,10 +11,10 @@
       "item": "l2foundation:captured_shulker_bullet"
     },
     {
-      "item": "minecraft:iron_block"
+      "item": "minecraft:iron_ingot"
     }
   ],
   "result": {
-    "item": "l2foundation:shulkium_block"
+    "item": "l2foundation:shulkium_ingot"
   }
 }

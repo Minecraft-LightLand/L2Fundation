@@ -1,0 +1,105 @@
+{
+  "item.l2complements": {
+	"wind_capture_bottle": "捕风瓶",
+	"void_eye": "虚空之眼",
+	"captured_wind": "千风精华",
+	"captured_shulker_bullet": "瓶中潜影弹",
+	"sun_membrane": "逐日之翼",
+	"explosion_shard": "破灭残片",
+	"hard_ice": "告死寒霜",
+	"soul_flame": "灵魂火种",
+	"storm_core": "烈空结晶",
+	"blackstone_core": "黑石核心",
+	"resonant_feather": "共振之羽",
+	"space_shard": "空间碎片",
+	"force_field": "守护力场",
+	"warden_bone_shard": "强化骨片"
+  },
+  "block.l2complements": {
+	"eternal_anvil": "永恒铁砧"
+  },
+  "-cartesian": {
+	"gen_item": {
+	  "path": "item.l2complements",
+	  "list": [
+		{
+		  "totemic_gold": "生命",
+		  "poseidite": "海神",
+		  "shulkerate": "潜影",
+		  "sculkium": "幽匿",
+		  "eternium": "永恒"
+		},
+		{
+		  "helmet": "头盔",
+		  "chestplate": "胸甲",
+		  "leggings": "护腿",
+		  "boots": "靴子",
+		  "sword": "剑",
+		  "axe": "斧头",
+		  "shovel": "铲子",
+		  "pickaxe": "镐子",
+		  "hoe": "锄头"
+		}
+	  ]
+	},
+	"gen_item_mat": {
+	  "path": "item.l2complements",
+	  "list": [
+		{
+		  "totemic_gold": "生命",
+		  "poseidite": "海神",
+		  "shulkerate": "潜影",
+		  "sculkium": "幽匿",
+		  "eternium": "永恒"
+		},
+		{
+		  "ingot": "锭",
+		  "nugget": "粒"
+		}
+	  ]
+	},
+	"gen_block_mat": {
+	  "path": "block.l2complements",
+	  "list": [
+		{
+		  "totemic_gold": "生命",
+		  "poseidite": "海神",
+		  "shulkerate": "潜影",
+		  "sculkium": "幽匿",
+		  "eternium": "永恒"
+		},
+		{
+		  "block": "块"
+		}
+	  ]
+	},
+	"potion": {
+	  "path": "item.minecraft",
+	  "use_dot": true,
+	  "list": [
+		{
+		  "lingering_potion": "滞留型",
+		  "potion": "",
+		  "splash_potion": "喷溅型"
+		},
+		{
+		  "effect": ""
+		},
+		{
+		  "flame": "燃魂药水",
+		  "long_flame": "燃魂药水",
+		  "strong_flame": "燃魂药水",
+		  "frozen": "冰封药水",
+		  "long_frozen": "冰封药水",
+		  "stone_cage": "禁锢药水",
+		  "long_stone_cage": "禁锢药水",
+		  "levitation": "悬浮药水",
+		  "long_levitation": "悬浮药水",
+		  "resistance": "抗性药水",
+		  "long_resistance": "抗性药水",
+		  "strong_resistance": "抗性药水"
+		}
+	  ]
+	}
+  }
+}

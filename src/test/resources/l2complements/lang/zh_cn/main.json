@@ -1,0 +1,53 @@
+{
+  "effect.l2complements": {
+	"armor_reduce": "破甲",
+	"flame": "魂火",
+	"frozen": "寒流",
+	"stone_cage": "禁锢",
+	"emerald": "绿宝石水花"
+  },
+  "itemGroup.l2complements": {
+	"generated": "道具材料"
+  },
+  "item.minecraft.tipped_arrow.effect": {
+	"flame": "燃魂之箭",
+	"long_flame": "燃魂之箭",
+	"strong_flame": "燃魂之箭",
+	"frozen": "冰封之箭",
+	"long_frozen": "冰封之箭",
+	"stone_cage": "禁锢之箭",
+	"long_stone_cage": "禁锢之箭",
+	"levitation": "悬浮之箭",
+	"long_levitation": "悬浮之箭",
+	"resistance": "抗性之箭",
+	"long_resistance": "抗性之箭",
+	"strong_resistance": "抗性之箭"
+  },
+  "enchantment.l2complements": {
+	"environment_reject": "环境免疫",
+	"explosion_reject": "爆炸免疫",
+	"fire_reject": "火焰免疫",
+	"magic_reject": "魔法免疫",
+	"projectile_reject": "弹射物免疫"
+  },
+  "death.attack": {
+	"soul_flame": "%s的灵魂燃尽了",
+	"soul_flame.player": "%s的灵魂被%s烧掉了"
+  },
+  "l2complements.tooltip.misc": {
+	"blackstone_core": "通过杀死处于禁锢效果下的猪灵蛮兵获得",
+	"captured_shulker_bullet": "通过拿捕风瓶右键潜影贝的子弹获得",
+	"captured_wind": "玩家移动速度超过%s格每秒的时候，捕风瓶右键获得",
+	"explosion_shard": "承受%s的爆炸伤害并存活获得",
+	"force_field": "通过弹射物伤害杀死凋零获得",
+	"hard_ice": "用细雪冻死溺尸获得",
+	"resonant_feather": "鸡受到音爆攻击而存活时掉落",
+	"soul_flame": "用魂火烧死恶魂获得",
+	"space_shard": "造成%s的弓箭伤害获得",
+	"storm_core": "炸死幻翼获得",
+	"sun_membrane": "在世界建筑上限的%s格以上杀死被晒伤的幻翼获得",
+	"void_eye": "杀死处于虚空%s格以下的被激怒的末影人获得",
+	"wind_bottle": "获取千风精华和瓶中潜影弹的基础物品",
+	"warden_bone_shard": "玩家亲自击杀监守者时掉落"
+  }
+}

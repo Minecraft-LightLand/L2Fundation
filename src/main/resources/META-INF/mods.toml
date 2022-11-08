@@ -25,6 +25,6 @@ description='''
 [[dependencies.l2foundation]]
     modId="l2library"
     mandatory=true
-    versionRange="[1.7.4,)"
+    versionRange="[1.8.0,)"
     ordering="AFTER"
     side="BOTH"

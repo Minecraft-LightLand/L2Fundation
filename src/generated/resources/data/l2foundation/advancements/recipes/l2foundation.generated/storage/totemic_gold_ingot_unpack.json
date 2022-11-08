@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "l2foundation:storage/totemic_gold_ingot_unpack"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_totemic_gold_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "l2foundation:totemic_gold_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_totemic_gold_ingot",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "l2foundation:storage/totemic_gold_ingot_unpack"
+    ]
+  }
+}

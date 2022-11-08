@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "l2foundation:poseidite_block"
+  },
+  "base": {
+    "tag": "forge:tools/pickaxes"
+  },
+  "result": {
+    "item": "l2foundation:poseidite_pickaxe"
+  }
+}

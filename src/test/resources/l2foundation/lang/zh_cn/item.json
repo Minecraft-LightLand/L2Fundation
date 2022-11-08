@@ -23,9 +23,9 @@
 	  "path": "item.l2foundation",
 	  "list": [
 		{
-		  "totemium": "生命",
-		  "neptunium": "海神",
-		  "shulkium": "潜影",
+		  "totemic_gold": "生命",
+		  "poseidite": "海神",
+		  "shulkerate": "潜影",
 		  "sculkium": "幽匿",
 		  "eternium": "永恒"
 		},
@@ -46,9 +46,9 @@
 	  "path": "item.l2foundation",
 	  "list": [
 		{
-		  "totemium": "生命",
-		  "neptunium": "海神",
-		  "shulkium": "潜影",
+		  "totemic_gold": "生命",
+		  "poseidite": "海神",
+		  "shulkerate": "潜影",
 		  "sculkium": "幽匿",
 		  "eternium": "永恒"
 		},
@@ -62,9 +62,9 @@
 	  "path": "block.l2foundation",
 	  "list": [
 		{
-		  "totemium": "生命",
-		  "neptunium": "海神",
-		  "shulkium": "潜影",
+		  "totemic_gold": "生命",
+		  "poseidite": "海神",
+		  "shulkerate": "潜影",
 		  "sculkium": "幽匿",
 		  "eternium": "永恒"
 		},

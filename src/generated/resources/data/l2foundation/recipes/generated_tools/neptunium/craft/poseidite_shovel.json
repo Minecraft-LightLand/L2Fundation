@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "l2foundation:poseidite_ingot"
+    },
+    "B": {
+      "item": "minecraft:prismarine_shard"
+    }
+  },
+  "pattern": [
+    "A",
+    "B",
+    "B"
+  ],
+  "result": {
+    "item": "l2foundation:poseidite_shovel"
+  }
+}

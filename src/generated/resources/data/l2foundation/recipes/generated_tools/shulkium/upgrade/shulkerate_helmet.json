@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "l2foundation:shulkerate_block"
+  },
+  "base": {
+    "tag": "forge:armors/helmets"
+  },
+  "result": {
+    "item": "l2foundation:shulkerate_helmet"
+  }
+}

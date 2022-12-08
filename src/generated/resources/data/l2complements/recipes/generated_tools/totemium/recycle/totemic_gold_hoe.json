@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "l2complements:totemic_gold_hoe"
+  },
+  "result": "l2complements:totemic_gold_nugget"
+}

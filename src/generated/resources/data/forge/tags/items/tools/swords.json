@@ -1,9 +1,9 @@
 {
   "values": [
-    "l2foundation:totemic_gold_sword",
-    "l2foundation:poseidite_sword",
-    "l2foundation:shulkerate_sword",
-    "l2foundation:sculkium_sword",
-    "l2foundation:eternium_sword"
+    "l2complements:totemic_gold_sword",
+    "l2complements:poseidite_sword",
+    "l2complements:shulkerate_sword",
+    "l2complements:sculkium_sword",
+    "l2complements:eternium_sword"
   ]
 }

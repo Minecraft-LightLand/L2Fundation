@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "l2complements:item/captured_shulker_bullet"
+  }
+}

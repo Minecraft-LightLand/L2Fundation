@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "l2complements:eternium_block"
+  },
+  "base": {
+    "tag": "forge:armors/chestplates"
+  },
+  "result": {
+    "item": "l2complements:eternium_chestplate"
+  }
+}

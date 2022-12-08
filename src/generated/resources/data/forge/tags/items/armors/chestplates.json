@@ -1,9 +1,9 @@
 {
   "values": [
-    "l2foundation:totemic_gold_chestplate",
-    "l2foundation:poseidite_chestplate",
-    "l2foundation:shulkerate_chestplate",
-    "l2foundation:sculkium_chestplate",
-    "l2foundation:eternium_chestplate"
+    "l2complements:totemic_gold_chestplate",
+    "l2complements:poseidite_chestplate",
+    "l2complements:shulkerate_chestplate",
+    "l2complements:sculkium_chestplate",
+    "l2complements:eternium_chestplate"
   ]
 }

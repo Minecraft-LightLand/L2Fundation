@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "l2complements:shulkerate_shovel"
+  },
+  "result": "l2complements:shulkerate_nugget"
+}

@@ -1,9 +1,9 @@
 {
   "values": [
-    "l2foundation:totemic_gold_boots",
-    "l2foundation:poseidite_boots",
-    "l2foundation:shulkerate_boots",
-    "l2foundation:sculkium_boots",
-    "l2foundation:eternium_boots"
+    "l2complements:totemic_gold_boots",
+    "l2complements:poseidite_boots",
+    "l2complements:shulkerate_boots",
+    "l2complements:sculkium_boots",
+    "l2complements:eternium_boots"
   ]
 }

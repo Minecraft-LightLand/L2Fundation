@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "l2complements:poseidite_axe"
+  },
+  "result": "l2complements:poseidite_nugget"
+}

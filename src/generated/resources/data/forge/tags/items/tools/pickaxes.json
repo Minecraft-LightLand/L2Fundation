@@ -1,9 +1,9 @@
 {
   "values": [
-    "l2foundation:totemic_gold_pickaxe",
-    "l2foundation:poseidite_pickaxe",
-    "l2foundation:shulkerate_pickaxe",
-    "l2foundation:sculkium_pickaxe",
-    "l2foundation:eternium_pickaxe"
+    "l2complements:totemic_gold_pickaxe",
+    "l2complements:poseidite_pickaxe",
+    "l2complements:shulkerate_pickaxe",
+    "l2complements:sculkium_pickaxe",
+    "l2complements:eternium_pickaxe"
   ]
 }

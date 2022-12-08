@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "cookingtime": 200,
-  "experience": 1.0,
-  "ingredient": {
-    "item": "minecraft:totem_of_undying"
-  },
-  "result": "l2foundation:totemic_gold_ingot"
-}

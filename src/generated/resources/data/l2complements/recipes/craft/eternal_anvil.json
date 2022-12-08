@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "l2complements:eternium_block"
+    },
+    "B": {
+      "item": "l2complements:eternium_ingot"
+    }
+  },
+  "pattern": [
+    "AAA",
+    " B ",
+    "BBB"
+  ],
+  "result": {
+    "item": "l2complements:eternal_anvil"
+  }
+}

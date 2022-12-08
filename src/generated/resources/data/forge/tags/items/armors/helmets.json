@@ -1,9 +1,9 @@
 {
   "values": [
-    "l2foundation:totemic_gold_helmet",
-    "l2foundation:poseidite_helmet",
-    "l2foundation:shulkerate_helmet",
-    "l2foundation:sculkium_helmet",
-    "l2foundation:eternium_helmet"
+    "l2complements:totemic_gold_helmet",
+    "l2complements:poseidite_helmet",
+    "l2complements:shulkerate_helmet",
+    "l2complements:sculkium_helmet",
+    "l2complements:eternium_helmet"
   ]
 }

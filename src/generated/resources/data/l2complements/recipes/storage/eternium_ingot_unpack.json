@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "l2complements:eternium_ingot"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "l2complements:eternium_nugget"
+  }
+}

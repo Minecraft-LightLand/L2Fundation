@@ -1,9 +1,9 @@
 {
   "values": [
-    "l2foundation:totemic_gold_block",
-    "l2foundation:poseidite_block",
-    "l2foundation:shulkerate_block",
-    "l2foundation:sculkium_block",
-    "l2foundation:eternium_block"
+    "l2complements:totemic_gold_block",
+    "l2complements:poseidite_block",
+    "l2complements:shulkerate_block",
+    "l2complements:sculkium_block",
+    "l2complements:eternium_block"
   ]
 }

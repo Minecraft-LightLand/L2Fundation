@@ -1,9 +1,9 @@
 {
   "values": [
-    "l2foundation:totemic_gold_axe",
-    "l2foundation:poseidite_axe",
-    "l2foundation:shulkerate_axe",
-    "l2foundation:sculkium_axe",
-    "l2foundation:eternium_axe"
+    "l2complements:totemic_gold_axe",
+    "l2complements:poseidite_axe",
+    "l2complements:shulkerate_axe",
+    "l2complements:sculkium_axe",
+    "l2complements:eternium_axe"
   ]
 }

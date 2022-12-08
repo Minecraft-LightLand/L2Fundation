@@ -1,9 +1,9 @@
 {
   "values": [
-    "l2foundation:totemic_gold_shovel",
-    "l2foundation:poseidite_shovel",
-    "l2foundation:shulkerate_shovel",
-    "l2foundation:sculkium_shovel",
-    "l2foundation:eternium_shovel"
+    "l2complements:totemic_gold_shovel",
+    "l2complements:poseidite_shovel",
+    "l2complements:shulkerate_shovel",
+    "l2complements:sculkium_shovel",
+    "l2complements:eternium_shovel"
   ]
 }

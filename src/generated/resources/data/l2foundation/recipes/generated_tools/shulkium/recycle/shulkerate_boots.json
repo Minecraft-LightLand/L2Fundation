@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "cookingtime": 200,
-  "experience": 0.1,
-  "ingredient": {
-    "item": "l2foundation:shulkerate_boots"
-  },
-  "result": "l2foundation:shulkerate_nugget"
-}

@@ -1,9 +1,9 @@
 {
   "values": [
-    "l2foundation:totemic_gold_hoe",
-    "l2foundation:poseidite_hoe",
-    "l2foundation:shulkerate_hoe",
-    "l2foundation:sculkium_hoe",
-    "l2foundation:eternium_hoe"
+    "l2complements:totemic_gold_hoe",
+    "l2complements:poseidite_hoe",
+    "l2complements:shulkerate_hoe",
+    "l2complements:sculkium_hoe",
+    "l2complements:eternium_hoe"
   ]
 }

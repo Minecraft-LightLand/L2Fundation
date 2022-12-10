@@ -92,12 +92,12 @@ public class RecipeGen {
 					.define('4', new EnchantmentIngredient(Enchantments.UNBREAKING, 3))
 					.save(pvd, getID(LCMats.ETERNIUM.getNugget()));
 
-			blasting(pvd, Items.TOTEM_OF_UNDYING, LCMats.TOTEMIUM.getIngot(), 1);
-			blasting(pvd, Items.TRIDENT, LCMats.NEPTUNIUM.getIngot(), 1);
+			blasting(pvd, Items.TOTEM_OF_UNDYING, LCMats.TOTEMIC_GOLD.getIngot(), 1);
+			blasting(pvd, Items.TRIDENT, LCMats.POSEIDITE.getIngot(), 1);
 
-			unlock(pvd, new ShapelessRecipeBuilder(LCMats.SHULKIUM.getIngot(), 1)::unlockedBy, LCItems.CAPTURED_BULLET.get())
+			unlock(pvd, new ShapelessRecipeBuilder(LCMats.SHULKERATE.getIngot(), 1)::unlockedBy, LCItems.CAPTURED_BULLET.get())
 					.requires(Items.SHULKER_SHELL, 2).requires(LCItems.CAPTURED_BULLET.get()).requires(Items.IRON_INGOT)
-					.save(pvd, getID(LCMats.SHULKIUM.getIngot()));
+					.save(pvd, getID(LCMats.SHULKERATE.getIngot()));
 
 			unlock(pvd, new ShapelessRecipeBuilder(LCMats.SCULKIUM.getIngot(), 2)::unlockedBy, LCItems.WARDEN_BONE_SHARD.get())
 					.requires(Items.ECHO_SHARD).requires(LCItems.WARDEN_BONE_SHARD.get(), 2).requires(Items.COPPER_INGOT)

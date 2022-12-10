@@ -3,7 +3,7 @@
   "priority": 1000,
   "package": "dev.xkmc.l2complements.mixin",
   "compatibilityLevel": "JAVA_17",
-  "refmap": "l2compliments.refmap.json",
+  "refmap": "l2complements.refmap.json",
   "mixins": [
 	"AnvilBlockMixin",
 	"BlockBehaviorMixin"

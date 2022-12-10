@@ -30,7 +30,12 @@ public class LangData {
 		RESONANT_FEATHER("tooltip.misc.resonant_feather", "Obtained when a chicken survives a sonic boom attack.", 0),
 		SPACE_SHARD("tooltip.misc.space_shard", "Obtained by causing a projectile damage of at least %s.", 1),
 		FORCE_FIELD("tooltip.misc.force_field", "Obtained by killing a wither with arrow.", 0),
-		WARDEN_BONE_SHARD("tooltip.misc.warden_bone_shard", "Dropped when Warden is killed by player.", 0);
+		WARDEN_BONE_SHARD("tooltip.misc.warden_bone_shard", "Dropped when Warden is killed by player.", 0),
+
+		WARP_RECORD("tooltip.misc.warp_record", "Right click to record position", 0),
+		WARP_TELEPORT("tooltip.misc.warp_teleport", "Right click to teleport", 0),
+		WARP_POS("tooltip.misc.warp_pos", "Target: %s, (%s,%s,%s)", 4),
+		;
 
 		final String id, def;
 		final int count;

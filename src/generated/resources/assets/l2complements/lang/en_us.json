@@ -148,5 +148,8 @@
   "l2complements.tooltip.misc.sun_membrane": "Obtained by killing a sun-burning Phantom %s blocks above max build height.",
   "l2complements.tooltip.misc.void_eye": "Obtained by killing an angry Enderman %s block below the void.",
   "l2complements.tooltip.misc.warden_bone_shard": "Dropped when Warden is killed by player.",
+  "l2complements.tooltip.misc.warp_pos": "Target: %s, (%s,%s,%s)",
+  "l2complements.tooltip.misc.warp_record": "Right click to record position",
+  "l2complements.tooltip.misc.warp_teleport": "Right click to teleport",
   "l2complements.tooltip.misc.wind_bottle": "Used to obtain Captured Wind or Captured Bullet."
 }

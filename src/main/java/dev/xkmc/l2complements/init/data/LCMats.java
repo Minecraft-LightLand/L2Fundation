@@ -21,19 +21,19 @@ import net.minecraftforge.common.ForgeTier;
 import java.util.function.Supplier;
 
 public enum LCMats implements IGeneralMats {
-	TOTEMIUM("totemic_gold", 3, SoundEvents.ARMOR_EQUIP_GOLD,
+	TOTEMIC_GOLD("totemic_gold", 3, SoundEvents.ARMOR_EQUIP_GOLD,
 			new GenItem.ToolStats(1000, 12, new int[]{7, 10, 5, 5, 1},
 					new float[]{1.6f, 1f, 1f, 1.2f, 4f}, 22),
 			new GenItem.ArmorStats(15, new int[]{2, 5, 6, 2}, 0, 0, 25),
 			GenItem.TOOL_GEN, GenItem.ARMOR_GEN,
 			new TotemiumTool().setStick(e -> Items.EMERALD, true), new TotemiumArmor()),
-	NEPTUNIUM("poseidite", 4, SoundEvents.ARMOR_EQUIP_GOLD,
+	POSEIDITE("poseidite", 4, SoundEvents.ARMOR_EQUIP_GOLD,
 			new GenItem.ToolStats(1500, 8, new int[]{7, 10, 5, 5, 1},
 					new float[]{1.6f, 1f, 1f, 1.2f, 4f}, 14),
 			new GenItem.ArmorStats(33, new int[]{3, 6, 8, 3}, 2, 0, 9),
 			GenItem.TOOL_GEN, GenItem.ARMOR_GEN,
 			new NeptuniumTool().setStick(e -> Items.PRISMARINE_SHARD, false), new NeptuniumArmor()),
-	SHULKIUM("shulkerate", 4, SoundEvents.ARMOR_EQUIP_IRON,
+	SHULKERATE("shulkerate", 4, SoundEvents.ARMOR_EQUIP_IRON,
 			new GenItem.ToolStats(4000, 8, new int[]{7, 10, 5, 5, 1},
 					new float[]{1.6f, 1f, 1f, 1.2f, 4f}, 14),
 			new GenItem.ArmorStats(400, new int[]{3, 6, 8, 3}, 2, 0, 9),

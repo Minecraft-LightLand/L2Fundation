@@ -12,11 +12,14 @@
     },
     "D": {
       "item": "l2complements:resonant_feather"
+    },
+    "E": {
+      "item": "l2complements:storm_core"
     }
   },
   "pattern": [
     "ABA",
-    "C C",
+    "CEC",
     "D D"
   ],
   "result": {

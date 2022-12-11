@@ -35,7 +35,7 @@ import java.util.function.BiFunction;
 public class RecipeGen {
 
 	@SuppressWarnings("unchecked")
-	private static TagKey<Item>[] TOOLS = List.of(
+	private static final TagKey<Item>[] TOOLS = List.of(
 			Tags.Items.ARMORS_BOOTS,
 			Tags.Items.ARMORS_LEGGINGS,
 			Tags.Items.ARMORS_CHESTPLATES,
@@ -47,7 +47,7 @@ public class RecipeGen {
 			Tags.Items.TOOLS_HOES
 	).toArray(TagKey[]::new);
 
-	private static String[] TOOL_NAME = {"boots", "leggings", "chestplate", "helmet", "sword", "axe", "shovel", "pickaxe", "hoe"};
+	private static final String[] TOOL_NAME = {"boots", "leggings", "chestplate", "helmet", "sword", "axe", "shovel", "pickaxe", "hoe"};
 
 	private static String currentFolder = "";
 
@@ -114,11 +114,12 @@ public class RecipeGen {
 					.requires(Items.SCULK, 4)
 					.save(pvd, getID(Items.ECHO_SHARD));
 			unlock(pvd, new ShapedRecipeBuilder(Items.ELYTRA, 1)::unlockedBy, LCItems.SUN_MEMBRANE.get())
-					.pattern("ABA").pattern("C C").pattern("D D")
+					.pattern("ABA").pattern("CEC").pattern("D D")
 					.define('A', LCItems.EXPLOSION_SHARD.get())
 					.define('B', LCItems.CAPTURED_WIND.get())
 					.define('C', LCItems.SUN_MEMBRANE.get())
 					.define('D', LCItems.RESONANT_FEATHER.get())
+					.define('E', LCItems.STORM_CORE.get())
 					.save(pvd, getID(Items.ELYTRA));
 			unlock(pvd, new ShapedRecipeBuilder(Items.ANCIENT_DEBRIS, 1)::unlockedBy, LCItems.EXPLOSION_SHARD.get())
 					.pattern("ABA").pattern("ACA").pattern("ADA")

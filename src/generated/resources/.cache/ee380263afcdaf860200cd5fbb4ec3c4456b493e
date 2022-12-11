@@ -1,12 +1,12 @@
-// 1.19.2	2022-12-10T16:13:22.18066	Registrate Provider for l2complements [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2022-12-11T16:27:59.143589	Registrate Provider for l2complements [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 fff962c0dd530b1e921155cc2614184665164e32 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
 b2a769b51ddce14c173a64b5457cccb4d8ef6a45 assets/l2complements/blockstates/sculkium_block.json
 2b88df6f8b01f3c72273ce13dbcb556f7dab321d assets/l2complements/blockstates/shulkerate_block.json
 65262ae0f886f61c163059f15c2ad1a7ba9c264a assets/l2complements/blockstates/totemic_gold_block.json
-3116da1a1f83fe764735bf5436fc7c480a2350b4 assets/l2complements/lang/en_ud.json
-8cc11b146f6d5ee2685c72d91111513e06085add assets/l2complements/lang/en_us.json
+388be5ebb437dde78da87d6bd06170a534cd7a88 assets/l2complements/lang/en_ud.json
+5811c7c8c67b03e41f36937f8feed72d1282d71c assets/l2complements/lang/en_us.json
 9c9a8fcc0fe537da5794094e45fc4ca8d397d73f assets/l2complements/models/block/eternal_anvil.json
 bb63c088704d714f1763cb16cec8af6cd1006d66 assets/l2complements/models/block/eternium_block.json
 a45ee09acc262fd67be22de093136ad757f08e61 assets/l2complements/models/block/poseidite_block.json
@@ -30,7 +30,7 @@ dd5a677cc252987ffa6823f4a8da29e8f79c912d assets/l2complements/models/item/eterni
 82470efc44e41dca7c20e3418f065b8ed04888f3 assets/l2complements/models/item/eternium_shovel.json
 9b6da566f5efc98da7d0f03ab9fd3d737a7ec1e1 assets/l2complements/models/item/eternium_sword.json
 b5ec26b7698cc378bcc0ca67392947da65377b59 assets/l2complements/models/item/explosion_shard.json
-7f38e4b9af163d89fc57a423b65b21644353d114 assets/l2complements/models/item/force_field.json
+e0f7b66a84e6588f01abbbce75b1803ffe5d46e2 assets/l2complements/models/item/force_field.json
 ead4933c66bc9b1e8f8497a3a139d90271c938a2 assets/l2complements/models/item/hard_ice.json
 69156dff387d443b0fe708603c504a182b2f2e65 assets/l2complements/models/item/poseidite_axe.json
 a8ad6e55f978a499a218a74cb50c332821699fc5 assets/l2complements/models/item/poseidite_block.json
@@ -475,7 +475,7 @@ cd61ab469e6be605ec49b6bd40b3eb95bebf978c data/l2complements/recipes/storage/shul
 ec3b4d9dd3afadb666f50fd6ceb55731828ff40d data/l2complements/recipes/storage/totemic_gold_ingot_unpack.json
 79cfcb1324f00a5a470f36c7829d003adbd3060d data/l2complements/recipes/vanilla/renew/ancient_debris.json
 2ba3046b81766cee0bfe94ae2629e300c5ed7c43 data/l2complements/recipes/vanilla/renew/echo_shard.json
-1497b06c0b2afda63473984140ea828a4f959e53 data/l2complements/recipes/vanilla/renew/elytra.json
+ecda0fd5e433aca40084017fa87ad7afce4c3214 data/l2complements/recipes/vanilla/renew/elytra.json
 5b82cda2edcf8c4a1c59e7162bbe46f467d1b306 data/l2complements/recipes/vanilla/renew/gilded_blackstone.json
 0dcf112e8dabda52f89be42b3cd6cadf4534d02d data/l2complements/recipes/vanilla/renew/reinforced_deepslate.json
 d87e4f1bf4c4554f10694ec906179ec2f845af59 data/l2complements/recipes/vanilla/upgrade/diamond_axe.json
@@ -510,3 +510,4 @@ e37ba910b8c93bc8d4baf7b90643a6b16e56e0bb data/minecraft/tags/blocks/anvil.json
 1add9316900bcd8966170ac63202cbb1eb904347 data/minecraft/tags/blocks/mineable/pickaxe.json
 6ca30f314d5b5c27b3dd994fd64170066b3940c9 data/minecraft/tags/blocks/needs_stone_tool.json
 e37ba910b8c93bc8d4baf7b90643a6b16e56e0bb data/minecraft/tags/items/anvil.json
+b376083721f28306ed48a8752be7f13fd2bb0d3c data/modulargolems/tags/items/sculk_materials.json

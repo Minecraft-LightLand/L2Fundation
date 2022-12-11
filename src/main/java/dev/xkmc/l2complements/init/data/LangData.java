@@ -77,7 +77,7 @@ public class LangData {
 			pvd.add(L2Complements.MODID + "." + id.id, id.def);
 		}
 
-		pvd.add("itemGroup.l2foundation.generated", "L2Fundation Items");
+		pvd.add("itemGroup.l2complements.generated", "L2Complements Items");
 		pvd.add("death.attack.soul_flame", "%s has its soul burnt out");
 		pvd.add("death.attack.soul_flame.player", "%s has its soul burnt out by %s");
 		List<Item> list = List.of(Items.POTION, Items.SPLASH_POTION, Items.LINGERING_POTION, Items.TIPPED_ARROW);

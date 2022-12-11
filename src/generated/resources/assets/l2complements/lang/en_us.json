@@ -134,7 +134,7 @@
   "item.minecraft.tipped_arrow.effect.stone_cage": "Stone Cage",
   "item.minecraft.tipped_arrow.effect.strong_flame": "Strong Flame",
   "item.minecraft.tipped_arrow.effect.strong_resistance": "Strong Resistance",
-  "itemGroup.l2foundation.generated": "L2Fundation Items",
+  "itemGroup.l2complements.generated": "L2Complements Items",
   "l2complements.tooltip.misc.blackstone_core": "Obtained by killing a Piglin Brute that has Stone Cage effect.",
   "l2complements.tooltip.misc.captured_shulker_bullet": "Obtained by right clicking shulker bullet with Wind Bottle.",
   "l2complements.tooltip.misc.captured_wind": "Obtained by right clicking Wind Bottle when moving faster than %s blocks per second.",

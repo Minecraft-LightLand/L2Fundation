@@ -2,6 +2,7 @@ package dev.xkmc.l2complements.init.registrate;
 
 import dev.xkmc.l2complements.content.item.create.RefinedRadianceItem;
 import dev.xkmc.l2complements.content.item.create.ShadowSteelItem;
+import dev.xkmc.l2complements.content.item.misc.SpecialRenderItem;
 import dev.xkmc.l2complements.content.item.misc.TooltipItem;
 import dev.xkmc.l2complements.content.item.misc.WindBottle;
 import dev.xkmc.l2complements.init.L2Complements;
@@ -14,6 +15,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.Tags;
 
 import java.util.function.BiFunction;
@@ -46,9 +48,20 @@ public class LCItems {
 		REGISTRATE.creativeModeTab(() -> TAB_GENERATED);
 	}
 
-	public static final ItemEntry<TooltipItem> WIND_BOTTLE, VOID_EYE, SUN_MEMBRANE, SOUL_FLAME,
-			CAPTURED_WIND, CAPTURED_BULLET, EXPLOSION_SHARD, HARD_ICE,
-			STORM_CORE, BLACKSTONE_CORE, RESONANT_FEATHER, SPACE_SHARD, FORCE_FIELD, WARDEN_BONE_SHARD;
+	public static final ItemEntry<TooltipItem> WIND_BOTTLE;
+	public static final ItemEntry<TooltipItem> VOID_EYE;
+	public static final ItemEntry<TooltipItem> SUN_MEMBRANE;
+	public static final ItemEntry<TooltipItem> SOUL_FLAME;
+	public static final ItemEntry<TooltipItem> CAPTURED_WIND;
+	public static final ItemEntry<TooltipItem> CAPTURED_BULLET;
+	public static final ItemEntry<TooltipItem> EXPLOSION_SHARD;
+	public static final ItemEntry<TooltipItem> HARD_ICE;
+	public static final ItemEntry<TooltipItem> STORM_CORE;
+	public static final ItemEntry<TooltipItem> BLACKSTONE_CORE;
+	public static final ItemEntry<TooltipItem> RESONANT_FEATHER;
+	public static final ItemEntry<TooltipItem> SPACE_SHARD;
+	public static final ItemEntry<TooltipItem> WARDEN_BONE_SHARD;
+	public static final ItemEntry<SpecialRenderItem> FORCE_FIELD;
 
 	public static final ItemEntry<Item>[] MAT_INGOTS, MAT_NUGGETS;
 	public static final ItemEntry<Item>[][] GEN_ITEM;
@@ -70,8 +83,10 @@ public class LCItems {
 			BLACKSTONE_CORE = simpleItem("blackstone_core", TooltipItem::new, Rarity.RARE, LangData.IDS.BLACKSTONE_CORE::get); // kill guardian with stone cage effect
 			RESONANT_FEATHER = simpleItem("resonant_feather", TooltipItem::new, Rarity.EPIC, LangData.IDS.RESONANT_FEATHER::get); // let chicken survive sonic boom
 			SPACE_SHARD = simpleItem("space_shard", TooltipItem::new, Rarity.EPIC, () -> LangData.IDS.SPACE_SHARD.get(LCConfig.COMMON.spaceDamage.get())); // deal 500 arrow damage
-			FORCE_FIELD = simpleItem("force_field", TooltipItem::new, Rarity.EPIC, LangData.IDS.FORCE_FIELD::get); //kill wither with arrow
 			WARDEN_BONE_SHARD = simpleItem("warden_bone_shard", TooltipItem::new, Rarity.RARE, LangData.IDS.WARDEN_BONE_SHARD::get);
+			FORCE_FIELD = REGISTRATE.item("force_field", p->new SpecialRenderItem(p.fireResistant().rarity(Rarity.EPIC), LangData.IDS.FORCE_FIELD::get))
+					.model((ctx, pvd) -> pvd.getBuilder(ctx.getName()).parent(new ModelFile.UncheckedModelFile("builtin/entity")))
+					.defaultLang().register();
 		}
 		GEN_ITEM = L2Complements.MATS.genItem();
 	}

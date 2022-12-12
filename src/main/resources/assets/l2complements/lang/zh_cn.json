@@ -13,6 +13,10 @@
   "item.l2complements.space_shard": "空间碎片",
   "item.l2complements.force_field": "守护力场",
   "item.l2complements.warden_bone_shard": "强化骨片",
+  "item.l2complements.fragile_warp_stone": "易碎的传送石",
+  "item.l2complements.reinforced_warp_stone": "坚固的传送石",
+  "item.l2complements.totem_of_dream": "幻梦图腾",
+  "item.l2complements.totem_of_the_sea": "海神图腾",
   "block.l2complements.eternal_anvil": "永恒铁砧",
   "item.l2complements.totemic_gold_helmet": "生命头盔",
   "item.l2complements.totemic_gold_chestplate": "生命胸甲",
@@ -115,7 +119,7 @@
   "effect.l2complements.frozen": "寒流",
   "effect.l2complements.stone_cage": "禁锢",
   "effect.l2complements.emerald": "绿宝石水花",
-  "itemGroup.l2complements.generated": "道具材料",
+  "itemGroup.l2complements.generated": "莱特兰·扩展",
   "item.minecraft.tipped_arrow.effect.flame": "燃魂之箭",
   "item.minecraft.tipped_arrow.effect.long_flame": "燃魂之箭",
   "item.minecraft.tipped_arrow.effect.strong_flame": "燃魂之箭",
@@ -148,5 +152,8 @@
   "l2complements.tooltip.misc.sun_membrane": "在世界建筑上限的%s格以上杀死被晒伤的幻翼获得",
   "l2complements.tooltip.misc.void_eye": "杀死处于虚空%s格以下的被激怒的末影人获得",
   "l2complements.tooltip.misc.wind_bottle": "获取千风精华和瓶中潜影弹的基础物品",
-  "l2complements.tooltip.misc.warden_bone_shard": "玩家亲自击杀监守者时掉落"
+  "l2complements.tooltip.misc.warden_bone_shard": "玩家亲自击杀监守者时掉落",
+  "l2complements.tooltip.misc.warp_pos": "目标: %s, (%s,%s,%s)",
+  "l2complements.tooltip.misc.warp_record": "右键记录坐标",
+  "l2complements.tooltip.misc.warp_teleport": "右键传送"
 }

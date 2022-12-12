@@ -103,6 +103,31 @@ public class RecipeGen {
 					.requires(Items.ECHO_SHARD).requires(LCItems.WARDEN_BONE_SHARD.get(), 2).requires(Items.COPPER_INGOT)
 					.save(pvd, getID(LCMats.SCULKIUM.getIngot()));
 
+			unlock(pvd, new ShapelessRecipeBuilder(LCItems.FRAGILE_WARP_STONE.get(), 1)::unlockedBy, LCItems.VOID_EYE.get())
+					.requires(Items.ECHO_SHARD).requires(LCItems.VOID_EYE.get(), 2).requires(Items.ENDER_PEARL)
+					.save(pvd, getID(LCItems.FRAGILE_WARP_STONE.get()));
+
+			unlock(pvd, new ShapedRecipeBuilder(LCItems.REINFORCED_WARP_STONE.get(), 1)::unlockedBy, LCItems.FRAGILE_WARP_STONE.get())
+					.pattern(" A ").pattern("ABA").pattern(" A ")
+					.define('A', LCMats.SHULKERATE.getIngot())
+					.define('B', LCItems.FRAGILE_WARP_STONE.get())
+					.save(pvd, getID(LCItems.REINFORCED_WARP_STONE.get()));
+
+			unlock(pvd, new ShapedRecipeBuilder(LCItems.TOTEM_OF_DREAM.get(), 1)::unlockedBy, LCItems.FRAGILE_WARP_STONE.get())
+					.pattern("CAC").pattern("ABA").pattern("CAC")
+					.define('A', LCMats.TOTEMIC_GOLD.getIngot())
+					.define('B', LCItems.FRAGILE_WARP_STONE.get())
+					.define('C', Items.ENDER_PEARL)
+					.save(pvd, getID(LCItems.TOTEM_OF_DREAM.get()));
+
+			unlock(pvd, new ShapedRecipeBuilder(LCItems.TOTEM_OF_THE_SEA.get(), 1)::unlockedBy, LCMats.POSEIDITE.getIngot())
+					.pattern("CAC").pattern("ABA").pattern("CAC")
+					.define('A', LCMats.TOTEMIC_GOLD.getIngot())
+					.define('B', Items.HEART_OF_THE_SEA)
+					.define('C', LCMats.POSEIDITE.getIngot())
+					.save(pvd, getID(LCItems.TOTEM_OF_THE_SEA.get()));
+
+
 		}
 
 		currentFolder = "vanilla/renew/";
@@ -134,7 +159,7 @@ public class RecipeGen {
 					.define('B', Items.GOLD_INGOT)
 					.define('C', LCItems.BLACKSTONE_CORE.get())
 					.save(pvd, getID(Items.GILDED_BLACKSTONE));
-			unlock(pvd, new ShapedRecipeBuilder(Items.REINFORCED_DEEPSLATE,1)::unlockedBy, LCItems.WARDEN_BONE_SHARD.get())
+			unlock(pvd, new ShapedRecipeBuilder(Items.REINFORCED_DEEPSLATE, 1)::unlockedBy, LCItems.WARDEN_BONE_SHARD.get())
 					.pattern(" B ").pattern("BAB").pattern(" B ")
 					.define('A', Items.DEEPSLATE)
 					.define('B', LCItems.WARDEN_BONE_SHARD.get())

@@ -50,7 +50,9 @@ public enum LCMats implements IGeneralMats {
 			new GenItem.ToolStats(9999, 8, new int[]{7, 10, 5, 5, 1},
 					new float[]{1.6f, 1f, 1f, 1.2f, 4f}, 1),
 			new GenItem.ArmorStats(9999, new int[]{3, 6, 8, 3}, 2, 0, 1),
-			GenItem.TOOL_GEN, GenItem.ARMOR_GEN, new ExtraToolConfig().damageChance(0).repairChance(1),
+			GenItem.TOOL_GEN, GenItem.ARMOR_GEN,
+			new ExtraToolConfig().damageChance(0).repairChance(1)
+					.setStick(e -> LCItems.EXPLOSION_SHARD.get(), false),
 			new ExtraArmorConfig().damageChance(0).repairChance(1));
 
 	final String id;

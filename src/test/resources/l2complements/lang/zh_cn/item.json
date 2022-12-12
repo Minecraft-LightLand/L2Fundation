@@ -13,7 +13,11 @@
 	"resonant_feather": "共振之羽",
 	"space_shard": "空间碎片",
 	"force_field": "守护力场",
-	"warden_bone_shard": "强化骨片"
+	"warden_bone_shard": "强化骨片",
+	"fragile_warp_stone": "易碎的传送石",
+	"reinforced_warp_stone": "坚固的传送石",
+	"totem_of_dream": "幻梦图腾",
+	"totem_of_the_sea": "海神图腾"
   },
   "block.l2complements": {
 	"eternal_anvil": "永恒铁砧"

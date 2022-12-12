@@ -14,6 +14,7 @@ public class TagGen {
 
 	public static final TagKey<Block> REQUIRES_SCULK_TOOL = BlockTags.create(new ResourceLocation(L2Complements.MODID, "requires_sculk_tool"));
 	public static final TagKey<Item> SCULK_MATS = ItemTags.create(new ResourceLocation("modulargolems", "sculk_materials"));
+	public static final TagKey<Item> TOTEM = ItemTags.create(new ResourceLocation(L2Complements.MODID,"l2c_totems"));
 
 	public static void onBlockTagGen(RegistrateTagsProvider<Block> pvd) {
 		pvd.tag(REQUIRES_SCULK_TOOL).add(Blocks.REINFORCED_DEEPSLATE);
@@ -22,6 +23,7 @@ public class TagGen {
 
 	public static void onItemTagGen(RegistrateTagsProvider<Item> pvd) {
 		pvd.tag(SCULK_MATS).add(LCMats.SCULKIUM.getIngot());
+		pvd.tag(TOTEM);
 	}
 
 }

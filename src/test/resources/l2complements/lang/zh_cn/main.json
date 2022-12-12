@@ -48,6 +48,9 @@
 	"sun_membrane": "在世界建筑上限的%s格以上杀死被晒伤的幻翼获得",
 	"void_eye": "杀死处于虚空%s格以下的被激怒的末影人获得",
 	"wind_bottle": "获取千风精华和瓶中潜影弹的基础物品",
-	"warden_bone_shard": "玩家亲自击杀监守者时掉落"
+	"warden_bone_shard": "玩家亲自击杀监守者时掉落",
+	"warp_pos": "目标: %s, (%s,%s,%s)",
+	"warp_record": "右键记录坐标",
+	"warp_teleport": "右键传送"
   }
 }

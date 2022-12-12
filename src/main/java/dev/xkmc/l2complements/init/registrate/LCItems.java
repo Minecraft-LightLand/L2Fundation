@@ -2,9 +2,7 @@ package dev.xkmc.l2complements.init.registrate;
 
 import dev.xkmc.l2complements.content.item.create.RefinedRadianceItem;
 import dev.xkmc.l2complements.content.item.create.ShadowSteelItem;
-import dev.xkmc.l2complements.content.item.misc.SpecialRenderItem;
-import dev.xkmc.l2complements.content.item.misc.TooltipItem;
-import dev.xkmc.l2complements.content.item.misc.WindBottle;
+import dev.xkmc.l2complements.content.item.misc.*;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
@@ -63,6 +61,12 @@ public class LCItems {
 	public static final ItemEntry<TooltipItem> WARDEN_BONE_SHARD;
 	public static final ItemEntry<SpecialRenderItem> FORCE_FIELD;
 
+
+	public static final ItemEntry<WarpStone> FRAGILE_WARP_STONE;
+	public static final ItemEntry<WarpStone> REINFORCED_WARP_STONE;
+	public static final ItemEntry<HomeTotem> TOTEM_OF_DREAM;
+	public static final ItemEntry<PoseiditeTotem> TOTEM_OF_THE_SEA;
+
 	public static final ItemEntry<Item>[] MAT_INGOTS, MAT_NUGGETS;
 	public static final ItemEntry<Item>[][] GEN_ITEM;
 
@@ -84,9 +88,23 @@ public class LCItems {
 			RESONANT_FEATHER = simpleItem("resonant_feather", TooltipItem::new, Rarity.EPIC, LangData.IDS.RESONANT_FEATHER::get); // let chicken survive sonic boom
 			SPACE_SHARD = simpleItem("space_shard", TooltipItem::new, Rarity.EPIC, () -> LangData.IDS.SPACE_SHARD.get(LCConfig.COMMON.spaceDamage.get())); // deal 500 arrow damage
 			WARDEN_BONE_SHARD = simpleItem("warden_bone_shard", TooltipItem::new, Rarity.RARE, LangData.IDS.WARDEN_BONE_SHARD::get);
-			FORCE_FIELD = REGISTRATE.item("force_field", p->new SpecialRenderItem(p.fireResistant().rarity(Rarity.EPIC), LangData.IDS.FORCE_FIELD::get))
+			FORCE_FIELD = REGISTRATE.item("force_field", p -> new SpecialRenderItem(p.fireResistant().rarity(Rarity.EPIC), LangData.IDS.FORCE_FIELD::get))
 					.model((ctx, pvd) -> pvd.getBuilder(ctx.getName()).parent(new ModelFile.UncheckedModelFile("builtin/entity")))
 					.defaultLang().register();
+		}
+		{
+			FRAGILE_WARP_STONE = REGISTRATE.item("fragile_warp_stone", p ->
+							new WarpStone(p.fireResistant().stacksTo(1).rarity(Rarity.RARE), true))
+					.defaultModel().defaultLang().register();
+			REINFORCED_WARP_STONE = REGISTRATE.item("reinforced_warp_stone", p ->
+							new WarpStone(p.fireResistant().stacksTo(1).durability(128).rarity(Rarity.RARE), false))
+					.defaultModel().defaultLang().register();
+			TOTEM_OF_DREAM = REGISTRATE.item("totem_of_dream", p ->
+							new HomeTotem(p.fireResistant().stacksTo(1).rarity(Rarity.EPIC)))
+					.defaultModel().defaultLang().register();
+			TOTEM_OF_THE_SEA = REGISTRATE.item("totem_of_the_sea", p ->
+							new PoseiditeTotem(p.fireResistant().stacksTo(16).rarity(Rarity.EPIC)))
+					.defaultModel().defaultLang().register();
 		}
 		GEN_ITEM = L2Complements.MATS.genItem();
 	}

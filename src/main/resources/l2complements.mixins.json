@@ -6,7 +6,8 @@
   "refmap": "l2complements.refmap.json",
   "mixins": [
 	"AnvilBlockMixin",
-	"BlockBehaviorMixin"
+	"BlockBehaviorMixin",
+	"LivingEntityMixin"
   ],
   "client": [
   ],

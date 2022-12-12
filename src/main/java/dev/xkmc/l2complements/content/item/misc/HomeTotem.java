@@ -2,6 +2,7 @@ package dev.xkmc.l2complements.content.item.misc;
 
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2library.util.tools.TeleportTool;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
@@ -9,7 +10,11 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 public class HomeTotem extends Item implements ILCTotem {
@@ -34,5 +39,8 @@ public class HomeTotem extends Item implements ILCTotem {
 			TeleportTool.teleportHome(level, player);
 	}
 
+	@Override
+	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	}
 
 }

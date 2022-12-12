@@ -26,6 +26,7 @@ public class WarpStone extends Item {
 
 	public static Optional<Pair<ResourceKey<Level>, Vec3>> getPos(ItemStack stack) {
 		return Optional.ofNullable(stack.getTag()).filter(e -> e.contains("pos"))
+				.map(e -> e.getCompound("pos"))
 				.map(e -> Pair.of(
 						ResourceKey.create(Registry.DIMENSION_REGISTRY,
 								new ResourceLocation(e.getString("dim"))),
@@ -60,13 +61,14 @@ public class WarpStone extends Item {
 				var pos = pair.getSecond();
 				ServerLevel lv = ((ServerLevel) level).getServer().getLevel(dim);
 				if (lv != null) {
-					TeleportTool.performTeleport(player, lv, pos.x, pos.y, pos.z, player.getXRot(), player.getYRot());
+					TeleportTool.performTeleport(player, lv, pos.x, pos.y, pos.z, player.getYRot(), player.getXRot());
 				}
 				if (!fragile) {
 					stack.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(hand));
 				}
 			}
 			if (fragile) {
+				stack.shrink(1);
 				return InteractionResultHolder.consume(stack);
 			} else {
 				return InteractionResultHolder.success(stack);
@@ -92,4 +94,10 @@ public class WarpStone extends Item {
 			list.add(LangData.IDS.WARP_RECORD.get());
 		}
 	}
+
+	@Override
+	public boolean isFoil(ItemStack pStack) {
+		return getPos(pStack).isPresent();
+	}
+
 }

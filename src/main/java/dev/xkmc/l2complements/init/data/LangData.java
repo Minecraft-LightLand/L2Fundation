@@ -35,7 +35,8 @@ public class LangData {
 		WARP_RECORD("tooltip.misc.warp_record", "Right click to record position", 0),
 		WARP_TELEPORT("tooltip.misc.warp_teleport", "Right click to teleport", 0),
 		WARP_POS("tooltip.misc.warp_pos", "Target: %s, (%s,%s,%s)", 4),
-		;
+		TOTEM_DREAM("tooltip.misc.totem_dream", "Return players back to home when triggers, and becomes a fragile warp stone to go back. Valid against void damage. Also heal player to full health.", 0),
+		TOTEM_SEA("tooltip.misc.totem_sea", "Stackable, but only triggers when in water or rain.", 0);
 
 		final String id, def;
 		final int count;

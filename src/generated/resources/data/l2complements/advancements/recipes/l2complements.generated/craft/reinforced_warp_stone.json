@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_fragile_warp_stone": {
+    "has_shulkerate_ingot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "l2complements:fragile_warp_stone"
+              "l2complements:shulkerate_ingot"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_fragile_warp_stone",
+      "has_shulkerate_ingot",
       "has_the_recipe"
     ]
   ],

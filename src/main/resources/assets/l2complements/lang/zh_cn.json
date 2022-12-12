@@ -155,5 +155,7 @@
   "l2complements.tooltip.misc.warden_bone_shard": "玩家亲自击杀监守者时掉落",
   "l2complements.tooltip.misc.warp_pos": "目标: %s, (%s,%s,%s)",
   "l2complements.tooltip.misc.warp_record": "右键记录坐标",
-  "l2complements.tooltip.misc.warp_teleport": "右键传送"
+  "l2complements.tooltip.misc.warp_teleport": "右键传送",
+  "l2complements.tooltip.misc.totem_dream": "激活时让玩家回到出生点，同时变成一个绑定了激活地点的易碎传送石。对虚空伤害也有效。回复全部血量。",
+  "l2complements.tooltip.misc.totem_sea": "可堆叠，但能只在水中/雨中激活。"
 }

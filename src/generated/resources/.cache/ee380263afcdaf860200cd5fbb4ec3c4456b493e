@@ -1,12 +1,12 @@
-// 1.19.2	2022-12-12T09:43:14.03566	Registrate Provider for l2complements [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2022-12-12T12:04:11.927917	Registrate Provider for l2complements [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 fff962c0dd530b1e921155cc2614184665164e32 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
 b2a769b51ddce14c173a64b5457cccb4d8ef6a45 assets/l2complements/blockstates/sculkium_block.json
 2b88df6f8b01f3c72273ce13dbcb556f7dab321d assets/l2complements/blockstates/shulkerate_block.json
 65262ae0f886f61c163059f15c2ad1a7ba9c264a assets/l2complements/blockstates/totemic_gold_block.json
-33811503769c7c5ce09992bf86efde0df8ad0e64 assets/l2complements/lang/en_ud.json
-b946750e1fca65de5e7bfce1de65f6e6f29daa07 assets/l2complements/lang/en_us.json
+9e7d25893ef4a8c7edc1bcb8a1474a9b985d9b45 assets/l2complements/lang/en_ud.json
+b5426ee9ba3d44a69b7cc75999d101c4d65eaf72 assets/l2complements/lang/en_us.json
 9c9a8fcc0fe537da5794094e45fc4ca8d397d73f assets/l2complements/models/block/eternal_anvil.json
 bb63c088704d714f1763cb16cec8af6cd1006d66 assets/l2complements/models/block/eternium_block.json
 a45ee09acc262fd67be22de093136ad757f08e61 assets/l2complements/models/block/poseidite_block.json
@@ -131,7 +131,7 @@ d33395b915a55f89d8088777cfae2ba1966b22aa data/l2complements/advancements/recipes
 7560aabff011aa6aa94ec4ddaeee12e9d66bec96 data/l2complements/advancements/recipes/l2complements.generated/craft/eternal_anvil.json
 5127d365ee15c888cae6f08eba26c89ee41fd5d2 data/l2complements/advancements/recipes/l2complements.generated/craft/eternium_nugget.json
 173126eb4a4b3974bd074c8700450a011a408abf data/l2complements/advancements/recipes/l2complements.generated/craft/fragile_warp_stone.json
-0bad4418647ddb4933f7468417049ea6008f8b4c data/l2complements/advancements/recipes/l2complements.generated/craft/reinforced_warp_stone.json
+80fb3bc9ae3ada121086f757d0d7bd913fe4c780 data/l2complements/advancements/recipes/l2complements.generated/craft/reinforced_warp_stone.json
 05e127986c7ae654b25be21abce223ddac72c135 data/l2complements/advancements/recipes/l2complements.generated/craft/sculkium_ingot.json
 a067ce2564dbb471a2e2b6910480b802b909eb2e data/l2complements/advancements/recipes/l2complements.generated/craft/shulkerate_ingot.json
 9566497abe644286f8d61095b20c3e7a524b3116 data/l2complements/advancements/recipes/l2complements.generated/craft/totem_of_dream.json
@@ -317,7 +317,7 @@ cc00bc4ca85dbd833ba6f62412deeba32f74daf6 data/l2complements/loot_tables/blocks/e
 7219a36d1a7e741f00bf644370634bfe992082f3 data/l2complements/recipes/craft/eternal_anvil.json
 fbb81e3f0ef945cebed601519779590f2da82408 data/l2complements/recipes/craft/eternium_nugget.json
 5480a6b9e850d821010356c627afeaaad8b05ff9 data/l2complements/recipes/craft/fragile_warp_stone.json
-70ebab256957153272d8041a8a333270eeaf7810 data/l2complements/recipes/craft/reinforced_warp_stone.json
+90514f006b8e1a9481fbd0a2c6738b85d414fcc3 data/l2complements/recipes/craft/reinforced_warp_stone.json
 67c226af90a3f316d93852cd95cbb1f532f9c361 data/l2complements/recipes/craft/sculkium_ingot.json
 457e605c5ffda634c6fed8b7deb63aa20c78e0b3 data/l2complements/recipes/craft/shulkerate_ingot.json
 644d53c7d9d7fcebe19391507430762de0da1306 data/l2complements/recipes/craft/totem_of_dream.json
@@ -518,7 +518,7 @@ b4363c8a1aea383f18403d38006ddde0ab74497c data/l2complements/recipes/vanilla/upgr
 15f26c8d78cf96aeddb955062e008d0f422ef315 data/l2complements/recipes/vanilla/upgrade/iron_shovel.json
 075dfbcfca870a9b72b118a0ceb07bf3c1acc81d data/l2complements/recipes/vanilla/upgrade/iron_sword.json
 bfdfab925d3aae515709e426b963be6ae6fc0d4b data/l2complements/tags/blocks/requires_sculk_tool.json
-35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/l2complements/tags/items/l2c_totems.json
+8bc2e79599af169e6f9f11cc081dd692ab81d86c data/l2complements/tags/items/l2c_totems.json
 e37ba910b8c93bc8d4baf7b90643a6b16e56e0bb data/minecraft/tags/blocks/anvil.json
 1add9316900bcd8966170ac63202cbb1eb904347 data/minecraft/tags/blocks/mineable/pickaxe.json
 6ca30f314d5b5c27b3dd994fd64170066b3940c9 data/minecraft/tags/blocks/needs_stone_tool.json

@@ -1,18 +1,11 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "key": {
-    "A": {
-      "item": "l2complements:shulkerate_ingot"
-    },
-    "B": {
-      "item": "l2complements:fragile_warp_stone"
-    }
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "l2complements:shulkerate_ingot"
   },
-  "pattern": [
-    " A ",
-    "ABA",
-    " A "
-  ],
+  "base": {
+    "item": "l2complements:fragile_warp_stone"
+  },
   "result": {
     "item": "l2complements:reinforced_warp_stone"
   }

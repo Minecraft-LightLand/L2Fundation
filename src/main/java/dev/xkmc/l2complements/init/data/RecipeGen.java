@@ -107,11 +107,7 @@ public class RecipeGen {
 					.requires(Items.ECHO_SHARD).requires(LCItems.VOID_EYE.get(), 2).requires(Items.ENDER_PEARL)
 					.save(pvd, getID(LCItems.FRAGILE_WARP_STONE.get()));
 
-			unlock(pvd, new ShapedRecipeBuilder(LCItems.REINFORCED_WARP_STONE.get(), 1)::unlockedBy, LCItems.FRAGILE_WARP_STONE.get())
-					.pattern(" A ").pattern("ABA").pattern(" A ")
-					.define('A', LCMats.SHULKERATE.getIngot())
-					.define('B', LCItems.FRAGILE_WARP_STONE.get())
-					.save(pvd, getID(LCItems.REINFORCED_WARP_STONE.get()));
+			smithing(pvd, LCItems.FRAGILE_WARP_STONE.get(), LCMats.SHULKERATE.getIngot(), LCItems.REINFORCED_WARP_STONE.get());
 
 			unlock(pvd, new ShapedRecipeBuilder(LCItems.TOTEM_OF_DREAM.get(), 1)::unlockedBy, LCItems.FRAGILE_WARP_STONE.get())
 					.pattern("CAC").pattern("ABA").pattern("CAC")
@@ -287,6 +283,10 @@ public class RecipeGen {
 	}
 
 	public static void smithing(RegistrateRecipeProvider pvd, TagKey<Item> in, Item mat, Item out) {
+		unlock(pvd, UpgradeRecipeBuilder.smithing(Ingredient.of(in), Ingredient.of(mat), out)::unlocks, mat).save(pvd, getID(out));
+	}
+
+	public static void smithing(RegistrateRecipeProvider pvd, Item in, Item mat, Item out) {
 		unlock(pvd, UpgradeRecipeBuilder.smithing(Ingredient.of(in), Ingredient.of(mat), out)::unlocks, mat).save(pvd, getID(out));
 	}
 

@@ -1,9 +1,12 @@
 package dev.xkmc.l2complements.init.data;
 
+import dev.xkmc.l2complements.content.item.generic.ExtraArmorConfig;
 import dev.xkmc.l2complements.content.item.generic.ExtraToolConfig;
 import dev.xkmc.l2library.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Tier;
 import net.minecraft.world.level.block.Block;
 
 public interface IGeneralMats {
@@ -40,5 +43,17 @@ public interface IGeneralMats {
 		return tool_extra.reversed ? getIngot() : tool_extra.stick.apply(this);
 	}
 
+	String getID();
 
+	GenItem.ArmorConfig getArmorConfig();
+
+	GenItem.ToolConfig getToolConfig();
+
+	GenItem.ToolStats getToolStats();
+
+	Tier getTier();
+
+	ExtraArmorConfig getExtraArmorConfig();
+
+	ArmorMaterial getArmorMaterial();
 }

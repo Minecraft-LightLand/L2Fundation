@@ -31,22 +31,22 @@ public class GenItem {
 		case HOE -> HoeItem::new;
 	};
 
-	public static TieredItem genGenericTool(LCMats mat, Tools tool, Item.Properties prop) {
-		int dmg = mat.tool_stats.add_dmg[tool.ordinal()] - 1;
-		float speed = mat.tool_stats.add_speed[tool.ordinal()] - 4;
+	public static TieredItem genGenericTool(IGeneralMats mat, Tools tool, Item.Properties prop) {
+		int dmg = mat.getToolStats().add_dmg[tool.ordinal()] - 1;
+		float speed = mat.getToolStats().add_speed[tool.ordinal()] - 4;
 		return switch (tool) {
-			case SWORD -> new GenericSwordItem(mat.tier, dmg, speed, prop, mat.tool_extra);
-			case AXE -> new GenericAxeItem(mat.tier, dmg, speed, prop, mat.tool_extra);
-			case SHOVEL -> new GenericShovelItem(mat.tier, dmg, speed, prop, mat.tool_extra);
-			case PICKAXE -> new GenericPickaxeItem(mat.tier, dmg, speed, prop, mat.tool_extra);
-			case HOE -> new GenericHoeItem(mat.tier, dmg, speed, prop, mat.tool_extra);
+			case SWORD -> new GenericSwordItem(mat.getTier(), dmg, speed, prop, mat.getExtraToolConfig());
+			case AXE -> new GenericAxeItem(mat.getTier(), dmg, speed, prop, mat.getExtraToolConfig());
+			case SHOVEL -> new GenericShovelItem(mat.getTier(), dmg, speed, prop, mat.getExtraToolConfig());
+			case PICKAXE -> new GenericPickaxeItem(mat.getTier(), dmg, speed, prop, mat.getExtraToolConfig());
+			case HOE -> new GenericHoeItem(mat.getTier(), dmg, speed, prop, mat.getExtraToolConfig());
 		};
 	}
 
 	public static final ToolConfig TOOL_DEF = new ToolConfig(fromToolGen(TOOL_GEN_FUNC));
 	public static final ToolConfig TOOL_GEN = new ToolConfig(GenItem::genGenericTool);
-	public static final ArmorConfig ARMOR_DEF = new ArmorConfig((mat, slot, prop) -> new ArmorItem(mat.mat, slot, prop));
-	public static final ArmorConfig ARMOR_GEN = new ArmorConfig((mat, slot, prop) -> new GenericArmorItem(mat.mat, slot, prop, mat.armor_extra));
+	public static final ArmorConfig ARMOR_DEF = new ArmorConfig((mat, slot, prop) -> new ArmorItem(mat.getArmorMaterial(), slot, prop));
+	public static final ArmorConfig ARMOR_GEN = new ArmorConfig((mat, slot, prop) -> new GenericArmorItem(mat.getArmorMaterial(), slot, prop, mat.getExtraArmorConfig()));
 
 	public enum Tools {
 		SWORD(Tags.Items.TOOLS_SWORDS),
@@ -71,7 +71,7 @@ public class GenItem {
 	@FunctionalInterface
 	public interface ArmorFactory {
 
-		ArmorItem get(LCMats mat, EquipmentSlot slot, Item.Properties props);
+		ArmorItem get(IGeneralMats mat, EquipmentSlot slot, Item.Properties props);
 
 	}
 
@@ -84,14 +84,7 @@ public class GenItem {
 	@FunctionalInterface
 	public interface ToolFactory {
 
-		TieredItem get(LCMats mat, Tools tool, Item.Properties props);
-
-	}
-
-	@FunctionalInterface
-	public interface EntryProcessor {
-
-		ItemBuilder<Item, L2Registrate> apply(ItemBuilder<Item, L2Registrate> builder);
+		TieredItem get(IGeneralMats mat, Tools tool, Item.Properties props);
 
 	}
 
@@ -113,9 +106,9 @@ public class GenItem {
 	}
 
 	private static ToolFactory fromToolGen(Function<Tools, RawToolFactory> gen) {
-		return (mat, tool, prop) -> gen.apply(tool).get(mat.tier,
-				mat.tool_stats.add_dmg[tool.ordinal()] - 1,
-				mat.tool_stats.add_speed[tool.ordinal()] - 4, prop);
+		return (mat, tool, prop) -> gen.apply(tool).get(mat.getTier(),
+				mat.getToolStats().add_dmg[tool.ordinal()] - 1,
+				mat.getToolStats().add_speed[tool.ordinal()] - 4, prop);
 	}
 
 	private final String modid;
@@ -126,14 +119,14 @@ public class GenItem {
 		this.registrate = registrate;
 	}
 
-	public ItemEntry<Item>[][] genItem() {
-		int n = LCMats.values().length;
+	public ItemEntry<Item>[][] genItem(IGeneralMats[] mats) {
+		int n = mats.length;
 		ItemEntry[][] ans = new ItemEntry[n][9];
 		for (int i = 0; i < n; i++) {
-			LCMats mat = LCMats.values()[i];
-			String id = mat.id;
+			IGeneralMats mat = mats[i];
+			String id = mat.getID();
 			BiFunction<String, EquipmentSlot, ItemBuilder> armor_gen = (str, slot) ->
-					registrate.item(id + "_" + str, p -> mat.armor_config.sup.get(mat, slot, p))
+					registrate.item(id + "_" + str, p -> mat.getArmorConfig().sup.get(mat, slot, p))
 							.model((ctx, pvd) -> generatedModel(ctx, pvd, id, str))
 							.defaultLang();
 			ans[i][3] = armor_gen.apply("helmet", EquipmentSlot.HEAD).tag(Tags.Items.ARMORS_HELMETS).register();
@@ -141,7 +134,7 @@ public class GenItem {
 			ans[i][1] = armor_gen.apply("leggings", EquipmentSlot.LEGS).tag(Tags.Items.ARMORS_LEGGINGS).register();
 			ans[i][0] = armor_gen.apply("boots", EquipmentSlot.FEET).tag(Tags.Items.ARMORS_BOOTS).register();
 			BiFunction<String, Tools, ItemEntry> tool_gen = (str, tool) ->
-					registrate.item(id + "_" + str, p -> mat.tool_config.sup.get(mat, tool, p))
+					registrate.item(id + "_" + str, p -> mat.getToolConfig().sup.get(mat, tool, p))
 							.model((ctx, pvd) -> handHeld(ctx, pvd, id, str)).tag(tool.tag)
 							.defaultLang().register();
 			for (int j = 0; j < Tools.values().length; j++) {
@@ -152,11 +145,11 @@ public class GenItem {
 		return ans;
 	}
 
-	public ItemEntry<Item>[] genMats(String suffix, TagKey<Item> tag) {
-		int n = LCMats.values().length;
+	public ItemEntry<Item>[] genMats(IGeneralMats[] mats, String suffix, TagKey<Item> tag) {
+		int n = mats.length;
 		ItemEntry[] ans = new ItemEntry[n];
 		for (int i = 0; i < n; i++) {
-			String id = LCMats.values()[i].id;
+			String id = mats[i].getID();
 			ans[i] = registrate.item(id + "_" + suffix, Item::new)
 					.model((ctx, pvd) -> generatedModel(ctx, pvd, id, suffix))
 					.tag(tag).defaultLang().register();
@@ -164,11 +157,11 @@ public class GenItem {
 		return ans;
 	}
 
-	public BlockEntry<Block>[] genBlockMats() {
-		int n = LCMats.values().length;
+	public BlockEntry<Block>[] genBlockMats(IGeneralMats[] mats) {
+		int n = mats.length;
 		BlockEntry[] ans = new BlockEntry[n];
 		for (int i = 0; i < n; i++) {
-			ans[i] = registrate.block(LCMats.values()[i].id + "_block", p -> new Block(Block.Properties.copy(Blocks.IRON_BLOCK)))
+			ans[i] = registrate.block(mats[i].getID() + "_block", p -> new Block(Block.Properties.copy(Blocks.IRON_BLOCK)))
 					.defaultLoot().defaultBlockstate()
 					.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL, Tags.Blocks.STORAGE_BLOCKS)
 					.item().tag(Tags.Items.STORAGE_BLOCKS).build().defaultLang().register();

@@ -5,6 +5,7 @@ import dev.xkmc.l2complements.content.item.create.ShadowSteelItem;
 import dev.xkmc.l2complements.content.item.misc.*;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
+import dev.xkmc.l2complements.init.data.LCMats;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2library.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -72,8 +73,8 @@ public class LCItems {
 
 	static {
 
-		MAT_INGOTS = L2Complements.MATS.genMats("ingot", Tags.Items.INGOTS);
-		MAT_NUGGETS = L2Complements.MATS.genMats("nugget", Tags.Items.NUGGETS);
+		MAT_INGOTS = L2Complements.MATS.genMats(LCMats.values(), "ingot", Tags.Items.INGOTS);
+		MAT_NUGGETS = L2Complements.MATS.genMats(LCMats.values(), "nugget", Tags.Items.NUGGETS);
 		{
 			WIND_BOTTLE = simpleItem("wind_capture_bottle", WindBottle::new, Rarity.COMMON, LangData.IDS.WIND_BOTTLE::get); // tested
 			VOID_EYE = simpleItem("void_eye", ShadowSteelItem::new, Rarity.EPIC, () -> LangData.IDS.VOID_EYE.get(LCConfig.COMMON.belowVoid.get())); // kill aggroed enderman 16 blocks in void
@@ -97,7 +98,7 @@ public class LCItems {
 							new WarpStone(p.fireResistant().stacksTo(1).rarity(Rarity.RARE), true))
 					.defaultModel().defaultLang().register();
 			REINFORCED_WARP_STONE = REGISTRATE.item("reinforced_warp_stone", p ->
-							new WarpStone(p.fireResistant().stacksTo(1).durability(128).rarity(Rarity.RARE), false))
+							new WarpStone(p.fireResistant().stacksTo(1).durability(64).rarity(Rarity.RARE), false))
 					.defaultModel().defaultLang().register();
 			TOTEM_OF_DREAM = REGISTRATE.item("totem_of_dream", p ->
 							new HomeTotem(p.fireResistant().stacksTo(1).rarity(Rarity.EPIC)))
@@ -106,7 +107,7 @@ public class LCItems {
 							new PoseiditeTotem(p.fireResistant().stacksTo(16).rarity(Rarity.EPIC)))
 					.defaultModel().defaultLang().register();
 		}
-		GEN_ITEM = L2Complements.MATS.genItem();
+		GEN_ITEM = L2Complements.MATS.genItem(LCMats.values());
 	}
 
 	public static ItemEntry<TooltipItem> simpleItem(String id, BiFunction<Item.Properties, Supplier<MutableComponent>, TooltipItem> func, Rarity r, Supplier<MutableComponent> sup) {

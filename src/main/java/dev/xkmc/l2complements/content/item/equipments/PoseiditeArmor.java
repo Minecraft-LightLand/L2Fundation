@@ -17,7 +17,7 @@ import net.minecraftforge.common.ForgeMod;
 
 import java.util.Locale;
 
-public class NeptuniumArmor extends ExtraArmorConfig {
+public class PoseiditeArmor extends ExtraArmorConfig {
 
 	private static final String KEY = "UserInWater", NAME_ARMOR = "neptunium_armor", NAME_TOUGH = "neptunium_toughness", NAME_SPEED = "neptunium_speed", NAME_SWIM = "neptunium_swim";
 

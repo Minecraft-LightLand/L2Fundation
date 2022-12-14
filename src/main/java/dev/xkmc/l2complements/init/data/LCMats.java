@@ -26,21 +26,21 @@ public enum LCMats implements IGeneralMats {
 					new float[]{1.6f, 1f, 1f, 1.2f, 4f}, 22),
 			new GenItem.ArmorStats(15, new int[]{2, 5, 6, 2}, 0, 0, 25),
 			GenItem.TOOL_GEN, GenItem.ARMOR_GEN,
-			new TotemiumTool().setStick(e -> Items.EMERALD, true), new TotemiumArmor()),
+			new TotemicTool().setStick(e -> Items.EMERALD, true), new TotemicArmor()),
 	POSEIDITE("poseidite", 4, SoundEvents.ARMOR_EQUIP_GOLD,
 			new GenItem.ToolStats(1500, 8, new int[]{7, 10, 5, 5, 1},
 					new float[]{1.6f, 1f, 1f, 1.2f, 4f}, 14),
 			new GenItem.ArmorStats(33, new int[]{3, 6, 8, 3}, 2, 0, 9),
 			GenItem.TOOL_GEN, GenItem.ARMOR_GEN,
-			new NeptuniumTool().setStick(e -> Items.PRISMARINE_SHARD, false), new NeptuniumArmor()),
+			new PoseiditeTool().setStick(e -> Items.PRISMARINE_SHARD, false), new PoseiditeArmor()),
 	SHULKERATE("shulkerate", 4, SoundEvents.ARMOR_EQUIP_IRON,
 			new GenItem.ToolStats(4000, 8, new int[]{7, 10, 5, 5, 1},
 					new float[]{1.6f, 1f, 1f, 1.2f, 4f}, 14),
 			new GenItem.ArmorStats(400, new int[]{3, 6, 8, 3}, 2, 0, 9),
 			GenItem.TOOL_GEN, GenItem.ARMOR_GEN,
-			new ShulkiumTool().setStick(e -> Items.IRON_INGOT, false), new ShulkiumArmor()),
+			new ShulkerateTool().setStick(e -> Items.IRON_INGOT, false), new ShulkerateArmor()),
 	SCULKIUM("sculkium", 4, SoundEvents.ARMOR_EQUIP_IRON,
-			new GenItem.ToolStats(2000, 12, new int[]{9, 12, 6, 6, 4},
+			new GenItem.ToolStats(2000, 8, new int[]{9, 12, 6, 6, 4},
 					new float[]{1.8f, 1.2f, 1.2f, 1.4f, 4f}, 15),
 			new GenItem.ArmorStats(40, new int[]{5, 9, 10, 6}, 4, 0, 15),
 			GenItem.TOOL_GEN, GenItem.ARMOR_GEN,
@@ -95,6 +95,42 @@ public enum LCMats implements IGeneralMats {
 
 	public String armorPrefix() {
 		return L2Complements.MODID + ":" + id;
+	}
+
+	// --- interface ---
+
+	public String getID() {
+		return id;
+	}
+
+	@Override
+	public GenItem.ArmorConfig getArmorConfig() {
+		return armor_config;
+	}
+
+	@Override
+	public GenItem.ToolConfig getToolConfig() {
+		return tool_config;
+	}
+
+	@Override
+	public GenItem.ToolStats getToolStats() {
+		return tool_stats;
+	}
+
+	@Override
+	public Tier getTier() {
+		return tier;
+	}
+
+	@Override
+	public ExtraArmorConfig getExtraArmorConfig() {
+		return armor_extra;
+	}
+
+	@Override
+	public ArmorMaterial getArmorMaterial() {
+		return mat;
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package dev.xkmc.l2complements.init.registrate;
 
 import dev.xkmc.l2complements.init.L2Complements;
+import dev.xkmc.l2complements.init.data.LCMats;
 import dev.xkmc.l2library.repack.registrate.util.entry.BlockEntry;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -23,7 +24,7 @@ public class LCBlocks {
 			.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.getEntry(), pvd.models().withExistingParent(ctx.getName(), "anvil")))
 			.tag(BlockTags.ANVIL, BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL).item().tag(ItemTags.ANVIL).build().register();
 
-	public static final BlockEntry<Block>[] GEN_BLOCK = L2Complements.MATS.genBlockMats();
+	public static final BlockEntry<Block>[] GEN_BLOCK = L2Complements.MATS.genBlockMats(LCMats.values());
 
 	public static void register() {
 	}

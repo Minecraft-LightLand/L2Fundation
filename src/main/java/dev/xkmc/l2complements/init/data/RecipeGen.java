@@ -104,7 +104,7 @@ public class RecipeGen {
 					.save(pvd, getID(LCMats.SCULKIUM.getIngot()));
 
 			unlock(pvd, new ShapelessRecipeBuilder(LCItems.FRAGILE_WARP_STONE.get(), 1)::unlockedBy, LCItems.VOID_EYE.get())
-					.requires(Items.ECHO_SHARD).requires(LCItems.VOID_EYE.get(), 2).requires(Items.ENDER_PEARL)
+					.requires(Items.ECHO_SHARD).requires(LCItems.VOID_EYE.get(), 1).requires(Items.ENDER_PEARL)
 					.save(pvd, getID(LCItems.FRAGILE_WARP_STONE.get()));
 
 			smithing(pvd, LCItems.FRAGILE_WARP_STONE.get(), LCMats.SHULKERATE.getIngot(), LCItems.REINFORCED_WARP_STONE.get());

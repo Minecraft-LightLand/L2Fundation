@@ -4,7 +4,7 @@ import dev.xkmc.l2complements.content.item.generic.ExtraArmorConfig;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 
-public class ShulkiumArmor extends ExtraArmorConfig {
+public class ShulkerateArmor extends ExtraArmorConfig {
 
 	@Override
 	public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, T entity) {

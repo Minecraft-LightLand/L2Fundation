@@ -155,7 +155,15 @@
   "l2complements.tooltip.misc.void_eye": "Obtained by killing an angry Enderman %s block below the void.",
   "l2complements.tooltip.misc.warden_bone_shard": "Dropped when Warden is killed by player.",
   "l2complements.tooltip.misc.warp_pos": "Target: %s, (%s,%s,%s)",
-  "l2complements.tooltip.misc.warp_record": "Right click to record position",
-  "l2complements.tooltip.misc.warp_teleport": "Right click to teleport",
-  "l2complements.tooltip.misc.wind_bottle": "Used to obtain Captured Wind or Captured Bullet."
+  "l2complements.tooltip.misc.warp_record": "Right click to record position. After that, right click to teleport. Durability: %s",
+  "l2complements.tooltip.misc.warp_teleport": "Right click to teleport. Durability: %s",
+  "l2complements.tooltip.misc.wind_bottle": "Used to obtain Captured Wind or Captured Bullet.",
+  "l2complements.tooltip.tool.poseidite_armor": "When user is in rain or water: provides extra protection, walk/swim speed boost, and conduit effect.",
+  "l2complements.tooltip.tool.poseidite_tool": "Sharper and faster when user is in rain or water",
+  "l2complements.tooltip.tool.sculkium_armor": "Provides extra boosts.",
+  "l2complements.tooltip.tool.sculkium_tool": "Breaks all breakable blocks for the same speed. Be aware of the breaking level.",
+  "l2complements.tooltip.tool.shulkerate_armor": "Really durable. Not easily damaged.",
+  "l2complements.tooltip.tool.shulkerate_tool": "Really durable. Not easily damaged.",
+  "l2complements.tooltip.tool.totemic_armor": "Heal user when damaged. Regenerate health over time.",
+  "l2complements.tooltip.tool.totemic_tool": "Heal user when used."
 }

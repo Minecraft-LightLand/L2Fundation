@@ -84,14 +84,15 @@ public class WarpStone extends Item {
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		var pos = getPos(stack);
+		int dur = fragile ? 1 : getMaxDamage(stack) - getDamage(stack);
 		if (pos.isPresent()) {
 			var cpos = pos.get();
 			var clevel = Component.translatable(cpos.getFirst().location().toString());
 			var bpos = cpos.getSecond();
 			list.add(LangData.IDS.WARP_POS.get(clevel, Math.round(bpos.x), Math.round(bpos.y), Math.round(bpos.x)));
-			list.add(LangData.IDS.WARP_TELEPORT.get());
+			list.add(LangData.IDS.WARP_TELEPORT.get(dur));
 		} else {
-			list.add(LangData.IDS.WARP_RECORD.get());
+			list.add(LangData.IDS.WARP_RECORD.get(dur));
 		}
 	}
 

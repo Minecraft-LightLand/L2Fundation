@@ -1,10 +1,14 @@
 package dev.xkmc.l2complements.content.item.equipments;
 
 import dev.xkmc.l2complements.content.item.generic.ExtraArmorConfig;
+import dev.xkmc.l2complements.init.data.LangData;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+
+import java.util.List;
 
 public class TotemicArmor extends ExtraArmorConfig {
 
@@ -21,6 +25,11 @@ public class TotemicArmor extends ExtraArmorConfig {
 			player.heal(amount);
 		}
 		return super.damageItem(stack, amount, entity);
+	}
+
+	@Override
+	public void addTooltip(ItemStack stack, List<Component> list) {
+		list.add(LangData.IDS.TOTEMIC_ARMOR.get());
 	}
 
 }

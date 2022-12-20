@@ -32,11 +32,21 @@ public class LangData {
 		FORCE_FIELD("tooltip.misc.force_field", "Obtained by killing a wither with arrow.", 0),
 		WARDEN_BONE_SHARD("tooltip.misc.warden_bone_shard", "Dropped when Warden is killed by player.", 0),
 
-		WARP_RECORD("tooltip.misc.warp_record", "Right click to record position", 0),
-		WARP_TELEPORT("tooltip.misc.warp_teleport", "Right click to teleport", 0),
+		WARP_RECORD("tooltip.misc.warp_record", "Right click to record position. After that, right click to teleport. Durability: %s", 1),
+		WARP_TELEPORT("tooltip.misc.warp_teleport", "Right click to teleport. Durability: %s", 1),
 		WARP_POS("tooltip.misc.warp_pos", "Target: %s, (%s,%s,%s)", 4),
 		TOTEM_DREAM("tooltip.misc.totem_dream", "Return players back to home when triggers, and becomes a fragile warp stone to go back. Valid against void damage. Also heal player to full health.", 0),
-		TOTEM_SEA("tooltip.misc.totem_sea", "Stackable, but only triggers when in water or rain.", 0);
+		TOTEM_SEA("tooltip.misc.totem_sea", "Stackable, but only triggers when in water or rain.", 0),
+
+		POSEIDITE_TOOL("tooltip.tool.poseidite_tool", "Sharper and faster when user is in rain or water", 0),
+		POSEIDITE_ARMOR("tooltip.tool.poseidite_armor", "When user is in rain or water: provides extra protection, walk/swim speed boost, and conduit effect.", 0),
+		SCULKIUM_TOOL("tooltip.tool.sculkium_tool", "Breaks all breakable blocks for the same speed. Be aware of the breaking level.", 0),
+		SCULKIUM_ARMOR("tooltip.tool.sculkium_armor", "Provides extra boosts.", 0),
+		SHULKERATE_TOOL("tooltip.tool.shulkerate_tool", "Really durable. Not easily damaged.", 0),
+		SHULKERATE_ARMOR("tooltip.tool.shulkerate_armor", "Really durable. Not easily damaged.", 0),
+		TOTEMIC_TOOL("tooltip.tool.totemic_tool", "Heal user when used.", 0),
+		TOTEMIC_ARMOR("tooltip.tool.totemic_armor", "Heal user when damaged. Regenerate health over time.", 0),
+		;
 
 		final String id, def;
 		final int count;

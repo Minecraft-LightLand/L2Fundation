@@ -2,7 +2,9 @@ package dev.xkmc.l2complements.content.item.equipments;
 
 import com.google.common.collect.Multimap;
 import dev.xkmc.l2complements.content.item.generic.ExtraToolConfig;
+import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2library.util.math.MathHelper;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -11,6 +13,8 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+
+import java.util.List;
 
 public class PoseiditeTool extends ExtraToolConfig {
 
@@ -40,4 +44,10 @@ public class PoseiditeTool extends ExtraToolConfig {
 		}
 		return map;
 	}
+
+	@Override
+	public void addTooltip(ItemStack stack, List<Component> list) {
+		list.add(LangData.IDS.POSEIDITE_TOOL.get());
+	}
+
 }

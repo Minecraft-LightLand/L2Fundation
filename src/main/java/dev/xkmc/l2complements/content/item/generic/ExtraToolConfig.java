@@ -4,6 +4,7 @@ import com.google.common.collect.Multimap;
 import dev.xkmc.l2complements.init.data.GenItem;
 import dev.xkmc.l2complements.init.data.IGeneralMats;
 import dev.xkmc.l2library.base.effects.EffectUtil;
+import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -103,4 +104,8 @@ public class ExtraToolConfig {
 	public TagKey<Block> getTier(int level) {
 		return tier.apply(level);
 	}
+
+	public void addTooltip(ItemStack stack, List<Component> list) {
+	}
+
 }

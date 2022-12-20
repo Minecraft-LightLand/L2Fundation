@@ -3,6 +3,7 @@ package dev.xkmc.l2complements.content.item.generic;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,11 +13,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 public class GenericSwordItem extends SwordItem implements GenericTieredItem {
@@ -82,7 +86,12 @@ public class GenericSwordItem extends SwordItem implements GenericTieredItem {
 	@Override
 	public float getDestroySpeed(ItemStack stack, BlockState state) {
 		float old = super.getDestroySpeed(stack, state);
-		return old == 1.0f ? 1.0f : config.getDestroySpeed(stack, state, old);
+		return config.getDestroySpeed(stack, state, old);
+	}
+
+	@Override
+	public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+		config.addTooltip(pStack, pTooltipComponents);
 	}
 
 }

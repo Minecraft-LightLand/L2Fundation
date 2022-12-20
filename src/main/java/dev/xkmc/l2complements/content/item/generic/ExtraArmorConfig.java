@@ -1,6 +1,7 @@
 package dev.xkmc.l2complements.content.item.generic;
 
 import com.google.common.collect.Multimap;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -9,6 +10,8 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+
+import java.util.List;
 
 public class ExtraArmorConfig {
 
@@ -53,6 +56,9 @@ public class ExtraArmorConfig {
 	public ExtraArmorConfig setMagicImmune(int percent) {
 		magic_immune = percent;
 		return this;
+	}
+
+	public void addTooltip(ItemStack stack, List<Component> list) {
 	}
 
 }

@@ -2,8 +2,10 @@ package dev.xkmc.l2complements.content.item.equipments;
 
 import com.google.common.collect.Multimap;
 import dev.xkmc.l2complements.content.item.generic.ExtraArmorConfig;
+import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2library.base.effects.EffectUtil;
 import dev.xkmc.l2library.util.math.MathHelper;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -15,6 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeMod;
 
+import java.util.List;
 import java.util.Locale;
 
 public class PoseiditeArmor extends ExtraArmorConfig {
@@ -60,4 +63,10 @@ public class PoseiditeArmor extends ExtraArmorConfig {
 		map.put(ForgeMod.SWIM_SPEED.get(), SWIM[slot.getIndex()]);
 		return map;
 	}
+
+	@Override
+	public void addTooltip(ItemStack stack, List<Component> list) {
+		list.add(LangData.IDS.POSEIDITE_ARMOR.get());
+	}
+
 }

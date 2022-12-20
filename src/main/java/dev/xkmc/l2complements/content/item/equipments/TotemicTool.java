@@ -1,9 +1,13 @@
 package dev.xkmc.l2complements.content.item.equipments;
 
 import dev.xkmc.l2complements.content.item.generic.ExtraToolConfig;
+import dev.xkmc.l2complements.init.data.LangData;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+
+import java.util.List;
 
 public class TotemicTool extends ExtraToolConfig {
 
@@ -13,6 +17,11 @@ public class TotemicTool extends ExtraToolConfig {
 			player.heal(amount);
 		}
 		return super.damageItem(stack, amount, entity);
+	}
+
+	@Override
+	public void addTooltip(ItemStack stack, List<Component> list) {
+		list.add(LangData.IDS.TOTEMIC_TOOL.get());
 	}
 
 }

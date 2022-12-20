@@ -1,12 +1,12 @@
-// 1.19.2	2022-12-12T12:04:11.927917	Registrate Provider for l2complements [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2022-12-20T16:53:30.917855	Registrate Provider for l2complements [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 fff962c0dd530b1e921155cc2614184665164e32 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
 b2a769b51ddce14c173a64b5457cccb4d8ef6a45 assets/l2complements/blockstates/sculkium_block.json
 2b88df6f8b01f3c72273ce13dbcb556f7dab321d assets/l2complements/blockstates/shulkerate_block.json
 65262ae0f886f61c163059f15c2ad1a7ba9c264a assets/l2complements/blockstates/totemic_gold_block.json
-9e7d25893ef4a8c7edc1bcb8a1474a9b985d9b45 assets/l2complements/lang/en_ud.json
-b5426ee9ba3d44a69b7cc75999d101c4d65eaf72 assets/l2complements/lang/en_us.json
+da65e632a055c1634e1f9700aaebad620039ca64 assets/l2complements/lang/en_ud.json
+cbb0f2639e597e27cc5966514ff7ff6d3038a345 assets/l2complements/lang/en_us.json
 9c9a8fcc0fe537da5794094e45fc4ca8d397d73f assets/l2complements/models/block/eternal_anvil.json
 bb63c088704d714f1763cb16cec8af6cd1006d66 assets/l2complements/models/block/eternium_block.json
 a45ee09acc262fd67be22de093136ad757f08e61 assets/l2complements/models/block/poseidite_block.json
@@ -316,7 +316,7 @@ cc00bc4ca85dbd833ba6f62412deeba32f74daf6 data/l2complements/loot_tables/blocks/e
 9cd71cf1f78e6ed84fbb875ef8ad177d72c25877 data/l2complements/loot_tables/blocks/totemic_gold_block.json
 7219a36d1a7e741f00bf644370634bfe992082f3 data/l2complements/recipes/craft/eternal_anvil.json
 fbb81e3f0ef945cebed601519779590f2da82408 data/l2complements/recipes/craft/eternium_nugget.json
-5480a6b9e850d821010356c627afeaaad8b05ff9 data/l2complements/recipes/craft/fragile_warp_stone.json
+ec17acdd70813e8b4b862d824941844828c56ab0 data/l2complements/recipes/craft/fragile_warp_stone.json
 90514f006b8e1a9481fbd0a2c6738b85d414fcc3 data/l2complements/recipes/craft/reinforced_warp_stone.json
 67c226af90a3f316d93852cd95cbb1f532f9c361 data/l2complements/recipes/craft/sculkium_ingot.json
 457e605c5ffda634c6fed8b7deb63aa20c78e0b3 data/l2complements/recipes/craft/shulkerate_ingot.json

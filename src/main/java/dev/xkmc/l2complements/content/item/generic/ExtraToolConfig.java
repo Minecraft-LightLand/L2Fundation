@@ -108,4 +108,7 @@ public class ExtraToolConfig {
 	public void addTooltip(ItemStack stack, List<Component> list) {
 	}
 
+	public boolean hideWithEffect() {
+		return false;
+	}
 }

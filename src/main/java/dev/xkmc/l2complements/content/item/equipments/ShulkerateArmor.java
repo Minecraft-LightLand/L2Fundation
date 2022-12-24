@@ -20,4 +20,9 @@ public class ShulkerateArmor extends ExtraArmorConfig {
 		list.add(LangData.IDS.SHULKERATE_ARMOR.get());
 	}
 
+	@Override
+	public boolean hideWithEffect() {
+		return true;
+	}
+
 }

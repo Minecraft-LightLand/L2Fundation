@@ -10,6 +10,8 @@
 	"LivingEntityMixin"
   ],
   "client": [
+	"HumanoidArmorLayerMixin",
+	"ItemInHandLayerMixin"
   ],
   "injectors": {
 	"defaultRequire": 1

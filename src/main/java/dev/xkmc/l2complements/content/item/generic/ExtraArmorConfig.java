@@ -61,4 +61,7 @@ public class ExtraArmorConfig {
 	public void addTooltip(ItemStack stack, List<Component> list) {
 	}
 
+	public boolean hideWithEffect() {
+		return false;
+	}
 }

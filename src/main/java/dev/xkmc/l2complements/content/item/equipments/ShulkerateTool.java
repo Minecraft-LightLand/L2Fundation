@@ -20,4 +20,9 @@ public class ShulkerateTool extends ExtraToolConfig {
 		list.add(LangData.IDS.SHULKERATE_TOOL.get());
 	}
 
+	@Override
+	public boolean hideWithEffect() {
+		return true;
+	}
+
 }

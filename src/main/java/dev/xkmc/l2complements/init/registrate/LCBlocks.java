@@ -3,6 +3,7 @@ package dev.xkmc.l2complements.init.registrate;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCMats;
 import dev.xkmc.l2library.repack.registrate.util.entry.BlockEntry;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.AnvilBlock;
@@ -21,8 +22,13 @@ public class LCBlocks {
 
 	public static final BlockEntry<AnvilBlock> ETERNAL_ANVIL = L2Complements.REGISTRATE
 			.block("eternal_anvil", p -> new AnvilBlock(BlockBehaviour.Properties.copy(Blocks.ANVIL)))
-			.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.getEntry(), pvd.models().withExistingParent(ctx.getName(), "anvil")))
-			.tag(BlockTags.ANVIL, BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL).item().tag(ItemTags.ANVIL).build().register();
+			.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.getEntry(), pvd.models()
+					.withExistingParent(ctx.getName(), "template_anvil")
+					.texture("particle", new ResourceLocation(L2Complements.MODID, "block/eternal_anvil"))
+					.texture("body", new ResourceLocation(L2Complements.MODID, "block/eternal_anvil"))
+					.texture("top", new ResourceLocation(L2Complements.MODID, "block/eternal_anvil_top"))
+			)).tag(BlockTags.ANVIL, BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL)
+			.item().tag(ItemTags.ANVIL).build().register();
 
 	public static final BlockEntry<Block>[] GEN_BLOCK = L2Complements.MATS.genBlockMats(LCMats.values());
 

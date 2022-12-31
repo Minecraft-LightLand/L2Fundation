@@ -1,3 +1,8 @@
 {
-  "parent": "minecraft:block/anvil"
+  "parent": "minecraft:block/template_anvil",
+  "textures": {
+    "body": "l2complements:block/eternal_anvil",
+    "particle": "l2complements:block/eternal_anvil",
+    "top": "l2complements:block/eternal_anvil_top"
+  }
 }

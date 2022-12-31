@@ -31,7 +31,7 @@ public class LCEnchantments {
 			.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
 
 	public static final RegistryEntry<WindSweepEnchantment> WIND_SWEEP = REGISTRATE
-			.enchantment("wind_sweep", EnchantmentCategory.BREAKABLE, WindSweepEnchantment::new)
+			.enchantment("wind_sweep", EnchantmentCategory.WEAPON, WindSweepEnchantment::new)
 			.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
 
 	public static final RegistryEntry<SingleLevelEnchantment> ENDER_MASK = REGISTRATE

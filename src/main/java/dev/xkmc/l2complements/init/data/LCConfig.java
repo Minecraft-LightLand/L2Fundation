@@ -25,6 +25,10 @@ public class LCConfig {
 		public final ForgeConfigSpec.IntValue explosionDamage;
 		public final ForgeConfigSpec.IntValue spaceDamage;
 
+		public final ForgeConfigSpec.DoubleValue shulkerateReach;
+
+		public final ForgeConfigSpec.DoubleValue windSweepIncrement;
+
 		Common(ForgeConfigSpec.Builder builder) {
 			windSpeed = builder.comment("Requirement for obtaining Captured Wind. Unit: Block per Tick")
 					.defineInRange("windSpeed", 10, 0.1, 100);
@@ -36,6 +40,11 @@ public class LCConfig {
 					.defineInRange("explosionDamage", 80, 1, 10000);
 			spaceDamage = builder.comment("Requirement for space shard drop")
 					.defineInRange("spaceDamage", 2048, 1, 10000);
+
+			shulkerateReach = builder.comment("Shulkerate reach increment")
+					.defineInRange("shulkerateReach", 1, 0.1, 100);
+			windSweepIncrement = builder.comment("Wind Sweep enchantment increment to sweep hit box")
+					.defineInRange("windSweepIncrement", 1, 0.1, 100);
 		}
 
 	}

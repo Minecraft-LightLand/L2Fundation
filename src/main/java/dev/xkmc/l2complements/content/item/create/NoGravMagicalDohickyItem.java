@@ -1,16 +1,21 @@
 package dev.xkmc.l2complements.content.item.create;
 
 import dev.xkmc.l2complements.content.item.misc.TooltipItem;
+import dev.xkmc.l2complements.init.data.LangData;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 public class NoGravMagicalDohickyItem extends TooltipItem {
@@ -69,6 +74,12 @@ public class NoGravMagicalDohickyItem extends TooltipItem {
 	public static Vec3 offsetRandomly(Vec3 vec, RandomSource r, float radius) {
 		return new Vec3(vec.x + (r.nextFloat() - .5f) * 2 * radius, vec.y + (r.nextFloat() - .5f) * 2 * radius,
 				vec.z + (r.nextFloat() - .5f) * 2 * radius);
+	}
+
+	@Override
+	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(stack, level, list, flag);
+		list.add(LangData.IDS.FLOAT.get());
 	}
 
 }

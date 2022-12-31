@@ -7,11 +7,13 @@
   "mixins": [
 	"AnvilBlockMixin",
 	"BlockBehaviorMixin",
+	"ItemStackMixin",
 	"LivingEntityMixin"
   ],
   "client": [
 	"HumanoidArmorLayerMixin",
-	"ItemInHandLayerMixin"
+	"ItemInHandLayerMixin",
+	"LocalPlayerMixin"
   ],
   "injectors": {
 	"defaultRequire": 1

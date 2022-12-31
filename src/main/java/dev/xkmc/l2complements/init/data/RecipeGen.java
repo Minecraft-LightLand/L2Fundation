@@ -1,6 +1,6 @@
 package dev.xkmc.l2complements.init.data;
 
-import dev.xkmc.l2complements.content.enchantment.EnchantmentRecipeBuilder;
+import dev.xkmc.l2complements.content.enchantment.core.EnchantmentRecipeBuilder;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.registrate.LCBlocks;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
@@ -213,6 +213,59 @@ public class RecipeGen {
 					.define('B', LCItems.RESONANT_FEATHER.get())
 					.define('C', LCItems.FORCE_FIELD.get())
 					.save(pvd, getID(LCEnchantments.ENCH_MAGIC.get()));
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.SHULKER_ARMOR.get(), 1)::unlockedBy, LCMats.SHULKERATE.getNugget())
+					.pattern("LCL").pattern("ABA").pattern("LAL")
+					.define('A', LCMats.SHULKERATE.getNugget())
+					.define('B', Items.BOOK)
+					.define('C', Items.GLASS)
+					.define('L', Items.LAPIS_LAZULI)
+					.save(pvd, getID(LCEnchantments.SHULKER_ARMOR.get()));
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.STABLE_BODY.get(), 1)::unlockedBy, LCMats.SHULKERATE.getIngot())
+					.pattern("LCL").pattern("ABA").pattern("LAL")
+					.define('A', LCMats.SHULKERATE.getIngot())
+					.define('B', Items.BOOK)
+					.define('C', LCMats.SCULKIUM.getIngot())
+					.define('L', Items.LAPIS_LAZULI)
+					.save(pvd, getID(LCEnchantments.STABLE_BODY.get()));
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.LIFE_SYNC.get(), 1)::unlockedBy, LCMats.ETERNIUM.getIngot())
+					.pattern("LCL").pattern("ABA").pattern("LAL")
+					.define('A', LCMats.ETERNIUM.getIngot())
+					.define('B', Items.BOOK)
+					.define('C', LCItems.FORCE_FIELD.get())
+					.define('L', Items.LAPIS_LAZULI)
+					.save(pvd, getID(LCEnchantments.LIFE_SYNC.get()));
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.WIND_SWEEP.get(), 1)::unlockedBy, LCMats.SHULKERATE.getNugget())
+					.pattern("LCL").pattern("ABA").pattern("LAL")
+					.define('A', LCMats.SHULKERATE.getNugget())
+					.define('B', Items.BOOK)
+					.define('C', LCItems.STORM_CORE.get())
+					.define('L', Items.LAPIS_LAZULI)
+					.save(pvd, getID(LCEnchantments.WIND_SWEEP.get()));
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENDER_MASK.get(), 1)::unlockedBy, LCMats.SHULKERATE.getNugget())
+					.pattern("LAL").pattern("ABA").pattern("LAL")
+					.define('A', Items.ENDER_EYE)
+					.define('B', Items.BOOK)
+					.define('L', Items.LAPIS_LAZULI)
+					.save(pvd, getID(LCEnchantments.ENDER_MASK.get()));
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.SHINNY.get(), 1)::unlockedBy, Items.GOLD_INGOT)
+					.pattern("LAL").pattern("ABA").pattern("LAL")
+					.define('A', Items.GOLD_INGOT)
+					.define('B', Items.BOOK)
+					.define('L', Items.LAPIS_LAZULI)
+					.save(pvd, getID(LCEnchantments.SHINNY.get()));
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.SNOW_WALKER.get(), 1)::unlockedBy, Items.LEATHER)
+					.pattern("LAL").pattern("ABA").pattern("LAL")
+					.define('A', Items.LEATHER)
+					.define('B', Items.BOOK)
+					.define('L', Items.LAPIS_LAZULI)
+					.save(pvd, getID(LCEnchantments.SNOW_WALKER.get()));
 		}
 	}
 

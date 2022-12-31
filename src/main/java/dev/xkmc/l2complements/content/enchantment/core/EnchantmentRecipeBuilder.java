@@ -1,4 +1,4 @@
-package dev.xkmc.l2complements.content.enchantment;
+package dev.xkmc.l2complements.content.enchantment.core;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;

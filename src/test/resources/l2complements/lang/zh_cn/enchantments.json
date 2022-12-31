@@ -1,0 +1,28 @@
+{
+  "enchantment.l2complements": {
+	"environment_reject": "环境免疫",
+	"explosion_reject": "爆炸免疫",
+	"fire_reject": "火焰免疫",
+	"magic_reject": "魔法免疫",
+	"projectile_reject": "弹射物免疫",
+	"shulker_armor": "遁隐",
+	"stable_body": "稳定之体",
+	"ender_mask": "末影帷幕",
+	"life_sync": "同心",
+	"shinny": "金光闪闪",
+	"snow_walker": "细雪行者",
+	"wind_sweep": "剑风",
+	"environment_reject.desc": "使用者免疫环境伤害",
+	"explosion_reject.desc": "使用者免疫爆炸伤害",
+	"magic_reject.desc": "使用者免疫魔法伤害",
+	"projectile_reject.desc": "反射所有弹射物。使用者免疫弹射物伤害",
+	"fire_reject.desc": "使用者免疫火焰伤害",
+	"ender_mask.desc": "视线不激怒末影人",
+	"life_sync.desc": "将消耗耐久时改为消耗玩家生命值。可能会杀死玩家",
+	"shinny.desc": "让猪灵以为是金制品",
+	"shulker_armor.desc": "玩家隐身时，物品也隐身",
+	"snow_walker.desc": "让使用者能在细雪上行走",
+	"stable_body.desc": "玩家不会因攻击而摇晃",
+	"wind_sweep.desc": "增加横扫范围"
+  }
+}

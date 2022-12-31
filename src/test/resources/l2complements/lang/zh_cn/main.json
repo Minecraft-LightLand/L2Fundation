@@ -23,16 +23,10 @@
 	"long_resistance": "抗性之箭",
 	"strong_resistance": "抗性之箭"
   },
-  "enchantment.l2complements": {
-	"environment_reject": "环境免疫",
-	"explosion_reject": "爆炸免疫",
-	"fire_reject": "火焰免疫",
-	"magic_reject": "魔法免疫",
-	"projectile_reject": "弹射物免疫"
-  },
   "death.attack": {
 	"soul_flame": "%s的灵魂燃尽了",
-	"soul_flame.player": "%s的灵魂被%s烧掉了"
+	"soul_flame.player": "%s的灵魂被%s烧掉了",
+	"life_sync": "%s被榨干了"
   },
   "l2complements.tooltip": {
 	"misc": {
@@ -54,7 +48,8 @@
 	  "warp_record": "右键记录坐标，再次右键传送。耐久：$s",
 	  "warp_teleport": "右键传送。剩余耐久：$s",
 	  "totem_dream": "激活时让玩家回到出生点，同时变成一个绑定了激活地点的易碎传送石。对虚空伤害也有效。回复全部血量。",
-	  "totem_sea": "可堆叠，但能只在水中/雨中激活。"
+	  "totem_sea": "可堆叠，但能只在水中/雨中激活。",
+	  "float": "这个物品会悬浮在空中。"
 	},
 	"tool": {
 	  "poseidite_armor": "当使用者在水/雨中时，提供额外保护，提升移动/游泳速度，提供潮涌效果",
@@ -62,7 +57,7 @@
 	  "sculkium_armor": "提供额外加成",
 	  "sculkium_tool": "快速破坏任意可破坏方块。请注意挖掘等级",
 	  "shulkerate_armor": "极高耐久，不易损坏",
-	  "shulkerate_tool": "极高耐久，不易损坏",
+	  "shulkerate_tool": "极高耐久，不易损坏。略微提升触及距离和攻击距离",
 	  "totemic_armor": "消耗耐久时治疗使用者，缓慢回复生命",
 	  "totemic_tool": "消耗耐久时治疗使用者"
 	}

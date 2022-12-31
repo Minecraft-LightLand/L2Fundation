@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "l2complements:eternium_ingot"
+    },
+    "B": {
+      "item": "minecraft:book"
+    },
+    "C": {
+      "item": "l2complements:force_field"
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    }
+  },
+  "pattern": [
+    "LCL",
+    "ABA",
+    "LAL"
+  ],
+  "result": {
+    "item": "minecraft:enchanted_book",
+    "nbt": {
+      "StoredEnchantments": [
+        {
+          "id": "l2complements:life_sync",
+          "lvl": 1
+        }
+      ]
+    }
+  }
+}

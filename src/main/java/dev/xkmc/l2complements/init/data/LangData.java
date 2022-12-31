@@ -2,6 +2,7 @@ package dev.xkmc.l2complements.init.data;
 
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
+import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2library.repack.registrate.providers.RegistrateLangProvider;
 import dev.xkmc.l2library.repack.registrate.util.entry.RegistryEntry;
 import net.minecraft.network.chat.Component;
@@ -32,6 +33,8 @@ public class LangData {
 		FORCE_FIELD("tooltip.misc.force_field", "Obtained by killing a wither with arrow.", 0),
 		WARDEN_BONE_SHARD("tooltip.misc.warden_bone_shard", "Dropped when Warden is killed by player.", 0),
 
+		FLOAT("tooltip.misc.float", "This item will float in the air.", 0),
+
 		WARP_RECORD("tooltip.misc.warp_record", "Right click to record position. After that, right click to teleport. Durability: %s", 1),
 		WARP_TELEPORT("tooltip.misc.warp_teleport", "Right click to teleport. Durability: %s", 1),
 		WARP_POS("tooltip.misc.warp_pos", "Target: %s, (%s,%s,%s)", 4),
@@ -42,7 +45,7 @@ public class LangData {
 		POSEIDITE_ARMOR("tooltip.tool.poseidite_armor", "When user is in rain or water: provides extra protection, walk/swim speed boost, and conduit effect.", 0),
 		SCULKIUM_TOOL("tooltip.tool.sculkium_tool", "Breaks all breakable blocks for the same speed. Be aware of the breaking level.", 0),
 		SCULKIUM_ARMOR("tooltip.tool.sculkium_armor", "Provides extra boosts.", 0),
-		SHULKERATE_TOOL("tooltip.tool.shulkerate_tool", "Really durable. Not easily damaged.", 0),
+		SHULKERATE_TOOL("tooltip.tool.shulkerate_tool", "Really durable. Not easily damaged. Increase Reach and Attack distance", 0),
 		SHULKERATE_ARMOR("tooltip.tool.shulkerate_armor", "Really durable. Not easily damaged.", 0),
 		TOTEMIC_TOOL("tooltip.tool.totemic_tool", "Heal user when used.", 0),
 		TOTEMIC_ARMOR("tooltip.tool.totemic_armor", "Heal user when damaged. Regenerate health over time.", 0),
@@ -91,6 +94,8 @@ public class LangData {
 		pvd.add("itemGroup.l2complements.generated", "L2Complements Items");
 		pvd.add("death.attack.soul_flame", "%s has its soul burnt out");
 		pvd.add("death.attack.soul_flame.player", "%s has its soul burnt out by %s");
+		pvd.add("death.attack.life_sync", "%s was drained");
+
 		List<Item> list = List.of(Items.POTION, Items.SPLASH_POTION, Items.LINGERING_POTION, Items.TIPPED_ARROW);
 		for (RegistryEntry<? extends Potion> ent : LCEffects.POTION_LIST) {
 			for (Item item : list) {
@@ -98,17 +103,32 @@ public class LangData {
 				pvd.add(str, RegistrateLangProvider.toEnglishName(ent.get().getName("")));
 			}
 		}
-	}
 
-	private static String getParams(int count) {
-		if (count <= 0)
-			return "";
-		StringBuilder pad = new StringBuilder();
-		for (int i = 0; i < count; i++) {
-			pad.append(pad.length() == 0 ? ": " : "/");
-			pad.append("%s");
-		}
-		return pad.toString();
+		pvd.add(LCEnchantments.ENCH_PROJECTILE.get().getDescriptionId() + ".desc",
+				"Deflects all projectiles. Make wearer immune to projectile damage.");
+		pvd.add(LCEnchantments.ENCH_FIRE.get().getDescriptionId() + ".desc",
+				"Make wearer immune to fire damage.");
+		pvd.add(LCEnchantments.ENCH_EXPLOSION.get().getDescriptionId() + ".desc",
+				"Make wearer immune to explosion damage.");
+		pvd.add(LCEnchantments.ENCH_MAGIC.get().getDescriptionId() + ".desc",
+				"Make wearer immune to magic damage.");
+		pvd.add(LCEnchantments.ENCH_ENVIRONMENT.get().getDescriptionId() + ".desc",
+				"Make wearer immune to damage without attacker.");
+		pvd.add(LCEnchantments.SHULKER_ARMOR.get().getDescriptionId() + ".desc",
+				"Armor invisible to mobs and players when wearer has invisibility effect.");
+		pvd.add(LCEnchantments.STABLE_BODY.get().getDescriptionId() + ".desc",
+				"Player won't be knocked back when wearing chestplate with this enchantment.");
+		pvd.add(LCEnchantments.LIFE_SYNC.get().getDescriptionId() + ".desc",
+				"Cost health instead of durability when possible. May kill the user");
+		pvd.add(LCEnchantments.WIND_SWEEP.get().getDescriptionId() + ".desc",
+				"Increase sweeping hit box");
+		pvd.add(LCEnchantments.ENDER_MASK.get().getDescriptionId() + ".desc",
+				"Endermen won't be mad at you for direct eye contact");
+		pvd.add(LCEnchantments.SHINNY.get().getDescriptionId() + ".desc",
+				"Piglins loves it.");
+		pvd.add(LCEnchantments.SNOW_WALKER.get().getDescriptionId() + ".desc",
+				"Allow Wearer to walk on powdered snow.");
+
 	}
 
 	public static String asId(String name) {

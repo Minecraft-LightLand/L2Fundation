@@ -1,0 +1,67 @@
+package dev.xkmc.l2complements.mixin;
+
+import dev.xkmc.l2complements.content.enchantment.special.LifeSyncEnchantment;
+import dev.xkmc.l2complements.init.data.LCConfig;
+import dev.xkmc.l2complements.init.registrate.LCEnchantments;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.EnderMan;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.AABB;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.function.Consumer;
+
+@Mixin(ItemStack.class)
+public abstract class ItemStackMixin {
+
+	@Inject(at = @At("HEAD"), method = "hurtAndBreak", cancellable = true)
+	public <T extends LivingEntity> void l2complements_lifeSync(int pAmount, T pEntity, Consumer<T> pOnBroken, CallbackInfo ci) {
+		ItemStack self = (ItemStack) (Object) this;
+		if (pEntity.level.isClientSide()) return;
+		if (self.getEnchantmentLevel(LCEnchantments.LIFE_SYNC.get()) > 0) {
+			pEntity.hurt(LifeSyncEnchantment.SOURCE, pAmount);
+			ci.cancel();
+		}
+	}
+
+	public AABB getSweepHitBox(Player player, Entity target) {
+		ItemStack self = (ItemStack) (Object) this;
+		AABB box = self.getItem().getSweepHitBox(self, player, target);
+		int lv = self.getEnchantmentLevel(LCEnchantments.WIND_SWEEP.get());
+		if (lv > 0) {
+			double amount = LCConfig.COMMON.windSweepIncrement.get();
+			box = box.inflate(amount * lv, amount * lv, amount * lv);
+		}
+		return box;
+	}
+
+	public boolean makesPiglinsNeutral(LivingEntity wearer) {
+		ItemStack self = (ItemStack) (Object) this;
+		return self.getItem().makesPiglinsNeutral(self, wearer) ||
+				self.getEnchantmentLevel(LCEnchantments.SHINNY.get()) > 0;
+	}
+
+	public boolean isPiglinCurrency(LivingEntity wearer) {
+		ItemStack self = (ItemStack) (Object) this;
+		return self.getItem().makesPiglinsNeutral(self, wearer) ||
+				self.getEnchantmentLevel(LCEnchantments.SHINNY.get()) > 0;
+	}
+
+	public boolean isEnderMask(Player player, EnderMan endermanEntity) {
+		ItemStack self = (ItemStack) (Object) this;
+		return self.getItem().makesPiglinsNeutral(self, player) ||
+				self.getEnchantmentLevel(LCEnchantments.ENDER_MASK.get()) > 0;
+	}
+
+	public boolean canWalkOnPowderedSnow(LivingEntity wearer) {
+		ItemStack self = (ItemStack) (Object) this;
+		return self.getItem().canWalkOnPowderedSnow(self, wearer) ||
+				self.getEnchantmentLevel(LCEnchantments.ENDER_MASK.get()) > 0;
+	}
+
+}

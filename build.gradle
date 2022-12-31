@@ -19,8 +19,8 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 version = "${ll_version}"
-group = 'dev.xkmc.l2complements' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'l2complements'
+group = "dev.xkmc.${modid}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "${modid}"
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
@@ -32,13 +32,13 @@ minecraft {
     runs {
         client {
             workingDirectory project.file('run')
-            arg '-mixin.config=l2complements.mixins.json'
+            arg "-mixin.config=${modid}.mixins.json"
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'info'
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             mods {
-                l2complements {
+                "${modid}" {
                     source sourceSets.main
                 }
             }
@@ -46,13 +46,13 @@ minecraft {
 
         server {
             workingDirectory project.file('run')
-            arg '-mixin.config=l2complements.mixins.json'
+            arg "-mixin.config=${modid}.mixins.json"
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'info'
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             mods {
-                l2complements {
+                "${modid}" {
                     source sourceSets.main
                 }
             }
@@ -60,17 +60,17 @@ minecraft {
 
         data {
             workingDirectory project.file('run')
-            arg '-mixin.config=l2complements.mixins.json'
+            arg "-mixin.config=${modid}.mixins.json"
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'info'
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'l2complements', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', "${modid}", '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                l2complements {
+                "${modid}" {
                     source sourceSets.main
                 }
             }
@@ -82,8 +82,8 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 mixin {
-    add sourceSets.main, 'l2complements.refmap.json'
-    config 'l2complements.mixins.json'
+    add sourceSets.main, "${modid}.refmap.json"
+    config "${modid}.mixins.json"
 }
 
 repositories {
@@ -124,9 +124,11 @@ dependencies {
 
     implementation fg.deobf("mezz.jei:jei-${jei_minecraft_version}:${jei_version}")
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
-    implementation fg.deobf('curse.maven:appleskin-248787:3872808')
-    implementation fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
-    implementation fg.deobf('curse.maven:charm-of-undying-316873:3927421')
+
+    runtimeOnly fg.deobf('curse.maven:appleskin-248787:3872808')
+    runtimeOnly fg.deobf('curse.maven:charm-of-undying-316873:3927421')
+    runtimeOnly fg.deobf('curse.maven:bookshelf-228525:4153136')
+    runtimeOnly fg.deobf('curse.maven:enchantment-descriptions-250419:4277356')
 
 
 }
@@ -135,14 +137,14 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "l2complements",
+                "Specification-Title"     : "${modid}",
                 "Specification-Vendor"    : "xkmc",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : "xkmc",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                'MixinConfigs'            : 'l2complements.mixins.json'
+                'MixinConfigs'            : "${modid}.mixins.json"
         ])
     }
 }

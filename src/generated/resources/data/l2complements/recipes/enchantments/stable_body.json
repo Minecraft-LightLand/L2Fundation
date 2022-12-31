@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "l2complements:shulkerate_ingot"
+    },
+    "B": {
+      "item": "minecraft:book"
+    },
+    "C": {
+      "item": "l2complements:sculkium_ingot"
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    }
+  },
+  "pattern": [
+    "LCL",
+    "ABA",
+    "LAL"
+  ],
+  "result": {
+    "item": "minecraft:enchanted_book",
+    "nbt": {
+      "StoredEnchantments": [
+        {
+          "id": "l2complements:stable_body",
+          "lvl": 1
+        }
+      ]
+    }
+  }
+}

@@ -2,11 +2,15 @@ package dev.xkmc.l2complements.events;
 
 import dev.xkmc.l2complements.content.enchantment.core.AttributeEnchantment;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.ItemAttributeModifierEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import java.util.Map;
@@ -48,5 +52,16 @@ public class EnchantmentEventHandler {
 		}
 	}
 
+	@SubscribeEvent(priority = EventPriority.HIGH)
+	public static void onInventoryDrop(LivingDropsEvent event) {
+		if (!(event.getEntity() instanceof ServerPlayer player))
+			return;
+		event.getDrops().removeIf(e -> e.getItem().getEnchantmentLevel(LCEnchantments.SOUL_BOUND.get()) > 0 && player.getInventory().add(e.getItem()));
+	}
+
+	@SubscribeEvent
+	public static void onPlayerClone(PlayerEvent.Clone event) {
+		event.getEntity().getInventory().replaceWith(event.getOriginal().getInventory());
+	}
 
 }

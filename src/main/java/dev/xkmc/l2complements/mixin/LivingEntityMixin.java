@@ -2,13 +2,14 @@ package dev.xkmc.l2complements.mixin;
 
 import dev.xkmc.l2complements.compat.CurioCompat;
 import dev.xkmc.l2complements.content.item.misc.ILCTotem;
-import dev.xkmc.l2complements.events.ArmorVisibilityEvent;
+import dev.xkmc.l2complements.events.SpecialEquipmentEvents;
 import dev.xkmc.l2complements.init.data.TagGen;
 import dev.xkmc.l2library.util.code.Wrappers;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -58,12 +59,22 @@ public abstract class LivingEntityMixin {
 		int visible = 0;
 		for (ItemStack itemstack : iterable) {
 			if (!itemstack.isEmpty()) {
-				if (ArmorVisibilityEvent.isVisible(self, itemstack))
+				if (SpecialEquipmentEvents.isVisible(self, itemstack))
 					++visible;
 			}
 			++total;
 		}
 		cir.setReturnValue(total > 0 ? (float) visible / (float) total : 0.0F);
+	}
+
+	public boolean dampensVibrations() {
+		LivingEntity self = (LivingEntity) (Object) this;
+		int count = 0;
+		for (EquipmentSlot slot : EquipmentSlot.values()) {
+			ItemStack stack = self.getItemBySlot(slot);
+			count += SpecialEquipmentEvents.blockSound(stack);
+		}
+		return count >= 4;
 	}
 
 }

@@ -64,4 +64,9 @@ public class ExtraArmorConfig {
 	public boolean hideWithEffect() {
 		return false;
 	}
+
+	public boolean dampenVibration() {
+		return false;
+	}
+
 }

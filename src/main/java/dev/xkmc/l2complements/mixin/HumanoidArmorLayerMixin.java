@@ -1,7 +1,7 @@
 package dev.xkmc.l2complements.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import dev.xkmc.l2complements.events.ArmorVisibilityEvent;
+import dev.xkmc.l2complements.events.SpecialEquipmentEvents;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
@@ -19,7 +19,7 @@ public class HumanoidArmorLayerMixin<T extends LivingEntity, M extends HumanoidM
 	@Inject(at = @At("HEAD"), method = "renderArmorPiece", cancellable = true)
 	public void l2complements_hideInvisibleArmors(PoseStack matrix, MultiBufferSource source, T entity, EquipmentSlot slot, int light, A model, CallbackInfo ci) {
 		ItemStack stack = entity.getItemBySlot(slot);
-		if (!ArmorVisibilityEvent.isVisible(entity, stack))
+		if (!SpecialEquipmentEvents.isVisible(entity, stack))
 			ci.cancel();
 	}
 

@@ -21,4 +21,13 @@ public class LocalPlayerMixin {
 		}
 	}
 
+	@Inject(at = @At("TAIL"), method = "handleEntityEvent")
+	public void handleEntityEvent(byte pId, CallbackInfo ci) {
+		LocalPlayer self = (LocalPlayer) (Object) this;
+		ItemStack stack = self.getItemBySlot(EquipmentSlot.CHEST);
+		if (stack.getEnchantmentLevel(LCEnchantments.STABLE_BODY.get()) > 0) {
+			self.hurtTime = 0;
+		}
+	}
+
 }

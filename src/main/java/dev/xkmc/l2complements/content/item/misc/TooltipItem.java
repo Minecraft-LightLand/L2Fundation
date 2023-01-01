@@ -1,5 +1,6 @@
 package dev.xkmc.l2complements.content.item.misc;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.Item;
@@ -22,7 +23,7 @@ public class TooltipItem extends Item {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		list.add(sup.get());
+		list.add(sup.get().withStyle(ChatFormatting.GRAY));
 		super.appendHoverText(stack, level, list, flag);
 	}
 }

@@ -4,6 +4,7 @@ import com.google.common.collect.Multimap;
 import dev.xkmc.l2complements.content.item.generic.ExtraArmorConfig;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2library.util.math.MathHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -45,7 +46,11 @@ public class SculkiumArmor extends ExtraArmorConfig {
 
 	@Override
 	public void addTooltip(ItemStack stack, List<Component> list) {
-		list.add(LangData.IDS.SCULKIUM_ARMOR.get());
+		list.add(LangData.IDS.SCULKIUM_ARMOR.get().withStyle(ChatFormatting.GRAY));
+	}
+
+	public boolean dampenVibration() {
+		return true;
 	}
 
 }

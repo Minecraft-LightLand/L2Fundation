@@ -2,7 +2,9 @@ package dev.xkmc.l2complements.init.registrate;
 
 import dev.xkmc.l2complements.content.enchantment.core.ImmuneEnchantment;
 import dev.xkmc.l2complements.content.enchantment.core.SingleLevelEnchantment;
-import dev.xkmc.l2complements.content.enchantment.special.*;
+import dev.xkmc.l2complements.content.enchantment.special.LifeSyncEnchantment;
+import dev.xkmc.l2complements.content.enchantment.special.SoulBindingEnchantment;
+import dev.xkmc.l2complements.content.enchantment.special.StableBodyEnchantment;
 import dev.xkmc.l2complements.content.enchantment.weapon.WindSweepEnchantment;
 import dev.xkmc.l2library.repack.registrate.util.entry.RegistryEntry;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -12,6 +14,12 @@ import static dev.xkmc.l2complements.init.L2Complements.REGISTRATE;
 
 public class LCEnchantments {
 
+	public static final EnchantmentCategory ALL = EnchantmentCategory.create("ALL", e -> e.getMaxStackSize() == 1);
+
+	static {
+		LCItems.TAB_GENERATED.setEnchantmentCategories(ALL);
+	}
+
 	public static final RegistryEntry<ImmuneEnchantment> ENCH_PROJECTILE = reg("projectile_reject");
 	public static final RegistryEntry<ImmuneEnchantment> ENCH_FIRE = reg("fire_reject");
 	public static final RegistryEntry<ImmuneEnchantment> ENCH_ENVIRONMENT = reg("environment_reject");
@@ -19,7 +27,7 @@ public class LCEnchantments {
 	public static final RegistryEntry<ImmuneEnchantment> ENCH_MAGIC = reg("magic_reject");
 
 	public static final RegistryEntry<SingleLevelEnchantment> SHULKER_ARMOR = REGISTRATE
-			.enchantment("shulker_armor", EnchantmentCategory.BREAKABLE, SingleLevelEnchantment::new)
+			.enchantment("shulker_armor", ALL, SingleLevelEnchantment::new)
 			.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).lang("Transparent").register();
 
 	public static final RegistryEntry<StableBodyEnchantment> STABLE_BODY = REGISTRATE
@@ -45,6 +53,14 @@ public class LCEnchantments {
 	public static final RegistryEntry<SingleLevelEnchantment> SNOW_WALKER = REGISTRATE
 			.enchantment("snow_walker", EnchantmentCategory.ARMOR_FEET, SingleLevelEnchantment::new)
 			.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
+
+	public static final RegistryEntry<SoulBindingEnchantment> SOUL_BOUND = REGISTRATE
+			.enchantment("soul_bound", ALL, SoulBindingEnchantment::new)
+			.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
+
+	public static final RegistryEntry<SingleLevelEnchantment> DAMPENED = REGISTRATE
+			.enchantment("dampened", EnchantmentCategory.WEARABLE, SingleLevelEnchantment::new)
+			.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).register();
 
 	private static RegistryEntry<ImmuneEnchantment> reg(String id) {
 		return REGISTRATE.enchantment(id, EnchantmentCategory.ARMOR, ImmuneEnchantment::new)

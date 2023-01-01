@@ -5,6 +5,7 @@ import dev.xkmc.l2complements.content.item.generic.ExtraToolConfig;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2library.util.math.MathHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -34,7 +35,7 @@ public class ShulkerateTool extends ExtraToolConfig {
 
 	@Override
 	public void addTooltip(ItemStack stack, List<Component> list) {
-		list.add(LangData.IDS.SHULKERATE_TOOL.get());
+		list.add(LangData.IDS.SHULKERATE_TOOL.get().withStyle(ChatFormatting.GRAY));
 	}
 
 	@Override

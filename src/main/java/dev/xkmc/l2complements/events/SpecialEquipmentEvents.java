@@ -7,7 +7,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 
-public class ArmorVisibilityEvent {
+public class SpecialEquipmentEvents {
 
 	public static boolean isVisible(LivingEntity entity, ItemStack stack) {
 		if (entity.hasEffect(MobEffects.INVISIBILITY)) {
@@ -22,6 +22,14 @@ public class ArmorVisibilityEvent {
 			return stack.getEnchantmentLevel(LCEnchantments.SHULKER_ARMOR.get()) == 0;
 		}
 		return true;
+	}
+
+	public static int blockSound(ItemStack stack) {
+		if (stack.getItem() instanceof GenericArmorItem item) {
+			if (item.getConfig().dampenVibration())
+				return 1;
+		}
+		return stack.getEnchantmentLevel(LCEnchantments.DAMPENED.get());
 	}
 
 }

@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "l2complements:void_eye"
+    },
+    "B": {
+      "type": "l2library:enchantment",
+      "enchantment": "minecraft:binding_curse",
+      "min_level": 1
+    },
+    "L": {
+      "item": "minecraft:echo_shard"
+    }
+  },
+  "pattern": [
+    "LAL",
+    "ABA",
+    "LAL"
+  ],
+  "result": {
+    "item": "minecraft:enchanted_book",
+    "nbt": {
+      "StoredEnchantments": [
+        {
+          "id": "l2complements:soul_bound",
+          "lvl": 1
+        }
+      ]
+    }
+  }
+}

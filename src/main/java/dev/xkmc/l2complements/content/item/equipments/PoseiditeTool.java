@@ -4,6 +4,7 @@ import com.google.common.collect.Multimap;
 import dev.xkmc.l2complements.content.item.generic.ExtraToolConfig;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2library.util.math.MathHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -47,7 +48,7 @@ public class PoseiditeTool extends ExtraToolConfig {
 
 	@Override
 	public void addTooltip(ItemStack stack, List<Component> list) {
-		list.add(LangData.IDS.POSEIDITE_TOOL.get());
+		list.add(LangData.IDS.POSEIDITE_TOOL.get().withStyle(ChatFormatting.GRAY));
 	}
 
 }

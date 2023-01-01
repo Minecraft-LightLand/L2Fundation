@@ -1,7 +1,7 @@
 package dev.xkmc.l2complements.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import dev.xkmc.l2complements.events.ArmorVisibilityEvent;
+import dev.xkmc.l2complements.events.SpecialEquipmentEvents;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
@@ -18,7 +18,7 @@ public class ItemInHandLayerMixin {
 
 	@Inject(at = @At("HEAD"), method = "renderArmWithItem", cancellable = true)
 	public void l2complement_hideInvisibleItem(LivingEntity entity, ItemStack stack, ItemTransforms.TransformType type, HumanoidArm arm, PoseStack pose, MultiBufferSource buffer, int light, CallbackInfo ci) {
-		if (!ArmorVisibilityEvent.isVisible(entity, stack))
+		if (!SpecialEquipmentEvents.isVisible(entity, stack))
 			ci.cancel();
 	}
 

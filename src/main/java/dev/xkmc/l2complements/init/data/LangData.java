@@ -44,7 +44,7 @@ public class LangData {
 		POSEIDITE_TOOL("tooltip.tool.poseidite_tool", "Sharper and faster when user is in rain or water", 0),
 		POSEIDITE_ARMOR("tooltip.tool.poseidite_armor", "When user is in rain or water: provides extra protection, walk/swim speed boost, and conduit effect.", 0),
 		SCULKIUM_TOOL("tooltip.tool.sculkium_tool", "Breaks all breakable blocks for the same speed. Be aware of the breaking level.", 0),
-		SCULKIUM_ARMOR("tooltip.tool.sculkium_armor", "Provides extra boosts.", 0),
+		SCULKIUM_ARMOR("tooltip.tool.sculkium_armor", "Dampened: When wearing 4 pieces of armors with dampened effect, cancel all vibrations emitted by wearer.", 0),
 		SHULKERATE_TOOL("tooltip.tool.shulkerate_tool", "Really durable. Not easily damaged. Increase Reach and Attack distance", 0),
 		SHULKERATE_ARMOR("tooltip.tool.shulkerate_armor", "Really durable. Not easily damaged.", 0),
 		TOTEMIC_TOOL("tooltip.tool.totemic_tool", "Heal user when used.", 0),
@@ -128,6 +128,11 @@ public class LangData {
 				"Piglins loves it.");
 		pvd.add(LCEnchantments.SNOW_WALKER.get().getDescriptionId() + ".desc",
 				"Allow Wearer to walk on powdered snow.");
+		pvd.add(LCEnchantments.SOUL_BOUND.get().getDescriptionId() + ".desc",
+				"Remain in inventory after death.");
+		pvd.add(LCEnchantments.DAMPENED.get().getDescriptionId() + ".desc",
+				"When wearing 4 pieces of armors with dampened effect, cancel all vibrations emitted by wearer.");
+
 
 	}
 

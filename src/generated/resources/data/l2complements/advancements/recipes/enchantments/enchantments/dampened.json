@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_ender_eye": {
+    "has_sculkium_nugget": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:ender_eye"
+              "l2complements:sculkium_nugget"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "l2complements:enchantments/ender_mask"
+        "recipe": "l2complements:enchantments/dampened"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_ender_eye",
+      "has_sculkium_nugget",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "l2complements:enchantments/ender_mask"
+      "l2complements:enchantments/dampened"
     ]
   }
 }

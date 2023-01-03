@@ -1,5 +1,8 @@
 package dev.xkmc.l2complements.init.registrate;
 
+import dev.xkmc.l2complements.content.entity.fireball.BlackFireball;
+import dev.xkmc.l2complements.content.entity.fireball.SoulFireball;
+import dev.xkmc.l2complements.content.entity.fireball.StrongFireball;
 import dev.xkmc.l2complements.content.item.create.RefinedRadianceItem;
 import dev.xkmc.l2complements.content.item.create.ShadowSteelItem;
 import dev.xkmc.l2complements.content.item.misc.*;
@@ -10,6 +13,7 @@ import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2library.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -68,6 +72,10 @@ public class LCItems {
 	public static final ItemEntry<HomeTotem> TOTEM_OF_DREAM;
 	public static final ItemEntry<PoseiditeTotem> TOTEM_OF_THE_SEA;
 
+	public static final ItemEntry<FireChargeItem<SoulFireball>> SOUL_CHARGE;
+	public static final ItemEntry<FireChargeItem<StrongFireball>> STRONG_CHARGE;
+	public static final ItemEntry<FireChargeItem<BlackFireball>> BLACK_CHARGE;
+
 	public static final ItemEntry<Item>[] MAT_INGOTS, MAT_NUGGETS;
 	public static final ItemEntry<Item>[][] GEN_ITEM;
 
@@ -105,6 +113,24 @@ public class LCItems {
 					.defaultModel().defaultLang().register();
 			TOTEM_OF_THE_SEA = REGISTRATE.item("totem_of_the_sea", p ->
 							new PoseiditeTotem(p.fireResistant().stacksTo(16).rarity(Rarity.EPIC)))
+					.defaultModel().defaultLang().register();
+		}
+		{
+			SOUL_CHARGE = REGISTRATE.item("soul_fire_charge", p ->
+							new FireChargeItem<>(p, SoulFireball::new, SoulFireball::new,
+									() -> LangData.IDS.EFFECT_CHARGE.get(new MobEffectInstance(LCEffects.FLAME.get(),
+											LCConfig.COMMON.soulFireChargeDuration.get()))))
+					.defaultModel().defaultLang().register();
+
+			STRONG_CHARGE = REGISTRATE.item("strong_fire_charge", p ->
+							new FireChargeItem<>(p, StrongFireball::new, StrongFireball::new,
+									() -> LangData.IDS.EXPLOSION_CHARGE.get(LCConfig.COMMON.strongFireChargePower.get())))
+					.defaultModel().defaultLang().register();
+
+			BLACK_CHARGE = REGISTRATE.item("black_fire_charge", p ->
+							new FireChargeItem<>(p, BlackFireball::new, BlackFireball::new,
+									() -> LangData.IDS.EFFECT_CHARGE.get(new MobEffectInstance(LCEffects.STONE_CAGE.get(),
+											LCConfig.COMMON.blackFireChargeDuration.get()))))
 					.defaultModel().defaultLang().register();
 		}
 		GEN_ITEM = L2Complements.MATS.genItem(LCMats.values());

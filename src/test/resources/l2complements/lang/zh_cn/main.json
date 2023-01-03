@@ -6,6 +6,11 @@
 	"stone_cage": "禁锢",
 	"emerald": "绿宝石水花"
   },
+  "entity.l2complements": {
+	"black_fire_charge": "黑炎弹",
+	"soul_fire_charge": "魂炎弹",
+	"strong_fire_charge": "爆炎弹"
+  },
   "itemGroup.l2complements": {
 	"generated": "莱特兰·扩展"
   },
@@ -49,7 +54,9 @@
 	  "warp_teleport": "右键传送。剩余耐久：%s",
 	  "totem_dream": "激活时让玩家回到出生点，同时变成一个绑定了激活地点的易碎传送石。对虚空伤害也有效。回复全部血量。",
 	  "totem_sea": "可堆叠，但能只在水中/雨中激活。",
-	  "float": "这个物品会悬浮在空中。"
+	  "float": "这个物品会悬浮在空中。",
+	  "effect_charge": "击中目标时施加: %s",
+	  "explosion_charge": "造成等级%s的爆炸"
 	},
 	"tool": {
 	  "poseidite_armor": "当使用者在水/雨中时，提供额外保护，提升移动/游泳速度，提供潮涌效果",

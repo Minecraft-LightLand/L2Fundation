@@ -29,6 +29,10 @@ public class LCConfig {
 
 		public final ForgeConfigSpec.DoubleValue windSweepIncrement;
 
+		public final ForgeConfigSpec.IntValue soulFireChargeDuration;
+		public final ForgeConfigSpec.IntValue blackFireChargeDuration;
+		public final ForgeConfigSpec.IntValue strongFireChargePower;
+
 		Common(ForgeConfigSpec.Builder builder) {
 			windSpeed = builder.comment("Requirement for obtaining Captured Wind. Unit: Block per Tick")
 					.defineInRange("windSpeed", 10, 0.1, 100);
@@ -45,6 +49,14 @@ public class LCConfig {
 					.defineInRange("shulkerateReach", 1, 0.1, 100);
 			windSweepIncrement = builder.comment("Wind Sweep enchantment increment to sweep hit box")
 					.defineInRange("windSweepIncrement", 1, 0.1, 100);
+
+
+			soulFireChargeDuration = builder.comment("Soul Fire Charge Duration")
+					.defineInRange("soulFireChargeDuration", 60, 1, 10000);
+			blackFireChargeDuration = builder.comment("Black Fire Charge Duration")
+					.defineInRange("blackFireChargeDuration", 100, 1, 10000);
+			strongFireChargePower = builder.comment("Strong Fire Charge Power")
+					.defineInRange("strongFireChargePower", 2, 1, 10);
 		}
 
 	}

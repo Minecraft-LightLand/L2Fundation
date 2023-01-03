@@ -17,6 +17,7 @@ import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.data.recipes.UpgradeRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -122,6 +123,24 @@ public class RecipeGen {
 					.define('B', Items.HEART_OF_THE_SEA)
 					.define('C', LCMats.POSEIDITE.getIngot())
 					.save(pvd, getID(LCItems.TOTEM_OF_THE_SEA.get()));
+
+			unlock(pvd, new ShapelessRecipeBuilder(LCItems.SOUL_CHARGE.get(), 2)::unlockedBy, Items.BLAZE_POWDER)
+					.requires(ItemTags.SOUL_FIRE_BASE_BLOCKS)
+					.requires(Items.BLAZE_POWDER, 2)
+					.requires(Items.GUNPOWDER, 2)
+					.save(pvd, getID(LCItems.SOUL_CHARGE.get()));
+
+			unlock(pvd, new ShapelessRecipeBuilder(LCItems.BLACK_CHARGE.get(), 2)::unlockedBy, Items.BLAZE_POWDER)
+					.requires(Items.BLACKSTONE)
+					.requires(Items.BLAZE_POWDER, 2)
+					.requires(Items.GUNPOWDER, 2)
+					.save(pvd, getID(LCItems.BLACK_CHARGE.get()));
+
+			unlock(pvd, new ShapelessRecipeBuilder(LCItems.STRONG_CHARGE.get(), 2)::unlockedBy, Items.BLAZE_POWDER)
+					.requires(Ingredient.of(Items.COAL, Items.CHARCOAL))
+					.requires(Items.BLAZE_POWDER, 2)
+					.requires(Items.GUNPOWDER, 2)
+					.save(pvd, getID(LCItems.STRONG_CHARGE.get()));
 
 
 		}

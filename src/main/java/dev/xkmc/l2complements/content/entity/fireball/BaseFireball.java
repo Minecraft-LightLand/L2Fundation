@@ -17,6 +17,9 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class BaseFireball<T extends BaseFireball<T>> extends Fireball implements ISizedItemEntity {
 
+	private final int lifetime = 200;
+	private int life = 0;
+
 	public BaseFireball(EntityType<T> type, Level level) {
 		super(type, level);
 	}
@@ -66,6 +69,21 @@ public class BaseFireball<T extends BaseFireball<T>> extends Fireball implements
 	}
 
 	@Override
+	protected float getInertia() {
+		return 1;
+	}
+
+	@Override
+	public void tick() {
+		super.tick();
+		if (!level.isClientSide)
+			life++;
+		if (life >= lifetime) {
+			discard();
+		}
+	}
+
+	@Override
 	protected boolean shouldBurn() {
 		return false;
 	}
@@ -82,4 +100,5 @@ public class BaseFireball<T extends BaseFireball<T>> extends Fireball implements
 	public float getSize() {
 		return 1;
 	}
+
 }

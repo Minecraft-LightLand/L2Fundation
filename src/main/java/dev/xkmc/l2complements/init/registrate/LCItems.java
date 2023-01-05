@@ -12,8 +12,11 @@ import dev.xkmc.l2complements.init.data.LCMats;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2library.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -118,8 +121,9 @@ public class LCItems {
 		{
 			SOUL_CHARGE = REGISTRATE.item("soul_fire_charge", p ->
 							new FireChargeItem<>(p, SoulFireball::new, SoulFireball::new,
-									() -> LangData.IDS.EFFECT_CHARGE.get(new MobEffectInstance(LCEffects.FLAME.get(),
-											LCConfig.COMMON.soulFireChargeDuration.get()))))
+									() -> LangData.IDS.EFFECT_CHARGE.get(getTooltip(
+											new MobEffectInstance(LCEffects.FLAME.get(),
+													LCConfig.COMMON.soulFireChargeDuration.get())))))
 					.defaultModel().defaultLang().register();
 
 			STRONG_CHARGE = REGISTRATE.item("strong_fire_charge", p ->
@@ -129,11 +133,26 @@ public class LCItems {
 
 			BLACK_CHARGE = REGISTRATE.item("black_fire_charge", p ->
 							new FireChargeItem<>(p, BlackFireball::new, BlackFireball::new,
-									() -> LangData.IDS.EFFECT_CHARGE.get(new MobEffectInstance(LCEffects.STONE_CAGE.get(),
-											LCConfig.COMMON.blackFireChargeDuration.get()))))
+									() -> LangData.IDS.EFFECT_CHARGE.get(getTooltip(
+											new MobEffectInstance(LCEffects.STONE_CAGE.get(),
+													LCConfig.COMMON.blackFireChargeDuration.get())))))
 					.defaultModel().defaultLang().register();
 		}
 		GEN_ITEM = L2Complements.MATS.genItem(LCMats.values());
+	}
+
+	public static MutableComponent getTooltip(MobEffectInstance eff) {
+		MutableComponent comp = Component.translatable(eff.getDescriptionId());
+		MobEffect mobeffect = eff.getEffect();
+		if (eff.getAmplifier() > 0) {
+			comp = Component.translatable("potion.withAmplifier", comp,
+					Component.translatable("potion.potency." + eff.getAmplifier()));
+		}
+		if (eff.getDuration() > 20) {
+			comp = Component.translatable("potion.withDuration", comp,
+					MobEffectUtil.formatDuration(eff, 1));
+		}
+		return comp.withStyle(mobeffect.getCategory().getTooltipFormatting());
 	}
 
 	public static ItemEntry<TooltipItem> simpleItem(String id, BiFunction<Item.Properties, Supplier<MutableComponent>, TooltipItem> func, Rarity r, Supplier<MutableComponent> sup) {

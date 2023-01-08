@@ -25,5 +25,5 @@ public class StableBodyEnchantment extends SingleLevelEnchantment implements Att
 			event.addModifier(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(ID, "stable_body", 1, AttributeModifier.Operation.ADDITION));
 		}
 	}
-	
+
 }

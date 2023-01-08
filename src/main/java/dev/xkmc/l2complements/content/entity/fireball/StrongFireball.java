@@ -1,8 +1,6 @@
 package dev.xkmc.l2complements.content.entity.fireball;
 
 import dev.xkmc.l2complements.init.registrate.LCEntities;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Explosion;

@@ -11,7 +11,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class LCParticle {
 
-	public static final RegistryEntry<SimpleParticleType> EMERALD = L2Complements.REGISTRATE.simple("emerald", ForgeRegistries.Keys.PARTICLE_TYPES, () -> new SimpleParticleType(false));
+	public static final RegistryEntry<SimpleParticleType> EMERALD = L2Complements.REGISTRATE.simple("emerald_splash", ForgeRegistries.Keys.PARTICLE_TYPES, () -> new SimpleParticleType(false));
 
 	public static void register() {
 

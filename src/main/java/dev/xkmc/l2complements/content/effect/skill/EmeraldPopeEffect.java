@@ -1,5 +1,6 @@
 package dev.xkmc.l2complements.content.effect.skill;
 
+import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCParticle;
 import dev.xkmc.l2library.base.effects.api.FirstPlayerRenderEffect;
 import dev.xkmc.l2library.util.Proxy;
@@ -13,6 +14,8 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -23,8 +26,6 @@ import java.util.function.Consumer;
 
 public class EmeraldPopeEffect extends MobEffect implements FirstPlayerRenderEffect {
 
-	public static final int RADIUS = 10;
-
 	public EmeraldPopeEffect(MobEffectCategory type, int color) {
 		super(type, color);
 	}
@@ -32,11 +33,12 @@ public class EmeraldPopeEffect extends MobEffect implements FirstPlayerRenderEff
 	public void applyEffectTick(LivingEntity self, int level) {
 		if (self.level.isClientSide())
 			return;
-		int radius = (level + 1) * RADIUS;
-		int damage = (level + 1) * 10;
+		int radius = (level + 1) * LCConfig.COMMON.emeraldBaseRange.get();
+		var atk = self.getAttribute(Attributes.ATTACK_DAMAGE);
+		int damage = (int) (LCConfig.COMMON.emeraldDamageFactor.get() * (atk == null ? 1 : atk.getValue()));
 		DamageSource source = new IndirectEntityDamageSource("emerald", self, self);
 		for (Entity e : self.level.getEntities(self, new AABB(self.blockPosition()).inflate(radius))) {
-			if (e instanceof LivingEntity && !e.isAlliedTo(self) && ((LivingEntity) e).hurtTime == 0 &&
+			if (e instanceof Enemy && !e.isAlliedTo(self) && ((LivingEntity) e).hurtTime == 0 &&
 					e.position().distanceToSqr(self.position()) < radius * radius) {
 				double dist = e.position().distanceTo(self.position());
 				if (dist > 0.1) {
@@ -54,7 +56,7 @@ public class EmeraldPopeEffect extends MobEffect implements FirstPlayerRenderEff
 	@Override
 	public void render(LivingEntity entity, int lv, Consumer<ResourceLocation> consumer) {
 		if (!Minecraft.getInstance().isPaused() && entity != Proxy.getClientPlayer()) {
-			int r = RADIUS * (1 + lv);
+			int r = (lv + 1) * LCConfig.COMMON.emeraldBaseRange.get();
 			int count = (1 + lv) * (1 + lv) * 4;
 			for (int i = 0; i < count; i++) {
 				addParticle(entity.level, entity.position(), r);
@@ -65,7 +67,7 @@ public class EmeraldPopeEffect extends MobEffect implements FirstPlayerRenderEff
 	@Override
 	public void onClientLevelRender(AbstractClientPlayer player, MobEffectInstance ins) {
 		int lv = ins.getAmplifier();
-		int r = RADIUS * (1 + lv);
+		int r = (lv + 1) * LCConfig.COMMON.emeraldBaseRange.get();
 		int count = (1 + lv) * (1 + lv) * 4;
 		for (int i = 0; i < count; i++) {
 			addParticle(player.level, player.position(), r);

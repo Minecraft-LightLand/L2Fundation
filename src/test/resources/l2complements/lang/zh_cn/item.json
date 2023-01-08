@@ -20,7 +20,8 @@
 	"totem_of_the_sea": "海神图腾",
 	"black_fire_charge": "黑炎弹",
 	"soul_fire_charge": "魂炎弹",
-	"strong_fire_charge": "爆炎弹"
+	"strong_fire_charge": "爆炎弹",
+	"heirophant_green": "法皇之绿"
   },
   "block.l2complements": {
 	"eternal_anvil": "永恒铁砧"
@@ -104,7 +105,10 @@
 		  "long_levitation": "悬浮药水",
 		  "resistance": "抗性药水",
 		  "long_resistance": "抗性药水",
-		  "strong_resistance": "抗性药水"
+		  "strong_resistance": "抗性药水",
+		  "emerald_splash": "绿宝石水花",
+		  "long_emerald_splash": "绿宝石水花",
+		  "strong_emerald_splash": "绿宝石水花"
 		}
 	  ]
 	}

@@ -67,6 +67,7 @@ public class LCItems {
 	public static final ItemEntry<TooltipItem> RESONANT_FEATHER;
 	public static final ItemEntry<TooltipItem> SPACE_SHARD;
 	public static final ItemEntry<TooltipItem> WARDEN_BONE_SHARD;
+	public static final ItemEntry<TooltipItem> EMERALD;
 	public static final ItemEntry<SpecialRenderItem> FORCE_FIELD;
 
 
@@ -100,6 +101,7 @@ public class LCItems {
 			RESONANT_FEATHER = simpleItem("resonant_feather", TooltipItem::new, Rarity.EPIC, LangData.IDS.RESONANT_FEATHER::get); // let chicken survive sonic boom
 			SPACE_SHARD = simpleItem("space_shard", TooltipItem::new, Rarity.EPIC, () -> LangData.IDS.SPACE_SHARD.get(LCConfig.COMMON.spaceDamage.get())); // deal 500 arrow damage
 			WARDEN_BONE_SHARD = simpleItem("warden_bone_shard", TooltipItem::new, Rarity.RARE, LangData.IDS.WARDEN_BONE_SHARD::get);
+			EMERALD = simpleItem("heirophant_green", BurntItem::new, Rarity.EPIC, LangData.IDS.EMERALD::get);
 			FORCE_FIELD = REGISTRATE.item("force_field", p -> new SpecialRenderItem(p.fireResistant().rarity(Rarity.EPIC), LangData.IDS.FORCE_FIELD::get))
 					.model((ctx, pvd) -> pvd.getBuilder(ctx.getName()).parent(new ModelFile.UncheckedModelFile("builtin/entity")))
 					.defaultLang().register();

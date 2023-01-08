@@ -4,7 +4,7 @@
 	"flame": "魂火",
 	"frozen": "寒流",
 	"stone_cage": "禁锢",
-	"emerald": "绿宝石水花"
+	"emerald_splash": "绿宝石水花"
   },
   "entity.l2complements": {
 	"black_fire_charge": "黑炎弹",
@@ -26,7 +26,10 @@
 	"long_levitation": "悬浮之箭",
 	"resistance": "抗性之箭",
 	"long_resistance": "抗性之箭",
-	"strong_resistance": "抗性之箭"
+	"strong_resistance": "抗性之箭",
+	"emerald_splash": "虫箭-绿宝石水花",
+	"long_emerald_splash": "虫箭-绿宝石水花",
+	"strong_emerald_splash": "虫箭-绿宝石水花"
   },
   "death.attack": {
 	"soul_flame": "%s的灵魂燃尽了",
@@ -56,7 +59,8 @@
 	  "totem_sea": "可堆叠，但能只在水中/雨中激活。",
 	  "float": "这个物品会悬浮在空中。",
 	  "effect_charge": "击中目标时施加: %s",
-	  "explosion_charge": "造成等级%s的爆炸"
+	  "explosion_charge": "造成等级%s的爆炸",
+	  "heirophant_green": "焚烧绿宝石时极低概率转化"
 	},
 	"tool": {
 	  "poseidite_armor": "当使用者在水/雨中时，提供额外保护，提升移动/游泳速度，提供潮涌效果",

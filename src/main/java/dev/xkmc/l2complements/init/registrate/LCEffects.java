@@ -30,7 +30,7 @@ import java.util.function.Supplier;
  */
 public class LCEffects {
 
-	public static final RegistryEntry<EmeraldPopeEffect> EMERALD = genEffect("emerald", () -> new EmeraldPopeEffect(MobEffectCategory.NEUTRAL, 0x00FF00));
+	public static final RegistryEntry<EmeraldPopeEffect> EMERALD = genEffect("emerald_splash", () -> new EmeraldPopeEffect(MobEffectCategory.NEUTRAL, 0x00FF00));
 	public static final RegistryEntry<FlameEffect> FLAME = genEffect("flame", () -> new FlameEffect(MobEffectCategory.HARMFUL, 0xFF0000));
 	public static final RegistryEntry<IceEffect> ICE = genEffect("frozen", () -> new IceEffect(MobEffectCategory.HARMFUL, 0x7f7fff));
 	public static final RegistryEntry<ArmorReduceEffect> ARMOR_REDUCE = genEffect("armor_reduce", () -> new ArmorReduceEffect(MobEffectCategory.HARMFUL, 0xFFFFFF));
@@ -50,11 +50,12 @@ public class LCEffects {
 	}
 
 	public static void register() {
-		regPotion3("flame", FLAME::get, LCItems.SOUL_FLAME::get, 400, 600, 1200, 0, 1);
+		regPotion3("flame", FLAME::get, LCItems.SOUL_FLAME::get, 400, 600, 1000, 0, 1);
 		regPotion2("frozen", ICE::get, LCItems.HARD_ICE::get, 3600, 9600);
 		regPotion2("stone_cage", STONE_CAGE::get, LCItems.BLACKSTONE_CORE::get, 1200, 3600);
 		regPotion2("levitation", () -> MobEffects.LEVITATION, LCItems.CAPTURED_BULLET::get, 200, 600);
 		regPotion3("resistance", () -> MobEffects.DAMAGE_RESISTANCE, LCItems.EXPLOSION_SHARD::get, 400, 600, 1200, 1, 2);
+		regEmeraldPotion(EMERALD::get, LCItems.EMERALD::get);
 	}
 
 	private static <T extends Potion> RegistryEntry<T> genPotion(String name, NonNullSupplier<T> sup) {
@@ -83,6 +84,16 @@ public class LCEffects {
 		});
 	}
 
+	private static void regEmeraldPotion(Supplier<MobEffect> sup, Supplier<Item> item) {
+		var potion = genPotion("emerald_splash", () -> new Potion(new MobEffectInstance(sup.get(), 200, 0)));
+		var longPotion = genPotion("long_" + "emerald_splash", () -> new Potion(new MobEffectInstance(sup.get(), 400, 0)));
+		var strongPotion = genPotion("strong_" + "emerald_splash", () -> new Potion(new MobEffectInstance(sup.get(), 200, 1)));
+		TEMP.add(() -> {
+			PotionBrewing.addMix(Potions.AWKWARD, item.get(), potion.get());
+			PotionBrewing.addMix(potion.get(), LCItems.FORCE_FIELD.get(), longPotion.get());
+			PotionBrewing.addMix(potion.get(), LCItems.RESONANT_FEATHER.get(), strongPotion.get());
+		});
+	}
 
 }
 

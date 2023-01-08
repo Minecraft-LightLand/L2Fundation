@@ -14,7 +14,7 @@ public class LifeSyncEnchantment extends SingleLevelEnchantment {
 		super(pRarity, pCategory, pApplicableSlots);
 	}
 
-	public ChatFormatting getColor(){
+	public ChatFormatting getColor() {
 		return ChatFormatting.LIGHT_PURPLE;
 	}
 

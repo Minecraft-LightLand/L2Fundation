@@ -46,7 +46,7 @@ public class UnobtainableEnchantment extends Enchantment {
 		return true;
 	}
 
-	public ChatFormatting getColor(){
+	public ChatFormatting getColor() {
 		return ChatFormatting.GREEN;
 	}
 

@@ -33,7 +33,12 @@ public class LCConfig {
 		public final ForgeConfigSpec.IntValue blackFireChargeDuration;
 		public final ForgeConfigSpec.IntValue strongFireChargePower;
 
+		public final ForgeConfigSpec.IntValue emeraldConversion;
+		public final ForgeConfigSpec.DoubleValue emeraldDamageFactor;
+		public final ForgeConfigSpec.IntValue emeraldBaseRange;
+
 		Common(ForgeConfigSpec.Builder builder) {
+			builder.push("materials");
 			windSpeed = builder.comment("Requirement for obtaining Captured Wind. Unit: Block per Tick")
 					.defineInRange("windSpeed", 10, 0.1, 100);
 			belowVoid = builder.comment("Requirement for void eye drop")
@@ -44,19 +49,30 @@ public class LCConfig {
 					.defineInRange("explosionDamage", 80, 1, 10000);
 			spaceDamage = builder.comment("Requirement for space shard drop")
 					.defineInRange("spaceDamage", 2048, 1, 10000);
+			emeraldConversion = builder.comment("Expected number of emeralds consumed when generating a hierophant green")
+					.defineInRange("emeraldConversion", 15552, 1, 1000000000);
+			builder.pop();
 
-			shulkerateReach = builder.comment("Shulkerate reach increment")
-					.defineInRange("shulkerateReach", 1, 0.1, 100);
-			windSweepIncrement = builder.comment("Wind Sweep enchantment increment to sweep hit box")
-					.defineInRange("windSweepIncrement", 1, 0.1, 100);
-
-
+			builder.push("fire charge");
 			soulFireChargeDuration = builder.comment("Soul Fire Charge Duration")
 					.defineInRange("soulFireChargeDuration", 60, 1, 10000);
 			blackFireChargeDuration = builder.comment("Black Fire Charge Duration")
 					.defineInRange("blackFireChargeDuration", 100, 1, 10000);
 			strongFireChargePower = builder.comment("Strong Fire Charge Power")
 					.defineInRange("strongFireChargePower", 2, 1, 10);
+			builder.pop();
+
+			builder.push("properties");
+			shulkerateReach = builder.comment("Shulkerate reach increment")
+					.defineInRange("shulkerateReach", 1, 0.1, 100);
+			windSweepIncrement = builder.comment("Wind Sweep enchantment increment to sweep hit box")
+					.defineInRange("windSweepIncrement", 1, 0.1, 100);
+			emeraldDamageFactor = builder.comment("Damage factor of emerald splash")
+					.defineInRange("emeraldDamageFactor", 0.5, 0.001, 1000);
+			emeraldBaseRange = builder.comment("Base range for emerald splash")
+					.defineInRange("emeraldBaseRange", 10, 1, 100);
+			builder.pop();
+
 		}
 
 	}

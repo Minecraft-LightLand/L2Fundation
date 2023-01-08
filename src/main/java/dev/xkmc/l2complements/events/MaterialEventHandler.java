@@ -5,6 +5,7 @@ import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Drowned;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.monster.Ghast;
@@ -13,7 +14,10 @@ import net.minecraft.world.entity.monster.piglin.PiglinBrute;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ShulkerBullet;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.event.entity.EntityLeaveLevelEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -82,6 +86,24 @@ public class MaterialEventHandler {
 			event.getItemStack().shrink(1);
 			event.getEntity().getInventory().placeItemBackInInventory(LCItems.CAPTURED_BULLET.asStack());
 		}
+	}
+
+	@SubscribeEvent
+	public static void onItemKill(EntityLeaveLevelEvent event) {
+		Level level = event.getLevel();
+		if (event.getLevel().isClientSide()) return;
+		if (!(event.getEntity() instanceof ItemEntity entity)) return;
+		ItemStack stack = entity.getItem();
+		int chance = 0;
+		if (stack.getItem() == Items.EMERALD) chance = stack.getCount();
+		if (stack.getItem() == Items.EMERALD_BLOCK) chance = stack.getCount() * 9;
+		if (chance == 0) return;
+		if (level.random.nextInt(LCConfig.COMMON.emeraldConversion.get()) < chance) {
+			level.addFreshEntity(new ItemEntity(level,
+					entity.getX(), entity.getY(), entity.getZ(),
+					LCItems.EMERALD.asStack(), 0, 0.5, 0));
+		}
+
 	}
 
 }

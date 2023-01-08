@@ -43,8 +43,8 @@ public abstract class ResourceOrganizer {
 		File f = new File("./src/test/resources");
 		for (File fi : f.listFiles()) {
 			MODID = fi.getName();
-			// delete(new File("./src/main/resources/assets/l2foundation/"));
-			// delete(new File("./src/main/resources/data/l2foundation/recipes"));
+			// delete(new File("./src/main/resources/assets/l2complements/"));
+			// delete(new File("./src/main/resources/data/l2complements/recipes"));
 			if (!fi.isDirectory())
 				continue;
 			for (ResourceOrganizer obj : MAP.values()) {

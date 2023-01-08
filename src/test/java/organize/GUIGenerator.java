@@ -22,7 +22,7 @@ import java.util.Map;
 public class GUIGenerator {
 
     public static void main(String[] args) throws Exception {
-        new GUIGenerator("l2foundation").gen();
+        new GUIGenerator("l2complements").gen();
     }
 
     private class Comp {

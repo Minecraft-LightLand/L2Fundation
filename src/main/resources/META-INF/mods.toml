@@ -4,7 +4,7 @@ license="All rights reserved"
 [[mods]]
 modId="l2complements"
 version="${file.jarVersion}" #mandatory
-displayName="L2 Foundation" #mandatory
+displayName="L2 Complements" #mandatory
 logoFile="l2complements.png" #optional
 credits="Thanks for this example mod goes to Java" #optional
 authors="Love, Cheese and small house plants" #optional

@@ -74,6 +74,7 @@ public class L2Complements {
 			EffectSyncEvents.TRACKED.add(LCEffects.FLAME.get());
 			EffectSyncEvents.TRACKED.add(LCEffects.EMERALD.get());
 			EffectSyncEvents.TRACKED.add(LCEffects.ICE.get());
+			EffectSyncEvents.TRACKED.add(LCEffects.STONE_CAGE.get());
 			LCEffects.registerBrewingRecipe();
 
 			DispenserBlock.registerBehavior(LCItems.SOUL_CHARGE.get(), LCItems.SOUL_CHARGE.get().new FireChargeBehavior());

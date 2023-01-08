@@ -2,8 +2,10 @@ package dev.xkmc.l2complements.content.effect.force;
 
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2library.base.effects.api.ForceEffect;
+import dev.xkmc.l2library.base.effects.api.IconOverlayEffect;
 import dev.xkmc.l2library.base.effects.api.InherentEffect;
 import dev.xkmc.l2library.util.math.MathHelper;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -12,7 +14,7 @@ import net.minecraftforge.common.ForgeMod;
 
 import java.util.UUID;
 
-public class StoneCageEffect extends InherentEffect implements ForceEffect {
+public class StoneCageEffect extends InherentEffect implements ForceEffect, IconOverlayEffect {
 
 	private static final UUID ID_SLOW = MathHelper.getUUIDFromString(L2Complements.MODID + ":stone_cage_slow");
 	private static final UUID ID_FLY = MathHelper.getUUIDFromString(L2Complements.MODID + ":stone_cage_fly");
@@ -35,5 +37,10 @@ public class StoneCageEffect extends InherentEffect implements ForceEffect {
 	@Override
 	public boolean isDurationEffectTick(int p_19455_, int p_19456_) {
 		return true;
+	}
+
+	@Override
+	public ResourceLocation getIcon() {
+		return new ResourceLocation(L2Complements.MODID, "textures/effect_overlay/stone_cage.png");
 	}
 }

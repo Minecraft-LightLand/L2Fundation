@@ -23,7 +23,7 @@ public class LCBlocks {
 	public static final BlockEntry<AnvilBlock> ETERNAL_ANVIL = L2Complements.REGISTRATE
 			.block("eternal_anvil", p -> new AnvilBlock(BlockBehaviour.Properties.copy(Blocks.ANVIL)))
 			.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.getEntry(), pvd.models().getExistingFile(
-					new ResourceLocation(L2Complements.MODID, "eternal_anvil"))))
+					new ResourceLocation(L2Complements.MODID, "eternal_anvil")), 90))
 			.tag(BlockTags.ANVIL, BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL)
 			.item().tag(ItemTags.ANVIL).build().register();
 

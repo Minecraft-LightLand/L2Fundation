@@ -1,19 +1,19 @@
 {
   "variants": {
     "facing=east": {
-      "model": "l2complements:block/eternal_anvil",
-      "y": 90
+      "model": "l2complements:block/eternal_anvil"
     },
     "facing=north": {
-      "model": "l2complements:block/eternal_anvil"
+      "model": "l2complements:block/eternal_anvil",
+      "y": 270
     },
     "facing=south": {
       "model": "l2complements:block/eternal_anvil",
-      "y": 180
+      "y": 90
     },
     "facing=west": {
       "model": "l2complements:block/eternal_anvil",
-      "y": 270
+      "y": 180
     }
   }
 }

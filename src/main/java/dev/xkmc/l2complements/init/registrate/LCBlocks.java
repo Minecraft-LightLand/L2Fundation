@@ -22,12 +22,9 @@ public class LCBlocks {
 
 	public static final BlockEntry<AnvilBlock> ETERNAL_ANVIL = L2Complements.REGISTRATE
 			.block("eternal_anvil", p -> new AnvilBlock(BlockBehaviour.Properties.copy(Blocks.ANVIL)))
-			.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.getEntry(), pvd.models()
-					.withExistingParent(ctx.getName(), "template_anvil")
-					.texture("particle", new ResourceLocation(L2Complements.MODID, "block/eternal_anvil"))
-					.texture("body", new ResourceLocation(L2Complements.MODID, "block/eternal_anvil"))
-					.texture("top", new ResourceLocation(L2Complements.MODID, "block/eternal_anvil_top"))
-			)).tag(BlockTags.ANVIL, BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL)
+			.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.getEntry(), pvd.models().getExistingFile(
+					new ResourceLocation(L2Complements.MODID, "eternal_anvil"))))
+			.tag(BlockTags.ANVIL, BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL)
 			.item().tag(ItemTags.ANVIL).build().register();
 
 	public static final BlockEntry<Block>[] GEN_BLOCK = L2Complements.MATS.genBlockMats(LCMats.values());

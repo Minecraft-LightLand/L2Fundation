@@ -32,7 +32,9 @@ public class LangData {
 		SPACE_SHARD("tooltip.misc.space_shard", "Obtained by causing a projectile damage of at least %s.", 1),
 		FORCE_FIELD("tooltip.misc.force_field", "Obtained by killing a wither with arrow.", 0),
 		WARDEN_BONE_SHARD("tooltip.misc.warden_bone_shard", "Dropped when Warden is killed by player.", 0),
-		EMERALD("tooltip.misc.heirophant_green", "Rarely converted when emerald items are burned.", 0),
+
+		BURNT_TITLE("jei.burnt.title", "Burning", 0),
+		BURNT_COUNT("jei.burnt.count", "One in %s chance of conversion", 1),
 
 		FLOAT("tooltip.misc.float", "This item will float in the air.", 0),
 

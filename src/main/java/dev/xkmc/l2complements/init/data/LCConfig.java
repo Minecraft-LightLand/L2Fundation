@@ -33,7 +33,6 @@ public class LCConfig {
 		public final ForgeConfigSpec.IntValue blackFireChargeDuration;
 		public final ForgeConfigSpec.IntValue strongFireChargePower;
 
-		public final ForgeConfigSpec.IntValue emeraldConversion;
 		public final ForgeConfigSpec.DoubleValue emeraldDamageFactor;
 		public final ForgeConfigSpec.IntValue emeraldBaseRange;
 
@@ -49,8 +48,6 @@ public class LCConfig {
 					.defineInRange("explosionDamage", 80, 1, 10000);
 			spaceDamage = builder.comment("Requirement for space shard drop")
 					.defineInRange("spaceDamage", 2048, 1, 10000);
-			emeraldConversion = builder.comment("Expected number of emeralds consumed when generating a hierophant green")
-					.defineInRange("emeraldConversion", 15552, 1, 1000000000);
 			builder.pop();
 
 			builder.push("fire charge");

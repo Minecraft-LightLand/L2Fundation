@@ -1,8 +1,10 @@
 package dev.xkmc.l2complements.events;
 
+import dev.xkmc.l2complements.content.recipe.BurntRecipe;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCItems;
+import dev.xkmc.l2complements.init.registrate.LCRecipes;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -15,7 +17,6 @@ import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ShulkerBullet;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.EntityLeaveLevelEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -94,15 +95,29 @@ public class MaterialEventHandler {
 		if (event.getLevel().isClientSide()) return;
 		if (!(event.getEntity() instanceof ItemEntity entity)) return;
 		ItemStack stack = entity.getItem();
-		int chance = 0;
-		if (stack.getItem() == Items.EMERALD) chance = stack.getCount();
-		if (stack.getItem() == Items.EMERALD_BLOCK) chance = stack.getCount() * 9;
-		if (chance == 0) return;
-		if (level.random.nextInt(LCConfig.COMMON.emeraldConversion.get()) < chance) {
-			level.addFreshEntity(new ItemEntity(level,
-					entity.getX(), entity.getY(), entity.getZ(),
-					LCItems.EMERALD.asStack(), 0, 0.5, 0));
+		BurntRecipe.Inv inv = new BurntRecipe.Inv();
+		inv.setItem(0, stack);
+		var opt = level.getRecipeManager().getRecipeFor(LCRecipes.RT_BURNT.get(), inv, level);
+		if (opt.isPresent()) {
+			BurntRecipe r = opt.get();
+			ItemStack result = r.assemble(inv);
+			int chance = r.chance;
+			int trial = stack.getCount();
+			int det = trial / chance;
+			trial = trial % chance;
+			if (level.random.nextInt(chance) < trial) det++;
+			det *= result.getCount();
+			while (det > 0) {
+				int sup = Math.min(det, result.getMaxStackSize());
+				det -= sup;
+				ItemStack copy = result.copy();
+				copy.setCount(sup);
+				level.addFreshEntity(new ItemEntity(level,
+						entity.getX(), entity.getY(), entity.getZ(),
+						copy, 0, 0.5, 0));
+			}
 		}
+
 
 	}
 

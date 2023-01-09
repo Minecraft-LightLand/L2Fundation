@@ -21,6 +21,7 @@
   "item.l2complements.soul_fire_charge": "魂炎弹",
   "item.l2complements.strong_fire_charge": "爆炎弹",
   "item.l2complements.heirophant_green": "法皇之绿",
+  "item.l2complements.cursed_droplet": "诅咒尸油",
   "block.l2complements.eternal_anvil": "永恒铁砧",
   "item.l2complements.totemic_gold_helmet": "生命头盔",
   "item.l2complements.totemic_gold_chestplate": "生命胸甲",
@@ -204,7 +205,6 @@
   "l2complements.tooltip.misc.float": "这个物品会悬浮在空中。",
   "l2complements.tooltip.misc.effect_charge": "击中目标时施加: %s",
   "l2complements.tooltip.misc.explosion_charge": "造成等级%s的爆炸",
-  "l2complements.tooltip.misc.heirophant_green": "焚烧绿宝石时极低概率转化",
   "l2complements.tooltip.tool.poseidite_armor": "当使用者在水/雨中时，提供额外保护，提升移动/游泳速度，提供潮涌效果",
   "l2complements.tooltip.tool.poseidite_tool": "在水/雨中时提升伤害和攻击速度",
   "l2complements.tooltip.tool.sculkium_armor": "沉默:穿着4件带有沉默效果的装备时，玩家发出的任何震动都会被抵消",
@@ -212,5 +212,7 @@
   "l2complements.tooltip.tool.shulkerate_armor": "极高耐久，不易损坏",
   "l2complements.tooltip.tool.shulkerate_tool": "极高耐久，不易损坏。略微提升触及距离和攻击距离",
   "l2complements.tooltip.tool.totemic_armor": "消耗耐久时治疗使用者，缓慢回复生命",
-  "l2complements.tooltip.tool.totemic_tool": "消耗耐久时治疗使用者"
+  "l2complements.tooltip.tool.totemic_tool": "消耗耐久时治疗使用者",
+  "l2complements.jei.burnt.count": "1/%s的概率转化",
+  "l2complements.jei.burnt.title": "焚烧转化"
 }

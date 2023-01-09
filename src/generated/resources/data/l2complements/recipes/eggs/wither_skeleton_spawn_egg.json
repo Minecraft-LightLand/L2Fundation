@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "minecraft:bone"
+    },
+    "B": {
+      "item": "l2complements:cursed_droplet"
+    },
+    "C": {
+      "item": "minecraft:egg"
+    },
+    "D": {
+      "item": "minecraft:wither_skeleton_skull"
+    }
+  },
+  "pattern": [
+    "ADA",
+    "ABA",
+    "ACA"
+  ],
+  "result": {
+    "item": "minecraft:wither_skeleton_spawn_egg"
+  }
+}

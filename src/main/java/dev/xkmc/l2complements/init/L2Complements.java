@@ -31,7 +31,7 @@ public class L2Complements {
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
 	public static final GenItem MATS = new GenItem(MODID, REGISTRATE);
 
-	private static void registerRegistrates() {
+	private static void registerRegistrates(IEventBus bus) {
 		ForgeMod.enableMilkFluid();
 		LCBlocks.register();
 		LCItems.register();
@@ -39,6 +39,7 @@ public class L2Complements {
 		LCParticle.register();
 		LCEnchantments.register();
 		LCEntities.register();
+		LCRecipes.register(bus);
 		NetworkManager.register();
 		REGISTRATE.addDataGenerator(ProviderType.LANG, LangData::addTranslations);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, RecipeGen::genRecipe);
@@ -65,7 +66,7 @@ public class L2Complements {
 		IEventBus bus = ctx.getModEventBus();
 		registerModBusEvents(bus);
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> L2ComplementsClient.onCtorClient(bus, MinecraftForge.EVENT_BUS));
-		registerRegistrates();
+		registerRegistrates(bus);
 		registerForgeEvents();
 	}
 

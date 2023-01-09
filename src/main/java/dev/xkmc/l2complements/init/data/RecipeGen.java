@@ -1,6 +1,7 @@
 package dev.xkmc.l2complements.init.data;
 
 import dev.xkmc.l2complements.content.enchantment.core.EnchantmentRecipeBuilder;
+import dev.xkmc.l2complements.content.recipe.BurntRecipeBuilder;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.registrate.LCBlocks;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
@@ -300,6 +301,78 @@ public class RecipeGen {
 					.define('L', Items.LAPIS_LAZULI)
 					.save(pvd, getID(LCEnchantments.DAMPENED.get()));
 		}
+
+		currentFolder = "burnt/";
+		{
+			convert(pvd, Items.EMERALD, LCItems.EMERALD.get(), 64 * 27 * 9);
+			convert(pvd, Items.EMERALD_BLOCK, LCItems.EMERALD.get(), 64 * 27);
+			convert(pvd, Items.ROTTEN_FLESH, LCItems.CURSED_DROPLET.get(), 64 * 27 * 9);
+		}
+
+		currentFolder = "eggs/";
+		{
+			unlock(pvd, new ShapedRecipeBuilder(Items.ZOMBIE_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+					.pattern("AAA").pattern("ABA").pattern("ACA")
+					.define('A', Items.ROTTEN_FLESH)
+					.define('B', LCItems.CURSED_DROPLET.get())
+					.define('C', Items.EGG)
+					.save(pvd, getID(Items.ZOMBIE_SPAWN_EGG));
+
+			unlock(pvd, new ShapedRecipeBuilder(Items.HUSK_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+					.pattern("ADA").pattern("ABA").pattern("ACA")
+					.define('A', Items.ROTTEN_FLESH)
+					.define('B', LCItems.CURSED_DROPLET.get())
+					.define('C', Items.EGG)
+					.define('D', Items.SAND)
+					.save(pvd, getID(Items.HUSK_SPAWN_EGG));
+
+			unlock(pvd, new ShapedRecipeBuilder(Items.DROWNED_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+					.pattern("ADA").pattern("ABA").pattern("ACA")
+					.define('A', Items.ROTTEN_FLESH)
+					.define('B', LCItems.CURSED_DROPLET.get())
+					.define('C', Items.EGG)
+					.define('D', Items.KELP)
+					.save(pvd, getID(Items.DROWNED_SPAWN_EGG));
+
+			unlock(pvd, new ShapedRecipeBuilder(Items.ZOMBIFIED_PIGLIN_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+					.pattern("ADA").pattern("ABA").pattern("ACA")
+					.define('A', Items.ROTTEN_FLESH)
+					.define('B', LCItems.CURSED_DROPLET.get())
+					.define('C', Items.EGG)
+					.define('D', Items.GOLD_INGOT)
+					.save(pvd, getID(Items.ZOMBIFIED_PIGLIN_SPAWN_EGG));
+
+			unlock(pvd, new ShapedRecipeBuilder(Items.SKELETON_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+					.pattern("AAA").pattern("ABA").pattern("ACA")
+					.define('A', Items.BONE)
+					.define('B', LCItems.CURSED_DROPLET.get())
+					.define('C', Items.EGG)
+					.save(pvd, getID(Items.SKELETON_SPAWN_EGG));
+
+			unlock(pvd, new ShapedRecipeBuilder(Items.STRAY_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+					.pattern("ADA").pattern("ABA").pattern("ACA")
+					.define('A', Items.BONE)
+					.define('B', LCItems.CURSED_DROPLET.get())
+					.define('C', Items.EGG)
+					.define('D', Items.SNOWBALL)
+					.save(pvd, getID(Items.STRAY_SPAWN_EGG));
+
+			unlock(pvd, new ShapedRecipeBuilder(Items.WITHER_SKELETON_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+					.pattern("ADA").pattern("ABA").pattern("ACA")
+					.define('A', Items.BONE)
+					.define('B', LCItems.CURSED_DROPLET.get())
+					.define('C', Items.EGG)
+					.define('D', Items.WITHER_SKELETON_SKULL)
+					.save(pvd, getID(Items.WITHER_SKELETON_SPAWN_EGG));
+
+			unlock(pvd, new ShapedRecipeBuilder(Items.PHANTOM_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+					.pattern("AAA").pattern("ABA").pattern("ACA")
+					.define('A', Items.PHANTOM_MEMBRANE)
+					.define('B', LCItems.CURSED_DROPLET.get())
+					.define('C', Items.EGG)
+					.save(pvd, getID(Items.PHANTOM_SPAWN_EGG));
+		}
+
 	}
 
 	private static ResourceLocation getID(Enchantment item) {
@@ -308,6 +381,10 @@ public class RecipeGen {
 
 	private static ResourceLocation getID(Item item) {
 		return new ResourceLocation(L2Complements.MODID, currentFolder + ForgeRegistries.ITEMS.getKey(item).getPath());
+	}
+
+	private static void convert(RegistrateRecipeProvider pvd, Item in, Item out, int count) {
+		unlock(pvd, new BurntRecipeBuilder(Ingredient.of(in), out.getDefaultInstance(), count)::unlockedBy, in).save(pvd, getID(in));
 	}
 
 	private static void storage(RegistrateRecipeProvider pvd, ItemEntry<?> nugget, ItemEntry<?> ingot, BlockEntry<?> block) {

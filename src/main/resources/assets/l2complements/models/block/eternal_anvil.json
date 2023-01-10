@@ -6,7 +6,8 @@
 	64
   ],
   "textures": {
-	"1": "l2complements:block/eternal_anvil"
+	"1": "l2complements:block/eternal_anvil",
+	"particle": "l2complements:block/eternal_anvil"
   },
   "elements": [
 	{

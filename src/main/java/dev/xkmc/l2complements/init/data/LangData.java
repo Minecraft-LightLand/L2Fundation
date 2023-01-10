@@ -42,7 +42,7 @@ public class LangData {
 		WARP_TELEPORT("tooltip.misc.warp_teleport", "Right click to teleport. Durability: %s", 1),
 		WARP_POS("tooltip.misc.warp_pos", "Target: %s, (%s,%s,%s)", 4),
 		TOTEM_DREAM("tooltip.misc.totem_dream", "Return players back to home when triggers, and becomes a fragile warp stone to go back. Valid against void damage. Also heal player to full health.", 0),
-		TOTEM_SEA("tooltip.misc.totem_sea", "Stackable, but only triggers when in water or rain.", 0),
+		TOTEM_SEA("tooltip.misc.totem_sea", "It's stackable, but can only be triggered when in water or rain.", 0),
 
 		EFFECT_CHARGE("tooltip.misc.effect_charge", "Apply on Hit: %s", 1),
 		EXPLOSION_CHARGE("tooltip.misc.explosion_charge", "Create explosion of level %s on Hit", 1),

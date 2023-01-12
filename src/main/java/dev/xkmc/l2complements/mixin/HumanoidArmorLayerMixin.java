@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class HumanoidArmorLayerMixin<T extends LivingEntity, M extends HumanoidModel<T>, A extends HumanoidModel<T>> {
 
 	@Inject(at = @At("HEAD"), method = "renderArmorPiece", cancellable = true)
-	public void l2complements_hideInvisibleArmors(PoseStack matrix, MultiBufferSource source, T entity, EquipmentSlot slot, int light, A model, CallbackInfo ci) {
+	public void l2complements_renderArmorPiece_hideInvisibleArmors(PoseStack matrix, MultiBufferSource source, T entity, EquipmentSlot slot, int light, A model, CallbackInfo ci) {
 		ItemStack stack = entity.getItemBySlot(slot);
 		if (!SpecialEquipmentEvents.isVisible(entity, stack))
 			ci.cancel();

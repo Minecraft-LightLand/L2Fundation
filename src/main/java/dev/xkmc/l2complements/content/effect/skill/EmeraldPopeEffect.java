@@ -55,22 +55,21 @@ public class EmeraldPopeEffect extends MobEffect implements FirstPlayerRenderEff
 
 	@Override
 	public void render(LivingEntity entity, int lv, Consumer<ResourceLocation> consumer) {
-		if (!Minecraft.getInstance().isPaused() && entity != Proxy.getClientPlayer()) {
-			int r = (lv + 1) * LCConfig.COMMON.emeraldBaseRange.get();
-			int count = (1 + lv) * (1 + lv) * 4;
-			for (int i = 0; i < count; i++) {
-				addParticle(entity.level, entity.position(), r);
-			}
-		}
+		if (entity == Proxy.getClientPlayer()) return;
+		renderEffect(lv, entity);
 	}
 
 	@Override
 	public void onClientLevelRender(AbstractClientPlayer player, MobEffectInstance ins) {
-		int lv = ins.getAmplifier();
+		renderEffect(ins.getAmplifier(), player);
+	}
+
+	private static void renderEffect(int lv, Entity entity) {
+		if (Minecraft.getInstance().isPaused()) return;
 		int r = (lv + 1) * LCConfig.COMMON.emeraldBaseRange.get();
 		int count = (1 + lv) * (1 + lv) * 4;
 		for (int i = 0; i < count; i++) {
-			addParticle(player.level, player.position(), r);
+			addParticle(entity.level, entity.position(), r);
 		}
 	}
 

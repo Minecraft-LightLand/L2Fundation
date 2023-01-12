@@ -27,6 +27,16 @@
 	"soul_bound": "灵魂绑定",
 	"soul_bound.desc": "死后保留物品",
 	"dampened": "沉默",
-	"dampened.desc": "穿着4件带有沉默效果的装备时，玩家发出的任何震动都会被抵消"
+	"dampened.desc": "穿着4件带有沉默效果的装备时，玩家发出的任何震动都会被抵消",
+	"ender_reach": "末影迁移",
+	"ender_reach.desc": "破坏方块时掉落物品全部传送到背包",
+	"ice_blade": "冰刃",
+	"ice_blade.desc": "对敌人施加寒流效果。更高级的附魔延长效果时间",
+	"soul_flame_blade": "炎刃",
+	"soul_flame_blade.desc": "对敌人施加魂火效果。更高级的附魔造成对伤害更高",
+	"ice_thorn": "冰棘",
+	"ice_thorn.desc": "对攻击者施加寒流效果。更高级的附魔延长效果时间",
+	"soul_flame_thorn": "炎棘",
+	"soul_flame_thorn.desc": "对攻击者施加魂火效果。更高级的附魔造成对伤害更高"
   }
 }

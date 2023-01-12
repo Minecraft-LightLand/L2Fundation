@@ -52,6 +52,7 @@ public class L2Complements {
 		MinecraftForge.EVENT_BUS.register(ItemUseEventHandler.class);
 		MinecraftForge.EVENT_BUS.register(MaterialEventHandler.class);
 		MinecraftForge.EVENT_BUS.register(EnchantmentEventHandler.class);
+		MinecraftForge.EVENT_BUS.register(SpecialEquipmentEvents.class);
 		AttackEventHandler.LISTENERS.add(new ToolDamageListener());
 		AttackEventHandler.LISTENERS.add(new MaterialDamageListener());
 	}

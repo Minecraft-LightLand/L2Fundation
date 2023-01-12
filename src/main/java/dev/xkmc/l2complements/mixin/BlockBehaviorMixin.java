@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class BlockBehaviorMixin {
 
 	@Inject(at = @At("HEAD"), method = "getDestroyProgress")
-	public void l2complements_cacheBlockHardness(BlockState state, Player player, BlockGetter level, BlockPos pos, CallbackInfoReturnable<Float> cir) {
+	public void l2complements_getDestroyProgress_cacheBlockHardness(BlockState state, Player player, BlockGetter level, BlockPos pos, CallbackInfoReturnable<Float> cir) {
 		SculkiumTool.cachedHardness = state.getDestroySpeed(level, pos);
 	}
 

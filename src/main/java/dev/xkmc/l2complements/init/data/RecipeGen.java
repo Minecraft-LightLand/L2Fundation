@@ -300,6 +300,28 @@ public class RecipeGen {
 					.define('B', Items.BOOK)
 					.define('L', Items.LAPIS_LAZULI)
 					.save(pvd, getID(LCEnchantments.DAMPENED.get()));
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ICE_BLADE.get(), 1)::unlockedBy, LCItems.HARD_ICE.get())
+					.pattern("LAL").pattern("ABA").pattern("LAL")
+					.define('A', LCItems.HARD_ICE.get())
+					.define('B', Items.BOOK)
+					.define('L', Items.LAPIS_LAZULI)
+					.save(pvd, getID(LCEnchantments.ICE_BLADE.get()));
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.FLAME_BLADE.get(), 1)::unlockedBy, LCItems.SOUL_FLAME.get())
+					.pattern("LAL").pattern("ABA").pattern("LAL")
+					.define('A', LCItems.SOUL_FLAME.get())
+					.define('B', new EnchantmentIngredient(Enchantments.FIRE_ASPECT, 2))
+					.define('L', Items.LAPIS_LAZULI)
+					.save(pvd, getID(LCEnchantments.FLAME_BLADE.get()));
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENDER.get(), 1)::unlockedBy, LCItems.VOID_EYE.get())
+					.pattern("LCL").pattern("ABA").pattern("LAL")
+					.define('A', Items.ENDER_EYE)
+					.define('C', LCItems.VOID_EYE.get())
+					.define('B', Items.BOOK)
+					.define('L', Items.LAPIS_LAZULI)
+					.save(pvd, getID(LCEnchantments.ENDER.get()));
 		}
 
 		currentFolder = "burnt/";

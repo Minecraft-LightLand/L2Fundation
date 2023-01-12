@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class LocalPlayerMixin {
 
 	@Inject(at = @At("TAIL"), method = "hurtTo")
-	public void l2complements_stableBody(float v, CallbackInfo ci) {
+	public void l2complements_hurtTo_stableBody(float v, CallbackInfo ci) {
 		LocalPlayer self = (LocalPlayer) (Object) this;
 		ItemStack stack = self.getItemBySlot(EquipmentSlot.CHEST);
 		if (stack.getEnchantmentLevel(LCEnchantments.STABLE_BODY.get()) > 0) {
@@ -22,7 +22,7 @@ public class LocalPlayerMixin {
 	}
 
 	@Inject(at = @At("TAIL"), method = "handleEntityEvent")
-	public void handleEntityEvent(byte pId, CallbackInfo ci) {
+	public void l2complements_handleEntityEvent_stableBody(byte pId, CallbackInfo ci) {
 		LocalPlayer self = (LocalPlayer) (Object) this;
 		ItemStack stack = self.getItemBySlot(EquipmentSlot.CHEST);
 		if (stack.getEnchantmentLevel(LCEnchantments.STABLE_BODY.get()) > 0) {

@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class AnvilBlockMixin {
 
 	@Inject(method = "damage", at = @At("HEAD"), cancellable = true)
-	private static void l2complements_injectDamage(BlockState state, CallbackInfoReturnable<BlockState> info) {
+	private static void l2complements_damage_eternalNotBreaking(BlockState state, CallbackInfoReturnable<BlockState> info) {
 		if (state.getBlock() == LCBlocks.ETERNAL_ANVIL.get()) {
 			info.setReturnValue(state);
 			info.cancel();

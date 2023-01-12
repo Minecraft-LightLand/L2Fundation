@@ -20,7 +20,7 @@ import java.util.function.Consumer;
 public abstract class ItemStackMixin {
 
 	@Inject(at = @At("HEAD"), method = "hurtAndBreak", cancellable = true)
-	public <T extends LivingEntity> void l2complements_lifeSync(int pAmount, T pEntity, Consumer<T> pOnBroken, CallbackInfo ci) {
+	public <T extends LivingEntity> void l2complements_hurtAndBreak_lifeSync(int pAmount, T pEntity, Consumer<T> pOnBroken, CallbackInfo ci) {
 		ItemStack self = (ItemStack) (Object) this;
 		if (pEntity.level.isClientSide()) return;
 		if (self.getEnchantmentLevel(LCEnchantments.LIFE_SYNC.get()) > 0) {

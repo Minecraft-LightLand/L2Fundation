@@ -26,7 +26,7 @@ public abstract class LivingEntityMixin {
 	public abstract Iterable<ItemStack> getArmorSlots();
 
 	@Inject(at = @At("HEAD"), method = "checkTotemDeathProtection", cancellable = true)
-	public void l2complements_addCustomTotem(DamageSource pDamageSource, CallbackInfoReturnable<Boolean> cir) {
+	public void l2complements_checkTotemDeathProtection_addCustomTotem(DamageSource pDamageSource, CallbackInfoReturnable<Boolean> cir) {
 		LivingEntity self = Wrappers.cast(this);
 		for (var pair : CurioCompat.totemSlots(self)) {
 			ItemStack holded = pair.getFirst();
@@ -52,7 +52,7 @@ public abstract class LivingEntityMixin {
 	 * @reason Allow armors to hide themselves
 	 */
 	@Inject(at = @At("HEAD"), method = "getArmorCoverPercentage", cancellable = true)
-	public void l2complements_hideInvisibleArmorsFromMobs(CallbackInfoReturnable<Float> cir) {
+	public void l2complements_getArmorCoverPercentage_hideInvisibleArmorsFromMobs(CallbackInfoReturnable<Float> cir) {
 		LivingEntity self = (LivingEntity) (Object) this;
 		Iterable<ItemStack> iterable = getArmorSlots();
 		int total = 0;

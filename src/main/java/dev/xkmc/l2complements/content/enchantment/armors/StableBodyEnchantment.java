@@ -1,4 +1,4 @@
-package dev.xkmc.l2complements.content.enchantment.special;
+package dev.xkmc.l2complements.content.enchantment.armors;
 
 import dev.xkmc.l2complements.content.enchantment.core.AttributeEnchantment;
 import dev.xkmc.l2complements.content.enchantment.core.SingleLevelEnchantment;

@@ -36,6 +36,9 @@ public class LCConfig {
 		public final ForgeConfigSpec.DoubleValue emeraldDamageFactor;
 		public final ForgeConfigSpec.IntValue emeraldBaseRange;
 
+		public final ForgeConfigSpec.IntValue iceEnchantDuration;
+		public final ForgeConfigSpec.IntValue flameEnchantDuration;
+
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("materials");
 			windSpeed = builder.comment("Requirement for obtaining Captured Wind. Unit: Block per Tick")
@@ -68,6 +71,10 @@ public class LCConfig {
 					.defineInRange("emeraldDamageFactor", 0.5, 0.001, 1000);
 			emeraldBaseRange = builder.comment("Base range for emerald splash")
 					.defineInRange("emeraldBaseRange", 10, 1, 100);
+			iceEnchantDuration = builder.comment("Base duration for iceBlade")
+					.defineInRange("iceEnchantDuration", 100, 1, 10000);
+			flameEnchantDuration = builder.comment("Duration for flameBlade")
+					.defineInRange("flameEnchantDuration", 60, 1, 10000);
 			builder.pop();
 
 		}

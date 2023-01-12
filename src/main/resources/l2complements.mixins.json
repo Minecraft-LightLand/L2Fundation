@@ -7,8 +7,10 @@
   "mixins": [
 	"AnvilBlockMixin",
 	"BlockBehaviorMixin",
+	"ItemEntityMixin",
 	"ItemStackMixin",
-	"LivingEntityMixin"
+	"LivingEntityMixin",
+	"ServerPlayerGameModeMixin"
   ],
   "client": [
 	"HumanoidArmorLayerMixin",

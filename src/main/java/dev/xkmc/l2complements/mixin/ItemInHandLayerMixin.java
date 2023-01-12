@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ItemInHandLayerMixin {
 
 	@Inject(at = @At("HEAD"), method = "renderArmWithItem", cancellable = true)
-	public void l2complement_hideInvisibleItem(LivingEntity entity, ItemStack stack, ItemTransforms.TransformType type, HumanoidArm arm, PoseStack pose, MultiBufferSource buffer, int light, CallbackInfo ci) {
+	public void l2complement_renderArmWithItem_hideInvisibleItem(LivingEntity entity, ItemStack stack, ItemTransforms.TransformType type, HumanoidArm arm, PoseStack pose, MultiBufferSource buffer, int light, CallbackInfo ci) {
 		if (!SpecialEquipmentEvents.isVisible(entity, stack))
 			ci.cancel();
 	}

@@ -138,6 +138,16 @@ public class LangData {
 				"Remain in inventory after death.");
 		pvd.add(LCEnchantments.DAMPENED.get().getDescriptionId() + ".desc",
 				"When wearing 4 pieces of armors with dampened effect, cancel all vibrations emitted by wearer.");
+		pvd.add(LCEnchantments.ICE_BLADE.get().getDescriptionId() + ".desc",
+				"Apply freezing effect to target. Higher levels have longer duration.");
+		pvd.add(LCEnchantments.FLAME_BLADE.get().getDescriptionId() + ".desc",
+				"Apply flame effect to target. Higher levels have higher damage.");
+		pvd.add(LCEnchantments.ICE_THORN.get().getDescriptionId() + ".desc",
+				"Apply freezing effect to attacker. Higher levels have longer duration.");
+		pvd.add(LCEnchantments.FLAME_THORN.get().getDescriptionId() + ".desc",
+				"Apply flame effect to attacker. Higher levels have higher damage.");
+		pvd.add(LCEnchantments.ENDER.get().getDescriptionId() + ".desc",
+				"Teleport mined items to inventory if possible.");
 
 
 	}

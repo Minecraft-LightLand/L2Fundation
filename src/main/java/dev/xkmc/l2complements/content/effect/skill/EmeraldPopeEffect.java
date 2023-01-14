@@ -59,6 +59,7 @@ public class EmeraldPopeEffect extends MobEffect implements FirstPlayerRenderEff
 		renderEffect(lv, entity);
 	}
 
+	@OnlyIn(Dist.CLIENT)
 	@Override
 	public void onClientLevelRender(AbstractClientPlayer player, MobEffectInstance ins) {
 		renderEffect(ins.getAmplifier(), player);

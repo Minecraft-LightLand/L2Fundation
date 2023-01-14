@@ -9,10 +9,14 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -20,10 +24,14 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
-public abstract class LivingEntityMixin {
+public abstract class LivingEntityMixin extends Entity {
+
+	public LivingEntityMixin(EntityType<?> pEntityType, Level pLevel) {
+		super(pEntityType, pLevel);
+	}
 
 	@Shadow
-	public abstract Iterable<ItemStack> getArmorSlots();
+	public abstract @NotNull Iterable<ItemStack> getArmorSlots();
 
 	@Inject(at = @At("HEAD"), method = "checkTotemDeathProtection", cancellable = true)
 	public void l2complements_checkTotemDeathProtection_addCustomTotem(DamageSource pDamageSource, CallbackInfoReturnable<Boolean> cir) {
@@ -67,6 +75,7 @@ public abstract class LivingEntityMixin {
 		cir.setReturnValue(total > 0 ? (float) visible / (float) total : 0.0F);
 	}
 
+	@Override
 	public boolean dampensVibrations() {
 		LivingEntity self = (LivingEntity) (Object) this;
 		int count = 0;

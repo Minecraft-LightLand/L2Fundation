@@ -1,10 +1,18 @@
-package dev.xkmc.l2complements.init.data;
+package dev.xkmc.l2complements.init.materials;
 
 import dev.xkmc.l2complements.content.item.equipments.*;
 import dev.xkmc.l2complements.content.item.generic.ArmorMat;
 import dev.xkmc.l2complements.content.item.generic.ExtraArmorConfig;
 import dev.xkmc.l2complements.content.item.generic.ExtraToolConfig;
 import dev.xkmc.l2complements.init.L2Complements;
+import dev.xkmc.l2complements.init.data.TagGen;
+import dev.xkmc.l2complements.init.materials.api.ArmorStats;
+import dev.xkmc.l2complements.init.materials.api.IMatVanillaType;
+import dev.xkmc.l2complements.init.materials.api.IToolStats;
+import dev.xkmc.l2complements.init.materials.api.ArmorConfig;
+import dev.xkmc.l2complements.init.materials.vanilla.GenItemVanillaType;
+import dev.xkmc.l2complements.init.materials.api.ToolConfig;
+import dev.xkmc.l2complements.init.materials.vanilla.ToolStats;
 import dev.xkmc.l2complements.init.registrate.LCBlocks;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2library.repack.registrate.util.entry.ItemEntry;
@@ -20,37 +28,32 @@ import net.minecraftforge.common.ForgeTier;
 
 import java.util.function.Supplier;
 
-public enum LCMats implements IGeneralMats {
+public enum LCMats implements IMatVanillaType {
 	TOTEMIC_GOLD("totemic_gold", 3, SoundEvents.ARMOR_EQUIP_GOLD,
-			new GenItem.ToolStats(1000, 12, new int[]{7, 10, 5, 5, 1},
-					new float[]{1.6f, 1f, 1f, 1.2f, 4f}, 22),
-			new GenItem.ArmorStats(15, new int[]{2, 5, 6, 2}, 0, 0, 25),
-			GenItem.TOOL_GEN, GenItem.ARMOR_GEN,
+			new ToolStats(1000, 12, 7, 1, 22),
+			new ArmorStats(15, new int[]{2, 5, 6, 2}, 0, 0, 25),
+			GenItemVanillaType.TOOL_GEN, GenItemVanillaType.ARMOR_GEN,
 			new TotemicTool().setStick(e -> Items.EMERALD, true), new TotemicArmor()),
 	POSEIDITE("poseidite", 4, SoundEvents.ARMOR_EQUIP_GOLD,
-			new GenItem.ToolStats(1500, 8, new int[]{7, 10, 5, 5, 1},
-					new float[]{1.6f, 1f, 1f, 1.2f, 4f}, 14),
-			new GenItem.ArmorStats(33, new int[]{3, 6, 8, 3}, 2, 0, 9),
-			GenItem.TOOL_GEN, GenItem.ARMOR_GEN,
+			new ToolStats(1500, 8, 7, 1, 14),
+			new ArmorStats(33, new int[]{3, 6, 8, 3}, 2, 0, 9),
+			GenItemVanillaType.TOOL_GEN, GenItemVanillaType.ARMOR_GEN,
 			new PoseiditeTool().setStick(e -> Items.PRISMARINE_SHARD, false), new PoseiditeArmor()),
 	SHULKERATE("shulkerate", 4, SoundEvents.ARMOR_EQUIP_IRON,
-			new GenItem.ToolStats(4000, 8, new int[]{7, 10, 5, 5, 1},
-					new float[]{1.6f, 1f, 1f, 1.2f, 4f}, 14),
-			new GenItem.ArmorStats(400, new int[]{3, 6, 8, 3}, 2, 0, 9),
-			GenItem.TOOL_GEN, GenItem.ARMOR_GEN,
+			new ToolStats(4000, 8, 7, 1, 14),
+			new ArmorStats(400, new int[]{3, 6, 8, 3}, 2, 0, 9),
+			GenItemVanillaType.TOOL_GEN, GenItemVanillaType.ARMOR_GEN,
 			new ShulkerateTool().setStick(e -> Items.IRON_INGOT, false), new ShulkerateArmor()),
 	SCULKIUM("sculkium", 4, SoundEvents.ARMOR_EQUIP_IRON,
-			new GenItem.ToolStats(2000, 8, new int[]{9, 12, 6, 6, 4},
-					new float[]{1.8f, 1.2f, 1.2f, 1.4f, 4f}, 15),
-			new GenItem.ArmorStats(40, new int[]{5, 9, 10, 6}, 4, 0, 15),
-			GenItem.TOOL_GEN, GenItem.ARMOR_GEN,
+			new ToolStats(2000, 8, 9, 1.2f, 15),
+			new ArmorStats(40, new int[]{5, 9, 10, 6}, 4, 0, 15),
+			GenItemVanillaType.TOOL_GEN, GenItemVanillaType.ARMOR_GEN,
 			new SculkiumTool().setStick(e -> Items.NETHERITE_INGOT, false)
 					.setTier(e -> TagGen.REQUIRES_SCULK_TOOL), new SculkiumArmor()),
 	ETERNIUM("eternium", 4, SoundEvents.ARMOR_EQUIP_IRON,
-			new GenItem.ToolStats(9999, 8, new int[]{7, 10, 5, 5, 1},
-					new float[]{1.6f, 1f, 1f, 1.2f, 4f}, 1),
-			new GenItem.ArmorStats(9999, new int[]{3, 6, 8, 3}, 2, 0, 1),
-			GenItem.TOOL_GEN, GenItem.ARMOR_GEN,
+			new ToolStats(9999, 8, 7, 1, 1),
+			new ArmorStats(9999, new int[]{3, 6, 8, 3}, 2, 0, 1),
+			GenItemVanillaType.TOOL_GEN, GenItemVanillaType.ARMOR_GEN,
 			new ExtraToolConfig().damageChance(0).repairChance(1)
 					.setStick(e -> LCItems.EXPLOSION_SHARD.get(), false),
 			new ExtraArmorConfig().damageChance(0).repairChance(1));
@@ -58,15 +61,15 @@ public enum LCMats implements IGeneralMats {
 	final String id;
 	final Tier tier;
 	final ArmorMaterial mat;
-	final GenItem.ToolConfig tool_config;
-	final GenItem.ArmorConfig armor_config;
-	final GenItem.ToolStats tool_stats;
+	final ToolConfig tool_config;
+	final ArmorConfig armor_config;
+	final IToolStats tool_stats;
 	final ExtraToolConfig tool_extra;
 	final ExtraArmorConfig armor_extra;
 
 	LCMats(String name, int level,
-		   SoundEvent equip_sound, GenItem.ToolStats tool, GenItem.ArmorStats armor,
-		   GenItem.ToolConfig tool_config, GenItem.ArmorConfig armor_config,
+		   SoundEvent equip_sound, IToolStats tool, ArmorStats armor,
+		   ToolConfig tool_config, ArmorConfig armor_config,
 		   ExtraToolConfig tool_extra, ExtraArmorConfig armor_extra) {
 		Supplier<Ingredient> ing = () -> Ingredient.of(LCItems.MAT_INGOTS[ordinal()].get());
 		this.id = name;
@@ -104,17 +107,17 @@ public enum LCMats implements IGeneralMats {
 	}
 
 	@Override
-	public GenItem.ArmorConfig getArmorConfig() {
+	public ArmorConfig getArmorConfig() {
 		return armor_config;
 	}
 
 	@Override
-	public GenItem.ToolConfig getToolConfig() {
+	public ToolConfig getToolConfig() {
 		return tool_config;
 	}
 
 	@Override
-	public GenItem.ToolStats getToolStats() {
+	public IToolStats getToolStats() {
 		return tool_stats;
 	}
 

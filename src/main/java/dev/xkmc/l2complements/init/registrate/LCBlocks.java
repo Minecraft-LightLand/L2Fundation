@@ -1,7 +1,7 @@
 package dev.xkmc.l2complements.init.registrate;
 
 import dev.xkmc.l2complements.init.L2Complements;
-import dev.xkmc.l2complements.init.data.LCMats;
+import dev.xkmc.l2complements.init.materials.LCMats;
 import dev.xkmc.l2library.repack.registrate.util.entry.BlockEntry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;

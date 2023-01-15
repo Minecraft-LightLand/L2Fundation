@@ -1,6 +1,7 @@
-package dev.xkmc.l2complements.init.data;
+package dev.xkmc.l2complements.init.materials.vanilla;
 
 import dev.xkmc.l2complements.content.item.generic.*;
+import dev.xkmc.l2complements.init.materials.api.*;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.repack.registrate.builders.ItemBuilder;
 import dev.xkmc.l2library.repack.registrate.providers.DataGenContext;
@@ -21,78 +22,16 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 @SuppressWarnings({"unchecked", "rawtypes", "unsafe"})
-public class GenItem {
+public record GenItemVanillaType(String modid, L2Registrate registrate) {
 
-	public static final Function<Tools, RawToolFactory> TOOL_GEN_FUNC = tool -> switch (tool) {
-		case SWORD -> SwordItem::new;
-		case AXE -> AxeItem::new;
-		case SHOVEL -> ShovelItem::new;
-		case PICKAXE -> PickaxeItem::new;
-		case HOE -> HoeItem::new;
-	};
-
-	public static TieredItem genGenericTool(IGeneralMats mat, Tools tool, Item.Properties prop) {
-		int dmg = mat.getToolStats().add_dmg[tool.ordinal()] - 1;
-		float speed = mat.getToolStats().add_speed[tool.ordinal()] - 4;
-		return switch (tool) {
-			case SWORD -> new GenericSwordItem(mat.getTier(), dmg, speed, prop, mat.getExtraToolConfig());
-			case AXE -> new GenericAxeItem(mat.getTier(), dmg, speed, prop, mat.getExtraToolConfig());
-			case SHOVEL -> new GenericShovelItem(mat.getTier(), dmg, speed, prop, mat.getExtraToolConfig());
-			case PICKAXE -> new GenericPickaxeItem(mat.getTier(), dmg, speed, prop, mat.getExtraToolConfig());
-			case HOE -> new GenericHoeItem(mat.getTier(), dmg, speed, prop, mat.getExtraToolConfig());
-		};
+	public static TieredItem genGenericTool(IMatToolType mat, ITool tool, Item.Properties prop) {
+		int dmg = mat.getToolStats().getDamage(tool) - 1;
+		float speed = mat.getToolStats().getSpeed(tool) - 4;
+		return tool.create(mat.getTier(), dmg, speed, prop, mat.getExtraToolConfig());
 	}
 
-	public static final ToolConfig TOOL_DEF = new ToolConfig(fromToolGen(TOOL_GEN_FUNC));
-	public static final ToolConfig TOOL_GEN = new ToolConfig(GenItem::genGenericTool);
-	public static final ArmorConfig ARMOR_DEF = new ArmorConfig((mat, slot, prop) -> new ArmorItem(mat.getArmorMaterial(), slot, prop));
+	public static final ToolConfig TOOL_GEN = new ToolConfig(GenItemVanillaType::genGenericTool);
 	public static final ArmorConfig ARMOR_GEN = new ArmorConfig((mat, slot, prop) -> new GenericArmorItem(mat.getArmorMaterial(), slot, prop, mat.getExtraArmorConfig()));
-
-	public enum Tools {
-		SWORD(Tags.Items.TOOLS_SWORDS),
-		AXE(Tags.Items.TOOLS_AXES),
-		SHOVEL(Tags.Items.TOOLS_SHOVELS),
-		PICKAXE(Tags.Items.TOOLS_PICKAXES),
-		HOE(Tags.Items.TOOLS_HOES);
-
-		final TagKey<Item> tag;
-
-		Tools(TagKey<Item> tag) {
-			this.tag = tag;
-		}
-	}
-
-	public record ToolStats(int durability, int speed, int[] add_dmg, float[] add_speed, int enchant) {
-	}
-
-	public record ArmorStats(int durability, int[] protection, float tough, float kb, int enchant) {
-	}
-
-	@FunctionalInterface
-	public interface ArmorFactory {
-
-		ArmorItem get(IGeneralMats mat, EquipmentSlot slot, Item.Properties props);
-
-	}
-
-	@FunctionalInterface
-	public interface RawToolFactory {
-
-		TieredItem get(Tier tier, int dmg, float speed, Item.Properties props);
-	}
-
-	@FunctionalInterface
-	public interface ToolFactory {
-
-		TieredItem get(IGeneralMats mat, Tools tool, Item.Properties props);
-
-	}
-
-	public record ToolConfig(ToolFactory sup) {
-	}
-
-	public record ArmorConfig(ArmorFactory sup) {
-	}
 
 	public static TagKey<Block> getBlockTag(int level) {
 		return switch (level) {
@@ -105,28 +44,14 @@ public class GenItem {
 		};
 	}
 
-	private static ToolFactory fromToolGen(Function<Tools, RawToolFactory> gen) {
-		return (mat, tool, prop) -> gen.apply(tool).get(mat.getTier(),
-				mat.getToolStats().add_dmg[tool.ordinal()] - 1,
-				mat.getToolStats().add_speed[tool.ordinal()] - 4, prop);
-	}
-
-	private final String modid;
-	private final L2Registrate registrate;
-
-	public GenItem(String modid, L2Registrate registrate) {
-		this.modid = modid;
-		this.registrate = registrate;
-	}
-
-	public ItemEntry<Item>[][] genItem(IGeneralMats[] mats) {
+	public ItemEntry<Item>[][] genItem(IMatVanillaType[] mats) {
 		int n = mats.length;
 		ItemEntry[][] ans = new ItemEntry[n][9];
 		for (int i = 0; i < n; i++) {
-			IGeneralMats mat = mats[i];
+			IMatVanillaType mat = mats[i];
 			String id = mat.getID();
 			BiFunction<String, EquipmentSlot, ItemBuilder> armor_gen = (str, slot) ->
-					registrate.item(id + "_" + str, p -> mat.getArmorConfig().sup.get(mat, slot, p))
+					registrate.item(id + "_" + str, p -> mat.getArmorConfig().sup().get(mat, slot, p))
 							.model((ctx, pvd) -> generatedModel(ctx, pvd, id, str))
 							.defaultLang();
 			ans[i][3] = armor_gen.apply("helmet", EquipmentSlot.HEAD).tag(Tags.Items.ARMORS_HELMETS).register();
@@ -134,7 +59,7 @@ public class GenItem {
 			ans[i][1] = armor_gen.apply("leggings", EquipmentSlot.LEGS).tag(Tags.Items.ARMORS_LEGGINGS).register();
 			ans[i][0] = armor_gen.apply("boots", EquipmentSlot.FEET).tag(Tags.Items.ARMORS_BOOTS).register();
 			BiFunction<String, Tools, ItemEntry> tool_gen = (str, tool) ->
-					registrate.item(id + "_" + str, p -> mat.getToolConfig().sup.get(mat, tool, p))
+					registrate.item(id + "_" + str, p -> mat.getToolConfig().sup().get(mat, tool, p))
 							.model((ctx, pvd) -> handHeld(ctx, pvd, id, str)).tag(tool.tag)
 							.defaultLang().register();
 			for (int j = 0; j < Tools.values().length; j++) {
@@ -145,7 +70,7 @@ public class GenItem {
 		return ans;
 	}
 
-	public ItemEntry<Item>[] genMats(IGeneralMats[] mats, String suffix, TagKey<Item> tag) {
+	public ItemEntry<Item>[] genMats(IMatVanillaType[] mats, String suffix, TagKey<Item> tag) {
 		int n = mats.length;
 		ItemEntry[] ans = new ItemEntry[n];
 		for (int i = 0; i < n; i++) {
@@ -157,7 +82,7 @@ public class GenItem {
 		return ans;
 	}
 
-	public BlockEntry<Block>[] genBlockMats(IGeneralMats[] mats) {
+	public BlockEntry<Block>[] genBlockMats(IMatVanillaType[] mats) {
 		int n = mats.length;
 		BlockEntry[] ans = new BlockEntry[n];
 		for (int i = 0; i < n; i++) {

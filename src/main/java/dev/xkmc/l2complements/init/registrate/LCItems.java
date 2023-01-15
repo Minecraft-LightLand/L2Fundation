@@ -8,7 +8,7 @@ import dev.xkmc.l2complements.content.item.create.ShadowSteelItem;
 import dev.xkmc.l2complements.content.item.misc.*;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
-import dev.xkmc.l2complements.init.data.LCMats;
+import dev.xkmc.l2complements.init.materials.LCMats;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2library.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.MethodsReturnNonnullByDefault;

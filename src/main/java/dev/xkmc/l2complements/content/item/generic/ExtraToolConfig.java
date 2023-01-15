@@ -1,8 +1,8 @@
 package dev.xkmc.l2complements.content.item.generic;
 
 import com.google.common.collect.Multimap;
-import dev.xkmc.l2complements.init.data.GenItem;
-import dev.xkmc.l2complements.init.data.IGeneralMats;
+import dev.xkmc.l2complements.init.materials.vanilla.GenItemVanillaType;
+import dev.xkmc.l2complements.init.materials.api.IMatVanillaType;
 import dev.xkmc.l2library.base.effects.EffectUtil;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
@@ -29,9 +29,9 @@ public class ExtraToolConfig {
 	public double repair_chance = 0, damage_chance = 1;
 	public boolean canBeDepleted = true, bypassArmor, bypassMagic;
 	public List<MobEffectInstance> effects = new ArrayList<>();
-	public Function<IGeneralMats, Item> stick = e -> Items.STICK;
+	public Function<IMatVanillaType, Item> stick = e -> Items.STICK;
 	public boolean reversed = false;
-	public Function<Integer, TagKey<Block>> tier = GenItem::getBlockTag;
+	public Function<Integer, TagKey<Block>> tier = GenItemVanillaType::getBlockTag;
 
 	public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, T entity) {
 		double raw = amount * damage_chance;
@@ -82,7 +82,7 @@ public class ExtraToolConfig {
 		return this;
 	}
 
-	public ExtraToolConfig setStick(Function<IGeneralMats, Item> sup, boolean reverse) {
+	public ExtraToolConfig setStick(Function<IMatVanillaType, Item> sup, boolean reverse) {
 		this.stick = sup;
 		this.reversed = reverse;
 		return this;

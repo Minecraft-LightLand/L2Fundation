@@ -1,6 +1,7 @@
 package dev.xkmc.l2complements.init.data;
 
 import dev.xkmc.l2complements.init.L2Complements;
+import dev.xkmc.l2complements.init.materials.LCMats;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2library.repack.registrate.providers.RegistrateTagsProvider;
 import net.minecraft.resources.ResourceLocation;

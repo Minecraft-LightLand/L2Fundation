@@ -2,6 +2,7 @@ package dev.xkmc.l2complements.init;
 
 import dev.xkmc.l2complements.events.*;
 import dev.xkmc.l2complements.init.data.*;
+import dev.xkmc.l2complements.init.materials.vanilla.GenItemVanillaType;
 import dev.xkmc.l2complements.init.registrate.*;
 import dev.xkmc.l2complements.network.NetworkManager;
 import dev.xkmc.l2library.base.L2Registrate;
@@ -29,7 +30,7 @@ public class L2Complements {
 	public static final String MODID = "l2complements";
 	public static final Logger LOGGER = LogManager.getLogger();
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
-	public static final GenItem MATS = new GenItem(MODID, REGISTRATE);
+	public static final GenItemVanillaType MATS = new GenItemVanillaType(MODID, REGISTRATE);
 
 	private static void registerRegistrates(IEventBus bus) {
 		ForgeMod.enableMilkFluid();

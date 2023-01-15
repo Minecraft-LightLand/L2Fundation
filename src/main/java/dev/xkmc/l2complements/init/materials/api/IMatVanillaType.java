@@ -1,27 +1,22 @@
-package dev.xkmc.l2complements.init.data;
+package dev.xkmc.l2complements.init.materials.api;
 
-import dev.xkmc.l2complements.content.item.generic.ExtraArmorConfig;
-import dev.xkmc.l2complements.content.item.generic.ExtraToolConfig;
+import dev.xkmc.l2complements.init.materials.vanilla.Tools;
 import dev.xkmc.l2library.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Tier;
 import net.minecraft.world.level.block.Block;
 
-public interface IGeneralMats {
+public interface IMatVanillaType extends IMatToolType, IMatArmorType {
 
 	int ordinal();
-
-	ExtraToolConfig getExtraToolConfig();
 
 	ItemEntry<Item>[][] getGenerated();
 
 	String armorPrefix();
 
-	Item getIngot();
-
 	Item getNugget();
+
+	Item getIngot();
 
 	Block getBlock();
 
@@ -29,7 +24,7 @@ public interface IGeneralMats {
 		return getGenerated()[ordinal()][slot.getIndex()].get();
 	}
 
-	default Item getTool(GenItem.Tools tool) {
+	default Item getTool(Tools tool) {
 		return getGenerated()[ordinal()][4 + tool.ordinal()].get();
 	}
 
@@ -45,15 +40,4 @@ public interface IGeneralMats {
 
 	String getID();
 
-	GenItem.ArmorConfig getArmorConfig();
-
-	GenItem.ToolConfig getToolConfig();
-
-	GenItem.ToolStats getToolStats();
-
-	Tier getTier();
-
-	ExtraArmorConfig getExtraArmorConfig();
-
-	ArmorMaterial getArmorMaterial();
 }

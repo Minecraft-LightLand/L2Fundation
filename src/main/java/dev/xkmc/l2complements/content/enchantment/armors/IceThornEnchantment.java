@@ -19,7 +19,7 @@ public class IceThornEnchantment extends UnobtainableEnchantment {
 
 	@Override
 	public void doPostHurt(LivingEntity target, Entity attacker, int pLevel) {
-		if (attacker instanceof LivingEntity le)
+		if (attacker instanceof LivingEntity le && !target.level.isClientSide())
 			EffectUtil.addEffect(le, new MobEffectInstance(LCEffects.ICE.get(), LCConfig.COMMON.iceEnchantDuration.get() << (pLevel - 1)), EffectUtil.AddReason.NONE, attacker);
 	}
 

@@ -1,4 +1,3 @@
-TODO
 
 Vanilla Obtainable:
 - Captured Shulker Bullet

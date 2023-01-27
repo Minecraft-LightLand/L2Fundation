@@ -19,7 +19,7 @@ public class SoulFlameBladeEnchantment extends UnobtainableEnchantment {
 
 	@Override
 	public void doPostAttack(LivingEntity attacker, Entity target, int pLevel) {
-		if (target instanceof LivingEntity le)
+		if (target instanceof LivingEntity le && !attacker.level.isClientSide())
 			EffectUtil.addEffect(le, new MobEffectInstance(LCEffects.FLAME.get(), LCConfig.COMMON.flameEnchantDuration.get(), pLevel - 1), EffectUtil.AddReason.NONE, attacker);
 	}
 

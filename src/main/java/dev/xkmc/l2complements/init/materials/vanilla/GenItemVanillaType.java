@@ -24,7 +24,7 @@ import java.util.function.Function;
 @SuppressWarnings({"unchecked", "rawtypes", "unsafe"})
 public record GenItemVanillaType(String modid, L2Registrate registrate) {
 
-	public static TieredItem genGenericTool(IMatToolType mat, ITool tool, Item.Properties prop) {
+	public static Item genGenericTool(IMatToolType mat, ITool tool, Item.Properties prop) {
 		int dmg = mat.getToolStats().getDamage(tool) - 1;
 		float speed = mat.getToolStats().getSpeed(tool) - 4;
 		return tool.create(mat.getTier(), dmg, speed, prop, mat.getExtraToolConfig());

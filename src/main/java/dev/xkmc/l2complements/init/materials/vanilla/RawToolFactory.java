@@ -8,5 +8,5 @@ import net.minecraft.world.item.TieredItem;
 @FunctionalInterface
 public interface RawToolFactory {
 
-	TieredItem get(Tier tier, int dmg, float speed, Item.Properties props, ExtraToolConfig config);
+	Item get(Tier tier, int dmg, float speed, Item.Properties props, ExtraToolConfig config);
 }

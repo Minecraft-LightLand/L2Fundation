@@ -38,7 +38,7 @@ public enum Tools implements ITool {
 	}
 
 	@Override
-	public TieredItem create(Tier tier, int damage, float speed, Item.Properties prop, ExtraToolConfig config) {
+	public Item create(Tier tier, int damage, float speed, Item.Properties prop, ExtraToolConfig config) {
 		return fac.get(tier, damage, speed, prop, config);
 	}
 }

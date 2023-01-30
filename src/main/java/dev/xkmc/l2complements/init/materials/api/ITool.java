@@ -11,6 +11,6 @@ public interface ITool {
 
 	float getSpeed(float base_speed);
 
-	TieredItem create(Tier tier, int damage, float speed, Item.Properties prop, ExtraToolConfig config);
+	Item create(Tier tier, int damage, float speed, Item.Properties prop, ExtraToolConfig config);
 
 }

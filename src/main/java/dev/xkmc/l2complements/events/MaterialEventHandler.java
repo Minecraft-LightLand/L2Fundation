@@ -5,6 +5,8 @@ import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2complements.init.registrate.LCRecipes;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -65,9 +67,9 @@ public class MaterialEventHandler {
 				wither.spawnAtLocation(LCItems.FORCE_FIELD.asStack());
 			}
 		}
-		if (event.getEntity() instanceof Warden wither) {
-			if (!wither.getLevel().isClientSide() && event.getSource().getEntity() instanceof Player) {
-				wither.spawnAtLocation(LCItems.WARDEN_BONE_SHARD.asStack());
+		if (event.getEntity() instanceof Warden warden) {
+			if (!warden.getLevel().isClientSide() && event.getSource().getEntity() instanceof Player) {
+				warden.spawnAtLocation(LCItems.WARDEN_BONE_SHARD.asStack());
 			}
 		}
 		if (event.getEntity() instanceof Ghast ghast) {

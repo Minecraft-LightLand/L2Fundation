@@ -51,6 +51,7 @@ public class NoGravMagicalDohickyItem extends TooltipItem {
 			return false;
 		}
 
+		entity.setGlowingTag(true);
 		entity.setNoGravity(true);
 
 		if (!persistentData.contains("JustCreated"))

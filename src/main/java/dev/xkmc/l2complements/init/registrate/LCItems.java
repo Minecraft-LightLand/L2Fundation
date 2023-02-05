@@ -5,11 +5,12 @@ import dev.xkmc.l2complements.content.entity.fireball.SoulFireball;
 import dev.xkmc.l2complements.content.entity.fireball.StrongFireball;
 import dev.xkmc.l2complements.content.item.create.RefinedRadianceItem;
 import dev.xkmc.l2complements.content.item.create.ShadowSteelItem;
+import dev.xkmc.l2complements.content.item.misc.FireChargeItem;
 import dev.xkmc.l2complements.content.item.misc.*;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
-import dev.xkmc.l2complements.init.materials.LCMats;
 import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.materials.LCMats;
 import dev.xkmc.l2library.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.network.chat.Component;
@@ -17,10 +18,9 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffectUtil;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.*;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.Tags;
 
@@ -80,6 +80,9 @@ public class LCItems {
 	public static final ItemEntry<FireChargeItem<SoulFireball>> SOUL_CHARGE;
 	public static final ItemEntry<FireChargeItem<StrongFireball>> STRONG_CHARGE;
 	public static final ItemEntry<FireChargeItem<BlackFireball>> BLACK_CHARGE;
+
+	public static final ItemEntry<Item> TOTEMIC_CARROT, TOTEMIC_APPLE;
+	public static final ItemEntry<EnchantedGoldenAppleItem> ENCHANT_TOTEMIC_CARROT, ENCHANTED_TOTEMIC_APPLE;
 
 	public static final ItemEntry<Item>[] MAT_INGOTS, MAT_NUGGETS;
 	public static final ItemEntry<Item>[][] GEN_ITEM;
@@ -141,6 +144,41 @@ public class LCItems {
 											new MobEffectInstance(LCEffects.STONE_CAGE.get(),
 													LCConfig.COMMON.blackFireChargeDuration.get())))))
 					.defaultModel().defaultLang().register();
+		}
+		{
+			TOTEMIC_CARROT = REGISTRATE.item("totemic_carrot", p -> new Item(p.food(
+					new FoodProperties.Builder().nutrition(6).saturationMod(1.2f).alwaysEat()
+							.effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 1200), 1)
+							.effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 1), 1)
+							.build()
+			))).register();
+
+			ENCHANT_TOTEMIC_CARROT = REGISTRATE.item("enchanted_totemic_carrot", p -> new EnchantedGoldenAppleItem(p.food(
+					new FoodProperties.Builder().nutrition(6).saturationMod(1.2f).alwaysEat()
+							.effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 3600), 1)
+							.effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 3600, 2), 1)
+							.effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 3600, 1), 1)
+							.effect(() -> new MobEffectInstance(MobEffects.SATURATION, 20), 1)
+							.build()
+			))).register();
+
+			TOTEMIC_APPLE = REGISTRATE.item("totemic_apple", p -> new Item(p.food(
+					new FoodProperties.Builder().nutrition(6).saturationMod(1.2f).alwaysEat()
+							.effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 2400), 1)
+							.effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 2400, 1), 1)
+							.effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 2400, 4), 1)
+							.effect(() -> new MobEffectInstance(MobEffects.SATURATION, 60), 1)
+							.build()
+			))).register();
+
+			ENCHANTED_TOTEMIC_APPLE = REGISTRATE.item("enchanted_totemic_apple", p -> new EnchantedGoldenAppleItem(p.food(
+					new FoodProperties.Builder().nutrition(6).saturationMod(1.2f).alwaysEat()
+							.effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 2400), 1)
+							.effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 2400, 3), 1)
+							.effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 2400, 4), 1)
+							.effect(() -> new MobEffectInstance(MobEffects.SATURATION, 100), 1)
+							.build()
+			))).register();
 		}
 		GEN_ITEM = L2Complements.MATS.genItem(LCMats.values());
 	}

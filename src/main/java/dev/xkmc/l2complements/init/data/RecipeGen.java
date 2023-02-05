@@ -120,7 +120,7 @@ public class RecipeGen {
 					.save(pvd, getID(LCItems.TOTEM_OF_DREAM.get()));
 
 			unlock(pvd, new ShapedRecipeBuilder(LCItems.TOTEM_OF_THE_SEA.get(), 1)::unlockedBy, LCMats.POSEIDITE.getIngot())
-					.pattern("CAC").pattern("ABA").pattern("CAC")
+					.pattern("ACA").pattern("ABA").pattern("ACA")
 					.define('A', LCMats.TOTEMIC_GOLD.getIngot())
 					.define('B', Items.HEART_OF_THE_SEA)
 					.define('C', LCMats.POSEIDITE.getIngot())
@@ -143,6 +143,30 @@ public class RecipeGen {
 					.requires(Items.BLAZE_POWDER, 2)
 					.requires(Items.GUNPOWDER, 2)
 					.save(pvd, getID(LCItems.STRONG_CHARGE.get()));
+
+			unlock(pvd, new ShapedRecipeBuilder(LCItems.TOTEMIC_CARROT.get(), 1)::unlockedBy, LCMats.TOTEMIC_GOLD.getIngot())
+					.pattern("AAA").pattern("ABA").pattern("AAA")
+					.define('A', LCMats.TOTEMIC_GOLD.getNugget())
+					.define('B', Items.CARROT)
+					.save(pvd, getID(LCItems.TOTEMIC_CARROT.get()));
+
+			unlock(pvd, new ShapedRecipeBuilder(LCItems.ENCHANT_TOTEMIC_CARROT.get(), 1)::unlockedBy, LCMats.TOTEMIC_GOLD.getIngot())
+					.pattern("AAA").pattern("ABA").pattern("AAA")
+					.define('A', LCMats.TOTEMIC_GOLD.getIngot())
+					.define('B', Items.CARROT)
+					.save(pvd, getID(LCItems.ENCHANT_TOTEMIC_CARROT.get()));
+
+			unlock(pvd, new ShapedRecipeBuilder(LCItems.TOTEMIC_APPLE.get(), 1)::unlockedBy, LCMats.TOTEMIC_GOLD.getIngot())
+					.pattern("AAA").pattern("ABA").pattern("AAA")
+					.define('A', LCMats.TOTEMIC_GOLD.getIngot())
+					.define('B', Items.APPLE)
+					.save(pvd, getID(LCItems.TOTEMIC_APPLE.get()));
+
+			unlock(pvd, new ShapedRecipeBuilder(LCItems.ENCHANTED_TOTEMIC_APPLE.get(), 1)::unlockedBy, LCMats.TOTEMIC_GOLD.getIngot())
+					.pattern("AAA").pattern("ABA").pattern("AAA")
+					.define('A', LCMats.TOTEMIC_GOLD.getBlock())
+					.define('B', Items.APPLE)
+					.save(pvd, getID(LCItems.ENCHANTED_TOTEMIC_APPLE.get()));
 
 
 		}
@@ -334,66 +358,176 @@ public class RecipeGen {
 
 		currentFolder = "eggs/";
 		{
-			unlock(pvd, new ShapedRecipeBuilder(Items.ZOMBIE_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
-					.pattern("AAA").pattern("ABA").pattern("ACA")
-					.define('A', Items.ROTTEN_FLESH)
-					.define('B', LCItems.CURSED_DROPLET.get())
-					.define('C', Items.EGG)
-					.save(pvd, getID(Items.ZOMBIE_SPAWN_EGG));
 
-			unlock(pvd, new ShapedRecipeBuilder(Items.HUSK_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
-					.pattern("ADA").pattern("ABA").pattern("ACA")
-					.define('A', Items.ROTTEN_FLESH)
-					.define('B', LCItems.CURSED_DROPLET.get())
-					.define('C', Items.EGG)
-					.define('D', Items.SAND)
-					.save(pvd, getID(Items.HUSK_SPAWN_EGG));
+			// undead
+			/* zombie, husk, drowned, zombified piglin, skeleton, stray, wither skeleton, phantom, ghast*/
+			{
+				unlock(pvd, new ShapedRecipeBuilder(Items.ZOMBIE_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+						.pattern("AAA").pattern("ABA").pattern("ACA")
+						.define('A', Items.ROTTEN_FLESH)
+						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('C', Items.EGG)
+						.save(pvd, getID(Items.ZOMBIE_SPAWN_EGG));
 
-			unlock(pvd, new ShapedRecipeBuilder(Items.DROWNED_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
-					.pattern("ADA").pattern("ABA").pattern("ACA")
-					.define('A', Items.ROTTEN_FLESH)
-					.define('B', LCItems.CURSED_DROPLET.get())
-					.define('C', Items.EGG)
-					.define('D', Items.KELP)
-					.save(pvd, getID(Items.DROWNED_SPAWN_EGG));
+				unlock(pvd, new ShapedRecipeBuilder(Items.HUSK_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+						.pattern("ADA").pattern("ABA").pattern("ACA")
+						.define('A', Items.ROTTEN_FLESH)
+						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('C', Items.EGG)
+						.define('D', Items.SAND)
+						.save(pvd, getID(Items.HUSK_SPAWN_EGG));
 
-			unlock(pvd, new ShapedRecipeBuilder(Items.ZOMBIFIED_PIGLIN_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
-					.pattern("ADA").pattern("ABA").pattern("ACA")
-					.define('A', Items.ROTTEN_FLESH)
-					.define('B', LCItems.CURSED_DROPLET.get())
-					.define('C', Items.EGG)
-					.define('D', Items.GOLD_INGOT)
-					.save(pvd, getID(Items.ZOMBIFIED_PIGLIN_SPAWN_EGG));
+				unlock(pvd, new ShapedRecipeBuilder(Items.DROWNED_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+						.pattern("ADA").pattern("ABA").pattern("ACA")
+						.define('A', Items.ROTTEN_FLESH)
+						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('C', Items.EGG)
+						.define('D', Items.KELP)
+						.save(pvd, getID(Items.DROWNED_SPAWN_EGG));
 
-			unlock(pvd, new ShapedRecipeBuilder(Items.SKELETON_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
-					.pattern("AAA").pattern("ABA").pattern("ACA")
-					.define('A', Items.BONE)
-					.define('B', LCItems.CURSED_DROPLET.get())
-					.define('C', Items.EGG)
-					.save(pvd, getID(Items.SKELETON_SPAWN_EGG));
+				unlock(pvd, new ShapedRecipeBuilder(Items.ZOMBIFIED_PIGLIN_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+						.pattern("ADA").pattern("ABA").pattern("ACA")
+						.define('A', Items.ROTTEN_FLESH)
+						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('C', Items.EGG)
+						.define('D', Items.GOLD_INGOT)
+						.save(pvd, getID(Items.ZOMBIFIED_PIGLIN_SPAWN_EGG));
 
-			unlock(pvd, new ShapedRecipeBuilder(Items.STRAY_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
-					.pattern("ADA").pattern("ABA").pattern("ACA")
-					.define('A', Items.BONE)
-					.define('B', LCItems.CURSED_DROPLET.get())
-					.define('C', Items.EGG)
-					.define('D', Items.SNOWBALL)
-					.save(pvd, getID(Items.STRAY_SPAWN_EGG));
+				unlock(pvd, new ShapedRecipeBuilder(Items.SKELETON_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+						.pattern("AAA").pattern("ABA").pattern("ACA")
+						.define('A', Items.BONE)
+						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('C', Items.EGG)
+						.save(pvd, getID(Items.SKELETON_SPAWN_EGG));
 
-			unlock(pvd, new ShapedRecipeBuilder(Items.WITHER_SKELETON_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
-					.pattern("ADA").pattern("ABA").pattern("ACA")
-					.define('A', Items.BONE)
-					.define('B', LCItems.CURSED_DROPLET.get())
-					.define('C', Items.EGG)
-					.define('D', Items.WITHER_SKELETON_SKULL)
-					.save(pvd, getID(Items.WITHER_SKELETON_SPAWN_EGG));
+				unlock(pvd, new ShapedRecipeBuilder(Items.STRAY_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+						.pattern("ADA").pattern("ABA").pattern("ACA")
+						.define('A', Items.BONE)
+						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('C', Items.EGG)
+						.define('D', Items.SNOWBALL)
+						.save(pvd, getID(Items.STRAY_SPAWN_EGG));
 
-			unlock(pvd, new ShapedRecipeBuilder(Items.PHANTOM_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
-					.pattern("AAA").pattern("ABA").pattern("ACA")
-					.define('A', Items.PHANTOM_MEMBRANE)
-					.define('B', LCItems.CURSED_DROPLET.get())
-					.define('C', Items.EGG)
-					.save(pvd, getID(Items.PHANTOM_SPAWN_EGG));
+				unlock(pvd, new ShapedRecipeBuilder(Items.WITHER_SKELETON_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+						.pattern("ADA").pattern("ABA").pattern("ACA")
+						.define('A', Items.BONE)
+						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('C', Items.EGG)
+						.define('D', Items.WITHER_SKELETON_SKULL)
+						.save(pvd, getID(Items.WITHER_SKELETON_SPAWN_EGG));
+
+				unlock(pvd, new ShapedRecipeBuilder(Items.PHANTOM_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+						.pattern("AAA").pattern("ABA").pattern("ACA")
+						.define('A', Items.PHANTOM_MEMBRANE)
+						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('C', Items.EGG)
+						.save(pvd, getID(Items.PHANTOM_SPAWN_EGG));
+
+				unlock(pvd, new ShapedRecipeBuilder(Items.GHAST_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+						.pattern("AAA").pattern("ABA").pattern("ACA")
+						.define('A', Items.GHAST_TEAR)
+						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('C', Items.EGG)
+						.save(pvd, getID(Items.GHAST_SPAWN_EGG));
+			}
+			// passive
+			/*pig, cow, chicken, rabbit, bee, cod, salmon*/
+			/*
+			{
+
+				unlock(pvd, new ShapedRecipeBuilder(Items.PIG_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+						.pattern("AAA").pattern("LBL").pattern("ACA")
+						.define('A', Items.PORKCHOP)
+						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('C', Items.EGG)
+						.save(pvd, getID(Items.PIG_SPAWN_EGG));
+
+				unlock(pvd, new ShapedRecipeBuilder(Items.COW_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+						.pattern("AAA").pattern("LBL").pattern("ACA")
+						.define('A', Items.BEEF)
+						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('C', Items.EGG)
+						.save(pvd, getID(Items.COW_SPAWN_EGG));
+
+				unlock(pvd, new ShapedRecipeBuilder(Items.CHICKEN_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+						.pattern("AAA").pattern("LBL").pattern("ACA")
+						.define('A', Items.CHICKEN)
+						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('C', Items.EGG)
+						.save(pvd, getID(Items.CHICKEN_SPAWN_EGG));
+
+				unlock(pvd, new ShapedRecipeBuilder(Items.RABBIT_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+						.pattern("AAA").pattern("LBL").pattern("ACA")
+						.define('A', Items.RABBIT)
+						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('C', Items.EGG)
+						.save(pvd, getID(Items.RABBIT_SPAWN_EGG));
+
+				unlock(pvd, new ShapedRecipeBuilder(Items.BEE_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+						.pattern("AAA").pattern("LBL").pattern("ACA")
+						.define('A', Items.HONEY_BLOCK)
+						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('C', Items.EGG)
+						.save(pvd, getID(Items.BEE_SPAWN_EGG));
+
+				unlock(pvd, new ShapedRecipeBuilder(Items.COD_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+						.pattern("AAA").pattern("LBL").pattern("ACA")
+						.define('A', Items.COD)
+						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('C', Items.EGG)
+						.save(pvd, getID(Items.COD_SPAWN_EGG));
+
+				unlock(pvd, new ShapedRecipeBuilder(Items.SALMON_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+						.pattern("AAA").pattern("LBL").pattern("ACA")
+						.define('A', Items.SALMON)
+						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('C', Items.EGG)
+						.save(pvd, getID(Items.SALMON_SPAWN_EGG));
+
+			}
+			*/
+			/*
+			*
+			// allay
+			// axolotl
+			// bat
+			// blaze
+			// cat
+			// cave spider
+			// cod
+			// creeper
+			// dolphin
+			// donkey
+			// elder guardian
+			// enderman
+			// endermite
+			// evoker
+			// fox
+			// frog
+			// glow squid
+			// goat
+			// guardian
+			// hoglin
+			// horse
+			// llama
+			// magma cube
+			// mooshroom
+			// mule
+			// ocelot
+			// panda
+			// parrot
+			// piglin
+			// piglin brute
+			//
+			* */
+
 		}
 
 	}

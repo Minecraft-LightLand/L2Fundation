@@ -5,18 +5,15 @@
       "item": "l2complements:totemic_gold_ingot"
     },
     "B": {
-      "item": "minecraft:heart_of_the_sea"
-    },
-    "C": {
-      "item": "l2complements:poseidite_ingot"
+      "item": "minecraft:carrot"
     }
   },
   "pattern": [
-    "ACA",
+    "AAA",
     "ABA",
-    "ACA"
+    "AAA"
   ],
   "result": {
-    "item": "l2complements:totem_of_the_sea"
+    "item": "l2complements:enchanted_totemic_carrot"
   }
 }

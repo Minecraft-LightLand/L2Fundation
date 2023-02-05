@@ -5,8 +5,6 @@ import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2complements.init.registrate.LCRecipes;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -39,11 +37,9 @@ public class MaterialEventHandler {
 		if (event.getEntity() instanceof Phantom phantom) {
 			Level level = phantom.getLevel();
 			if (!level.isClientSide()) {
-				if (event.getSource().isProjectile()) {
-					if (phantom.getOnPos().getY() >= level.getMaxBuildHeight() + LCConfig.COMMON.phantomHeight.get()) {
-						if (level.isDay() && level.canSeeSky(phantom.getOnPos()) && phantom.isOnFire()) {
-							phantom.spawnAtLocation(LCItems.SUN_MEMBRANE.asStack());
-						}
+				if (phantom.getOnPos().getY() >= level.getMaxBuildHeight() + LCConfig.COMMON.phantomHeight.get()) {
+					if (level.isDay() && level.canSeeSky(phantom.getOnPos()) && phantom.isOnFire()) {
+						phantom.spawnAtLocation(LCItems.SUN_MEMBRANE.asStack());
 					}
 				}
 				if (event.getSource().isExplosion()) {
@@ -58,7 +54,7 @@ public class MaterialEventHandler {
 			}
 		}
 		if (event.getEntity() instanceof PiglinBrute brute) {
-			if (!brute.getLevel().isClientSide() && event.getSource().isProjectile() && brute.hasEffect(LCEffects.STONE_CAGE.get())) {
+			if (!brute.getLevel().isClientSide() && brute.hasEffect(LCEffects.STONE_CAGE.get())) {
 				brute.spawnAtLocation(LCItems.BLACKSTONE_CORE.asStack());
 			}
 		}

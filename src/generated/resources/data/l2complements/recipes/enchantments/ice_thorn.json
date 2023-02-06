@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "l2complements:hard_ice"
+    },
+    "B": {
+      "type": "l2library:enchantment",
+      "enchantment": "minecraft:thorns",
+      "min_level": 3
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    }
+  },
+  "pattern": [
+    "LAL",
+    "ABA",
+    "LAL"
+  ],
+  "result": {
+    "item": "minecraft:enchanted_book",
+    "nbt": {
+      "StoredEnchantments": [
+        {
+          "id": "l2complements:ice_thorn",
+          "lvl": 1
+        }
+      ]
+    }
+  }
+}

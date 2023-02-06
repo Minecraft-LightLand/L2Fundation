@@ -362,6 +362,20 @@ public class RecipeGen {
 					.define('L', Items.LAPIS_LAZULI)
 					.save(pvd, getID(LCEnchantments.FLAME_BLADE.get()));
 
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ICE_THORN.get(), 1)::unlockedBy, LCItems.HARD_ICE.get())
+					.pattern("LAL").pattern("ABA").pattern("LAL")
+					.define('A', LCItems.HARD_ICE.get())
+					.define('B', new EnchantmentIngredient(Enchantments.THORNS, 3))
+					.define('L', Items.LAPIS_LAZULI)
+					.save(pvd, getID(LCEnchantments.ICE_THORN.get()));
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.FLAME_THORN.get(), 1)::unlockedBy, LCItems.SOUL_FLAME.get())
+					.pattern("LAL").pattern("ABA").pattern("LAL")
+					.define('A', LCItems.SOUL_FLAME.get())
+					.define('B', new EnchantmentIngredient(Enchantments.THORNS, 3))
+					.define('L', Items.LAPIS_LAZULI)
+					.save(pvd, getID(LCEnchantments.FLAME_THORN.get()));
+
 			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENDER.get(), 1)::unlockedBy, LCItems.VOID_EYE.get())
 					.pattern("LCL").pattern("ABA").pattern("LAL")
 					.define('A', Items.ENDER_EYE)

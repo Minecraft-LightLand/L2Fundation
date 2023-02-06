@@ -1,4 +1,4 @@
-// 1.19.2	2023-02-05T18:18:01.191073	Registrate Provider for l2complements [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2023-02-06T03:11:28.945077	Registrate Provider for l2complements [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
@@ -144,6 +144,7 @@ f85754fcdd64b89aba6e72f4d8154b4825d9dceb data/l2complements/advancements/recipes
 8d05b1ebcf20414a7012d6e3ca1a1314fb83c299 data/l2complements/advancements/recipes/enchantments/enchantments/explosion_reject.json
 d8f4d4cc93f1e09878cc09939cf10c20f0d59ca9 data/l2complements/advancements/recipes/enchantments/enchantments/fire_reject.json
 72e6bd65ebbc6899b64e16fcd2712ec84b8ef4b2 data/l2complements/advancements/recipes/enchantments/enchantments/ice_blade.json
+b224d4a06a8bbcdfbb175338b03b449622b3fd32 data/l2complements/advancements/recipes/enchantments/enchantments/ice_thorn.json
 069249ae2a4f004c802163811fb0a2ce5d2b04fb data/l2complements/advancements/recipes/enchantments/enchantments/life_sync.json
 81934683c42b3662b0e5668c0965fcc87a2bbe54 data/l2complements/advancements/recipes/enchantments/enchantments/magic_reject.json
 d33395b915a55f89d8088777cfae2ba1966b22aa data/l2complements/advancements/recipes/enchantments/enchantments/projectile_reject.json
@@ -152,6 +153,7 @@ a296414abcb5d4958e0ee85e24c2f9e31795de07 data/l2complements/advancements/recipes
 375e9133f12cae192ee3e4245909da63fd9a7855 data/l2complements/advancements/recipes/enchantments/enchantments/snow_walker.json
 575e5c38285f5977fe963593c60ce47e3248a5e3 data/l2complements/advancements/recipes/enchantments/enchantments/soul_bound.json
 6d2ead5cb4f91ffe15eefb5229ff14b4f681ab01 data/l2complements/advancements/recipes/enchantments/enchantments/soul_flame_blade.json
+e0ab16962bd9daee89e3161c75cddba9fbdfad47 data/l2complements/advancements/recipes/enchantments/enchantments/soul_flame_thorn.json
 0c4834b94e0547365f3b841ee3855cc2f1ad8498 data/l2complements/advancements/recipes/enchantments/enchantments/stable_body.json
 629b1eaf38a835c231947f3d0fdae4d4d42ffc05 data/l2complements/advancements/recipes/enchantments/enchantments/wind_sweep.json
 6a85e5501f932750b8ddccb87a08dc6975ec0916 data/l2complements/advancements/recipes/l2complements.generated/craft/black_fire_charge.json
@@ -398,6 +400,7 @@ dc8e98da5295a2fda8b4cc4616047d00d0577eca data/l2complements/recipes/enchantments
 9244bae5261640dadfa96146b333b7bd003ed09d data/l2complements/recipes/enchantments/explosion_reject.json
 4cd0676fa24fe6771ac5f448abf7e1856b1275b0 data/l2complements/recipes/enchantments/fire_reject.json
 e8441045e9abfe6ed131d1f7e0e7ba45d7346770 data/l2complements/recipes/enchantments/ice_blade.json
+6951d422edccf537c6638f81bc33e8d247cb8877 data/l2complements/recipes/enchantments/ice_thorn.json
 d30e8a19cf32cbae73cd744ecf4bb2aa2ebc9531 data/l2complements/recipes/enchantments/life_sync.json
 00bc9164a66ee7f7fd5d67973ff50d5be8e48683 data/l2complements/recipes/enchantments/magic_reject.json
 b1320892e1153b357407fd106e7654679ca3e22f data/l2complements/recipes/enchantments/projectile_reject.json
@@ -406,6 +409,7 @@ ab0334db63ca9fd8af646faeb7e22b5b02d4be08 data/l2complements/recipes/enchantments
 2cac9518f3a0cec0787d9b4da4e0d603cee2e333 data/l2complements/recipes/enchantments/snow_walker.json
 78b4d644faf31a655e616d7d5d16fb18c2f3e982 data/l2complements/recipes/enchantments/soul_bound.json
 736dfbbf791fceaa788f986be05b838083a7a7e0 data/l2complements/recipes/enchantments/soul_flame_blade.json
+acec59c70ffc19a707560888806e8d504a4bf4b0 data/l2complements/recipes/enchantments/soul_flame_thorn.json
 33615c7413d28579573cee24eb33621ece8a9fab data/l2complements/recipes/enchantments/stable_body.json
 59ac37476340e5cf64932993a95e0c710372878d data/l2complements/recipes/enchantments/wind_sweep.json
 d2b79f8066dd5cf0a34bd4e8ac1863276db5f0f2 data/l2complements/recipes/generated_tools/eternium/craft/eternium_axe.json

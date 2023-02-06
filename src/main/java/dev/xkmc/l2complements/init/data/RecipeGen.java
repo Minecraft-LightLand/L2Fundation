@@ -106,6 +106,22 @@ public class RecipeGen {
 					.requires(Items.ECHO_SHARD).requires(LCItems.WARDEN_BONE_SHARD.get(), 2).requires(Items.COPPER_INGOT)
 					.save(pvd, getID(LCMats.SCULKIUM.getIngot()));
 
+			unlock(pvd, new ShapedRecipeBuilder(LCItems.GUARDIAN_RUNE.get(), 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+					.pattern("DAD").pattern("CBC").pattern("DCD")
+					.define('A', LCItems.CURSED_DROPLET.get())
+					.define('B', LCMats.POSEIDITE.getIngot())
+					.define('C', Items.NAUTILUS_SHELL)
+					.define('D', Items.PRISMARINE_SHARD)
+					.save(pvd, getID(LCItems.GUARDIAN_RUNE.get()));
+
+			unlock(pvd, new ShapedRecipeBuilder(LCItems.PIGLIN_RUNE.get(), 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+					.pattern("DAD").pattern("CBC").pattern("DCD")
+					.define('A', LCItems.CURSED_DROPLET.get())
+					.define('B', Items.NETHER_STAR)
+					.define('C', Items.NETHERITE_SCRAP)
+					.define('D', Items.BLACKSTONE)
+					.save(pvd, getID(LCItems.PIGLIN_RUNE.get()));
+
 			unlock(pvd, new ShapelessRecipeBuilder(LCItems.FRAGILE_WARP_STONE.get(), 1)::unlockedBy, LCItems.VOID_EYE.get())
 					.requires(Items.ECHO_SHARD).requires(LCItems.VOID_EYE.get(), 1).requires(Items.ENDER_PEARL)
 					.save(pvd, getID(LCItems.FRAGILE_WARP_STONE.get()));
@@ -205,6 +221,12 @@ public class RecipeGen {
 					.define('A', Items.DEEPSLATE)
 					.define('B', LCItems.WARDEN_BONE_SHARD.get())
 					.save(pvd, getID(Items.REINFORCED_DEEPSLATE));
+			unlock(pvd, new ShapedRecipeBuilder(Items.HEART_OF_THE_SEA, 1)::unlockedBy, LCItems.GUARDIAN_EYE.get())
+					.pattern("ABA").pattern("BCB").pattern("ABA")
+					.define('A', Items.PRISMARINE_SHARD)
+					.define('B', Items.PRISMARINE_CRYSTALS)
+					.define('C', LCItems.GUARDIAN_EYE.get())
+					.save(pvd, getID(Items.HEART_OF_THE_SEA));
 		}
 
 		currentFolder = "vanilla/upgrade/";

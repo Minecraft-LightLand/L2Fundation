@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "l2complements:cursed_droplet"
+    },
+    "B": {
+      "item": "minecraft:nether_star"
+    },
+    "C": {
+      "item": "minecraft:netherite_scrap"
+    },
+    "D": {
+      "item": "minecraft:blackstone"
+    }
+  },
+  "pattern": [
+    "DAD",
+    "CBC",
+    "DCD"
+  ],
+  "result": {
+    "item": "l2complements:piglin_rune"
+  }
+}

@@ -26,7 +26,10 @@
 	"enchanted_totemic_apple": "附魔生命苹果",
 	"enchanted_totemic_carrot": "附魔生命胡萝卜",
 	"totemic_apple": "生命苹果",
-	"totemic_carrot": "生命胡萝卜"
+	"totemic_carrot": "生命胡萝卜",
+	"guardian_eye": "守卫者之眼",
+	"guardian_rune": "守卫者强化符文",
+	"piglin_rune": "猪灵强化符文"
   },
   "block.l2complements": {
 	"eternal_anvil": "永恒铁砧"

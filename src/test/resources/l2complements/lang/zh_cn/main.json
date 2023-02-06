@@ -60,7 +60,10 @@
 		"totem_sea": "可堆叠，但能只在水中/雨中激活。",
 		"float": "这个物品会悬浮在空中。",
 		"effect_charge": "击中目标时施加: %s",
-		"explosion_charge": "造成等级%s的爆炸"
+		"explosion_charge": "造成等级%s的爆炸",
+		"guardian_eye": "用雷击杀死远古守卫者获得",
+		"guardian_rune": "对守卫者右键，使守卫者转化为远古守卫者",
+		"piglin_rune": "对猪灵右键，使猪灵转化为猪灵蛮兵"
 	  },
 	  "tool": {
 		"poseidite_armor": "当使用者在水/雨中时，提供额外保护，提升移动/游泳速度，提供潮涌效果",

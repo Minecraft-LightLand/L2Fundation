@@ -1,12 +1,12 @@
-// 1.19.2	2023-02-04T21:50:13.82374	Registrate Provider for l2complements [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2023-02-05T18:18:01.191073	Registrate Provider for l2complements [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
 b2a769b51ddce14c173a64b5457cccb4d8ef6a45 assets/l2complements/blockstates/sculkium_block.json
 2b88df6f8b01f3c72273ce13dbcb556f7dab321d assets/l2complements/blockstates/shulkerate_block.json
 65262ae0f886f61c163059f15c2ad1a7ba9c264a assets/l2complements/blockstates/totemic_gold_block.json
-fcb0905a9a93ce4362f38695b08a3e09153f4827 assets/l2complements/lang/en_ud.json
-7257ab9775cbf6cabf4cad417c99cdc6a35714c9 assets/l2complements/lang/en_us.json
+0f1fbed54b79cba868af3a8b5a1ae57e42f223b0 assets/l2complements/lang/en_ud.json
+3d7d8c3847a547dad39beec38cfe13f29f6a8832 assets/l2complements/lang/en_us.json
 bb63c088704d714f1763cb16cec8af6cd1006d66 assets/l2complements/models/block/eternium_block.json
 a45ee09acc262fd67be22de093136ad757f08e61 assets/l2complements/models/block/poseidite_block.json
 a52909a3a44a80695da32b5c3c5f931a0f72f74d assets/l2complements/models/block/sculkium_block.json
@@ -35,8 +35,11 @@ dd5a677cc252987ffa6823f4a8da29e8f79c912d assets/l2complements/models/item/eterni
 b5ec26b7698cc378bcc0ca67392947da65377b59 assets/l2complements/models/item/explosion_shard.json
 e0f7b66a84e6588f01abbbce75b1803ffe5d46e2 assets/l2complements/models/item/force_field.json
 8a54a05de38cb2250d16528b906607bf6fc1f3b0 assets/l2complements/models/item/fragile_warp_stone.json
+c488cf32dd7f0e38015444911dfb9363de093750 assets/l2complements/models/item/guardian_eye.json
+64d98bfd9bdbb0baf3fb64dc2e1327aa0737f8fe assets/l2complements/models/item/guardian_rune.json
 ead4933c66bc9b1e8f8497a3a139d90271c938a2 assets/l2complements/models/item/hard_ice.json
 bb7542d61df2397116cdaf9b862e546a7d9010dc assets/l2complements/models/item/heirophant_green.json
+84ba5f89a8b594f71165354d4df74298345fd987 assets/l2complements/models/item/piglin_rune.json
 69156dff387d443b0fe708603c504a182b2f2e65 assets/l2complements/models/item/poseidite_axe.json
 a8ad6e55f978a499a218a74cb50c332821699fc5 assets/l2complements/models/item/poseidite_block.json
 1e041f735a03638c207093ff4373fd3b9553d20d assets/l2complements/models/item/poseidite_boots.json
@@ -157,6 +160,8 @@ a296414abcb5d4958e0ee85e24c2f9e31795de07 data/l2complements/advancements/recipes
 7560aabff011aa6aa94ec4ddaeee12e9d66bec96 data/l2complements/advancements/recipes/l2complements.generated/craft/eternal_anvil.json
 5127d365ee15c888cae6f08eba26c89ee41fd5d2 data/l2complements/advancements/recipes/l2complements.generated/craft/eternium_nugget.json
 173126eb4a4b3974bd074c8700450a011a408abf data/l2complements/advancements/recipes/l2complements.generated/craft/fragile_warp_stone.json
+b8c46a0bb3b0327c9d23f701d6047bd0d5919ee3 data/l2complements/advancements/recipes/l2complements.generated/craft/guardian_rune.json
+53e0bb71a64c20d24abc4e421a87df237c1895a8 data/l2complements/advancements/recipes/l2complements.generated/craft/piglin_rune.json
 80fb3bc9ae3ada121086f757d0d7bd913fe4c780 data/l2complements/advancements/recipes/l2complements.generated/craft/reinforced_warp_stone.json
 05e127986c7ae654b25be21abce223ddac72c135 data/l2complements/advancements/recipes/l2complements.generated/craft/sculkium_ingot.json
 a067ce2564dbb471a2e2b6910480b802b909eb2e data/l2complements/advancements/recipes/l2complements.generated/craft/shulkerate_ingot.json
@@ -334,6 +339,7 @@ ae1df4c084a3c69085732089fc757f30d56b5a6c data/l2complements/advancements/recipes
 0d21ac682fdbe27db62e7b52c92bcf9f3a9891bc data/l2complements/advancements/recipes/misc/eggs/zombie_spawn_egg.json
 7c3055d54f95fd7f3508b90576e7a187fb3e8bb9 data/l2complements/advancements/recipes/misc/eggs/zombified_piglin_spawn_egg.json
 22e4ecd783c72ecd9033d47d39cb4a392b2712a4 data/l2complements/advancements/recipes/misc/vanilla/renew/echo_shard.json
+a14e4639a1d917b1a52be62eb93cc099c3c8a282 data/l2complements/advancements/recipes/misc/vanilla/renew/heart_of_the_sea.json
 6fa12abd85c13c116aefb62a550603c6377d37ea data/l2complements/advancements/recipes/tools/vanilla/upgrade/diamond_axe.json
 4220c12a16005a632b2eb4387764358a4850a65f data/l2complements/advancements/recipes/tools/vanilla/upgrade/diamond_hoe.json
 6dd5acd2f9b35f341c9a41a51339f891c755dd6d data/l2complements/advancements/recipes/tools/vanilla/upgrade/diamond_pickaxe.json
@@ -362,6 +368,8 @@ cc00bc4ca85dbd833ba6f62412deeba32f74daf6 data/l2complements/loot_tables/blocks/e
 7219a36d1a7e741f00bf644370634bfe992082f3 data/l2complements/recipes/craft/eternal_anvil.json
 fbb81e3f0ef945cebed601519779590f2da82408 data/l2complements/recipes/craft/eternium_nugget.json
 ec17acdd70813e8b4b862d824941844828c56ab0 data/l2complements/recipes/craft/fragile_warp_stone.json
+edc2eba0a20213a5c4016e1ee2eb708dac62bf9d data/l2complements/recipes/craft/guardian_rune.json
+5e939cbc5de1a73ef24787072a452423dd3f2dac data/l2complements/recipes/craft/piglin_rune.json
 90514f006b8e1a9481fbd0a2c6738b85d414fcc3 data/l2complements/recipes/craft/reinforced_warp_stone.json
 67c226af90a3f316d93852cd95cbb1f532f9c361 data/l2complements/recipes/craft/sculkium_ingot.json
 457e605c5ffda634c6fed8b7deb63aa20c78e0b3 data/l2complements/recipes/craft/shulkerate_ingot.json
@@ -559,6 +567,7 @@ ec3b4d9dd3afadb666f50fd6ceb55731828ff40d data/l2complements/recipes/storage/tote
 2ba3046b81766cee0bfe94ae2629e300c5ed7c43 data/l2complements/recipes/vanilla/renew/echo_shard.json
 ecda0fd5e433aca40084017fa87ad7afce4c3214 data/l2complements/recipes/vanilla/renew/elytra.json
 5b82cda2edcf8c4a1c59e7162bbe46f467d1b306 data/l2complements/recipes/vanilla/renew/gilded_blackstone.json
+eefcea84347de6146706e9205d16797f4c87430d data/l2complements/recipes/vanilla/renew/heart_of_the_sea.json
 0dcf112e8dabda52f89be42b3cd6cadf4534d02d data/l2complements/recipes/vanilla/renew/reinforced_deepslate.json
 d87e4f1bf4c4554f10694ec906179ec2f845af59 data/l2complements/recipes/vanilla/upgrade/diamond_axe.json
 5c9e5bcd4835716db0c0af8fc71e293af5665ad8 data/l2complements/recipes/vanilla/upgrade/diamond_boots.json

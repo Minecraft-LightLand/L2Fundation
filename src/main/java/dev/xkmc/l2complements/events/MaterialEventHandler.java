@@ -8,10 +8,7 @@ import dev.xkmc.l2complements.init.registrate.LCRecipes;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.monster.Drowned;
-import net.minecraft.world.entity.monster.EnderMan;
-import net.minecraft.world.entity.monster.Ghast;
-import net.minecraft.world.entity.monster.Phantom;
+import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.monster.piglin.PiglinBrute;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
@@ -56,6 +53,11 @@ public class MaterialEventHandler {
 		if (event.getEntity() instanceof PiglinBrute brute) {
 			if (!brute.getLevel().isClientSide() && brute.hasEffect(LCEffects.STONE_CAGE.get())) {
 				brute.spawnAtLocation(LCItems.BLACKSTONE_CORE.asStack());
+			}
+		}
+		if (event.getEntity() instanceof ElderGuardian guardian) {
+			if (!guardian.getLevel().isClientSide() && event.getSource() == DamageSource.LIGHTNING_BOLT) {
+				guardian.spawnAtLocation(LCItems.GUARDIAN_EYE.asStack());
 			}
 		}
 		if (event.getEntity() instanceof WitherBoss wither) {

@@ -19,6 +19,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraftforge.client.model.generators.ModelFile;
@@ -67,6 +68,9 @@ public class LCItems {
 	public static final ItemEntry<TooltipItem> RESONANT_FEATHER;
 	public static final ItemEntry<TooltipItem> SPACE_SHARD;
 	public static final ItemEntry<TooltipItem> WARDEN_BONE_SHARD;
+	public static final ItemEntry<TooltipItem> GUARDIAN_EYE;
+	public static final ItemEntry<TransformItem> GUARDIAN_RUNE;
+	public static final ItemEntry<TransformItem> PIGLIN_RUNE;
 	public static final ItemEntry<BurntItem> EMERALD;
 	public static final ItemEntry<BurntItem> CURSED_DROPLET;
 	public static final ItemEntry<SpecialRenderItem> FORCE_FIELD;
@@ -105,11 +109,18 @@ public class LCItems {
 			RESONANT_FEATHER = simpleItem("resonant_feather", TooltipItem::new, Rarity.EPIC, LangData.IDS.RESONANT_FEATHER::get); // let chicken survive sonic boom
 			SPACE_SHARD = simpleItem("space_shard", TooltipItem::new, Rarity.EPIC, () -> LangData.IDS.SPACE_SHARD.get(LCConfig.COMMON.spaceDamage.get())); // deal 500 arrow damage
 			WARDEN_BONE_SHARD = simpleItem("warden_bone_shard", TooltipItem::new, Rarity.RARE, LangData.IDS.WARDEN_BONE_SHARD::get);
+			GUARDIAN_EYE = simpleItem("guardian_eye", TooltipItem::new, Rarity.RARE, LangData.IDS.GUARDIAN_EYE::get);
 			EMERALD = REGISTRATE.item("heirophant_green", p -> new BurntItem(p.fireResistant().rarity(Rarity.EPIC))).defaultModel().defaultLang().register();
 			CURSED_DROPLET = REGISTRATE.item("cursed_droplet", p -> new BurntItem(p.fireResistant().rarity(Rarity.RARE))).defaultModel().defaultLang().register();
 			FORCE_FIELD = REGISTRATE.item("force_field", p -> new SpecialRenderItem(p.fireResistant().rarity(Rarity.EPIC), LangData.IDS.FORCE_FIELD::get))
 					.model((ctx, pvd) -> pvd.getBuilder(ctx.getName()).parent(new ModelFile.UncheckedModelFile("builtin/entity")))
 					.defaultLang().register();
+			GUARDIAN_RUNE = simpleItem("guardian_rune", (p, t) -> new TransformItem(p, t,
+							() -> EntityType.GUARDIAN, () -> EntityType.ELDER_GUARDIAN),
+					Rarity.RARE, LangData.IDS.GUARDIAN_RUNE::get);
+			PIGLIN_RUNE = simpleItem("piglin_rune", (p, t) -> new TransformItem(p, t,
+							() -> EntityType.PIGLIN, () -> EntityType.PIGLIN_BRUTE),
+					Rarity.RARE, LangData.IDS.PIGLIN_RUNE::get);
 		}
 		{
 			FRAGILE_WARP_STONE = REGISTRATE.item("fragile_warp_stone", p ->

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cursed_droplet": {
+    "has_cod": {
       "conditions": {
         "items": [
           {
             "items": [
-              "l2complements:cursed_droplet"
+              "minecraft:cod"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "l2complements:eggs/skeleton_spawn_egg"
+        "recipe": "l2complements:burnt/cod"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_cursed_droplet",
+      "has_cod",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "l2complements:eggs/skeleton_spawn_egg"
+      "l2complements:burnt/cod"
     ]
   }
 }

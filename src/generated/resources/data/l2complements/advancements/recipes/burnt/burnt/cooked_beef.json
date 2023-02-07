@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cursed_droplet": {
+    "has_cooked_beef": {
       "conditions": {
         "items": [
           {
             "items": [
-              "l2complements:cursed_droplet"
+              "minecraft:cooked_beef"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "l2complements:eggs/stray_spawn_egg"
+        "recipe": "l2complements:burnt/cooked_beef"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_cursed_droplet",
+      "has_cooked_beef",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "l2complements:eggs/stray_spawn_egg"
+      "l2complements:burnt/cooked_beef"
     ]
   }
 }

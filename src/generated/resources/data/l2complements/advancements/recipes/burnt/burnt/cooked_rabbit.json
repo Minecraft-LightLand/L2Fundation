@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cursed_droplet": {
+    "has_cooked_rabbit": {
       "conditions": {
         "items": [
           {
             "items": [
-              "l2complements:cursed_droplet"
+              "minecraft:cooked_rabbit"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "l2complements:eggs/zombified_piglin_spawn_egg"
+        "recipe": "l2complements:burnt/cooked_rabbit"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_cursed_droplet",
+      "has_cooked_rabbit",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "l2complements:eggs/zombified_piglin_spawn_egg"
+      "l2complements:burnt/cooked_rabbit"
     ]
   }
 }

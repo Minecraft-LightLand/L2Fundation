@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cursed_droplet": {
+    "has_life_essence": {
       "conditions": {
         "items": [
           {
             "items": [
-              "l2complements:cursed_droplet"
+              "l2complements:life_essence"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "l2complements:eggs/drowned_spawn_egg"
+        "recipe": "l2complements:eggs/animal/mooshroom_spawn_egg"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_cursed_droplet",
+      "has_life_essence",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "l2complements:eggs/drowned_spawn_egg"
+      "l2complements:eggs/animal/mooshroom_spawn_egg"
     ]
   }
 }

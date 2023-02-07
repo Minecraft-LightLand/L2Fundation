@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "l2complements:eggs/husk_spawn_egg"
+        "recipe": "l2complements:eggs/undead/ghast_spawn_egg"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "l2complements:eggs/husk_spawn_egg"
+      "l2complements:eggs/undead/ghast_spawn_egg"
     ]
   }
 }

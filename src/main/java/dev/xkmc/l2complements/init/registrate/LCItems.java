@@ -73,6 +73,7 @@ public class LCItems {
 	public static final ItemEntry<TransformItem> PIGLIN_RUNE;
 	public static final ItemEntry<BurntItem> EMERALD;
 	public static final ItemEntry<BurntItem> CURSED_DROPLET;
+	public static final ItemEntry<BurntItem> LIFE_ESSENCE;
 	public static final ItemEntry<SpecialRenderItem> FORCE_FIELD;
 
 
@@ -112,6 +113,9 @@ public class LCItems {
 			GUARDIAN_EYE = simpleItem("guardian_eye", TooltipItem::new, Rarity.RARE, LangData.IDS.GUARDIAN_EYE::get);
 			EMERALD = REGISTRATE.item("heirophant_green", p -> new BurntItem(p.fireResistant().rarity(Rarity.EPIC))).defaultModel().defaultLang().register();
 			CURSED_DROPLET = REGISTRATE.item("cursed_droplet", p -> new BurntItem(p.fireResistant().rarity(Rarity.RARE))).defaultModel().defaultLang().register();
+			LIFE_ESSENCE = REGISTRATE.item("life_essence", p -> new BurntItem(p.fireResistant().rarity(Rarity.RARE)
+							.food(new FoodProperties.Builder().nutrition(20).saturationMod(1.2f).alwaysEat().fast().build())))
+					.defaultModel().defaultLang().register();
 			FORCE_FIELD = REGISTRATE.item("force_field", p -> new SpecialRenderItem(p.fireResistant().rarity(Rarity.EPIC), LangData.IDS.FORCE_FIELD::get))
 					.model((ctx, pvd) -> pvd.getBuilder(ctx.getName()).parent(new ModelFile.UncheckedModelFile("builtin/entity")))
 					.defaultLang().register();

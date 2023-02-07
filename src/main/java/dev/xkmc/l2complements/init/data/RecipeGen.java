@@ -167,21 +167,24 @@ public class RecipeGen {
 					.save(pvd, getID(LCItems.TOTEMIC_CARROT.get()));
 
 			unlock(pvd, new ShapedRecipeBuilder(LCItems.ENCHANT_TOTEMIC_CARROT.get(), 1)::unlockedBy, LCMats.TOTEMIC_GOLD.getIngot())
-					.pattern("AAA").pattern("ABA").pattern("AAA")
+					.pattern("ACA").pattern("ABA").pattern("AAA")
 					.define('A', LCMats.TOTEMIC_GOLD.getIngot())
 					.define('B', Items.CARROT)
+					.define('C', LCItems.LIFE_ESSENCE.get())
 					.save(pvd, getID(LCItems.ENCHANT_TOTEMIC_CARROT.get()));
 
 			unlock(pvd, new ShapedRecipeBuilder(LCItems.TOTEMIC_APPLE.get(), 1)::unlockedBy, LCMats.TOTEMIC_GOLD.getIngot())
-					.pattern("AAA").pattern("ABA").pattern("AAA")
+					.pattern("ACA").pattern("ABA").pattern("AAA")
 					.define('A', LCMats.TOTEMIC_GOLD.getIngot())
 					.define('B', Items.APPLE)
+					.define('C', LCItems.LIFE_ESSENCE.get())
 					.save(pvd, getID(LCItems.TOTEMIC_APPLE.get()));
 
 			unlock(pvd, new ShapedRecipeBuilder(LCItems.ENCHANTED_TOTEMIC_APPLE.get(), 1)::unlockedBy, LCMats.TOTEMIC_GOLD.getIngot())
-					.pattern("AAA").pattern("ABA").pattern("AAA")
+					.pattern("ACA").pattern("CBC").pattern("ACA")
 					.define('A', LCMats.TOTEMIC_GOLD.getBlock())
 					.define('B', Items.APPLE)
+					.define('C', LCItems.LIFE_ESSENCE.get())
 					.save(pvd, getID(LCItems.ENCHANTED_TOTEMIC_APPLE.get()));
 
 
@@ -390,13 +393,34 @@ public class RecipeGen {
 			convert(pvd, Items.EMERALD, LCItems.EMERALD.get(), 64 * 27 * 9);
 			convert(pvd, Items.EMERALD_BLOCK, LCItems.EMERALD.get(), 64 * 27);
 			convert(pvd, Items.ROTTEN_FLESH, LCItems.CURSED_DROPLET.get(), 64 * 27 * 9);
+			convert(pvd, Items.SOUL_SAND, LCItems.CURSED_DROPLET.get(), 64 * 27 * 16);
+			convert(pvd, Items.SOUL_SOIL, LCItems.CURSED_DROPLET.get(), 64 * 27 * 16);
+			convert(pvd, Items.GHAST_TEAR, LCItems.CURSED_DROPLET.get(), 64 * 9);
+			convert(pvd, Items.NETHER_STAR, LCItems.CURSED_DROPLET.get(), 64);
+
+			convert(pvd, Items.COOKED_BEEF, LCItems.LIFE_ESSENCE.get(), 64 * 27 * 9);
+			convert(pvd, Items.COOKED_CHICKEN, LCItems.LIFE_ESSENCE.get(), 64 * 27 * 9);
+			convert(pvd, Items.COOKED_MUTTON, LCItems.LIFE_ESSENCE.get(), 64 * 27 * 9);
+			convert(pvd, Items.COOKED_PORKCHOP, LCItems.LIFE_ESSENCE.get(), 64 * 27 * 9);
+			convert(pvd, Items.COOKED_RABBIT, LCItems.LIFE_ESSENCE.get(), 64 * 27 * 9);
+			convert(pvd, Items.COOKED_COD, LCItems.LIFE_ESSENCE.get(), 64 * 27 * 9);
+			convert(pvd, Items.COOKED_SALMON, LCItems.LIFE_ESSENCE.get(), 64 * 27 * 9);
+			convert(pvd, Items.BEEF, LCItems.LIFE_ESSENCE.get(), 64 * 27 * 9);
+			convert(pvd, Items.CHICKEN, LCItems.LIFE_ESSENCE.get(), 64 * 27 * 9);
+			convert(pvd, Items.MUTTON, LCItems.LIFE_ESSENCE.get(), 64 * 27 * 9);
+			convert(pvd, Items.PORKCHOP, LCItems.LIFE_ESSENCE.get(), 64 * 27 * 9);
+			convert(pvd, Items.RABBIT, LCItems.LIFE_ESSENCE.get(), 64 * 27 * 9);
+			convert(pvd, Items.COD, LCItems.LIFE_ESSENCE.get(), 64 * 27 * 9);
+			convert(pvd, Items.SALMON, LCItems.LIFE_ESSENCE.get(), 64 * 27 * 9);
+			convert(pvd, Items.TOTEM_OF_UNDYING, LCItems.LIFE_ESSENCE.get(), 64);
 		}
 
-		currentFolder = "eggs/";
+		// eggs
 		{
 
 			// undead
 			/* zombie, husk, drowned, zombified piglin, skeleton, stray, wither skeleton, phantom, ghast*/
+			currentFolder = "eggs/undead/";
 			{
 				unlock(pvd, new ShapedRecipeBuilder(Items.ZOMBIE_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
 						.pattern("AAA").pattern("ABA").pattern("ACA")
@@ -466,99 +490,190 @@ public class RecipeGen {
 						.define('C', Items.EGG)
 						.save(pvd, getID(Items.GHAST_SPAWN_EGG));
 			}
+
 			// passive
-			/*pig, cow, chicken, rabbit, bee, cod, salmon*/
-			/*
+			/*pig, cow, mooshroom, chicken, rabbit, bee, cod, salmon, tropical fish, squid, glow squid, frog, turtle*/
 			{
 
-				unlock(pvd, new ShapedRecipeBuilder(Items.PIG_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+				currentFolder = "eggs/animal/";
+				unlock(pvd, new ShapedRecipeBuilder(Items.PIG_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
 						.pattern("AAA").pattern("LBL").pattern("ACA")
 						.define('A', Items.PORKCHOP)
-						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.EGG)
 						.save(pvd, getID(Items.PIG_SPAWN_EGG));
 
-				unlock(pvd, new ShapedRecipeBuilder(Items.COW_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+				unlock(pvd, new ShapedRecipeBuilder(Items.COW_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
 						.pattern("AAA").pattern("LBL").pattern("ACA")
 						.define('A', Items.BEEF)
-						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.EGG)
 						.save(pvd, getID(Items.COW_SPAWN_EGG));
 
-				unlock(pvd, new ShapedRecipeBuilder(Items.CHICKEN_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+				unlock(pvd, new ShapedRecipeBuilder(Items.MOOSHROOM_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
+						.pattern("AAA").pattern("LBL").pattern("ACA")
+						.define('A', Items.RED_MUSHROOM)
+						.define('B', LCItems.LIFE_ESSENCE.get())
+						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('C', Items.COW_SPAWN_EGG)
+						.save(pvd, getID(Items.MOOSHROOM_SPAWN_EGG));
+
+				unlock(pvd, new ShapedRecipeBuilder(Items.SHEEP_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
+						.pattern("AAA").pattern("LBL").pattern("ACA")
+						.define('A', Items.MUTTON)
+						.define('B', LCItems.LIFE_ESSENCE.get())
+						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('C', Items.EGG)
+						.save(pvd, getID(Items.SHEEP_SPAWN_EGG));
+
+				unlock(pvd, new ShapedRecipeBuilder(Items.CHICKEN_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
 						.pattern("AAA").pattern("LBL").pattern("ACA")
 						.define('A', Items.CHICKEN)
-						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.EGG)
 						.save(pvd, getID(Items.CHICKEN_SPAWN_EGG));
 
-				unlock(pvd, new ShapedRecipeBuilder(Items.RABBIT_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+				unlock(pvd, new ShapedRecipeBuilder(Items.RABBIT_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
 						.pattern("AAA").pattern("LBL").pattern("ACA")
 						.define('A', Items.RABBIT)
-						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.EGG)
 						.save(pvd, getID(Items.RABBIT_SPAWN_EGG));
 
-				unlock(pvd, new ShapedRecipeBuilder(Items.BEE_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+				unlock(pvd, new ShapedRecipeBuilder(Items.BEE_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
 						.pattern("AAA").pattern("LBL").pattern("ACA")
-						.define('A', Items.HONEY_BLOCK)
-						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('A', Items.HONEYCOMB)
+						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.EGG)
 						.save(pvd, getID(Items.BEE_SPAWN_EGG));
 
-				unlock(pvd, new ShapedRecipeBuilder(Items.COD_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+				currentFolder = "eggs/aquatic_spawn/";
+				unlock(pvd, new ShapedRecipeBuilder(Items.COD_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
 						.pattern("AAA").pattern("LBL").pattern("ACA")
 						.define('A', Items.COD)
-						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.EGG)
 						.save(pvd, getID(Items.COD_SPAWN_EGG));
 
-				unlock(pvd, new ShapedRecipeBuilder(Items.SALMON_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+				unlock(pvd, new ShapedRecipeBuilder(Items.SALMON_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
 						.pattern("AAA").pattern("LBL").pattern("ACA")
 						.define('A', Items.SALMON)
-						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.EGG)
 						.save(pvd, getID(Items.SALMON_SPAWN_EGG));
 
+				unlock(pvd, new ShapedRecipeBuilder(Items.TROPICAL_FISH_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
+						.pattern("AAA").pattern("LBL").pattern("ACA")
+						.define('A', Items.TROPICAL_FISH)
+						.define('B', LCItems.LIFE_ESSENCE.get())
+						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('C', Items.EGG)
+						.save(pvd, getID(Items.TROPICAL_FISH_SPAWN_EGG));
+
+
+				unlock(pvd, new ShapedRecipeBuilder(Items.SQUID_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
+						.pattern("AAA").pattern("LBL").pattern("ACA")
+						.define('A', Items.INK_SAC)
+						.define('B', LCItems.LIFE_ESSENCE.get())
+						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('C', Items.EGG)
+						.save(pvd, getID(Items.SQUID_SPAWN_EGG));
+
+				unlock(pvd, new ShapedRecipeBuilder(Items.GLOW_SQUID_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
+						.pattern("AAA").pattern("LBL").pattern("ACA")
+						.define('A', Items.GLOW_INK_SAC)
+						.define('B', LCItems.LIFE_ESSENCE.get())
+						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('C', Items.EGG)
+						.save(pvd, getID(Items.GLOW_SQUID_SPAWN_EGG));
+
+				unlock(pvd, new ShapedRecipeBuilder(Items.FROG_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
+						.pattern(" A ").pattern("LBL").pattern(" C ")
+						.define('A', Items.FROGSPAWN)
+						.define('B', LCItems.LIFE_ESSENCE.get())
+						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('C', Items.EGG)
+						.save(pvd, getID(Items.FROG_SPAWN_EGG));
+
+				unlock(pvd, new ShapedRecipeBuilder(Items.TURTLE_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
+						.pattern("AAA").pattern("LBL").pattern("ACA")
+						.define('A', Items.SCUTE)
+						.define('B', LCItems.LIFE_ESSENCE.get())
+						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('C', Items.EGG)
+						.save(pvd, getID(Items.TURTLE_SPAWN_EGG));
+
+				currentFolder = "eggs/aquatic_alternate/";
+				unlock(pvd, new ShapedRecipeBuilder(Items.COD_BUCKET, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
+						.pattern(" A ").pattern("LBL").pattern(" C ")
+						.define('A', Items.COD)
+						.define('B', LCItems.LIFE_ESSENCE.get())
+						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('C', Items.BUCKET)
+						.save(pvd, getID(Items.COD_BUCKET));
+
+				unlock(pvd, new ShapedRecipeBuilder(Items.SALMON_BUCKET, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
+						.pattern(" A ").pattern("LBL").pattern(" C ")
+						.define('A', Items.SALMON)
+						.define('B', LCItems.LIFE_ESSENCE.get())
+						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('C', Items.BUCKET)
+						.save(pvd, getID(Items.SALMON_BUCKET));
+
+				unlock(pvd, new ShapedRecipeBuilder(Items.TROPICAL_FISH_BUCKET, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
+						.pattern(" A ").pattern("LBL").pattern(" C ")
+						.define('A', Items.TROPICAL_FISH)
+						.define('B', LCItems.LIFE_ESSENCE.get())
+						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('C', Items.BUCKET)
+						.save(pvd, getID(Items.TROPICAL_FISH_BUCKET));
+
+				unlock(pvd, new ShapedRecipeBuilder(Items.TURTLE_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
+						.pattern("LBL").pattern(" C ")
+						.define('B', LCItems.LIFE_ESSENCE.get())
+						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('C', Items.TURTLE_EGG)
+						.save(pvd, getID(Items.TURTLE_SPAWN_EGG));
+
+				// panda
+				// polar bear
+				// fox
+				// cat
+				// dog
+				// goat
+				// horse
+				// donkey
+				// mule
+				// llama
+				// ocelot
+				// parrot
+				// panda
+				// dolphin
+				// bat
+				// axolotl
+
 			}
-			*/
+
 			/*
 			*
 			// allay
-			// axolotl
-			// bat
 			// blaze
-			// cat
 			// cave spider
-			// cod
 			// creeper
-			// dolphin
-			// donkey
 			// elder guardian
 			// enderman
 			// endermite
 			// evoker
-			// fox
-			// frog
-			// glow squid
-			// goat
 			// guardian
 			// hoglin
-			// horse
-			// llama
 			// magma cube
-			// mooshroom
-			// mule
-			// ocelot
-			// panda
-			// parrot
 			// piglin
 			// piglin brute
 			//

@@ -6,10 +6,13 @@
     },
     "B": {
       "item": "minecraft:carrot"
+    },
+    "C": {
+      "item": "l2complements:life_essence"
     }
   },
   "pattern": [
-    "AAA",
+    "ACA",
     "ABA",
     "AAA"
   ],

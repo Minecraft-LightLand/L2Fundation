@@ -6,12 +6,15 @@
     },
     "B": {
       "item": "minecraft:apple"
+    },
+    "C": {
+      "item": "l2complements:life_essence"
     }
   },
   "pattern": [
-    "AAA",
-    "ABA",
-    "AAA"
+    "ACA",
+    "CBC",
+    "ACA"
   ],
   "result": {
     "item": "l2complements:enchanted_totemic_apple"

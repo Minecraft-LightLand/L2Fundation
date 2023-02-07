@@ -1,0 +1,10 @@
+{
+  "type": "l2complements:burnt",
+  "chance": 15552,
+  "ingredient": {
+    "item": "minecraft:beef"
+  },
+  "result": {
+    "item": "l2complements:life_essence"
+  }
+}

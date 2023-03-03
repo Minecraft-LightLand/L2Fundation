@@ -1,10 +1,12 @@
 package dev.xkmc.l2complements.compat;
 
 import dev.xkmc.l2complements.init.L2Complements;
+import dev.xkmc.l2complements.init.registrate.LCBlocks;
 import dev.xkmc.l2complements.init.registrate.LCRecipes;
 import dev.xkmc.l2library.util.Proxy;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.registration.*;
 import mezz.jei.api.runtime.IJeiRuntime;
@@ -65,6 +67,7 @@ public class LCJeiPlugin implements IModPlugin {
 		registration.addRecipeCatalyst(Items.LAVA_BUCKET.getDefaultInstance(), BURNT.getRecipeType());
 		registration.addRecipeCatalyst(Items.FLINT_AND_STEEL.getDefaultInstance(), BURNT.getRecipeType());
 		registration.addRecipeCatalyst(Items.FIRE_CHARGE.getDefaultInstance(), BURNT.getRecipeType());
+		registration.addRecipeCatalyst(LCBlocks.ETERNAL_ANVIL.asStack(), RecipeTypes.ANVIL);
 	}
 
 	@Override

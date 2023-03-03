@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "l2complements:eternium_ingot"
+    },
+    "B": {
+      "type": "l2library:enchantment",
+      "enchantment": "l2complements:hardened",
+      "min_level": 1
+    },
+    "C": {
+      "item": "l2complements:space_shard"
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    }
+  },
+  "pattern": [
+    "LCL",
+    "ABA",
+    "LAL"
+  ],
+  "result": {
+    "item": "minecraft:enchanted_book",
+    "nbt": {
+      "StoredEnchantments": [
+        {
+          "id": "l2complements:eternal",
+          "lvl": 1
+        }
+      ]
+    }
+  }
+}

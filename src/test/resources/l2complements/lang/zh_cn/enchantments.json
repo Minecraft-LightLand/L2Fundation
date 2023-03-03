@@ -37,6 +37,12 @@
 	"ice_thorn": "冰棘",
 	"ice_thorn.desc": "对攻击者施加寒流效果。更高级的附魔延长效果时间",
 	"soul_flame_thorn": "炎棘",
-	"soul_flame_thorn.desc": "对攻击者施加魂火效果。更高级的附魔造成对伤害更高"
+	"soul_flame_thorn.desc": "对攻击者施加魂火效果。更高级的附魔造成对伤害更高",
+	"eternal": "永恒",
+	"eternal.desc": "物品无视耐久损耗",
+	"hardened": "硬化",
+	"hardened.desc": "物品的单次耐久损耗最多为1",
+	"invincible": "伤害免疫",
+	"invincible.desc": "玩家免疫所有伤害"
   }
 }

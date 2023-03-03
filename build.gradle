@@ -125,13 +125,14 @@ dependencies {
     implementation fg.deobf("mezz.jei:jei-${jei_minecraft_version}:${jei_version}")
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
 
+    implementation fg.deobf('curse.maven:the-twilight-forest-227639:4075841')
+
     runtimeOnly fg.deobf('curse.maven:appleskin-248787:3872808')
     runtimeOnly fg.deobf('curse.maven:charm-of-undying-316873:3927421')
     runtimeOnly fg.deobf('curse.maven:bookshelf-228525:4153136')
     runtimeOnly fg.deobf('curse.maven:enchantment-descriptions-250419:4277356')
     runtimeOnly fg.deobf('curse.maven:wthit-forge-455982:3947982')
     runtimeOnly fg.deobf('curse.maven:badpackets-615134:3903799')
-    runtimeOnly fg.deobf('curse.maven:the-twilight-forest-227639:4075841')
     runtimeOnly fg.deobf('curse.maven:corpse-316582:3920717')
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.19.2-76")
 

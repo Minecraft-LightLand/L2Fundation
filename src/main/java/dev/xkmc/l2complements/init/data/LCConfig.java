@@ -25,7 +25,7 @@ public class LCConfig {
 		public final ForgeConfigSpec.IntValue explosionDamage;
 		public final ForgeConfigSpec.IntValue spaceDamage;
 
-		public final ForgeConfigSpec.DoubleValue shulkerateReach;
+		public final ForgeConfigSpec.IntValue totemicHealDuration;
 
 		public final ForgeConfigSpec.DoubleValue windSweepIncrement;
 
@@ -50,7 +50,7 @@ public class LCConfig {
 			explosionDamage = builder.comment("Requirement for explosion shard drop")
 					.defineInRange("explosionDamage", 80, 1, 10000);
 			spaceDamage = builder.comment("Requirement for space shard drop")
-					.defineInRange("spaceDamage", 2048, 1, 10000);
+					.defineInRange("spaceDamage", 16384, 1, 10000);
 			builder.pop();
 
 			builder.push("fire charge");
@@ -63,8 +63,8 @@ public class LCConfig {
 			builder.pop();
 
 			builder.push("properties");
-			shulkerateReach = builder.comment("Shulkerate reach increment")
-					.defineInRange("shulkerateReach", 1, 0.1, 100);
+			totemicHealDuration = builder.comment("Totemic Armor healing interval")
+					.defineInRange("totemicHealDuration", 100, 1, 1000);
 			windSweepIncrement = builder.comment("Wind Sweep enchantment increment to sweep hit box")
 					.defineInRange("windSweepIncrement", 1, 0.1, 100);
 			emeraldDamageFactor = builder.comment("Damage factor of emerald splash")

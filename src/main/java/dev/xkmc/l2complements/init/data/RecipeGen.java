@@ -284,6 +284,16 @@ public class RecipeGen {
 					.define('C', LCItems.FORCE_FIELD.get())
 					.save(pvd, getID(LCEnchantments.ENCH_MAGIC.get()));
 
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENCH_INVINCIBLE.get(), 1)::unlockedBy, LCItems.SPACE_SHARD.get())
+					.pattern("A1A").pattern("203").pattern("A4A")
+					.define('A', LCItems.SPACE_SHARD.get())
+					.define('0', new EnchantmentIngredient(LCEnchantments.ENCH_ENVIRONMENT.get(), 1))
+					.define('1', new EnchantmentIngredient(LCEnchantments.ENCH_MAGIC.get(), 1))
+					.define('2', new EnchantmentIngredient(LCEnchantments.ENCH_EXPLOSION.get(), 1))
+					.define('3', new EnchantmentIngredient(LCEnchantments.ENCH_FIRE.get(), 1))
+					.define('4', new EnchantmentIngredient(LCEnchantments.ENCH_PROJECTILE.get(), 1))
+					.save(pvd, getID(LCEnchantments.ENCH_INVINCIBLE.get()));
+
 			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.SHULKER_ARMOR.get(), 1)::unlockedBy, LCMats.SHULKERATE.getNugget())
 					.pattern("LCL").pattern("ABA").pattern("LAL")
 					.define('A', LCMats.SHULKERATE.getNugget())
@@ -386,6 +396,22 @@ public class RecipeGen {
 					.define('B', Items.BOOK)
 					.define('L', Items.LAPIS_LAZULI)
 					.save(pvd, getID(LCEnchantments.ENDER.get()));
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.HARDENED.get(), 1)::unlockedBy, LCMats.SHULKERATE.getIngot())
+					.pattern("LCL").pattern("ABA").pattern("LAL")
+					.define('A', LCMats.SHULKERATE.getIngot())
+					.define('C', LCItems.FORCE_FIELD.get())
+					.define('B', Items.BOOK)
+					.define('L', Items.LAPIS_LAZULI)
+					.save(pvd, getID(LCEnchantments.HARDENED.get()));
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ETERNAL.get(), 1)::unlockedBy, LCItems.SPACE_SHARD.get())
+					.pattern("LCL").pattern("ABA").pattern("LAL")
+					.define('A', LCMats.ETERNIUM.getIngot())
+					.define('C', LCItems.SPACE_SHARD.get())
+					.define('B', new EnchantmentIngredient(LCEnchantments.HARDENED.get(), 1))
+					.define('L', Items.LAPIS_LAZULI)
+					.save(pvd, getID(LCEnchantments.ETERNAL.get()));
 		}
 
 		currentFolder = "burnt/";

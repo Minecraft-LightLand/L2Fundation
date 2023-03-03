@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.function.Consumer;
@@ -21,16 +22,29 @@ import java.util.function.Consumer;
 @Mixin(ItemStack.class)
 public abstract class ItemStackMixin implements IForgeItemStack {
 
+	@ModifyVariable(at = @At("LOAD"), method = "hurtAndBreak", argsOnly = true)
+	public int l2complements_hurtAndBreak_hardened(int pAmount) {
+		ItemStack self = (ItemStack) (Object) this;
+		if (pAmount > 1 && self.getEnchantmentLevel(LCEnchantments.HARDENED.get()) > 0) {
+			return 1;
+		}
+		return pAmount;
+	}
+
 	@Inject(at = @At("HEAD"), method = "hurtAndBreak", cancellable = true)
 	public <T extends LivingEntity> void l2complements_hurtAndBreak_lifeSync(int pAmount, T pEntity, Consumer<T> pOnBroken, CallbackInfo ci) {
 		ItemStack self = (ItemStack) (Object) this;
 		if (pEntity.level.isClientSide()) return;
+		if (self.getEnchantmentLevel(LCEnchantments.ETERNAL.get()) > 0) {
+			ci.cancel();
+		}
 		if (self.getEnchantmentLevel(LCEnchantments.LIFE_SYNC.get()) > 0) {
 			pEntity.hurt(LifeSyncEnchantment.SOURCE, pAmount);
 			ci.cancel();
 		}
 	}
 
+	//FIXME improve compatibility
 	@Override
 	public @NotNull AABB getSweepHitBox(@NotNull Player player, @NotNull Entity target) {
 		ItemStack self = (ItemStack) (Object) this;

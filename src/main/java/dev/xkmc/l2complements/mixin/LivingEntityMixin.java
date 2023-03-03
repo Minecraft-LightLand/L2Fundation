@@ -24,11 +24,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
-public abstract class LivingEntityMixin extends Entity {
-
-	public LivingEntityMixin(EntityType<?> pEntityType, Level pLevel) {
-		super(pEntityType, pLevel);
-	}
+public abstract class LivingEntityMixin {
 
 	@Shadow
 	public abstract @NotNull Iterable<ItemStack> getArmorSlots();
@@ -58,6 +54,7 @@ public abstract class LivingEntityMixin extends Entity {
 	/**
 	 * @author L2Complements lcy0x1
 	 * @reason Allow armors to hide themselves
+	 * FIXME improve compatibility
 	 */
 	@Inject(at = @At("HEAD"), method = "getArmorCoverPercentage", cancellable = true)
 	public void l2complements_getArmorCoverPercentage_hideInvisibleArmorsFromMobs(CallbackInfoReturnable<Float> cir) {
@@ -73,17 +70,6 @@ public abstract class LivingEntityMixin extends Entity {
 			++total;
 		}
 		cir.setReturnValue(total > 0 ? (float) visible / (float) total : 0.0F);
-	}
-
-	@Override
-	public boolean dampensVibrations() {
-		LivingEntity self = (LivingEntity) (Object) this;
-		int count = 0;
-		for (EquipmentSlot slot : EquipmentSlot.values()) {
-			ItemStack stack = self.getItemBySlot(slot);
-			count += SpecialEquipmentEvents.blockSound(stack);
-		}
-		return count >= 4;
 	}
 
 }

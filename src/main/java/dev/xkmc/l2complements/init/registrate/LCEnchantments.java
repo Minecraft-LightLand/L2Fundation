@@ -5,7 +5,7 @@ import dev.xkmc.l2complements.content.enchantment.armors.IceThornEnchantment;
 import dev.xkmc.l2complements.content.enchantment.armors.StableBodyEnchantment;
 import dev.xkmc.l2complements.content.enchantment.core.ImmuneEnchantment;
 import dev.xkmc.l2complements.content.enchantment.core.SingleLevelEnchantment;
-import dev.xkmc.l2complements.content.enchantment.special.ItemTeleportEnchantment;
+import dev.xkmc.l2complements.content.enchantment.special.LegendaryEnchantment;
 import dev.xkmc.l2complements.content.enchantment.special.LifeSyncEnchantment;
 import dev.xkmc.l2complements.content.enchantment.special.SoulBindingEnchantment;
 import dev.xkmc.l2complements.content.enchantment.weapon.IceBladeEnchantment;
@@ -31,6 +31,7 @@ public class LCEnchantments {
 	public static final RegistryEntry<ImmuneEnchantment> ENCH_ENVIRONMENT = reg("environment_reject");
 	public static final RegistryEntry<ImmuneEnchantment> ENCH_EXPLOSION = reg("explosion_reject");
 	public static final RegistryEntry<ImmuneEnchantment> ENCH_MAGIC = reg("magic_reject");
+	public static final RegistryEntry<ImmuneEnchantment> ENCH_INVINCIBLE = reg("invincible");
 
 	public static final RegistryEntry<SingleLevelEnchantment> SHULKER_ARMOR = REGISTRATE
 			.enchantment("shulker_armor", ALL, SingleLevelEnchantment::new)
@@ -42,6 +43,14 @@ public class LCEnchantments {
 
 	public static final RegistryEntry<LifeSyncEnchantment> LIFE_SYNC = REGISTRATE
 			.enchantment("life_sync", EnchantmentCategory.BREAKABLE, LifeSyncEnchantment::new)
+			.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
+
+	public static final RegistryEntry<LegendaryEnchantment> ETERNAL = REGISTRATE
+			.enchantment("eternal", EnchantmentCategory.BREAKABLE, LegendaryEnchantment::new)
+			.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
+
+	public static final RegistryEntry<LegendaryEnchantment> HARDENED = REGISTRATE
+			.enchantment("hardened", EnchantmentCategory.BREAKABLE, LegendaryEnchantment::new)
 			.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
 
 	public static final RegistryEntry<WindSweepEnchantment> WIND_SWEEP = REGISTRATE
@@ -84,8 +93,8 @@ public class LCEnchantments {
 			.enchantment("soul_flame_thorn", EnchantmentCategory.ARMOR, FlameThornEnchantment::new)
 			.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).register();
 
-	public static final RegistryEntry<ItemTeleportEnchantment> ENDER = REGISTRATE
-			.enchantment("ender_reach", EnchantmentCategory.DIGGER, ItemTeleportEnchantment::new)
+	public static final RegistryEntry<LegendaryEnchantment> ENDER = REGISTRATE
+			.enchantment("ender_reach", EnchantmentCategory.DIGGER, LegendaryEnchantment::new)
 			.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
 
 	private static RegistryEntry<ImmuneEnchantment> reg(String id) {

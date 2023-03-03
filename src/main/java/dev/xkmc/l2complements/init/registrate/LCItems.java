@@ -10,6 +10,7 @@ import dev.xkmc.l2complements.content.item.misc.*;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.TagGen;
 import dev.xkmc.l2complements.init.materials.LCMats;
 import dev.xkmc.l2library.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -111,14 +112,14 @@ public class LCItems {
 			SPACE_SHARD = simpleItem("space_shard", TooltipItem::new, Rarity.EPIC, () -> LangData.IDS.SPACE_SHARD.get(LCConfig.COMMON.spaceDamage.get())); // deal 500 arrow damage
 			WARDEN_BONE_SHARD = simpleItem("warden_bone_shard", TooltipItem::new, Rarity.RARE, LangData.IDS.WARDEN_BONE_SHARD::get);
 			GUARDIAN_EYE = simpleItem("guardian_eye", TooltipItem::new, Rarity.RARE, LangData.IDS.GUARDIAN_EYE::get);
-			EMERALD = REGISTRATE.item("heirophant_green", p -> new BurntItem(p.fireResistant().rarity(Rarity.EPIC))).defaultModel().defaultLang().register();
-			CURSED_DROPLET = REGISTRATE.item("cursed_droplet", p -> new BurntItem(p.fireResistant().rarity(Rarity.RARE))).defaultModel().defaultLang().register();
+			EMERALD = REGISTRATE.item("heirophant_green", p -> new BurntItem(p.fireResistant().rarity(Rarity.EPIC))).defaultModel().tag(TagGen.SPECIAL_ITEM).defaultLang().register();
+			CURSED_DROPLET = REGISTRATE.item("cursed_droplet", p -> new BurntItem(p.fireResistant().rarity(Rarity.RARE))).defaultModel().tag(TagGen.SPECIAL_ITEM).defaultLang().register();
 			LIFE_ESSENCE = REGISTRATE.item("life_essence", p -> new BurntItem(p.fireResistant().rarity(Rarity.RARE)
 							.food(new FoodProperties.Builder().nutrition(20).saturationMod(1.2f).alwaysEat().fast().build())))
-					.defaultModel().defaultLang().register();
+					.defaultModel().tag(TagGen.SPECIAL_ITEM).defaultLang().register();
 			FORCE_FIELD = REGISTRATE.item("force_field", p -> new SpecialRenderItem(p.fireResistant().rarity(Rarity.EPIC), LangData.IDS.FORCE_FIELD::get))
 					.model((ctx, pvd) -> pvd.getBuilder(ctx.getName()).parent(new ModelFile.UncheckedModelFile("builtin/entity")))
-					.defaultLang().register();
+					.defaultLang().tag(TagGen.SPECIAL_ITEM).register();
 			GUARDIAN_RUNE = simpleItem("guardian_rune", (p, t) -> new TransformItem(p, t,
 							() -> EntityType.GUARDIAN, () -> EntityType.ELDER_GUARDIAN),
 					Rarity.RARE, LangData.IDS.GUARDIAN_RUNE::get);
@@ -213,7 +214,7 @@ public class LCItems {
 	}
 
 	public static <T extends Item> ItemEntry<T> simpleItem(String id, BiFunction<Item.Properties, Supplier<MutableComponent>, T> func, Rarity r, Supplier<MutableComponent> sup) {
-		return REGISTRATE.item(id, p -> func.apply(p.fireResistant().rarity(r), sup)).defaultModel().defaultLang().register();
+		return REGISTRATE.item(id, p -> func.apply(p.fireResistant().rarity(r), sup)).defaultModel().tag(TagGen.SPECIAL_ITEM).defaultLang().register();
 	}
 
 	public static void register() {

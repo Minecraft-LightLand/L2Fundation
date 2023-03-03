@@ -7,14 +7,10 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.Enchantments;
 
-public class SoulBindingEnchantment extends SingleLevelEnchantment {
+public class SoulBindingEnchantment extends LegendaryEnchantment {
 
 	public SoulBindingEnchantment(Rarity pRarity, EnchantmentCategory pCategory, EquipmentSlot[] pApplicableSlots) {
 		super(pRarity, pCategory, pApplicableSlots);
-	}
-
-	public ChatFormatting getColor() {
-		return ChatFormatting.GOLD;
 	}
 
 	@Override

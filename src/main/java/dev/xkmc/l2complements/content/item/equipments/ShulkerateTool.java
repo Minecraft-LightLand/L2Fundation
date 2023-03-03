@@ -22,9 +22,8 @@ public class ShulkerateTool extends ExtraToolConfig {
 
 	@Override
 	public Multimap<Attribute, AttributeModifier> modify(Multimap<Attribute, AttributeModifier> map, EquipmentSlot slot, ItemStack stack) {
-		double val = LCConfig.COMMON.shulkerateReach.get();
-		map.put(ForgeMod.REACH_DISTANCE.get(), new AttributeModifier(MathHelper.getUUIDFromString(NAME_R), NAME_R, val, AttributeModifier.Operation.ADDITION));
-		map.put(ForgeMod.ATTACK_RANGE.get(), new AttributeModifier(MathHelper.getUUIDFromString(NAME_D), NAME_D, val, AttributeModifier.Operation.ADDITION));
+		map.put(ForgeMod.REACH_DISTANCE.get(), new AttributeModifier(MathHelper.getUUIDFromString(NAME_R), NAME_R, 1, AttributeModifier.Operation.ADDITION));
+		map.put(ForgeMod.ATTACK_RANGE.get(), new AttributeModifier(MathHelper.getUUIDFromString(NAME_D), NAME_D, 1, AttributeModifier.Operation.ADDITION));
 		return map;
 	}
 

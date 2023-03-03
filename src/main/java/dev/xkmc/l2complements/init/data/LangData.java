@@ -151,8 +151,12 @@ public class LangData {
 				"Apply flame effect to attacker. Higher levels have higher damage.");
 		pvd.add(LCEnchantments.ENDER.get().getDescriptionId() + ".desc",
 				"Teleport mined items to inventory if possible.");
-
-
+		pvd.add(LCEnchantments.ETERNAL.get().getDescriptionId() + ".desc",
+				"Item will ignore all durability damage.");
+		pvd.add(LCEnchantments.HARDENED.get().getDescriptionId() + ".desc",
+				"Durability loss will be capped to 1.");
+		pvd.add(LCEnchantments.ENCH_INVINCIBLE.get().getDescriptionId() + ".desc",
+				"Player is invincible to all damage.");
 	}
 
 	public static String asId(String name) {

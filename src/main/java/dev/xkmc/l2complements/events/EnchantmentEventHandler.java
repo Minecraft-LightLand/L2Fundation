@@ -19,6 +19,9 @@ public class EnchantmentEventHandler {
 
 	@SubscribeEvent
 	public static void onLivingAttack(LivingAttackEvent event) {
+		if (EnchantmentHelper.getEnchantmentLevel(LCEnchantments.ENCH_INVINCIBLE.get(), event.getEntity()) > 0) {
+			event.setCanceled(true);
+		}
 		if (event.getSource().isBypassMagic() || event.getSource().isBypassInvul())
 			return;
 		if (EnchantmentHelper.getEnchantmentLevel(LCEnchantments.ENCH_ENVIRONMENT.get(), event.getEntity()) > 0) {

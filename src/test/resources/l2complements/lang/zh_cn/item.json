@@ -115,6 +115,9 @@
 		  "resistance": "抗性药水",
 		  "long_resistance": "抗性药水",
 		  "strong_resistance": "抗性药水",
+		  "armor_reduce": "破甲药水",
+		  "long_armor_reduce": "药水",
+		  "strong_armor_reduce": "破甲药水",
 		  "emerald_splash": "绿宝石水花",
 		  "long_emerald_splash": "绿宝石水花",
 		  "strong_emerald_splash": "绿宝石水花"

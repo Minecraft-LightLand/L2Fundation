@@ -21,8 +21,11 @@ import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Supplier;
 
 /**
@@ -30,17 +33,25 @@ import java.util.function.Supplier;
  */
 public class LCEffects {
 
-	public static final RegistryEntry<EmeraldPopeEffect> EMERALD = genEffect("emerald_splash", () -> new EmeraldPopeEffect(MobEffectCategory.NEUTRAL, 0x00FF00));
-	public static final RegistryEntry<FlameEffect> FLAME = genEffect("flame", () -> new FlameEffect(MobEffectCategory.HARMFUL, 0xFF0000));
-	public static final RegistryEntry<IceEffect> ICE = genEffect("frozen", () -> new IceEffect(MobEffectCategory.HARMFUL, 0x7f7fff));
-	public static final RegistryEntry<ArmorReduceEffect> ARMOR_REDUCE = genEffect("armor_reduce", () -> new ArmorReduceEffect(MobEffectCategory.HARMFUL, 0xFFFFFF));
-	public static final RegistryEntry<StoneCageEffect> STONE_CAGE = genEffect("stone_cage", () -> new StoneCageEffect(MobEffectCategory.HARMFUL, 0x000000));
-
 	public static final List<RegistryEntry<? extends Potion>> POTION_LIST = new ArrayList<>();
+	public static final Map<String, String> NAME_CACHE = new HashMap<>();
+
+	public static final RegistryEntry<EmeraldPopeEffect> EMERALD = genEffect("emerald_splash", () -> new EmeraldPopeEffect(MobEffectCategory.NEUTRAL, 0x00FF00));
+	public static final RegistryEntry<FlameEffect> FLAME = genEffect("flame", "Soul Burning", () -> new FlameEffect(MobEffectCategory.HARMFUL, 0xFF0000));
+	public static final RegistryEntry<IceEffect> ICE = genEffect("frozen", "Frost", () -> new IceEffect(MobEffectCategory.HARMFUL, 0x7f7fff));
+	public static final RegistryEntry<ArmorReduceEffect> ARMOR_REDUCE = genEffect("armor_reduce", "Armor Corrosion", () -> new ArmorReduceEffect(MobEffectCategory.HARMFUL, 0xFFFFFF));
+	public static final RegistryEntry<StoneCageEffect> STONE_CAGE = genEffect("stone_cage", "Incarceration", () -> new StoneCageEffect(MobEffectCategory.HARMFUL, 0x000000));
+
 
 	public static <T extends MobEffect> RegistryEntry<T> genEffect(String name, NonNullSupplier<T> sup) {
 		return L2Complements.REGISTRATE.entry(name, cb -> new NoConfigBuilder<>(L2Complements.REGISTRATE, L2Complements.REGISTRATE, name, cb, ForgeRegistries.Keys.MOB_EFFECTS, sup))
 				.lang(MobEffect::getDescriptionId).register();
+	}
+
+	public static <T extends MobEffect> RegistryEntry<T> genEffect(String name, String lang, NonNullSupplier<T> sup) {
+		NAME_CACHE.put(name, lang);
+		return L2Complements.REGISTRATE.entry(name, cb -> new NoConfigBuilder<>(L2Complements.REGISTRATE, L2Complements.REGISTRATE, name, cb, ForgeRegistries.Keys.MOB_EFFECTS, sup))
+				.lang(MobEffect::getDescriptionId, lang).register();
 	}
 
 	private static final List<Runnable> TEMP = new ArrayList<>();
@@ -53,6 +64,10 @@ public class LCEffects {
 		regPotion3("flame", FLAME::get, LCItems.SOUL_FLAME::get, 400, 600, 1000, 0, 1);
 		regPotion2("frozen", ICE::get, LCItems.HARD_ICE::get, 3600, 9600);
 		regPotion2("stone_cage", STONE_CAGE::get, LCItems.BLACKSTONE_CORE::get, 1200, 3600);
+		regPotion3("armor_reduce", ARMOR_REDUCE::get, 600, 1200, 3600, 0, 1,
+				() -> Items.MAGMA_CREAM, Potions.WEAKNESS, Potions.LONG_WEAKNESS, null,
+				() -> Items.FERMENTED_SPIDER_EYE, Potions.FIRE_RESISTANCE, Potions.LONG_FIRE_RESISTANCE, null
+		);
 		regPotion2("levitation", () -> MobEffects.LEVITATION, LCItems.CAPTURED_BULLET::get, 200, 600);
 		regPotion3("resistance", () -> MobEffects.DAMAGE_RESISTANCE, LCItems.EXPLOSION_SHARD::get, 400, 600, 1200, 1, 2);
 		regEmeraldPotion(EMERALD::get, LCItems.EMERALD::get);
@@ -81,6 +96,25 @@ public class LCEffects {
 			PotionBrewing.addMix(Potions.AWKWARD, item.get(), potion.get());
 			PotionBrewing.addMix(potion.get(), Items.REDSTONE, longPotion.get());
 			PotionBrewing.addMix(potion.get(), Items.GLOWSTONE_DUST, strongPotion.get());
+		});
+	}
+
+	private static void regPotion3(String id, Supplier<MobEffect> sup, int durStrong, int dur, int durLong, int amp, int ampStrong,
+								   Supplier<Item> a, Potion ap, Potion lap, @Nullable Potion sap,
+								   Supplier<Item> b, Potion bp, Potion lbp, @Nullable Potion sbp) {
+		var potion = genPotion(id, () -> new Potion(new MobEffectInstance(sup.get(), dur, amp)));
+		var longPotion = genPotion("long_" + id, () -> new Potion(new MobEffectInstance(sup.get(), durLong, amp)));
+		var strongPotion = genPotion("strong_" + id, () -> new Potion(new MobEffectInstance(sup.get(), durStrong, ampStrong)));
+
+		TEMP.add(() -> {
+			PotionBrewing.addMix(potion.get(), Items.REDSTONE, longPotion.get());
+			PotionBrewing.addMix(potion.get(), Items.GLOWSTONE_DUST, strongPotion.get());
+			PotionBrewing.addMix(ap, a.get(), potion.get());
+			PotionBrewing.addMix(lap, a.get(), longPotion.get());
+			PotionBrewing.addMix(bp, b.get(), potion.get());
+			PotionBrewing.addMix(lbp, b.get(), longPotion.get());
+			if (sap != null) PotionBrewing.addMix(sap, a.get(), strongPotion.get());
+			if (sbp != null) PotionBrewing.addMix(sbp, b.get(), strongPotion.get());
 		});
 	}
 

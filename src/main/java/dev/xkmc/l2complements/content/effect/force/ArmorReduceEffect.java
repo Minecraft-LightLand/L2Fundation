@@ -16,7 +16,11 @@ public class ArmorReduceEffect extends MobEffect implements ForceEffect {
 
 	public ArmorReduceEffect(MobEffectCategory category, int color) {
 		super(category, color);
-		this.addAttributeModifier(Attributes.ARMOR, ID.toString(), -8f, AttributeModifier.Operation.ADDITION);
+		this.addAttributeModifier(Attributes.ARMOR, ID.toString(), -0.5f, AttributeModifier.Operation.MULTIPLY_TOTAL);
 	}
 
+	@Override
+	public double getAttributeModifierValue(int pAmplifier, AttributeModifier pModifier) {
+		return Math.pow(1 + pModifier.getAmount(), pAmplifier + 1) - 1;
+	}
 }

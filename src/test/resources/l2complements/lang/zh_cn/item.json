@@ -120,7 +120,9 @@
 		  "strong_armor_reduce": "破甲药水",
 		  "emerald_splash": "绿宝石水花",
 		  "long_emerald_splash": "绿宝石水花",
-		  "strong_emerald_splash": "绿宝石水花"
+		  "strong_emerald_splash": "绿宝石水花",
+		  "curse": "诅咒",
+		  "long_curse": "诅咒"
 		}
 	  ]
 	}

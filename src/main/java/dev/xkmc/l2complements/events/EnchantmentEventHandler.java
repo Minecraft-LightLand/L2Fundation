@@ -1,6 +1,7 @@
 package dev.xkmc.l2complements.events;
 
 import dev.xkmc.l2complements.content.enchantment.core.AttributeEnchantment;
+import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
@@ -9,6 +10,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.ItemAttributeModifierEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -65,6 +67,13 @@ public class EnchantmentEventHandler {
 	@SubscribeEvent
 	public static void onPlayerClone(PlayerEvent.Clone event) {
 		event.getEntity().getInventory().replaceWith(event.getOriginal().getInventory());
+	}
+
+	@SubscribeEvent
+	public static void onHeal(LivingHealEvent event) {
+		if (event.getEntity().hasEffect(LCEffects.CURSE.get())){
+			event.setCanceled(true);
+		}
 	}
 
 }

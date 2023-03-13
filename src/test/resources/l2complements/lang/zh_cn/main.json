@@ -4,7 +4,8 @@
 	"flame": "魂火",
 	"frozen": "寒流",
 	"stone_cage": "禁锢",
-	"emerald_splash": "绿宝石水花"
+	"emerald_splash": "绿宝石水花",
+	"curse": "诅咒"
   },
   "entity.l2complements": {
 	"black_fire_charge": "黑炎弹",
@@ -32,12 +33,15 @@
 	"strong_armor_reduce": "破甲之箭",
 	"emerald_splash": "虫箭-绿宝石水花",
 	"long_emerald_splash": "虫箭-绿宝石水花",
-	"strong_emerald_splash": "虫箭-绿宝石水花"
+	"strong_emerald_splash": "虫箭-绿宝石水花",
+	"curse": "诅咒之箭",
+	"long_curse": "诅咒之箭"
   },
   "death.attack": {
 	"soul_flame": "%s的灵魂燃尽了",
 	"soul_flame.player": "%s的灵魂被%s烧掉了",
-	"life_sync": "%s被榨干了"
+	"life_sync": "%s被榨干了",
+	"void_eye": "%s死于虚空之眼的诅咒"
   },
   "l2complements": {
 	"tooltip": {
@@ -53,7 +57,7 @@
 		"space_shard": "造成%s的弓箭伤害获得",
 		"storm_core": "炸死幻翼获得",
 		"sun_membrane": "在世界建筑上限的%s格以上杀死被晒伤的幻翼获得",
-		"void_eye": "杀死处于虚空%s格以下的被激怒的末影人获得",
+		"void_eye": "杀死处于虚空%s格以下的被激怒的末影人获得。此物品会杀死虚空以下的持有者，请小心收集",
 		"wind_bottle": "获取千风精华和瓶中潜影弹的基础物品",
 		"warden_bone_shard": "玩家亲自击杀监守者时掉落",
 		"warp_pos": "目标: %s, (%s,%s,%s)",

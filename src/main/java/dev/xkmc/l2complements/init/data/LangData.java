@@ -19,7 +19,7 @@ public class LangData {
 
 	public enum IDS {
 		WIND_BOTTLE("tooltip.misc.wind_bottle", "Used to obtain Captured Wind or Captured Bullet.", 0),
-		VOID_EYE("tooltip.misc.void_eye", "Obtained by killing an angry Enderman %s block below the void.", 1),
+		VOID_EYE("tooltip.misc.void_eye", "Obtained by killing an angry Enderman %s block below the void. This item kill holder in void, collect it with care.", 1),
 		SUN_MEMBRANE("tooltip.misc.sun_membrane", "Obtained by killing a sun-burning Phantom %s blocks above max build height.", 1),
 		SOUL_FLAME("tooltip.misc.soul_flame", "Obtained by killing a ghast with soul flame.", 0),
 		CAPTURED_WIND("tooltip.misc.captured_wind", "Obtained by right clicking Wind Bottle when moving faster than %s blocks per second.", 1),
@@ -104,6 +104,7 @@ public class LangData {
 		pvd.add("death.attack.soul_flame", "%s has its soul burnt out");
 		pvd.add("death.attack.soul_flame.player", "%s has its soul burnt out by %s");
 		pvd.add("death.attack.life_sync", "%s was drained");
+		pvd.add("death.attack.void_eye", "%s was cursed by void eye");
 
 		List<Item> list = List.of(Items.POTION, Items.SPLASH_POTION, Items.LINGERING_POTION, Items.TIPPED_ARROW);
 		for (RegistryEntry<? extends Potion> ent : LCEffects.POTION_LIST) {

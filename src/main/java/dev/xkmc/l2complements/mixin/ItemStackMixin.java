@@ -1,5 +1,6 @@
 package dev.xkmc.l2complements.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import dev.xkmc.l2complements.content.enchantment.special.LifeSyncEnchantment;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
@@ -42,6 +43,13 @@ public abstract class ItemStackMixin implements IForgeItemStack {
 			pEntity.hurt(LifeSyncEnchantment.SOURCE, pAmount);
 			ci.cancel();
 		}
+	}
+
+	@ModifyReturnValue(at = @At("RETURN"), method = "getMaxDamage")
+	public int l2complements_getMaxDamage_durabilityEnchantment(int max) {
+		ItemStack self = (ItemStack) (Object) this;
+		int lv = self.getEnchantmentLevel(LCEnchantments.DURABLE_ARMOR.get());
+		return max * (1 + lv);
 	}
 
 	//FIXME improve compatibility

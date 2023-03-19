@@ -1,5 +1,6 @@
 package dev.xkmc.l2complements.init.registrate;
 
+import dev.xkmc.l2complements.content.enchantment.armors.DurableArmorEnchantment;
 import dev.xkmc.l2complements.content.enchantment.armors.FlameThornEnchantment;
 import dev.xkmc.l2complements.content.enchantment.armors.IceThornEnchantment;
 import dev.xkmc.l2complements.content.enchantment.armors.StableBodyEnchantment;
@@ -96,6 +97,10 @@ public class LCEnchantments {
 	public static final RegistryEntry<LegendaryEnchantment> ENDER = REGISTRATE
 			.enchantment("ender_reach", EnchantmentCategory.DIGGER, LegendaryEnchantment::new)
 			.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
+
+	public static final RegistryEntry<DurableArmorEnchantment> DURABLE_ARMOR = REGISTRATE
+			.enchantment("durable_armor", EnchantmentCategory.ARMOR, DurableArmorEnchantment::new)
+			.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).lang("Durable Armor").register();
 
 	private static RegistryEntry<ImmuneEnchantment> reg(String id) {
 		return REGISTRATE.enchantment(id, EnchantmentCategory.ARMOR, ImmuneEnchantment::new)

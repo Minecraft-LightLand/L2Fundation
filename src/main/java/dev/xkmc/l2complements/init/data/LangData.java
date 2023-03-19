@@ -165,6 +165,8 @@ public class LangData {
 				"Durability loss will be capped to 1.");
 		pvd.add(LCEnchantments.ENCH_INVINCIBLE.get().getDescriptionId() + ".desc",
 				"Player is invincible to all damage.");
+		pvd.add(LCEnchantments.DURABLE_ARMOR.get().getDescriptionId() + ".desc",
+				"Armor will have higher durability. Conflict with Unbreaking.");
 	}
 
 	public static String asId(String name) {

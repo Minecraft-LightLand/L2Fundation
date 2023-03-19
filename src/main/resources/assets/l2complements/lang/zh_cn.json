@@ -195,6 +195,8 @@
   "enchantment.l2complements.hardened.desc": "物品的单次耐久损耗最多为1",
   "enchantment.l2complements.invincible": "伤害免疫",
   "enchantment.l2complements.invincible.desc": "玩家免疫所有伤害",
+  "enchantment.l2complements.durable_armor": "盔甲耐久",
+  "enchantment.l2complements.durable_armor.desc": "让盔甲获得更高的耐久。和耐久附魔不兼容",
   "effect.l2complements.armor_reduce": "破甲",
   "effect.l2complements.flame": "魂火",
   "effect.l2complements.frozen": "寒流",

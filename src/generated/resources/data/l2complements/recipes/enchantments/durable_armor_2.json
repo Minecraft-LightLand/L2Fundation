@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "minecraft:diamond"
+    },
+    "B": {
+      "type": "l2library:enchantment",
+      "enchantment": "minecraft:unbreaking",
+      "min_level": 2
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    }
+  },
+  "pattern": [
+    "LAL",
+    "ABA",
+    "LAL"
+  ],
+  "result": {
+    "item": "minecraft:enchanted_book",
+    "nbt": {
+      "StoredEnchantments": [
+        {
+          "id": "l2complements:durable_armor",
+          "lvl": 2
+        }
+      ]
+    }
+  }
+}

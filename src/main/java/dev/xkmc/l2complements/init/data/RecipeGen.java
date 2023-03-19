@@ -412,6 +412,31 @@ public class RecipeGen {
 					.define('B', new EnchantmentIngredient(LCEnchantments.HARDENED.get(), 1))
 					.define('L', Items.LAPIS_LAZULI)
 					.save(pvd, getID(LCEnchantments.ETERNAL.get()));
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.DURABLE_ARMOR.get(), 1)::unlockedBy, Items.DIAMOND)
+					.pattern(" A ").pattern("LBL").pattern(" L ")
+					.define('A', Items.DIAMOND)
+					.define('B', new EnchantmentIngredient(Enchantments.UNBREAKING, 1))
+					.define('L', Items.LAPIS_LAZULI)
+					.save(pvd, getID(LCEnchantments.DURABLE_ARMOR.get(), "_1"));
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.DURABLE_ARMOR.get(), 2)::unlockedBy, Items.DIAMOND)
+					.pattern("LAL").pattern("ABA").pattern("LAL")
+					.define('A', Items.DIAMOND)
+					.define('B', new EnchantmentIngredient(Enchantments.UNBREAKING, 2))
+					.define('L', Items.LAPIS_LAZULI)
+					.save(pvd, getID(LCEnchantments.DURABLE_ARMOR.get(), "_2"));
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.DURABLE_ARMOR.get(), 3)::unlockedBy, Items.DIAMOND)
+					.pattern("L1L").pattern("2B3").pattern("L4L")
+					.define('1', Items.DIAMOND_HELMET)
+					.define('2', Items.DIAMOND_CHESTPLATE)
+					.define('3', Items.DIAMOND_LEGGINGS)
+					.define('4', Items.DIAMOND_BOOTS)
+					.define('B', new EnchantmentIngredient(Enchantments.UNBREAKING, 3))
+					.define('L', Items.LAPIS_LAZULI)
+					.save(pvd, getID(LCEnchantments.DURABLE_ARMOR.get(), "_3"));
+
 		}
 
 		currentFolder = "burnt/";
@@ -709,10 +734,17 @@ public class RecipeGen {
 
 	}
 
+	@SuppressWarnings("ConstantConditions")
 	private static ResourceLocation getID(Enchantment item) {
 		return new ResourceLocation(L2Complements.MODID, currentFolder + ForgeRegistries.ENCHANTMENTS.getKey(item).getPath());
 	}
 
+	@SuppressWarnings("ConstantConditions")
+	private static ResourceLocation getID(Enchantment item, String suffix) {
+		return new ResourceLocation(L2Complements.MODID, currentFolder + ForgeRegistries.ENCHANTMENTS.getKey(item).getPath() + suffix);
+	}
+
+	@SuppressWarnings("ConstantConditions")
 	private static ResourceLocation getID(Item item) {
 		return new ResourceLocation(L2Complements.MODID, currentFolder + ForgeRegistries.ITEMS.getKey(item).getPath());
 	}

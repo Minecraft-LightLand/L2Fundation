@@ -43,6 +43,8 @@
 	"hardened": "硬化",
 	"hardened.desc": "物品的单次耐久损耗最多为1",
 	"invincible": "伤害免疫",
-	"invincible.desc": "玩家免疫所有伤害"
+	"invincible.desc": "玩家免疫所有伤害",
+	"durable_armor": "盔甲耐久",
+	"durable_armor.desc": "让盔甲获得更高的耐久。和耐久附魔不兼容"
   }
 }

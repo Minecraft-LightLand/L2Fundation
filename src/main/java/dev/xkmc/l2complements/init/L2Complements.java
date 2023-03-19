@@ -1,5 +1,6 @@
 package dev.xkmc.l2complements.init;
 
+import com.llamalad7.mixinextras.MixinExtrasBootstrap;
 import dev.xkmc.l2complements.events.*;
 import dev.xkmc.l2complements.init.data.*;
 import dev.xkmc.l2complements.init.materials.vanilla.GenItemVanillaType;

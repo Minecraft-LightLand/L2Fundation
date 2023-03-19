@@ -17,6 +17,8 @@
   "effect.l2complements.stone_cage": "Incarceration",
   "enchantment.l2complements.dampened": "Dampened",
   "enchantment.l2complements.dampened.desc": "When wearing 4 pieces of armors with dampened effect, cancel all vibrations emitted by wearer.",
+  "enchantment.l2complements.durable_armor": "Durable Armor",
+  "enchantment.l2complements.durable_armor.desc": "Armor will have higher durability. Conflict with Unbreaking.",
   "enchantment.l2complements.ender_mask": "Ender Mask",
   "enchantment.l2complements.ender_mask.desc": "Endermen won't be mad at you for direct eye contact",
   "enchantment.l2complements.ender_reach": "Ender Reach",

@@ -21,6 +21,7 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 version = "${ll_version}"
 group = "dev.xkmc.${modid}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "${modid}"
+jarJar.enable()
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
@@ -87,6 +88,7 @@ mixin {
 }
 
 repositories {
+    maven { url 'https://jitpack.io' }
     maven {
         // Location of the maven that hosts JEI files (and TiC)
         name 'Progwml6 maven'
@@ -114,7 +116,12 @@ repositories {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    implementation("com.github.LlamaLad7:MixinExtras:0.1.1")
+    annotationProcessor("com.github.LlamaLad7:MixinExtras:0.1.1")
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
+    minecraftLibrary("com.github.LlamaLad7:MixinExtras:0.1.1")
+
+    jarJar(group: 'com.github.LlamaLad7', name: 'MixinExtras', version: "[0.1.1,)")
 
     implementation fg.deobf("dev.xkmc.l2library:l2library:${l2library_version}")
     runtimeOnly fg.deobf("dev.xkmc.l2backpack:l2backpack:1.6.3")
@@ -155,6 +162,10 @@ jar {
     }
 }
 
+reobf {
+    jarJar { }
+}
+
 // Example configuration to allow publishing using the maven-publish plugin
 // This is the preferred method to reobfuscate your jar file
 jar.finalizedBy('reobfJar')
@@ -172,4 +183,21 @@ publishing {
             url "file://${project.projectDir}/mcmodsrepo"
         }
     }
+}
+
+tasks.jarJar.finalizedBy('reobfJarJar')
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
+tasks.jarJar.configure {
+    // remove '-all' from jarJar jar file
+    classifier ''
+}
+
+jar {
+    // this now conflicts with jarJar as filenames are the same
+    // append a `-slim` to this jar, as this jar contains no pre-packaged libs
+    classifier 'slim'
 }

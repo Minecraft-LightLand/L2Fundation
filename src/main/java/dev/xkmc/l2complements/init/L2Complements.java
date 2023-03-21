@@ -1,6 +1,5 @@
 package dev.xkmc.l2complements.init;
 
-import com.llamalad7.mixinextras.MixinExtrasBootstrap;
 import dev.xkmc.l2complements.events.*;
 import dev.xkmc.l2complements.init.data.*;
 import dev.xkmc.l2complements.init.materials.vanilla.GenItemVanillaType;
@@ -53,7 +52,7 @@ public class L2Complements {
 		LCConfig.init();
 		MinecraftForge.EVENT_BUS.register(ItemUseEventHandler.class);
 		MinecraftForge.EVENT_BUS.register(MaterialEventHandler.class);
-		MinecraftForge.EVENT_BUS.register(EnchantmentEventHandler.class);
+		MinecraftForge.EVENT_BUS.register(MagicEventHandler.class);
 		MinecraftForge.EVENT_BUS.register(SpecialEquipmentEvents.class);
 		AttackEventHandler.LISTENERS.add(new ToolDamageListener());
 		AttackEventHandler.LISTENERS.add(new MaterialDamageListener());

@@ -9,9 +9,7 @@ import dev.xkmc.l2complements.content.enchantment.core.SingleLevelEnchantment;
 import dev.xkmc.l2complements.content.enchantment.special.LegendaryEnchantment;
 import dev.xkmc.l2complements.content.enchantment.special.LifeSyncEnchantment;
 import dev.xkmc.l2complements.content.enchantment.special.SoulBindingEnchantment;
-import dev.xkmc.l2complements.content.enchantment.weapon.IceBladeEnchantment;
-import dev.xkmc.l2complements.content.enchantment.weapon.SoulFlameBladeEnchantment;
-import dev.xkmc.l2complements.content.enchantment.weapon.WindSweepEnchantment;
+import dev.xkmc.l2complements.content.enchantment.weapon.*;
 import dev.xkmc.l2library.repack.registrate.util.entry.RegistryEntry;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -84,6 +82,14 @@ public class LCEnchantments {
 
 	public static final RegistryEntry<SoulFlameBladeEnchantment> FLAME_BLADE = REGISTRATE
 			.enchantment("soul_flame_blade", EnchantmentCategory.WEAPON, SoulFlameBladeEnchantment::new)
+			.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
+
+	public static final RegistryEntry<CurseBladeEnchantment> CURSE_BLADE = REGISTRATE
+			.enchantment("cursed_blade", EnchantmentCategory.WEAPON, CurseBladeEnchantment::new)
+			.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
+
+	public static final RegistryEntry<SharpBladeEnchantment> SHARP_BLADE = REGISTRATE
+			.enchantment("sharp_blade", EnchantmentCategory.WEAPON, SharpBladeEnchantment::new)
 			.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
 
 	public static final RegistryEntry<IceThornEnchantment> ICE_THORN = REGISTRATE

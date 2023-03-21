@@ -167,6 +167,10 @@ public class LangData {
 				"Player is invincible to all damage.");
 		pvd.add(LCEnchantments.DURABLE_ARMOR.get().getDescriptionId() + ".desc",
 				"Armor will have higher durability. Conflict with Unbreaking.");
+		pvd.add(LCEnchantments.CURSE_BLADE.get().getDescriptionId() + ".desc",
+				"Apply cursed effect to target. Higher levels have longer duration.");
+		pvd.add(LCEnchantments.SHARP_BLADE.get().getDescriptionId() + ".desc",
+				"Stack bleeding effect to target. Higher levels have higher stack cap.");
 	}
 
 	public static String asId(String name) {

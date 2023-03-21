@@ -38,6 +38,9 @@ public class LCConfig {
 
 		public final ForgeConfigSpec.IntValue iceEnchantDuration;
 		public final ForgeConfigSpec.IntValue flameEnchantDuration;
+		public final ForgeConfigSpec.IntValue bleedEnchantDuration;
+		public final ForgeConfigSpec.IntValue curseEnchantDuration;
+		public final ForgeConfigSpec.IntValue bleedEnchantMax;
 
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("materials");
@@ -75,6 +78,12 @@ public class LCConfig {
 					.defineInRange("iceEnchantDuration", 100, 1, 10000);
 			flameEnchantDuration = builder.comment("Duration for flameBlade")
 					.defineInRange("flameEnchantDuration", 60, 1, 10000);
+			bleedEnchantDuration = builder.comment("Base duration for sharpBlade")
+					.defineInRange("bleedEnchantDuration", 80, 1, 10000);
+			curseEnchantDuration = builder.comment("Base duration for cursedBlade")
+					.defineInRange("curseEnchantDuration", 100, 1, 10000);
+			bleedEnchantMax = builder.comment("Max effect level for sharpBlade")
+					.defineInRange("bleedEnchantMax", 3, 1, 10000);
 			builder.pop();
 
 		}

@@ -2,6 +2,8 @@ package dev.xkmc.l2complements.init.registrate;
 
 
 import dev.xkmc.l2complements.content.effect.force.*;
+import dev.xkmc.l2complements.content.effect.skill.BleedEffect;
+import dev.xkmc.l2complements.content.effect.skill.CleanseEffect;
 import dev.xkmc.l2complements.content.effect.skill.EmeraldPopeEffect;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2library.repack.registrate.builders.NoConfigBuilder;
@@ -39,6 +41,8 @@ public class LCEffects {
 	public static final RegistryEntry<ArmorReduceEffect> ARMOR_REDUCE = genEffect("armor_reduce", "Armor Corrosion", () -> new ArmorReduceEffect(MobEffectCategory.HARMFUL, 0xFFFFFF));
 	public static final RegistryEntry<StoneCageEffect> STONE_CAGE = genEffect("stone_cage", "Incarceration", () -> new StoneCageEffect(MobEffectCategory.HARMFUL, 0x000000));
 	public static final RegistryEntry<CurseEffect> CURSE = genEffect("curse", "Cursed", () -> new CurseEffect(MobEffectCategory.HARMFUL, 0x3f3f3f));
+	public static final RegistryEntry<BleedEffect> BLEED = genEffect("bleed", "Bleed", () -> new BleedEffect(MobEffectCategory.HARMFUL, 0x7f0000));
+	public static final RegistryEntry<CleanseEffect> CLEANSE = genEffect("cleanse", "Cleansed", () -> new CleanseEffect(MobEffectCategory.NEUTRAL, 0xffff7f));
 
 	public static <T extends MobEffect> RegistryEntry<T> genEffect(String name, NonNullSupplier<T> sup) {
 		return L2Complements.REGISTRATE.entry(name, cb -> new NoConfigBuilder<>(L2Complements.REGISTRATE, L2Complements.REGISTRATE, name, cb, ForgeRegistries.Keys.MOB_EFFECTS, sup))
@@ -62,6 +66,7 @@ public class LCEffects {
 		regPotion2("frozen", ICE::get, LCItems.HARD_ICE::get, 3600, 9600);
 		regPotion2("stone_cage", STONE_CAGE::get, LCItems.BLACKSTONE_CORE::get, 1200, 3600);
 		regPotion2("curse", CURSE::get, LCItems.CURSED_DROPLET::get, 3600, 9600);
+		regPotion2("cleanse", CLEANSE::get, LCItems.LIFE_ESSENCE::get, 3600, 9600);
 		regPotion3("armor_reduce", ARMOR_REDUCE::get, 600, 1200, 3600, 0, 1,
 				() -> Items.MAGMA_CREAM, Potions.WEAKNESS, Potions.LONG_WEAKNESS, null,
 				() -> Items.FERMENTED_SPIDER_EYE, Potions.FIRE_RESISTANCE, Potions.LONG_FIRE_RESISTANCE, null

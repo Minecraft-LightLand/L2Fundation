@@ -45,6 +45,10 @@
 	"invincible": "伤害免疫",
 	"invincible.desc": "玩家免疫所有伤害",
 	"durable_armor": "盔甲耐久",
-	"durable_armor.desc": "让盔甲获得更高的耐久。和耐久附魔不兼容"
+	"durable_armor.desc": "让盔甲获得更高的耐久。和耐久附魔不兼容",
+	"cursed_blade": "诅咒之刃",
+	"cursed_blade.desc": "对敌人施加诅咒效果。更高级的附魔延长效果时间",
+	"sharp_blade": "撕裂之刃",
+	"sharp_blade.desc": "对敌人叠加流血效果。更高级的附魔增加叠加上限"
   }
 }

@@ -1,12 +1,4 @@
 {
-  "effect.l2complements": {
-	"armor_reduce": "破甲",
-	"flame": "魂火",
-	"frozen": "寒流",
-	"stone_cage": "禁锢",
-	"emerald_splash": "绿宝石水花",
-	"curse": "诅咒"
-  },
   "entity.l2complements": {
 	"black_fire_charge": "黑炎弹",
 	"soul_fire_charge": "魂炎弹",
@@ -14,28 +6,6 @@
   },
   "itemGroup.l2complements": {
 	"generated": "莱特兰·扩展"
-  },
-  "item.minecraft.tipped_arrow.effect": {
-	"flame": "燃魂之箭",
-	"long_flame": "燃魂之箭",
-	"strong_flame": "燃魂之箭",
-	"frozen": "冰封之箭",
-	"long_frozen": "冰封之箭",
-	"stone_cage": "禁锢之箭",
-	"long_stone_cage": "禁锢之箭",
-	"levitation": "悬浮之箭",
-	"long_levitation": "悬浮之箭",
-	"resistance": "抗性之箭",
-	"long_resistance": "抗性之箭",
-	"strong_resistance": "抗性之箭",
-	"armor_reduce": "破甲之箭",
-	"long_armor_reduce": "破甲之箭",
-	"strong_armor_reduce": "破甲之箭",
-	"emerald_splash": "虫箭-绿宝石水花",
-	"long_emerald_splash": "虫箭-绿宝石水花",
-	"strong_emerald_splash": "虫箭-绿宝石水花",
-	"curse": "诅咒之箭",
-	"long_curse": "诅咒之箭"
   },
   "death.attack": {
 	"soul_flame": "%s的灵魂燃尽了",

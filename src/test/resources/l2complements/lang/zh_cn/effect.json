@@ -1,0 +1,76 @@
+{
+  "effect.l2complements": {
+	"armor_reduce": "破甲",
+	"flame": "魂火",
+	"frozen": "寒流",
+	"stone_cage": "禁锢",
+	"emerald_splash": "绿宝石水花",
+	"curse": "诅咒",
+	"cleanse": "净化",
+	"bleed": "流血"
+  },
+  "item.minecraft.tipped_arrow.effect": {
+	"flame": "燃魂之箭",
+	"long_flame": "燃魂之箭",
+	"strong_flame": "燃魂之箭",
+	"frozen": "冰封之箭",
+	"long_frozen": "冰封之箭",
+	"stone_cage": "禁锢之箭",
+	"long_stone_cage": "禁锢之箭",
+	"levitation": "悬浮之箭",
+	"long_levitation": "悬浮之箭",
+	"resistance": "抗性之箭",
+	"long_resistance": "抗性之箭",
+	"strong_resistance": "抗性之箭",
+	"armor_reduce": "破甲之箭",
+	"long_armor_reduce": "破甲之箭",
+	"strong_armor_reduce": "破甲之箭",
+	"emerald_splash": "虫箭-法皇之绿",
+	"long_emerald_splash": "虫箭-法皇之绿",
+	"strong_emerald_splash": "虫箭-法皇之绿",
+	"curse": "诅咒之箭",
+	"long_curse": "诅咒之箭",
+	"cleanse": "净化箭",
+	"long_cleanse": "净化箭"
+  },
+  "-cartesian": {
+	"potion": {
+	  "path": "item.minecraft",
+	  "use_dot": true,
+	  "list": [
+		{
+		  "lingering_potion": "滞留型",
+		  "potion": "",
+		  "splash_potion": "喷溅型"
+		},
+		{
+		  "effect": ""
+		},
+		{
+		  "flame": "燃魂药水",
+		  "long_flame": "燃魂药水",
+		  "strong_flame": "燃魂药水",
+		  "frozen": "冰封药水",
+		  "long_frozen": "冰封药水",
+		  "stone_cage": "禁锢药水",
+		  "long_stone_cage": "禁锢药水",
+		  "levitation": "悬浮药水",
+		  "long_levitation": "悬浮药水",
+		  "resistance": "抗性药水",
+		  "long_resistance": "抗性药水",
+		  "strong_resistance": "抗性药水",
+		  "armor_reduce": "破甲药水",
+		  "long_armor_reduce": "药水",
+		  "strong_armor_reduce": "破甲药水",
+		  "emerald_splash": "绿宝石水花",
+		  "long_emerald_splash": "绿宝石水花",
+		  "strong_emerald_splash": "绿宝石水花",
+		  "curse": "诅咒药水",
+		  "long_curse": "诅咒药水",
+		  "cleanse": "净化药水",
+		  "long_cleanse": "净化药水"
+		}
+	  ]
+	}
+  }
+}

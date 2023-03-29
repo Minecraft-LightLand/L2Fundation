@@ -1,6 +1,6 @@
 package dev.xkmc.l2complements.init.materials.vanilla;
 
-import dev.xkmc.l2complements.content.item.generic.*;
+import dev.xkmc.l2complements.content.item.generic.GenericArmorItem;
 import dev.xkmc.l2complements.init.materials.api.*;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.repack.registrate.builders.ItemBuilder;
@@ -12,14 +12,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 
 import java.util.Locale;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 @SuppressWarnings({"unchecked", "rawtypes", "unsafe"})
 public record GenItemVanillaType(String modid, L2Registrate registrate) {

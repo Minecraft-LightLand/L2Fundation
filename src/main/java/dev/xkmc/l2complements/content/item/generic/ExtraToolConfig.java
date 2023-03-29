@@ -1,8 +1,8 @@
 package dev.xkmc.l2complements.content.item.generic;
 
 import com.google.common.collect.Multimap;
-import dev.xkmc.l2complements.init.materials.vanilla.GenItemVanillaType;
 import dev.xkmc.l2complements.init.materials.api.IMatVanillaType;
+import dev.xkmc.l2complements.init.materials.vanilla.GenItemVanillaType;
 import dev.xkmc.l2library.base.effects.EffectUtil;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;

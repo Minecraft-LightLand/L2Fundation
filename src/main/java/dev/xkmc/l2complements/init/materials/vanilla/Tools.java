@@ -6,7 +6,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.TieredItem;
 import net.minecraftforge.common.Tags;
 
 public enum Tools implements ITool {

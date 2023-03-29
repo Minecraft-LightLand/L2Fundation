@@ -4,7 +4,6 @@ import dev.xkmc.l2complements.content.entity.fireball.BlackFireball;
 import dev.xkmc.l2complements.content.entity.fireball.SoulFireball;
 import dev.xkmc.l2complements.content.entity.fireball.StrongFireball;
 import dev.xkmc.l2complements.content.item.create.RefinedRadianceItem;
-import dev.xkmc.l2complements.content.item.create.ShadowSteelItem;
 import dev.xkmc.l2complements.content.item.create.VoidEyeItem;
 import dev.xkmc.l2complements.content.item.misc.FireChargeItem;
 import dev.xkmc.l2complements.content.item.misc.*;

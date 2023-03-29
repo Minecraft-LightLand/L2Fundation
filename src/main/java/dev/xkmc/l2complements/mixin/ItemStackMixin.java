@@ -59,7 +59,7 @@ public abstract class ItemStackMixin implements IForgeItemStack {
 		return self.getItem().getSweepHitBox(self, player, target);
 	}
 
-	@ModifyReturnValue(at = @At("RETURN"), method = "getSweepHitBox",  remap = false)
+	@ModifyReturnValue(at = @At("RETURN"), method = "getSweepHitBox", remap = false)
 	public AABB l2complements_getSweepHitBox_enchantOverride(AABB box) {
 		int lv = getEnchantmentLevel(LCEnchantments.WIND_SWEEP.get());
 		if (lv > 0) {

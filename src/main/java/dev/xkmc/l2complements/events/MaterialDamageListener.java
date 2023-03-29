@@ -4,7 +4,6 @@ import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2library.init.events.attack.AttackCache;
 import dev.xkmc.l2library.init.events.attack.AttackListener;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;

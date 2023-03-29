@@ -3,7 +3,6 @@ package dev.xkmc.l2complements.init.materials.api;
 import dev.xkmc.l2complements.content.item.generic.ExtraToolConfig;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.TieredItem;
 
 public interface ITool {
 

@@ -1,7 +1,10 @@
 package dev.xkmc.l2complements.init;
 
 import dev.xkmc.l2complements.events.*;
-import dev.xkmc.l2complements.init.data.*;
+import dev.xkmc.l2complements.init.data.LCConfig;
+import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.RecipeGen;
+import dev.xkmc.l2complements.init.data.TagGen;
 import dev.xkmc.l2complements.init.materials.vanilla.GenItemVanillaType;
 import dev.xkmc.l2complements.init.registrate.*;
 import dev.xkmc.l2complements.network.NetworkManager;

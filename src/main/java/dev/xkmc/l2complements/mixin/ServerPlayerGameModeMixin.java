@@ -14,7 +14,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(ServerPlayerGameMode.class)
 public class ServerPlayerGameModeMixin {
 
-	@Shadow @Final protected ServerPlayer player;
+	@Shadow
+	@Final
+	protected ServerPlayer player;
 
 	@Inject(at = @At("HEAD"), method = "destroyBlock")
 	public void l2complements_destroyBlock_markPlayerBeginBreak(BlockPos pos, CallbackInfoReturnable<Boolean> cir) {

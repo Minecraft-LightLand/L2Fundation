@@ -1,7 +1,5 @@
 package dev.xkmc.l2complements.content.effect.skill;
 
-import dev.xkmc.l2complements.content.effect.skill.BleedEffect;
-import dev.xkmc.l2complements.content.effect.skill.SkillEffect;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2library.base.effects.api.ForceEffect;
 import dev.xkmc.l2library.base.effects.api.IconOverlayEffect;

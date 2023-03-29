@@ -14,8 +14,6 @@ import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-import java.util.Optional;
-
 public class SpecialEquipmentEvents {
 
 	public static ThreadLocal<ServerPlayer> PLAYER = new ThreadLocal<>();
@@ -59,8 +57,6 @@ public class SpecialEquipmentEvents {
 				ans.setCount(count);
 				e.setItem(ans);
 			}
-			opt = Optional.empty();
-			opt.ifPresent(r -> ((ItemEntity) event.getEntity()).setItem(r.assemble(cont)));
 		}
 		if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.ENDER.get()) > 0) {
 			ItemStack stack = e.getItem().copy();

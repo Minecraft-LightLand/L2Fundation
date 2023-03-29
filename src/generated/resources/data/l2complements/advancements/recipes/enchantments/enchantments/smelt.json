@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_ender_eye": {
+    "has_soul_flame": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:ender_eye"
+              "l2complements:soul_flame"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "l2complements:enchantments/ender_reach"
+        "recipe": "l2complements:enchantments/smelt"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_ender_eye",
+      "has_soul_flame",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "l2complements:enchantments/ender_reach"
+      "l2complements:enchantments/smelt"
     ]
   }
 }

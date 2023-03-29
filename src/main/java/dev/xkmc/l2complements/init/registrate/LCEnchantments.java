@@ -100,13 +100,17 @@ public class LCEnchantments {
 			.enchantment("soul_flame_thorn", EnchantmentCategory.ARMOR, FlameThornEnchantment::new)
 			.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).register();
 
-	public static final RegistryEntry<LegendaryEnchantment> ENDER = REGISTRATE
-			.enchantment("ender_reach", EnchantmentCategory.DIGGER, LegendaryEnchantment::new)
+	public static final RegistryEntry<SingleLevelEnchantment> ENDER = REGISTRATE
+			.enchantment("ender_reach", EnchantmentCategory.DIGGER, SingleLevelEnchantment::new)
 			.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
 
 	public static final RegistryEntry<DurableArmorEnchantment> DURABLE_ARMOR = REGISTRATE
 			.enchantment("durable_armor", EnchantmentCategory.ARMOR, DurableArmorEnchantment::new)
 			.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).lang("Durable Armor").register();
+
+	public static final RegistryEntry<SingleLevelEnchantment> SMELT = REGISTRATE
+			.enchantment("smelt", EnchantmentCategory.DIGGER, SingleLevelEnchantment::new)
+			.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
 
 	private static RegistryEntry<ImmuneEnchantment> reg(String id) {
 		return REGISTRATE.enchantment(id, EnchantmentCategory.ARMOR, ImmuneEnchantment::new)

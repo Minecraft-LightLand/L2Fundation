@@ -141,6 +141,8 @@
   "enchantment.l2complements.cursed_blade.desc": "对敌人施加诅咒效果。更高级的附魔延长效果时间",
   "enchantment.l2complements.sharp_blade": "撕裂之刃",
   "enchantment.l2complements.sharp_blade.desc": "对敌人叠加流血效果。更高级的附魔增加叠加上限",
+  "enchantment.l2complements.smelt": "自动冶炼",
+  "enchantment.l2complements.smelt.desc": "破坏方块时掉落的物品能冶炼的全部冶炼，包括箱子里的物品",
   "entity.l2complements.black_fire_charge": "黑炎弹",
   "entity.l2complements.soul_fire_charge": "魂炎弹",
   "entity.l2complements.strong_fire_charge": "爆炎弹",

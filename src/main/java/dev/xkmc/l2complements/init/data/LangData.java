@@ -171,6 +171,8 @@ public class LangData {
 				"Apply cursed effect to target. Higher levels have longer duration.");
 		pvd.add(LCEnchantments.SHARP_BLADE.get().getDescriptionId() + ".desc",
 				"Stack bleeding effect to target. Higher levels have higher stack cap.");
+		pvd.add(LCEnchantments.SMELT.get().getDescriptionId() + ".desc",
+				"Smelt mined items if possible, including items in chests!");
 	}
 
 	public static String asId(String name) {

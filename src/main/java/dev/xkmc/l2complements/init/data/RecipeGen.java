@@ -444,6 +444,22 @@ public class RecipeGen {
 					.define('L', Items.LAPIS_LAZULI)
 					.save(pvd, getID(LCEnchantments.SMELT.get()));
 
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.SHARP_BLADE.get(), 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+					.pattern("LCL").pattern("ABA").pattern("LAL")
+					.define('A', LCItems.EXPLOSION_SHARD.get())
+					.define('C', LCItems.CURSED_DROPLET.get())
+					.define('B', Items.BOOK)
+					.define('L', Items.LAPIS_LAZULI)
+					.save(pvd, getID(LCEnchantments.SHARP_BLADE.get()));
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.CURSE_BLADE.get(), 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+					.pattern("LCL").pattern("ABA").pattern("LCL")
+					.define('A', Items.FERMENTED_SPIDER_EYE)
+					.define('C', LCItems.CURSED_DROPLET.get())
+					.define('B', Items.BOOK)
+					.define('L', Items.LAPIS_LAZULI)
+					.save(pvd, getID(LCEnchantments.CURSE_BLADE.get()));
+
 		}
 
 		currentFolder = "burnt/";

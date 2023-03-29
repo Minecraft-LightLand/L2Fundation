@@ -116,12 +116,14 @@ repositories {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    implementation("com.github.LlamaLad7:MixinExtras:0.1.1")
-    annotationProcessor("com.github.LlamaLad7:MixinExtras:0.1.1")
-    annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
-    minecraftLibrary("com.github.LlamaLad7:MixinExtras:0.1.1")
 
-    jarJar(group: 'com.github.LlamaLad7', name: 'MixinExtras', version: "[0.1.1,)")
+    compileOnly(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-common:${mixin_extras_version}"))
+    implementation(jarJar("com.github.llamalad7.mixinextras:mixinextras-forge:${mixin_extras_version}")) {
+        transitive = false
+        jarJar.ranged(it, "[${mixin_extras_version},)")
+    }
+
+    annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
 
     implementation fg.deobf("dev.xkmc.l2library:l2library:${l2library_version}")
     runtimeOnly fg.deobf("dev.xkmc.l2backpack:l2backpack:1.6.3")
@@ -192,8 +194,8 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 tasks.jarJar.configure {
-    // remove '-all' from jarJar jar file
     classifier ''
+    from "LICENSE"
 }
 
 jar {

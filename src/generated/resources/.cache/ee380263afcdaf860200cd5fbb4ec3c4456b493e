@@ -1,4 +1,4 @@
-// 1.19.2	2023-03-29T09:14:42.922858	Registrate Provider for l2complements [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2023-03-29T15:59:06.485908	Registrate Provider for l2complements [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
@@ -157,6 +157,7 @@ b8f71b86c22ddcf473f7167815f2ae31c76f2b3d data/l2complements/advancements/recipes
 543e878e561a0cd98d70595dcfb6868d41d0ea84 data/l2complements/advancements/recipes/combat/vanilla/upgrade/iron_helmet.json
 0f7a09f19eee62dee3669b5551efa3c0b341fd3d data/l2complements/advancements/recipes/combat/vanilla/upgrade/iron_leggings.json
 f85754fcdd64b89aba6e72f4d8154b4825d9dceb data/l2complements/advancements/recipes/combat/vanilla/upgrade/iron_sword.json
+d1bd68933d54f2b64be183f2899af79d897fd68c data/l2complements/advancements/recipes/enchantments/enchantments/cursed_blade.json
 1701001ac9580057cb49abb8a44211f83d40c59f data/l2complements/advancements/recipes/enchantments/enchantments/dampened.json
 b8587330e6a1967a736dd3cbc82a9269565bd503 data/l2complements/advancements/recipes/enchantments/enchantments/durable_armor_1.json
 002ca0fe555b97022dd742ae691729de26f6f370 data/l2complements/advancements/recipes/enchantments/enchantments/durable_armor_2.json
@@ -174,6 +175,7 @@ b224d4a06a8bbcdfbb175338b03b449622b3fd32 data/l2complements/advancements/recipes
 069249ae2a4f004c802163811fb0a2ce5d2b04fb data/l2complements/advancements/recipes/enchantments/enchantments/life_sync.json
 81934683c42b3662b0e5668c0965fcc87a2bbe54 data/l2complements/advancements/recipes/enchantments/enchantments/magic_reject.json
 d33395b915a55f89d8088777cfae2ba1966b22aa data/l2complements/advancements/recipes/enchantments/enchantments/projectile_reject.json
+868604e5abaaa8f46ad57b517b17fc72bd0f3ad1 data/l2complements/advancements/recipes/enchantments/enchantments/sharp_blade.json
 d158abcfa0739208f712f2c6b5e3cd217ac0deee data/l2complements/advancements/recipes/enchantments/enchantments/shinny.json
 a296414abcb5d4958e0ee85e24c2f9e31795de07 data/l2complements/advancements/recipes/enchantments/enchantments/shulker_armor.json
 7eea6edf3dfcd10b94f235cb6bf3882609529997 data/l2complements/advancements/recipes/enchantments/enchantments/smelt.json
@@ -475,6 +477,7 @@ b7f8afacfa6815152392abe0c981ee3d6ef1a34f data/l2complements/recipes/eggs/undead/
 3ce313fb547d6a7677e60b693f9b0f38b963181d data/l2complements/recipes/eggs/undead/wither_skeleton_spawn_egg.json
 74923523a999140300b42e291749613525c2df23 data/l2complements/recipes/eggs/undead/zombie_spawn_egg.json
 056e24b25f65cb7299d681838efcb37114ce9de0 data/l2complements/recipes/eggs/undead/zombified_piglin_spawn_egg.json
+77a03c0e304a938f15d387186f9806baf3bf80ed data/l2complements/recipes/enchantments/cursed_blade.json
 63f3fb34ee622f0d555de80843fbd89cfecb1857 data/l2complements/recipes/enchantments/dampened.json
 1ba385a03ef13ba699c967db544a6f5abafb763b data/l2complements/recipes/enchantments/durable_armor_1.json
 b948cb8ff2a466cf8f5623349cc7fc5503c7278d data/l2complements/recipes/enchantments/durable_armor_2.json
@@ -492,6 +495,7 @@ e8441045e9abfe6ed131d1f7e0e7ba45d7346770 data/l2complements/recipes/enchantments
 d30e8a19cf32cbae73cd744ecf4bb2aa2ebc9531 data/l2complements/recipes/enchantments/life_sync.json
 00bc9164a66ee7f7fd5d67973ff50d5be8e48683 data/l2complements/recipes/enchantments/magic_reject.json
 b1320892e1153b357407fd106e7654679ca3e22f data/l2complements/recipes/enchantments/projectile_reject.json
+f8a87183c7e52ca5d732aec27d7c1a3f4bed7646 data/l2complements/recipes/enchantments/sharp_blade.json
 7e9f5d7c444a6b7892f4edce838733dce631b556 data/l2complements/recipes/enchantments/shinny.json
 ab0334db63ca9fd8af646faeb7e22b5b02d4be08 data/l2complements/recipes/enchantments/shulker_armor.json
 8dfaeb8708e1c63a20516b607eb67f094b9ee508 data/l2complements/recipes/enchantments/smelt.json

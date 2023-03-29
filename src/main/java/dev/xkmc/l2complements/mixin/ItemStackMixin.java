@@ -17,6 +17,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.function.Consumer;
 
@@ -52,12 +53,15 @@ public abstract class ItemStackMixin implements IForgeItemStack {
 		return max * (1 + lv);
 	}
 
-	//FIXME improve compatibility
 	@Override
 	public @NotNull AABB getSweepHitBox(@NotNull Player player, @NotNull Entity target) {
 		ItemStack self = (ItemStack) (Object) this;
-		AABB box = self.getItem().getSweepHitBox(self, player, target);
-		int lv = self.getEnchantmentLevel(LCEnchantments.WIND_SWEEP.get());
+		return self.getItem().getSweepHitBox(self, player, target);
+	}
+
+	@ModifyReturnValue(at = @At("RETURN"), method = "getSweepHitBox",  remap = false)
+	public AABB l2complements_getSweepHitBox_enchantOverride(AABB box) {
+		int lv = getEnchantmentLevel(LCEnchantments.WIND_SWEEP.get());
 		if (lv > 0) {
 			double amount = LCConfig.COMMON.windSweepIncrement.get();
 			box = box.inflate(amount * lv, amount * lv, amount * lv);
@@ -68,29 +72,53 @@ public abstract class ItemStackMixin implements IForgeItemStack {
 	@Override
 	public boolean makesPiglinsNeutral(LivingEntity wearer) {
 		ItemStack self = (ItemStack) (Object) this;
-		return self.getItem().makesPiglinsNeutral(self, wearer) ||
-				self.getEnchantmentLevel(LCEnchantments.SHINNY.get()) > 0;
+		return self.getItem().makesPiglinsNeutral(self, wearer);
+	}
+
+	@Inject(at = @At("HEAD"), method = "makesPiglinsNeutral", cancellable = true, remap = false)
+	public void l2complements_makesPiglinsNeutral_enchantOverride(LivingEntity wearer, CallbackInfoReturnable<Boolean> cir) {
+		if (getEnchantmentLevel(LCEnchantments.SHINNY.get()) > 0) {
+			cir.setReturnValue(true);
+		}
 	}
 
 	@Override
 	public boolean isPiglinCurrency() {
 		ItemStack self = (ItemStack) (Object) this;
-		return self.getItem().isPiglinCurrency(self) ||
-				self.getEnchantmentLevel(LCEnchantments.SHINNY.get()) > 0;
+		return self.getItem().isPiglinCurrency(self);
+	}
+
+	@Inject(at = @At("HEAD"), method = "isPiglinCurrency", cancellable = true, remap = false)
+	public void l2complements_isPiglinCurrency_enchantOverride(CallbackInfoReturnable<Boolean> cir) {
+		if (getEnchantmentLevel(LCEnchantments.SHINNY.get()) > 0) {
+			cir.setReturnValue(true);
+		}
 	}
 
 	@Override
 	public boolean isEnderMask(Player player, EnderMan endermanEntity) {
 		ItemStack self = (ItemStack) (Object) this;
-		return self.getItem().makesPiglinsNeutral(self, player) ||
-				self.getEnchantmentLevel(LCEnchantments.ENDER_MASK.get()) > 0;
+		return self.getItem().isEnderMask(self, player, endermanEntity);
+	}
+
+	@Inject(at = @At("HEAD"), method = "isEnderMask", cancellable = true, remap = false)
+	public void l2complements_isEnderMask_enchantOverride(CallbackInfoReturnable<Boolean> cir) {
+		if (getEnchantmentLevel(LCEnchantments.ENDER_MASK.get()) > 0) {
+			cir.setReturnValue(true);
+		}
 	}
 
 	@Override
 	public boolean canWalkOnPowderedSnow(LivingEntity wearer) {
 		ItemStack self = (ItemStack) (Object) this;
-		return self.getItem().canWalkOnPowderedSnow(self, wearer) ||
-				self.getEnchantmentLevel(LCEnchantments.SNOW_WALKER.get()) > 0;
+		return self.getItem().canWalkOnPowderedSnow(self, wearer);
+	}
+
+	@Inject(at = @At("HEAD"), method = "canWalkOnPowderedSnow", cancellable = true, remap = false)
+	public void l2complements_canWalkOnPowderedSnow_enchantOverride(CallbackInfoReturnable<Boolean> cir) {
+		if (getEnchantmentLevel(LCEnchantments.SNOW_WALKER.get()) > 0) {
+			cir.setReturnValue(true);
+		}
 	}
 
 }

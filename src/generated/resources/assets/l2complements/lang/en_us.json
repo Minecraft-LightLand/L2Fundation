@@ -1,10 +1,12 @@
 {
   "block.l2complements.eternal_anvil": "Eternal Anvil",
   "block.l2complements.eternium_block": "Eternium Block",
+  "block.l2complements.lava_frost": "Lava Frost",
   "block.l2complements.poseidite_block": "Poseidite Block",
   "block.l2complements.sculkium_block": "Sculkium Block",
   "block.l2complements.shulkerate_block": "Shulkerate Block",
   "block.l2complements.totemic_gold_block": "Totemic Gold Block",
+  "block.l2complements.water_frost": "Water Frost",
   "death.attack.life_sync": "%s was drained",
   "death.attack.soul_flame": "%s has its soul burnt out",
   "death.attack.soul_flame.player": "%s has its soul burnt out by %s",

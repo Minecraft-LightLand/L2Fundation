@@ -1,17 +1,21 @@
-// 1.19.2	2023-03-29T15:59:06.485908	Registrate Provider for l2complements [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2023-03-29T17:19:56.719989	Registrate Provider for l2complements [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
+1c96385bf5d6de85dbf86a21105ecd397a92e1f6 assets/l2complements/blockstates/lava_frost.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
 b2a769b51ddce14c173a64b5457cccb4d8ef6a45 assets/l2complements/blockstates/sculkium_block.json
 2b88df6f8b01f3c72273ce13dbcb556f7dab321d assets/l2complements/blockstates/shulkerate_block.json
 65262ae0f886f61c163059f15c2ad1a7ba9c264a assets/l2complements/blockstates/totemic_gold_block.json
-57e04c8522e5e7379882c3e0737253390af4971a assets/l2complements/lang/en_ud.json
-dd4b5e990e11bb9904f58c6daa3148780fe16987 assets/l2complements/lang/en_us.json
+0277dc39b646bda7999b08457d1d8a80bde85653 assets/l2complements/blockstates/water_frost.json
+a9203355ba904ada86dec17c1db2eb5e3284552e assets/l2complements/lang/en_ud.json
+db2a884cf2633544ef6b716ebfe7a0b650689ecb assets/l2complements/lang/en_us.json
 bb63c088704d714f1763cb16cec8af6cd1006d66 assets/l2complements/models/block/eternium_block.json
+f57856320caf4bb347cab17d3f8bbc3be4757607 assets/l2complements/models/block/lava_frost.json
 a45ee09acc262fd67be22de093136ad757f08e61 assets/l2complements/models/block/poseidite_block.json
 a52909a3a44a80695da32b5c3c5f931a0f72f74d assets/l2complements/models/block/sculkium_block.json
 2b0a9cfb2ad5a88e47ad24a3d5f79b837ec24e92 assets/l2complements/models/block/shulkerate_block.json
 84be2fe01f64330cbc578247711ac40172c51acf assets/l2complements/models/block/totemic_gold_block.json
+721f2a12570b324e43add5f7d79551969ac21316 assets/l2complements/models/block/water_frost.json
 d058c1f716a936e0dff83f7a2d50ad49fab10f22 assets/l2complements/models/item/black_fire_charge.json
 2574e39f7737771709ad35bd91dbb95091717200 assets/l2complements/models/item/blackstone_core.json
 87713a84b41607d4d6a9f3009ded23732960678c assets/l2complements/models/item/captured_shulker_bullet.json
@@ -39,6 +43,7 @@ c488cf32dd7f0e38015444911dfb9363de093750 assets/l2complements/models/item/guardi
 64d98bfd9bdbb0baf3fb64dc2e1327aa0737f8fe assets/l2complements/models/item/guardian_rune.json
 ead4933c66bc9b1e8f8497a3a139d90271c938a2 assets/l2complements/models/item/hard_ice.json
 bb7542d61df2397116cdaf9b862e546a7d9010dc assets/l2complements/models/item/heirophant_green.json
+a6b0b44198184b12a474d10fd93245d8e36f16ef assets/l2complements/models/item/lava_frost.json
 4b00a8cdcca8de04b57457904c7924d28d24c006 assets/l2complements/models/item/life_essence.json
 84ba5f89a8b594f71165354d4df74298345fd987 assets/l2complements/models/item/piglin_rune.json
 69156dff387d443b0fe708603c504a182b2f2e65 assets/l2complements/models/item/poseidite_axe.json
@@ -103,6 +108,7 @@ add601d1422a9cfeb159501fce21ef49d3241f46 assets/l2complements/models/item/totemi
 f2bed6f2f6ac106334a113f4cedef4cb8be322d2 assets/l2complements/models/item/totemic_gold_sword.json
 4c6e01cc3fc06a57fc46b3b39dc330ce31b05681 assets/l2complements/models/item/void_eye.json
 41d0259e5a214bd80a27be90dbc2ec142fe7a367 assets/l2complements/models/item/warden_bone_shard.json
+9d39721d3ca62c1094849c8bd3db95980c1ae283 assets/l2complements/models/item/water_frost.json
 ea0f2e6ba9ca3a87c8e7e75860e1e01eb421eedd assets/l2complements/models/item/wind_capture_bottle.json
 3d8bcdff520aba2f8196e7fe08ace2661e9d9dff data/forge/tags/blocks/storage_blocks.json
 fd164107c6c9780424b95cac45176d5b3bc50868 data/forge/tags/items/armors/boots.json
@@ -404,10 +410,12 @@ c9cd8f9c7107922db504d338b66e801904b2ef74 data/l2complements/advancements/recipes
 9882e61484170cc754e953066ca916bb3d432351 data/l2complements/advancements/recipes/transportation/vanilla/renew/elytra.json
 0730c9c9e31a2baae9cb19e043e92fe85498566f data/l2complements/loot_tables/blocks/eternal_anvil.json
 cc00bc4ca85dbd833ba6f62412deeba32f74daf6 data/l2complements/loot_tables/blocks/eternium_block.json
+b32140f4e7910b28200b3fa2b4b5b8ce6ed07fad data/l2complements/loot_tables/blocks/lava_frost.json
 9b264f9fa63a25c9f0b66feebd9b6263bf639b5c data/l2complements/loot_tables/blocks/poseidite_block.json
 1b15820224de980b1e3c476c350211b0fc3b31a5 data/l2complements/loot_tables/blocks/sculkium_block.json
 24f1260a4b2683cd568e160e36a8c160d2525967 data/l2complements/loot_tables/blocks/shulkerate_block.json
 9cd71cf1f78e6ed84fbb875ef8ad177d72c25877 data/l2complements/loot_tables/blocks/totemic_gold_block.json
+e80219dd368532ddc5058e32ee5843752c2d28c9 data/l2complements/loot_tables/blocks/water_frost.json
 c11ed53f38ad50a20439941c1d3fe50f08a11421 data/l2complements/recipes/burnt/beef.json
 9f1201ec92fcbe523a148fef58517920a4b64d2a data/l2complements/recipes/burnt/chicken.json
 571c4e0a952737527871e41da00a8715ea6636a2 data/l2complements/recipes/burnt/cod.json

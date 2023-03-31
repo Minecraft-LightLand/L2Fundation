@@ -1,17 +1,17 @@
 package dev.xkmc.l2complements.init;
 
+import com.tterrag.registrate.providers.ProviderType;
 import dev.xkmc.l2complements.events.*;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2complements.init.data.RecipeGen;
 import dev.xkmc.l2complements.init.data.TagGen;
-import dev.xkmc.l2complements.init.materials.vanilla.GenItemVanillaType;
 import dev.xkmc.l2complements.init.registrate.*;
 import dev.xkmc.l2complements.network.NetworkManager;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.base.effects.EffectSyncEvents;
 import dev.xkmc.l2library.init.events.attack.AttackEventHandler;
-import dev.xkmc.l2library.repack.registrate.providers.ProviderType;
+import dev.xkmc.l2library.init.materials.vanilla.GenItemVanillaType;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.ForgeMod;

@@ -1,5 +1,6 @@
 package dev.xkmc.l2complements.init.registrate;
 
+import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.l2complements.content.enchantment.armors.DurableArmorEnchantment;
 import dev.xkmc.l2complements.content.enchantment.armors.FlameThornEnchantment;
 import dev.xkmc.l2complements.content.enchantment.armors.IceThornEnchantment;
@@ -10,7 +11,6 @@ import dev.xkmc.l2complements.content.enchantment.special.LegendaryEnchantment;
 import dev.xkmc.l2complements.content.enchantment.special.LifeSyncEnchantment;
 import dev.xkmc.l2complements.content.enchantment.special.SoulBindingEnchantment;
 import dev.xkmc.l2complements.content.enchantment.weapon.*;
-import dev.xkmc.l2library.repack.registrate.util.entry.RegistryEntry;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;

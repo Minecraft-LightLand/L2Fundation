@@ -1,5 +1,6 @@
 package dev.xkmc.l2complements.init.registrate;
 
+import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2complements.content.entity.fireball.BlackFireball;
 import dev.xkmc.l2complements.content.entity.fireball.SoulFireball;
 import dev.xkmc.l2complements.content.entity.fireball.StrongFireball;
@@ -12,7 +13,6 @@ import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2complements.init.data.TagGen;
 import dev.xkmc.l2complements.init.materials.LCMats;
-import dev.xkmc.l2library.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;

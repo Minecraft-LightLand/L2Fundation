@@ -1,17 +1,17 @@
 package dev.xkmc.l2complements.init.materials;
 
+import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2complements.content.item.equipments.*;
 import dev.xkmc.l2complements.content.item.generic.ArmorMat;
-import dev.xkmc.l2complements.content.item.generic.ExtraArmorConfig;
-import dev.xkmc.l2complements.content.item.generic.ExtraToolConfig;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.TagGen;
-import dev.xkmc.l2complements.init.materials.api.*;
-import dev.xkmc.l2complements.init.materials.vanilla.GenItemVanillaType;
-import dev.xkmc.l2complements.init.materials.vanilla.ToolStats;
 import dev.xkmc.l2complements.init.registrate.LCBlocks;
 import dev.xkmc.l2complements.init.registrate.LCItems;
-import dev.xkmc.l2library.repack.registrate.util.entry.ItemEntry;
+import dev.xkmc.l2library.init.materials.api.*;
+import dev.xkmc.l2library.init.materials.generic.ExtraArmorConfig;
+import dev.xkmc.l2library.init.materials.generic.ExtraToolConfig;
+import dev.xkmc.l2library.init.materials.vanilla.GenItemVanillaType;
+import dev.xkmc.l2library.init.materials.vanilla.ToolStats;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.ArmorMaterial;

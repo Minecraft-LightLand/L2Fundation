@@ -1,9 +1,9 @@
 package dev.xkmc.l2complements.events;
 
-import dev.xkmc.l2complements.content.item.generic.ExtraToolConfig;
-import dev.xkmc.l2complements.content.item.generic.GenericTieredItem;
 import dev.xkmc.l2library.init.events.attack.AttackCache;
 import dev.xkmc.l2library.init.events.attack.AttackListener;
+import dev.xkmc.l2library.init.materials.generic.ExtraToolConfig;
+import dev.xkmc.l2library.init.materials.generic.GenericTieredItem;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;

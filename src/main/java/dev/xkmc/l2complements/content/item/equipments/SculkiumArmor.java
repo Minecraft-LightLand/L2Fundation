@@ -1,8 +1,8 @@
 package dev.xkmc.l2complements.content.item.equipments;
 
 import com.google.common.collect.Multimap;
-import dev.xkmc.l2complements.content.item.generic.ExtraArmorConfig;
 import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2library.init.materials.generic.ExtraArmorConfig;
 import dev.xkmc.l2library.util.math.MathHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;

@@ -1,12 +1,12 @@
 package dev.xkmc.l2complements.init.registrate;
 
+import com.tterrag.registrate.util.entry.EntityEntry;
 import dev.xkmc.l2complements.content.entity.ISizedItemEntity;
 import dev.xkmc.l2complements.content.entity.SpecialSpriteRenderer;
 import dev.xkmc.l2complements.content.entity.fireball.BlackFireball;
 import dev.xkmc.l2complements.content.entity.fireball.SoulFireball;
 import dev.xkmc.l2complements.content.entity.fireball.StrongFireball;
 import dev.xkmc.l2complements.init.L2Complements;
-import dev.xkmc.l2library.repack.registrate.util.entry.EntityEntry;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.world.entity.Entity;

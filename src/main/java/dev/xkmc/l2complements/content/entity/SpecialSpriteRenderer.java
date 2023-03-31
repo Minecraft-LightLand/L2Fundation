@@ -1,9 +1,8 @@
 package dev.xkmc.l2complements.content.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
@@ -13,6 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.inventory.InventoryMenu;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -38,8 +38,8 @@ public class SpecialSpriteRenderer<T extends Entity & ItemSupplier & ISizedItemE
 			float size = entity.getSize();
 			matrix.scale(size, size, size);
 			matrix.mulPose(this.entityRenderDispatcher.cameraOrientation());
-			matrix.mulPose(Vector3f.YP.rotationDegrees(180.0F));
-			this.itemRenderer.renderStatic(entity.getItem(), ItemTransforms.TransformType.GROUND, light, OverlayTexture.NO_OVERLAY, matrix, buffer, 0);
+			matrix.mulPose(Axis.YP.rotationDegrees(180.0F));
+			this.itemRenderer.renderStatic(entity.getItem(), ItemDisplayContext.GROUND, light, OverlayTexture.NO_OVERLAY, matrix, buffer, entity.level, 0);
 			matrix.popPose();
 			super.render(entity, yRot, partial, matrix, buffer, light);
 		}

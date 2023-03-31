@@ -1,14 +1,14 @@
 package dev.xkmc.l2complements.init.registrate;
 
 
+import com.tterrag.registrate.builders.NoConfigBuilder;
+import com.tterrag.registrate.util.entry.RegistryEntry;
+import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import dev.xkmc.l2complements.content.effect.force.*;
 import dev.xkmc.l2complements.content.effect.skill.BleedEffect;
 import dev.xkmc.l2complements.content.effect.skill.CleanseEffect;
 import dev.xkmc.l2complements.content.effect.skill.EmeraldPopeEffect;
 import dev.xkmc.l2complements.init.L2Complements;
-import dev.xkmc.l2library.repack.registrate.builders.NoConfigBuilder;
-import dev.xkmc.l2library.repack.registrate.util.entry.RegistryEntry;
-import dev.xkmc.l2library.repack.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;

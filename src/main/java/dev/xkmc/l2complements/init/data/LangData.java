@@ -1,10 +1,10 @@
 package dev.xkmc.l2complements.init.data;
 
+import com.tterrag.registrate.providers.RegistrateLangProvider;
+import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
-import dev.xkmc.l2library.repack.registrate.providers.RegistrateLangProvider;
-import dev.xkmc.l2library.repack.registrate.util.entry.RegistryEntry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.Item;

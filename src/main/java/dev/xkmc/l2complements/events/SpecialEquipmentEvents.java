@@ -1,8 +1,8 @@
 package dev.xkmc.l2complements.events;
 
-import dev.xkmc.l2complements.content.item.generic.GenericArmorItem;
-import dev.xkmc.l2complements.content.item.generic.GenericTieredItem;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
+import dev.xkmc.l2library.init.materials.generic.GenericArmorItem;
+import dev.xkmc.l2library.init.materials.generic.GenericTieredItem;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.effect.MobEffects;
@@ -52,7 +52,7 @@ public class SpecialEquipmentEvents {
 			var opt = event.getLevel().getRecipeManager()
 					.getRecipeFor(RecipeType.SMELTING, cont, event.getLevel());
 			if (opt.isPresent()) {
-				ItemStack ans = opt.get().assemble(cont);
+				ItemStack ans = opt.get().assemble(cont, event.getLevel().registryAccess());
 				int count = ans.getCount() * input.getCount();
 				ans.setCount(count);
 				e.setItem(ans);

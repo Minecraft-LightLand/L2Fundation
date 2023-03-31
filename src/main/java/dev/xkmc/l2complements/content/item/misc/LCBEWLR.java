@@ -2,7 +2,7 @@ package dev.xkmc.l2complements.content.item.misc;
 
 import com.google.common.base.Suppliers;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2library.util.Proxy;
 import net.minecraft.client.Minecraft;
@@ -11,7 +11,6 @@ import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.WitherArmorLayer;
@@ -19,6 +18,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
@@ -69,14 +69,14 @@ public class LCBEWLR extends BlockEntityWithoutLevelRenderer {
 	}
 
 	@Override
-	public void renderByItem(ItemStack stack, ItemTransforms.TransformType type, PoseStack poseStack,
+	public void renderByItem(ItemStack stack, ItemDisplayContext type, PoseStack poseStack,
 							 MultiBufferSource bufferSource, int light, int overlay) {
 		if (stack.is(LCItems.FORCE_FIELD.get())) {
 			renderWither(type, poseStack, bufferSource, light, overlay);
 		}
 	}
 
-	private void renderWither(ItemTransforms.TransformType type, PoseStack poseStack,
+	private void renderWither(ItemDisplayContext type, PoseStack poseStack,
 							  MultiBufferSource bufferSource, int light, int overlay) {
 		setUpWither();
 		poseStack.pushPose();
@@ -106,7 +106,7 @@ public class LCBEWLR extends BlockEntityWithoutLevelRenderer {
 		wither.setHealth(1);
 	}
 
-	private void translateWither(PoseStack stack, ItemTransforms.TransformType transform) {
+	private void translateWither(PoseStack stack, ItemDisplayContext transform) {
 		switch (transform) {
 			case GUI:
 			case FIRST_PERSON_LEFT_HAND:
@@ -135,8 +135,8 @@ public class LCBEWLR extends BlockEntityWithoutLevelRenderer {
 				return;
 			}
 		}
-		stack.mulPose(Vector3f.ZP.rotationDegrees(135));
-		stack.mulPose(Vector3f.YP.rotationDegrees(-155));
+		stack.mulPose(Axis.ZP.rotationDegrees(135));
+		stack.mulPose(Axis.YP.rotationDegrees(-155));
 		float size = 0.6f;
 		stack.scale(size, size, size);
 		stack.translate(0, -1.6, 0);

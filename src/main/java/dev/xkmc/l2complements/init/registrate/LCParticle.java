@@ -1,8 +1,8 @@
 package dev.xkmc.l2complements.init.registrate;
 
+import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.l2complements.content.particle.EmeraldParticle;
 import dev.xkmc.l2complements.init.L2Complements;
-import dev.xkmc.l2library.repack.registrate.util.entry.RegistryEntry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.api.distmarker.Dist;

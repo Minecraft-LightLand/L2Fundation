@@ -6,6 +6,7 @@ import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2library.base.effects.EffectUtil;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -31,24 +32,24 @@ public class MagicEventHandler {
 		if (EnchantmentHelper.getEnchantmentLevel(LCEnchantments.ENCH_INVINCIBLE.get(), event.getEntity()) > 0) {
 			event.setCanceled(true);
 		}
-		if (event.getSource().isBypassMagic() || event.getSource().isBypassInvul())
+		if (event.getSource().is(DamageTypeTags.BYPASSES_EFFECTS) || event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY))
 			return;
 		if (EnchantmentHelper.getEnchantmentLevel(LCEnchantments.ENCH_ENVIRONMENT.get(), event.getEntity()) > 0) {
 			if (event.getSource().getEntity() == null) event.setCanceled(true);
 		}
 		if (EnchantmentHelper.getEnchantmentLevel(LCEnchantments.ENCH_MAGIC.get(), event.getEntity()) > 0) {
-			if (event.getSource().isMagic()) event.setCanceled(true);
+			if (event.getSource().is(DamageTypeTags.IS_MAGIC)) event.setCanceled(true);
 		}
-		if (event.getSource().isBypassEnchantments())
+		if (event.getSource().is(DamageTypeTags.BYPASSES_ENCHANTMENTS))
 			return;
 		if (EnchantmentHelper.getEnchantmentLevel(LCEnchantments.ENCH_PROJECTILE.get(), event.getEntity()) > 0) {
-			if (event.getSource().isProjectile()) event.setCanceled(true);
+			if (event.getSource().is(DamageTypeTags.IS_PROJECTILE)) event.setCanceled(true);
 		}
 		if (EnchantmentHelper.getEnchantmentLevel(LCEnchantments.ENCH_FIRE.get(), event.getEntity()) > 0) {
-			if (event.getSource().isFire()) event.setCanceled(true);
+			if (event.getSource().is(DamageTypeTags.IS_FIRE)) event.setCanceled(true);
 		}
 		if (EnchantmentHelper.getEnchantmentLevel(LCEnchantments.ENCH_EXPLOSION.get(), event.getEntity()) > 0) {
-			if (event.getSource().isExplosion()) event.setCanceled(true);
+			if (event.getSource().is(DamageTypeTags.IS_EXPLOSION)) event.setCanceled(true);
 		}
 	}
 

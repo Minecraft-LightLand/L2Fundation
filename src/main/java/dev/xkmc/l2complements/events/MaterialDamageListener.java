@@ -4,6 +4,7 @@ import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2library.init.events.attack.AttackCache;
 import dev.xkmc.l2library.init.events.attack.AttackListener;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -16,8 +17,8 @@ public class MaterialDamageListener implements AttackListener {
 		LivingDamageEvent event = cache.getLivingDamageEvent();
 		if (event == null) return;
 		if (cache.getAttackTarget() instanceof Player player) {
-			float damage = cache.getDamageOriginal();
-			if (event.getSource().isExplosion() && damage >= LCConfig.COMMON.explosionDamage.get()) {
+			float damage = cache.getPreDamage();
+			if (event.getSource().is(DamageTypeTags.IS_EXPLOSION) && damage >= LCConfig.COMMON.explosionDamage.get()) {
 				if (cache.getDamageDealt() < player.getHealth()) {
 					player.getInventory().placeItemBackInInventory(LCItems.EXPLOSION_SHARD.asStack());
 				}
@@ -30,8 +31,8 @@ public class MaterialDamageListener implements AttackListener {
 				}
 			}
 		}
-		if (event.getSource().isProjectile() && event.getSource().getEntity() instanceof Player) {
-			if (cache.getDamageOriginal() >= LCConfig.COMMON.spaceDamage.get()) {
+		if (event.getSource().is(DamageTypeTags.IS_PROJECTILE) && event.getSource().getEntity() instanceof Player) {
+			if (cache.getPreDamage() >= LCConfig.COMMON.spaceDamage.get()) {
 				cache.getAttackTarget().spawnAtLocation(LCItems.SPACE_SHARD.asStack());
 			}
 		}

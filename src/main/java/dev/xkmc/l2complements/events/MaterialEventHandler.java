@@ -5,6 +5,7 @@ import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2complements.init.registrate.LCRecipes;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -39,14 +40,14 @@ public class MaterialEventHandler {
 						phantom.spawnAtLocation(LCItems.SUN_MEMBRANE.asStack());
 					}
 				}
-				if (event.getSource().isExplosion()) {
+				if (event.getSource().is(DamageTypeTags.IS_EXPLOSION)) {
 					phantom.spawnAtLocation(LCItems.STORM_CORE.asStack());
 				}
 			}
 		}
 		if (event.getEntity() instanceof Drowned drowned) {
 			Level level = drowned.getLevel();
-			if (!level.isClientSide() && event.getSource() == DamageSource.FREEZE) {
+			if (!level.isClientSide() && event.getSource().is(DamageTypeTags.IS_FREEZING)) {
 				drowned.spawnAtLocation(LCItems.HARD_ICE.asStack());
 			}
 		}
@@ -56,12 +57,12 @@ public class MaterialEventHandler {
 			}
 		}
 		if (event.getEntity() instanceof ElderGuardian guardian) {
-			if (!guardian.getLevel().isClientSide() && event.getSource() == DamageSource.LIGHTNING_BOLT) {
+			if (!guardian.getLevel().isClientSide() && event.getSource().is(DamageTypeTags.IS_LIGHTNING)) {
 				guardian.spawnAtLocation(LCItems.GUARDIAN_EYE.asStack());
 			}
 		}
 		if (event.getEntity() instanceof WitherBoss wither) {
-			if (!wither.getLevel().isClientSide() && event.getSource().isProjectile()) {
+			if (!wither.getLevel().isClientSide() && event.getSource().is(DamageTypeTags.IS_PROJECTILE)) {
 				wither.spawnAtLocation(LCItems.FORCE_FIELD.asStack());
 			}
 		}

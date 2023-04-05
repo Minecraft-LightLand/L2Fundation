@@ -6,7 +6,6 @@ import dev.xkmc.l2complements.content.entity.fireball.SoulFireball;
 import dev.xkmc.l2complements.content.entity.fireball.StrongFireball;
 import dev.xkmc.l2complements.content.item.create.RefinedRadianceItem;
 import dev.xkmc.l2complements.content.item.create.VoidEyeItem;
-import dev.xkmc.l2complements.content.item.misc.FireChargeItem;
 import dev.xkmc.l2complements.content.item.misc.*;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
@@ -22,7 +21,10 @@ import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.EnchantedGoldenAppleItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.Tags;
 
@@ -31,29 +33,17 @@ import java.util.function.Supplier;
 
 import static dev.xkmc.l2complements.init.L2Complements.REGISTRATE;
 
-@SuppressWarnings({"rawtypes", "unsafe"})
+@SuppressWarnings({"unsafe"})
 @MethodsReturnNonnullByDefault
 public class LCItems {
 
-	public static class Tab extends CreativeModeTab {
-
-		private final Supplier<ItemEntry> icon;
-
-		public Tab(String id, Supplier<ItemEntry> icon) {
-			super(L2Complements.MODID + "." + id);
-			this.icon = icon;
-		}
-
-		@Override
-		public ItemStack makeIcon() {
-			return icon.get().asStack();
-		}
-	}
-
-	public static final Tab TAB_GENERATED = new Tab("generated", () -> LCItems.GEN_ITEM[0][0]);
+	public static final Supplier<CreativeModeTab> TAB = REGISTRATE
+			.buildCreativeModeTab("generated", e -> e
+					.icon(LCItems.VOID_EYE::asStack)
+					.title(Component.translatable("itemGroup." + L2Complements.MODID + ".generated")));
 
 	static {
-		REGISTRATE.creativeModeTab(() -> TAB_GENERATED);
+		REGISTRATE.creativeModeTab(TAB);
 	}
 
 	public static final ItemEntry<TooltipItem> WIND_BOTTLE;

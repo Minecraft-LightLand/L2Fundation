@@ -44,6 +44,7 @@ public class PoseiditeArmor extends ExtraArmorConfig {
 
 	@Override
 	public void onArmorTick(ItemStack stack, Level world, Player player) {
+		super.onArmorTick(stack, world, player);
 		stack.getOrCreateTag().putBoolean(KEY, player.isInWaterRainOrBubble());
 		if (!player.isInWaterRainOrBubble()) return;
 		EquipmentSlot slot = LivingEntity.getEquipmentSlotForItem(stack);
@@ -69,6 +70,7 @@ public class PoseiditeArmor extends ExtraArmorConfig {
 	@Override
 	public void addTooltip(ItemStack stack, List<Component> list) {
 		list.add(LangData.IDS.POSEIDITE_ARMOR.get().withStyle(ChatFormatting.GRAY));
+		super.addTooltip(stack, list);
 	}
 
 }

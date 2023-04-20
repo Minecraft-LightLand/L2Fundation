@@ -184,6 +184,7 @@
   "l2complements.tooltip.tool.shulkerate_tool": "极高耐久，不易损坏。略微提升触及距离和攻击距离",
   "l2complements.tooltip.tool.totemic_armor": "消耗耐久时治疗使用者，缓慢回复生命",
   "l2complements.tooltip.tool.totemic_tool": "消耗耐久时治疗使用者",
+  "l2complements.tooltip.tool.immune": "免疫: ",
   "l2complements.jei.burnt.count": "1/%s的概率转化",
   "l2complements.jei.burnt.title": "焚烧转化",
   "effect.l2complements.armor_reduce": "破甲",

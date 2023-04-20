@@ -1,12 +1,14 @@
 package dev.xkmc.l2complements.events;
 
+import dev.xkmc.l2complements.content.effect.skill.CleanseEffect;
 import dev.xkmc.l2complements.content.effect.skill.SkillEffect;
 import dev.xkmc.l2complements.content.enchantment.core.AttributeEnchantment;
+import dev.xkmc.l2complements.content.item.generic.GenericArmorItem;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2library.base.effects.EffectUtil;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -20,8 +22,6 @@ import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class MagicEventHandler {
@@ -85,6 +85,18 @@ public class MagicEventHandler {
 
 	@SubscribeEvent
 	public static void onPotionTest(MobEffectEvent.Applicable event) {
+		for (EquipmentSlot slot : EquipmentSlot.values()) {
+			if (slot.getType() != EquipmentSlot.Type.ARMOR) continue;
+			ItemStack stack = event.getEntity().getItemBySlot(slot);
+			if (!stack.isEmpty()) {
+				if (stack.getItem() instanceof GenericArmorItem armor) {
+					if (armor.getConfig().immuneToEffect(stack, armor, event.getEffectInstance())) {
+						event.setResult(Event.Result.DENY);
+						return;
+					}
+				}
+			}
+		}
 		if (event.getEntity().hasEffect(LCEffects.CLEANSE.get())) {
 			if (event.getEffectInstance().getEffect() instanceof SkillEffect)
 				return;
@@ -97,12 +109,7 @@ public class MagicEventHandler {
 	@SubscribeEvent(priority = EventPriority.LOW)
 	public static void onPotionAdded(MobEffectEvent.Added event) {
 		if (event.getEntity().hasEffect(LCEffects.CLEANSE.get())) {
-			List<MobEffectInstance> list = new ArrayList<>(event.getEntity().getActiveEffects());
-			for (MobEffectInstance ins : list) {
-				if (ins.getEffect() instanceof SkillEffect)
-					continue;
-				event.getEntity().removeEffect(ins.getEffect());
-			}
+			CleanseEffect.clearOnEntity(event.getEntity());
 		}
 	}
 

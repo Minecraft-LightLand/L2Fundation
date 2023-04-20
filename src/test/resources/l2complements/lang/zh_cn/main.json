@@ -50,7 +50,8 @@
 		"shulkerate_armor": "极高耐久，不易损坏",
 		"shulkerate_tool": "极高耐久，不易损坏。略微提升触及距离和攻击距离",
 		"totemic_armor": "消耗耐久时治疗使用者，缓慢回复生命",
-		"totemic_tool": "消耗耐久时治疗使用者"
+		"totemic_tool": "消耗耐久时治疗使用者",
+		"immune": "免疫: "
 	  }
 	},
 	"jei": {

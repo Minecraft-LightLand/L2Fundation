@@ -274,6 +274,7 @@
   "l2complements.tooltip.misc.warp_record": "Right click to record position. After that, right click to teleport. Durability: %s",
   "l2complements.tooltip.misc.warp_teleport": "Right click to teleport. Durability: %s",
   "l2complements.tooltip.misc.wind_bottle": "Used to obtain Captured Wind or Captured Bullet.",
+  "l2complements.tooltip.tool.immune": "Immune to: ",
   "l2complements.tooltip.tool.poseidite_armor": "When user is in rain or water: provides extra protection, walk/swim speed boost, and conduit/dolphin grace effect.",
   "l2complements.tooltip.tool.poseidite_tool": "Sharper and faster when user is in rain or water",
   "l2complements.tooltip.tool.sculkium_armor": "Dampened: When wearing 4 pieces of armors with dampened effect, cancel all vibrations emitted by wearer.",

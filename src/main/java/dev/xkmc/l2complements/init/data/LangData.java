@@ -49,6 +49,7 @@ public class LangData {
 
 		EFFECT_CHARGE("tooltip.misc.effect_charge", "Apply on Hit: %s", 1),
 		EXPLOSION_CHARGE("tooltip.misc.explosion_charge", "Create explosion of level %s on Hit", 1),
+		ARMOR_IMMUNE("tooltip.tool.immune", "Immune to: ", 0),
 
 		POSEIDITE_TOOL("tooltip.tool.poseidite_tool", "Sharper and faster when user is in rain or water", 0),
 		POSEIDITE_ARMOR("tooltip.tool.poseidite_armor", "When user is in rain or water: provides extra protection, walk/swim speed boost, and conduit/dolphin grace effect.", 0),

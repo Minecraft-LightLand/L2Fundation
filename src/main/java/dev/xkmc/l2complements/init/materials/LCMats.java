@@ -42,7 +42,7 @@ public enum LCMats implements IMatVanillaType {
 			new ShulkerateTool().setStick(e -> Items.IRON_INGOT, false), new ShulkerateArmor()),
 	SCULKIUM("sculkium", 5, SoundEvents.ARMOR_EQUIP_IRON,
 			new ToolStats(2000, 8, 9, 1.2f, 15),
-			new ArmorStats(40, new int[]{5, 9, 10, 6}, 4, 1, 15),
+			new ArmorStats(100, new int[]{5, 9, 10, 6}, 4, 1, 15),
 			GenItemVanillaType.TOOL_GEN, GenItemVanillaType.ARMOR_GEN,
 			new SculkiumTool().setStick(e -> Items.NETHERITE_INGOT, false)
 					.setTier(e -> TagGen.REQUIRES_SCULK_TOOL), new SculkiumArmor()),

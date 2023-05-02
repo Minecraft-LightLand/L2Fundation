@@ -1,5 +1,7 @@
 package dev.xkmc.l2complements.content.item.equipments;
 
+import dev.xkmc.l2complements.content.item.generic.ExtraArmorConfig;
+import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2library.init.materials.generic.ExtraArmorConfig;
 import net.minecraft.ChatFormatting;
@@ -15,8 +17,9 @@ public class TotemicArmor extends ExtraArmorConfig {
 
 	@Override
 	public void onArmorTick(ItemStack stack, Level world, Player player) {
-		if (player.tickCount % 100 == 0) {//TODO config
-			player.heal(1);
+		super.onArmorTick(stack, world, player);
+		if (player.tickCount % LCConfig.COMMON.totemicHealDuration.get() == 0) {
+			player.heal(LCConfig.COMMON.totemicHealAmount.get());
 		}
 	}
 
@@ -31,6 +34,7 @@ public class TotemicArmor extends ExtraArmorConfig {
 	@Override
 	public void addTooltip(ItemStack stack, List<Component> list) {
 		list.add(LangData.IDS.TOTEMIC_ARMOR.get().withStyle(ChatFormatting.GRAY));
+		super.addTooltip(stack, list);
 	}
 
 }

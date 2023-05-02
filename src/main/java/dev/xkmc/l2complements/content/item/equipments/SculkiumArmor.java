@@ -6,11 +6,15 @@ import dev.xkmc.l2library.init.materials.generic.ExtraArmorConfig;
 import dev.xkmc.l2library.util.math.MathHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 
 import java.util.List;
 import java.util.Locale;
@@ -21,7 +25,7 @@ public class SculkiumArmor extends ExtraArmorConfig {
 
 	private static final AttributeModifier[] HASTE = makeModifiers(NAME_HASTE, 0.06d, 0.09d, AttributeModifier.Operation.MULTIPLY_BASE);
 	private static final AttributeModifier[] SPEED = makeModifiers(NAME_SPEED, 0.1d, 0.15d, AttributeModifier.Operation.MULTIPLY_BASE);
-	private static final AttributeModifier[] HEALTH = makeModifiers(NAME_SPEED, 2, 3, AttributeModifier.Operation.ADDITION);
+	private static final AttributeModifier[] HEALTH = makeModifiers(NAME_HEALTH, 4, 6, AttributeModifier.Operation.ADDITION);
 
 	private static AttributeModifier[] makeModifiers(String name, double val, double val2, AttributeModifier.Operation op) {
 		AttributeModifier[] ans = new AttributeModifier[4];
@@ -47,6 +51,7 @@ public class SculkiumArmor extends ExtraArmorConfig {
 	@Override
 	public void addTooltip(ItemStack stack, List<Component> list) {
 		list.add(LangData.IDS.SCULKIUM_ARMOR.get().withStyle(ChatFormatting.GRAY));
+		super.addTooltip(stack, list);
 	}
 
 	public boolean dampenVibration() {

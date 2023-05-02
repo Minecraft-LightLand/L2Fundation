@@ -183,6 +183,11 @@ public class RecipeGen {
 					.define('C', LCItems.LIFE_ESSENCE.get())
 					.save(pvd, getID(LCItems.ENCHANTED_TOTEMIC_APPLE.get()));
 
+			unlock(pvd, new ShapelessRecipeBuilder(LCItems.WARDEN_BONE_SHARD.get(), 1)::unlockedBy, LCItems.RESONANT_FEATHER.get())
+					.requires(TagGen.DELICATE_BONE)
+					.requires(LCItems.RESONANT_FEATHER.get())
+					.save(pvd, getID(LCItems.WARDEN_BONE_SHARD.get()));
+
 
 		}
 

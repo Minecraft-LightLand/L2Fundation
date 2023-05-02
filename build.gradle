@@ -120,6 +120,7 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     compileOnly(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-common:${mixin_extras_version}"))
+    implementation("com.github.llamalad7.mixinextras:mixinextras-forge:${mixin_extras_version}")
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
     implementation fg.deobf("dev.xkmc.l2library:l2library:${l2library_version}-slim")
     implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
@@ -131,7 +132,7 @@ dependencies {
     implementation fg.deobf("mezz.jei:jei-${jei_minecraft_version}:${jei_version}")
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
 
-    implementation fg.deobf('curse.maven:the-twilight-forest-227639:4075841')
+    implementation fg.deobf('curse.maven:the-twilight-forest-227639:4516391')
 
     //runtimeOnly fg.deobf('curse.maven:appleskin-248787:3872808')
     //runtimeOnly fg.deobf('curse.maven:charm-of-undying-316873:3927421')

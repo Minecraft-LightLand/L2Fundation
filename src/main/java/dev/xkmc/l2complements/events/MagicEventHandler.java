@@ -87,18 +87,6 @@ public class MagicEventHandler {
 
 	@SubscribeEvent
 	public static void onPotionTest(MobEffectEvent.Applicable event) {
-		for (EquipmentSlot slot : EquipmentSlot.values()) {
-			if (slot.getType() != EquipmentSlot.Type.ARMOR) continue;
-			ItemStack stack = event.getEntity().getItemBySlot(slot);
-			if (!stack.isEmpty()) {
-				if (stack.getItem() instanceof GenericArmorItem armor) {
-					if (armor.getConfig().immuneToEffect(stack, armor, event.getEffectInstance())) {
-						event.setResult(Event.Result.DENY);
-						return;
-					}
-				}
-			}
-		}
 		if (event.getEntity().hasEffect(LCEffects.CLEANSE.get())) {
 			if (event.getEffectInstance().getEffect() instanceof SkillEffect)
 				return;

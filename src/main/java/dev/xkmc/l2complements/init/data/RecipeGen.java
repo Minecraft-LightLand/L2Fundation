@@ -39,11 +39,11 @@ public class RecipeGen {
 			Tags.Items.ARMORS_LEGGINGS,
 			Tags.Items.ARMORS_CHESTPLATES,
 			Tags.Items.ARMORS_HELMETS,
-			Tags.Items.TOOLS_SWORDS,
-			Tags.Items.TOOLS_AXES,
-			Tags.Items.TOOLS_SHOVELS,
-			Tags.Items.TOOLS_PICKAXES,
-			Tags.Items.TOOLS_HOES
+			ItemTags.SWORDS,
+			ItemTags.AXES,
+			ItemTags.SHOVELS,
+			ItemTags.PICKAXES,
+			ItemTags.HOES
 	).toArray(TagKey[]::new);
 
 	private static final String[] TOOL_NAME = {"boots", "leggings", "chestplate", "helmet", "sword", "axe", "shovel", "pickaxe", "hoe"};
@@ -183,7 +183,7 @@ public class RecipeGen {
 					.define('C', LCItems.LIFE_ESSENCE.get())
 					.save(pvd, getID(LCItems.ENCHANTED_TOTEMIC_APPLE.get()));
 
-			unlock(pvd, new ShapelessRecipeBuilder(LCItems.WARDEN_BONE_SHARD.get(), 1)::unlockedBy, LCItems.RESONANT_FEATHER.get())
+			unlock(pvd, new ShapelessRecipeBuilder(RecipeCategory.MISC, LCItems.WARDEN_BONE_SHARD.get(), 1)::unlockedBy, LCItems.RESONANT_FEATHER.get())
 					.requires(TagGen.DELICATE_BONE)
 					.requires(LCItems.RESONANT_FEATHER.get())
 					.save(pvd, getID(LCItems.WARDEN_BONE_SHARD.get()));

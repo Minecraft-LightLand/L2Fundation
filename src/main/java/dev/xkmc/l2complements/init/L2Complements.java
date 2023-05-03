@@ -1,14 +1,15 @@
 package dev.xkmc.l2complements.init;
 
+import com.tterrag.registrate.providers.ProviderType;
 import dev.xkmc.l2complements.events.*;
 import dev.xkmc.l2complements.init.data.*;
-import dev.xkmc.l2complements.init.materials.vanilla.GenItemVanillaType;
 import dev.xkmc.l2complements.init.registrate.*;
 import dev.xkmc.l2complements.network.NetworkManager;
 import dev.xkmc.l2library.base.L2Registrate;
-import dev.xkmc.l2library.base.effects.EffectSyncEvents;
 import dev.xkmc.l2library.init.events.attack.AttackEventHandler;
-import dev.xkmc.l2library.repack.registrate.providers.ProviderType;
+import dev.xkmc.l2library.init.events.listeners.EffectSyncEvents;
+import dev.xkmc.l2library.init.materials.vanilla.GenItemVanillaType;
+import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.ForgeMod;
@@ -54,8 +55,7 @@ public class L2Complements {
 		MinecraftForge.EVENT_BUS.register(MaterialEventHandler.class);
 		MinecraftForge.EVENT_BUS.register(MagicEventHandler.class);
 		MinecraftForge.EVENT_BUS.register(SpecialEquipmentEvents.class);
-		AttackEventHandler.LISTENERS.add(new ToolDamageListener());
-		AttackEventHandler.LISTENERS.add(new MaterialDamageListener());
+		AttackEventHandler.LISTENERS.put(5000, new MaterialDamageListener());
 	}
 
 	private static void registerModBusEvents(IEventBus bus) {
@@ -87,7 +87,14 @@ public class L2Complements {
 	}
 
 	public static void gatherData(GatherDataEvent event) {
-		event.getGenerator().addProvider(event.includeServer(), new LCConfigGen(event.getGenerator()));
+		boolean gen = event.includeServer();
+		PackOutput output = event.getGenerator().getPackOutput();
+		var pvd = event.getLookupProvider();
+		var helper = event.getExistingFileHelper();
+
+		event.getGenerator().addProvider(gen, new DamageTypeGen(output, pvd));
+		event.getGenerator().addProvider(gen, new DamageTypeTagGen(output, pvd, helper));
+		event.getGenerator().addProvider(gen, new LCConfigGen(event.getGenerator()));
 	}
 
 }

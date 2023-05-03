@@ -5,6 +5,7 @@ import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2library.util.nbt.NBTObj;
 import dev.xkmc.l2library.util.tools.TeleportTool;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -28,7 +29,7 @@ public class WarpStone extends Item {
 		return Optional.ofNullable(stack.getTag()).filter(e -> e.contains("pos"))
 				.map(e -> e.getCompound("pos"))
 				.map(e -> Pair.of(
-						ResourceKey.create(Registry.DIMENSION_REGISTRY,
+						ResourceKey.create(Registries.DIMENSION,
 								new ResourceLocation(e.getString("dim"))),
 						new Vec3(e.getDouble("x"),
 								e.getDouble("y"),

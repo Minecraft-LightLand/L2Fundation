@@ -6,6 +6,7 @@ import dev.xkmc.l2library.util.Proxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -30,7 +31,7 @@ public interface ILCTotem {
 	}
 
 	default boolean allow(LivingEntity self, DamageSource pDamageSource) {
-		return !pDamageSource.isBypassInvul();
+		return !pDamageSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY);
 	}
 
 	@OnlyIn(Dist.CLIENT)

@@ -1,5 +1,6 @@
 package dev.xkmc.l2complements.content.item.create;
 
+import dev.xkmc.l2complements.init.data.DamageTypeGen;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -11,8 +12,6 @@ import net.minecraft.world.level.Level;
 import java.util.function.Supplier;
 
 public class VoidEyeItem extends ShadowSteelItem {
-
-	public static DamageSource VOID_EYE = new DamageSource("void_eye").bypassArmor().bypassInvul();
 
 	public VoidEyeItem(Properties properties, Supplier<MutableComponent> sup) {
 		super(properties, sup);
@@ -31,7 +30,7 @@ public class VoidEyeItem extends ShadowSteelItem {
 	public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
 		if (!pLevel.isClientSide() && pEntity instanceof LivingEntity le && le.position().y() < pLevel.getMinBuildHeight()) {
 			pStack.setCount(0);
-			le.hurt(VOID_EYE, le.getMaxHealth());
+			le.hurt(new DamageSource(DamageTypeGen.forKey(pLevel, DamageTypeGen.VOID_EYE)), le.getMaxHealth());
 		}
 	}
 

@@ -2,7 +2,6 @@ package dev.xkmc.l2complements.init.materials;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2complements.content.item.equipments.*;
-import dev.xkmc.l2complements.content.item.generic.ArmorMat;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.TagGen;
 import dev.xkmc.l2complements.init.registrate.LCBlocks;

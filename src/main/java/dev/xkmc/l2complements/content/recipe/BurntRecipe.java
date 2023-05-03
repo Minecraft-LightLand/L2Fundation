@@ -3,6 +3,7 @@ package dev.xkmc.l2complements.content.recipe;
 import dev.xkmc.l2complements.init.registrate.LCRecipes;
 import dev.xkmc.l2library.base.recipe.BaseRecipe;
 import dev.xkmc.l2library.serial.SerialClass;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
@@ -31,7 +32,7 @@ public class BurntRecipe extends BaseRecipe<BurntRecipe, BurntRecipe, BurntRecip
 	}
 
 	@Override
-	public ItemStack assemble(Inv inv) {
+	public ItemStack assemble(Inv inv, RegistryAccess access) {
 		return result.copy();
 	}
 
@@ -41,7 +42,7 @@ public class BurntRecipe extends BaseRecipe<BurntRecipe, BurntRecipe, BurntRecip
 	}
 
 	@Override
-	public ItemStack getResultItem() {
+	public ItemStack getResultItem(RegistryAccess access) {
 		return result;
 	}
 

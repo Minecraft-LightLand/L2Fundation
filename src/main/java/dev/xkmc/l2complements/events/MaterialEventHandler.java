@@ -84,7 +84,7 @@ public class MaterialEventHandler {
 	public static void onInteract(PlayerInteractEvent.EntityInteract event) {
 		if (event.getLevel().isClientSide()) return;
 		if (event.getItemStack().is(LCItems.WIND_BOTTLE.get()) && event.getTarget() instanceof ShulkerBullet bullet) {
-			bullet.hurt(DamageSource.playerAttack(event.getEntity()), 1);
+			bullet.hurt(event.getLevel().damageSources().playerAttack(event.getEntity()), 1);
 			event.getItemStack().shrink(1);
 			event.getEntity().getInventory().placeItemBackInInventory(LCItems.CAPTURED_BULLET.asStack());
 		}
@@ -101,7 +101,7 @@ public class MaterialEventHandler {
 		var opt = level.getRecipeManager().getRecipeFor(LCRecipes.RT_BURNT.get(), inv, level);
 		if (opt.isPresent()) {
 			BurntRecipe r = opt.get();
-			ItemStack result = r.assemble(inv);
+			ItemStack result = r.assemble(inv, level.registryAccess());
 			int chance = r.chance;
 			int trial = stack.getCount();
 			int det = trial / chance;

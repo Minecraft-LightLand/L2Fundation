@@ -41,7 +41,7 @@ public abstract class ItemStackMixin implements IForgeItemStack {
 			ci.cancel();
 		}
 		if (self.getEnchantmentLevel(LCEnchantments.LIFE_SYNC.get()) > 0) {
-			pEntity.hurt(LifeSyncEnchantment.SOURCE, pAmount);
+			pEntity.hurt(LifeSyncEnchantment.getSource(pEntity.level), pAmount);
 			ci.cancel();
 		}
 	}

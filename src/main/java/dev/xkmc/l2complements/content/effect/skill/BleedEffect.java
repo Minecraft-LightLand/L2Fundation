@@ -1,6 +1,7 @@
 package dev.xkmc.l2complements.content.effect.skill;
 
 import dev.xkmc.l2complements.init.L2Complements;
+import dev.xkmc.l2complements.init.data.DamageTypeGen;
 import dev.xkmc.l2library.base.effects.api.ForceEffect;
 import dev.xkmc.l2library.base.effects.api.IconOverlayEffect;
 import dev.xkmc.l2library.base.effects.api.InherentEffect;
@@ -32,7 +33,7 @@ public class BleedEffect extends InherentEffect implements ForceEffect, IconOver
 
 	@Override
 	public void applyEffectTick(LivingEntity target, int level) {
-		DamageSource source = new DamageSource("bleed").bypassArmor().bypassMagic();
+		DamageSource source = new DamageSource(DamageTypeGen.forKey(target.level, DamageTypeGen.BLEED));
 		target.hurt(source, 6 * (level + 1));
 	}
 

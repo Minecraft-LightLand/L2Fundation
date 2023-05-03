@@ -3,14 +3,12 @@ package dev.xkmc.l2complements.events;
 import dev.xkmc.l2complements.content.effect.skill.CleanseEffect;
 import dev.xkmc.l2complements.content.effect.skill.SkillEffect;
 import dev.xkmc.l2complements.content.enchantment.core.AttributeEnchantment;
-import dev.xkmc.l2complements.content.item.generic.GenericArmorItem;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2library.base.effects.EffectUtil;
+import dev.xkmc.l2library.init.data.MaterialDamageTypeMultiplex;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -39,7 +37,7 @@ public class MagicEventHandler {
 			if (event.getSource().getEntity() == null) event.setCanceled(true);
 		}
 		if (EnchantmentHelper.getEnchantmentLevel(LCEnchantments.ENCH_MAGIC.get(), event.getEntity()) > 0) {
-			if (event.getSource().is(DamageTypeTags.IS_MAGIC)) event.setCanceled(true);
+			if (event.getSource().is(MaterialDamageTypeMultiplex.MAGIC)) event.setCanceled(true);
 		}
 		if (event.getSource().is(DamageTypeTags.BYPASSES_ENCHANTMENTS))
 			return;

@@ -1,6 +1,5 @@
 package dev.xkmc.l2complements.content.item.equipments;
 
-import dev.xkmc.l2complements.content.item.generic.ExtraArmorConfig;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2library.init.materials.generic.ExtraArmorConfig;

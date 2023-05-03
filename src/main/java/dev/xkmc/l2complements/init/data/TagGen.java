@@ -14,8 +14,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.data.BlockTagsProvider;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class TagGen {
 
@@ -33,7 +31,7 @@ public class TagGen {
 	public static void onItemTagGen(RegistrateItemTagsProvider pvd) {
 		pvd.addTag(SCULK_MATS).add(LCMats.SCULKIUM.getIngot());
 		pvd.addTag(TOTEM).add(LCItems.TOTEM_OF_DREAM.get(), LCItems.TOTEM_OF_THE_SEA.get());
-		pvd.tag(DELICATE_BONE).add(Items.SCULK_CATALYST, Items.SCULK_SHRIEKER);
+		pvd.addTag(DELICATE_BONE).add(Items.SCULK_CATALYST, Items.SCULK_SHRIEKER);
 		TFCompat.onItemTagGen(pvd);
 	}
 

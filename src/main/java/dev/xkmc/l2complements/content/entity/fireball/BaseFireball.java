@@ -3,6 +3,7 @@ package dev.xkmc.l2complements.content.entity.fireball;
 import dev.xkmc.l2complements.content.entity.ISizedItemEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -17,7 +18,7 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class BaseFireball<T extends BaseFireball<T>> extends Fireball implements ISizedItemEntity {
 
-	private final int lifetime = 200;
+	public int lifetime = 200;
 	private int life = 0;
 
 	public BaseFireball(EntityType<T> type, Level level) {
@@ -33,7 +34,7 @@ public class BaseFireball<T extends BaseFireball<T>> extends Fireball implements
 	}
 
 	@Override
-	public final Packet<?> getAddEntityPacket() {
+	public final Packet<ClientGamePacketListener> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 

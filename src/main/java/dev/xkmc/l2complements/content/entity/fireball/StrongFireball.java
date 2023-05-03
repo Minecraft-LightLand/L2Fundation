@@ -22,7 +22,7 @@ public class StrongFireball extends BaseFireball<StrongFireball> {
 	}
 
 	protected void onHitAction(Vec3 pos) {
-		this.level.explode(this, pos.x, pos.y, pos.z, 2, false, Explosion.BlockInteraction.BREAK);
+		this.level.explode(this, pos.x, pos.y, pos.z, 2, Level.ExplosionInteraction.TNT);
 	}
 
 }

@@ -21,7 +21,6 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 version = "${ll_version}"
 group = "dev.xkmc.${modid}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "${modid}"
-jarJar.enable()
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
@@ -134,13 +133,17 @@ dependencies {
 
     implementation fg.deobf('curse.maven:the-twilight-forest-227639:4516391')
 
-    //runtimeOnly fg.deobf('curse.maven:appleskin-248787:3872808')
+    runtimeOnly fg.deobf('curse.maven:wthit-forge-455982:4512108')
+    runtimeOnly fg.deobf('curse.maven:badpackets-615134:4438956')
+    runtimeOnly fg.deobf('curse.maven:attributefix-280510:4445193')
+    runtimeOnly fg.deobf('curse.maven:max-health-fix-492246:4447240')
+
+    runtimeOnly fg.deobf('curse.maven:bookshelf-228525:4454755')
+    runtimeOnly fg.deobf('curse.maven:enchantment-descriptions-250419:4445054')
+    runtimeOnly fg.deobf('curse.maven:appleskin-248787:4440123')
+    runtimeOnly fg.deobf('curse.maven:corpse-316582:4454608')
+
     //runtimeOnly fg.deobf('curse.maven:charm-of-undying-316873:3927421')
-    //runtimeOnly fg.deobf('curse.maven:bookshelf-228525:4153136')
-    //runtimeOnly fg.deobf('curse.maven:enchantment-descriptions-250419:4277356')
-    //runtimeOnly fg.deobf('curse.maven:wthit-forge-455982:3947982')
-    //runtimeOnly fg.deobf('curse.maven:badpackets-615134:3903799')
-    //runtimeOnly fg.deobf('curse.maven:corpse-316582:3920717')
     //runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.19.2-76")
 
 
@@ -162,10 +165,6 @@ jar {
     }
 }
 
-reobf {
-    jarJar { }
-}
-
 // Example configuration to allow publishing using the maven-publish plugin
 // This is the preferred method to reobfuscate your jar file
 jar.finalizedBy('reobfJar')
@@ -185,19 +184,6 @@ publishing {
     }
 }
 
-tasks.jarJar.finalizedBy('reobfJarJar')
-
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
-}
-
-tasks.jarJar.configure {
-    classifier ''
-    from "LICENSE"
-}
-
-jar {
-    // this now conflicts with jarJar as filenames are the same
-    // append a `-slim` to this jar, as this jar contains no pre-packaged libs
-    classifier 'slim'
 }

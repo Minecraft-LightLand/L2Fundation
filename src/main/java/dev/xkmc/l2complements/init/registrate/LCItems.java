@@ -6,6 +6,7 @@ import dev.xkmc.l2complements.content.entity.fireball.SoulFireball;
 import dev.xkmc.l2complements.content.entity.fireball.StrongFireball;
 import dev.xkmc.l2complements.content.item.create.RefinedRadianceItem;
 import dev.xkmc.l2complements.content.item.create.VoidEyeItem;
+import dev.xkmc.l2complements.content.item.misc.FireChargeItem;
 import dev.xkmc.l2complements.content.item.misc.*;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
@@ -13,6 +14,9 @@ import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2complements.init.data.TagGen;
 import dev.xkmc.l2complements.init.materials.LCMats;
 import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffect;
@@ -21,12 +25,14 @@ import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.EnchantedGoldenAppleItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentCategory;
+import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.Tags;
 
+import java.util.Set;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
@@ -39,8 +45,23 @@ public class LCItems {
 	static {
 
 		REGISTRATE.creativeModeTab("generated", b -> b
-				.icon(LCItems.REINFORCED_WARP_STONE::asStack)
-				.title(Component.translatable("itemGroup." + L2Complements.MODID + ".generated")));
+				.icon(LCItems.RESONANT_FEATHER::asStack)
+				.title(Component.translatable("itemGroup." + L2Complements.MODID + ".generated"))
+				.displayItems((param, output) -> param.holders().lookup(Registries.ENCHANTMENT).ifPresent((lookup) ->
+						genEnchants(output, lookup, Set.of(LCEnchantments.ALL)))));
+	}
+
+	private static void genEnchants(CreativeModeTab.Output output,
+									HolderLookup<Enchantment> lookup,
+									Set<EnchantmentCategory> set) {
+		lookup.listElements().map(Holder::value)
+				.filter(e -> e.allowedInCreativeTab(Items.ENCHANTED_BOOK, set))
+				.forEach((e) -> {
+					output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(e, 1)), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
+					if (e.getMaxLevel() > 1) {
+						output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(e, e.getMaxLevel())), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
+					}
+				});
 	}
 
 	public static final ItemEntry<TooltipItem> WIND_BOTTLE;

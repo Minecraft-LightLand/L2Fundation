@@ -2,8 +2,9 @@ package dev.xkmc.l2complements.init.data;
 
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.materials.LCMats;
-import dev.xkmc.l2complements.network.ArmorEffectConfig;
 import dev.xkmc.l2complements.network.NetworkManager;
+import dev.xkmc.l2library.init.data.ArmorEffectConfig;
+import dev.xkmc.l2library.init.data.L2ConfigManager;
 import dev.xkmc.l2library.serial.network.BaseConfig;
 import dev.xkmc.l2library.serial.network.ConfigDataProvider;
 import net.minecraft.data.DataGenerator;
@@ -16,7 +17,7 @@ import java.util.Set;
 public class LCConfigGen extends ConfigDataProvider {
 
 	public LCConfigGen(DataGenerator generator) {
-		super(generator, "data/" + L2Complements.MODID + "/" + L2Complements.MODID + "/", "L2Complements Config");
+		super(generator, "data/" + L2Complements.MODID + "/l2library_config/", "L2Complements Armor Config");
 	}
 
 	@Override
@@ -29,7 +30,7 @@ public class LCConfigGen extends ConfigDataProvider {
 		ans.immune.put(LCMats.SCULKIUM.armorPrefix(), new HashSet<>(Set.of(
 				MobEffects.DARKNESS, MobEffects.BLINDNESS, MobEffects.CONFUSION,
 				MobEffects.DIG_SLOWDOWN, MobEffects.WEAKNESS, MobEffects.MOVEMENT_SLOWDOWN)));
-		map.put(NetworkManager.ARMOR.getID() + "/default", ans);
+		map.put(L2ConfigManager.ARMOR.getID() + "/default", ans);
 
 	}
 

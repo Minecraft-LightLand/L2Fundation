@@ -12,7 +12,7 @@ import static net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT;
 import static net.minecraftforge.network.NetworkDirection.PLAY_TO_SERVER;
 
 public enum NetworkManager {
-	ARMOR;
+	;
 
 	public String getID() {
 		return name().toLowerCase(Locale.ROOT);
@@ -29,7 +29,6 @@ public enum NetworkManager {
 	}
 
 	public static void register() {
-		HANDLER.addCachedConfig(ARMOR.getID(), new ConfigMerger<>(ArmorEffectConfig.class));
 	}
 
 }

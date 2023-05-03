@@ -1,1 +1,7 @@
-// 1.19.4	2023-05-02T19:40:36.797452	Tags for minecraft:damage_type mod id l2complements
+// 1.19.4	2023-05-03T11:39:02.602118	Tags for minecraft:damage_type mod id l2complements
+eef3476cb56d3eb5a86642dbeec6d062a55fb809 data/forge/tags/damage_type/is_magic.json
+43d4130dd268d43e99fe1e1bd8528f67fc1695c1 data/minecraft/tags/damage_type/bypasses_armor.json
+b0ad167a9b1ff9d27b746621f0945ae180ec8998 data/minecraft/tags/damage_type/bypasses_effects.json
+b0ad167a9b1ff9d27b746621f0945ae180ec8998 data/minecraft/tags/damage_type/bypasses_enchantments.json
+b0ff9b20b6f09e0e62a26bfd030c66c53d92358c data/minecraft/tags/damage_type/bypasses_invulnerability.json
+b0ad167a9b1ff9d27b746621f0945ae180ec8998 data/minecraft/tags/damage_type/bypasses_resistance.json

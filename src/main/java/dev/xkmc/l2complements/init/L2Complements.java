@@ -91,9 +91,7 @@ public class L2Complements {
 		PackOutput output = event.getGenerator().getPackOutput();
 		var pvd = event.getLookupProvider();
 		var helper = event.getExistingFileHelper();
-
-		event.getGenerator().addProvider(gen, new DamageTypeGen(output, pvd));
-		event.getGenerator().addProvider(gen, new DamageTypeTagGen(output, pvd, helper));
+		new DamageTypeGen(output, pvd, helper).generate(gen, event.getGenerator());
 		event.getGenerator().addProvider(gen, new LCConfigGen(event.getGenerator()));
 	}
 

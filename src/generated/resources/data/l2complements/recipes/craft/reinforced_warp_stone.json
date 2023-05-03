@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "addition": {
     "item": "l2complements:shulkerate_ingot"
   },
@@ -8,5 +8,6 @@
   },
   "result": {
     "item": "l2complements:reinforced_warp_stone"
-  }
+  },
+  "template": []
 }

@@ -35,8 +35,8 @@ public class L2Complements {
 
 	private static void registerRegistrates(IEventBus bus) {
 		ForgeMod.enableMilkFluid();
-		LCBlocks.register();
 		LCItems.register();
+		LCBlocks.register();
 		LCEffects.register();
 		LCParticle.register();
 		LCEnchantments.register();

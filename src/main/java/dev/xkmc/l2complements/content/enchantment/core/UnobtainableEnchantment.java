@@ -1,14 +1,15 @@
 package dev.xkmc.l2complements.content.enchantment.core;
 
-import dev.xkmc.l2complements.init.registrate.LCItems;
+import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
+
+import java.util.Set;
 
 public class UnobtainableEnchantment extends Enchantment {
 
@@ -60,8 +61,8 @@ public class UnobtainableEnchantment extends Enchantment {
 		return component;
 	}
 
-	public boolean allowedInCreativeTab(Item book, CreativeModeTab tab) {
-		return tab == CreativeModeTab.TAB_SEARCH || tab == LCItems.TAB_GENERATED;
+	public boolean allowedInCreativeTab(Item book, Set<EnchantmentCategory> tab) {
+		return tab.contains(LCEnchantments.ALL);
 	}
 
 }

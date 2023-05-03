@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "B": {
       "item": "l2complements:life_essence"
@@ -17,5 +18,6 @@
   ],
   "result": {
     "item": "minecraft:turtle_spawn_egg"
-  }
+  },
+  "show_notification": true
 }

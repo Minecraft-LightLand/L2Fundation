@@ -16,10 +16,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
  */
 public class LCBlocks {
 
-	static {
-		L2Complements.REGISTRATE.creativeModeTab(() -> LCItems.TAB_GENERATED);
-	}
-
 	public static final BlockEntry<AnvilBlock> ETERNAL_ANVIL = L2Complements.REGISTRATE
 			.block("eternal_anvil", p -> new AnvilBlock(BlockBehaviour.Properties.copy(Blocks.ANVIL)))
 			.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.getEntry(), pvd.models().getExistingFile(

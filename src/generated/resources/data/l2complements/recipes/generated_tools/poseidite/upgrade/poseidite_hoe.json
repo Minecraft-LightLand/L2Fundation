@@ -1,12 +1,13 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "addition": {
     "item": "l2complements:poseidite_block"
   },
   "base": {
-    "tag": "forge:tools/hoes"
+    "tag": "minecraft:hoes"
   },
   "result": {
     "item": "l2complements:poseidite_hoe"
-  }
+  },
+  "template": []
 }

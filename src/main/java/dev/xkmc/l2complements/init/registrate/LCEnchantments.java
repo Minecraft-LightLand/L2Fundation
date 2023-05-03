@@ -21,10 +21,6 @@ public class LCEnchantments {
 
 	public static final EnchantmentCategory ALL = EnchantmentCategory.create("ALL", e -> e.getMaxStackSize() == 1);
 
-	static {
-		LCItems.TAB.setEnchantmentCategories(ALL);
-	}
-
 	public static final RegistryEntry<ImmuneEnchantment> ENCH_PROJECTILE = reg("projectile_reject");
 	public static final RegistryEntry<ImmuneEnchantment> ENCH_FIRE = reg("fire_reject");
 	public static final RegistryEntry<ImmuneEnchantment> ENCH_ENVIRONMENT = reg("environment_reject");

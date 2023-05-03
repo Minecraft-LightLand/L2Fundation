@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "A": {
       "item": "l2complements:explosion_shard"
@@ -21,5 +22,6 @@
   ],
   "result": {
     "item": "minecraft:ancient_debris"
-  }
+  },
+  "show_notification": true
 }

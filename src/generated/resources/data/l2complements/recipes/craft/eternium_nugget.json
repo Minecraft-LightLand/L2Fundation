@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "1": {
       "type": "l2library:enchantment",
@@ -38,5 +39,6 @@
   ],
   "result": {
     "item": "l2complements:eternium_nugget"
-  }
+  },
+  "show_notification": true
 }

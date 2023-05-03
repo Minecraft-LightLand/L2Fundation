@@ -1,12 +1,13 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "addition": {
     "item": "l2complements:totemic_gold_block"
   },
   "base": {
-    "tag": "forge:tools/pickaxes"
+    "tag": "minecraft:pickaxes"
   },
   "result": {
     "item": "l2complements:totemic_gold_pickaxe"
-  }
+  },
+  "template": []
 }

@@ -1,12 +1,13 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "addition": {
     "item": "minecraft:iron_block"
   },
   "base": {
-    "tag": "forge:tools/hoes"
+    "tag": "minecraft:hoes"
   },
   "result": {
     "item": "minecraft:iron_hoe"
-  }
+  },
+  "template": []
 }

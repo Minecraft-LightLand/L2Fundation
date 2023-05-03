@@ -1,12 +1,13 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "addition": {
     "item": "minecraft:gold_block"
   },
   "base": {
-    "tag": "forge:tools/pickaxes"
+    "tag": "minecraft:pickaxes"
   },
   "result": {
     "item": "minecraft:golden_pickaxe"
-  }
+  },
+  "template": []
 }

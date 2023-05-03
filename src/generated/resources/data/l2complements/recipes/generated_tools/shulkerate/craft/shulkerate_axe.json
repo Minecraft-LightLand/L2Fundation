@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "A": {
       "item": "l2complements:shulkerate_ingot"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "l2complements:shulkerate_axe"
-  }
+  },
+  "show_notification": true
 }

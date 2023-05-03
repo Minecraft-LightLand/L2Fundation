@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "A": {
       "item": "l2complements:cursed_droplet"
@@ -21,5 +22,6 @@
   ],
   "result": {
     "item": "l2complements:guardian_rune"
-  }
+  },
+  "show_notification": true
 }

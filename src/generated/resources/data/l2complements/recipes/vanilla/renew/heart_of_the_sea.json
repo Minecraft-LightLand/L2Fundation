@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "A": {
       "item": "minecraft:prismarine_shard"
@@ -18,5 +19,6 @@
   ],
   "result": {
     "item": "minecraft:heart_of_the_sea"
-  }
+  },
+  "show_notification": true
 }

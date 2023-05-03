@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "A": {
       "item": "minecraft:tropical_fish"
@@ -21,5 +22,6 @@
   ],
   "result": {
     "item": "minecraft:tropical_fish_bucket"
-  }
+  },
+  "show_notification": true
 }

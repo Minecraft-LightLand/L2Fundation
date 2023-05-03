@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "item": "l2complements:sculkium_nugget"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "l2complements:sculkium_ingot"
-  }
+  },
+  "show_notification": true
 }

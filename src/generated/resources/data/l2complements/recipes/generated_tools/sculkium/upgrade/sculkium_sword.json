@@ -1,12 +1,13 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "addition": {
     "item": "l2complements:sculkium_block"
   },
   "base": {
-    "tag": "forge:tools/swords"
+    "tag": "minecraft:swords"
   },
   "result": {
     "item": "l2complements:sculkium_sword"
-  }
+  },
+  "template": []
 }

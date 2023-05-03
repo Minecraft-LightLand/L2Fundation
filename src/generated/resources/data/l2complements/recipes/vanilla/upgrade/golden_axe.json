@@ -1,12 +1,13 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "addition": {
     "item": "minecraft:gold_block"
   },
   "base": {
-    "tag": "forge:tools/axes"
+    "tag": "minecraft:axes"
   },
   "result": {
     "item": "minecraft:golden_axe"
-  }
+  },
+  "template": []
 }

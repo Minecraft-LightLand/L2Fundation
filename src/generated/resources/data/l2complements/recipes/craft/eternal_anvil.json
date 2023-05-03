@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "A": {
       "item": "l2complements:eternium_block"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "l2complements:eternal_anvil"
-  }
+  },
+  "show_notification": true
 }

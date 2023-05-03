@@ -1,12 +1,13 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "addition": {
     "item": "minecraft:iron_block"
   },
   "base": {
-    "tag": "forge:tools/shovels"
+    "tag": "minecraft:shovels"
   },
   "result": {
     "item": "minecraft:iron_shovel"
-  }
+  },
+  "template": []
 }

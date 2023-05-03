@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "A": {
       "item": "minecraft:beef"
@@ -21,5 +22,6 @@
   ],
   "result": {
     "item": "minecraft:cow_spawn_egg"
-  }
+  },
+  "show_notification": true
 }

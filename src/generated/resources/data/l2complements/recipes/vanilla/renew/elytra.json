@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "A": {
       "item": "l2complements:explosion_shard"
@@ -24,5 +25,6 @@
   ],
   "result": {
     "item": "minecraft:elytra"
-  }
+  },
+  "show_notification": true
 }

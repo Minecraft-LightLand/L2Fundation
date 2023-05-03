@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "A": {
       "item": "minecraft:bone"
@@ -18,5 +19,6 @@
   ],
   "result": {
     "item": "minecraft:skeleton_spawn_egg"
-  }
+  },
+  "show_notification": true
 }

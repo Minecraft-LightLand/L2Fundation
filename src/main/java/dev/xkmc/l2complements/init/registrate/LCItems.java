@@ -21,7 +21,6 @@ import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.EnchantedGoldenAppleItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -37,13 +36,11 @@ import static dev.xkmc.l2complements.init.L2Complements.REGISTRATE;
 @MethodsReturnNonnullByDefault
 public class LCItems {
 
-	public static final Supplier<CreativeModeTab> TAB = REGISTRATE
-			.buildCreativeModeTab("generated", e -> e
-					.icon(LCItems.VOID_EYE::asStack)
-					.title(Component.translatable("itemGroup." + L2Complements.MODID + ".generated")));
-
 	static {
-		REGISTRATE.creativeModeTab(TAB);
+
+		REGISTRATE.creativeModeTab("generated", b -> b
+				.icon(LCItems.REINFORCED_WARP_STONE::asStack)
+				.title(Component.translatable("itemGroup." + L2Complements.MODID + ".generated")));
 	}
 
 	public static final ItemEntry<TooltipItem> WIND_BOTTLE;

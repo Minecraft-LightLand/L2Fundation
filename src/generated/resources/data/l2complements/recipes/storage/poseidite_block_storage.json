@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "item": "l2complements:poseidite_ingot"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "l2complements:poseidite_block"
-  }
+  },
+  "show_notification": true
 }

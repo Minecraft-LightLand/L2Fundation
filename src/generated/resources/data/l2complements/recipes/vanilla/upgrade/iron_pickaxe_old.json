@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "minecraft:iron_block"
+  },
+  "base": {
+    "tag": "minecraft:pickaxes"
+  },
+  "result": {
+    "item": "minecraft:iron_pickaxe"
+  }
+}

@@ -31,6 +31,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.function.BiFunction;
 
+import static dev.xkmc.l2library.base.recipe.AbstractSmithingRecipe.TEMPLATE_PLACEHOLDER;
+
+@SuppressWarnings("removal")
 public class RecipeGen {
 
 	@SuppressWarnings("unchecked")
@@ -773,6 +776,11 @@ public class RecipeGen {
 		return new ResourceLocation(L2Complements.MODID, currentFolder + ForgeRegistries.ITEMS.getKey(item).getPath());
 	}
 
+	@SuppressWarnings("ConstantConditions")
+	private static ResourceLocation getID(Item item, String suffix) {
+		return new ResourceLocation(L2Complements.MODID, currentFolder + ForgeRegistries.ITEMS.getKey(item).getPath() + suffix);
+	}
+
 	private static void convert(RegistrateRecipeProvider pvd, Item in, Item out, int count) {
 		unlock(pvd, new BurntRecipeBuilder(Ingredient.of(in), out.getDefaultInstance(), count)::unlockedBy, in).save(pvd, getID(in));
 	}
@@ -836,11 +844,13 @@ public class RecipeGen {
 	}
 
 	public static void smithing(RegistrateRecipeProvider pvd, TagKey<Item> in, Item mat, Item out) {
-		unlock(pvd, SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(in), Ingredient.of(mat), RecipeCategory.MISC, out)::unlocks, mat).save(pvd, getID(out));
+		unlock(pvd, SmithingTransformRecipeBuilder.smithing(TEMPLATE_PLACEHOLDER, Ingredient.of(in), Ingredient.of(mat), RecipeCategory.MISC, out)::unlocks, mat).save(pvd, getID(out));
+		unlock(pvd, LegacyUpgradeRecipeBuilder.smithing(Ingredient.of(in), Ingredient.of(mat), RecipeCategory.MISC, out)::unlocks, mat).save(pvd, getID(out, "_old"));
 	}
 
 	public static void smithing(RegistrateRecipeProvider pvd, Item in, Item mat, Item out) {
-		unlock(pvd, SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(in), Ingredient.of(mat), RecipeCategory.MISC, out)::unlocks, mat).save(pvd, getID(out));
+		unlock(pvd, SmithingTransformRecipeBuilder.smithing(TEMPLATE_PLACEHOLDER, Ingredient.of(in), Ingredient.of(mat), RecipeCategory.MISC, out)::unlocks, mat).save(pvd, getID(out));
+		unlock(pvd, LegacyUpgradeRecipeBuilder.smithing(Ingredient.of(in), Ingredient.of(mat), RecipeCategory.MISC, out)::unlocks, mat).save(pvd, getID(out, "_old"));
 	}
 
 	public static void smelting(RegistrateRecipeProvider pvd, Item source, Item result, float experience) {

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "l2complements:totemic_gold_block"
+  },
+  "base": {
+    "tag": "forge:armors/helmets"
+  },
+  "result": {
+    "item": "l2complements:totemic_gold_helmet"
+  }
+}

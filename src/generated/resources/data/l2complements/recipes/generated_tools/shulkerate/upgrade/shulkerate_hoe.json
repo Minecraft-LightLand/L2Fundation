@@ -9,5 +9,7 @@
   "result": {
     "item": "l2complements:shulkerate_hoe"
   },
-  "template": []
+  "template": {
+    "item": "minecraft:paper"
+  }
 }

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "minecraft:iron_block"
+  },
+  "base": {
+    "tag": "forge:armors/chestplates"
+  },
+  "result": {
+    "item": "minecraft:iron_chestplate"
+  }
+}

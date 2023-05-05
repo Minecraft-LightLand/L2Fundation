@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "l2complements:poseidite_block"
+  },
+  "base": {
+    "tag": "minecraft:hoes"
+  },
+  "result": {
+    "item": "l2complements:poseidite_hoe"
+  }
+}

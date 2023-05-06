@@ -146,7 +146,13 @@ dependencies {
     runtimeOnly fg.deobf('curse.maven:corpse-316582:3920717')
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.19.2-76")
 
-    runtimeOnly fg.deobf('curse.maven:apocalypse-now-448410:4474900')
+    //runtimeOnly fg.deobf('curse.maven:apocalypse-now-448410:4474900')
+
+    runtimeOnly fg.deobf('curse.maven:apotheosis-313970:4453685')
+    runtimeOnly fg.deobf('curse.maven:placebo-283644:4500148')
+    runtimeOnly fg.deobf('curse.maven:mutil-351914:3941314')
+    runtimeOnly fg.deobf('curse.maven:tetra-289712:4487237')
+
 
 
 }

@@ -1,6 +1,7 @@
 package dev.xkmc.l2complements.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import dev.xkmc.l2complements.compat.ApotheosisLoopCompat;
 import dev.xkmc.l2complements.content.enchantment.special.LifeSyncEnchantment;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
@@ -9,6 +10,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.extensions.IForgeItemStack;
 import org.jetbrains.annotations.NotNull;
@@ -49,7 +51,12 @@ public abstract class ItemStackMixin implements IForgeItemStack {
 	@ModifyReturnValue(at = @At("RETURN"), method = "getMaxDamage")
 	public int l2complements_getMaxDamage_durabilityEnchantment(int max) {
 		ItemStack self = (ItemStack) (Object) this;
+		if (ApotheosisLoopCompat.loop > 0) {
+			return EnchantmentHelper.getTagEnchantmentLevel(LCEnchantments.DURABLE_ARMOR.get(), self);
+		}
+		ApotheosisLoopCompat.loop++;
 		int lv = self.getEnchantmentLevel(LCEnchantments.DURABLE_ARMOR.get());
+		ApotheosisLoopCompat.loop--;
 		return max * (1 + lv);
 	}
 

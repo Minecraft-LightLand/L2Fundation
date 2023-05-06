@@ -14,9 +14,6 @@ import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2complements.init.data.TagGen;
 import dev.xkmc.l2complements.init.materials.LCMats;
 import net.minecraft.MethodsReturnNonnullByDefault;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffect;
@@ -26,11 +23,11 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Set;
 import java.util.function.BiFunction;
@@ -42,26 +39,15 @@ import static dev.xkmc.l2complements.init.L2Complements.REGISTRATE;
 @MethodsReturnNonnullByDefault
 public class LCItems {
 
+	public static final Supplier<CreativeModeTab> TAB;
+
 	static {
 
-		REGISTRATE.creativeModeTab("generated", b -> b
+		TAB = REGISTRATE.buildCreativeModeTab("generated", b -> b
 				.icon(LCItems.RESONANT_FEATHER::asStack)
-				.title(Component.translatable("itemGroup." + L2Complements.MODID + ".generated"))
-				.displayItems((param, output) -> param.holders().lookup(Registries.ENCHANTMENT).ifPresent((lookup) ->
-						genEnchants(output, lookup, Set.of(LCEnchantments.ALL)))));
-	}
+				.title(Component.translatable("itemGroup." + L2Complements.MODID + ".generated")));
 
-	private static void genEnchants(CreativeModeTab.Output output,
-									HolderLookup<Enchantment> lookup,
-									Set<EnchantmentCategory> set) {
-		lookup.listElements().map(Holder::value)
-				.filter(e -> e.allowedInCreativeTab(Items.ENCHANTED_BOOK, set))
-				.forEach((e) -> {
-					output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(e, 1)), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
-					if (e.getMaxLevel() > 1) {
-						output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(e, e.getMaxLevel())), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
-					}
-				});
+		LCBlocks.register();
 	}
 
 	public static final ItemEntry<TooltipItem> WIND_BOTTLE;
@@ -205,6 +191,18 @@ public class LCItems {
 			))).register();
 		}
 		GEN_ITEM = L2Complements.MATS.genItem(LCMats.values());
+
+		REGISTRATE.modifyCreativeModeTab(TAB, m -> {
+			Set<EnchantmentCategory> set = Set.of(LCEnchantments.ALL);
+			ForgeRegistries.ENCHANTMENTS.getValues().stream()
+					.filter(e -> e.allowedInCreativeTab(Items.ENCHANTED_BOOK, set))
+					.forEach((e) -> {
+						m.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(e, 1)), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
+						if (e.getMaxLevel() > 1) {
+							m.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(e, e.getMaxLevel())), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
+						}
+					});
+		});
 	}
 
 	public static MutableComponent getTooltip(MobEffectInstance eff) {

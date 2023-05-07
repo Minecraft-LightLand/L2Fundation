@@ -1,8 +1,8 @@
 package dev.xkmc.l2complements.network;
 
 import dev.xkmc.l2complements.events.ItemUseEventHandler;
-import dev.xkmc.l2library.serial.SerialClass;
-import dev.xkmc.l2library.serial.network.SerialPacketBase;
+import dev.xkmc.l2serial.network.SerialPacketBase;
+import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;

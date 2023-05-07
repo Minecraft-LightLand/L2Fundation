@@ -4,7 +4,7 @@ import dev.xkmc.l2complements.compat.CurioCompat;
 import dev.xkmc.l2complements.content.item.misc.ILCTotem;
 import dev.xkmc.l2complements.events.SpecialEquipmentEvents;
 import dev.xkmc.l2complements.init.data.TagGen;
-import dev.xkmc.l2library.util.code.Wrappers;
+import dev.xkmc.l2serial.util.Wrappers;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;

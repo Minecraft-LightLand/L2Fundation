@@ -2,7 +2,7 @@ package dev.xkmc.l2complements.content.effect.skill;
 
 import dev.xkmc.l2library.base.effects.EffectUtil;
 import dev.xkmc.l2library.base.effects.api.InherentEffect;
-import dev.xkmc.l2library.util.code.Wrappers;
+import dev.xkmc.l2serial.util.Wrappers;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;

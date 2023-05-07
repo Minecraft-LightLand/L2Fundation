@@ -1,7 +1,7 @@
 package dev.xkmc.l2complements.content.recipe;
 
 import dev.xkmc.l2complements.init.registrate.LCRecipes;
-import dev.xkmc.l2library.base.recipe.BaseRecipeBuilder;
+import dev.xkmc.l2library.serial.recipe.BaseRecipeBuilder;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 

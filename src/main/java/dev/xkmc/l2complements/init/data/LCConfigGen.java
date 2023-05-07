@@ -2,11 +2,10 @@ package dev.xkmc.l2complements.init.data;
 
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.materials.LCMats;
-import dev.xkmc.l2complements.network.NetworkManager;
 import dev.xkmc.l2library.init.data.ArmorEffectConfig;
 import dev.xkmc.l2library.init.data.L2ConfigManager;
-import dev.xkmc.l2library.serial.network.BaseConfig;
-import dev.xkmc.l2library.serial.network.ConfigDataProvider;
+import dev.xkmc.l2library.serial.config.BaseConfig;
+import dev.xkmc.l2library.serial.config.ConfigDataProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.effect.MobEffects;
 

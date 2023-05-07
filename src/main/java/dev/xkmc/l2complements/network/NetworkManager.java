@@ -1,9 +1,8 @@
 package dev.xkmc.l2complements.network;
 
 import dev.xkmc.l2complements.init.L2Complements;
-import dev.xkmc.l2library.serial.config.ConfigMerger;
-import dev.xkmc.l2library.serial.network.BaseConfig;
-import dev.xkmc.l2library.serial.network.PacketHandlerWithConfig;
+import dev.xkmc.l2library.serial.config.BaseConfig;
+import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.Locale;

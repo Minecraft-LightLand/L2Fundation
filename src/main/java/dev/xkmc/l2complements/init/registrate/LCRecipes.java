@@ -4,7 +4,7 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import dev.xkmc.l2complements.content.recipe.BurntRecipe;
 import dev.xkmc.l2complements.init.L2Complements;
-import dev.xkmc.l2library.base.recipe.BaseRecipe;
+import dev.xkmc.l2library.serial.recipe.BaseRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.eventbus.api.IEventBus;

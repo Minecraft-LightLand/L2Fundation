@@ -1,4 +1,4 @@
-// 1.19.4	2023-05-04T12:59:27.288776	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.4	2023-05-12T18:05:12.194831	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
@@ -840,6 +840,7 @@ bfdfab925d3aae515709e426b963be6ae6fc0d4b data/l2complements/tags/blocks/requires
 d0d10d015074535d1001cbc559ccc2e5681a8fa2 data/l2complements/tags/items/delicate_bone.json
 9f1119c6fdd4c13eac16f64322754cb3c4c99bf1 data/l2complements/tags/items/l2c_legendary.json
 8bc2e79599af169e6f9f11cc081dd692ab81d86c data/l2complements/tags/items/l2c_totems.json
+e37ba910b8c93bc8d4baf7b90643a6b16e56e0bb data/l2library/tags/items/quick_access_vanilla.json
 e37ba910b8c93bc8d4baf7b90643a6b16e56e0bb data/minecraft/tags/blocks/anvil.json
 1add9316900bcd8966170ac63202cbb1eb904347 data/minecraft/tags/blocks/mineable/pickaxe.json
 6ca30f314d5b5c27b3dd994fd64170066b3940c9 data/minecraft/tags/blocks/needs_stone_tool.json

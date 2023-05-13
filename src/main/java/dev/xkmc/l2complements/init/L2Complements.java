@@ -7,9 +7,12 @@ import dev.xkmc.l2complements.init.registrate.*;
 import dev.xkmc.l2complements.network.NetworkManager;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.init.events.attack.AttackEventHandler;
+import dev.xkmc.l2library.init.events.click.quickaccess.QuickAccessClickHandler;
+import dev.xkmc.l2library.init.events.click.quickaccess.SimpleMenuAction;
 import dev.xkmc.l2library.init.events.listeners.EffectSyncEvents;
 import dev.xkmc.l2library.init.materials.vanilla.GenItemVanillaType;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.inventory.AnvilMenu;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.ForgeMod;
@@ -83,6 +86,8 @@ public class L2Complements {
 			DispenserBlock.registerBehavior(LCItems.SOUL_CHARGE.get(), LCItems.SOUL_CHARGE.get().new FireChargeBehavior());
 			DispenserBlock.registerBehavior(LCItems.STRONG_CHARGE.get(), LCItems.STRONG_CHARGE.get().new FireChargeBehavior());
 			DispenserBlock.registerBehavior(LCItems.BLACK_CHARGE.get(), LCItems.BLACK_CHARGE.get().new FireChargeBehavior());
+
+			QuickAccessClickHandler.register(LCBlocks.ETERNAL_ANVIL.asItem(), new SimpleMenuAction(AnvilMenu::new, "container.repair"));
 		});
 	}
 

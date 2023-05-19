@@ -1,5 +1,6 @@
 package dev.xkmc.l2complements.init;
 
+import dev.xkmc.l2complements.compat.L2BackpackCompat;
 import dev.xkmc.l2complements.events.*;
 import dev.xkmc.l2complements.init.data.*;
 import dev.xkmc.l2complements.init.materials.vanilla.GenItemVanillaType;
@@ -17,6 +18,7 @@ import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -83,6 +85,10 @@ public class L2Complements {
 			DispenserBlock.registerBehavior(LCItems.SOUL_CHARGE.get(), LCItems.SOUL_CHARGE.get().new FireChargeBehavior());
 			DispenserBlock.registerBehavior(LCItems.STRONG_CHARGE.get(), LCItems.STRONG_CHARGE.get().new FireChargeBehavior());
 			DispenserBlock.registerBehavior(LCItems.BLACK_CHARGE.get(), LCItems.BLACK_CHARGE.get().new FireChargeBehavior());
+
+			if (ModList.get().isLoaded("l2backpack")) {
+				L2BackpackCompat.register();
+			}
 		});
 	}
 

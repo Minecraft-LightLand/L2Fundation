@@ -7,12 +7,13 @@ import dev.xkmc.l2complements.init.registrate.*;
 import dev.xkmc.l2complements.network.NetworkManager;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.init.events.attack.AttackEventHandler;
-import dev.xkmc.l2library.init.events.click.quickaccess.QuickAccessClickHandler;
-import dev.xkmc.l2library.init.events.click.quickaccess.SimpleMenuAction;
+import dev.xkmc.l2library.init.events.click.quickaccess.DefaultQuickAccessActions;
 import dev.xkmc.l2library.init.events.listeners.EffectSyncEvents;
 import dev.xkmc.l2library.init.materials.vanilla.GenItemVanillaType;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.AnvilMenu;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.ForgeMod;
@@ -36,6 +37,8 @@ public class L2Complements {
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
 	public static final GenItemVanillaType MATS = new GenItemVanillaType(MODID, REGISTRATE);
 
+	public static final L2ComplementsClick CLICK = new L2ComplementsClick(new ResourceLocation(MODID, "main"));
+
 	private static void registerRegistrates(IEventBus bus) {
 		ForgeMod.enableMilkFluid();
 		LCItems.register();
@@ -58,7 +61,7 @@ public class L2Complements {
 		MinecraftForge.EVENT_BUS.register(MaterialEventHandler.class);
 		MinecraftForge.EVENT_BUS.register(MagicEventHandler.class);
 		MinecraftForge.EVENT_BUS.register(SpecialEquipmentEvents.class);
-		AttackEventHandler.LISTENERS.put(5000, new MaterialDamageListener());
+		AttackEventHandler.register(5000, new MaterialDamageListener());
 	}
 
 	private static void registerModBusEvents(IEventBus bus) {
@@ -87,7 +90,7 @@ public class L2Complements {
 			DispenserBlock.registerBehavior(LCItems.STRONG_CHARGE.get(), LCItems.STRONG_CHARGE.get().new FireChargeBehavior());
 			DispenserBlock.registerBehavior(LCItems.BLACK_CHARGE.get(), LCItems.BLACK_CHARGE.get().new FireChargeBehavior());
 
-			QuickAccessClickHandler.register(LCBlocks.ETERNAL_ANVIL.asItem(), new SimpleMenuAction(AnvilMenu::new, "container.repair"));
+			DefaultQuickAccessActions.quickAccess(MenuType.ANVIL, LCBlocks.ETERNAL_ANVIL.asItem(), AnvilMenu::new, "container.repair");
 		});
 	}
 

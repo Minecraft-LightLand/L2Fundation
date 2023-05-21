@@ -4,12 +4,12 @@ import com.mojang.datafixers.util.Pair;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2library.util.nbt.NBTObj;
 import dev.xkmc.l2library.util.tools.TeleportTool;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -22,6 +22,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 public class WarpStone extends Item {
 
@@ -54,6 +55,15 @@ public class WarpStone extends Item {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		ItemStack stack = player.getItemInHand(hand);
+		return use(level, player, stack, e -> e.broadcastBreakEvent(hand));
+	}
+
+	public void use(ServerPlayer player, ItemStack stack) {
+		use(player.level, player, stack, e -> {
+		});
+	}
+
+	private InteractionResultHolder<ItemStack> use(Level level, Player player, ItemStack stack, Consumer<Player> breaker) {
 		var ppos = getPos(stack);
 		if (ppos.isPresent()) {
 			if (!level.isClientSide()) {
@@ -65,7 +75,7 @@ public class WarpStone extends Item {
 					TeleportTool.performTeleport(player, lv, pos.x, pos.y, pos.z, player.getYRot(), player.getXRot());
 				}
 				if (!fragile) {
-					stack.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(hand));
+					stack.hurtAndBreak(1, player, breaker);
 				}
 			}
 			if (fragile) {

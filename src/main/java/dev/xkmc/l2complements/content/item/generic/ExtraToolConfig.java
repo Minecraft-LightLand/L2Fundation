@@ -4,6 +4,7 @@ import com.google.common.collect.Multimap;
 import dev.xkmc.l2complements.init.materials.api.IMatVanillaType;
 import dev.xkmc.l2complements.init.materials.vanilla.GenItemVanillaType;
 import dev.xkmc.l2library.base.effects.EffectUtil;
+import dev.xkmc.l2library.init.events.attack.AttackCache;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -110,5 +111,10 @@ public class ExtraToolConfig {
 
 	public boolean hideWithEffect() {
 		return false;
+	}
+
+
+	public void onDamage(ItemStack pass, AttackCache cache) {
+
 	}
 }

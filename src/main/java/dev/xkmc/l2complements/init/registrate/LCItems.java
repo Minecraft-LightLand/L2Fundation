@@ -50,7 +50,7 @@ public class LCItems {
 		}
 	}
 
-	public static final Tab TAB_GENERATED = new Tab("generated", () -> LCItems.REINFORCED_WARP_STONE);
+	public static final Tab TAB_GENERATED = new Tab("generated", () -> LCItems.RESONANT_FEATHER);
 
 	static {
 		REGISTRATE.creativeModeTab(() -> TAB_GENERATED);

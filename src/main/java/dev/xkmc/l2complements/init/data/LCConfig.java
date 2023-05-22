@@ -43,6 +43,8 @@ public class LCConfig {
 		public final ForgeConfigSpec.IntValue curseEnchantDuration;
 		public final ForgeConfigSpec.IntValue bleedEnchantMax;
 
+		public final ForgeConfigSpec.DoubleValue mobTypeBonus;
+
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("materials");
 			windSpeed = builder.comment("Requirement for obtaining Captured Wind. Unit: Block per Tick")
@@ -87,6 +89,8 @@ public class LCConfig {
 					.defineInRange("curseEnchantDuration", 100, 1, 10000);
 			bleedEnchantMax = builder.comment("Max effect level for sharpBlade")
 					.defineInRange("bleedEnchantMax", 3, 1, 10000);
+			mobTypeBonus = builder.comment("Bonus damage factor for specific materials against specific mob types")
+					.defineInRange("mobTypeBonus", 1d, 0, 1000);
 			builder.pop();
 
 		}

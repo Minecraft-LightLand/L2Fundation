@@ -5,7 +5,6 @@ import dev.xkmc.l2library.serial.config.CollectType;
 import dev.xkmc.l2library.serial.config.ConfigCollect;
 import dev.xkmc.l2library.serial.network.BaseConfig;
 import net.minecraft.world.effect.MobEffect;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.HashSet;

@@ -7,7 +7,7 @@ import net.minecraft.world.inventory.AnvilMenu;
 
 public class L2BackpackCompat {
 
-	public static void register(){
+	public static void register() {
 		QuickAccessClickHandler.register(LCBlocks.ETERNAL_ANVIL.get().asItem(), new SimpleMenuAction(AnvilMenu::new, "container.repair"));
 	}
 

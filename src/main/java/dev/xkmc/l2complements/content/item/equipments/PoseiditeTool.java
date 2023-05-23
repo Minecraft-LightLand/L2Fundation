@@ -1,13 +1,17 @@
 package dev.xkmc.l2complements.content.item.equipments;
 
 import com.google.common.collect.Multimap;
+import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2library.init.events.attack.AttackCache;
+import dev.xkmc.l2library.init.events.attack.DamageModifier;
 import dev.xkmc.l2library.init.materials.generic.ExtraToolConfig;
 import dev.xkmc.l2library.util.math.MathHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -32,7 +36,7 @@ public class PoseiditeTool extends ExtraToolConfig {
 	@Override
 	public float getDestroySpeed(ItemStack stack, BlockState state, float old) {
 		if (stack.getOrCreateTag().getBoolean(KEY)) {
-			return old * 1.5f;
+			return old * 1.5f;//TODO
 		}
 		return old;
 	}
@@ -49,6 +53,13 @@ public class PoseiditeTool extends ExtraToolConfig {
 	@Override
 	public void addTooltip(ItemStack stack, List<Component> list) {
 		list.add(LangData.IDS.POSEIDITE_TOOL.get().withStyle(ChatFormatting.GRAY));
+	}
+
+	@Override
+	public void onDamage(AttackCache cache, ItemStack stack) {
+		if (cache.getAttackTarget().isSensitiveToWater() || cache.getAttackTarget().getMobType() == MobType.WATER) {
+			cache.addHurtModifier(DamageModifier.multPre((float) (1 + LCConfig.COMMON.mobTypeBonus.get())));
+		}
 	}
 
 }

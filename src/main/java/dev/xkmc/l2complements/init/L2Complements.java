@@ -6,6 +6,7 @@ import dev.xkmc.l2complements.init.data.*;
 import dev.xkmc.l2complements.init.registrate.*;
 import dev.xkmc.l2complements.network.NetworkManager;
 import dev.xkmc.l2library.base.L2Registrate;
+import dev.xkmc.l2library.init.L2Library;
 import dev.xkmc.l2library.init.events.attack.AttackEventHandler;
 import dev.xkmc.l2library.init.events.click.quickaccess.DefaultQuickAccessActions;
 import dev.xkmc.l2library.init.events.listeners.EffectSyncEvents;
@@ -21,6 +22,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -30,14 +32,13 @@ import org.apache.logging.log4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(L2Complements.MODID)
+@Mod.EventBusSubscriber(modid = L2Complements.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class L2Complements {
 
 	public static final String MODID = "l2complements";
 	public static final Logger LOGGER = LogManager.getLogger();
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
 	public static final GenItemVanillaType MATS = new GenItemVanillaType(MODID, REGISTRATE);
-
-	public static final L2ComplementsClick CLICK = new L2ComplementsClick(new ResourceLocation(MODID, "main"));
 
 	private static void registerRegistrates(IEventBus bus) {
 		ForgeMod.enableMilkFluid();
@@ -49,36 +50,24 @@ public class L2Complements {
 		LCEntities.register();
 		LCRecipes.register(bus);
 		NetworkManager.register();
+		LCConfig.init();
+		new L2ComplementsClick(new ResourceLocation(MODID, "main"));
+		AttackEventHandler.register(5000, new MaterialDamageListener());
 		REGISTRATE.addDataGenerator(ProviderType.LANG, LangData::addTranslations);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, RecipeGen::genRecipe);
 		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, TagGen::onBlockTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, TagGen::onItemTagGen);
-	}
-
-	private static void registerForgeEvents() {
-		LCConfig.init();
-		MinecraftForge.EVENT_BUS.register(ItemUseEventHandler.class);
-		MinecraftForge.EVENT_BUS.register(MaterialEventHandler.class);
-		MinecraftForge.EVENT_BUS.register(MagicEventHandler.class);
-		MinecraftForge.EVENT_BUS.register(SpecialEquipmentEvents.class);
-		AttackEventHandler.register(5000, new MaterialDamageListener());
-	}
-
-	private static void registerModBusEvents(IEventBus bus) {
-		bus.addListener(L2Complements::setup);
-		bus.addListener(EventPriority.LOWEST, L2Complements::gatherData);
+		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, TagGen::onEntityTagGen);
 	}
 
 	public L2Complements() {
 		FMLJavaModLoadingContext ctx = FMLJavaModLoadingContext.get();
 		IEventBus bus = ctx.getModEventBus();
-		registerModBusEvents(bus);
-		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> L2ComplementsClient.onCtorClient(bus, MinecraftForge.EVENT_BUS));
 		registerRegistrates(bus);
-		registerForgeEvents();
 	}
 
-	private static void setup(final FMLCommonSetupEvent event) {
+	@SubscribeEvent
+	public static void setup(final FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
 			EffectSyncEvents.TRACKED.add(LCEffects.FLAME.get());
 			EffectSyncEvents.TRACKED.add(LCEffects.EMERALD.get());
@@ -94,6 +83,7 @@ public class L2Complements {
 		});
 	}
 
+	@SubscribeEvent
 	public static void gatherData(GatherDataEvent event) {
 		boolean gen = event.includeServer();
 		PackOutput output = event.getGenerator().getPackOutput();

@@ -1,5 +1,6 @@
 package dev.xkmc.l2complements.events;
 
+import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.network.EmptyRightClickToServer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
@@ -9,11 +10,12 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("unused")
+@Mod.EventBusSubscriber(modid = L2Complements.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ItemUseEventHandler {
 
 	public static final List<ItemClickHandler> LIST = new ArrayList<>();

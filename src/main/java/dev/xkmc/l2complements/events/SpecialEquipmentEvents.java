@@ -1,5 +1,6 @@
 package dev.xkmc.l2complements.events;
 
+import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2library.init.materials.generic.GenericArmorItem;
 import dev.xkmc.l2library.init.materials.generic.GenericTieredItem;
@@ -13,7 +14,9 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
+@Mod.EventBusSubscriber(modid = L2Complements.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class SpecialEquipmentEvents {
 
 	public static ThreadLocal<ServerPlayer> PLAYER = new ThreadLocal<>();

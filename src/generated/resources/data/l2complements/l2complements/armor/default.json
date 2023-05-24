@@ -5,17 +5,17 @@
       "minecraft:mining_fatigue"
     ],
     "l2complements:sculkium": [
-      "minecraft:mining_fatigue",
-      "minecraft:darkness",
-      "minecraft:blindness",
-      "minecraft:nausea",
       "minecraft:weakness",
-      "minecraft:slowness"
+      "minecraft:darkness",
+      "minecraft:slowness",
+      "minecraft:mining_fatigue",
+      "minecraft:nausea",
+      "minecraft:blindness"
     ],
     "l2complements:totemic_gold": [
+      "minecraft:hunger",
       "minecraft:wither",
-      "minecraft:poison",
-      "minecraft:hunger"
+      "minecraft:poison"
     ]
   }
 }

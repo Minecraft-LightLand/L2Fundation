@@ -174,6 +174,8 @@ public class LangData {
 				"Stack bleeding effect to target. Higher levels have higher stack cap.");
 		pvd.add(LCEnchantments.SMELT.get().getDescriptionId() + ".desc",
 				"Smelt mined items if possible, including items in chests!");
+		pvd.add(LCEnchantments.ENCH_MATES.get().getDescriptionId() + ".desc",
+				"Negate all damages from entities owned by you.");
 	}
 
 	public static String asId(String name) {

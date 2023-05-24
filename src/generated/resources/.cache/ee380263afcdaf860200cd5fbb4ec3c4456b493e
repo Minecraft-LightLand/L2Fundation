@@ -1,12 +1,12 @@
-// 1.19.2	2023-05-22T14:19:59.437998	Registrate Provider for l2complements [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2023-05-24T02:03:56.096358	Registrate Provider for l2complements [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
 b2a769b51ddce14c173a64b5457cccb4d8ef6a45 assets/l2complements/blockstates/sculkium_block.json
 2b88df6f8b01f3c72273ce13dbcb556f7dab321d assets/l2complements/blockstates/shulkerate_block.json
 65262ae0f886f61c163059f15c2ad1a7ba9c264a assets/l2complements/blockstates/totemic_gold_block.json
-b5c71b3140f448205e856a43911fa4096b3e3b4d assets/l2complements/lang/en_ud.json
-6a24dd65f24f03a88f1197fb6ced5c83323361cb assets/l2complements/lang/en_us.json
+1811db331ae0678caab0108df3005f167636386a assets/l2complements/lang/en_ud.json
+9fb04e2a90248b1b6c26f0852dab1613527d6d3c assets/l2complements/lang/en_us.json
 bb63c088704d714f1763cb16cec8af6cd1006d66 assets/l2complements/models/block/eternium_block.json
 a45ee09acc262fd67be22de093136ad757f08e61 assets/l2complements/models/block/poseidite_block.json
 a52909a3a44a80695da32b5c3c5f931a0f72f74d assets/l2complements/models/block/sculkium_block.json
@@ -174,6 +174,7 @@ b224d4a06a8bbcdfbb175338b03b449622b3fd32 data/l2complements/advancements/recipes
 982f477061319571438b42f1728a90f6f1bd537e data/l2complements/advancements/recipes/enchantments/enchantments/invincible.json
 069249ae2a4f004c802163811fb0a2ce5d2b04fb data/l2complements/advancements/recipes/enchantments/enchantments/life_sync.json
 81934683c42b3662b0e5668c0965fcc87a2bbe54 data/l2complements/advancements/recipes/enchantments/enchantments/magic_reject.json
+39653706d7e7dd6edc92b93c991946f338eb40aa data/l2complements/advancements/recipes/enchantments/enchantments/owner_protection.json
 d33395b915a55f89d8088777cfae2ba1966b22aa data/l2complements/advancements/recipes/enchantments/enchantments/projectile_reject.json
 868604e5abaaa8f46ad57b517b17fc72bd0f3ad1 data/l2complements/advancements/recipes/enchantments/enchantments/sharp_blade.json
 d158abcfa0739208f712f2c6b5e3cd217ac0deee data/l2complements/advancements/recipes/enchantments/enchantments/shinny.json
@@ -496,6 +497,7 @@ e8441045e9abfe6ed131d1f7e0e7ba45d7346770 data/l2complements/recipes/enchantments
 715547ea55b357de1c1c1c86b1c54bdb66734f51 data/l2complements/recipes/enchantments/invincible.json
 d30e8a19cf32cbae73cd744ecf4bb2aa2ebc9531 data/l2complements/recipes/enchantments/life_sync.json
 00bc9164a66ee7f7fd5d67973ff50d5be8e48683 data/l2complements/recipes/enchantments/magic_reject.json
+35a744edef938d38de6c767710897f772eaeb7e9 data/l2complements/recipes/enchantments/owner_protection.json
 b1320892e1153b357407fd106e7654679ca3e22f data/l2complements/recipes/enchantments/projectile_reject.json
 f8a87183c7e52ca5d732aec27d7c1a3f4bed7646 data/l2complements/recipes/enchantments/sharp_blade.json
 7e9f5d7c444a6b7892f4edce838733dce631b556 data/l2complements/recipes/enchantments/shinny.json

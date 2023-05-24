@@ -33,6 +33,7 @@ public class ToolDamageListener implements AttackListener {
 		GenericTieredItem tier = null;
 		if (event.getSource().getDirectEntity() instanceof AbstractArrow arrow) {
 			ItemStack stack = ((AbstractArrowAccessor) arrow).callGetPickupItem();
+			if (stack == null) stack = ItemStack.EMPTY;
 			if (stack.getItem() instanceof GenericTieredItem item) {
 				pass = stack;
 				tier = item;

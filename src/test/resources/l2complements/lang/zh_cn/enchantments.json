@@ -51,6 +51,8 @@
 	"sharp_blade": "撕裂之刃",
 	"sharp_blade.desc": "对敌人叠加流血效果。更高级的附魔增加叠加上限",
 	"smelt": "自动冶炼",
-	"smelt.desc": "破坏方块时掉落的物品能冶炼的全部冶炼，包括箱子里的物品"
+	"smelt.desc": "破坏方块时掉落的物品能冶炼的全部冶炼，包括箱子里的物品",
+	"owner_protection": "召唤者保护",
+	"owner_protection.desc": "从属于你的生物无法对你造成伤害"
   }
 }

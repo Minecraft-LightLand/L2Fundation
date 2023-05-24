@@ -31,6 +31,7 @@ public class LCEnchantments {
 	public static final RegistryEntry<ImmuneEnchantment> ENCH_EXPLOSION = reg("explosion_reject");
 	public static final RegistryEntry<ImmuneEnchantment> ENCH_MAGIC = reg("magic_reject");
 	public static final RegistryEntry<ImmuneEnchantment> ENCH_INVINCIBLE = reg("invincible");
+	public static final RegistryEntry<ImmuneEnchantment> ENCH_MATES = reg("owner_protection");
 
 	public static final RegistryEntry<SingleLevelEnchantment> SHULKER_ARMOR = REGISTRATE
 			.enchantment("shulker_armor", ALL, SingleLevelEnchantment::new)

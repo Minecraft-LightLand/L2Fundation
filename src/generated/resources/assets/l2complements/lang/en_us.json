@@ -47,6 +47,8 @@
   "enchantment.l2complements.life_sync.desc": "Cost health instead of durability when possible. May kill the user",
   "enchantment.l2complements.magic_reject": "Magic Reject",
   "enchantment.l2complements.magic_reject.desc": "Make wearer immune to magic damage.",
+  "enchantment.l2complements.owner_protection": "Owner Protection",
+  "enchantment.l2complements.owner_protection.desc": "Negate all damages from entities owned by you.",
   "enchantment.l2complements.projectile_reject": "Projectile Reject",
   "enchantment.l2complements.projectile_reject.desc": "Deflects all projectiles. Make wearer immune to projectile damage.",
   "enchantment.l2complements.sharp_blade": "Sharp Blade",

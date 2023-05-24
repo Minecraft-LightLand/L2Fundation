@@ -299,6 +299,13 @@ public class RecipeGen {
 					.define('4', new EnchantmentIngredient(LCEnchantments.ENCH_PROJECTILE.get(), 1))
 					.save(pvd, getID(LCEnchantments.ENCH_INVINCIBLE.get()));
 
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENCH_MATES.get(), 1)::unlockedBy, Items.NETHER_STAR)
+					.pattern("BAB").pattern("B1B").pattern("BAB")
+					.define('1', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
+					.define('A', Items.NETHER_STAR)
+					.define('B', Items.END_ROD)
+					.save(pvd, getID(LCEnchantments.ENCH_MATES.get()));
+
 			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.SHULKER_ARMOR.get(), 1)::unlockedBy, LCMats.SHULKERATE.getNugget())
 					.pattern("LCL").pattern("ABA").pattern("LAL")
 					.define('A', LCMats.SHULKERATE.getNugget())

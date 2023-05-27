@@ -51,12 +51,17 @@ public abstract class ItemStackMixin implements IForgeItemStack {
 	@ModifyReturnValue(at = @At("RETURN"), method = "getMaxDamage")
 	public int l2complements_getMaxDamage_durabilityEnchantment(int max) {
 		ItemStack self = (ItemStack) (Object) this;
-		if (ApotheosisLoopCompat.loop > 0) {
-			return EnchantmentHelper.getTagEnchantmentLevel(LCEnchantments.DURABLE_ARMOR.get(), self);
+		int lv;
+		if (ApotheosisLoopCompat.loop >= 2) {
+			lv = EnchantmentHelper.getTagEnchantmentLevel(LCEnchantments.DURABLE_ARMOR.get(), self);
+		} else {
+			ApotheosisLoopCompat.loop++;
+			lv = self.getEnchantmentLevel(LCEnchantments.DURABLE_ARMOR.get());
+			ApotheosisLoopCompat.loop--;
 		}
-		ApotheosisLoopCompat.loop++;
-		int lv = self.getEnchantmentLevel(LCEnchantments.DURABLE_ARMOR.get());
-		ApotheosisLoopCompat.loop--;
+		if (lv <= 0) {
+			return max;
+		}
 		return max * (1 + lv);
 	}
 

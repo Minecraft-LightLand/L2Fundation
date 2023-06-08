@@ -98,32 +98,32 @@ public class LCItems {
 		MAT_INGOTS = L2Complements.MATS.genMats(LCMats.values(), "ingot", Tags.Items.INGOTS);
 		MAT_NUGGETS = L2Complements.MATS.genMats(LCMats.values(), "nugget", Tags.Items.NUGGETS);
 		{
-			WIND_BOTTLE = simpleItem("wind_capture_bottle", WindBottle::new, Rarity.COMMON, LangData.IDS.WIND_BOTTLE::get); // tested
-			VOID_EYE = simpleItem("void_eye", VoidEyeItem::new, Rarity.EPIC, () -> LangData.IDS.VOID_EYE.get(LCConfig.COMMON.belowVoid.get())); // kill aggroed enderman 16 blocks in void
-			CAPTURED_WIND = simpleItem("captured_wind", TooltipItem::new, Rarity.RARE, () -> LangData.IDS.CAPTURED_WIND.get(LCConfig.COMMON.windSpeed.get() * 20)); // player reach 200m/s
-			CAPTURED_BULLET = simpleItem("captured_shulker_bullet", TooltipItem::new, Rarity.UNCOMMON, LangData.IDS.CAPTURED_BULLET::get); //  capture bullet
-			SUN_MEMBRANE = simpleItem("sun_membrane", RefinedRadianceItem::new, Rarity.EPIC, () -> LangData.IDS.SUN_MEMBRANE.get(LCConfig.COMMON.phantomHeight.get())); // kill phantom 200 blocks above maximum build height with arrow
-			EXPLOSION_SHARD = simpleItem("explosion_shard", TooltipItem::new, Rarity.UNCOMMON, () -> LangData.IDS.EXPLOSION_SHARD.get(LCConfig.COMMON.explosionDamage.get())); // endure > 80 explosion damage
-			HARD_ICE = simpleItem("hard_ice", TooltipItem::new, Rarity.UNCOMMON, LangData.IDS.HARD_ICE::get); // kill drowned with powder snow damage
-			SOUL_FLAME = simpleItem("soul_flame", RefinedRadianceItem::new, Rarity.RARE, LangData.IDS.SOUL_FLAME::get); // kill ghast with soul flame
-			STORM_CORE = simpleItem("storm_core", TooltipItem::new, Rarity.UNCOMMON, LangData.IDS.STORM_CORE::get); // kill phantom with explosion
-			BLACKSTONE_CORE = simpleItem("blackstone_core", TooltipItem::new, Rarity.RARE, LangData.IDS.BLACKSTONE_CORE::get); // kill guardian with stone cage effect
-			RESONANT_FEATHER = simpleItem("resonant_feather", TooltipItem::new, Rarity.EPIC, LangData.IDS.RESONANT_FEATHER::get); // let chicken survive sonic boom
-			SPACE_SHARD = simpleItem("space_shard", TooltipItem::new, Rarity.EPIC, () -> LangData.IDS.SPACE_SHARD.get(LCConfig.COMMON.spaceDamage.get())); // deal 500 arrow damage
-			WARDEN_BONE_SHARD = simpleItem("warden_bone_shard", TooltipItem::new, Rarity.RARE, LangData.IDS.WARDEN_BONE_SHARD::get);
-			GUARDIAN_EYE = simpleItem("guardian_eye", TooltipItem::new, Rarity.RARE, LangData.IDS.GUARDIAN_EYE::get);
-			EMERALD = REGISTRATE.item("heirophant_green", p -> new BurntItem(p.fireResistant().rarity(Rarity.EPIC))).defaultModel().tag(TagGen.SPECIAL_ITEM).defaultLang().register();
-			CURSED_DROPLET = REGISTRATE.item("cursed_droplet", p -> new BurntItem(p.fireResistant().rarity(Rarity.RARE))).defaultModel().tag(TagGen.SPECIAL_ITEM).defaultLang().register();
+			WIND_BOTTLE = simpleItem("wind_capture_bottle", "Wind Capturing Bottle", WindBottle::new, Rarity.COMMON, LangData.IDS.WIND_BOTTLE::get); // tested
+			VOID_EYE = simpleItem("void_eye", "Void Eye", VoidEyeItem::new, Rarity.EPIC, () -> LangData.IDS.VOID_EYE.get(LCConfig.COMMON.belowVoid.get())); // kill aggroed enderman 16 blocks in void
+			CAPTURED_WIND = simpleItem("captured_wind", "Essence of Wind", TooltipItem::new, Rarity.RARE, () -> LangData.IDS.CAPTURED_WIND.get(LCConfig.COMMON.windSpeed.get() * 20)); // player reach 200m/s
+			CAPTURED_BULLET = simpleItem("captured_shulker_bullet", "Shulker Bullet in Bottle", TooltipItem::new, Rarity.UNCOMMON, LangData.IDS.CAPTURED_BULLET::get); //  capture bullet
+			SUN_MEMBRANE = simpleItem("sun_membrane", "Membrane of the Sun", RefinedRadianceItem::new, Rarity.EPIC, () -> LangData.IDS.SUN_MEMBRANE.get(LCConfig.COMMON.phantomHeight.get())); // kill phantom 200 blocks above maximum build height with arrow
+			EXPLOSION_SHARD = simpleItem("explosion_shard", "Remnant Shard of Explosion", TooltipItem::new, Rarity.UNCOMMON, () -> LangData.IDS.EXPLOSION_SHARD.get(LCConfig.COMMON.explosionDamage.get())); // endure > 80 explosion damage
+			HARD_ICE = simpleItem("hard_ice", "Unliving Ice", TooltipItem::new, Rarity.UNCOMMON, LangData.IDS.HARD_ICE::get); // kill drowned with powder snow damage
+			SOUL_FLAME = simpleItem("soul_flame", "Soul Flame", RefinedRadianceItem::new, Rarity.RARE, LangData.IDS.SOUL_FLAME::get); // kill ghast with soul flame
+			STORM_CORE = simpleItem("storm_core", "Crystal of Storm", TooltipItem::new, Rarity.UNCOMMON, LangData.IDS.STORM_CORE::get); // kill phantom with explosion
+			BLACKSTONE_CORE = simpleItem("blackstone_core", "Blackstone Core", TooltipItem::new, Rarity.RARE, LangData.IDS.BLACKSTONE_CORE::get); // kill guardian with stone cage effect
+			RESONANT_FEATHER = simpleItem("resonant_feather", "Resonant Feather", TooltipItem::new, Rarity.EPIC, LangData.IDS.RESONANT_FEATHER::get); // let chicken survive sonic boom
+			SPACE_SHARD = simpleItem("space_shard", "Space Shard (Creative)", TooltipItem::new, Rarity.EPIC, () -> LangData.IDS.SPACE_SHARD.get(LCConfig.COMMON.spaceDamage.get())); // deal 500 arrow damage
+			WARDEN_BONE_SHARD = simpleItem("warden_bone_shard", "Warden Bone Shard", TooltipItem::new, Rarity.RARE, LangData.IDS.WARDEN_BONE_SHARD::get);
+			GUARDIAN_EYE = simpleItem("guardian_eye", "Eye of Elder Guardian", TooltipItem::new, Rarity.RARE, LangData.IDS.GUARDIAN_EYE::get);
+			EMERALD = REGISTRATE.item("heirophant_green", p -> new BurntItem(p.fireResistant().rarity(Rarity.EPIC))).defaultModel().tag(TagGen.SPECIAL_ITEM).lang("Heirophant Green").register();
+			CURSED_DROPLET = REGISTRATE.item("cursed_droplet", p -> new BurntItem(p.fireResistant().rarity(Rarity.RARE))).defaultModel().tag(TagGen.SPECIAL_ITEM).lang("Cursed Droplet").register();
 			LIFE_ESSENCE = REGISTRATE.item("life_essence", p -> new BurntItem(p.fireResistant().rarity(Rarity.RARE)
 							.food(new FoodProperties.Builder().nutrition(20).saturationMod(1.2f).alwaysEat().fast().build())))
-					.defaultModel().tag(TagGen.SPECIAL_ITEM).defaultLang().register();
+					.defaultModel().tag(TagGen.SPECIAL_ITEM).lang("Essence of Life").register();
 			FORCE_FIELD = REGISTRATE.item("force_field", p -> new SpecialRenderItem(p.fireResistant().rarity(Rarity.EPIC), LangData.IDS.FORCE_FIELD::get))
 					.model((ctx, pvd) -> pvd.getBuilder(ctx.getName()).parent(new ModelFile.UncheckedModelFile("builtin/entity")))
-					.defaultLang().tag(TagGen.SPECIAL_ITEM).register();
-			GUARDIAN_RUNE = simpleItem("guardian_rune", (p, t) -> new TransformItem(p, t,
+					.lang("Wither Force Field").tag(TagGen.SPECIAL_ITEM).register();
+			GUARDIAN_RUNE = simpleItem("guardian_rune", "Rune of Guardian", (p, t) -> new TransformItem(p, t,
 							() -> EntityType.GUARDIAN, () -> EntityType.ELDER_GUARDIAN),
 					Rarity.RARE, LangData.IDS.GUARDIAN_RUNE::get);
-			PIGLIN_RUNE = simpleItem("piglin_rune", (p, t) -> new TransformItem(p, t,
+			PIGLIN_RUNE = simpleItem("piglin_rune", "Rune of Pigin", (p, t) -> new TransformItem(p, t,
 							() -> EntityType.PIGLIN, () -> EntityType.PIGLIN_BRUTE),
 					Rarity.RARE, LangData.IDS.PIGLIN_RUNE::get);
 		}
@@ -213,8 +213,8 @@ public class LCItems {
 		return comp.withStyle(mobeffect.getCategory().getTooltipFormatting());
 	}
 
-	public static <T extends Item> ItemEntry<T> simpleItem(String id, BiFunction<Item.Properties, Supplier<MutableComponent>, T> func, Rarity r, Supplier<MutableComponent> sup) {
-		return REGISTRATE.item(id, p -> func.apply(p.fireResistant().rarity(r), sup)).defaultModel().tag(TagGen.SPECIAL_ITEM).defaultLang().register();
+	public static <T extends Item> ItemEntry<T> simpleItem(String id, String name, BiFunction<Item.Properties, Supplier<MutableComponent>, T> func, Rarity r, Supplier<MutableComponent> sup) {
+		return REGISTRATE.item(id, p -> func.apply(p.fireResistant().rarity(r), sup)).defaultModel().tag(TagGen.SPECIAL_ITEM).lang(name).register();
 	}
 
 	public static void register() {

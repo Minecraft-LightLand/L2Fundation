@@ -6,6 +6,7 @@ import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2complements.init.registrate.LCRecipes;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.*;
@@ -89,12 +90,7 @@ public class MaterialEventHandler {
 		}
 	}
 
-	@SubscribeEvent
-	public static void onItemKill(EntityLeaveLevelEvent event) {
-		Level level = event.getLevel();
-		if (event.getLevel().isClientSide()) return;
-		if (!(event.getEntity() instanceof ItemEntity entity)) return;
-		ItemStack stack = entity.getItem();
+	public static void onItemKill(Level level, Entity entity, ItemStack stack) {
 		BurntRecipe.Inv inv = new BurntRecipe.Inv();
 		inv.setItem(0, stack);
 		var opt = level.getRecipeManager().getRecipeFor(LCRecipes.RT_BURNT.get(), inv, level);
@@ -117,8 +113,6 @@ public class MaterialEventHandler {
 						copy, 0, 0.5, 0));
 			}
 		}
-
-
 	}
 
 }

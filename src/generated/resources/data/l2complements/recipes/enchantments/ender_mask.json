@@ -7,12 +7,15 @@
     "B": {
       "item": "minecraft:book"
     },
+    "C": {
+      "item": "minecraft:carved_pumpkin"
+    },
     "L": {
       "item": "minecraft:lapis_lazuli"
     }
   },
   "pattern": [
-    "LAL",
+    "LCL",
     "ABA",
     "LAL"
   ],

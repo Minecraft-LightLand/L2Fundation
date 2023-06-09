@@ -339,9 +339,10 @@ public class RecipeGen {
 					.save(pvd, getID(LCEnchantments.WIND_SWEEP.get()));
 
 			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENDER_MASK.get(), 1)::unlockedBy, Items.ENDER_EYE)
-					.pattern("LAL").pattern("ABA").pattern("LAL")
+					.pattern("LCL").pattern("ABA").pattern("LAL")
 					.define('A', Items.ENDER_EYE)
 					.define('B', Items.BOOK)
+					.define('C', Items.CARVED_PUMPKIN)
 					.define('L', Items.LAPIS_LAZULI)
 					.save(pvd, getID(LCEnchantments.ENDER_MASK.get()));
 

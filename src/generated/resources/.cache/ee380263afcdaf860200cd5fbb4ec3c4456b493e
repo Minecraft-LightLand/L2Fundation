@@ -1,4 +1,4 @@
-// 1.19.2	2023-06-08T16:17:06.234431	Registrate Provider for l2complements [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2023-06-09T13:04:18.470827	Registrate Provider for l2complements [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
@@ -485,7 +485,7 @@ b7f8afacfa6815152392abe0c981ee3d6ef1a34f data/l2complements/recipes/eggs/undead/
 1ba385a03ef13ba699c967db544a6f5abafb763b data/l2complements/recipes/enchantments/durable_armor_1.json
 b948cb8ff2a466cf8f5623349cc7fc5503c7278d data/l2complements/recipes/enchantments/durable_armor_2.json
 9752e2f1928988a0f7b9751349ede3816611bc13 data/l2complements/recipes/enchantments/durable_armor_3.json
-2c68e8fc4f6f8f41e2809996d897abc6aa6fa9e4 data/l2complements/recipes/enchantments/ender_mask.json
+3c9a0990f22b316bea2143a56465d8098b4edf49 data/l2complements/recipes/enchantments/ender_mask.json
 5ba9057b22f58140e3d1d2fae8198ffe42216d8d data/l2complements/recipes/enchantments/ender_reach.json
 dc8e98da5295a2fda8b4cc4616047d00d0577eca data/l2complements/recipes/enchantments/environment_reject.json
 26744c72eb2bffd59880b570db177f291e158817 data/l2complements/recipes/enchantments/eternal.json

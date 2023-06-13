@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:craft/enchanted_totemic_apple"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

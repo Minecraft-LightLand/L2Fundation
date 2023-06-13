@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:craft/wind_capture_bottle"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

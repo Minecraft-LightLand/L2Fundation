@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:eggs/aquatic_alternate/tropical_fish_bucket"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

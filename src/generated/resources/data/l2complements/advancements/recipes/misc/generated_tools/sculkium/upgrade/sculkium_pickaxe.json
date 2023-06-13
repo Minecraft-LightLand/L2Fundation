@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:generated_tools/sculkium/upgrade/sculkium_pickaxe"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

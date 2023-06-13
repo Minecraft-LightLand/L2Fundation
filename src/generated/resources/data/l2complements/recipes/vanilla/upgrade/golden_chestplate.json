@@ -9,7 +9,5 @@
   "result": {
     "item": "minecraft:golden_chestplate"
   },
-  "template": {
-    "item": "minecraft:paper"
-  }
+  "template": []
 }

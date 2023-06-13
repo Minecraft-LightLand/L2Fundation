@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:burnt/salmon"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

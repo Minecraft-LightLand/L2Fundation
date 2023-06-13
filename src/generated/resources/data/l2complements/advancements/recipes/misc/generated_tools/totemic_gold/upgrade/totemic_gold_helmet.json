@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:generated_tools/totemic_gold/upgrade/totemic_gold_helmet"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

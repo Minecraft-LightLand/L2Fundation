@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:craft/totem_of_dream"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:burnt/ghast_tear"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

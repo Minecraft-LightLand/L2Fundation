@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:generated_tools/poseidite/craft/poseidite_pickaxe"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

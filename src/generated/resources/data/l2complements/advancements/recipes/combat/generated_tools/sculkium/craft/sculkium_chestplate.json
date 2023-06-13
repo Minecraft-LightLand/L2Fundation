@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:generated_tools/sculkium/craft/sculkium_chestplate"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

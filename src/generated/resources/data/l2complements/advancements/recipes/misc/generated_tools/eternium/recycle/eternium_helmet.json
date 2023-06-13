@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:generated_tools/eternium/recycle/eternium_helmet"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

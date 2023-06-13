@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:generated_tools/shulkerate/upgrade/shulkerate_axe"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

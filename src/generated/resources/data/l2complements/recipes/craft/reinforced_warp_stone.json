@@ -9,7 +9,5 @@
   "result": {
     "item": "l2complements:reinforced_warp_stone"
   },
-  "template": {
-    "item": "minecraft:paper"
-  }
+  "template": []
 }

@@ -9,7 +9,5 @@
   "result": {
     "item": "minecraft:diamond_boots"
   },
-  "template": {
-    "item": "minecraft:paper"
-  }
+  "template": []
 }

@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:vanilla/renew/reinforced_deepslate"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

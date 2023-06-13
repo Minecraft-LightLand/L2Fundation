@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:craft/black_fire_charge"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

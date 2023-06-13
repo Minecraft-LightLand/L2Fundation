@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:storage/sculkium_block_unpack"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -1,21 +1,20 @@
 {
-  "_class": "dev.xkmc.l2library.init.data.ArmorEffectConfig",
   "immune": {
     "l2complements:poseidite": [
       "minecraft:mining_fatigue"
     ],
     "l2complements:sculkium": [
-      "minecraft:mining_fatigue",
       "minecraft:blindness",
       "minecraft:darkness",
       "minecraft:weakness",
+      "minecraft:nausea",
       "minecraft:slowness",
-      "minecraft:nausea"
+      "minecraft:mining_fatigue"
     ],
     "l2complements:totemic_gold": [
-      "minecraft:hunger",
+      "minecraft:wither",
       "minecraft:poison",
-      "minecraft:wither"
+      "minecraft:hunger"
     ]
   }
 }

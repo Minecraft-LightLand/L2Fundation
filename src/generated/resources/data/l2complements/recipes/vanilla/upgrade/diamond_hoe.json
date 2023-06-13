@@ -9,7 +9,5 @@
   "result": {
     "item": "minecraft:diamond_hoe"
   },
-  "template": {
-    "item": "minecraft:paper"
-  }
+  "template": []
 }

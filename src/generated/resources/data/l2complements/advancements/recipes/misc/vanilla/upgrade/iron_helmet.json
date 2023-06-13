@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:vanilla/upgrade/iron_helmet"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

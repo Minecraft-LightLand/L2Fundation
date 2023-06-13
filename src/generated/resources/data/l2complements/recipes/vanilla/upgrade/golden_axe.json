@@ -9,7 +9,5 @@
   "result": {
     "item": "minecraft:golden_axe"
   },
-  "template": {
-    "item": "minecraft:paper"
-  }
+  "template": []
 }

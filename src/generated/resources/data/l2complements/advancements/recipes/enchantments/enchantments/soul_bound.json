@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:enchantments/soul_bound"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

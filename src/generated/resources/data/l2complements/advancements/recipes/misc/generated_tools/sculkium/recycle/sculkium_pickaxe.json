@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:generated_tools/sculkium/recycle/sculkium_pickaxe"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

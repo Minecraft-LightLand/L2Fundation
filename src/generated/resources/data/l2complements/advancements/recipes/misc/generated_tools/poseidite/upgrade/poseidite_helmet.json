@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:generated_tools/poseidite/upgrade/poseidite_helmet"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

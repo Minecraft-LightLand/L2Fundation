@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:generated_tools/eternium/recycle/eternium_axe"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

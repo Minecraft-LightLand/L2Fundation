@@ -161,7 +161,7 @@ public class LCItems {
 							.effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 1200), 1)
 							.effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 1), 1)
 							.build()
-			))).register();
+			))).defaultModel().register();
 
 			ENCHANT_TOTEMIC_CARROT = REGISTRATE.item("enchanted_totemic_carrot", p -> new EnchantedGoldenAppleItem(p.food(
 					new FoodProperties.Builder().nutrition(6).saturationMod(1.2f).alwaysEat()
@@ -170,7 +170,7 @@ public class LCItems {
 							.effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 3600, 1), 1)
 							.effect(() -> new MobEffectInstance(MobEffects.SATURATION, 20), 1)
 							.build()
-			))).register();
+			))).defaultModel().register();
 
 			TOTEMIC_APPLE = REGISTRATE.item("totemic_apple", p -> new Item(p.food(
 					new FoodProperties.Builder().nutrition(6).saturationMod(1.2f).alwaysEat()
@@ -179,7 +179,7 @@ public class LCItems {
 							.effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 2400, 4), 1)
 							.effect(() -> new MobEffectInstance(MobEffects.SATURATION, 60), 1)
 							.build()
-			))).register();
+			))).defaultModel().register();
 
 			ENCHANTED_TOTEMIC_APPLE = REGISTRATE.item("enchanted_totemic_apple", p -> new EnchantedGoldenAppleItem(p.food(
 					new FoodProperties.Builder().nutrition(6).saturationMod(1.2f).alwaysEat()
@@ -188,7 +188,7 @@ public class LCItems {
 							.effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 2400, 4), 1)
 							.effect(() -> new MobEffectInstance(MobEffects.SATURATION, 100), 1)
 							.build()
-			))).register();
+			))).defaultModel().register();
 		}
 		GEN_ITEM = L2Complements.MATS.genItem(LCMats.values());
 

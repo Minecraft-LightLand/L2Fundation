@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:burnt/cooked_chicken"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

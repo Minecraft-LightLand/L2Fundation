@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:generated_tools/poseidite/recycle/poseidite_axe"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

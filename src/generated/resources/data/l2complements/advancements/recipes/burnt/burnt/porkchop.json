@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:burnt/porkchop"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

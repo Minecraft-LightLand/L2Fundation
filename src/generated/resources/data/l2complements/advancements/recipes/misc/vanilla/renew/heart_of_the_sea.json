@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:vanilla/renew/heart_of_the_sea"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

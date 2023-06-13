@@ -9,7 +9,5 @@
   "result": {
     "item": "minecraft:iron_shovel"
   },
-  "template": {
-    "item": "minecraft:paper"
-  }
+  "template": []
 }

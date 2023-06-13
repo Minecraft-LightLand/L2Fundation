@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:burnt/mutton"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

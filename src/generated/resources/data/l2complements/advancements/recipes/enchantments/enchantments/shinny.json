@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:enchantments/shinny"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

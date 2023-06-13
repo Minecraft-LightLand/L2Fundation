@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:vanilla/renew/ancient_debris"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

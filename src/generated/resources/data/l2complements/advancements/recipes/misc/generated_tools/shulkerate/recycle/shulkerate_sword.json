@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:generated_tools/shulkerate/recycle/shulkerate_sword"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

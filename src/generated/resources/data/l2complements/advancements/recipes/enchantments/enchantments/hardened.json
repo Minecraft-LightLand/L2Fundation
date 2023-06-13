@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:enchantments/hardened"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:enchantments/life_sync"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

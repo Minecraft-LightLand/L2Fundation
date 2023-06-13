@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:generated_tools/eternium/upgrade/eternium_hoe"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

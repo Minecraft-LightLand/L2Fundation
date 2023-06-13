@@ -9,7 +9,5 @@
   "result": {
     "item": "minecraft:iron_axe"
   },
-  "template": {
-    "item": "minecraft:paper"
-  }
+  "template": []
 }

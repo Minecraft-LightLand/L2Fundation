@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:generated_tools/sculkium/craft/sculkium_hoe"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

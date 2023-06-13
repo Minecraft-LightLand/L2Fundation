@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:generated_tools/totemic_gold/craft/totemic_gold_sword"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

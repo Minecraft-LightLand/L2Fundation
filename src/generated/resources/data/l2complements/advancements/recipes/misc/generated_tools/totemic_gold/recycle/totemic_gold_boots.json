@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:generated_tools/totemic_gold/recycle/totemic_gold_boots"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

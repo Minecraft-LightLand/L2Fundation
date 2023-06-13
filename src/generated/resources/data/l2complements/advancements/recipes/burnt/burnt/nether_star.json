@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:burnt/nether_star"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

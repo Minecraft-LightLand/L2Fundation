@@ -9,7 +9,5 @@
   "result": {
     "item": "minecraft:diamond_pickaxe"
   },
-  "template": {
-    "item": "minecraft:paper"
-  }
+  "template": []
 }

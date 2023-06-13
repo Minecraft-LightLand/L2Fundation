@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:storage/shulkerate_ingot_storage"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

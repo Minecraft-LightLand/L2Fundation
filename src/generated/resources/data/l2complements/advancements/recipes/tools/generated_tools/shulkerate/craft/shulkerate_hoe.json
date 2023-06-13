@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:generated_tools/shulkerate/craft/shulkerate_hoe"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

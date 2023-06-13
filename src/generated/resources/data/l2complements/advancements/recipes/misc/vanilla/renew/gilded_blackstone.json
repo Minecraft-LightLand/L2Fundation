@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:vanilla/renew/gilded_blackstone"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

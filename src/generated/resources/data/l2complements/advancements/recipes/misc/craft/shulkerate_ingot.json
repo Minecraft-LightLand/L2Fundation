@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:craft/shulkerate_ingot"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

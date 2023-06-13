@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:burnt/beef"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

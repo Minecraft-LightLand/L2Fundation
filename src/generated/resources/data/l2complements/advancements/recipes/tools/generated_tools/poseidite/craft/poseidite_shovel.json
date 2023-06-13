@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:generated_tools/poseidite/craft/poseidite_shovel"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

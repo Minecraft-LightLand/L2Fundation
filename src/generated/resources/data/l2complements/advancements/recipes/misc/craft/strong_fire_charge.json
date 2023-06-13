@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:craft/strong_fire_charge"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

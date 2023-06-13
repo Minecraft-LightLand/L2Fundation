@@ -30,5 +30,6 @@
     "recipes": [
       "l2complements:burnt/cod"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

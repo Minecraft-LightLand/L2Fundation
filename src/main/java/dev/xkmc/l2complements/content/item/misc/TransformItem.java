@@ -31,7 +31,7 @@ public class TransformItem extends TooltipItem {
 
 	@Override
 	public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {
-		Level level = target.getLevel();
+		Level level = target.level();
 		if (target.getType() != from.get()) return InteractionResult.FAIL;
 		if (level.getDifficulty() == Difficulty.PEACEFUL) return InteractionResult.FAIL;
 		if (level instanceof ServerLevel server) {
@@ -40,7 +40,7 @@ public class TransformItem extends TooltipItem {
 				Mob result = to.get().create(level);
 				assert result != null;
 				result.moveTo(target.getX(), target.getY(), target.getZ(), target.getYRot(), target.getXRot());
-				result.finalizeSpawn(server, level.getCurrentDifficultyAt(result.blockPosition()), MobSpawnType.CONVERSION, null, null);
+				ForgeEventFactory.onFinalizeSpawn(result, server, level.getCurrentDifficultyAt(result.blockPosition()), MobSpawnType.CONVERSION, null, null);
 				result.setNoAi(((Mob) target).isNoAi());
 				if (target.hasCustomName()) {
 					result.setCustomName(target.getCustomName());

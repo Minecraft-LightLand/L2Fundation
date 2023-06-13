@@ -29,14 +29,14 @@ public class MaterialEventHandler {
 	@SubscribeEvent
 	public static void onEntityDeath(LivingDeathEvent event) {
 		if (event.getEntity() instanceof EnderMan ender) {
-			if (!ender.getLevel().isClientSide() && event.getSource().getEntity() instanceof Player player) {
-				if (ender.isCreepy() && ender.getOnPos().getY() <= ender.getLevel().getMinBuildHeight() - LCConfig.COMMON.belowVoid.get()) {
+			if (!ender.level().isClientSide() && event.getSource().getEntity() instanceof Player player) {
+				if (ender.isCreepy() && ender.getOnPos().getY() <= ender.level().getMinBuildHeight() - LCConfig.COMMON.belowVoid.get()) {
 					ender.spawnAtLocation(LCItems.VOID_EYE.asStack());
 				}
 			}
 		}
 		if (event.getEntity() instanceof Phantom phantom) {
-			Level level = phantom.getLevel();
+			Level level = phantom.level();
 			if (!level.isClientSide()) {
 				if (phantom.getOnPos().getY() >= level.getMaxBuildHeight() + LCConfig.COMMON.phantomHeight.get()) {
 					if (level.isDay() && level.canSeeSky(phantom.getOnPos()) && phantom.isOnFire()) {
@@ -49,33 +49,33 @@ public class MaterialEventHandler {
 			}
 		}
 		if (event.getEntity() instanceof Drowned drowned) {
-			Level level = drowned.getLevel();
+			Level level = drowned.level();
 			if (!level.isClientSide() && event.getSource().is(DamageTypeTags.IS_FREEZING)) {
 				drowned.spawnAtLocation(LCItems.HARD_ICE.asStack());
 			}
 		}
 		if (event.getEntity() instanceof PiglinBrute brute) {
-			if (!brute.getLevel().isClientSide() && brute.hasEffect(LCEffects.STONE_CAGE.get())) {
+			if (!brute.level().isClientSide() && brute.hasEffect(LCEffects.STONE_CAGE.get())) {
 				brute.spawnAtLocation(LCItems.BLACKSTONE_CORE.asStack());
 			}
 		}
 		if (event.getEntity() instanceof ElderGuardian guardian) {
-			if (!guardian.getLevel().isClientSide() && event.getSource().is(DamageTypeTags.IS_LIGHTNING)) {
+			if (!guardian.level().isClientSide() && event.getSource().is(DamageTypeTags.IS_LIGHTNING)) {
 				guardian.spawnAtLocation(LCItems.GUARDIAN_EYE.asStack());
 			}
 		}
 		if (event.getEntity() instanceof WitherBoss wither) {
-			if (!wither.getLevel().isClientSide() && event.getSource().is(DamageTypeTags.IS_PROJECTILE)) {
+			if (!wither.level().isClientSide() && event.getSource().is(DamageTypeTags.IS_PROJECTILE)) {
 				wither.spawnAtLocation(LCItems.FORCE_FIELD.asStack());
 			}
 		}
 		if (event.getEntity() instanceof Warden warden) {
-			if (!warden.getLevel().isClientSide() && event.getSource().getEntity() instanceof Player) {
+			if (!warden.level().isClientSide() && event.getSource().getEntity() instanceof Player) {
 				warden.spawnAtLocation(LCItems.WARDEN_BONE_SHARD.asStack());
 			}
 		}
 		if (event.getEntity() instanceof Ghast ghast) {
-			Level level = ghast.getLevel();
+			Level level = ghast.level();
 			DamageSource source = event.getSource();
 			if (!level.isClientSide() && source.getMsgId().equals("soul_flame")) {
 				ghast.spawnAtLocation(LCItems.SOUL_FLAME.asStack());

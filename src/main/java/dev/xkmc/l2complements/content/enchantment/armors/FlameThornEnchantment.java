@@ -19,7 +19,7 @@ public class FlameThornEnchantment extends UnobtainableEnchantment {
 
 	@Override
 	public void doPostHurt(LivingEntity target, Entity attacker, int pLevel) {
-		if (attacker instanceof LivingEntity le && !target.level.isClientSide())
+		if (attacker instanceof LivingEntity le && !target.level().isClientSide())
 			EffectUtil.addEffect(le, new MobEffectInstance(LCEffects.FLAME.get(), LCConfig.COMMON.iceEnchantDuration.get(), pLevel - 1), EffectUtil.AddReason.NONE, attacker);
 	}
 

@@ -1,34 +1,35 @@
 package dev.xkmc.l2complements.init;
 
 import com.tterrag.registrate.providers.ProviderType;
-import dev.xkmc.l2complements.events.*;
+import dev.xkmc.l2complements.events.L2ComplementsClick;
+import dev.xkmc.l2complements.events.MaterialDamageListener;
 import dev.xkmc.l2complements.init.data.*;
 import dev.xkmc.l2complements.init.registrate.*;
-import dev.xkmc.l2complements.network.NetworkManager;
+import dev.xkmc.l2complements.network.EmptyRightClickToServer;
+import dev.xkmc.l2complements.network.TotemUseToClient;
+import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
+import dev.xkmc.l2damagetracker.contents.materials.vanilla.GenItemVanillaType;
 import dev.xkmc.l2library.base.L2Registrate;
-import dev.xkmc.l2library.init.L2Library;
-import dev.xkmc.l2library.init.events.attack.AttackEventHandler;
-import dev.xkmc.l2library.init.events.click.quickaccess.DefaultQuickAccessActions;
-import dev.xkmc.l2library.init.events.listeners.EffectSyncEvents;
-import dev.xkmc.l2library.init.materials.vanilla.GenItemVanillaType;
+import dev.xkmc.l2library.init.events.EffectSyncEvents;
+import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
+import dev.xkmc.l2screentracker.click.quickaccess.DefaultQuickAccessActions;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.AnvilMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import static net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT;
+import static net.minecraftforge.network.NetworkDirection.PLAY_TO_SERVER;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(L2Complements.MODID)
@@ -36,6 +37,11 @@ import org.apache.logging.log4j.Logger;
 public class L2Complements {
 
 	public static final String MODID = "l2complements";
+	public static final PacketHandlerWithConfig HANDLER = new PacketHandlerWithConfig(
+			new ResourceLocation(MODID, "main"), 2,
+			e -> e.create(EmptyRightClickToServer.class, PLAY_TO_SERVER),
+			e -> e.create(TotemUseToClient.class, PLAY_TO_CLIENT)
+	);
 	public static final Logger LOGGER = LogManager.getLogger();
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
 	public static final GenItemVanillaType MATS = new GenItemVanillaType(MODID, REGISTRATE);
@@ -49,7 +55,6 @@ public class L2Complements {
 		LCEnchantments.register();
 		LCEntities.register();
 		LCRecipes.register(bus);
-		NetworkManager.register();
 		LCConfig.init();
 		new L2ComplementsClick(new ResourceLocation(MODID, "main"));
 		AttackEventHandler.register(5000, new MaterialDamageListener());

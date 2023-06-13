@@ -39,7 +39,7 @@ public class SpecialSpriteRenderer<T extends Entity & ItemSupplier & ISizedItemE
 			matrix.scale(size, size, size);
 			matrix.mulPose(this.entityRenderDispatcher.cameraOrientation());
 			matrix.mulPose(Axis.YP.rotationDegrees(180.0F));
-			this.itemRenderer.renderStatic(entity.getItem(), ItemDisplayContext.GROUND, light, OverlayTexture.NO_OVERLAY, matrix, buffer, entity.level, 0);
+			this.itemRenderer.renderStatic(entity.getItem(), ItemDisplayContext.GROUND, light, OverlayTexture.NO_OVERLAY, matrix, buffer, entity.level(), 0);
 			matrix.popPose();
 			super.render(entity, yRot, partial, matrix, buffer, light);
 		}

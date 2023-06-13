@@ -95,7 +95,7 @@ public class LCBEWLR extends BlockEntityWithoutLevelRenderer {
 			return;
 		}
 		if (wither != null) {
-			if (wither.level != level)
+			if (wither.level() != level)
 				wither = null;
 		}
 		if (wither == null) {

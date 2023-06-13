@@ -2,25 +2,24 @@ package dev.xkmc.l2complements.init.data;
 
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.materials.LCMats;
-import dev.xkmc.l2library.init.data.ArmorEffectConfig;
-import dev.xkmc.l2library.init.data.L2ConfigManager;
-import dev.xkmc.l2library.serial.config.BaseConfig;
+import dev.xkmc.l2damagetracker.init.L2DamageTracker;
+import dev.xkmc.l2damagetracker.init.data.ArmorEffectConfig;
 import dev.xkmc.l2library.serial.config.ConfigDataProvider;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffects;
 
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 public class LCConfigGen extends ConfigDataProvider {
 
 	public LCConfigGen(DataGenerator generator) {
-		super(generator, "data/" + L2Complements.MODID + "/l2library_config/", "L2Complements Armor Config");
+		super(generator, "L2Complements Armor Config");
 	}
 
 	@Override
-	public void add(Map<String, BaseConfig> map) {
+	public void add(Collector collector) {
 		// stats of the material
 		// the value represents what if the entire golem is made of this material
 		var ans = new ArmorEffectConfig();
@@ -29,7 +28,7 @@ public class LCConfigGen extends ConfigDataProvider {
 		ans.immune.put(LCMats.SCULKIUM.armorPrefix(), new HashSet<>(Set.of(
 				MobEffects.DARKNESS, MobEffects.BLINDNESS, MobEffects.CONFUSION,
 				MobEffects.DIG_SLOWDOWN, MobEffects.WEAKNESS, MobEffects.MOVEMENT_SLOWDOWN)));
-		map.put(L2ConfigManager.ARMOR.getID() + "/default", ans);
+		collector.add(L2DamageTracker.ARMOR, new ResourceLocation(L2Complements.MODID, "default"), ans);
 
 	}
 

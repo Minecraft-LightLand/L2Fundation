@@ -30,7 +30,7 @@ public class ItemUseEventHandler {
 
 	@SubscribeEvent
 	public static void onPlayerLeftClickEmpty(PlayerInteractEvent.LeftClickEmpty event) {
-		if (event.getEntity().level.isClientSide()) {
+		if (event.getEntity().level().isClientSide()) {
 			new EmptyRightClickToServer(false, event.getHand() == InteractionHand.MAIN_HAND).toServer();
 		}
 		execute(event.getItemStack(), event, ItemClickHandler::onPlayerLeftClickEmpty);
@@ -48,7 +48,7 @@ public class ItemUseEventHandler {
 
 	@SubscribeEvent
 	public static void onPlayerRightClickEmpty(PlayerInteractEvent.RightClickEmpty event) {
-		if (event.getEntity().level.isClientSide()) {
+		if (event.getEntity().level().isClientSide()) {
 			new EmptyRightClickToServer(true, event.getHand() == InteractionHand.MAIN_HAND).toServer();
 		}
 		execute(event.getEntity().getItemInHand(event.getHand() == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND), event, ItemClickHandler::onPlayerRightClickEmpty);

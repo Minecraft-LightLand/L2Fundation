@@ -1,8 +1,8 @@
 package dev.xkmc.l2complements.events;
 
 import dev.xkmc.l2complements.content.item.misc.WarpStone;
-import dev.xkmc.l2library.init.events.click.writable.ClickedPlayerSlotResult;
-import dev.xkmc.l2library.init.events.click.writable.WritableStackClickHandler;
+import dev.xkmc.l2screentracker.click.writable.ClickedPlayerSlotResult;
+import dev.xkmc.l2screentracker.click.writable.WritableStackClickHandler;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;

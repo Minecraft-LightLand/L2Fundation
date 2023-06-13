@@ -2,6 +2,7 @@ package dev.xkmc.l2complements.content.effect.force;
 
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.DamageTypeGen;
+import dev.xkmc.l2library.base.effects.api.DelayedEntityRender;
 import dev.xkmc.l2library.base.effects.api.IconOverlayEffect;
 import dev.xkmc.l2library.base.effects.api.InherentEffect;
 import net.minecraft.resources.ResourceLocation;
@@ -17,7 +18,7 @@ public class FlameEffect extends InherentEffect implements IconOverlayEffect {
 
 	@Override
 	public void applyEffectTick(LivingEntity target, int level) {
-		DamageSource source = new DamageSource(DamageTypeGen.forKey(target.level, DamageTypeGen.SOUL_FLAME), target, target.getLastHurtByMob());
+		DamageSource source = new DamageSource(DamageTypeGen.forKey(target.level(), DamageTypeGen.SOUL_FLAME), target, target.getLastHurtByMob());
 		if (target.fireImmune()) {
 			if (target.isSensitiveToWater()) {
 				return;
@@ -32,7 +33,7 @@ public class FlameEffect extends InherentEffect implements IconOverlayEffect {
 	}
 
 	@Override
-	public ResourceLocation getIcon() {
-		return new ResourceLocation(L2Complements.MODID, "textures/effect_overlay/flame.png");
+	public DelayedEntityRender getIcon(LivingEntity entity, int lv) {
+		return DelayedEntityRender.icon(entity, new ResourceLocation(L2Complements.MODID, "textures/effect_overlay/flame.png"));
 	}
 }

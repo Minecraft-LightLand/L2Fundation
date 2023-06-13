@@ -3,6 +3,8 @@ package dev.xkmc.l2complements.content.effect.skill;
 import dev.xkmc.l2complements.init.data.DamageTypeGen;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCParticle;
+import dev.xkmc.l2library.base.effects.api.ClientRenderEffect;
+import dev.xkmc.l2library.base.effects.api.DelayedEntityRender;
 import dev.xkmc.l2library.base.effects.api.FirstPlayerRenderEffect;
 import dev.xkmc.l2library.util.Proxy;
 import net.minecraft.client.Minecraft;
@@ -24,20 +26,20 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.function.Consumer;
 
-public class EmeraldPopeEffect extends MobEffect implements FirstPlayerRenderEffect {
+public class EmeraldPopeEffect extends MobEffect implements FirstPlayerRenderEffect, ClientRenderEffect {
 
 	public EmeraldPopeEffect(MobEffectCategory type, int color) {
 		super(type, color);
 	}
 
 	public void applyEffectTick(LivingEntity self, int level) {
-		if (self.level.isClientSide())
+		if (self.level().isClientSide())
 			return;
 		int radius = (level + 1) * LCConfig.COMMON.emeraldBaseRange.get();
 		var atk = self.getAttribute(Attributes.ATTACK_DAMAGE);
 		int damage = (int) (LCConfig.COMMON.emeraldDamageFactor.get() * (atk == null ? 1 : atk.getValue()));
-		DamageSource source = new DamageSource(DamageTypeGen.forKey(self.level, DamageTypeGen.EMERALD), null, self);
-		for (Entity e : self.level.getEntities(self, new AABB(self.blockPosition()).inflate(radius))) {
+		DamageSource source = new DamageSource(DamageTypeGen.forKey(self.level(), DamageTypeGen.EMERALD), null, self);
+		for (Entity e : self.level().getEntities(self, new AABB(self.blockPosition()).inflate(radius))) {
 			if (e instanceof Enemy && !e.isAlliedTo(self) && ((LivingEntity) e).hurtTime == 0 &&
 					e.position().distanceToSqr(self.position()) < radius * radius) {
 				double dist = e.position().distanceTo(self.position());
@@ -54,7 +56,7 @@ public class EmeraldPopeEffect extends MobEffect implements FirstPlayerRenderEff
 	}
 
 	@Override
-	public void render(LivingEntity entity, int lv, Consumer<ResourceLocation> consumer) {
+	public void render(LivingEntity entity, int lv, Consumer<DelayedEntityRender> consumer) {
 		if (entity == Proxy.getClientPlayer()) return;
 		renderEffect(lv, entity);
 	}
@@ -70,7 +72,7 @@ public class EmeraldPopeEffect extends MobEffect implements FirstPlayerRenderEff
 		int r = (lv + 1) * LCConfig.COMMON.emeraldBaseRange.get();
 		int count = (1 + lv) * (1 + lv) * 4;
 		for (int i = 0; i < count; i++) {
-			addParticle(entity.level, entity.position(), r);
+			addParticle(entity.level(), entity.position(), r);
 		}
 	}
 

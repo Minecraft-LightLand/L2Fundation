@@ -36,12 +36,12 @@ public abstract class ItemStackMixin implements IForgeItemStack {
 	@Inject(at = @At("HEAD"), method = "hurtAndBreak", cancellable = true)
 	public <T extends LivingEntity> void l2complements_hurtAndBreak_lifeSync(int pAmount, T pEntity, Consumer<T> pOnBroken, CallbackInfo ci) {
 		ItemStack self = (ItemStack) (Object) this;
-		if (pEntity.level.isClientSide()) return;
+		if (pEntity.level().isClientSide()) return;
 		if (self.getEnchantmentLevel(LCEnchantments.ETERNAL.get()) > 0) {
 			ci.cancel();
 		}
 		if (self.getEnchantmentLevel(LCEnchantments.LIFE_SYNC.get()) > 0) {
-			pEntity.hurt(LifeSyncEnchantment.getSource(pEntity.level), pAmount);
+			pEntity.hurt(LifeSyncEnchantment.getSource(pEntity.level()), pAmount);
 			ci.cancel();
 		}
 	}

@@ -40,7 +40,7 @@ public class BaseFireball<T extends BaseFireball<T>> extends Fireball implements
 
 	protected final void onHit(HitResult result) {
 		super.onHit(result);
-		if (!this.level.isClientSide) {
+		if (!this.level().isClientSide) {
 			onHitAction(result.getLocation());
 			discard();
 		}
@@ -48,14 +48,14 @@ public class BaseFireball<T extends BaseFireball<T>> extends Fireball implements
 
 	protected final void onHitEntity(EntityHitResult result) {
 		super.onHitEntity(result);
-		if (!this.level.isClientSide) {
+		if (!this.level().isClientSide) {
 			onHitEntity(result.getEntity());
 		}
 	}
 
 	protected final void onHitBlock(BlockHitResult result) {
 		super.onHitBlock(result);
-		if (!this.level.isClientSide) {
+		if (!this.level().isClientSide) {
 			onHitBlock(result.getBlockPos().relative(result.getDirection()));
 		}
 	}
@@ -77,7 +77,7 @@ public class BaseFireball<T extends BaseFireball<T>> extends Fireball implements
 	@Override
 	public void tick() {
 		super.tick();
-		if (!level.isClientSide)
+		if (!level().isClientSide)
 			life++;
 		if (life >= lifetime) {
 			discard();

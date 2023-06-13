@@ -1,6 +1,7 @@
 package dev.xkmc.l2complements.init.registrate;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
+import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.l2complements.content.entity.fireball.BlackFireball;
 import dev.xkmc.l2complements.content.entity.fireball.SoulFireball;
 import dev.xkmc.l2complements.content.entity.fireball.StrongFireball;
@@ -39,13 +40,12 @@ import static dev.xkmc.l2complements.init.L2Complements.REGISTRATE;
 @MethodsReturnNonnullByDefault
 public class LCItems {
 
-	public static final Supplier<CreativeModeTab> TAB;
+	public static final RegistryEntry<CreativeModeTab> TAB;
 
 	static {
 
-		TAB = REGISTRATE.buildCreativeModeTab("generated", b -> b
-				.icon(LCItems.RESONANT_FEATHER::asStack)
-				.title(Component.translatable("itemGroup." + L2Complements.MODID + ".generated")));
+		TAB = REGISTRATE.buildModCreativeTab("l2complements", "L2Complements Items", b -> b
+				.icon(LCItems.RESONANT_FEATHER::asStack));
 
 		LCBlocks.register();
 	}
@@ -192,7 +192,7 @@ public class LCItems {
 		}
 		GEN_ITEM = L2Complements.MATS.genItem(LCMats.values());
 
-		REGISTRATE.modifyCreativeModeTab(TAB, m -> {
+		REGISTRATE.modifyCreativeModeTab(TAB.getKey(), m -> {
 			Set<EnchantmentCategory> set = Set.of(LCEnchantments.ALL);
 			ForgeRegistries.ENCHANTMENTS.getValues().stream()
 					.filter(e -> e.allowedInCreativeTab(Items.ENCHANTED_BOOK, set))

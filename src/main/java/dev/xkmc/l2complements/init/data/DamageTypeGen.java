@@ -1,8 +1,8 @@
 package dev.xkmc.l2complements.init.data;
 
 import dev.xkmc.l2complements.init.L2Complements;
-import dev.xkmc.l2library.init.data.DamageTypeAndTagsGen;
-import dev.xkmc.l2library.init.data.L2DamageTypes;
+import dev.xkmc.l2damagetracker.init.data.DamageTypeAndTagsGen;
+import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;

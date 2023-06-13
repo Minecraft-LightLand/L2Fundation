@@ -34,9 +34,9 @@ public class HomeTotem extends Item implements ILCTotem {
 		ILCTotem.super.trigger(self, holded, second);
 		self.setHealth(self.getMaxHealth());
 		ItemStack stone = LCItems.FRAGILE_WARP_STONE.asStack();
-		WarpStone.setPos(stone, self.getLevel(), self.getX(), self.getY() + 1e-3, self.getZ());
+		WarpStone.setPos(stone, self.level(), self.getX(), self.getY() + 1e-3, self.getZ());
 		second.accept(stone);
-		if (self instanceof ServerPlayer player && self.level instanceof ServerLevel level)
+		if (self instanceof ServerPlayer player && self.level() instanceof ServerLevel level)
 			TeleportTool.teleportHome(level, player);
 	}
 

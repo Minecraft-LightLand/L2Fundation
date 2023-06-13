@@ -18,7 +18,7 @@ public class SharpBladeEnchantment extends UnobtainableEnchantment {
 
 	@Override
 	public void doPostAttack(LivingEntity attacker, Entity target, int pLevel) {
-		if (target instanceof LivingEntity le && !attacker.level.isClientSide())
+		if (target instanceof LivingEntity le && !attacker.level().isClientSide())
 			LCEffects.BLEED.get().addTo(le, LCConfig.COMMON.bleedEnchantDuration.get(), pLevel * 3 - 1, EffectUtil.AddReason.SKILL, attacker);
 	}
 

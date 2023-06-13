@@ -1,6 +1,7 @@
 package dev.xkmc.l2complements.network;
 
 import dev.xkmc.l2complements.events.ItemUseEventHandler;
+import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2serial.network.SerialPacketBase;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.server.level.ServerPlayer;
@@ -39,7 +40,7 @@ public class EmptyRightClickToServer extends SerialPacketBase {
 	}
 
 	public void toServer() {
-		NetworkManager.HANDLER.toServer(this);
+		L2Complements.HANDLER.toServer(this);
 	}
 
 

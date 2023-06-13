@@ -1,6 +1,7 @@
 package dev.xkmc.l2complements.content.effect.force;
 
 import dev.xkmc.l2complements.init.L2Complements;
+import dev.xkmc.l2library.base.effects.api.DelayedEntityRender;
 import dev.xkmc.l2library.base.effects.api.ForceEffect;
 import dev.xkmc.l2library.base.effects.api.IconOverlayEffect;
 import dev.xkmc.l2library.base.effects.api.InherentEffect;
@@ -40,7 +41,8 @@ public class StoneCageEffect extends InherentEffect implements ForceEffect, Icon
 	}
 
 	@Override
-	public ResourceLocation getIcon() {
-		return new ResourceLocation(L2Complements.MODID, "textures/effect_overlay/stone_cage.png");
+	public DelayedEntityRender getIcon(LivingEntity entity, int lv) {
+		return DelayedEntityRender.icon(entity, new ResourceLocation(L2Complements.MODID,
+				"textures/effect_overlay/stone_cage.png"));
 	}
 }

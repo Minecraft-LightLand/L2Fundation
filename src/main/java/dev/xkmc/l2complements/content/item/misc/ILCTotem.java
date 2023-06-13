@@ -1,6 +1,6 @@
 package dev.xkmc.l2complements.content.item.misc;
 
-import dev.xkmc.l2complements.network.NetworkManager;
+import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.network.TotemUseToClient;
 import dev.xkmc.l2library.util.Proxy;
 import net.minecraft.client.Minecraft;
@@ -21,7 +21,7 @@ import java.util.function.Consumer;
 public interface ILCTotem {
 
 	default void trigger(LivingEntity self, ItemStack holded, Consumer<ItemStack> second) {
-		NetworkManager.HANDLER.toTrackingPlayers(new TotemUseToClient(self, holded), self);
+		L2Complements.HANDLER.toTrackingPlayers(new TotemUseToClient(self, holded), self);
 		holded.shrink(1);
 		self.setHealth(1.0F);
 		self.removeAllEffects();
@@ -37,7 +37,7 @@ public interface ILCTotem {
 	@OnlyIn(Dist.CLIENT)
 	default void onClientTrigger(Entity entity, ItemStack item) {
 		Minecraft.getInstance().particleEngine.createTrackingEmitter(entity, ParticleTypes.TOTEM_OF_UNDYING, 30);
-		entity.level.playLocalSound(entity.getX(), entity.getY(), entity.getZ(), SoundEvents.TOTEM_USE, entity.getSoundSource(), 1.0F, 1.0F, false);
+		entity.level().playLocalSound(entity.getX(), entity.getY(), entity.getZ(), SoundEvents.TOTEM_USE, entity.getSoundSource(), 1.0F, 1.0F, false);
 		if (entity == Proxy.getClientPlayer()) {
 			Minecraft.getInstance().gameRenderer.displayItemActivation(item);
 		}

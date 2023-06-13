@@ -2,8 +2,8 @@ package dev.xkmc.l2complements.events;
 
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
-import dev.xkmc.l2library.init.materials.generic.GenericArmorItem;
-import dev.xkmc.l2library.init.materials.generic.GenericTieredItem;
+import dev.xkmc.l2damagetracker.contents.materials.generic.GenericArmorItem;
+import dev.xkmc.l2damagetracker.contents.materials.generic.GenericTieredItem;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.effect.MobEffects;

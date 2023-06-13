@@ -3,9 +3,9 @@ package dev.xkmc.l2complements.content.item.equipments;
 import com.google.common.collect.Multimap;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
-import dev.xkmc.l2library.init.events.attack.AttackCache;
-import dev.xkmc.l2library.init.events.attack.DamageModifier;
-import dev.xkmc.l2library.init.materials.generic.ExtraToolConfig;
+import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
+import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
+import dev.xkmc.l2damagetracker.contents.materials.generic.ExtraToolConfig;
 import dev.xkmc.l2library.util.math.MathHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -58,7 +58,7 @@ public class PoseiditeTool extends ExtraToolConfig {
 	@Override
 	public void onDamage(AttackCache cache, ItemStack stack) {
 		if (cache.getAttackTarget().isSensitiveToWater() || cache.getAttackTarget().getMobType() == MobType.WATER) {
-			cache.addHurtModifier(DamageModifier.multPre((float) (1 + LCConfig.COMMON.mobTypeBonus.get())));
+			cache.addHurtModifier(DamageModifier.multAttr((float) (1 + LCConfig.COMMON.mobTypeBonus.get())));
 		}
 	}
 

@@ -19,7 +19,7 @@ public class IceBladeEnchantment extends UnobtainableEnchantment {
 
 	@Override
 	public void doPostAttack(LivingEntity attacker, Entity target, int pLevel) {
-		if (target instanceof LivingEntity le && !attacker.level.isClientSide())
+		if (target instanceof LivingEntity le && !attacker.level().isClientSide())
 			EffectUtil.addEffect(le, new MobEffectInstance(LCEffects.ICE.get(), LCConfig.COMMON.iceEnchantDuration.get() << (pLevel - 1)), EffectUtil.AddReason.NONE, attacker);
 	}
 

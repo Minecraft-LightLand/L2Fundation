@@ -59,7 +59,7 @@ public class WarpStone extends Item {
 	}
 
 	public void use(ServerPlayer player, ItemStack stack) {
-		use(player.level, player, stack, e -> {
+		use(player.level(), player, stack, e -> {
 		});
 	}
 

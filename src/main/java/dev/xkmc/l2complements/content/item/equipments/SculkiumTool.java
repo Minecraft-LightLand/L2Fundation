@@ -15,7 +15,7 @@ public class SculkiumTool extends ExtraToolConfig {
 
 	@Override
 	public float getDestroySpeed(ItemStack stack, BlockState state, float old) {
-		return cachedHardness > 0 ? old * cachedHardness : old;
+		return cachedHardness > 1 ? old * cachedHardness : old;
 	}
 
 	@Override

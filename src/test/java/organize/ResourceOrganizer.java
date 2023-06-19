@@ -32,7 +32,7 @@ public abstract class ResourceOrganizer {
 
 	public static void main(String[] args) throws Exception {
 		new LangFileOrganizer();
-		new ItemFileOrganizer();
+		//new ItemFileOrganizer();
 		//new BlockFileOrganizer();
 		//new ArmorFileOrganizer();
 		//new RecipeFileOrganizer();

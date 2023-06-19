@@ -101,7 +101,6 @@ public class LangData {
 			pvd.add(L2Complements.MODID + "." + id.id, id.def);
 		}
 
-		pvd.add("itemGroup.l2complements.generated", "L2Complements Items");
 		pvd.add("death.attack.soul_flame", "%s has its soul burnt out");
 		pvd.add("death.attack.soul_flame.player", "%s has its soul burnt out by %s");
 		pvd.add("death.attack.life_sync", "%s was drained");

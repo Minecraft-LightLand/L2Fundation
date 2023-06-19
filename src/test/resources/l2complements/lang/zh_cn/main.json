@@ -4,8 +4,8 @@
 	"soul_fire_charge": "魂炎弹",
 	"strong_fire_charge": "爆炎弹"
   },
-  "itemGroup.l2complements": {
-	"generated": "莱特兰·扩展"
+  "itemGroup.l2library": {
+	"l2complements": "莱特兰·扩展"
   },
   "death.attack": {
 	"soul_flame": "%s的灵魂燃尽了",

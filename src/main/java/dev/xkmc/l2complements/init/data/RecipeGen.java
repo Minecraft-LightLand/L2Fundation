@@ -331,9 +331,10 @@ public class RecipeGen {
 					.save(pvd, getID(LCEnchantments.WIND_SWEEP.get()));
 
 			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENDER_MASK.get(), 1)::unlockedBy, Items.ENDER_EYE)
-					.pattern("LAL").pattern("ABA").pattern("LAL")
+					.pattern("LCL").pattern("ABA").pattern("LAL")
 					.define('A', Items.ENDER_EYE)
 					.define('B', Items.BOOK)
+					.define('C', Items.CARVED_PUMPKIN)
 					.define('L', Items.LAPIS_LAZULI)
 					.save(pvd, getID(LCEnchantments.ENDER_MASK.get()));
 
@@ -463,6 +464,13 @@ public class RecipeGen {
 					.define('B', Items.BOOK)
 					.define('L', Items.LAPIS_LAZULI)
 					.save(pvd, getID(LCEnchantments.CURSE_BLADE.get()));
+
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENCH_MATES.get(), 1)::unlockedBy, Items.NETHER_STAR)
+					.pattern("BAB").pattern("B1B").pattern("BAB")
+					.define('1', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
+					.define('A', Items.NETHER_STAR)
+					.define('B', Items.END_ROD)
+					.save(pvd, getID(LCEnchantments.ENCH_MATES.get()));
 
 		}
 

@@ -10,6 +10,7 @@ import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
 import dev.xkmc.l2library.base.effects.EffectUtil;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -33,6 +34,11 @@ public class MagicEventHandler {
 	public static void onLivingAttack(LivingAttackEvent event) {
 		if (EnchantmentHelper.getEnchantmentLevel(LCEnchantments.ENCH_INVINCIBLE.get(), event.getEntity()) > 0) {
 			event.setCanceled(true);
+		}
+		if (EnchantmentHelper.getEnchantmentLevel(LCEnchantments.ENCH_MATES.get(), event.getEntity()) > 0) {
+			if (event.getSource().getEntity() instanceof OwnableEntity ownable && ownable.getOwner() == event.getEntity()) {
+				event.setCanceled(true);
+			}
 		}
 		if (event.getSource().is(DamageTypeTags.BYPASSES_EFFECTS) || event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY))
 			return;

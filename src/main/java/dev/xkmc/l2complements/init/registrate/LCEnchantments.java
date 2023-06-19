@@ -21,12 +21,13 @@ public class LCEnchantments {
 
 	public static final EnchantmentCategory ALL = EnchantmentCategory.create("ALL", e -> e.getMaxStackSize() == 1);
 
-	public static final RegistryEntry<ImmuneEnchantment> ENCH_PROJECTILE = reg("projectile_reject");
-	public static final RegistryEntry<ImmuneEnchantment> ENCH_FIRE = reg("fire_reject");
-	public static final RegistryEntry<ImmuneEnchantment> ENCH_ENVIRONMENT = reg("environment_reject");
-	public static final RegistryEntry<ImmuneEnchantment> ENCH_EXPLOSION = reg("explosion_reject");
-	public static final RegistryEntry<ImmuneEnchantment> ENCH_MAGIC = reg("magic_reject");
-	public static final RegistryEntry<ImmuneEnchantment> ENCH_INVINCIBLE = reg("invincible");
+	public static final RegistryEntry<ImmuneEnchantment> ENCH_PROJECTILE = reg("projectile_reject", "Projectile Reject");
+	public static final RegistryEntry<ImmuneEnchantment> ENCH_FIRE = reg("fire_reject", "Fire Immune");
+	public static final RegistryEntry<ImmuneEnchantment> ENCH_ENVIRONMENT = reg("environment_reject", "Environmental Damage Immune");
+	public static final RegistryEntry<ImmuneEnchantment> ENCH_EXPLOSION = reg("explosion_reject", "Explosion Immune");
+	public static final RegistryEntry<ImmuneEnchantment> ENCH_MAGIC = reg("magic_reject", "Magic Immune");
+	public static final RegistryEntry<ImmuneEnchantment> ENCH_INVINCIBLE = reg("invincible", "Invincible (Creative)");
+	public static final RegistryEntry<ImmuneEnchantment> ENCH_MATES = reg("owner_protection", "Owner Protection");
 
 	public static final RegistryEntry<SingleLevelEnchantment> SHULKER_ARMOR = REGISTRATE
 			.enchantment("shulker_armor", ALL, SingleLevelEnchantment::new)
@@ -42,7 +43,7 @@ public class LCEnchantments {
 
 	public static final RegistryEntry<LegendaryEnchantment> ETERNAL = REGISTRATE
 			.enchantment("eternal", EnchantmentCategory.BREAKABLE, LegendaryEnchantment::new)
-			.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
+			.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).lang("Eternal (Creative)").register();
 
 	public static final RegistryEntry<LegendaryEnchantment> HARDENED = REGISTRATE
 			.enchantment("hardened", EnchantmentCategory.BREAKABLE, LegendaryEnchantment::new)
@@ -108,9 +109,9 @@ public class LCEnchantments {
 			.enchantment("smelt", EnchantmentCategory.DIGGER, SingleLevelEnchantment::new)
 			.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
 
-	private static RegistryEntry<ImmuneEnchantment> reg(String id) {
+	private static RegistryEntry<ImmuneEnchantment> reg(String id, String name) {
 		return REGISTRATE.enchantment(id, EnchantmentCategory.ARMOR, ImmuneEnchantment::new)
-				.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
+				.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).lang(name).register();
 	}
 
 	public static void register() {

@@ -22,7 +22,7 @@ public class LangData {
 		VOID_EYE("tooltip.misc.void_eye", "Obtained by killing an angry Enderman %s block below the void. This item kill holder in void, collect it with care.", 1),
 		SUN_MEMBRANE("tooltip.misc.sun_membrane", "Obtained by killing a sun-burning Phantom %s blocks above max build height.", 1),
 		SOUL_FLAME("tooltip.misc.soul_flame", "Obtained by killing a ghast with soul flame.", 0),
-		CAPTURED_WIND("tooltip.misc.captured_wind", "Obtained by right clicking Wind Bottle when moving faster than %s blocks per second.", 1),
+		CAPTURED_WIND("tooltip.misc.captured_wind", "Obtained by moving faster than %s blocks per second while having Wind Bottle in hand or inventory.", 1),
 		CAPTURED_BULLET("tooltip.misc.captured_shulker_bullet", "Obtained by right clicking shulker bullet with Wind Bottle.", 0),
 		EXPLOSION_SHARD("tooltip.misc.explosion_shard", "Obtained by surviving an explosion damage of at least %s.", 1),
 		HARD_ICE("tooltip.misc.hard_ice", "Obtained by killing a Drowned with Powdered Snow.", 0),
@@ -174,6 +174,8 @@ public class LangData {
 				"Stack bleeding effect to target. Higher levels have higher stack cap.");
 		pvd.add(LCEnchantments.SMELT.get().getDescriptionId() + ".desc",
 				"Smelt mined items if possible, including items in chests!");
+		pvd.add(LCEnchantments.ENCH_MATES.get().getDescriptionId() + ".desc",
+				"Negate all damages from entities owned by you.");
 	}
 
 	public static String asId(String name) {

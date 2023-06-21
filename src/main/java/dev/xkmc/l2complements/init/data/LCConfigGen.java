@@ -9,9 +9,6 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffects;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class LCConfigGen extends ConfigDataProvider {
 
 	public LCConfigGen(DataGenerator generator) {
@@ -20,16 +17,13 @@ public class LCConfigGen extends ConfigDataProvider {
 
 	@Override
 	public void add(Collector collector) {
-		// stats of the material
-		// the value represents what if the entire golem is made of this material
-		var ans = new ArmorEffectConfig();
-		ans.immune.put(LCMats.TOTEMIC_GOLD.armorPrefix(), new HashSet<>(Set.of(MobEffects.POISON, MobEffects.WITHER, MobEffects.HUNGER)));
-		ans.immune.put(LCMats.POSEIDITE.armorPrefix(), new HashSet<>(Set.of(MobEffects.DIG_SLOWDOWN)));
-		ans.immune.put(LCMats.SCULKIUM.armorPrefix(), new HashSet<>(Set.of(
-				MobEffects.DARKNESS, MobEffects.BLINDNESS, MobEffects.CONFUSION,
-				MobEffects.DIG_SLOWDOWN, MobEffects.WEAKNESS, MobEffects.MOVEMENT_SLOWDOWN)));
-		collector.add(L2DamageTracker.ARMOR, new ResourceLocation(L2Complements.MODID, "default"), ans);
-
+		collector.add(L2DamageTracker.ARMOR, new ResourceLocation(L2Complements.MODID, "default"), new ArmorEffectConfig()
+				.add(LCMats.TOTEMIC_GOLD.armorPrefix(), MobEffects.POISON, MobEffects.WITHER, MobEffects.HUNGER)
+				.add(LCMats.POSEIDITE.armorPrefix(), MobEffects.DIG_SLOWDOWN)
+				.add(LCMats.POSEIDITE.armorPrefix(), MobEffects.DIG_SLOWDOWN)
+				.add(LCMats.SCULKIUM.armorPrefix(),
+						MobEffects.DARKNESS, MobEffects.BLINDNESS, MobEffects.CONFUSION,
+						MobEffects.DIG_SLOWDOWN, MobEffects.WEAKNESS, MobEffects.MOVEMENT_SLOWDOWN));
 	}
 
 }

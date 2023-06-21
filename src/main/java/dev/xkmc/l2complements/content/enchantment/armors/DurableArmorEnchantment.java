@@ -6,6 +6,8 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.Enchantments;
 
+import java.util.Set;
+
 public class DurableArmorEnchantment extends UnobtainableEnchantment {
 
 	public DurableArmorEnchantment(Rarity pRarity, EnchantmentCategory pCategory, EquipmentSlot[] pApplicableSlots) {
@@ -27,4 +29,8 @@ public class DurableArmorEnchantment extends UnobtainableEnchantment {
 		return pOther != Enchantments.UNBREAKING && super.checkCompatibility(pOther);
 	}
 
+	@Override
+	public Set<Integer> getCraftableLevels() {
+		return Set.of(1, 2, 3);
+	}
 }

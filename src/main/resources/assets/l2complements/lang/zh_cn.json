@@ -149,6 +149,8 @@
   "entity.l2complements.soul_fire_charge": "魂炎弹",
   "entity.l2complements.strong_fire_charge": "爆炎弹",
   "itemGroup.l2library.l2complements": "莱特兰·扩展",
+  "itemGroup.l2library.enchantments_low": "莱特兰附魔书-可合成",
+  "itemGroup.l2library.enchantments_max": "莱特兰附魔书-满级",
   "death.attack.soul_flame": "%s的灵魂燃尽了",
   "death.attack.soul_flame.player": "%s的灵魂被%s烧掉了",
   "death.attack.life_sync": "%s被榨干了",
@@ -284,6 +286,5 @@
   "item.minecraft.splash_potion.effect.curse": "喷溅型诅咒药水",
   "item.minecraft.splash_potion.effect.long_curse": "喷溅型诅咒药水",
   "item.minecraft.splash_potion.effect.cleanse": "喷溅型净化药水",
-  "item.minecraft.splash_potion.effect.long_cleanse": "喷溅型净化药水",
-  "itemGroup.l2complements.l2complements": "L2Complements Items"
+  "item.minecraft.splash_potion.effect.long_cleanse": "喷溅型净化药水"
 }

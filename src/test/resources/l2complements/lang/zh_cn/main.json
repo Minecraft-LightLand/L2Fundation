@@ -5,7 +5,9 @@
 	"strong_fire_charge": "爆炎弹"
   },
   "itemGroup.l2library": {
-	"l2complements": "莱特兰·扩展"
+	"l2complements": "莱特兰·扩展",
+	"enchantments_low": "莱特兰附魔书-可合成",
+	"enchantments_max": "莱特兰附魔书-满级"
   },
   "death.attack": {
 	"soul_flame": "%s的灵魂燃尽了",

@@ -2,6 +2,7 @@ package dev.xkmc.l2complements.init.registrate;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
+import dev.xkmc.l2complements.content.enchantment.core.UnobtainableEnchantment;
 import dev.xkmc.l2complements.content.entity.fireball.BlackFireball;
 import dev.xkmc.l2complements.content.entity.fireball.SoulFireball;
 import dev.xkmc.l2complements.content.entity.fireball.StrongFireball;
@@ -24,13 +25,10 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.Tags;
-import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.Set;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
@@ -40,11 +38,19 @@ import static dev.xkmc.l2complements.init.L2Complements.REGISTRATE;
 @MethodsReturnNonnullByDefault
 public class LCItems {
 
-	public static final RegistryEntry<CreativeModeTab> TAB;
+	public static final RegistryEntry<CreativeModeTab> TAB_ITEM;
+	public static final RegistryEntry<CreativeModeTab> TAB_ENCHMIN;
+	public static final RegistryEntry<CreativeModeTab> TAB_ENCHMAX;
 
 	static {
+		TAB_ENCHMIN = REGISTRATE.buildL2CreativeTab("enchantments_low", "L2 Enchantments - Craftable", b -> b
+				.icon(Items.BOOK::getDefaultInstance));
 
-		TAB = REGISTRATE.buildL2CreativeTab("l2complements", "L2Complements Items", b -> b
+		TAB_ENCHMAX = REGISTRATE.buildL2CreativeTab("enchantments_max", "L2 Enchantments - Lv Max", b -> b
+				.icon(() -> EnchantedBookItem.createForEnchantment(
+						new EnchantmentInstance(LCEnchantments.SOUL_BOUND.get(), 1))));
+
+		TAB_ITEM = REGISTRATE.buildL2CreativeTab("l2complements", "L2Complements Items", b -> b
 				.icon(LCItems.RESONANT_FEATHER::asStack));
 
 		LCBlocks.register();
@@ -192,17 +198,7 @@ public class LCItems {
 		}
 		GEN_ITEM = L2Complements.MATS.genItem(LCMats.values());
 
-		REGISTRATE.modifyCreativeModeTab(TAB.getKey(), m -> {
-			Set<EnchantmentCategory> set = Set.of(LCEnchantments.ALL);
-			ForgeRegistries.ENCHANTMENTS.getValues().stream()
-					.filter(e -> e.allowedInCreativeTab(Items.ENCHANTED_BOOK, set))
-					.forEach((e) -> {
-						m.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(e, 1)), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
-						if (e.getMaxLevel() > 1) {
-							m.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(e, e.getMaxLevel())), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
-						}
-					});
-		});
+		UnobtainableEnchantment.injectTab(REGISTRATE, LCEnchantments.ALL);
 	}
 
 	public static MutableComponent getTooltip(MobEffectInstance eff) {

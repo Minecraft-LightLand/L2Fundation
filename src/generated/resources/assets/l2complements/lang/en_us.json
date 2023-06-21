@@ -248,6 +248,8 @@
   "item.minecraft.tipped_arrow.effect.strong_emerald_splash": "Arrow of Emerald Splash",
   "item.minecraft.tipped_arrow.effect.strong_flame": "Arrow of Soul Burning",
   "item.minecraft.tipped_arrow.effect.strong_resistance": "Arrow of Resistance",
+  "itemGroup.l2library.enchantments_low": "L2 Enchantments - Craftable",
+  "itemGroup.l2library.enchantments_max": "L2 Enchantments - Lv Max",
   "itemGroup.l2library.l2complements": "L2Complements Items",
   "l2complements.jei.burnt.count": "One in %s chance of conversion",
   "l2complements.jei.burnt.title": "Burning",

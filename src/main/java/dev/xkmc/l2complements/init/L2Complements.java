@@ -1,6 +1,7 @@
 package dev.xkmc.l2complements.init;
 
 import dev.xkmc.l2complements.compat.L2BackpackCompat;
+import dev.xkmc.l2complements.content.enchantment.special.SoulBoundPlayerData;
 import dev.xkmc.l2complements.events.*;
 import dev.xkmc.l2complements.init.data.*;
 import dev.xkmc.l2complements.init.materials.vanilla.GenItemVanillaType;
@@ -44,6 +45,7 @@ public class L2Complements {
 		LCEntities.register();
 		LCRecipes.register(bus);
 		NetworkManager.register();
+		SoulBoundPlayerData.register();
 		REGISTRATE.addDataGenerator(ProviderType.LANG, LangData::addTranslations);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, RecipeGen::genRecipe);
 		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, TagGen::onBlockTagGen);

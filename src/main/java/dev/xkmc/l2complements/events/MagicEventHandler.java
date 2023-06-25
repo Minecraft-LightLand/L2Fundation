@@ -3,6 +3,7 @@ package dev.xkmc.l2complements.events;
 import dev.xkmc.l2complements.content.effect.skill.CleanseEffect;
 import dev.xkmc.l2complements.content.effect.skill.SkillEffect;
 import dev.xkmc.l2complements.content.enchantment.core.AttributeEnchantment;
+import dev.xkmc.l2complements.content.enchantment.special.SoulBoundPlayerData;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
@@ -77,12 +78,8 @@ public class MagicEventHandler {
 	public static void onInventoryDrop(LivingDropsEvent event) {
 		if (!(event.getEntity() instanceof ServerPlayer player))
 			return;
-		event.getDrops().removeIf(e -> e.getItem().getEnchantmentLevel(LCEnchantments.SOUL_BOUND.get()) > 0 && player.getInventory().add(e.getItem()));
-	}
-
-	@SubscribeEvent
-	public static void onPlayerClone(PlayerEvent.Clone event) {
-		event.getEntity().getInventory().replaceWith(event.getOriginal().getInventory());
+		event.getDrops().removeIf(e -> e.getItem().getEnchantmentLevel(LCEnchantments.SOUL_BOUND.get()) > 0 &&
+				SoulBoundPlayerData.addToPlayer(player, e.getItem()));
 	}
 
 	@SubscribeEvent

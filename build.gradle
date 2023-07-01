@@ -204,4 +204,7 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:bookshelf-228525:4581675")
     runtimeOnly fg.deobf("curse.maven:enchantment-descriptions-250419:4587429")
 
+    // TODO debug only
+    runtimeOnly fg.deobf("curse.maven:mysterious-mountain-lib-368098:4589606")
+    runtimeOnly fg.deobf("curse.maven:umapyoi-776121:4589608")
 }

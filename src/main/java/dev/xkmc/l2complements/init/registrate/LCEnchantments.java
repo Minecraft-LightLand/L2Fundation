@@ -1,5 +1,6 @@
 package dev.xkmc.l2complements.init.registrate;
 
+import com.tterrag.registrate.builders.EnchantmentBuilder;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.l2complements.content.enchantment.armors.DurableArmorEnchantment;
 import dev.xkmc.l2complements.content.enchantment.armors.FlameThornEnchantment;
@@ -11,6 +12,7 @@ import dev.xkmc.l2complements.content.enchantment.special.LegendaryEnchantment;
 import dev.xkmc.l2complements.content.enchantment.special.LifeSyncEnchantment;
 import dev.xkmc.l2complements.content.enchantment.special.SoulBindingEnchantment;
 import dev.xkmc.l2complements.content.enchantment.weapon.*;
+import dev.xkmc.l2library.base.L2Registrate;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -21,97 +23,162 @@ public class LCEnchantments {
 
 	public static final EnchantmentCategory ALL = EnchantmentCategory.create("ALL", e -> e.getMaxStackSize() == 1);
 
-	public static final RegistryEntry<ImmuneEnchantment> ENCH_PROJECTILE = reg("projectile_reject", "Projectile Reject");
-	public static final RegistryEntry<ImmuneEnchantment> ENCH_FIRE = reg("fire_reject", "Fire Immune");
-	public static final RegistryEntry<ImmuneEnchantment> ENCH_ENVIRONMENT = reg("environment_reject", "Environmental Damage Immune");
-	public static final RegistryEntry<ImmuneEnchantment> ENCH_EXPLOSION = reg("explosion_reject", "Explosion Immune");
-	public static final RegistryEntry<ImmuneEnchantment> ENCH_MAGIC = reg("magic_reject", "Magic Immune");
-	public static final RegistryEntry<ImmuneEnchantment> ENCH_INVINCIBLE = reg("invincible", "Invincible (Creative)");
-	public static final RegistryEntry<ImmuneEnchantment> ENCH_MATES = reg("owner_protection", "Owner Protection");
+	public static final RegistryEntry<ImmuneEnchantment> ENCH_PROJECTILE, ENCH_FIRE, ENCH_ENVIRONMENT,
+			ENCH_EXPLOSION, ENCH_MAGIC, ENCH_INVINCIBLE, ENCH_MATES;
 
-	public static final RegistryEntry<SingleLevelEnchantment> SHULKER_ARMOR = REGISTRATE
-			.enchantment("shulker_armor", ALL, SingleLevelEnchantment::new)
-			.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).lang("Transparent").register();
+	public static final RegistryEntry<SingleLevelEnchantment> SHULKER_ARMOR, ENDER_MASK, SHINNY,
+			SNOW_WALKER, DAMPENED, ENDER, SMELT;
 
-	public static final RegistryEntry<StableBodyEnchantment> STABLE_BODY = REGISTRATE
-			.enchantment("stable_body", EnchantmentCategory.ARMOR_CHEST, StableBodyEnchantment::new)
-			.addSlots(EquipmentSlot.CHEST).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
+	public static final RegistryEntry<StableBodyEnchantment> STABLE_BODY;
+	public static final RegistryEntry<LifeSyncEnchantment> LIFE_SYNC;
+	public static final RegistryEntry<LegendaryEnchantment> ETERNAL;
+	public static final RegistryEntry<LegendaryEnchantment> HARDENED;
+	public static final RegistryEntry<WindSweepEnchantment> WIND_SWEEP;
+	public static final RegistryEntry<SoulBindingEnchantment> SOUL_BOUND;
+	public static final RegistryEntry<IceBladeEnchantment> ICE_BLADE;
+	public static final RegistryEntry<SoulFlameBladeEnchantment> FLAME_BLADE;
+	public static final RegistryEntry<CurseBladeEnchantment> CURSE_BLADE;
+	public static final RegistryEntry<SharpBladeEnchantment> SHARP_BLADE;
+	public static final RegistryEntry<IceThornEnchantment> ICE_THORN;
+	public static final RegistryEntry<FlameThornEnchantment> FLAME_THORN;
+	public static final RegistryEntry<DurableArmorEnchantment> DURABLE_ARMOR;
+	public static final RegistryEntry<VoidTouchEnchantment> VOID_TOUCH;
 
-	public static final RegistryEntry<LifeSyncEnchantment> LIFE_SYNC = REGISTRATE
-			.enchantment("life_sync", EnchantmentCategory.BREAKABLE, LifeSyncEnchantment::new)
-			.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
-
-	public static final RegistryEntry<LegendaryEnchantment> ETERNAL = REGISTRATE
-			.enchantment("eternal", EnchantmentCategory.BREAKABLE, LegendaryEnchantment::new)
-			.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).lang("Eternal (Creative)").register();
-
-	public static final RegistryEntry<LegendaryEnchantment> HARDENED = REGISTRATE
-			.enchantment("hardened", EnchantmentCategory.BREAKABLE, LegendaryEnchantment::new)
-			.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
-
-	public static final RegistryEntry<WindSweepEnchantment> WIND_SWEEP = REGISTRATE
-			.enchantment("wind_sweep", EnchantmentCategory.WEAPON, WindSweepEnchantment::new)
-			.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
-
-	public static final RegistryEntry<SingleLevelEnchantment> ENDER_MASK = REGISTRATE
-			.enchantment("ender_mask", EnchantmentCategory.ARMOR_HEAD, SingleLevelEnchantment::new)
-			.addSlots(EquipmentSlot.HEAD).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
-
-	public static final RegistryEntry<SingleLevelEnchantment> SHINNY = REGISTRATE
-			.enchantment("shinny", EnchantmentCategory.WEARABLE, SingleLevelEnchantment::new)
-			.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
-
-	public static final RegistryEntry<SingleLevelEnchantment> SNOW_WALKER = REGISTRATE
-			.enchantment("snow_walker", EnchantmentCategory.ARMOR_FEET, SingleLevelEnchantment::new)
-			.addSlots(EquipmentSlot.FEET).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
-
-	public static final RegistryEntry<SoulBindingEnchantment> SOUL_BOUND = REGISTRATE
-			.enchantment("soul_bound", ALL, SoulBindingEnchantment::new)
-			.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
-
-	public static final RegistryEntry<SingleLevelEnchantment> DAMPENED = REGISTRATE
-			.enchantment("dampened", EnchantmentCategory.WEARABLE, SingleLevelEnchantment::new)
-			.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).register();
-
-	public static final RegistryEntry<IceBladeEnchantment> ICE_BLADE = REGISTRATE
-			.enchantment("ice_blade", EnchantmentCategory.WEAPON, IceBladeEnchantment::new)
-			.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
-
-	public static final RegistryEntry<SoulFlameBladeEnchantment> FLAME_BLADE = REGISTRATE
-			.enchantment("soul_flame_blade", EnchantmentCategory.WEAPON, SoulFlameBladeEnchantment::new)
-			.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
-
-	public static final RegistryEntry<CurseBladeEnchantment> CURSE_BLADE = REGISTRATE
-			.enchantment("cursed_blade", EnchantmentCategory.WEAPON, CurseBladeEnchantment::new)
-			.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
-
-	public static final RegistryEntry<SharpBladeEnchantment> SHARP_BLADE = REGISTRATE
-			.enchantment("sharp_blade", EnchantmentCategory.WEAPON, SharpBladeEnchantment::new)
-			.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
-
-	public static final RegistryEntry<IceThornEnchantment> ICE_THORN = REGISTRATE
-			.enchantment("ice_thorn", EnchantmentCategory.ARMOR, IceThornEnchantment::new)
-			.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).register();
-
-	public static final RegistryEntry<FlameThornEnchantment> FLAME_THORN = REGISTRATE
-			.enchantment("soul_flame_thorn", EnchantmentCategory.ARMOR, FlameThornEnchantment::new)
-			.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).register();
-
-	public static final RegistryEntry<SingleLevelEnchantment> ENDER = REGISTRATE
-			.enchantment("ender_reach", EnchantmentCategory.DIGGER, SingleLevelEnchantment::new)
-			.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
-
-	public static final RegistryEntry<DurableArmorEnchantment> DURABLE_ARMOR = REGISTRATE
-			.enchantment("durable_armor", EnchantmentCategory.ARMOR, DurableArmorEnchantment::new)
-			.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).lang("Durable Armor").register();
-
-	public static final RegistryEntry<SingleLevelEnchantment> SMELT = REGISTRATE
-			.enchantment("smelt", EnchantmentCategory.DIGGER, SingleLevelEnchantment::new)
-			.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
-
-	private static RegistryEntry<ImmuneEnchantment> reg(String id, String name) {
-		return REGISTRATE.enchantment(id, EnchantmentCategory.ARMOR, ImmuneEnchantment::new)
+	private static RegistryEntry<ImmuneEnchantment> regImmune(String id, String name, String desc) {
+		return reg(id, EnchantmentCategory.ARMOR, ImmuneEnchantment::new, desc)
 				.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).lang(name).register();
+	}
+
+	static {
+		{
+			ENCH_PROJECTILE =
+					regImmune("projectile_reject", "Projectile Reject",
+							"Deflects all projectiles. Make wearer immune to projectile damage.");
+			ENCH_FIRE =
+					regImmune("fire_reject", "Fire Immune",
+							"Make wearer immune to fire damage.");
+			ENCH_ENVIRONMENT =
+					regImmune("environment_reject", "Environmental Damage Immune",
+							"Make wearer immune to damage without attacker.");
+			ENCH_EXPLOSION =
+					regImmune("explosion_reject", "Explosion Immune",
+							"Make wearer immune to explosion damage.");
+			ENCH_MAGIC =
+					regImmune("magic_reject", "Magic Immune",
+							"Make wearer immune to magic damage.");
+			ENCH_INVINCIBLE =
+					regImmune("invincible", "Invincible (Creative)",
+							"Player is invincible to all damage.");
+			ENCH_MATES =
+					regImmune("owner_protection", "Owner Protection",
+							"Negate all damages from entities owned by you.");
+		}
+
+		{
+
+			SHULKER_ARMOR = reg("shulker_armor", ALL, SingleLevelEnchantment::new,
+					"Armor invisible to mobs and players when wearer has invisibility effect.")
+					.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).lang("Transparent")
+					.register();
+
+			STABLE_BODY = reg("stable_body", EnchantmentCategory.ARMOR_CHEST, StableBodyEnchantment::new,
+					"Player won't be knocked back when wearing chestplate with this enchantment.")
+					.addSlots(EquipmentSlot.CHEST).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
+
+			LIFE_SYNC = reg("life_sync", EnchantmentCategory.BREAKABLE, LifeSyncEnchantment::new,
+					"Cost health instead of durability when possible. May kill the user")
+					.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
+
+			HARDENED = reg("hardened", EnchantmentCategory.BREAKABLE, LegendaryEnchantment::new,
+					"Durability loss will be capped to 1.")
+					.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
+
+			ENDER_MASK = reg("ender_mask", EnchantmentCategory.ARMOR_HEAD, SingleLevelEnchantment::new,
+					"Endermen won't be mad at you for direct eye contact")
+					.addSlots(EquipmentSlot.HEAD).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
+
+			SHINNY = reg("shinny", EnchantmentCategory.WEARABLE, SingleLevelEnchantment::new,
+					"Piglins loves it.")
+					.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
+
+			SNOW_WALKER = reg("snow_walker", EnchantmentCategory.ARMOR_FEET, SingleLevelEnchantment::new,
+					"Allow Wearer to walk on powdered snow.")
+					.addSlots(EquipmentSlot.FEET).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
+
+			DAMPENED = reg("dampened", EnchantmentCategory.WEARABLE, SingleLevelEnchantment::new,
+					"When wearing 4 pieces of armors with dampened effect, cancel all vibrations emitted by wearer.")
+					.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).register();
+
+			ENDER = reg("ender_reach", EnchantmentCategory.DIGGER, SingleLevelEnchantment::new,
+					"Teleport mined items to inventory if possible.")
+					.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
+
+			DURABLE_ARMOR = reg("durable_armor", EnchantmentCategory.ARMOR, DurableArmorEnchantment::new,
+					"Armor will have higher durability. Conflict with Unbreaking.")
+					.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).lang("Durable Armor").register();
+
+			SMELT = reg("smelt", EnchantmentCategory.DIGGER, SingleLevelEnchantment::new,
+					"Smelt mined items if possible, including items in chests!")
+					.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
+
+			SOUL_BOUND = reg("soul_bound", ALL, SoulBindingEnchantment::new,
+					"Remain in inventory after death.")
+					.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
+
+			ETERNAL = reg("eternal", EnchantmentCategory.BREAKABLE, LegendaryEnchantment::new,
+					"Item will ignore all durability damage.")
+					.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).lang("Eternal (Creative)").register();
+
+		}
+
+		{
+			WIND_SWEEP = reg("wind_sweep", EnchantmentCategory.WEAPON, WindSweepEnchantment::new,
+					"Increase sweeping hit box")
+					.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
+
+			ICE_BLADE = reg("ice_blade", EnchantmentCategory.WEAPON, IceBladeEnchantment::new,
+					"Apply freezing effect to target. Higher levels have longer duration.")
+					.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
+
+			FLAME_BLADE = reg("soul_flame_blade", EnchantmentCategory.WEAPON, SoulFlameBladeEnchantment::new,
+					"Apply flame effect to target. Higher levels have higher damage.")
+					.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
+
+			CURSE_BLADE = reg("cursed_blade", EnchantmentCategory.WEAPON, CurseBladeEnchantment::new,
+					"Apply cursed effect to target. Higher levels have longer duration.")
+					.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
+
+			SHARP_BLADE = reg("sharp_blade", EnchantmentCategory.WEAPON, SharpBladeEnchantment::new,
+					"Stack bleeding effect to target. Higher levels have higher stack cap.")
+					.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
+
+			ICE_THORN = reg("ice_thorn", EnchantmentCategory.ARMOR, IceThornEnchantment::new,
+					"Apply freezing effect to attacker. Higher levels have longer duration.")
+					.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).register();
+
+			FLAME_THORN = reg("soul_flame_thorn", EnchantmentCategory.ARMOR, FlameThornEnchantment::new,
+					"Apply flame effect to attacker. Higher levels have higher damage.")
+					.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).register();
+
+			VOID_TOUCH = reg("void_touch", EnchantmentCategory.WEAPON, VoidTouchEnchantment::new,
+					"Have a small chance to deal true damage. Chance increase significantly if the damage bypasses armor or magic already.")
+					.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
+		}
+	}
+
+	private static <T extends Enchantment> EnchantmentBuilder<T, L2Registrate> reg(
+			String id, EnchantmentCategory category,
+			EnchantmentBuilder.EnchantmentFactory<T> fac, String desc
+	) {
+		return regEnch(REGISTRATE, id, category, fac, desc);
+	}
+
+	public static <T extends Enchantment> EnchantmentBuilder<T, L2Registrate> regEnch(
+			L2Registrate reg, String id, EnchantmentCategory category,
+			EnchantmentBuilder.EnchantmentFactory<T> fac, String desc
+	) {
+		reg.addRawLang("enchantment." + reg.getModid() + "." + id + ".desc", desc);
+		return reg.enchantment(id, category, fac);
 	}
 
 	public static void register() {

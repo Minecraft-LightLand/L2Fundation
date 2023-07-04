@@ -1,12 +1,12 @@
-// 1.20	2023-06-20T20:05:23.43657	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.20	2023-07-04T17:15:06.734772	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
 b2a769b51ddce14c173a64b5457cccb4d8ef6a45 assets/l2complements/blockstates/sculkium_block.json
 2b88df6f8b01f3c72273ce13dbcb556f7dab321d assets/l2complements/blockstates/shulkerate_block.json
 65262ae0f886f61c163059f15c2ad1a7ba9c264a assets/l2complements/blockstates/totemic_gold_block.json
-7c14bbf0141c6360beb5742fa8c3a9e109a124e2 assets/l2complements/lang/en_ud.json
-b4a693244f76e0368c092bcdd799419a08184b05 assets/l2complements/lang/en_us.json
+10a4f1229f42874e29f64e8d1c858cb1ae781aeb assets/l2complements/lang/en_ud.json
+853b1c9cfc92cb4ca2b9fe1baef1957f1fe6d81c assets/l2complements/lang/en_us.json
 bb63c088704d714f1763cb16cec8af6cd1006d66 assets/l2complements/models/block/eternium_block.json
 a45ee09acc262fd67be22de093136ad757f08e61 assets/l2complements/models/block/poseidite_block.json
 a52909a3a44a80695da32b5c3c5f931a0f72f74d assets/l2complements/models/block/sculkium_block.json
@@ -187,6 +187,7 @@ f974c11784fa658ae72c00df96ca69f087fadd9d data/l2complements/advancements/recipes
 77bfc2bafb6eb0afa041d302537061ead6fc38ae data/l2complements/advancements/recipes/enchantments/enchantments/soul_flame_blade.json
 5848cfd0d9fdfdd7d07528a987223485a4892221 data/l2complements/advancements/recipes/enchantments/enchantments/soul_flame_thorn.json
 37f61b8733a1302572150563a34761a0a9cea25d data/l2complements/advancements/recipes/enchantments/enchantments/stable_body.json
+d7d42e8858fd913820c921e52403081c4bff0ca8 data/l2complements/advancements/recipes/enchantments/enchantments/void_touch.json
 13d703c118e5f22f48aa2af17ef0bcaa76a0ef30 data/l2complements/advancements/recipes/enchantments/enchantments/wind_sweep.json
 4d47a9e59a6c711b85f4e0ab59519ba1e00508b7 data/l2complements/advancements/recipes/misc/craft/black_fire_charge.json
 76babcdfc25eca6420c6caeb728aeb76dd74f07f data/l2complements/advancements/recipes/misc/craft/enchanted_totemic_apple.json
@@ -503,6 +504,7 @@ ab0334db63ca9fd8af646faeb7e22b5b02d4be08 data/l2complements/recipes/enchantments
 736dfbbf791fceaa788f986be05b838083a7a7e0 data/l2complements/recipes/enchantments/soul_flame_blade.json
 acec59c70ffc19a707560888806e8d504a4bf4b0 data/l2complements/recipes/enchantments/soul_flame_thorn.json
 33615c7413d28579573cee24eb33621ece8a9fab data/l2complements/recipes/enchantments/stable_body.json
+0377ff19bde5841247a4d66df8861855df71efbb data/l2complements/recipes/enchantments/void_touch.json
 59ac37476340e5cf64932993a95e0c710372878d data/l2complements/recipes/enchantments/wind_sweep.json
 7a9609e578ae13477837f4a7ace06519aaf212de data/l2complements/recipes/generated_tools/eternium/craft/eternium_axe.json
 468de31df3bcf2d4e04f9f0d52443104f93e51d3 data/l2complements/recipes/generated_tools/eternium/craft/eternium_boots.json

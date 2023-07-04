@@ -472,6 +472,14 @@ public class RecipeGen {
 					.define('B', Items.END_ROD)
 					.save(pvd, getID(LCEnchantments.ENCH_MATES.get()));
 
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.VOID_TOUCH.get(), 1)::unlockedBy, LCItems.RESONANT_FEATHER.get())
+					.pattern("LCL").pattern("ABA").pattern("LCL")
+					.define('A', LCItems.VOID_EYE.get())
+					.define('C', LCItems.SUN_MEMBRANE.get())
+					.define('B', Items.BOOK)
+					.define('L', LCItems.RESONANT_FEATHER.get())
+					.save(pvd, getID(LCEnchantments.VOID_TOUCH.get()));
+
 		}
 
 		currentFolder = "burnt/";

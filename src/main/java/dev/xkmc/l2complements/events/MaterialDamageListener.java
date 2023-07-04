@@ -2,6 +2,7 @@ package dev.xkmc.l2complements.events;
 
 import dev.xkmc.l2complements.content.enchantment.core.SourceModifierEnchantment;
 import dev.xkmc.l2complements.init.data.LCConfig;
+import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.AttackListener;
@@ -49,4 +50,19 @@ public class MaterialDamageListener implements AttackListener {
 		}
 
 	}
+
+	@Override
+	public void onHurt(AttackCache cache, ItemStack weapon) {
+		if (!weapon.isEmpty()) {
+			LCEnchantments.VOID_TOUCH.get().initAttack(cache, weapon);
+		}
+	}
+
+	@Override
+	public void onDamage(AttackCache cache, ItemStack weapon) {
+		if (!weapon.isEmpty()) {
+			LCEnchantments.VOID_TOUCH.get().initDamage(cache, weapon);
+		}
+	}
+
 }

@@ -2,6 +2,7 @@ package dev.xkmc.l2complements.events;
 
 import dev.xkmc.l2complements.content.item.generic.ExtraToolConfig;
 import dev.xkmc.l2complements.content.item.generic.GenericTieredItem;
+import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2complements.mixin.AbstractArrowAccessor;
 import dev.xkmc.l2library.init.events.attack.AttackCache;
 import dev.xkmc.l2library.init.events.attack.AttackListener;
@@ -41,9 +42,17 @@ public class ToolDamageListener implements AttackListener {
 		} else if (weapon.getItem() instanceof GenericTieredItem item) {
 			pass = weapon;
 			tier = item;
+			LCEnchantments.VOID_TOUCH.get().initAttack(cache, pass);
+
 		}
+
 		if (tier != null) {
 			tier.getExtraConfig().onDamage(pass, cache);
 		}
+	}
+
+	@Override
+	public void onDamage(AttackCache cache, ItemStack weapon) {
+		LCEnchantments.VOID_TOUCH.get().initDamage(cache, weapon);
 	}
 }

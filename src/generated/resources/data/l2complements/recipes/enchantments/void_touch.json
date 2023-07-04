@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "l2complements:void_eye"
+    },
+    "B": {
+      "item": "minecraft:book"
+    },
+    "C": {
+      "item": "l2complements:sun_membrane"
+    },
+    "L": {
+      "item": "l2complements:resonant_feather"
+    }
+  },
+  "pattern": [
+    "LCL",
+    "ABA",
+    "LCL"
+  ],
+  "result": {
+    "item": "minecraft:enchanted_book",
+    "nbt": {
+      "StoredEnchantments": [
+        {
+          "id": "l2complements:void_touch",
+          "lvl": 1
+        }
+      ]
+    }
+  }
+}

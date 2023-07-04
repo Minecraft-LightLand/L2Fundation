@@ -53,6 +53,8 @@
 	"smelt": "自动冶炼",
 	"smelt.desc": "破坏方块时掉落的物品能冶炼的全部冶炼，包括箱子里的物品",
 	"owner_protection": "召唤者保护",
-	"owner_protection.desc": "从属于你的生物无法对你造成伤害"
+	"owner_protection.desc": "从属于你的生物无法对你造成伤害",
+	"void_touch": "虚空之触",
+	"void_touch.desc": "小概率造成真伤。如果伤害本身穿透护甲或者魔法，大幅提高概率"
   }
 }

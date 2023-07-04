@@ -113,6 +113,10 @@ public class LCEnchantments {
 			.enchantment("smelt", EnchantmentCategory.DIGGER, SingleLevelEnchantment::new)
 			.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
 
+	public static final RegistryEntry<VoidTouchEnchantment> VOID_TOUCH = REGISTRATE
+			.enchantment("void_touch", EnchantmentCategory.WEAPON, VoidTouchEnchantment::new)
+			.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
+
 	private static RegistryEntry<ImmuneEnchantment> reg(String id, String name) {
 		return REGISTRATE.enchantment(id, EnchantmentCategory.ARMOR, ImmuneEnchantment::new)
 				.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).lang(name).register();

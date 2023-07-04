@@ -176,6 +176,8 @@ public class LangData {
 				"Smelt mined items if possible, including items in chests!");
 		pvd.add(LCEnchantments.ENCH_MATES.get().getDescriptionId() + ".desc",
 				"Negate all damages from entities owned by you.");
+		pvd.add(LCEnchantments.VOID_TOUCH.get().getDescriptionId() + ".desc",
+				"Have a small chance to deal true damage. Chance increase significantly if the damage bypasses armor or magic already.");
 	}
 
 	public static String asId(String name) {

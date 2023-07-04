@@ -37,5 +37,5 @@ public class MaterialDamageListener implements AttackListener {
 		}
 
 	}
-
+	
 }

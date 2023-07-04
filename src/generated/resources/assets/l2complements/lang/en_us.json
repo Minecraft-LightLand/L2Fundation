@@ -69,6 +69,8 @@
   "enchantment.l2complements.soul_flame_thorn.desc": "Apply flame effect to attacker. Higher levels have higher damage.",
   "enchantment.l2complements.stable_body": "Stable Body",
   "enchantment.l2complements.stable_body.desc": "Player won't be knocked back when wearing chestplate with this enchantment.",
+  "enchantment.l2complements.void_touch": "Void Touch",
+  "enchantment.l2complements.void_touch.desc": "Have a small chance to deal true damage. Chance increase significantly if the damage bypasses armor or magic already.",
   "enchantment.l2complements.wind_sweep": "Wind Sweep",
   "enchantment.l2complements.wind_sweep.desc": "Increase sweeping hit box",
   "entity.l2complements.black_fire_charge": "Black Fire Charge",

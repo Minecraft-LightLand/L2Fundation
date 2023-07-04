@@ -42,6 +42,8 @@ public class LCConfig {
 		public final ForgeConfigSpec.IntValue bleedEnchantDuration;
 		public final ForgeConfigSpec.IntValue curseEnchantDuration;
 		public final ForgeConfigSpec.IntValue bleedEnchantMax;
+		public final ForgeConfigSpec.DoubleValue voidTouchChance;
+		public final ForgeConfigSpec.DoubleValue voidTouchChanceBonus;
 
 		public final ForgeConfigSpec.DoubleValue mobTypeBonus;
 
@@ -89,6 +91,10 @@ public class LCConfig {
 					.defineInRange("curseEnchantDuration", 100, 1, 10000);
 			bleedEnchantMax = builder.comment("Max effect level for sharpBlade")
 					.defineInRange("bleedEnchantMax", 3, 1, 10000);
+			voidTouchChance = builder.comment("Void Touch chance for true damage")
+					.defineInRange("voidTouchChance", 0.05, 0, 1);
+			voidTouchChanceBonus = builder.comment("Void Touch chance for true damage if bypass armor or magic")
+					.defineInRange("voidTouchChanceBonus", 0.5, 0, 1);
 			mobTypeBonus = builder.comment("Bonus damage factor for specific materials against specific mob types")
 					.defineInRange("mobTypeBonus", 1d, 0, 1000);
 			builder.pop();

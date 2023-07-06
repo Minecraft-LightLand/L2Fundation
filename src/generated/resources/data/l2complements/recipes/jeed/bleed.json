@@ -1,0 +1,11 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "l2complements:bleed",
+  "providers": [
+    {
+      "type": "l2library:enchantment",
+      "enchantment": "l2complements:sharp_blade",
+      "min_level": 1
+    }
+  ]
+}

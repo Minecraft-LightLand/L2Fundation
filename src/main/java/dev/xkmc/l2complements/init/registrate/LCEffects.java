@@ -27,32 +27,35 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-/**
- * handles enchantment, mob effects, and potions
- */
 public class LCEffects {
 
 	public static final List<RegistryEntry<? extends Potion>> POTION_LIST = new ArrayList<>();
 	public static final Map<String, String> NAME_CACHE = new HashMap<>();
 
-	public static final RegistryEntry<EmeraldPopeEffect> EMERALD = genEffect("emerald_splash", () -> new EmeraldPopeEffect(MobEffectCategory.NEUTRAL, 0x00FF00));
-	public static final RegistryEntry<FlameEffect> FLAME = genEffect("flame", "Soul Burning", () -> new FlameEffect(MobEffectCategory.HARMFUL, 0xFF0000));
-	public static final RegistryEntry<IceEffect> ICE = genEffect("frozen", "Frost", () -> new IceEffect(MobEffectCategory.HARMFUL, 0x7f7fff));
-	public static final RegistryEntry<ArmorReduceEffect> ARMOR_REDUCE = genEffect("armor_reduce", "Armor Corrosion", () -> new ArmorReduceEffect(MobEffectCategory.HARMFUL, 0xFFFFFF));
-	public static final RegistryEntry<StoneCageEffect> STONE_CAGE = genEffect("stone_cage", "Incarceration", () -> new StoneCageEffect(MobEffectCategory.HARMFUL, 0x000000));
-	public static final RegistryEntry<CurseEffect> CURSE = genEffect("curse", "Cursed", () -> new CurseEffect(MobEffectCategory.HARMFUL, 0x3f3f3f));
-	public static final RegistryEntry<BleedEffect> BLEED = genEffect("bleed", "Bleed", () -> new BleedEffect(MobEffectCategory.HARMFUL, 0x7f0000));
-	public static final RegistryEntry<CleanseEffect> CLEANSE = genEffect("cleanse", "Cleansed", () -> new CleanseEffect(MobEffectCategory.NEUTRAL, 0xffff7f));
+	public static final RegistryEntry<EmeraldPopeEffect> EMERALD = genEffect("emerald_splash", () -> new EmeraldPopeEffect(MobEffectCategory.NEUTRAL, 0x00FF00),
+			"Attack all surrounding enemies. Damage is based on currently player stats and weapons.");
+	public static final RegistryEntry<FlameEffect> FLAME = genEffect("flame", "Soul Burning", () -> new FlameEffect(MobEffectCategory.HARMFUL, 0xFF0000),
+			"Continuously damage the entity. Bypass fire resistance, but fire-based mobs are immune to this.");
+	public static final RegistryEntry<IceEffect> ICE = genEffect("frozen", "Frost", () -> new IceEffect(MobEffectCategory.HARMFUL, 0x7f7fff),
+			"Slow down entity, and freeze them as if they are on powdered snow.");
+	public static final RegistryEntry<ArmorReduceEffect> ARMOR_REDUCE = genEffect("armor_reduce", "Armor Corrosion", () -> new ArmorReduceEffect(MobEffectCategory.HARMFUL, 0xFFFFFF),
+			"Reduce armor value significantly.");
+	public static final RegistryEntry<StoneCageEffect> STONE_CAGE = genEffect("stone_cage", "Incarceration", () -> new StoneCageEffect(MobEffectCategory.HARMFUL, 0x000000),
+			"Immobilize the entity. Making it cannot move and unaffected by external forces.");
+	public static final RegistryEntry<CurseEffect> CURSE = genEffect("curse", "Cursed", () -> new CurseEffect(MobEffectCategory.HARMFUL, 0x3f3f3f),
+			"Make the entity cannot heal.");
+	public static final RegistryEntry<BleedEffect> BLEED = genEffect("bleed", "Bleed", () -> new BleedEffect(MobEffectCategory.HARMFUL, 0x7f0000),
+			"Make the entity lose attack and speed, and damage the entity every 3 seconds. Stacks when applied.");
+	public static final RegistryEntry<CleanseEffect> CLEANSE = genEffect("cleanse", "Cleansed", () -> new CleanseEffect(MobEffectCategory.NEUTRAL, 0xffff7f),
+			"Clear all potion effects and make the entity immune to potion effects.");
 
-	public static <T extends MobEffect> RegistryEntry<T> genEffect(String name, NonNullSupplier<T> sup) {
-		return L2Complements.REGISTRATE.entry(name, cb -> new NoConfigBuilder<>(L2Complements.REGISTRATE, L2Complements.REGISTRATE, name, cb, ForgeRegistries.Keys.MOB_EFFECTS, sup))
-				.lang(MobEffect::getDescriptionId).register();
+	private static <T extends MobEffect> RegistryEntry<T> genEffect(String name, NonNullSupplier<T> sup, String desc) {
+		return L2Complements.REGISTRATE.effect(name, sup, desc).lang(MobEffect::getDescriptionId).register();
 	}
 
-	public static <T extends MobEffect> RegistryEntry<T> genEffect(String name, String lang, NonNullSupplier<T> sup) {
+	private static <T extends MobEffect> RegistryEntry<T> genEffect(String name, String lang, NonNullSupplier<T> sup, String desc) {
 		NAME_CACHE.put(name, lang);
-		return L2Complements.REGISTRATE.entry(name, cb -> new NoConfigBuilder<>(L2Complements.REGISTRATE, L2Complements.REGISTRATE, name, cb, ForgeRegistries.Keys.MOB_EFFECTS, sup))
-				.lang(MobEffect::getDescriptionId, lang).register();
+		return L2Complements.REGISTRATE.effect(name, sup, desc).lang(MobEffect::getDescriptionId, lang).register();
 	}
 
 	private static final List<Runnable> TEMP = new ArrayList<>();

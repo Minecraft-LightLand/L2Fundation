@@ -10,14 +10,17 @@ import dev.xkmc.l2complements.content.recipe.BurntRecipeBuilder;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.materials.LCMats;
 import dev.xkmc.l2complements.init.registrate.LCBlocks;
+import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2complements.init.registrate.LCItems;
+import dev.xkmc.l2library.compat.jeed.JeedDataGenerator;
 import dev.xkmc.l2library.serial.ingredients.EnchantmentIngredient;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -773,6 +776,22 @@ public class RecipeGen {
 			//
 			* */
 
+		}
+
+		// JEED
+		{
+			var jeed = new JeedDataGenerator(L2Complements.MODID);
+			jeed.add(LCItems.SOUL_CHARGE.get(), LCEffects.FLAME.get());
+			jeed.add(LCItems.BLACK_CHARGE.get(), LCEffects.STONE_CAGE.get());
+			jeed.add(new EnchantmentIngredient(LCEnchantments.FLAME_BLADE.get(), 1), LCEffects.FLAME.get());
+			jeed.add(new EnchantmentIngredient(LCEnchantments.FLAME_THORN.get(), 1), LCEffects.FLAME.get());
+			jeed.add(new EnchantmentIngredient(LCEnchantments.ICE_BLADE.get(), 1), LCEffects.ICE.get());
+			jeed.add(new EnchantmentIngredient(LCEnchantments.ICE_THORN.get(), 1), LCEffects.ICE.get());
+			jeed.add(new EnchantmentIngredient(LCEnchantments.CURSE_BLADE.get(), 1), LCEffects.CURSE.get());
+			jeed.add(new EnchantmentIngredient(LCEnchantments.SHARP_BLADE.get(), 1), LCEffects.BLEED.get());
+			jeed.add(LCItems.TOTEM_OF_DREAM.get(), MobEffects.REGENERATION, MobEffects.ABSORPTION, MobEffects.FIRE_RESISTANCE);
+			jeed.add(LCItems.TOTEM_OF_THE_SEA.get(), MobEffects.REGENERATION, MobEffects.ABSORPTION, MobEffects.FIRE_RESISTANCE);
+			jeed.generate(pvd);
 		}
 
 	}

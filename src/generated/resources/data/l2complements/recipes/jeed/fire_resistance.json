@@ -1,0 +1,12 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "minecraft:fire_resistance",
+  "providers": [
+    {
+      "item": "l2complements:totem_of_dream"
+    },
+    {
+      "item": "l2complements:totem_of_the_sea"
+    }
+  ]
+}

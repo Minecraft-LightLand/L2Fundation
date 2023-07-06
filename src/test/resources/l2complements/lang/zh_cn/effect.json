@@ -7,7 +7,15 @@
 	"emerald_splash": "绿宝石水花",
 	"curse": "诅咒",
 	"cleanse": "净化",
-	"bleed": "流血"
+	"bleed": "流血",
+	"armor_reduce.description": "大幅降低护甲值",
+	"bleed.description": "降低攻击和移动速度，并且每三秒造成一次伤害。可叠加",
+	"cleanse.description": "清除所有效果，并且持续免疫药水效果",
+	"curse.description": "持续阻止回血",
+	"emerald_splash.description": "持续对周围实体造成伤害。伤害基于实体数值和武器",
+	"flame.description": "持续造成伤害。无视火焰免疫，但是不会对火基生物造成伤害",
+	"frozen.description": "让实体减速，等同于让实体陷入细雪",
+	"stone_cage.description": "让实体无法移动，也无法改变位置"
   },
   "item.minecraft.tipped_arrow.effect": {
 	"flame": "燃魂之箭",

@@ -1,0 +1,9 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "l2complements:stone_cage",
+  "providers": [
+    {
+      "item": "l2complements:black_fire_charge"
+    }
+  ]
+}

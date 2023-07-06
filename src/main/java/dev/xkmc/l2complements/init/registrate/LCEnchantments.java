@@ -44,11 +44,6 @@ public class LCEnchantments {
 	public static final RegistryEntry<DurableArmorEnchantment> DURABLE_ARMOR;
 	public static final RegistryEntry<VoidTouchEnchantment> VOID_TOUCH;
 
-	private static RegistryEntry<ImmuneEnchantment> regImmune(String id, String name, String desc) {
-		return reg(id, EnchantmentCategory.ARMOR, ImmuneEnchantment::new, desc)
-				.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).lang(name).register();
-	}
-
 	static {
 		{
 			ENCH_PROJECTILE =
@@ -166,19 +161,16 @@ public class LCEnchantments {
 		}
 	}
 
+	private static RegistryEntry<ImmuneEnchantment> regImmune(String id, String name, String desc) {
+		return reg(id, EnchantmentCategory.ARMOR, ImmuneEnchantment::new, desc)
+				.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).lang(name).register();
+	}
+
 	private static <T extends Enchantment> EnchantmentBuilder<T, L2Registrate> reg(
 			String id, EnchantmentCategory category,
 			EnchantmentBuilder.EnchantmentFactory<T> fac, String desc
 	) {
-		return regEnch(REGISTRATE, id, category, fac, desc);
-	}
-
-	public static <T extends Enchantment> EnchantmentBuilder<T, L2Registrate> regEnch(
-			L2Registrate reg, String id, EnchantmentCategory category,
-			EnchantmentBuilder.EnchantmentFactory<T> fac, String desc
-	) {
-		reg.addRawLang("enchantment." + reg.getModid() + "." + id + ".desc", desc);
-		return reg.enchantment(id, category, fac);
+		return REGISTRATE.enchantment(id, category, fac, desc);
 	}
 
 	public static void register() {

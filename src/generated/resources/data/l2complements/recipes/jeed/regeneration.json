@@ -1,0 +1,12 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "minecraft:regeneration",
+  "providers": [
+    {
+      "item": "l2complements:totem_of_dream"
+    },
+    {
+      "item": "l2complements:totem_of_the_sea"
+    }
+  ]
+}

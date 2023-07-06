@@ -1,0 +1,19 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "l2complements:flame",
+  "providers": [
+    {
+      "item": "l2complements:soul_fire_charge"
+    },
+    {
+      "type": "l2library:enchantment",
+      "enchantment": "l2complements:soul_flame_blade",
+      "min_level": 1
+    },
+    {
+      "type": "l2library:enchantment",
+      "enchantment": "l2complements:soul_flame_thorn",
+      "min_level": 1
+    }
+  ]
+}

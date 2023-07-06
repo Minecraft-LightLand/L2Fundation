@@ -1,0 +1,16 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "l2complements:frozen",
+  "providers": [
+    {
+      "type": "l2library:enchantment",
+      "enchantment": "l2complements:ice_blade",
+      "min_level": 1
+    },
+    {
+      "type": "l2library:enchantment",
+      "enchantment": "l2complements:ice_thorn",
+      "min_level": 1
+    }
+  ]
+}

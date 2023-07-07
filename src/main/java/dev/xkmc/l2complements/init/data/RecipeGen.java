@@ -21,6 +21,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -791,6 +792,10 @@ public class RecipeGen {
 			jeed.add(new EnchantmentIngredient(LCEnchantments.SHARP_BLADE.get(), 1), LCEffects.BLEED.get());
 			jeed.add(LCItems.TOTEM_OF_DREAM.get(), MobEffects.REGENERATION, MobEffects.ABSORPTION, MobEffects.FIRE_RESISTANCE);
 			jeed.add(LCItems.TOTEM_OF_THE_SEA.get(), MobEffects.REGENERATION, MobEffects.ABSORPTION, MobEffects.FIRE_RESISTANCE);
+			jeed.add(LCMats.POSEIDITE.getArmor(EquipmentSlot.HEAD), MobEffects.CONDUIT_POWER, MobEffects.DOLPHINS_GRACE);
+			jeed.add(LCMats.POSEIDITE.getArmor(EquipmentSlot.CHEST), MobEffects.CONDUIT_POWER, MobEffects.DOLPHINS_GRACE);
+			jeed.add(LCMats.POSEIDITE.getArmor(EquipmentSlot.LEGS), MobEffects.CONDUIT_POWER, MobEffects.DOLPHINS_GRACE);
+			jeed.add(LCMats.POSEIDITE.getArmor(EquipmentSlot.FEET), MobEffects.CONDUIT_POWER, MobEffects.DOLPHINS_GRACE);
 			jeed.generate(pvd);
 		}
 

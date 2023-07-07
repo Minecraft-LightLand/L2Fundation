@@ -1,0 +1,18 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "minecraft:conduit_power",
+  "providers": [
+    {
+      "item": "l2complements:poseidite_helmet"
+    },
+    {
+      "item": "l2complements:poseidite_chestplate"
+    },
+    {
+      "item": "l2complements:poseidite_leggings"
+    },
+    {
+      "item": "l2complements:poseidite_boots"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-// 1.20	2023-07-07T00:18:51.125223	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.20	2023-07-07T10:13:06.610918	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
@@ -643,7 +643,9 @@ eb4ded07ed77740ba7170e59aec04f63b4b83de5 data/l2complements/recipes/generated_to
 24434fe7f1a3352b7348173d0cf0fc5b3429e42e data/l2complements/recipes/generated_tools/totemic_gold/upgrade/totemic_gold_sword.json
 9b18ba3a1d64d04157cebd9514ecb69ba8b891d3 data/l2complements/recipes/jeed/absorption.json
 d3cd442ba1216b818d48de96d57e98c513a77997 data/l2complements/recipes/jeed/bleed.json
+b3c6e673bf0b8e6987e53d65d6f589a501174435 data/l2complements/recipes/jeed/conduit_power.json
 9e9a1f0313c5a70d0283a2031c5a3d85c879665d data/l2complements/recipes/jeed/curse.json
+4c73f65e085c0ab779e4c2f52953847ba676f9f0 data/l2complements/recipes/jeed/dolphins_grace.json
 788e2d2a5152a106d90f729995c5d15a68f348c7 data/l2complements/recipes/jeed/fire_resistance.json
 771736ed072f676755d9e59ac7994a488cab3724 data/l2complements/recipes/jeed/flame.json
 c8b3b190be78052b6ababb075c3177acfc874e0e data/l2complements/recipes/jeed/frozen.json

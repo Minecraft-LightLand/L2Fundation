@@ -1,12 +1,9 @@
 package dev.xkmc.l2complements.network;
 
-import dev.xkmc.l2complements.content.item.misc.ILCTotem;
-import dev.xkmc.l2library.util.Proxy;
 import dev.xkmc.l2serial.network.SerialPacketBase;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.UUID;
@@ -34,11 +31,6 @@ public class TotemUseToClient extends SerialPacketBase {
 
 	@Override
 	public void handle(NetworkEvent.Context context) {
-		Level level = Proxy.getClientWorld();
-		Entity entity = level.getEntity(id);
-		if (entity == null) return;
-		if (!entity.getUUID().equals(uid)) return;
-		if (item.isEmpty() || !(item.getItem() instanceof ILCTotem totem)) return;
-		totem.onClientTrigger(entity, item);
+		ClientHandlers.handleTotemUse(item, id, uid);
 	}
 }

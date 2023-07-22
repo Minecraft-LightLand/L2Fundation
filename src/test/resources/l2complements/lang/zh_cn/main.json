@@ -20,7 +20,7 @@
 	  "misc": {
 		"blackstone_core": "通过杀死处于禁锢效果下的猪灵蛮兵获得",
 		"captured_shulker_bullet": "通过拿捕风瓶右键潜影贝的子弹获得",
-		"captured_wind": "玩家移动速度超过%s格每秒的时候，捕风瓶右键获得",
+		"captured_wind": "玩家移动速度超过%s格每秒的时候，背包内/手上捕风瓶转化获得",
 		"explosion_shard": "承受%s的爆炸伤害并存活获得",
 		"force_field": "通过弹射物伤害杀死凋零获得",
 		"hard_ice": "用细雪冻死溺尸获得",

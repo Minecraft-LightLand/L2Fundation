@@ -1,4 +1,4 @@
-// 1.20	2023-07-07T16:22:31.809048	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.20.1	2023-07-22T12:10:49.20821	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
@@ -720,3 +720,5 @@ f7ab431f322b795b1fc9fbb914eb6aceca6aeb50 data/minecraft/tags/items/pickaxes.json
 d19ab7ba64367c164ddcf3701466affbdb2a0696 data/minecraft/tags/items/shovels.json
 ffafe5187c5335776931d711661d66d6648bd197 data/minecraft/tags/items/swords.json
 b376083721f28306ed48a8752be7f13fd2bb0d3c data/modulargolems/tags/items/sculk_materials.json
+8c79cc8b251cc60f27a9a722af6f1b61073261ec data/twilightforest/tags/items/banned_uncraftables.json
+fdc504265c73665e2952b114a767cbe1cfea025a data/twilightforest/tags/items/banned_uncrafting_ingredients.json

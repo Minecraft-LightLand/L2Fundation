@@ -197,6 +197,7 @@ dependencies {
 
     implementation fg.deobf("mezz.jei:jei-${jei_minecraft_version}:${jei_version}")
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
+    implementation fg.deobf("curse.maven:the-twilight-forest-227639:4635921")
 
     runtimeOnly fg.deobf("curse.maven:badpackets-615134:4438956")
     runtimeOnly fg.deobf("curse.maven:wthit-forge-455982:4596739")

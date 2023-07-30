@@ -17,7 +17,6 @@ import dev.xkmc.l2screentracker.click.quickaccess.DefaultQuickAccessActions;
 import dev.xkmc.l2screentracker.compat.arclight.AnvilMenuArclight;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.inventory.AnvilMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraftforge.common.ForgeMod;

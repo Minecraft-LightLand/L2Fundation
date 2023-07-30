@@ -4,7 +4,7 @@ import java.util.Set;
 
 public interface CraftableEnchantment {
 
-	static Set<Integer> DEF = Set.of(1);
+	Set<Integer> DEF = Set.of(1);
 
 	default Set<Integer> getCraftableLevels() {
 		return DEF;

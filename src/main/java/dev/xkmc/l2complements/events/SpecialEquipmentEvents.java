@@ -6,7 +6,6 @@ import dev.xkmc.l2damagetracker.contents.materials.generic.GenericArmorItem;
 import dev.xkmc.l2damagetracker.contents.materials.generic.GenericTieredItem;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
@@ -22,7 +21,7 @@ public class SpecialEquipmentEvents {
 	public static ThreadLocal<ServerPlayer> PLAYER = new ThreadLocal<>();
 
 	public static boolean isVisible(LivingEntity entity, ItemStack stack) {
-		if (entity.hasEffect(MobEffects.INVISIBILITY)) {
+		if (entity.isInvisible()) {
 			if (stack.getItem() instanceof GenericTieredItem item) {
 				if (item.getExtraConfig().hideWithEffect())
 					return false;

@@ -42,6 +42,7 @@ public class LCConfig {
 		public final ForgeConfigSpec.IntValue bleedEnchantMax;
 		public final ForgeConfigSpec.DoubleValue voidTouchChance;
 		public final ForgeConfigSpec.DoubleValue voidTouchChanceBonus;
+		public final ForgeConfigSpec.DoubleValue lifeSyncFactor;
 
 		public final ForgeConfigSpec.DoubleValue mobTypeBonus;
 
@@ -95,6 +96,8 @@ public class LCConfig {
 					.defineInRange("voidTouchChanceBonus", 0.5, 0, 1);
 			mobTypeBonus = builder.comment("Bonus damage factor for specific materials against specific mob types")
 					.defineInRange("mobTypeBonus", 1d, 0, 1000);
+			lifeSyncFactor = builder.comment("Damage factor for lifeSync (damage to user per durability cost)")
+					.defineInRange("lifeSyncFactor", 1d, 0, 1000);
 			builder.pop();
 
 		}

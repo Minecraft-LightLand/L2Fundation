@@ -7,7 +7,6 @@ import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2complements.init.registrate.LCRecipes;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -76,8 +75,7 @@ public class MaterialEventHandler {
 		}
 		if (event.getEntity() instanceof Ghast ghast) {
 			Level level = ghast.level();
-			DamageSource source = event.getSource();
-			if (!level.isClientSide() && source.getMsgId().equals("soul_flame")) {
+			if (!level.isClientSide() && ghast.hasEffect(LCEffects.FLAME.get())) {
 				ghast.spawnAtLocation(LCItems.SOUL_FLAME.asStack());
 			}
 		}

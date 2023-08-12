@@ -33,4 +33,5 @@ public class TotemUseToClient extends SerialPacketBase {
 	public void handle(NetworkEvent.Context context) {
 		ClientHandlers.handleTotemUse(item, id, uid);
 	}
+
 }

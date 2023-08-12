@@ -24,10 +24,10 @@ public class SoulFireball extends BaseFireball<SoulFireball> {
 	}
 
 	protected void onHitEntity(Entity target) {
-		target.hurt(level().damageSources().fireball(this, getOwner()), 6.0F);
 		if (target instanceof LivingEntity le) {
 			EffectUtil.addEffect(le, new MobEffectInstance(LCEffects.FLAME.get(), 60), EffectUtil.AddReason.NONE, getOwner());
 		}
+		target.hurt(level().damageSources().fireball(this, getOwner()), 6.0F);
 	}
 
 }

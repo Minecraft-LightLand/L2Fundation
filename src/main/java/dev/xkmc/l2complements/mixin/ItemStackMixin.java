@@ -2,6 +2,7 @@ package dev.xkmc.l2complements.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import dev.xkmc.l2complements.content.enchantment.special.LifeSyncEnchantment;
+import dev.xkmc.l2complements.events.MagicEventHandler;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import net.minecraft.world.entity.Entity;
@@ -41,7 +42,8 @@ public abstract class ItemStackMixin implements IForgeItemStack {
 			ci.cancel();
 		}
 		if (self.getEnchantmentLevel(LCEnchantments.LIFE_SYNC.get()) > 0) {
-			pEntity.hurt(LifeSyncEnchantment.getSource(pEntity.level()), pAmount);
+			MagicEventHandler.schedule(() -> pEntity.hurt(LifeSyncEnchantment.getSource(pEntity.level()),
+					(float) (pAmount * LCConfig.COMMON.lifeSyncFactor.get())));
 			ci.cancel();
 		}
 	}

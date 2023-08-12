@@ -16,6 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.ItemAttributeModifierEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHealEvent;
@@ -25,6 +26,8 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Mod.EventBusSubscriber(modid = L2Complements.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -106,5 +109,18 @@ public class MagicEventHandler {
 		}
 	}
 
+	private static final List<Runnable> TASKS = new ArrayList<>();
+
+	public static void schedule(Runnable runnable) {
+		TASKS.add(runnable);
+	}
+
+	@SubscribeEvent
+	public static void onTick(TickEvent.ServerTickEvent event) {
+		for (var e : TASKS) {
+			e.run();
+		}
+		TASKS.clear();
+	}
 
 }

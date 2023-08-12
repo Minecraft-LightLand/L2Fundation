@@ -31,14 +31,14 @@ public class MaterialDamageListener implements AttackListener {
 		if (cache.getAttackTarget() instanceof Player player) {
 			float damage = cache.getPreDamage();
 			if (event.getSource().is(DamageTypeTags.IS_EXPLOSION) && damage >= LCConfig.COMMON.explosionDamage.get()) {
-				if (cache.getDamageDealt() < player.getHealth()) {
+				if (cache.getDamageDealt() < player.getHealth() + player.getAbsorptionAmount()) {
 					player.getInventory().placeItemBackInInventory(LCItems.EXPLOSION_SHARD.asStack());
 				}
 			}
 		}
 		if (cache.getAttackTarget() instanceof Chicken chicken) {
 			if (event.getSource().getMsgId().equals("sonic_boom")) {
-				if (cache.getDamageDealt() < chicken.getHealth()) {
+				if (cache.getDamageDealt() < chicken.getHealth() + chicken.getAbsorptionAmount()) {
 					chicken.spawnAtLocation(LCItems.RESONANT_FEATHER.asStack());
 				}
 			}

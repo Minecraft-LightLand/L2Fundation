@@ -147,6 +147,8 @@
   "enchantment.l2complements.owner_protection.desc": "从属于你的生物无法对你造成伤害",
   "enchantment.l2complements.void_touch": "虚空之触",
   "enchantment.l2complements.void_touch.desc": "小概率造成真伤。如果伤害本身穿透护甲或者魔法，大幅提高概率",
+  "enchantment.l2complements.life_mending": "生命修补",
+  "enchantment.l2complements.life_mending.desc": "回复生命时，优先消耗回复数值来修补装备",
   "entity.l2complements.black_fire_charge": "黑炎弹",
   "entity.l2complements.soul_fire_charge": "魂炎弹",
   "entity.l2complements.strong_fire_charge": "爆炎弹",

@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "l2complements:totemic_gold_ingot"
+    },
+    "B": {
+      "type": "l2library:enchantment",
+      "enchantment": "minecraft:mending",
+      "min_level": 1
+    },
+    "C": {
+      "item": "minecraft:ghast_tear"
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    }
+  },
+  "pattern": [
+    "LCL",
+    "ABA",
+    "LCL"
+  ],
+  "result": {
+    "item": "minecraft:enchanted_book",
+    "nbt": {
+      "StoredEnchantments": [
+        {
+          "id": "l2complements:life_mending",
+          "lvl": 1
+        }
+      ]
+    }
+  }
+}

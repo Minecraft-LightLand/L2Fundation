@@ -1,5 +1,6 @@
 package dev.xkmc.l2complements.events;
 
+import dev.xkmc.l2complements.compat.CurioCompat;
 import dev.xkmc.l2complements.content.effect.skill.CleanseEffect;
 import dev.xkmc.l2complements.content.effect.skill.SkillEffect;
 import dev.xkmc.l2complements.content.enchantment.core.AttributeEnchantment;
@@ -88,7 +89,26 @@ public class MagicEventHandler {
 	public static void onHeal(LivingHealEvent event) {
 		if (event.getEntity().hasEffect(LCEffects.CURSE.get())) {
 			event.setCanceled(true);
+			return;
 		}
+		float amount = event.getAmount();
+		for (ItemStack stack : CurioCompat.getAllSlots(event.getEntity())) {
+			if (!stack.isEnchanted() || !stack.isDamaged()) continue;
+			int lv = stack.getEnchantmentLevel(LCEnchantments.LIFE_MENDING.get());
+			if (lv > 0) {
+				int damage = stack.getDamageValue();
+				int repair = 1 << (lv - 1);
+				int armor = stack.getEnchantmentLevel(LCEnchantments.DURABLE_ARMOR.get());
+				if (armor > 0) {
+					repair *= 1 + armor;
+				}
+				int recover = Math.min(damage, (int) Math.floor(amount * repair));
+				stack.setDamageValue(damage - recover);
+				amount -= 1f * recover / repair;
+				if (amount < 1e-3) break;
+			}
+		}
+		event.setAmount(amount);
 	}
 
 	@SubscribeEvent

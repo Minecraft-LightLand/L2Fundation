@@ -55,6 +55,8 @@
 	"owner_protection": "召唤者保护",
 	"owner_protection.desc": "从属于你的生物无法对你造成伤害",
 	"void_touch": "虚空之触",
-	"void_touch.desc": "小概率造成真伤。如果伤害本身穿透护甲或者魔法，大幅提高概率"
+	"void_touch.desc": "小概率造成真伤。如果伤害本身穿透护甲或者魔法，大幅提高概率",
+	"life_mending": "生命修补",
+	"life_mending.desc": "回复生命时，优先消耗回复数值来修补装备"
   }
 }

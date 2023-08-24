@@ -51,6 +51,8 @@
   "enchantment.l2complements.ice_thorn.desc": "Apply freezing effect to attacker. Higher levels have longer duration.",
   "enchantment.l2complements.invincible": "Invincible (Creative)",
   "enchantment.l2complements.invincible.desc": "Player is invincible to all damage.",
+  "enchantment.l2complements.life_mending": "Life Mending",
+  "enchantment.l2complements.life_mending.desc": "When healing, cost heal amount to repair item first.",
   "enchantment.l2complements.life_sync": "Life Sync",
   "enchantment.l2complements.life_sync.desc": "Cost health instead of durability when possible. May kill the user",
   "enchantment.l2complements.magic_reject": "Magic Immune",

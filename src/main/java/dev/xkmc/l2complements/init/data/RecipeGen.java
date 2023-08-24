@@ -326,6 +326,14 @@ public class RecipeGen {
 					.define('L', Items.LAPIS_LAZULI)
 					.save(pvd, getID(LCEnchantments.LIFE_SYNC.get()));
 
+			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.LIFE_MENDING.get(), 1)::unlockedBy, LCMats.ETERNIUM.getIngot())
+					.pattern("LCL").pattern("ABA").pattern("LCL")
+					.define('A', LCMats.TOTEMIC_GOLD.getIngot())
+					.define('B', new EnchantmentIngredient(Enchantments.MENDING, 1))
+					.define('C', Items.GHAST_TEAR)
+					.define('L', Items.LAPIS_LAZULI)
+					.save(pvd, getID(LCEnchantments.LIFE_MENDING.get()));
+
 			unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.WIND_SWEEP.get(), 1)::unlockedBy, LCMats.SHULKERATE.getNugget())
 					.pattern("LCL").pattern("ABA").pattern("LAL")
 					.define('A', LCMats.SHULKERATE.getNugget())

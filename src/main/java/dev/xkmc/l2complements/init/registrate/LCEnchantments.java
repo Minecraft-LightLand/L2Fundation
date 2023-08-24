@@ -9,6 +9,7 @@ import dev.xkmc.l2complements.content.enchantment.armors.StableBodyEnchantment;
 import dev.xkmc.l2complements.content.enchantment.core.ImmuneEnchantment;
 import dev.xkmc.l2complements.content.enchantment.core.SingleLevelEnchantment;
 import dev.xkmc.l2complements.content.enchantment.special.LegendaryEnchantment;
+import dev.xkmc.l2complements.content.enchantment.special.LifeMendingEnchantment;
 import dev.xkmc.l2complements.content.enchantment.special.LifeSyncEnchantment;
 import dev.xkmc.l2complements.content.enchantment.special.SoulBindingEnchantment;
 import dev.xkmc.l2complements.content.enchantment.weapon.*;
@@ -31,6 +32,7 @@ public class LCEnchantments {
 
 	public static final RegistryEntry<StableBodyEnchantment> STABLE_BODY;
 	public static final RegistryEntry<LifeSyncEnchantment> LIFE_SYNC;
+	public static final RegistryEntry<LifeMendingEnchantment> LIFE_MENDING;
 	public static final RegistryEntry<LegendaryEnchantment> ETERNAL;
 	public static final RegistryEntry<LegendaryEnchantment> HARDENED;
 	public static final RegistryEntry<WindSweepEnchantment> WIND_SWEEP;
@@ -82,6 +84,10 @@ public class LCEnchantments {
 
 			LIFE_SYNC = reg("life_sync", EnchantmentCategory.BREAKABLE, LifeSyncEnchantment::new,
 					"Cost health instead of durability when possible. May kill the user")
+					.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
+
+			LIFE_MENDING = reg("life_mending", EnchantmentCategory.BREAKABLE, LifeMendingEnchantment::new,
+					"When healing, cost heal amount to repair item first.")
 					.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
 
 			HARDENED = reg("hardened", EnchantmentCategory.BREAKABLE, LegendaryEnchantment::new,

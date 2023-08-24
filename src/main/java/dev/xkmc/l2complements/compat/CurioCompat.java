@@ -38,4 +38,29 @@ public class CurioCompat {
 		}
 	}
 
+	public static List<ItemStack> getAllSlots(LivingEntity le) {
+		List<ItemStack> list = new ArrayList<>();
+		for (EquipmentSlot e : EquipmentSlot.values()) {
+			list.add(le.getItemBySlot(e));
+		}
+		if (ModList.get().isLoaded("curios")) {
+			fillSlots(le, list);
+		}
+		return list;
+	}
+
+	private static void fillSlots(LivingEntity le, List<ItemStack> list) {
+		var opt = CuriosApi.getCuriosHelper().getCuriosHandler(le);
+		if (opt.resolve().isPresent()) {
+			var curio = opt.resolve().get();
+			for (var handler : curio.getCurios().values()) {
+				var stacks = handler.getStacks();
+				int n = stacks.getSlots();
+				for (int i = 0; i < n; i++) {
+					list.add(stacks.getStackInSlot(i));
+				}
+			}
+		}
+	}
+
 }

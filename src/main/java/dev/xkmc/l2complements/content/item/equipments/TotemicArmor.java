@@ -1,5 +1,6 @@
 package dev.xkmc.l2complements.content.item.equipments;
 
+import dev.xkmc.l2complements.events.MagicEventHandler;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2damagetracker.contents.materials.generic.ExtraArmorConfig;
@@ -25,7 +26,7 @@ public class TotemicArmor extends ExtraArmorConfig {
 	@Override
 	public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, T entity) {
 		if (entity instanceof Player player) {
-			player.heal(amount);
+			MagicEventHandler.schedule(() -> player.heal(amount));
 		}
 		return super.damageItem(stack, amount, entity);
 	}

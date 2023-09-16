@@ -1,10 +1,13 @@
 package dev.xkmc.l2complements.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import dev.xkmc.l2complements.content.enchantment.special.LifeSyncEnchantment;
 import dev.xkmc.l2complements.events.MagicEventHandler;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
+import dev.xkmc.l2library.util.Proxy;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.EnderMan;
@@ -46,6 +49,37 @@ public abstract class ItemStackMixin implements IForgeItemStack {
 					(float) (pAmount * LCConfig.COMMON.lifeSyncFactor.get())));
 			ci.cancel();
 		}
+	}
+
+	@WrapOperation(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;setDamageValue(I)V"), method = "hurt")
+	public void l2complements_hurt_safeguard_setDamage(ItemStack self, int val, Operation<Void> op) {
+		int max = self.getMaxDamage();
+		if (max <= val + 1 && self.getEnchantmentLevel(LCEnchantments.SAFEGUARD.get()) > 0) {
+			var opt = Proxy.getServer();
+			if (opt.isPresent()) {
+				int old = self.getDamageValue();
+				String key = LCEnchantments.SAFEGUARD.getId().toString();
+				long time = self.getOrCreateTag().getLong(key);
+				long current = opt.get().overworld().getGameTime();
+				if (max <= val) {
+					if (current == time) {
+						val = old;
+					} else if (max > old + 1) {
+						val = max - old - 1;
+						self.getOrCreateTag().putLong(key, current);
+					}
+				} else if (max == val + 1) {
+					self.getOrCreateTag().putLong(key, current);
+				}
+			}
+		}
+		op.call(self, val);
+	}
+
+	@ModifyReturnValue(at = @At("RETURN"), method = "hurt")
+	public boolean l2complements_hurt_safeguard_preventBreaking(boolean broken) {
+		ItemStack self = (ItemStack) (Object) this;
+		return broken && self.getDamageValue() >= self.getMaxDamage();
 	}
 
 	@ModifyReturnValue(at = @At("RETURN"), method = "getMaxDamage")

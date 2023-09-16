@@ -9,6 +9,7 @@
 	"BlockBehaviorMixin",
 	"EntityMixin",
 	"ItemEntityMixin",
+	"ItemMixin",
 	"ItemStackMixin",
 	"LivingEntityMixin",
 	"ServerPlayerGameModeMixin"

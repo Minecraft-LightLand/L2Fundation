@@ -57,6 +57,8 @@
 	"void_touch": "虚空之触",
 	"void_touch.desc": "小概率造成真伤。如果伤害本身穿透护甲或者魔法，大幅提高概率",
 	"life_mending": "生命修补",
-	"life_mending.desc": "回复生命时，优先消耗回复数值来修补装备"
+	"life_mending.desc": "回复生命时，优先消耗回复数值来修补装备",
+	"safeguard": "保险",
+	"safeguard.desc": "耐久大于1的此物品受到耐久损耗时，最多削减耐久到1"
   }
 }

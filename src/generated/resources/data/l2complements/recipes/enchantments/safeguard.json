@@ -2,16 +2,16 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "A": {
-      "item": "minecraft:weeping_vines"
+      "item": "l2complements:shulkerate_nugget"
     },
     "B": {
       "item": "minecraft:book"
     },
     "C": {
-      "item": "minecraft:twisting_vines"
+      "item": "minecraft:amethyst_shard"
     },
     "F": {
-      "item": "minecraft:rotten_flesh"
+      "item": "l2complements:explosion_shard"
     },
     "L": {
       "item": "minecraft:lapis_lazuli"
@@ -27,7 +27,7 @@
     "nbt": {
       "StoredEnchantments": [
         {
-          "id": "l2complements:life_mending",
+          "id": "l2complements:safeguard",
           "lvl": 1
         }
       ]

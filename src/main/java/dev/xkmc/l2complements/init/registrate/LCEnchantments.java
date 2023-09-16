@@ -28,7 +28,7 @@ public class LCEnchantments {
 			ENCH_EXPLOSION, ENCH_MAGIC, ENCH_INVINCIBLE, ENCH_MATES;
 
 	public static final RegistryEntry<SingleLevelEnchantment> SHULKER_ARMOR, ENDER_MASK, SHINNY,
-			SNOW_WALKER, DAMPENED, ENDER, SMELT;
+			SNOW_WALKER, DAMPENED, ENDER, SMELT, SAFEGUARD;
 
 	public static final RegistryEntry<StableBodyEnchantment> STABLE_BODY;
 	public static final RegistryEntry<LifeSyncEnchantment> LIFE_SYNC;
@@ -84,6 +84,10 @@ public class LCEnchantments {
 
 			LIFE_SYNC = reg("life_sync", EnchantmentCategory.BREAKABLE, LifeSyncEnchantment::new,
 					"Cost health instead of durability when possible. May kill the user")
+					.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
+
+			SAFEGUARD = reg("safeguard", EnchantmentCategory.BREAKABLE, SingleLevelEnchantment::new,
+					"when item has more than 1 durability, it will keep at least 1 durability if damaged")
 					.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
 
 			LIFE_MENDING = reg("life_mending", EnchantmentCategory.BREAKABLE, LifeMendingEnchantment::new,

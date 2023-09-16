@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "l2complements:enchantments/life_mending"
+        "recipe": "l2complements:enchantments/safeguard"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "l2complements:enchantments/life_mending"
+      "l2complements:enchantments/safeguard"
     ]
   },
   "sends_telemetry_event": true

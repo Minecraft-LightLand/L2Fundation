@@ -12,12 +12,14 @@ import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
 import dev.xkmc.l2library.base.effects.EffectUtil;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.ItemAttributeModifierEvent;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.EntityTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHealEvent;
@@ -109,6 +111,15 @@ public class MagicEventHandler {
 			}
 		}
 		event.setAmount(amount);
+	}
+
+	@SubscribeEvent
+	public static void onTeleport(EntityTeleportEvent event) {
+		if (event.getEntity() instanceof LivingEntity le) {
+			if (le.hasEffect(LCEffects.STONE_CAGE.get())) {
+				event.setCanceled(true);
+			}
+		}
 	}
 
 	@SubscribeEvent

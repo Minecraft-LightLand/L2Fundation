@@ -95,7 +95,7 @@ public class WarpStone extends Item {
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		var pos = getPos(stack);
-		int dur = fragile ? 1 : getMaxDamage(stack) - getDamage(stack);
+		int dur = fragile ? 1 : stack.getMaxDamage() - getDamage(stack);
 		if (pos.isPresent()) {
 			var cpos = pos.get();
 			var clevel = Component.translatable(cpos.getFirst().location().toString());

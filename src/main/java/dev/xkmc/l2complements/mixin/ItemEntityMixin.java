@@ -32,7 +32,7 @@ public abstract class ItemEntityMixin extends Entity {
 		}
 	}
 
-	@Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;onDestroyed(Lnet/minecraft/world/entity/item/ItemEntity;Lnet/minecraft/world/damagesource/DamageSource;)V"), method = "hurt")
+	@Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;onDestroyed(Lnet/minecraft/world/entity/item/ItemEntity;Lnet/minecraft/world/damagesource/DamageSource;)V", remap = false), method = "hurt")
 	public void l2complments_hurt_itemBurnt(DamageSource pSource, float pAmount, CallbackInfoReturnable<Boolean> cir) {
 		if (pSource.is(DamageTypeTags.IS_FIRE)) {
 			MaterialEventHandler.onItemKill(level(), this, getItem());

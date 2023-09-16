@@ -61,6 +61,8 @@
   "enchantment.l2complements.owner_protection.desc": "Negate all damages from entities owned by you.",
   "enchantment.l2complements.projectile_reject": "Projectile Reject",
   "enchantment.l2complements.projectile_reject.desc": "Deflects all projectiles. Make wearer immune to projectile damage.",
+  "enchantment.l2complements.safeguard": "Safeguard",
+  "enchantment.l2complements.safeguard.desc": "when item has more than 1 durability, it will keep at least 1 durability if damaged",
   "enchantment.l2complements.sharp_blade": "Sharp Blade",
   "enchantment.l2complements.sharp_blade.desc": "Stack bleeding effect to target. Higher levels have higher stack cap.",
   "enchantment.l2complements.shinny": "Shinny",

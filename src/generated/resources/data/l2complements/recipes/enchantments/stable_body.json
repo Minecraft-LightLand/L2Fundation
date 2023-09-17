@@ -2,13 +2,13 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "A": {
-      "item": "l2complements:shulkerate_ingot"
+      "item": "minecraft:obsidian"
     },
     "B": {
       "item": "minecraft:book"
     },
     "C": {
-      "item": "l2complements:sculkium_ingot"
+      "item": "minecraft:crying_obsidian"
     },
     "L": {
       "item": "minecraft:lapis_lazuli"

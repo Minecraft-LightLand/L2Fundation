@@ -325,17 +325,17 @@ public class RecipeGen {
 						.define('L', Items.LAPIS_LAZULI)
 						.save(pvd, getID(LCEnchantments.SHULKER_ARMOR.get()));
 
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.STABLE_BODY.get(), 1)::unlockedBy, LCMats.SHULKERATE.getIngot())
+				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.STABLE_BODY.get(), 1)::unlockedBy, Items.CRYING_OBSIDIAN)
 						.pattern("LCL").pattern("ABA").pattern("LAL")
-						.define('A', LCMats.SHULKERATE.getIngot())
+						.define('A', Items.OBSIDIAN)
 						.define('B', Items.BOOK)
-						.define('C', LCMats.SCULKIUM.getIngot())
+						.define('C', Items.CRYING_OBSIDIAN)
 						.define('L', Items.LAPIS_LAZULI)
 						.save(pvd, getID(LCEnchantments.STABLE_BODY.get()));
 
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.LIFE_SYNC.get(), 1)::unlockedBy, LCMats.ETERNIUM.getIngot())
+				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.LIFE_SYNC.get(), 1)::unlockedBy, LCItems.FORCE_FIELD.get())
 						.pattern("LCL").pattern("ABA").pattern("LAL")
-						.define('A', LCMats.ETERNIUM.getIngot())
+						.define('A', Items.WITHER_ROSE)
 						.define('B', Items.BOOK)
 						.define('C', LCItems.FORCE_FIELD.get())
 						.define('L', Items.LAPIS_LAZULI)
@@ -356,7 +356,7 @@ public class RecipeGen {
 						.define('B', Items.BOOK)
 						.define('C', Items.AMETHYST_SHARD)
 						.define('L', Items.LAPIS_LAZULI)
-						.define('F', LCItems.EXPLOSION_SHARD.get())
+						.define('F', Items.NETHERITE_SCRAP)
 						.save(pvd, getID(LCEnchantments.SAFEGUARD.get()));
 
 				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENDER_MASK.get(), 1)::unlockedBy, Items.ENDER_EYE)
@@ -395,16 +395,18 @@ public class RecipeGen {
 						.define('L', Items.LAPIS_LAZULI)
 						.save(pvd, getID(LCEnchantments.DAMPENED.get()));
 
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENDER.get(), 1)::unlockedBy, Items.ENDER_EYE)
-						.pattern("LAL").pattern("ABA").pattern("LAL")
-						.define('A', Items.ENDER_EYE)
+				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENDER.get(), 1)::unlockedBy, Items.ENDER_PEARL)
+						.pattern("LAL").pattern("ABA").pattern("LCL")
+						.define('A', Items.ENDER_PEARL)
 						.define('B', Items.BOOK)
+						.define('C', Items.HOPPER)
 						.define('L', Items.LAPIS_LAZULI)
 						.save(pvd, getID(LCEnchantments.ENDER.get()));
 
 				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.HARDENED.get(), 1)::unlockedBy, LCMats.SHULKERATE.getIngot())
-						.pattern("LCL").pattern("ABA").pattern("LAL")
+						.pattern("SCS").pattern("ABA").pattern("LAL")
 						.define('A', LCMats.SHULKERATE.getIngot())
+						.define('S', LCItems.WARDEN_BONE_SHARD.get())
 						.define('C', LCItems.EXPLOSION_SHARD.get())
 						.define('B', Items.BOOK)
 						.define('L', Items.LAPIS_LAZULI)

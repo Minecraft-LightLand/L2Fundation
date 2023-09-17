@@ -12,10 +12,13 @@
     },
     "L": {
       "item": "minecraft:lapis_lazuli"
+    },
+    "S": {
+      "item": "l2complements:warden_bone_shard"
     }
   },
   "pattern": [
-    "LCL",
+    "SCS",
     "ABA",
     "LAL"
   ],

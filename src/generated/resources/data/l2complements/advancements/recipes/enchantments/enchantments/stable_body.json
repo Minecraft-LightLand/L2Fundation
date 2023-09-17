@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_shulkerate_ingot": {
+    "has_crying_obsidian": {
       "conditions": {
         "items": [
           {
             "items": [
-              "l2complements:shulkerate_ingot"
+              "minecraft:crying_obsidian"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_shulkerate_ingot",
+      "has_crying_obsidian",
       "has_the_recipe"
     ]
   ],

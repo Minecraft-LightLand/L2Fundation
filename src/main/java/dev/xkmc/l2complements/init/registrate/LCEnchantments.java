@@ -47,29 +47,6 @@ public class LCEnchantments {
 	public static final RegistryEntry<VoidTouchEnchantment> VOID_TOUCH;
 
 	static {
-		{
-			ENCH_PROJECTILE =
-					regImmune("projectile_reject", "Projectile Reject",
-							"Deflects all projectiles. Make wearer immune to projectile damage.");
-			ENCH_FIRE =
-					regImmune("fire_reject", "Fire Immune",
-							"Make wearer immune to fire damage.");
-			ENCH_ENVIRONMENT =
-					regImmune("environment_reject", "Environmental Damage Immune",
-							"Make wearer immune to damage without attacker.");
-			ENCH_EXPLOSION =
-					regImmune("explosion_reject", "Explosion Immune",
-							"Make wearer immune to explosion damage.");
-			ENCH_MAGIC =
-					regImmune("magic_reject", "Magic Immune",
-							"Make wearer immune to magic damage.");
-			ENCH_INVINCIBLE =
-					regImmune("invincible", "Invincible (Creative)",
-							"Player is invincible to all damage.");
-			ENCH_MATES =
-					regImmune("owner_protection", "Owner Protection",
-							"Negate all damages from entities owned by you.");
-		}
 
 		{
 
@@ -77,26 +54,6 @@ public class LCEnchantments {
 					"Armor invisible to mobs and players when wearer has invisibility effect.")
 					.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).lang("Transparent")
 					.register();
-
-			STABLE_BODY = reg("stable_body", EnchantmentCategory.ARMOR_CHEST, StableBodyEnchantment::new,
-					"Player won't be knocked back when wearing chestplate with this enchantment.")
-					.addSlots(EquipmentSlot.CHEST).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
-
-			LIFE_SYNC = reg("life_sync", EnchantmentCategory.BREAKABLE, LifeSyncEnchantment::new,
-					"Cost health instead of durability when possible. May kill the user")
-					.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
-
-			SAFEGUARD = reg("safeguard", EnchantmentCategory.BREAKABLE, SingleLevelEnchantment::new,
-					"when item has more than 1 durability, it will keep at least 1 durability if damaged")
-					.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
-
-			LIFE_MENDING = reg("life_mending", EnchantmentCategory.BREAKABLE, LifeMendingEnchantment::new,
-					"When healing, cost heal amount to repair item first.")
-					.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
-
-			HARDENED = reg("hardened", EnchantmentCategory.BREAKABLE, LegendaryEnchantment::new,
-					"Durability loss will be capped to 1.")
-					.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
 
 			ENDER_MASK = reg("ender_mask", EnchantmentCategory.ARMOR_HEAD, SingleLevelEnchantment::new,
 					"Endermen won't be mad at you for direct eye contact")
@@ -110,9 +67,9 @@ public class LCEnchantments {
 					"Allow Wearer to walk on powdered snow.")
 					.addSlots(EquipmentSlot.FEET).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
 
-			DAMPENED = reg("dampened", EnchantmentCategory.WEARABLE, SingleLevelEnchantment::new,
-					"When wearing 4 pieces of armors with dampened effect, cancel all vibrations emitted by wearer.")
-					.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).register();
+			STABLE_BODY = reg("stable_body", EnchantmentCategory.ARMOR_CHEST, StableBodyEnchantment::new,
+					"Player won't be knocked back when wearing chestplate with this enchantment.")
+					.addSlots(EquipmentSlot.CHEST).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
 
 			ENDER = reg("ender_reach", EnchantmentCategory.DIGGER, SingleLevelEnchantment::new,
 					"Teleport mined items to inventory if possible.")
@@ -125,6 +82,26 @@ public class LCEnchantments {
 			SMELT = reg("smelt", EnchantmentCategory.DIGGER, SingleLevelEnchantment::new,
 					"Smelt mined items if possible, including items in chests!")
 					.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
+
+			LIFE_MENDING = reg("life_mending", EnchantmentCategory.BREAKABLE, LifeMendingEnchantment::new,
+					"When healing, cost heal amount to repair item first.")
+					.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
+
+			LIFE_SYNC = reg("life_sync", EnchantmentCategory.BREAKABLE, LifeSyncEnchantment::new,
+					"Cost health instead of durability when possible. May kill the user")
+					.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
+
+			SAFEGUARD = reg("safeguard", EnchantmentCategory.BREAKABLE, SingleLevelEnchantment::new,
+					"when item has more than 1 durability, it will keep at least 1 durability if damaged")
+					.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
+
+			HARDENED = reg("hardened", EnchantmentCategory.BREAKABLE, LegendaryEnchantment::new,
+					"Durability loss will be capped to 1.")
+					.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
+
+			DAMPENED = reg("dampened", EnchantmentCategory.WEARABLE, SingleLevelEnchantment::new,
+					"When wearing 4 pieces of armors with dampened effect, cancel all vibrations emitted by wearer.")
+					.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).register();
 
 			SOUL_BOUND = reg("soul_bound", ALL, SoulBindingEnchantment::new,
 					"Remain in inventory after death.")
@@ -168,6 +145,30 @@ public class LCEnchantments {
 			VOID_TOUCH = reg("void_touch", EnchantmentCategory.WEAPON, VoidTouchEnchantment::new,
 					"Have a small chance to deal true damage. Chance increase significantly if the damage bypasses armor or magic already.")
 					.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
+		}
+
+		{
+			ENCH_PROJECTILE =
+					regImmune("projectile_reject", "Projectile Reject",
+							"Deflects all projectiles. Make wearer immune to projectile damage.");
+			ENCH_FIRE =
+					regImmune("fire_reject", "Fire Immune",
+							"Make wearer immune to fire damage.");
+			ENCH_ENVIRONMENT =
+					regImmune("environment_reject", "Environmental Damage Immune",
+							"Make wearer immune to damage without attacker.");
+			ENCH_EXPLOSION =
+					regImmune("explosion_reject", "Explosion Immune",
+							"Make wearer immune to explosion damage.");
+			ENCH_MAGIC =
+					regImmune("magic_reject", "Magic Immune",
+							"Make wearer immune to magic damage.");
+			ENCH_INVINCIBLE =
+					regImmune("invincible", "Invincible (Creative)",
+							"Player is invincible to all damage.");
+			ENCH_MATES =
+					regImmune("owner_protection", "Owner Protection",
+							"Negate all damages from entities owned by you.");
 		}
 	}
 

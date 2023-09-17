@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_eternium_ingot": {
+    "has_force_field": {
       "conditions": {
         "items": [
           {
             "items": [
-              "l2complements:eternium_ingot"
+              "l2complements:force_field"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_eternium_ingot",
+      "has_force_field",
       "has_the_recipe"
     ]
   ],

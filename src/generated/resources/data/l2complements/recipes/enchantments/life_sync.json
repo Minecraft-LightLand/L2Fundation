@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "A": {
-      "item": "l2complements:eternium_ingot"
+      "item": "minecraft:wither_rose"
     },
     "B": {
       "item": "minecraft:book"

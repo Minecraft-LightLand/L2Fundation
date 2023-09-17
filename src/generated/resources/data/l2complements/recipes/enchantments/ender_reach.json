@@ -2,10 +2,13 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "A": {
-      "item": "minecraft:ender_eye"
+      "item": "minecraft:ender_pearl"
     },
     "B": {
       "item": "minecraft:book"
+    },
+    "C": {
+      "item": "minecraft:hopper"
     },
     "L": {
       "item": "minecraft:lapis_lazuli"
@@ -14,7 +17,7 @@
   "pattern": [
     "LAL",
     "ABA",
-    "LAL"
+    "LCL"
   ],
   "result": {
     "item": "minecraft:enchanted_book",

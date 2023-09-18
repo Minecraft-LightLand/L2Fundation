@@ -238,6 +238,13 @@ public class RecipeGen {
 					.define('B', Items.PRISMARINE_CRYSTALS)
 					.define('C', LCItems.GUARDIAN_EYE.get())
 					.save(pvd, getID(Items.HEART_OF_THE_SEA));
+
+			unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, 1)::unlockedBy, LCItems.BLACKSTONE_CORE.get())
+					.pattern("BAB").pattern("BCB").pattern("BBB")
+					.define('B', Items.DIAMOND)
+					.define('C', Items.NETHERRACK)
+					.define('A', LCItems.BLACKSTONE_CORE.get())
+					.save(pvd, getID(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE));
 		}
 
 		currentFolder = "vanilla/upgrade/";

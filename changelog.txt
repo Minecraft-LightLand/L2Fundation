@@ -1,2 +1,5 @@
-fix potion jei display
-ritual sync
+2.4.17
+- Add Safeguard enchantment
+- Change recipes for most enchantments
+- Fix creative tab ordering for enchantments
+- Make transparent armor visibility factor implementation more robust

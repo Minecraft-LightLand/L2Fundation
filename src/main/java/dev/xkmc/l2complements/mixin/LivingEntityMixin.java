@@ -1,5 +1,7 @@
 package dev.xkmc.l2complements.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import dev.xkmc.l2complements.compat.CurioCompat;
 import dev.xkmc.l2complements.content.item.misc.ILCTotem;
 import dev.xkmc.l2complements.events.SpecialEquipmentEvents;
@@ -47,25 +49,10 @@ public abstract class LivingEntityMixin {
 		}
 	}
 
-	/**
-	 * @author L2Complements lcy0x1
-	 * @reason Allow armors to hide themselves
-	 * FIXME improve compatibility
-	 */
-	@Inject(at = @At("HEAD"), method = "getArmorCoverPercentage", cancellable = true)
-	public void l2complements_getArmorCoverPercentage_hideInvisibleArmorsFromMobs(CallbackInfoReturnable<Float> cir) {
+	@WrapOperation(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;isEmpty()Z"), method = "getArmorCoverPercentage")
+	public boolean l2complements_getArmorCoverPercentage_hideInvisibleArmorsFromMobs(ItemStack stack, Operation<Boolean> op) {
 		LivingEntity self = (LivingEntity) (Object) this;
-		Iterable<ItemStack> iterable = getArmorSlots();
-		int total = 0;
-		int visible = 0;
-		for (ItemStack itemstack : iterable) {
-			if (!itemstack.isEmpty()) {
-				if (SpecialEquipmentEvents.isVisible(self, itemstack))
-					++visible;
-			}
-			++total;
-		}
-		cir.setReturnValue(total > 0 ? (float) visible / (float) total : 0.0F);
+		return op.call(stack) || !SpecialEquipmentEvents.isVisible(self, stack);
 	}
 
 }

@@ -1,4 +1,4 @@
-// 1.20.1	2023-09-17T21:43:03.214721	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.20.1	2023-09-18T23:11:38.38644	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
@@ -354,6 +354,7 @@ ea471ec5bf20b9096bd8d527225305dcb7aa37aa data/l2complements/advancements/recipes
 c8c3a803036e8234236dcfcd03137f714e417fec data/l2complements/advancements/recipes/misc/vanilla/renew/elytra.json
 39a4fae56f9c253dad0535fd999891a3ddb1114f data/l2complements/advancements/recipes/misc/vanilla/renew/gilded_blackstone.json
 27e1c900b22e42152a737e5e5fabd67971bea0f7 data/l2complements/advancements/recipes/misc/vanilla/renew/heart_of_the_sea.json
+95df3310a880355db36f56d4a6dffed863a24431 data/l2complements/advancements/recipes/misc/vanilla/renew/netherite_upgrade_smithing_template.json
 cc08772a5ec201df4edd2761fd09a79d8f9ffbaa data/l2complements/advancements/recipes/misc/vanilla/renew/reinforced_deepslate.json
 efcb3259de6ab3bad41a35c741894188c2c06c6b data/l2complements/advancements/recipes/misc/vanilla/upgrade/diamond_axe.json
 463193630881886baea7c42baac74ebb7b695703 data/l2complements/advancements/recipes/misc/vanilla/upgrade/diamond_boots.json
@@ -680,6 +681,7 @@ d8efb52baddabb0d629f989d9ad44e97ffe31664 data/l2complements/recipes/storage/tote
 1ae71fcc450cba3f6b753715fe7d6644c54b295a data/l2complements/recipes/vanilla/renew/elytra.json
 f2ac1c793c3194ddc76ed61e33b43067c20fe31e data/l2complements/recipes/vanilla/renew/gilded_blackstone.json
 6f28210d25bb8621fa3ebb6c4bffcbd75ac5ed51 data/l2complements/recipes/vanilla/renew/heart_of_the_sea.json
+9a15db0cbb7e9c57017ba0cfcb9302798a7e1f17 data/l2complements/recipes/vanilla/renew/netherite_upgrade_smithing_template.json
 61248fdfdbbb943f29913e6f87689076871620df data/l2complements/recipes/vanilla/renew/reinforced_deepslate.json
 ac773771f8d1af23e6bdd40d625e5cee686ebbb5 data/l2complements/recipes/vanilla/upgrade/diamond_axe.json
 c91ffe7cc6592d14522545a595f4a3de0c1a836e data/l2complements/recipes/vanilla/upgrade/diamond_boots.json

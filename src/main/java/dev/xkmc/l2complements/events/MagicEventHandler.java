@@ -30,9 +30,11 @@ import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import org.apache.logging.log4j.Level;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BooleanSupplier;
 
 @Mod.EventBusSubscriber(modid = L2Complements.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class MagicEventHandler {
@@ -153,18 +155,22 @@ public class MagicEventHandler {
 		}
 	}
 
-	private static final List<Runnable> TASKS = new ArrayList<>();
+	private static final List<BooleanSupplier> TASKS = new ArrayList<>();
 
 	public static void schedule(Runnable runnable) {
+		TASKS.add(() -> {
+			runnable.run();
+			return true;
+		});
+	}
+
+	public static void schedulePersistent(BooleanSupplier runnable) {
 		TASKS.add(runnable);
 	}
 
 	@SubscribeEvent
 	public static void onTick(TickEvent.ServerTickEvent event) {
-		for (var e : TASKS) {
-			e.run();
-		}
-		TASKS.clear();
+		TASKS.removeIf(BooleanSupplier::getAsBoolean);
 	}
 
 }

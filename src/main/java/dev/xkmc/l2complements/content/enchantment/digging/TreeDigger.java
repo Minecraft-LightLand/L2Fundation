@@ -11,7 +11,7 @@ public record TreeDigger() implements BlockBreaker {
 		int r = LCConfig.COMMON.treeChopMaxRadius.get();
 		int h = LCConfig.COMMON.treeChopMaxHeight.get();
 		int max = LCConfig.COMMON.treeChopMaxBlock.get();
-		return new VienInstance(-r, r, -r, h, -r, r, max, this::match);
+		return new TreeInstance(-r, r, -r, h, -r, r, max, this::match);
 	}
 
 	public int match(BlockState state) {

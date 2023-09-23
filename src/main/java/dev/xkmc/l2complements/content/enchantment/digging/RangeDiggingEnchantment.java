@@ -1,6 +1,7 @@
 package dev.xkmc.l2complements.content.enchantment.digging;
 
 import dev.xkmc.l2complements.content.enchantment.core.UnobtainableEnchantment;
+import dev.xkmc.l2complements.events.MagicEventHandler;
 import dev.xkmc.l2complements.init.L2Complements;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -16,8 +17,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeMod;
 
-import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -62,7 +63,7 @@ public class RangeDiggingEnchantment extends UnobtainableEnchantment {
 		return breaker.getMaxLevel();
 	}
 
-	public Collection<BlockPos> getTargets(Player player, BlockPos pos, ItemStack stack, int lv) {
+	public List<BlockPos> getTargets(Player player, BlockPos pos, ItemStack stack, int lv) {
 		Level level = player.level();
 		BlockState state = level.getBlockState(pos);
 		double hardness = state.getDestroySpeed(level, pos) * hardnessFactor();
@@ -77,8 +78,12 @@ public class RangeDiggingEnchantment extends UnobtainableEnchantment {
 			if (BREAKER.contains(player.getUUID())) return;
 			BREAKER.add(player.getUUID());
 			try {
-				for (var i : blocks) {
-					player.gameMode.destroyBlock(i);
+				if (blocks.size() < 64) {//TODO
+					for (var i : blocks) {
+						player.gameMode.destroyBlock(i);
+					}
+				} else {
+					MagicEventHandler.schedulePersistent(new DelayedBlockBreaker(player, blocks)::tick);
 				}
 			} catch (Exception e) {
 				L2Complements.LOGGER.throwing(ERROR, e);

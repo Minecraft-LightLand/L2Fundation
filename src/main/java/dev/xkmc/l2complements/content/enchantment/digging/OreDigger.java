@@ -4,7 +4,7 @@ public record OreDigger(int r, int max) implements BlockBreaker {
 
 	@Override
 	public BlockBreakerInstance getInstance(DiggerContext ctx) {
-		return new VienInstance(-r, r, -r, r, -r, r, max << (ctx.level() - 1), state -> state.getBlock() == ctx.state().getBlock() ? 1 : 0);
+		return new VienInstance(-r, r, -r, r, -r, r, max << (ctx.level() - 1), state -> state.getBlock() == ctx.state().getBlock());
 	}
 
 	@Override

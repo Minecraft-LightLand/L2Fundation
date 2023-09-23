@@ -114,4 +114,15 @@ public class UnobtainableEnchantment extends Enchantment implements CraftableEnc
 		return tab.contains(LCEnchantments.ALL);
 	}
 
+	public int getDecoColor(String s) {
+		if (s.equals("A")) return 0xffff7fff;
+		if (s.equals("W")) return 0xff7f4f6f;
+		if (category == LCEnchantments.ALL) return 0xffff9f4f;
+		return switch (category) {
+			case ARMOR -> 0xff4fbfff;
+			case WEAPON -> 0xffff4f4f;
+			case BREAKABLE -> 0xff7fff7f;
+			default -> 0xffffff7f;
+		};
+	}
 }

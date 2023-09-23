@@ -49,6 +49,8 @@ public class LCConfig {
 		public final ForgeConfigSpec.IntValue treeChopMaxRadius;
 		public final ForgeConfigSpec.IntValue treeChopMaxHeight;
 		public final ForgeConfigSpec.IntValue treeChopMaxBlock;
+		public final ForgeConfigSpec.IntValue chainDiggingDelayThreshold;
+		public final ForgeConfigSpec.IntValue chainDiggingBlockPerTick;
 
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("materials");
@@ -109,7 +111,12 @@ public class LCConfig {
 			treeChopMaxHeight = builder.comment("Max height for blocks to be considered for tree chopping.")
 					.defineInRange("treeChopMaxHeight", 256, 0, 512);
 			treeChopMaxBlock = builder.comment("Max number of blocks to be considered for tree chopping.")
-					.defineInRange("treeChopMaxBlock", 2048, 0, 16384);
+					.defineInRange("treeChopMaxBlock", 1024, 0, 16384);
+
+			chainDiggingDelayThreshold = builder.comment("Max number of blocks to break before resort to delayed breaking")
+					.defineInRange("chainDiggingDelayThreshold", 64, 1, 1024);
+			chainDiggingBlockPerTick = builder.comment("Max number of blocks to break per tick in delayed breaking")
+					.defineInRange("chainDiggingBlockPerTick", 16, 1, 1024);
 			builder.pop();
 
 		}

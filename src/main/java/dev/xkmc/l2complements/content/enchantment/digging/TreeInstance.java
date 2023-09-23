@@ -20,8 +20,14 @@ public record TreeInstance(int x0, int x1, int y0, int y1, int z0, int z1, int m
 		if (rank <= 0) return l1;
 		Queue<BlockPos> q2 = new ArrayDeque<>();
 		Queue<BlockPos> q1 = new ArrayDeque<>();
-		(rank == 2 ? q2 : q1).add(pos);
-		added.add(pos);
+		BlockPos npos = pos;
+		if (rank == 2) {
+			while (match.apply(level.getBlockState(npos.above())) == 2 && npos.getY() - pos.getY() < y1) {
+				npos = npos.above();
+			}
+		}
+		(rank == 2 ? q2 : q1).add(npos);
+
 		while (!q2.isEmpty()) {
 			var current = q2.poll();
 			for (int x = -1; x <= 1; x++) {
@@ -38,8 +44,9 @@ public record TreeInstance(int x0, int x1, int y0, int y1, int z0, int z1, int m
 						) continue;
 						int r = match.apply(level.getBlockState(i));
 						if (r <= 0) continue;
-						(r == 2 ? l2 : l1).add(i);
 						(r == 2 ? q2 : q1).add(i);
+						if (i.equals(pos)) continue;
+						(r == 2 ? l2 : l1).add(i);
 						if (l2.size() >= max) {
 							return l2;
 						}
@@ -64,8 +71,9 @@ public record TreeInstance(int x0, int x1, int y0, int y1, int z0, int z1, int m
 						) continue;
 						int r = match.apply(level.getBlockState(i));
 						if (r != 1) continue;
-						l1.add(i);
 						q1.add(i);
+						if (i.equals(pos)) continue;
+						l1.add(i);
 						if (l2.size() + l1.size() >= max) {
 							l2.addAll(l1);
 							return l2;

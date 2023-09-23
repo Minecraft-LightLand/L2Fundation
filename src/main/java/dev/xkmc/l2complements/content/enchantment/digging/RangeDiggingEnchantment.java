@@ -3,6 +3,7 @@ package dev.xkmc.l2complements.content.enchantment.digging;
 import dev.xkmc.l2complements.content.enchantment.core.UnobtainableEnchantment;
 import dev.xkmc.l2complements.events.MagicEventHandler;
 import dev.xkmc.l2complements.init.L2Complements;
+import dev.xkmc.l2complements.init.data.LCConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
@@ -27,6 +28,19 @@ import static org.apache.logging.log4j.Level.ERROR;
 public class RangeDiggingEnchantment extends UnobtainableEnchantment {
 
 	private static final Set<UUID> BREAKER = new HashSet<>();
+
+	public static void execute(Player player, Runnable run) {
+		synchronized (BREAKER) {
+			if (BREAKER.contains(player.getUUID())) return;
+			BREAKER.add(player.getUUID());
+			try {
+				run.run();
+			} catch (Exception e) {
+				L2Complements.LOGGER.throwing(ERROR, e);
+			}
+			BREAKER.remove(player.getUUID());
+		}
+	}
 
 	private static Direction getFace(Player player) {
 		Level level = player.level();
@@ -59,7 +73,7 @@ public class RangeDiggingEnchantment extends UnobtainableEnchantment {
 	}
 
 	@Override
-	public int getMaxCost(int lv) {
+	public int getMaxLevel() {
 		return breaker.getMaxLevel();
 	}
 
@@ -74,22 +88,19 @@ public class RangeDiggingEnchantment extends UnobtainableEnchantment {
 	public void onBlockBreak(ServerPlayer player, BlockPos pos, ItemStack stack, int lv) {
 		if (player.isShiftKeyDown()) return;
 		var blocks = getTargets(player, pos, stack, lv);
-		synchronized (BREAKER) {
-			if (BREAKER.contains(player.getUUID())) return;
-			BREAKER.add(player.getUUID());
-			try {
-				if (blocks.size() < 64) {//TODO
-					for (var i : blocks) {
-						player.gameMode.destroyBlock(i);
-					}
-				} else {
-					MagicEventHandler.schedulePersistent(new DelayedBlockBreaker(player, blocks)::tick);
+		execute(player, () -> {
+			if (blocks.size() <= LCConfig.COMMON.chainDiggingDelayThreshold.get()) {
+				for (var i : blocks) {
+					player.gameMode.destroyBlock(i);
 				}
-			} catch (Exception e) {
-				L2Complements.LOGGER.throwing(ERROR, e);
+			} else {
+				MagicEventHandler.schedulePersistent(new DelayedBlockBreaker(player, blocks)::tick);
 			}
-			BREAKER.remove(player.getUUID());
-		}
+		});
 	}
 
+	@Override
+	public int getDecoColor(String s) {
+		return 0xffafafaf;
+	}
 }

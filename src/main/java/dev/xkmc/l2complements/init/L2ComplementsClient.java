@@ -1,9 +1,12 @@
 package dev.xkmc.l2complements.init;
 
+import dev.xkmc.l2complements.content.client.EnchStackDeco;
 import dev.xkmc.l2complements.content.item.misc.LCBEWLR;
 import dev.xkmc.l2complements.init.registrate.LCParticle;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
+import net.minecraftforge.client.event.RegisterItemDecorationsEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -19,6 +22,11 @@ public class L2ComplementsClient {
 
 	@SubscribeEvent
 	public static void clientSetup(FMLClientSetupEvent event) {
+	}
+
+	@SubscribeEvent
+	public static void registerItemDecoration(RegisterItemDecorationsEvent event) {
+		event.register(Items.ENCHANTED_BOOK, new EnchStackDeco());
 	}
 
 

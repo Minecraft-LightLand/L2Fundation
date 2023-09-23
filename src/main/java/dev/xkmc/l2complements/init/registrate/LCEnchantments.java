@@ -8,6 +8,7 @@ import dev.xkmc.l2complements.content.enchantment.armors.IceThornEnchantment;
 import dev.xkmc.l2complements.content.enchantment.armors.StableBodyEnchantment;
 import dev.xkmc.l2complements.content.enchantment.core.ImmuneEnchantment;
 import dev.xkmc.l2complements.content.enchantment.core.SingleLevelEnchantment;
+import dev.xkmc.l2complements.content.enchantment.digging.*;
 import dev.xkmc.l2complements.content.enchantment.special.LegendaryEnchantment;
 import dev.xkmc.l2complements.content.enchantment.special.LifeMendingEnchantment;
 import dev.xkmc.l2complements.content.enchantment.special.LifeSyncEnchantment;
@@ -45,6 +46,8 @@ public class LCEnchantments {
 	public static final RegistryEntry<FlameThornEnchantment> FLAME_THORN;
 	public static final RegistryEntry<DurableArmorEnchantment> DURABLE_ARMOR;
 	public static final RegistryEntry<VoidTouchEnchantment> VOID_TOUCH;
+
+	public static final RegistryEntry<RangeDiggingEnchantment> CUBIC, PLANE, DRILL, VIEN, TREE;
 
 	static {
 
@@ -169,6 +172,46 @@ public class LCEnchantments {
 			ENCH_MATES =
 					regImmune("owner_protection", "Owner Protection",
 							"Negate all damages from entities owned by you.");
+		}
+
+		{
+			CUBIC = reg("cubic_digging", EnchantmentCategory.DIGGER, (r, c, s) ->
+							new RangeDiggingEnchantment(new CubicBlockBreaker(1), r, c, s),
+					"Dig 3x3x3 blocks at once. Higher level increase radius. Sneak to bypass")
+					.addSlots(EquipmentSlot.MAINHAND)
+					.rarity(Enchantment.Rarity.VERY_RARE).lang("Cubic Digging")
+					.register();
+
+			PLANE = reg("plane_digging", EnchantmentCategory.DIGGER, (r, c, s) ->
+							new RangeDiggingEnchantment(new PlaneBlockBreaker(2), r, c, s),
+					"Dig 5x5 blocks at once. Higher level increase radius. Sneak to bypass")
+					.addSlots(EquipmentSlot.MAINHAND)
+					.rarity(Enchantment.Rarity.VERY_RARE).lang("Plane Digging")
+					.register();
+
+			DRILL = reg("drill_digging", EnchantmentCategory.DIGGER, (r, c, s) ->
+							new RangeDiggingEnchantment(new DrillBlockBreaker(7), r, c, s),
+					"Dig 7 blocks at once. Higher level increase range. Sneak to bypass")
+					.addSlots(EquipmentSlot.MAINHAND)
+					.rarity(Enchantment.Rarity.VERY_RARE).lang("Drill Digging")
+					.register();
+
+
+			VIEN = reg("vien_mining", EnchantmentCategory.DIGGER, (r, c, s) ->
+							new RangeDiggingEnchantment(new OreDigger(7, 8), r, c, s),
+					"Dig connected blocks of the same type. Higher level increase max count. Sneak to bypass")
+					.addSlots(EquipmentSlot.MAINHAND)
+					.rarity(Enchantment.Rarity.VERY_RARE).lang("Vien Mining")
+					.register();
+
+
+			TREE = reg("tree_chopping", EnchantmentCategory.DIGGER, (r, c, s) ->
+							new RangeDiggingEnchantment(new TreeDigger(), r, c, s),
+					"Chop logs and adjacent leaves. Sneak to bypass")
+					.addSlots(EquipmentSlot.MAINHAND)
+					.rarity(Enchantment.Rarity.VERY_RARE).lang("Tree Chopper")
+					.register();
+
 		}
 	}
 

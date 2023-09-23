@@ -20,13 +20,13 @@ public class ServerPlayerGameModeMixin {
 
 	@Inject(at = @At("HEAD"), method = "destroyBlock")
 	public void l2complements_destroyBlock_markPlayerBeginBreak(BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
-		SpecialEquipmentEvents.PLAYER.set(player);
+		SpecialEquipmentEvents.pushPlayer(player);
 	}
 
 
 	@Inject(at = @At("RETURN"), method = "destroyBlock")
 	public void l2complements_destroyBlock_markPlayerEndBreak(BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
-		SpecialEquipmentEvents.PLAYER.set(null);
+		SpecialEquipmentEvents.popPlayer(player);
 	}
 
 }

@@ -59,6 +59,16 @@
 	"life_mending": "生命修补",
 	"life_mending.desc": "回复生命时，优先消耗回复数值来修补装备",
 	"safeguard": "保险",
-	"safeguard.desc": "耐久大于1的此物品受到耐久损耗时，最多削减耐久到1"
+	"safeguard.desc": "耐久大于1的此物品受到耐久损耗时，最多削减耐久到1",
+	"cubic_digging": "立方挖掘连锁",
+	"cubic_digging.desc": "挖掘3x3x3范围，高等级提升半径，蹲下失效",
+	"drill_digging": "钻孔挖掘连锁",
+	"drill_digging.desc": "一次挖掘7个方块，高等级提升数量，蹲下失效",
+	"plane_digging": "平面挖掘连锁",
+	"plane_digging.desc": "挖掘5x5范围，高等级提升半径，蹲下失效",
+	"tree_chopping": "砍树",
+	"tree_chopping.desc": "一次采集一整棵树，蹲下失效",
+	"vien_mining": "连锁采集",
+	"vien_mining.desc": "一次挖掘所有相同的周围的方块，高等级提升数量上限，蹲下失效"
   }
 }

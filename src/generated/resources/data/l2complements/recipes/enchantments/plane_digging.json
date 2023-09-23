@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "type": "l2library:enchantment",
+      "enchantment": "minecraft:efficiency",
+      "min_level": 1
+    },
+    "B": {
+      "item": "minecraft:stone_pickaxe"
+    },
+    "C": {
+      "item": "l2complements:storm_core"
+    },
+    "D": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "E": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "ECE",
+    "DAD",
+    "BBB"
+  ],
+  "result": {
+    "item": "minecraft:enchanted_book",
+    "nbt": {
+      "StoredEnchantments": [
+        {
+          "id": "l2complements:plane_digging",
+          "lvl": 1
+        }
+      ]
+    }
+  }
+}

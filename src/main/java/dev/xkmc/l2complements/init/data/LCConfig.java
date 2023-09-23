@@ -46,6 +46,10 @@ public class LCConfig {
 
 		public final ForgeConfigSpec.DoubleValue mobTypeBonus;
 
+		public final ForgeConfigSpec.IntValue treeChopMaxRadius;
+		public final ForgeConfigSpec.IntValue treeChopMaxHeight;
+		public final ForgeConfigSpec.IntValue treeChopMaxBlock;
+
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("materials");
 			windSpeed = builder.comment("Requirement for obtaining Captured Wind. Unit: Block per Tick")
@@ -98,6 +102,14 @@ public class LCConfig {
 					.defineInRange("mobTypeBonus", 1d, 0, 1000);
 			lifeSyncFactor = builder.comment("Damage factor for lifeSync (damage to user per durability cost)")
 					.defineInRange("lifeSyncFactor", 1d, 0, 1000);
+
+
+			treeChopMaxRadius = builder.comment("Max radius for blocks to be considered for tree chopping, except upward direction")
+					.defineInRange("treeChopMaxRadius", 16, 0, 32);
+			treeChopMaxHeight = builder.comment("Max height for blocks to be considered for tree chopping.")
+					.defineInRange("treeChopMaxHeight", 256, 0, 512);
+			treeChopMaxBlock = builder.comment("Max number of blocks to be considered for tree chopping.")
+					.defineInRange("treeChopMaxBlock", 2048, 0, 16384);
 			builder.pop();
 
 		}

@@ -8,6 +8,7 @@ import dev.xkmc.l2complements.events.MagicEventHandler;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2library.util.Proxy;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.EnderMan;

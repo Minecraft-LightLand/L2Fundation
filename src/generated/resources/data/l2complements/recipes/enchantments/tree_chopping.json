@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "type": "l2library:enchantment",
+      "enchantment": "minecraft:efficiency",
+      "min_level": 1
+    },
+    "B": {
+      "item": "minecraft:iron_axe"
+    },
+    "C": {
+      "item": "l2complements:storm_core"
+    },
+    "D": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "E": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    "ECE",
+    "BAB",
+    "DBD"
+  ],
+  "result": {
+    "item": "minecraft:enchanted_book",
+    "nbt": {
+      "StoredEnchantments": [
+        {
+          "id": "l2complements:tree_chopping",
+          "lvl": 1
+        }
+      ]
+    }
+  }
+}

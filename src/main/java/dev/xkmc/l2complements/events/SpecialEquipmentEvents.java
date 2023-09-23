@@ -15,10 +15,12 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.Stack;
+
 @Mod.EventBusSubscriber(modid = L2Complements.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class SpecialEquipmentEvents {
 
-	public static ThreadLocal<ServerPlayer> PLAYER = new ThreadLocal<>();
+	public static ThreadLocal<Stack<ServerPlayer>> PLAYER = ThreadLocal.withInitial(Stack::new);
 
 	public static boolean isVisible(LivingEntity entity, ItemStack stack) {
 		if (entity.isInvisible()) {
@@ -45,8 +47,9 @@ public class SpecialEquipmentEvents {
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void onEntityJoinLevel(EntityJoinLevelEvent event) {
-		ServerPlayer player = PLAYER.get();
-		if (player == null) return;
+		var players = PLAYER.get();
+		if (players.isEmpty()) return;
+		ServerPlayer player = players.peek();
 		if (!(event.getEntity() instanceof ItemEntity e)) return;
 		if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.SMELT.get()) > 0) {
 			ItemStack input = e.getItem().copy();
@@ -75,4 +78,13 @@ public class SpecialEquipmentEvents {
 		}
 	}
 
+	public static void pushPlayer(ServerPlayer player) {
+		PLAYER.get().push(player);
+	}
+
+
+	public static void popPlayer(ServerPlayer player) {
+		if (PLAYER.get().peek() == player)
+			PLAYER.get().pop();
+	}
 }

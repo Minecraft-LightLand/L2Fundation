@@ -527,6 +527,56 @@ public class RecipeGen {
 						.save(pvd, getID(LCEnchantments.VOID_TOUCH.get()));
 			}
 
+			// digging
+			{
+
+				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.CUBIC.get(), 1)::unlockedBy, LCItems.STORM_CORE.get())
+						.pattern("ECE").pattern("BAB").pattern("DBD")
+						.define('A', new EnchantmentIngredient(Enchantments.BLOCK_EFFICIENCY, 1))
+						.define('B', Items.STONE_PICKAXE)
+						.define('C', LCItems.STORM_CORE.get())
+						.define('D', Items.LAPIS_LAZULI)
+						.define('E', Items.IRON_INGOT)
+						.save(pvd, getID(LCEnchantments.CUBIC.get()));
+
+				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.PLANE.get(), 1)::unlockedBy, LCItems.STORM_CORE.get())
+						.pattern("ECE").pattern("DAD").pattern("BBB")
+						.define('A', new EnchantmentIngredient(Enchantments.BLOCK_EFFICIENCY, 1))
+						.define('B', Items.STONE_PICKAXE)
+						.define('C', LCItems.STORM_CORE.get())
+						.define('D', Items.LAPIS_LAZULI)
+						.define('E', Items.IRON_INGOT)
+						.save(pvd, getID(LCEnchantments.PLANE.get()));
+
+				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.DRILL.get(), 1)::unlockedBy, LCItems.STORM_CORE.get())
+						.pattern("ECB").pattern("DAB").pattern("EDB")
+						.define('A', new EnchantmentIngredient(Enchantments.BLOCK_EFFICIENCY, 1))
+						.define('B', Items.STONE_PICKAXE)
+						.define('C', LCItems.STORM_CORE.get())
+						.define('D', Items.LAPIS_LAZULI)
+						.define('E', Items.IRON_INGOT)
+						.save(pvd, getID(LCEnchantments.DRILL.get()));
+
+				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.VIEN.get(), 1)::unlockedBy, LCItems.STORM_CORE.get())
+						.pattern("ECE").pattern("BAB").pattern("DBD")
+						.define('A', new EnchantmentIngredient(Enchantments.BLOCK_EFFICIENCY, 1))
+						.define('B', Items.IRON_PICKAXE)
+						.define('C', LCItems.STORM_CORE.get())
+						.define('D', Items.LAPIS_LAZULI)
+						.define('E', Items.GOLD_INGOT)
+						.save(pvd, getID(LCEnchantments.VIEN.get()));
+
+				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.TREE.get(), 1)::unlockedBy, LCItems.STORM_CORE.get())
+						.pattern("ECE").pattern("BAB").pattern("DBD")
+						.define('A', new EnchantmentIngredient(Enchantments.BLOCK_EFFICIENCY, 1))
+						.define('B', Items.IRON_AXE)
+						.define('C', LCItems.STORM_CORE.get())
+						.define('D', Items.LAPIS_LAZULI)
+						.define('E', Items.GOLD_INGOT)
+						.save(pvd, getID(LCEnchantments.TREE.get()));
+
+			}
+
 
 		}
 

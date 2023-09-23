@@ -23,6 +23,7 @@ import net.minecraft.world.level.block.Blocks;
 public class TagGen {
 
 	public static final TagKey<Block> REQUIRES_SCULK_TOOL = BlockTags.create(new ResourceLocation(L2Complements.MODID, "requires_sculk_tool"));
+	public static final TagKey<Block> AS_LEAF = BlockTags.create(new ResourceLocation(L2Complements.MODID, "as_leaf"));
 	public static final TagKey<Item> SCULK_MATS = ItemTags.create(new ResourceLocation("modulargolems", "sculk_materials"));
 	public static final TagKey<Item> TOTEM = ItemTags.create(new ResourceLocation(L2Complements.MODID, "l2c_totems"));
 	public static final TagKey<Item> SPECIAL_ITEM = ItemTags.create(new ResourceLocation(L2Complements.MODID, "l2c_legendary"));
@@ -31,6 +32,7 @@ public class TagGen {
 	public static void onBlockTagGen(RegistrateTagsProvider.IntrinsicImpl<Block> pvd) {
 		pvd.addTag(REQUIRES_SCULK_TOOL).add(Blocks.REINFORCED_DEEPSLATE);
 		pvd.addTag(BlockTags.MINEABLE_WITH_PICKAXE).add(Blocks.REINFORCED_DEEPSLATE);
+		pvd.addTag(AS_LEAF).addTag(BlockTags.LEAVES).addTag(BlockTags.WART_BLOCKS).add(Blocks.SHROOMLIGHT);
 	}
 
 	public static void onItemTagGen(RegistrateItemTagsProvider pvd) {

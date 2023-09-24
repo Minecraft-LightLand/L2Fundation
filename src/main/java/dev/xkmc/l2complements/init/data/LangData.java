@@ -58,7 +58,7 @@ public class LangData {
 		SHULKERATE_ARMOR("tooltip.tool.shulkerate_armor", "Really durable. Not easily damaged.", 0),
 		TOTEMIC_TOOL("tooltip.tool.totemic_tool", "Heal user when used. Effective against undead mobs.", 0),
 		TOTEMIC_ARMOR("tooltip.tool.totemic_armor", "Heal user when damaged. Regenerate health over time.", 0),
-		;
+		DELAY_WARNING("msg.delay_warning", "Your tool needs %s to break more than %s blocks", 2);
 
 		final String id, def;
 		final int count;

@@ -67,8 +67,12 @@
 	"plane_digging": "平面挖掘连锁",
 	"plane_digging.desc": "挖掘5x5范围，高等级提升半径，蹲下失效",
 	"tree_chopping": "砍树",
-	"tree_chopping.desc": "一次采集一整棵树，蹲下失效",
+	"tree_chopping.desc": "一次采集一整棵树，蹲下失效。等级II会同时清理树叶，且破坏树叶不消耗耐久",
 	"vien_mining": "连锁采集",
-	"vien_mining.desc": "一次挖掘所有相同的周围的方块，高等级提升数量上限，蹲下失效"
+	"vien_mining.desc": "一次挖掘所有相同的周围的方块，高等级提升数量上限，蹲下失效",
+	"cubic_eater": "立体区块吞噬者",
+	"cubic_eater.desc": "一次挖挖掘4x4x4区块对齐的方块。等级II一次挖掘8x8x8。蹲下失效",
+	"plane_eater": "平面区块吞噬者",
+	"plane_eater.desc": "一次挖挖掘16x16区块对齐的方块。高等级提升层数。蹲下失效"
   }
 }

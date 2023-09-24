@@ -51,6 +51,8 @@ public class LCConfig {
 		public final ForgeConfigSpec.IntValue treeChopMaxBlock;
 		public final ForgeConfigSpec.IntValue chainDiggingDelayThreshold;
 		public final ForgeConfigSpec.IntValue chainDiggingBlockPerTick;
+		public final ForgeConfigSpec.DoubleValue chainDiggingHardnessRange;
+		public final ForgeConfigSpec.BooleanValue delayDiggingRequireEnder;
 
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("materials");
@@ -117,6 +119,11 @@ public class LCConfig {
 					.defineInRange("chainDiggingDelayThreshold", 64, 1, 1024);
 			chainDiggingBlockPerTick = builder.comment("Max number of blocks to break per tick in delayed breaking")
 					.defineInRange("chainDiggingBlockPerTick", 16, 1, 1024);
+			chainDiggingHardnessRange = builder.comment("Max hardness blocks to break may have, as a factor of the hardness of the block broken.")
+					.comment("Apotheosis implementation of chain digging use 3 has their hardness factor.")
+					.defineInRange("chainDiggingHardnessRange", 3d, 1, 100);
+			delayDiggingRequireEnder = builder.comment("Delayed breaking requires Ender Transport to take effect to reduce lag")
+					.define("delayDiggingRequireEnder", true);
 			builder.pop();
 
 		}

@@ -5,15 +5,17 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import dev.xkmc.l2complements.content.enchantment.special.LifeSyncEnchantment;
 import dev.xkmc.l2complements.events.MagicEventHandler;
+import dev.xkmc.l2complements.events.SpecialEquipmentEvents;
 import dev.xkmc.l2complements.init.data.LCConfig;
+import dev.xkmc.l2complements.init.data.TagGen;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2library.util.Proxy;
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.extensions.IForgeItemStack;
 import org.jetbrains.annotations.NotNull;
@@ -49,6 +51,14 @@ public abstract class ItemStackMixin implements IForgeItemStack {
 			MagicEventHandler.schedule(() -> pEntity.hurt(LifeSyncEnchantment.getSource(pEntity.level()),
 					(float) (pAmount * LCConfig.COMMON.lifeSyncFactor.get())));
 			ci.cancel();
+		}
+		if (!SpecialEquipmentEvents.PLAYER.get().isEmpty()) {
+			BlockState state = SpecialEquipmentEvents.PLAYER.get().peek().getSecond();
+			if (self.getEnchantmentLevel(LCEnchantments.TREE.get()) >= 2) {
+				if (state.is(TagGen.AS_LEAF)) {
+					ci.cancel();
+				}
+			}
 		}
 	}
 

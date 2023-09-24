@@ -47,7 +47,8 @@ public class LCEnchantments {
 	public static final RegistryEntry<DurableArmorEnchantment> DURABLE_ARMOR;
 	public static final RegistryEntry<VoidTouchEnchantment> VOID_TOUCH;
 
-	public static final RegistryEntry<RangeDiggingEnchantment> CUBIC, PLANE, DRILL, VIEN, TREE;
+	public static final RegistryEntry<RangeDiggingEnchantment> CUBIC, PLANE, DRILL, VIEN, TREE,
+			CHUNK_CUBIC, CHUNK_PLANE;
 
 	static {
 
@@ -207,9 +208,23 @@ public class LCEnchantments {
 
 			TREE = reg("tree_chopping", EnchantmentCategory.DIGGER, (r, c, s) ->
 							new RangeDiggingEnchantment(new TreeDigger(), r, c, s),
-					"Chop logs and adjacent leaves. Sneak to bypass")
+					"Chop logs and adjacent leaves. Level 2 cleans leaves as well, and doesn't cost durability when breaking leaves. Sneak to bypass")
 					.addSlots(EquipmentSlot.MAINHAND)
 					.rarity(Enchantment.Rarity.VERY_RARE).lang("Tree Chopper")
+					.register();
+
+			CHUNK_CUBIC = reg("cubic_eater", EnchantmentCategory.DIGGER, (r, c, s) ->
+							new RangeDiggingEnchantment(new CubicChunkBreaker(2), r, c, s),
+					"Dig 4x4x4 chunk-aligned blocks at once. Level 2 makes it 8x8x8. Sneak to bypass")
+					.addSlots(EquipmentSlot.MAINHAND)
+					.rarity(Enchantment.Rarity.VERY_RARE).lang("Cubic Chunk Eater")
+					.register();
+
+			CHUNK_PLANE = reg("plane_eater", EnchantmentCategory.DIGGER, (r, c, s) ->
+							new RangeDiggingEnchantment(new PlaneChunkBreaker(1), r, c, s),
+					"Dig 16x16 chunk-aligned blocks at once. Higher level increase depth. Sneak to bypass")
+					.addSlots(EquipmentSlot.MAINHAND)
+					.rarity(Enchantment.Rarity.VERY_RARE).lang("Planar Chunk Eater")
 					.register();
 
 		}

@@ -20,7 +20,7 @@ public class ServerPlayerGameModeMixin {
 
 	@Inject(at = @At("HEAD"), method = "destroyBlock")
 	public void l2complements_destroyBlock_markPlayerBeginBreak(BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
-		SpecialEquipmentEvents.pushPlayer(player);
+		SpecialEquipmentEvents.pushPlayer(player, pos);
 	}
 
 

@@ -575,6 +575,25 @@ public class RecipeGen {
 						.define('E', Items.GOLD_INGOT)
 						.save(pvd, getID(LCEnchantments.TREE.get()));
 
+
+				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.CHUNK_CUBIC.get(), 1)::unlockedBy, LCItems.BLACKSTONE_CORE.get())
+						.pattern("ECE").pattern("BAB").pattern("DBD")
+						.define('A', new EnchantmentIngredient(LCEnchantments.CUBIC.get(), 1))
+						.define('B', Items.NETHERITE_PICKAXE)
+						.define('C', LCItems.BLACKSTONE_CORE.get())
+						.define('D', Items.LAPIS_LAZULI)
+						.define('E', LCMats.SCULKIUM.getIngot())
+						.save(pvd, getID(LCEnchantments.CHUNK_CUBIC.get()));
+
+				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.CHUNK_PLANE.get(), 1)::unlockedBy, LCItems.BLACKSTONE_CORE.get())
+						.pattern("ECE").pattern("DAD").pattern("BBB")
+						.define('A', new EnchantmentIngredient(LCEnchantments.PLANE.get(), 1))
+						.define('B', Items.NETHERITE_HOE)
+						.define('C', LCItems.BLACKSTONE_CORE.get())
+						.define('D', Items.LAPIS_LAZULI)
+						.define('E', LCMats.SCULKIUM.getIngot())
+						.save(pvd, getID(LCEnchantments.CHUNK_PLANE.get()));
+
 			}
 
 

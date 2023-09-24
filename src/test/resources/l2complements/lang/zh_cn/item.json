@@ -52,10 +52,10 @@
 		  "leggings": "护腿",
 		  "boots": "靴子",
 		  "sword": "剑",
-		  "axe": "斧头",
-		  "shovel": "铲子",
-		  "pickaxe": "镐子",
-		  "hoe": "锄头"
+		  "axe": "斧",
+		  "shovel": "锹",
+		  "pickaxe": "镐",
+		  "hoe": "锄"
 		}
 	  ]
 	},

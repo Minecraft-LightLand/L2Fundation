@@ -8,7 +8,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-public record TreeInstance(int x0, int x1, int y0, int y1, int z0, int z1, int max,
+public record TreeInstance(int x0, int x1, int y0, int y1, int z0, int z1, int max, int lv,
 						   Function<BlockState, Integer> match) implements BlockBreakerInstance {
 
 	@Override
@@ -53,6 +53,10 @@ public record TreeInstance(int x0, int x1, int y0, int y1, int z0, int z1, int m
 					}
 				}
 			}
+		}
+
+		if (rank == 2 && lv == 1) {
+			return l2;
 		}
 
 		while (!q1.isEmpty()) {

@@ -1,12 +1,12 @@
-// 1.20.1	2023-09-24T00:45:36.825211	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.20.1	2023-09-25T00:15:49.25169	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
 b2a769b51ddce14c173a64b5457cccb4d8ef6a45 assets/l2complements/blockstates/sculkium_block.json
 2b88df6f8b01f3c72273ce13dbcb556f7dab321d assets/l2complements/blockstates/shulkerate_block.json
 65262ae0f886f61c163059f15c2ad1a7ba9c264a assets/l2complements/blockstates/totemic_gold_block.json
-94250faa7afed4e9d2e2975e5e1265616580f428 assets/l2complements/lang/en_ud.json
-61f2bada48fdf194ddb27adb06a27f5787f79de5 assets/l2complements/lang/en_us.json
+7024f6767eaf3c950cc06f6da020870927a85b70 assets/l2complements/lang/en_ud.json
+18f929fceb94520e6a2852050a64882d2f58df97 assets/l2complements/lang/en_us.json
 bb63c088704d714f1763cb16cec8af6cd1006d66 assets/l2complements/models/block/eternium_block.json
 a45ee09acc262fd67be22de093136ad757f08e61 assets/l2complements/models/block/poseidite_block.json
 a52909a3a44a80695da32b5c3c5f931a0f72f74d assets/l2complements/models/block/sculkium_block.json
@@ -160,6 +160,7 @@ c4f13c57b125aba7acb35da4718716016bd10dad data/l2complements/advancements/recipes
 243e8a6a8e78e1456ed929af92f0582c741f6a14 data/l2complements/advancements/recipes/combat/generated_tools/totemic_gold/craft/totemic_gold_leggings.json
 b658eb6a11a76a267232be7a6f3cfc57b437c05d data/l2complements/advancements/recipes/combat/generated_tools/totemic_gold/craft/totemic_gold_sword.json
 04ea898018b8bdcc5e102d55cb5d92f8f654d1c8 data/l2complements/advancements/recipes/enchantments/enchantments/cubic_digging.json
+91a7a2517aeb69f97f96ce202c5d7ee416f79d78 data/l2complements/advancements/recipes/enchantments/enchantments/cubic_eater.json
 1889c20137910894520bba30069d66e0e77c0940 data/l2complements/advancements/recipes/enchantments/enchantments/cursed_blade.json
 3f603d6f8b565fe0c8a22dd6d0aac8d6e95adfe3 data/l2complements/advancements/recipes/enchantments/enchantments/dampened.json
 15e8e8bb93878a76a69af342a157086586e6ec85 data/l2complements/advancements/recipes/enchantments/enchantments/drill_digging.json
@@ -181,6 +182,7 @@ c3dfae1d2199b79b284574d56476b2a786e205aa data/l2complements/advancements/recipes
 adf403c4788820577bc953b6307a3158d7a2d80b data/l2complements/advancements/recipes/enchantments/enchantments/magic_reject.json
 5a7a1595518dbc17b09c26dcc90a4ab6ad0dbddc data/l2complements/advancements/recipes/enchantments/enchantments/owner_protection.json
 11b46a904f0b37824e5022a0aa1e78c123d3e8e1 data/l2complements/advancements/recipes/enchantments/enchantments/plane_digging.json
+eac7a383f90bced98486d9782e4ea8a5a30d25ee data/l2complements/advancements/recipes/enchantments/enchantments/plane_eater.json
 b0cc0e26a18325af1a59d8c1b5a1e2403ef7da13 data/l2complements/advancements/recipes/enchantments/enchantments/projectile_reject.json
 1312e664a2e17c6254170e4661ddae41d4954def data/l2complements/advancements/recipes/enchantments/enchantments/safeguard.json
 106a9de725c393c0c26217fffc010127857e1471 data/l2complements/advancements/recipes/enchantments/enchantments/sharp_blade.json
@@ -485,6 +487,7 @@ dafc5085a8ccef044d136515886654d648a1d005 data/l2complements/recipes/eggs/undead/
 2bcd5febfe7f6a7b60cd4690e607088ce80776c1 data/l2complements/recipes/eggs/undead/zombie_spawn_egg.json
 25055f75f89aaeec3349279d49fa96fb98a098d5 data/l2complements/recipes/eggs/undead/zombified_piglin_spawn_egg.json
 144a247b69f34bc90b8756498cd2cb4b0434dbb3 data/l2complements/recipes/enchantments/cubic_digging.json
+ba6d13166d80bc7787ff16b25df60d28c1d380fd data/l2complements/recipes/enchantments/cubic_eater.json
 77a03c0e304a938f15d387186f9806baf3bf80ed data/l2complements/recipes/enchantments/cursed_blade.json
 63f3fb34ee622f0d555de80843fbd89cfecb1857 data/l2complements/recipes/enchantments/dampened.json
 0a98128fbff9bbd9b665842fa013066105fa27f0 data/l2complements/recipes/enchantments/drill_digging.json
@@ -506,6 +509,7 @@ e8441045e9abfe6ed131d1f7e0e7ba45d7346770 data/l2complements/recipes/enchantments
 00bc9164a66ee7f7fd5d67973ff50d5be8e48683 data/l2complements/recipes/enchantments/magic_reject.json
 35a744edef938d38de6c767710897f772eaeb7e9 data/l2complements/recipes/enchantments/owner_protection.json
 de392137a6ba04f471a756cc246a2df18e6a9b18 data/l2complements/recipes/enchantments/plane_digging.json
+a32300f63a34d980809a2133498425c9ea50e41b data/l2complements/recipes/enchantments/plane_eater.json
 b1320892e1153b357407fd106e7654679ca3e22f data/l2complements/recipes/enchantments/projectile_reject.json
 76f2f1a72b768d8dd1fdcda670d1db054fec27e2 data/l2complements/recipes/enchantments/safeguard.json
 f8a87183c7e52ca5d732aec27d7c1a3f4bed7646 data/l2complements/recipes/enchantments/sharp_blade.json

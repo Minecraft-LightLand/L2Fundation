@@ -4,6 +4,9 @@ import dev.xkmc.l2complements.content.enchantment.core.UnobtainableEnchantment;
 import dev.xkmc.l2complements.events.MagicEventHandler;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
+import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.registrate.LCEnchantments;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
@@ -53,7 +56,7 @@ public class RangeDiggingEnchantment extends UnobtainableEnchantment {
 	}
 
 	private static double hardnessFactor() {
-		return 3;
+		return LCConfig.COMMON.chainDiggingHardnessRange.get();
 	}
 
 	private static boolean canBreak(BlockPos i, Level level, Player player, double hardness) {
@@ -89,11 +92,20 @@ public class RangeDiggingEnchantment extends UnobtainableEnchantment {
 		if (player.isShiftKeyDown()) return;
 		var blocks = getTargets(player, pos, stack, lv);
 		execute(player, () -> {
-			if (blocks.size() <= LCConfig.COMMON.chainDiggingDelayThreshold.get()) {
+			int max = LCConfig.COMMON.chainDiggingDelayThreshold.get();
+			if (blocks.size() <= max) {
 				for (var i : blocks) {
 					player.gameMode.destroyBlock(i);
 				}
 			} else {
+				if (LCConfig.COMMON.delayDiggingRequireEnder.get()) {
+					if (stack.getEnchantmentLevel(LCEnchantments.ENDER.get()) <= 0) {
+						player.sendSystemMessage(LangData.IDS.DELAY_WARNING.get(
+										LCEnchantments.ENDER.get().getFullname(1), max)
+								.withStyle(ChatFormatting.RED), true);
+						return;
+					}
+				}
 				MagicEventHandler.schedulePersistent(new DelayedBlockBreaker(player, blocks)::tick);
 			}
 		});

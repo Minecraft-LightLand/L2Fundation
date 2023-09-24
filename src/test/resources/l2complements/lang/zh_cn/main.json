@@ -56,6 +56,7 @@
 		"immune": "免疫: "
 	  }
 	},
+	"msg.delay_warning": "为了降低卡顿，你需要%s附魔才能一次破坏%s个方块以上",
 	"jei": {
 	  "burnt": {
 		"count": "1/%s的概率转化",

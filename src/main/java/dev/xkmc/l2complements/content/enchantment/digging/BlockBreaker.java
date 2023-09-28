@@ -6,4 +6,8 @@ public interface BlockBreaker {
 
 	int getMaxLevel();
 
+	default boolean ignoreHardness() {
+		return false;
+	}
+
 }

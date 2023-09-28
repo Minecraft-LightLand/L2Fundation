@@ -22,4 +22,9 @@ public record CubicChunkBreaker(int rank) implements BlockBreaker {
 		return 2;
 	}
 
+	@Override
+	public boolean ignoreHardness() {
+		return true;
+	}
+
 }

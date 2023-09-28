@@ -13,12 +13,12 @@ public record PlaneChunkBreaker(int h) implements BlockBreaker {
 		int sz = ctx.dire().getStepZ();
 		int x0, x1, y0, y1, z0, z1;
 
-		x0 = sx < 0 ? -d : 0;
-		x1 = sx == 0 ? r : sx > 0 ? d : 0;
-		y0 = sy < 0 ? -d : 0;
-		y1 = sy == 0 ? r : sy > 0 ? d : 0;
-		z0 = sz < 0 ? -d : 0;
-		z1 = sz == 0 ? r : sz > 0 ? d : 0;
+		x0 = sx > 0 ? -d : 0;
+		x1 = sx == 0 ? r : sx < 0 ? d : 0;
+		y0 = sy > 0 ? -d : 0;
+		y1 = sy == 0 ? r : sy < 0 ? d : 0;
+		z0 = sz > 0 ? -d : 0;
+		z1 = sz == 0 ? r : sz < 0 ? d : 0;
 
 		return new WrappedInstance(pos -> modulate(sx, sy, sz, pos), new RectInstance(x0, x1, y0, y1, z0, z1));
 	}

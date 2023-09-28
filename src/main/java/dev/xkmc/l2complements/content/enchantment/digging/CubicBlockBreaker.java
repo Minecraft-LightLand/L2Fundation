@@ -12,4 +12,10 @@ public record CubicBlockBreaker(int radius) implements BlockBreaker {
 	public int getMaxLevel() {
 		return 2;
 	}
+
+	@Override
+	public boolean ignoreHardness() {
+		return true;
+	}
+
 }

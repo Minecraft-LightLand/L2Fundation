@@ -65,7 +65,8 @@ public class RangeDiggingEnchantment extends UnobtainableEnchantment {
 		if (!player.hasCorrectToolForDrops(state))
 			return false;
 		float speed = state.getDestroySpeed(player.level(), i);
-		return speed >= 0 && speed <= hardness;
+		if (speed < 0) return false;
+		return hardness < 0 || speed <= hardness;
 	}
 
 	private final BlockBreaker breaker;
@@ -83,9 +84,9 @@ public class RangeDiggingEnchantment extends UnobtainableEnchantment {
 	public List<BlockPos> getTargets(Player player, BlockPos pos, ItemStack stack, int lv) {
 		Level level = player.level();
 		BlockState state = level.getBlockState(pos);
-		double hardness = state.getDestroySpeed(level, pos) * hardnessFactor();
+		double hardness = breaker.ignoreHardness() ? -1 : state.getDestroySpeed(level, pos) * hardnessFactor();
 		return breaker.getInstance(new DiggerContext(player, getFace(player), stack, lv, pos, state))
-				.find(level, pos, i -> canBreak(i, level, player, hardness));
+				.find(level, pos, i -> !pos.equals(i) && canBreak(i, level, player, hardness));
 	}
 
 	public void onBlockBreak(ServerPlayer player, BlockPos pos, ItemStack stack, int lv) {

@@ -1,12 +1,12 @@
-// 1.20.1	2023-09-25T00:15:49.25169	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.20.1	2023-10-09T13:38:13.810462	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
 b2a769b51ddce14c173a64b5457cccb4d8ef6a45 assets/l2complements/blockstates/sculkium_block.json
 2b88df6f8b01f3c72273ce13dbcb556f7dab321d assets/l2complements/blockstates/shulkerate_block.json
 65262ae0f886f61c163059f15c2ad1a7ba9c264a assets/l2complements/blockstates/totemic_gold_block.json
-7024f6767eaf3c950cc06f6da020870927a85b70 assets/l2complements/lang/en_ud.json
-18f929fceb94520e6a2852050a64882d2f58df97 assets/l2complements/lang/en_us.json
+cb3c1a46c666ab6f68ff2c7f40f53a369fb94be6 assets/l2complements/lang/en_ud.json
+31f036ad4d4cb776d7a2016e1b681fc71cfc4480 assets/l2complements/lang/en_us.json
 bb63c088704d714f1763cb16cec8af6cd1006d66 assets/l2complements/models/block/eternium_block.json
 a45ee09acc262fd67be22de093136ad757f08e61 assets/l2complements/models/block/poseidite_block.json
 a52909a3a44a80695da32b5c3c5f931a0f72f74d assets/l2complements/models/block/sculkium_block.json
@@ -39,6 +39,7 @@ c488cf32dd7f0e38015444911dfb9363de093750 assets/l2complements/models/item/guardi
 64d98bfd9bdbb0baf3fb64dc2e1327aa0737f8fe assets/l2complements/models/item/guardian_rune.json
 ead4933c66bc9b1e8f8497a3a139d90271c938a2 assets/l2complements/models/item/hard_ice.json
 bb7542d61df2397116cdaf9b862e546a7d9010dc assets/l2complements/models/item/heirophant_green.json
+e4f1ecdf595ed04213e606d4948232862a1d2031 assets/l2complements/models/item/hellfire_wand.json
 4b00a8cdcca8de04b57457904c7924d28d24c006 assets/l2complements/models/item/life_essence.json
 84ba5f89a8b594f71165354d4df74298345fd987 assets/l2complements/models/item/piglin_rune.json
 69156dff387d443b0fe708603c504a182b2f2e65 assets/l2complements/models/item/poseidite_axe.json
@@ -79,6 +80,7 @@ acbf5a02b77840a97cbad6ee450dca0a12962c9a assets/l2complements/models/item/shulke
 3bd49e913d649593036f8fbb5797bc3f76d8473a assets/l2complements/models/item/shulkerate_pickaxe.json
 575d2abb76baea1af10beed8c480fb5474e412b9 assets/l2complements/models/item/shulkerate_shovel.json
 57a0ad4c07989882cbc96532f1b6edc0cef60109 assets/l2complements/models/item/shulkerate_sword.json
+f55b4ad473b668fad7156be4c815c53d385f6e4c assets/l2complements/models/item/sonic_shooter.json
 c9072cda57e02aaf67812107d757c254be2dd273 assets/l2complements/models/item/soul_fire_charge.json
 55a6db3cb60b3a882f8bb4af2e7908c673173909 assets/l2complements/models/item/soul_flame.json
 760387404c5f35d96854bb4958ae1cfc5ce25385 assets/l2complements/models/item/space_shard.json
@@ -104,6 +106,7 @@ f2bed6f2f6ac106334a113f4cedef4cb8be322d2 assets/l2complements/models/item/totemi
 4c6e01cc3fc06a57fc46b3b39dc330ce31b05681 assets/l2complements/models/item/void_eye.json
 41d0259e5a214bd80a27be90dbc2ec142fe7a367 assets/l2complements/models/item/warden_bone_shard.json
 ea0f2e6ba9ca3a87c8e7e75860e1e01eb421eedd assets/l2complements/models/item/wind_capture_bottle.json
+e398ec09b3d644e800f9502edf6bbff62a943c2b assets/l2complements/models/item/winterstorm_wand.json
 3d8bcdff520aba2f8196e7fe08ace2661e9d9dff data/forge/tags/blocks/storage_blocks.json
 fd164107c6c9780424b95cac45176d5b3bc50868 data/forge/tags/items/armors/boots.json
 dd515d3f4b06e1fc884572007bbb8fa84ca0b3fc data/forge/tags/items/armors/chestplates.json
@@ -205,10 +208,12 @@ b6f8fb90043ed93de17d9ed5d2d5366331f53ade data/l2complements/advancements/recipes
 2dd8c3651b39a2680f3b17f228a3074353f39248 data/l2complements/advancements/recipes/misc/craft/eternium_nugget.json
 e69ca83953d072177a2cba62d0398289bf533aa4 data/l2complements/advancements/recipes/misc/craft/fragile_warp_stone.json
 25285c30a84dbb426e9fbdf8a7f043d013137daf data/l2complements/advancements/recipes/misc/craft/guardian_rune.json
+dc758fd05d299cfeef7ca9f5e4c0ca12713d3891 data/l2complements/advancements/recipes/misc/craft/hellfire_wand.json
 aab83494caca5745e3903df7548aae9927b15bd1 data/l2complements/advancements/recipes/misc/craft/piglin_rune.json
 e2780b5f319dd10b47ea2f75c6768f3a32208a39 data/l2complements/advancements/recipes/misc/craft/reinforced_warp_stone.json
 d1bdce2aefb365dc84e284c5da929730845a3bb0 data/l2complements/advancements/recipes/misc/craft/sculkium_ingot.json
 d560d560c9fc64ccb7e87767669aae6eef8148c1 data/l2complements/advancements/recipes/misc/craft/shulkerate_ingot.json
+8cc478d0cc32f68427689ca2b2215c0b4d0aa682 data/l2complements/advancements/recipes/misc/craft/sonic_shooter.json
 da681bbf033a4fd45c610abeee7e8c6fa80c17e1 data/l2complements/advancements/recipes/misc/craft/soul_fire_charge.json
 e816363b157f54c112146800668ffe9685c0d6a0 data/l2complements/advancements/recipes/misc/craft/strong_fire_charge.json
 a3fdaa595423f7a9fc789c21f32824e4118c294e data/l2complements/advancements/recipes/misc/craft/totem_of_dream.json
@@ -219,6 +224,7 @@ d990fee5ccfbc0caf9aa06a429af5f13edf3d769 data/l2complements/advancements/recipes
 bd75b1e2419063e2d0f5cee9c2c1b042e68829f9 data/l2complements/advancements/recipes/misc/craft/trident.json
 02e34914d6e67eb896889a7856b4698317b4a187 data/l2complements/advancements/recipes/misc/craft/warden_bone_shard.json
 473c7f81cc14aeace717f35d8fc8a455e724f4d4 data/l2complements/advancements/recipes/misc/craft/wind_capture_bottle.json
+3c39b0d8da61d956479b9de20e07156ad5cd2efd data/l2complements/advancements/recipes/misc/craft/winterstorm_wand.json
 0aa8003bdf074353fe6c171839272b1934e41a14 data/l2complements/advancements/recipes/misc/eggs/animal/bee_spawn_egg.json
 52b7ed5474c5f7b0d6fe40ccff684a4613f7a414 data/l2complements/advancements/recipes/misc/eggs/animal/chicken_spawn_egg.json
 1a06788d6778c55cef5b84d11baecc3ecf62d031 data/l2complements/advancements/recipes/misc/eggs/animal/cow_spawn_egg.json
@@ -445,10 +451,12 @@ a25c942e5f3ce1fbe543ddd74bede115f9e94ce4 data/l2complements/recipes/burnt/totem_
 56319ef4ada70ea4f0dd36cc1399d440841c0262 data/l2complements/recipes/craft/eternium_nugget.json
 c1e0581d56e5da979ca4e4a9dc937cb639c2ba8b data/l2complements/recipes/craft/fragile_warp_stone.json
 1116787f65ce7578da2591ac67c68814f1f1befd data/l2complements/recipes/craft/guardian_rune.json
+d89da2444c19ee89045c24821c7ea0f8868ab850 data/l2complements/recipes/craft/hellfire_wand.json
 66b2ba860a602261e010f9bbfa4f6d3d51bff0ca data/l2complements/recipes/craft/piglin_rune.json
 aafc873bfd50e93ea71b00111a4f2c1e89b158d6 data/l2complements/recipes/craft/reinforced_warp_stone.json
 ebace5b660f41a2b4507dc30d9f27810f538402c data/l2complements/recipes/craft/sculkium_ingot.json
 84cf658b2776e1eceb15f1df044cc24ebb131e73 data/l2complements/recipes/craft/shulkerate_ingot.json
+796c82a3fc4541ce0dc92f2b3e19f93840cc3813 data/l2complements/recipes/craft/sonic_shooter.json
 d7dc6222a9b3f929a0c774e6c87f5091cb798fb5 data/l2complements/recipes/craft/soul_fire_charge.json
 90b2eb7e5f84c51a59026f81a84b2775e77ab63e data/l2complements/recipes/craft/strong_fire_charge.json
 9d41a907fd2498f227ccee1e26ec907a5f4e09ff data/l2complements/recipes/craft/totem_of_dream.json
@@ -459,6 +467,7 @@ c995cb543fb3b57ceab47454536ab977f419120f data/l2complements/recipes/craft/totemi
 5c7c2b793dda8b64380a200ed27d776d315f5058 data/l2complements/recipes/craft/trident.json
 c51e8d7027a0b98d7c2b58ef2cdcbcb4f88be73e data/l2complements/recipes/craft/warden_bone_shard.json
 97b00b959d06a5d077316b5d35da62dc6d836491 data/l2complements/recipes/craft/wind_capture_bottle.json
+6e2a63842aeedc3f95eae71b9aa99ce491941cb3 data/l2complements/recipes/craft/winterstorm_wand.json
 6c7219a7519cfae71e8125ae07aba7b4cb8e1759 data/l2complements/recipes/eggs/animal/bee_spawn_egg.json
 637d1023458326db10fe758c405b26f381a011ff data/l2complements/recipes/eggs/animal/chicken_spawn_egg.json
 034450afb5dc592d14727a67c382b3c5167c4832 data/l2complements/recipes/eggs/animal/cow_spawn_egg.json

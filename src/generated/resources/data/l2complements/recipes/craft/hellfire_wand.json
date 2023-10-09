@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "l2complements:explosion_shard"
+    },
+    "F": {
+      "item": "l2complements:soul_flame"
+    },
+    "M": {
+      "item": "l2complements:sun_membrane"
+    }
+  },
+  "pattern": [
+    " FM",
+    " CF",
+    "C  "
+  ],
+  "result": {
+    "item": "l2complements:hellfire_wand"
+  },
+  "show_notification": true
+}

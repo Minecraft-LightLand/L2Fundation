@@ -87,6 +87,10 @@ public class LCItems {
 	public static final ItemEntry<FireChargeItem<StrongFireball>> STRONG_CHARGE;
 	public static final ItemEntry<FireChargeItem<BlackFireball>> BLACK_CHARGE;
 
+	public static final ItemEntry<SonicShooter> SONIC_SHOOTER;
+	public static final ItemEntry<HellfireWand> HELLFIRE_WAND;
+	public static final ItemEntry<WinterStormWand> WINTERSTORM_WAND;
+
 	public static final ItemEntry<Item> TOTEMIC_CARROT, TOTEMIC_APPLE;
 	public static final ItemEntry<EnchantedGoldenAppleItem> ENCHANT_TOTEMIC_CARROT, ENCHANTED_TOTEMIC_APPLE;
 
@@ -160,6 +164,18 @@ public class LCItems {
 											new MobEffectInstance(LCEffects.STONE_CAGE.get(),
 													LCConfig.COMMON.blackFireChargeDuration.get())))))
 					.defaultModel().defaultLang().register();
+
+			SONIC_SHOOTER = REGISTRATE.item("sonic_shooter", p ->
+							new SonicShooter(p.durability(64).fireResistant().rarity(Rarity.EPIC)))
+					.model((ctx, pvd) -> pvd.handheld(ctx)).defaultLang().register();
+
+			HELLFIRE_WAND = REGISTRATE.item("hellfire_wand", p ->
+							new HellfireWand(p.durability(64).fireResistant().rarity(Rarity.EPIC)))
+					.model((ctx, pvd) -> pvd.handheld(ctx)).defaultLang().register();
+
+			WINTERSTORM_WAND = REGISTRATE.item("winterstorm_wand", p ->
+							new WinterStormWand(p.durability(64).fireResistant().rarity(Rarity.RARE)))
+					.model((ctx, pvd) -> pvd.handheld(ctx)).defaultLang().register();
 		}
 		{
 			TOTEMIC_CARROT = REGISTRATE.item("totemic_carrot", p -> new Item(p.food(

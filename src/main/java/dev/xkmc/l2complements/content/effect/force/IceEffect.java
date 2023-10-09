@@ -24,6 +24,9 @@ public class IceEffect extends InherentEffect implements IconOverlayEffect {
 
 	@Override
 	public void applyEffectTick(LivingEntity target, int level) {
+		if (target.getTicksFrozen() < 140) {
+			target.setTicksFrozen(140);
+		}
 		target.setIsInPowderSnow(true);
 	}
 

@@ -195,7 +195,27 @@ public class RecipeGen {
 					.requires(LCItems.RESONANT_FEATHER.get())
 					.save(pvd, getID(LCItems.WARDEN_BONE_SHARD.get()));
 
+			unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, LCItems.SONIC_SHOOTER.get(), 1)::unlockedBy, LCMats.SCULKIUM.getIngot())
+					.pattern("ABB").pattern("III").pattern("IC ")
+					.define('I', LCMats.SCULKIUM.getIngot())
+					.define('A', LCItems.VOID_EYE)
+					.define('B', LCItems.RESONANT_FEATHER.get())
+					.define('C', LCItems.EXPLOSION_SHARD.get())
+					.save(pvd, getID(LCItems.SONIC_SHOOTER.get()));
 
+			unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, LCItems.HELLFIRE_WAND.get(), 1)::unlockedBy, LCItems.SUN_MEMBRANE.get())
+					.pattern(" FM").pattern(" CF").pattern("C  ")
+					.define('F', LCItems.SOUL_FLAME.get())
+					.define('M', LCItems.SUN_MEMBRANE.get())
+					.define('C', LCItems.EXPLOSION_SHARD.get())
+					.save(pvd, getID(LCItems.HELLFIRE_WAND.get()));
+
+			unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, LCItems.WINTERSTORM_WAND.get(), 1)::unlockedBy, LCItems.HARD_ICE.get())
+					.pattern(" FM").pattern(" CF").pattern("C  ")
+					.define('F', LCItems.HARD_ICE.get())
+					.define('M', LCItems.STORM_CORE.get())
+					.define('C', Items.STICK)
+					.save(pvd, getID(LCItems.WINTERSTORM_WAND.get()));
 		}
 
 		currentFolder = "vanilla/renew/";

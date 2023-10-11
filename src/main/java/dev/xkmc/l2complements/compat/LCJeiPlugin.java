@@ -2,6 +2,7 @@ package dev.xkmc.l2complements.compat;
 
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.registrate.LCBlocks;
+import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2complements.init.registrate.LCRecipes;
 import dev.xkmc.l2library.util.Proxy;
 import mezz.jei.api.IModPlugin;
@@ -21,6 +22,7 @@ public class LCJeiPlugin implements IModPlugin {
 	public final ResourceLocation UID = new ResourceLocation(L2Complements.MODID, "main");
 
 	public final BurntRecipeCategory BURNT = new BurntRecipeCategory();
+	public final DiffuseRecipeCategory DIFFUSE = new DiffuseRecipeCategory();
 
 	public IGuiHelper GUI_HELPER;
 
@@ -46,6 +48,7 @@ public class LCJeiPlugin implements IModPlugin {
 	public void registerCategories(IRecipeCategoryRegistration registration) {
 		IGuiHelper helper = registration.getJeiHelpers().getGuiHelper();
 		registration.addRecipeCategories(BURNT.init(helper));
+		registration.addRecipeCategories(DIFFUSE.init(helper));
 		GUI_HELPER = helper;
 	}
 
@@ -55,7 +58,10 @@ public class LCJeiPlugin implements IModPlugin {
 
 	@Override
 	public void registerRecipes(IRecipeRegistration registration) {
-		registration.addRecipes(BURNT.getRecipeType(), Proxy.getClientWorld().getRecipeManager().getAllRecipesFor(LCRecipes.RT_BURNT.get()));
+		var level = Proxy.getClientWorld();
+		assert level != null;
+		registration.addRecipes(BURNT.getRecipeType(), level.getRecipeManager().getAllRecipesFor(LCRecipes.RT_BURNT.get()));
+		registration.addRecipes(DIFFUSE.getRecipeType(), level.getRecipeManager().getAllRecipesFor(LCRecipes.RT_DIFFUSION.get()));
 	}
 
 	@Override
@@ -68,6 +74,7 @@ public class LCJeiPlugin implements IModPlugin {
 		registration.addRecipeCatalyst(Items.FLINT_AND_STEEL.getDefaultInstance(), BURNT.getRecipeType());
 		registration.addRecipeCatalyst(Items.FIRE_CHARGE.getDefaultInstance(), BURNT.getRecipeType());
 		registration.addRecipeCatalyst(LCBlocks.ETERNAL_ANVIL.asStack(), RecipeTypes.ANVIL);
+		registration.addRecipeCatalyst(LCItems.DIFFUSION_WAND.asStack(), DIFFUSE.getRecipeType());
 	}
 
 	@Override

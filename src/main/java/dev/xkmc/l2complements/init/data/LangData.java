@@ -37,6 +37,7 @@ public class LangData {
 
 		BURNT_TITLE("jei.burnt.title", "Burning", 0),
 		BURNT_COUNT("jei.burnt.count", "One in %s chance of conversion", 1),
+		DIFFUSE_TITLE("jei.diffuse.title", "Diffusion", 0),
 
 		FLOAT("tooltip.misc.float", "This item will float in the air.", 0),
 
@@ -58,7 +59,13 @@ public class LangData {
 		SHULKERATE_ARMOR("tooltip.tool.shulkerate_armor", "Really durable. Not easily damaged.", 0),
 		TOTEMIC_TOOL("tooltip.tool.totemic_tool", "Heal user when used. Effective against undead mobs.", 0),
 		TOTEMIC_ARMOR("tooltip.tool.totemic_armor", "Heal user when damaged. Regenerate health over time.", 0),
-		DELAY_WARNING("msg.delay_warning", "Your tool needs %s to break more than %s blocks", 2);
+		DELAY_WARNING("msg.delay_warning", "Your tool needs %s to break more than %s blocks", 2),
+
+		SONIC_SHOOTER("tooltip.misc.sonic_shooter", "Hold use to charge. Shoot sonic boom automatically when charged to full. Damage all mobs in front of you.", 0),
+		HELLFIRE_WAND("tooltip.misc.hellfire_wand", "Hold use to start. Gradually grows a ring of fire on target position. On release, damage all mobs inside the ring.", 0),
+		WINTERSTORM_WAND("tooltip.misc.winterstorm_wand", "Hold use to create a ring of storm. Push mobs away and freeze them.", 0),
+		DIFFUSION_WAND("tooltip.misc.diffusion_wand", "Right click a block of gem/dust to diffuse it into nearby stones to create ore. Check JEI for recipe", 0),
+		;
 
 		final String id, def;
 		final int count;

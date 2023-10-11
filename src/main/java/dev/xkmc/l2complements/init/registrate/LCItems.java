@@ -10,6 +10,10 @@ import dev.xkmc.l2complements.content.item.create.RefinedRadianceItem;
 import dev.xkmc.l2complements.content.item.create.VoidEyeItem;
 import dev.xkmc.l2complements.content.item.misc.FireChargeItem;
 import dev.xkmc.l2complements.content.item.misc.*;
+import dev.xkmc.l2complements.content.item.wand.DiffusionWand;
+import dev.xkmc.l2complements.content.item.wand.HellfireWand;
+import dev.xkmc.l2complements.content.item.wand.SonicShooter;
+import dev.xkmc.l2complements.content.item.wand.WinterStormWand;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
@@ -90,6 +94,7 @@ public class LCItems {
 	public static final ItemEntry<SonicShooter> SONIC_SHOOTER;
 	public static final ItemEntry<HellfireWand> HELLFIRE_WAND;
 	public static final ItemEntry<WinterStormWand> WINTERSTORM_WAND;
+	public static final ItemEntry<DiffusionWand> DIFFUSION_WAND;
 
 	public static final ItemEntry<Item> TOTEMIC_CARROT, TOTEMIC_APPLE;
 	public static final ItemEntry<EnchantedGoldenAppleItem> ENCHANT_TOTEMIC_CARROT, ENCHANTED_TOTEMIC_APPLE;
@@ -173,8 +178,12 @@ public class LCItems {
 							new HellfireWand(p.durability(64).fireResistant().rarity(Rarity.EPIC)))
 					.model((ctx, pvd) -> pvd.handheld(ctx)).defaultLang().register();
 
+			DIFFUSION_WAND = REGISTRATE.item("diffusion_wand", p ->
+							new DiffusionWand(p.durability(8).fireResistant().rarity(Rarity.RARE)))
+					.model((ctx, pvd) -> pvd.handheld(ctx)).defaultLang().register();
+
 			WINTERSTORM_WAND = REGISTRATE.item("winterstorm_wand", p ->
-							new WinterStormWand(p.durability(64).fireResistant().rarity(Rarity.RARE)))
+							new WinterStormWand(p.durability(128).fireResistant().rarity(Rarity.RARE)))
 					.model((ctx, pvd) -> pvd.handheld(ctx)).defaultLang().register();
 		}
 		{

@@ -1,0 +1,6 @@
+{
+  "type": "l2complements:diffusion",
+  "base": "minecraft:deepslate",
+  "ingredient": "minecraft:emerald_block",
+  "result": "minecraft:deepslate_emerald_ore"
+}

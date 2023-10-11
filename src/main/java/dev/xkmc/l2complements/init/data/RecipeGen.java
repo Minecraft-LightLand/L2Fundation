@@ -7,6 +7,7 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import dev.xkmc.l2complements.content.enchantment.core.EnchantmentRecipeBuilder;
 import dev.xkmc.l2complements.content.recipe.BurntRecipeBuilder;
+import dev.xkmc.l2complements.content.recipe.DiffusionRecipeBuilder;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.materials.LCMats;
 import dev.xkmc.l2complements.init.registrate.LCBlocks;
@@ -28,6 +29,8 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -216,6 +219,14 @@ public class RecipeGen {
 					.define('M', LCItems.STORM_CORE.get())
 					.define('C', Items.STICK)
 					.save(pvd, getID(LCItems.WINTERSTORM_WAND.get()));
+
+
+			unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, LCItems.DIFFUSION_WAND.get(), 1)::unlockedBy, LCItems.STORM_CORE.get())
+					.pattern(" FM").pattern(" CF").pattern("C  ")
+					.define('F', Items.DIAMOND)
+					.define('M', LCItems.STORM_CORE.get())
+					.define('C', Items.STICK)
+					.save(pvd, getID(LCItems.DIFFUSION_WAND.get()));
 		}
 
 		currentFolder = "vanilla/renew/";
@@ -646,6 +657,23 @@ public class RecipeGen {
 			convert(pvd, Items.TOTEM_OF_UNDYING, LCItems.LIFE_ESSENCE.get(), 64);
 		}
 
+		currentFolder = "diffusion/";
+		{
+			diffuse(pvd, Blocks.LAPIS_BLOCK, Blocks.STONE, Blocks.LAPIS_ORE);
+			diffuse(pvd, Blocks.LAPIS_BLOCK, Blocks.DEEPSLATE, Blocks.DEEPSLATE_LAPIS_ORE);
+
+			diffuse(pvd, Blocks.REDSTONE_BLOCK, Blocks.STONE, Blocks.REDSTONE_ORE);
+			diffuse(pvd, Blocks.REDSTONE_BLOCK, Blocks.DEEPSLATE, Blocks.DEEPSLATE_REDSTONE_ORE);
+
+			diffuse(pvd, Blocks.DIAMOND_BLOCK, Blocks.STONE, Blocks.DIAMOND_ORE);
+			diffuse(pvd, Blocks.DIAMOND_BLOCK, Blocks.DEEPSLATE, Blocks.DEEPSLATE_DIAMOND_ORE);
+
+			diffuse(pvd, Blocks.EMERALD_BLOCK, Blocks.STONE, Blocks.EMERALD_ORE);
+			diffuse(pvd, Blocks.EMERALD_BLOCK, Blocks.DEEPSLATE, Blocks.DEEPSLATE_EMERALD_ORE);
+
+			diffuse(pvd, Blocks.QUARTZ_BLOCK, Blocks.NETHERRACK, Blocks.NETHER_QUARTZ_ORE);
+		}
+
 		// eggs
 		{
 
@@ -956,6 +984,10 @@ public class RecipeGen {
 
 	private static void convert(RegistrateRecipeProvider pvd, Item in, Item out, int count) {
 		unlock(pvd, new BurntRecipeBuilder(Ingredient.of(in), out.getDefaultInstance(), count)::unlockedBy, in).save(pvd, getID(in));
+	}
+
+	private static void diffuse(RegistrateRecipeProvider pvd, Block in, Block base, Block out) {
+		unlock(pvd, new DiffusionRecipeBuilder(in, base, out)::unlockedBy, in.asItem()).save(pvd, getID(out.asItem()));
 	}
 
 	private static void storage(RegistrateRecipeProvider pvd, ItemEntry<?> nugget, ItemEntry<?> ingot, BlockEntry<?> block) {

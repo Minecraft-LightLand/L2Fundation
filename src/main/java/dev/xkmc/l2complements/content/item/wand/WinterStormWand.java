@@ -1,8 +1,11 @@
-package dev.xkmc.l2complements.content.item.misc;
+package dev.xkmc.l2complements.content.item.wand;
 
+import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2library.base.effects.EffectUtil;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -11,10 +14,12 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -62,6 +67,9 @@ public class WinterStormWand extends Item {
 				if (dist > 1) return;
 				Vec3 vec = e.position().subtract(player.position()).normalize().scale((1 - dist) * 0.2);
 				e.push(vec.x, vec.y, vec.z);
+				if (e.getTicksFrozen() < 140) {
+					e.setTicksFrozen(140);
+				}
 				EffectUtil.refreshEffect(e, new MobEffectInstance(LCEffects.ICE.get(), 40), EffectUtil.AddReason.NONE, player);
 			}
 		}
@@ -81,6 +89,11 @@ public class WinterStormWand extends Item {
 	@Override
 	public UseAnim getUseAnimation(ItemStack stack) {
 		return UseAnim.NONE;
+	}
+
+	@Override
+	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+		list.add(LangData.IDS.WINTERSTORM_WAND.get().withStyle(ChatFormatting.GRAY));
 	}
 
 }

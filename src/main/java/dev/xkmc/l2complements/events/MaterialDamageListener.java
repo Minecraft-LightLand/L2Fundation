@@ -13,8 +13,30 @@ import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.fml.ModList;
+
+import java.util.HashSet;
 
 public class MaterialDamageListener implements AttackListener {
+
+	public static final HashSet<String> BAN_SPACE_SHARD = new HashSet<>();
+
+	static {
+		BAN_SPACE_SHARD.add("l2artifacts");
+		BAN_SPACE_SHARD.add("l2hostility");
+		BAN_SPACE_SHARD.add("apotheosis");
+	}
+
+	public static boolean isSpaceShardBanned() {
+		if (LCConfig.COMMON.allowModBanSpaceShard.get()) {
+			for (var e : BAN_SPACE_SHARD) {
+				if (ModList.get().isLoaded(e)) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 
 	@Override
 	public void onCreateSource(CreateSourceEvent event) {
@@ -44,7 +66,7 @@ public class MaterialDamageListener implements AttackListener {
 			}
 		}
 		if (event.getSource().is(DamageTypeTags.IS_PROJECTILE) && event.getSource().getEntity() instanceof Player) {
-			if (cache.getPreDamage() >= LCConfig.COMMON.spaceDamage.get()) {
+			if (!isSpaceShardBanned() && cache.getPreDamage() >= LCConfig.COMMON.spaceDamage.get()) {
 				cache.getAttackTarget().spawnAtLocation(LCItems.SPACE_SHARD.asStack());
 			}
 		}

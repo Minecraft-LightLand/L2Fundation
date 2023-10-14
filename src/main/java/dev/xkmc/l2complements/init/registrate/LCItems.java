@@ -14,6 +14,7 @@ import dev.xkmc.l2complements.content.item.wand.DiffusionWand;
 import dev.xkmc.l2complements.content.item.wand.HellfireWand;
 import dev.xkmc.l2complements.content.item.wand.SonicShooter;
 import dev.xkmc.l2complements.content.item.wand.WinterStormWand;
+import dev.xkmc.l2complements.events.MaterialDamageListener;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
@@ -118,7 +119,7 @@ public class LCItems {
 			STORM_CORE = simpleItem("storm_core", "Crystal of Storm", TooltipItem::new, Rarity.UNCOMMON, LangData.IDS.STORM_CORE::get); // kill phantom with explosion
 			BLACKSTONE_CORE = simpleItem("blackstone_core", "Blackstone Core", TooltipItem::new, Rarity.RARE, LangData.IDS.BLACKSTONE_CORE::get); // kill guardian with stone cage effect
 			RESONANT_FEATHER = simpleItem("resonant_feather", "Resonant Feather", TooltipItem::new, Rarity.EPIC, LangData.IDS.RESONANT_FEATHER::get); // let chicken survive sonic boom
-			SPACE_SHARD = simpleItem("space_shard", "Space Shard (Creative)", TooltipItem::new, Rarity.EPIC, () -> LangData.IDS.SPACE_SHARD.get(LCConfig.COMMON.spaceDamage.get())); // deal 500 arrow damage
+			SPACE_SHARD = simpleItem("space_shard", "Space Shard (Creative)", TooltipItem::new, Rarity.EPIC, () -> MaterialDamageListener.isSpaceShardBanned() ? null : LangData.IDS.SPACE_SHARD.get(LCConfig.COMMON.spaceDamage.get())); // deal 500 arrow damage
 			WARDEN_BONE_SHARD = simpleItem("warden_bone_shard", "Warden Bone Shard", TooltipItem::new, Rarity.RARE, LangData.IDS.WARDEN_BONE_SHARD::get);
 			GUARDIAN_EYE = simpleItem("guardian_eye", "Eye of Elder Guardian", TooltipItem::new, Rarity.RARE, LangData.IDS.GUARDIAN_EYE::get);
 			EMERALD = REGISTRATE.item("heirophant_green", p -> new BurntItem(p.fireResistant().rarity(Rarity.EPIC))).defaultModel().tag(TagGen.SPECIAL_ITEM).lang("Heirophant Green").register();

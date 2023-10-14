@@ -22,6 +22,7 @@ public class LCConfig {
 		public final ForgeConfigSpec.IntValue phantomHeight;
 		public final ForgeConfigSpec.IntValue explosionDamage;
 		public final ForgeConfigSpec.IntValue spaceDamage;
+		public final ForgeConfigSpec.BooleanValue allowModBanSpaceShard;
 
 		public final ForgeConfigSpec.IntValue totemicHealDuration;
 		public final ForgeConfigSpec.IntValue totemicHealAmount;
@@ -68,6 +69,8 @@ public class LCConfig {
 					.defineInRange("explosionDamage", 80, 1, 10000);
 			spaceDamage = builder.comment("Requirement for space shard drop")
 					.defineInRange("spaceDamage", 16384, 1, 1000000);
+			allowModBanSpaceShard = builder.comment("Allow mods to ban space shard")
+					.define("allowMobBanSpaceShard", true);
 			builder.pop();
 
 			builder.push("fire charge");

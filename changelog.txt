@@ -1,3 +1,11 @@
+2.4.19
+- add 4 wands
+- make mobs not drop loot when death event is cancelled
+
+2.4.18
+- add mining enchantments
+- add enchantment identifier character
+
 2.4.17
 - Add Safeguard enchantment
 - Change recipes for most enchantments

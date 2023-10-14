@@ -1,5 +1,6 @@
 package dev.xkmc.l2complements.content.item.misc;
 
+import dev.xkmc.l2complements.init.data.LangData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -23,7 +24,12 @@ public class TooltipItem extends Item {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		list.add(sup.get().withStyle(ChatFormatting.GRAY));
+		var e = sup.get();
+		if (e == null) {
+			list.add(LangData.IDS.BANNED.get().withStyle(ChatFormatting.RED));
+		} else {
+			list.add(e.withStyle(ChatFormatting.GRAY));
+		}
 		super.appendHoverText(stack, level, list, flag);
 	}
 }

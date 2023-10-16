@@ -13,7 +13,10 @@
 	"soul_flame": "%s的灵魂燃尽了",
 	"soul_flame.player": "%s的灵魂被%s烧掉了",
 	"life_sync": "%s被榨干了",
-	"void_eye": "%s死于虚空之眼的诅咒"
+	"void_eye": "%s死于虚空之眼的诅咒",
+	"bleed": "%s流血致死",
+	"emerald": "%s被绿宝石水花杀死了",
+	"emerald.player": "%s被%s的绿宝石水花杀死了"
   },
   "l2complements": {
 	"tooltip": {

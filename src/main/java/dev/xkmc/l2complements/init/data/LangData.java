@@ -111,6 +111,9 @@ public class LangData {
 		pvd.add("death.attack.soul_flame.player", "%s has its soul burnt out by %s");
 		pvd.add("death.attack.life_sync", "%s was drained");
 		pvd.add("death.attack.void_eye", "%s was cursed by void eye");
+		pvd.add("death.attack.emerald", "%s was killed by emerald splash");
+		pvd.add("death.attack.emerald.player", "%s was killed by emerald splash by %s");
+		pvd.add("death.attack.bleed", "%s bleed to death");
 
 		List<Item> list = List.of(Items.POTION, Items.SPLASH_POTION, Items.LINGERING_POTION, Items.TIPPED_ARROW);
 		for (RegistryEntry<? extends Potion> ent : LCEffects.POTION_LIST) {

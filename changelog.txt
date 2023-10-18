@@ -2,6 +2,7 @@
 - add 4 wands
 - make mobs not drop loot when death event is cancelled
 - allow mods to ban space shard
+- add config option to disable immunity enchantments
 
 2.4.18
 - add mining enchantments

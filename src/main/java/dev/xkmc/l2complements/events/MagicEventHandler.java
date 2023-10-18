@@ -7,6 +7,7 @@ import dev.xkmc.l2complements.content.enchantment.core.AttributeEnchantment;
 import dev.xkmc.l2complements.content.enchantment.digging.RangeDiggingEnchantment;
 import dev.xkmc.l2complements.content.enchantment.special.SoulBoundPlayerData;
 import dev.xkmc.l2complements.init.L2Complements;
+import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
@@ -42,13 +43,16 @@ public class MagicEventHandler {
 
 	@SubscribeEvent
 	public static void onLivingAttack(LivingAttackEvent event) {
-		if (EnchantmentHelper.getEnchantmentLevel(LCEnchantments.ENCH_INVINCIBLE.get(), event.getEntity()) > 0) {
-			event.setCanceled(true);
-		}
 		if (EnchantmentHelper.getEnchantmentLevel(LCEnchantments.ENCH_MATES.get(), event.getEntity()) > 0) {
 			if (event.getSource().getEntity() instanceof OwnableEntity ownable && ownable.getOwner() == event.getEntity()) {
 				event.setCanceled(true);
 			}
+		}
+		if (!LCConfig.COMMON.enableImmunityEnchantments.get()) {
+			return;
+		}
+		if (EnchantmentHelper.getEnchantmentLevel(LCEnchantments.ENCH_INVINCIBLE.get(), event.getEntity()) > 0) {
+			event.setCanceled(true);
 		}
 		if (event.getSource().is(DamageTypeTags.BYPASSES_EFFECTS) || event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY))
 			return;

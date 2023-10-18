@@ -23,6 +23,7 @@ public class LCConfig {
 		public final ForgeConfigSpec.IntValue explosionDamage;
 		public final ForgeConfigSpec.IntValue spaceDamage;
 		public final ForgeConfigSpec.BooleanValue allowModBanSpaceShard;
+		public final ForgeConfigSpec.BooleanValue enableImmunityEnchantments;
 
 		public final ForgeConfigSpec.IntValue totemicHealDuration;
 		public final ForgeConfigSpec.IntValue totemicHealAmount;
@@ -71,6 +72,9 @@ public class LCConfig {
 					.defineInRange("spaceDamage", 16384, 1, 1000000);
 			allowModBanSpaceShard = builder.comment("Allow mods to ban space shard")
 					.define("allowMobBanSpaceShard", true);
+			enableImmunityEnchantments = builder.comment("Enable immunity enchantments")
+					.comment("Be sure to inform players when you turn this on")
+					.define("enableImmunityEnchantments", true);
 			builder.pop();
 
 			builder.push("fire charge");

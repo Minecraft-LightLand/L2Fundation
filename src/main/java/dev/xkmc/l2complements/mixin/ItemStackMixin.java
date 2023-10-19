@@ -10,7 +10,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.extensions.IForgeItemStack;
 import org.jetbrains.annotations.NotNull;
@@ -53,7 +52,7 @@ public abstract class ItemStackMixin implements IForgeItemStack {
 		ItemStack self = (ItemStack) (Object) this;
 		int lv;
 		if (ApotheosisLoopCompat.loop >= 2) {
-			lv = EnchantmentHelper.getTagEnchantmentLevel(LCEnchantments.DURABLE_ARMOR.get(), self);
+			lv = ApotheosisLoopCompat.getTagEnchantmentLevel(LCEnchantments.DURABLE_ARMOR.get(), self);
 		} else {
 			ApotheosisLoopCompat.loop++;
 			lv = self.getEnchantmentLevel(LCEnchantments.DURABLE_ARMOR.get());

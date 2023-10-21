@@ -90,7 +90,7 @@ public class RangeDiggingEnchantment extends UnobtainableEnchantment {
 	}
 
 	public void onBlockBreak(ServerPlayer player, BlockPos pos, ItemStack stack, int lv) {
-		if (player.isShiftKeyDown()) return;
+		if (player.isShiftKeyDown() ^ LCConfig.COMMON.diggingEnchantmentRequiresShiftToWork.get()) return;
 		var blocks = getTargets(player, pos, stack, lv);
 		execute(player, () -> {
 			int max = LCConfig.COMMON.chainDiggingDelayThreshold.get();

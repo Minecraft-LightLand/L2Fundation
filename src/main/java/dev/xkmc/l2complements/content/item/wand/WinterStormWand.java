@@ -64,7 +64,7 @@ public class WinterStormWand extends Item {
 					player.getBoundingBox().inflate(radius), e -> e instanceof Mob);
 			for (var e : list) {
 				double dist = player.distanceTo(e) / radius;
-				if (dist > 1) return;
+				if (dist > 1) continue;
 				Vec3 vec = e.position().subtract(player.position()).normalize().scale((1 - dist) * 0.2);
 				e.push(vec.x, vec.y, vec.z);
 				if (e.getTicksFrozen() < 140) {

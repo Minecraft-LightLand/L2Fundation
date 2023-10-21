@@ -3,6 +3,7 @@
 - make mobs not drop loot when death event is cancelled
 - allow mods to ban space shard
 - add config option to disable immunity enchantments
+- add config option to reverse digging enchantment key bind requirements
 
 2.4.18
 - add mining enchantments

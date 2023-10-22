@@ -1,5 +1,6 @@
 package dev.xkmc.l2complements.content.effect.skill;
 
+import dev.xkmc.l2complements.content.effect.force.NoSelfRenderEffect;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.DamageTypeGen;
 import dev.xkmc.l2library.base.effects.api.DelayedEntityRender;
@@ -17,7 +18,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 
 import java.util.UUID;
 
-public class BleedEffect extends InherentEffect implements ForceEffect, IconOverlayEffect, SkillEffect, StackingEffect<BleedEffect> {
+public class BleedEffect extends InherentEffect implements ForceEffect, NoSelfRenderEffect, SkillEffect, StackingEffect<BleedEffect> {
 
 	private static final UUID ID_SLOW = MathHelper.getUUIDFromString(L2Complements.MODID + ":bleed_slow");
 	private static final UUID ID_ATK = MathHelper.getUUIDFromString(L2Complements.MODID + ":bleed_atk");

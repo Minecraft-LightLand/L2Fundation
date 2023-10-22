@@ -1,0 +1,6 @@
+{
+  "parent": "l2complements:item/gun",
+  "textures": {
+    "layer0": "l2complements:item/sonic_shooter_1"
+  }
+}

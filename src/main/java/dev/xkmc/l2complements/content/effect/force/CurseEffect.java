@@ -9,7 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 
-public class CurseEffect extends InherentEffect implements ForceEffect, IconOverlayEffect {
+public class CurseEffect extends InherentEffect implements ForceEffect, NoSelfRenderEffect {
 
 	public CurseEffect(MobEffectCategory category, int color) {
 		super(category, color);

@@ -2,7 +2,10 @@ package dev.xkmc.l2complements.init;
 
 import dev.xkmc.l2complements.content.client.EnchStackDeco;
 import dev.xkmc.l2complements.content.item.misc.LCBEWLR;
+import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2complements.init.registrate.LCParticle;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
@@ -22,6 +25,11 @@ public class L2ComplementsClient {
 
 	@SubscribeEvent
 	public static void clientSetup(FMLClientSetupEvent event) {
+		event.enqueueWork(() -> {
+			ItemProperties.register(LCItems.SONIC_SHOOTER.get(), new ResourceLocation(L2Complements.MODID, "shoot"),
+					(stack, level, user, index) -> user == null || !user.isUsingItem() ? 0 :
+							1 - 1f * user.getUseItemRemainingTicks() / stack.getUseDuration());
+		});
 	}
 
 	@SubscribeEvent

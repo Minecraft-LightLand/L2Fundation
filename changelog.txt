@@ -1,5 +1,5 @@
 2.4.19
-- add 4 wands
+- add sonic shooter, hellfire wand, winterstorm wand, diffusion wand
 - make mobs not drop loot when death event is cancelled
 - allow mods to ban space shard
 - add config option to disable immunity enchantments

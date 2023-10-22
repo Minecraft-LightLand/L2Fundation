@@ -23,6 +23,7 @@ import dev.xkmc.l2complements.init.materials.LCMats;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffectUtil;
@@ -173,7 +174,19 @@ public class LCItems {
 
 			SONIC_SHOOTER = REGISTRATE.item("sonic_shooter", p ->
 							new SonicShooter(p.durability(64).fireResistant().rarity(Rarity.EPIC)))
-					.model((ctx, pvd) -> pvd.handheld(ctx)).defaultLang().register();
+					.model((ctx, pvd) -> {
+								var parent = new ModelFile.UncheckedModelFile(pvd.modLoc("item/gun"));
+								var base = pvd.getBuilder(ctx.getName()).parent(parent)
+										.texture("layer0", "item/" + ctx.getName());
+								var id = new ResourceLocation(L2Complements.MODID, "shoot");
+								for (int i = 0; i < 4; i++) {
+									String str = ctx.getName() + "_" + i;
+									base.override().predicate(id, i * 0.2f + 0.2f)
+											.model(pvd.getBuilder(str).parent(parent)
+													.texture("layer0", "item/" + str)).end();
+								}
+							}
+					).defaultLang().register();
 
 			HELLFIRE_WAND = REGISTRATE.item("hellfire_wand", p ->
 							new HellfireWand(p.durability(64).fireResistant().rarity(Rarity.EPIC)))

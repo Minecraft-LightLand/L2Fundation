@@ -104,6 +104,7 @@ public class HellfireWand extends Item {
 				}
 			}
 		}
+		player.getCooldowns().addCooldown(this, 40);
 	}
 
 	@Override

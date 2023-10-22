@@ -1,4 +1,4 @@
-// 1.20.1	2023-10-16T10:17:57.790886	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.20.1	2023-10-22T14:54:34.842212	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
@@ -81,7 +81,11 @@ acbf5a02b77840a97cbad6ee450dca0a12962c9a assets/l2complements/models/item/shulke
 3bd49e913d649593036f8fbb5797bc3f76d8473a assets/l2complements/models/item/shulkerate_pickaxe.json
 575d2abb76baea1af10beed8c480fb5474e412b9 assets/l2complements/models/item/shulkerate_shovel.json
 57a0ad4c07989882cbc96532f1b6edc0cef60109 assets/l2complements/models/item/shulkerate_sword.json
-f55b4ad473b668fad7156be4c815c53d385f6e4c assets/l2complements/models/item/sonic_shooter.json
+ec09fb7b78e3d893ca04dde36f927ecdf706d727 assets/l2complements/models/item/sonic_shooter.json
+e4e2d217e9a81b666cd48b0688e56e758153e774 assets/l2complements/models/item/sonic_shooter_0.json
+bad9f718b8453e66bb88cc17ef1016d0b0e12315 assets/l2complements/models/item/sonic_shooter_1.json
+2cb880f35bacc657208b215c2053c72798c24098 assets/l2complements/models/item/sonic_shooter_2.json
+e3ad84221f786b2bbb5bed34788c279868cadec4 assets/l2complements/models/item/sonic_shooter_3.json
 c9072cda57e02aaf67812107d757c254be2dd273 assets/l2complements/models/item/soul_fire_charge.json
 55a6db3cb60b3a882f8bb4af2e7908c673173909 assets/l2complements/models/item/soul_flame.json
 760387404c5f35d96854bb4958ae1cfc5ce25385 assets/l2complements/models/item/space_shard.json

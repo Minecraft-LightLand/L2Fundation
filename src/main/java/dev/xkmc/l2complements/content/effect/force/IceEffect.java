@@ -13,7 +13,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 
 import java.util.UUID;
 
-public class IceEffect extends InherentEffect implements IconOverlayEffect {
+public class IceEffect extends InherentEffect implements NoSelfRenderEffect {
 
 	private static final UUID ID = MathHelper.getUUIDFromString(L2Complements.MODID + ":ice");
 

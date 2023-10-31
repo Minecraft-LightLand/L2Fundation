@@ -1,3 +1,8 @@
+2.4.20
+- Fix hellfire wand damage source
+- Fix CME bug
+
+
 2.4.19
 - add sonic shooter, hellfire wand, winterstorm wand, diffusion wand
 - make mobs not drop loot when death event is cancelled

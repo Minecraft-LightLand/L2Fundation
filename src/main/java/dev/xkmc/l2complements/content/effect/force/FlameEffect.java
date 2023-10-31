@@ -18,7 +18,7 @@ public class FlameEffect extends InherentEffect implements NoSelfRenderEffect {
 
 	@Override
 	public void applyEffectTick(LivingEntity target, int level) {
-		DamageSource source = new DamageSource(DamageTypeGen.forKey(target.level(), DamageTypeGen.SOUL_FLAME), target, target.getLastHurtByMob());
+		DamageSource source = new DamageSource(DamageTypeGen.forKey(target.level(), DamageTypeGen.SOUL_FLAME), null, target.getLastHurtByMob());
 		if (target.fireImmune()) {
 			if (target.isSensitiveToWater()) {
 				return;

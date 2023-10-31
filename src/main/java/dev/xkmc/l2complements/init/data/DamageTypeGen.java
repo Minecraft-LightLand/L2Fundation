@@ -28,10 +28,11 @@ public class DamageTypeGen extends DamageTypeAndTagsGen {
 
 	public DamageTypeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> pvd, ExistingFileHelper helper) {
 		super(output, pvd, helper, L2Complements.MODID);
-		new DamageTypeHolder(EMERALD, new DamageType("emerald", DamageScaling.NEVER, 0.1f));
+		new DamageTypeHolder(EMERALD, new DamageType("emerald", DamageScaling.NEVER, 0.1f))
+				.add(DamageTypeTags.AVOIDS_GUARDIAN_THORNS);
 
 		new DamageTypeHolder(SOUL_FLAME, new DamageType("soul_flame", DamageScaling.NEVER, 0, DamageEffects.BURNING))
-				.add(DamageTypeTags.BYPASSES_ARMOR, L2DamageTypes.MAGIC);
+				.add(DamageTypeTags.BYPASSES_ARMOR, L2DamageTypes.MAGIC, DamageTypeTags.AVOIDS_GUARDIAN_THORNS);
 		new DamageTypeHolder(BLEED, new DamageType("bleed", DamageScaling.NEVER, 0.1f))
 				.add(DamageTypeTags.BYPASSES_ARMOR).add(L2DamageTypes.BYPASS_MAGIC);
 		new DamageTypeHolder(LIFE_SYNC, new DamageType("life_sync", DamageScaling.NEVER, 0f))

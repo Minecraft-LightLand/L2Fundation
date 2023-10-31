@@ -155,6 +155,10 @@ public class MagicEventHandler {
 	@SubscribeEvent(priority = EventPriority.LOW)
 	public static void onPotionAdded(MobEffectEvent.Added event) {
 		if (event.getEntity().hasEffect(LCEffects.CLEANSE.get())) {
+			if (event.getEffectInstance().getEffect() instanceof SkillEffect)
+				return;
+			if (EffectUtil.getReason() == EffectUtil.AddReason.SKILL)
+				return;
 			schedule(() -> CleanseEffect.clearOnEntity(event.getEntity()));
 		}
 	}
@@ -171,22 +175,31 @@ public class MagicEventHandler {
 		}
 	}
 
-	private static final List<BooleanSupplier> TASKS = new ArrayList<>();
+	private static List<BooleanSupplier> TASKS = new ArrayList<>();
 
-	public static void schedule(Runnable runnable) {
+	public static synchronized void schedule(Runnable runnable) {
 		TASKS.add(() -> {
 			runnable.run();
 			return true;
 		});
 	}
 
-	public static void schedulePersistent(BooleanSupplier runnable) {
+	public static synchronized void schedulePersistent(BooleanSupplier runnable) {
 		TASKS.add(runnable);
+	}
+
+	private static synchronized void execute() {
+		if (TASKS.size() == 0) return;
+		var temp = TASKS;
+		TASKS = new ArrayList<>();
+		temp.removeIf(BooleanSupplier::getAsBoolean);
+		temp.addAll(TASKS);
+		TASKS = temp;
 	}
 
 	@SubscribeEvent
 	public static void onTick(TickEvent.ServerTickEvent event) {
-		TASKS.removeIf(BooleanSupplier::getAsBoolean);
+		execute();
 	}
 
 }

@@ -1,7 +1,11 @@
+2.4.21
+- support armor trims
+- fix EMI compat
+- add night vision and similar effects to Cleanse's white list
+
 2.4.20
 - Fix hellfire wand damage source
 - Fix CME bug
-
 
 2.4.19
 - add sonic shooter, hellfire wand, winterstorm wand, diffusion wand

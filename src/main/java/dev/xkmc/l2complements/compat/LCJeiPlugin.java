@@ -37,7 +37,7 @@ public class LCJeiPlugin implements IModPlugin {
 
 	@Override
 	public void registerItemSubtypes(ISubtypeRegistration registration) {
-
+		registration.registerSubtypeInterpreter(Items.ENCHANTED_BOOK, LCEmiPlugin::partSubType);
 	}
 
 	@Override

@@ -133,7 +133,7 @@ public class MagicEventHandler {
 		}
 	}
 
-	private static boolean isSkill(MobEffectInstance ins) {
+	public static boolean isSkill(MobEffectInstance ins) {
 		if (ins.getEffect() instanceof SkillEffect)
 			return true;
 		if (EffectUtil.getReason() == EffectUtil.AddReason.SKILL)

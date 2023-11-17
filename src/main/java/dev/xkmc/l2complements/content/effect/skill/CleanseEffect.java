@@ -1,10 +1,10 @@
 package dev.xkmc.l2complements.content.effect.skill;
 
 import dev.xkmc.l2complements.content.effect.force.NoSelfRenderEffect;
+import dev.xkmc.l2complements.events.MagicEventHandler;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2library.base.effects.api.DelayedEntityRender;
 import dev.xkmc.l2library.base.effects.api.ForceEffect;
-import dev.xkmc.l2library.base.effects.api.IconOverlayEffect;
 import dev.xkmc.l2library.base.effects.api.InherentEffect;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -23,8 +23,7 @@ public class CleanseEffect extends InherentEffect implements ForceEffect, NoSelf
 		recursive++;
 		List<MobEffectInstance> list = new ArrayList<>(entity.getActiveEffects());
 		for (MobEffectInstance ins : list) {
-			if (ins.getEffect() instanceof SkillEffect)
-				continue;
+			if (MagicEventHandler.isSkill(ins)) continue;
 			if (recursive <= 1)
 				entity.removeEffect(ins.getEffect());
 			if (entity.hasEffect(ins.getEffect())) {

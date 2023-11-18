@@ -2,6 +2,7 @@
 - support armor trims
 - fix EMI compat
 - add night vision and similar effects to Cleanse's white list
+- fix space shard ban implemented in reverse
 
 2.4.20
 - Fix hellfire wand damage source

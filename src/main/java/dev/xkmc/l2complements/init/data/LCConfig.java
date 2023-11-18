@@ -72,7 +72,7 @@ public class LCConfig {
 			spaceDamage = builder.comment("Requirement for space shard drop")
 					.defineInRange("spaceDamage", 16384, 1, 1000000);
 			allowModBanSpaceShard = builder.comment("Allow mods to ban space shard")
-					.define("allowMobBanSpaceShard", true);
+					.define("allowModBanSpaceShard", true);
 			enableImmunityEnchantments = builder.comment("Enable immunity enchantments")
 					.comment("Be sure to inform players when you turn this off")
 					.define("enableImmunityEnchantments", true);

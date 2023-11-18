@@ -31,11 +31,11 @@ public class MaterialDamageListener implements AttackListener {
 		if (LCConfig.COMMON.allowModBanSpaceShard.get()) {
 			for (var e : BAN_SPACE_SHARD) {
 				if (ModList.get().isLoaded(e)) {
-					return false;
+					return true;
 				}
 			}
 		}
-		return true;
+		return false;
 	}
 
 	@Override

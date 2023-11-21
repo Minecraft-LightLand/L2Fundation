@@ -1,17 +1,17 @@
 package dev.xkmc.l2complements.content.enchantment.weapon;
 
 import dev.xkmc.l2complements.content.enchantment.core.BattleEnchantment;
-import dev.xkmc.l2complements.init.data.LCConfig;
-import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2library.base.effects.EffectUtil;
+import net.minecraft.ChatFormatting;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
-public class SharpBladeEnchantment extends BattleEnchantment {
+public abstract class AbstractBladeEnchantment extends BattleEnchantment {
 
-	public SharpBladeEnchantment(Rarity pRarity, EnchantmentCategory pCategory, EquipmentSlot[] pApplicableSlots) {
+	protected AbstractBladeEnchantment(Rarity pRarity, EnchantmentCategory pCategory, EquipmentSlot[] pApplicableSlots) {
 		super(pRarity, pCategory, pApplicableSlots);
 	}
 
@@ -19,7 +19,9 @@ public class SharpBladeEnchantment extends BattleEnchantment {
 	public void doPostAttack(LivingEntity attacker, Entity target, int pLevel) {
 		var le = getTarget(target);
 		if (le != null && !attacker.level().isClientSide())
-			LCEffects.BLEED.get().addTo(le, LCConfig.COMMON.bleedEnchantDuration.get(), pLevel * 3 - 1, EffectUtil.AddReason.SKILL, attacker);
+			EffectUtil.addEffect(le, getEffect(pLevel), EffectUtil.AddReason.FORCE, attacker);
 	}
+
+	protected abstract MobEffectInstance getEffect(int pLevel);
 
 }

@@ -11,16 +11,15 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
-public class IceBladeEnchantment extends UnobtainableEnchantment {
+public class IceBladeEnchantment extends AbstractBladeEnchantment {
 
 	public IceBladeEnchantment(Rarity pRarity, EnchantmentCategory pCategory, EquipmentSlot[] pApplicableSlots) {
 		super(pRarity, pCategory, pApplicableSlots);
 	}
 
 	@Override
-	public void doPostAttack(LivingEntity attacker, Entity target, int pLevel) {
-		if (target instanceof LivingEntity le && !attacker.level().isClientSide())
-			EffectUtil.addEffect(le, new MobEffectInstance(LCEffects.ICE.get(), LCConfig.COMMON.iceEnchantDuration.get() << (pLevel - 1)), EffectUtil.AddReason.NONE, attacker);
+	protected MobEffectInstance getEffect(int pLevel) {
+		return new MobEffectInstance(LCEffects.ICE.get(), LCConfig.COMMON.iceEnchantDuration.get() << (pLevel - 1));
 	}
 
 	public ChatFormatting getColor() {

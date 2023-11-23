@@ -13,6 +13,7 @@ import mezz.jei.api.registration.*;
 import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.fml.ModList;
 
 @JeiPlugin
 public class LCJeiPlugin implements IModPlugin {
@@ -37,7 +38,8 @@ public class LCJeiPlugin implements IModPlugin {
 
 	@Override
 	public void registerItemSubtypes(ISubtypeRegistration registration) {
-		registration.registerSubtypeInterpreter(Items.ENCHANTED_BOOK, LCEmiPlugin::partSubType);
+		if (ModList.get().isLoaded("emi"))
+			registration.registerSubtypeInterpreter(Items.ENCHANTED_BOOK, LCEmiPlugin::partSubType);
 	}
 
 	@Override

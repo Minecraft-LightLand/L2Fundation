@@ -17,7 +17,7 @@ public abstract class AbstractThornEnchantment extends BattleEnchantment {
 	@Override
 	public void doPostHurt(LivingEntity self, Entity attacker, int pLevel) {
 		var le = getTarget(attacker);
-		if (le != null && !self.level().isClientSide())
+		if (le != null && le != self && !self.level().isClientSide())
 			EffectUtil.addEffect(le, getEffect(pLevel), EffectUtil.AddReason.FORCE, self);
 	}
 

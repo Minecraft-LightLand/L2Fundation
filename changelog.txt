@@ -1,6 +1,7 @@
 2.4.22
 - Allow potion enchantments to be effective on multipart entities
 - fix damage calculation bugs
+- make void touch stronger
 
 2.4.21
 - support armor trims

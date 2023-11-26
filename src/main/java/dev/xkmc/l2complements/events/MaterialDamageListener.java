@@ -12,7 +12,9 @@ import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.ModList;
 
 import java.util.HashSet;
@@ -74,9 +76,23 @@ public class MaterialDamageListener implements AttackListener {
 	}
 
 	@Override
+	public void postAttack(AttackCache cache, LivingAttackEvent event, ItemStack weapon) {
+		if (!weapon.isEmpty()) {
+			LCEnchantments.VOID_TOUCH.get().postAttack(cache, event, weapon);
+		}
+	}
+
+	@Override
 	public void onHurt(AttackCache cache, ItemStack weapon) {
 		if (!weapon.isEmpty()) {
 			LCEnchantments.VOID_TOUCH.get().initAttack(cache, weapon);
+		}
+	}
+
+	@Override
+	public void postHurt(AttackCache cache, LivingHurtEvent event, ItemStack weapon) {
+		if (!weapon.isEmpty()) {
+			LCEnchantments.VOID_TOUCH.get().postHurt(cache, event, weapon);
 		}
 	}
 

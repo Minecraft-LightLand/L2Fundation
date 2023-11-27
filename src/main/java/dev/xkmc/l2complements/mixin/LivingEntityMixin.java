@@ -24,9 +24,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
 
-	@Shadow
-	public abstract @NotNull Iterable<ItemStack> getArmorSlots();
-
 	@Inject(at = @At("HEAD"), method = "checkTotemDeathProtection", cancellable = true)
 	public void l2complements_checkTotemDeathProtection_addCustomTotem(DamageSource pDamageSource, CallbackInfoReturnable<Boolean> cir) {
 		LivingEntity self = Wrappers.cast(this);

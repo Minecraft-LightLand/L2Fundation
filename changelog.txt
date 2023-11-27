@@ -1,3 +1,6 @@
+2.4.23
+- Fix refmap
+
 2.4.22
 - Allow potion enchantments to be effective on multipart entities
 - fix damage calculation bugs

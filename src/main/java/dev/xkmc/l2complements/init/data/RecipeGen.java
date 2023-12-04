@@ -11,6 +11,8 @@ import dev.xkmc.l2complements.content.recipe.DiffusionRecipeBuilder;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.materials.LCMats;
 import dev.xkmc.l2complements.init.registrate.*;
+import dev.xkmc.l2hostility.init.L2Hostility;
+import dev.xkmc.l2hostility.init.registrate.LHTraits;
 import dev.xkmc.l2library.compat.jeed.JeedDataGenerator;
 import dev.xkmc.l2library.serial.ingredients.EnchantmentIngredient;
 import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
@@ -31,6 +33,7 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
@@ -713,6 +716,48 @@ public class RecipeGen {
 						.define('B', LCPandora.CHARM.get())
 						.save(pvd, getID(LCPandora.NIGHT_VISION_CHARM.get()));
 
+			}
+
+			if (ModList.get().isLoaded(L2Hostility.MODID)) {
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.CHARM.get(), 2)::unlockedBy, LCPandora.CHARM.get())
+						.pattern("AAA").pattern("ABA").pattern("AAA")
+						.define('A', dev.xkmc.l2hostility.init.data.TagGen.TRAIT_ITEM)
+						.define('B', LCPandora.CHARM.get())
+						.save(pvd, getID(LCPandora.CHARM.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.CHARM_HEALTH.get())::unlockedBy, LCPandora.CHARM.get())
+						.pattern("AAA").pattern("ABA").pattern("AAA")
+						.define('A', LHTraits.TANK.get().asItem())
+						.define('B', LCPandora.CHARM.get())
+						.save(pvd, getID(LCPandora.CHARM_HEALTH.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.CHARM_ARMOR.get())::unlockedBy, LCPandora.CHARM.get())
+						.pattern("CAC").pattern("ABA").pattern("CAC")
+						.define('A', LHTraits.TANK.get().asItem())
+						.define('B', LCPandora.CHARM.get())
+						.define('C', LHTraits.PROTECTION.get().asItem())
+						.save(pvd, getID(LCPandora.CHARM_ARMOR.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.CHARM_SPEED.get())::unlockedBy, LCPandora.CHARM.get())
+						.pattern("AAA").pattern("ABA").pattern("AAA")
+						.define('A', LHTraits.SPEEDY.get().asItem())
+						.define('B', LCPandora.CHARM.get())
+						.save(pvd, getID(LCPandora.CHARM_SPEED.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.CHARM_DAMAGE.get())::unlockedBy, LCPandora.CHARM.get())
+						.pattern("CAC").pattern("ABA").pattern("CAC")
+						.define('A', LHTraits.FIERY.get().asItem())
+						.define('B', LCPandora.CHARM.get())
+						.define('C', LHTraits.STRIKE.get().asItem())
+						.save(pvd, getID(LCPandora.CHARM_DAMAGE.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.CHARM_HEAVY.get())::unlockedBy, LCPandora.CHARM.get())
+						.pattern("CAC").pattern("ABA").pattern("CAC")
+						.define('A', LHTraits.GRAVITY.get().asItem())
+						.define('B', LCPandora.CHARM.get())
+						.define('C', LHTraits.SLOWNESS.get().asItem())
+						.save(pvd, getID(LCPandora.CHARM_HEAVY.get()));
 			}
 
 		}

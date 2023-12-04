@@ -17,6 +17,11 @@
     "l2complements:mini_beacon_jump",
     "l2complements:mini_beacon_resistance",
     "l2complements:mini_beacon_regen",
-    "l2complements:charm_of_night_vision"
+    "l2complements:charm_of_night_vision",
+    "l2complements:charm_of_health",
+    "l2complements:charm_of_armor",
+    "l2complements:charm_of_speed",
+    "l2complements:charm_of_damage",
+    "l2complements:charm_of_heavy_weapon"
   ]
 }

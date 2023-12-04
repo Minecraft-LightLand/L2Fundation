@@ -66,9 +66,9 @@ public class LangData {
 		WINTERSTORM_WAND("tooltip.misc.winterstorm_wand", "Hold use to create a ring of storm. Push mobs away and freeze them.", 0),
 		DIFFUSION_WAND("tooltip.misc.diffusion_wand", "Right click a block of gem/dust to diffuse it into nearby stones to create ore. Check JEI for recipe", 0),
 		BANNED("tooltip.misc.banned", "This item is disabled.", 0),
-		EFFECT_REFRESH_CURIO("tooltip.misc.effect_refresh","Grants wearer: ",1)
-
-		;
+		EFFECT_REFRESH_CURIO("tooltip.misc.effect_refresh", "Grants wearer: ", 1),
+		BIND("tooltip.misc.bind", "This item cannot be taken down.", 0),
+		RESTRICTION("tooltip.misc.restriction", "Negate all other non-tool attack speed bonus. Cap player attack speed to %s. When player attack speed is %s or lower, grant %s%% attack speed bonus.", 3);
 
 		final String id, def;
 		final int count;

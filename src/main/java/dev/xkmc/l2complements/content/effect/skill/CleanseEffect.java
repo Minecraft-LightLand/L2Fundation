@@ -23,7 +23,7 @@ public class CleanseEffect extends InherentEffect implements ForceEffect, NoSelf
 		recursive++;
 		List<MobEffectInstance> list = new ArrayList<>(entity.getActiveEffects());
 		for (MobEffectInstance ins : list) {
-			if (MagicEventHandler.isSkill(ins)) continue;
+			if (MagicEventHandler.isSkill(ins, entity)) continue;
 			if (recursive <= 1)
 				entity.removeEffect(ins.getEffect());
 			if (entity.hasEffect(ins.getEffect())) {

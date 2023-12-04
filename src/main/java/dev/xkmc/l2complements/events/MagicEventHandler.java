@@ -6,6 +6,8 @@ import dev.xkmc.l2complements.content.effect.skill.SkillEffect;
 import dev.xkmc.l2complements.content.enchantment.core.AttributeEnchantment;
 import dev.xkmc.l2complements.content.enchantment.digging.RangeDiggingEnchantment;
 import dev.xkmc.l2complements.content.enchantment.special.SoulBoundPlayerData;
+import dev.xkmc.l2complements.content.feature.EntityFeature;
+import dev.xkmc.l2complements.content.item.curios.EffectValidItem;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.TagGen;
@@ -35,6 +37,7 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
+import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +49,7 @@ public class MagicEventHandler {
 
 	@SubscribeEvent
 	public static void onLivingAttack(LivingAttackEvent event) {
-		if (EnchantmentHelper.getEnchantmentLevel(LCEnchantments.ENCH_MATES.get(), event.getEntity()) > 0) {
+		if (EntityFeature.OWNER_PROTECTION.test(event.getEntity())) {
 			if (event.getSource().getEntity() instanceof OwnableEntity ownable && ownable.getOwner() == event.getEntity()) {
 				event.setCanceled(true);
 			}
@@ -54,26 +57,26 @@ public class MagicEventHandler {
 		if (!LCConfig.COMMON.enableImmunityEnchantments.get()) {
 			return;
 		}
-		if (EnchantmentHelper.getEnchantmentLevel(LCEnchantments.ENCH_INVINCIBLE.get(), event.getEntity()) > 0) {
+		if (EntityFeature.INVINCIBLE.test(event.getEntity())) {
 			event.setCanceled(true);
 		}
 		if (event.getSource().is(DamageTypeTags.BYPASSES_EFFECTS) || event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY))
 			return;
-		if (EnchantmentHelper.getEnchantmentLevel(LCEnchantments.ENCH_ENVIRONMENT.get(), event.getEntity()) > 0) {
+		if (EntityFeature.ENVIRONMENTAL_REJECT.test(event.getEntity())) {
 			if (event.getSource().getEntity() == null) event.setCanceled(true);
 		}
-		if (EnchantmentHelper.getEnchantmentLevel(LCEnchantments.ENCH_MAGIC.get(), event.getEntity()) > 0) {
+		if (EntityFeature.MAGIC_REJECT.test(event.getEntity())) {
 			if (event.getSource().is(L2DamageTypes.MAGIC)) event.setCanceled(true);
 		}
 		if (event.getSource().is(DamageTypeTags.BYPASSES_ENCHANTMENTS))
 			return;
-		if (EnchantmentHelper.getEnchantmentLevel(LCEnchantments.ENCH_PROJECTILE.get(), event.getEntity()) > 0) {
+		if (EntityFeature.PROJECTILE_REJECT.test(event.getEntity())) {
 			if (event.getSource().is(DamageTypeTags.IS_PROJECTILE)) event.setCanceled(true);
 		}
-		if (EnchantmentHelper.getEnchantmentLevel(LCEnchantments.ENCH_FIRE.get(), event.getEntity()) > 0) {
+		if (EntityFeature.FIRE_REJECT.test(event.getEntity())) {
 			if (event.getSource().is(DamageTypeTags.IS_FIRE)) event.setCanceled(true);
 		}
-		if (EnchantmentHelper.getEnchantmentLevel(LCEnchantments.ENCH_EXPLOSION.get(), event.getEntity()) > 0) {
+		if (EntityFeature.EXPLOSION_REJECT.test(event.getEntity())) {
 			if (event.getSource().is(DamageTypeTags.IS_EXPLOSION)) event.setCanceled(true);
 		}
 	}
@@ -133,7 +136,7 @@ public class MagicEventHandler {
 		}
 	}
 
-	public static boolean isSkill(MobEffectInstance ins) {
+	public static boolean isSkill(MobEffectInstance ins, LivingEntity entity) {
 		if (ins.getEffect() instanceof SkillEffect)
 			return true;
 		if (EffectUtil.getReason() == EffectUtil.AddReason.SKILL)
@@ -142,14 +145,15 @@ public class MagicEventHandler {
 		if (tag != null && tag.getTag(TagGen.SKILL_EFFECT).contains(ins.getEffect())) {
 			return true;
 		}
-		//TODO curios providing effects
-		return false;
+		return CuriosApi.getCuriosInventory(entity).resolve().map(cap ->
+				cap.findFirstCurio(e -> e.getItem() instanceof EffectValidItem item &&
+						item.isEffectValid(ins, e, entity))).isPresent();
 	}
 
 	@SubscribeEvent
 	public static void onPotionTest(MobEffectEvent.Applicable event) {
 		if (event.getEntity().hasEffect(LCEffects.CLEANSE.get())) {
-			if (isSkill(event.getEffectInstance())) return;
+			if (isSkill(event.getEffectInstance(), event.getEntity())) return;
 			event.setResult(Event.Result.DENY);
 		}
 	}
@@ -157,7 +161,7 @@ public class MagicEventHandler {
 	@SubscribeEvent
 	public static void onForceAdd(ForceAddEffectEvent event) {
 		if (event.getEntity().hasEffect(LCEffects.CLEANSE.get())) {
-			if (isSkill(event.getEffectInstance())) return;
+			if (isSkill(event.getEffectInstance(), event.getEntity())) return;
 			event.setResult(Event.Result.DENY);
 		}
 	}
@@ -165,7 +169,7 @@ public class MagicEventHandler {
 	@SubscribeEvent(priority = EventPriority.LOW)
 	public static void onPotionAdded(MobEffectEvent.Added event) {
 		if (event.getEntity().hasEffect(LCEffects.CLEANSE.get())) {
-			if (isSkill(event.getEffectInstance())) return;
+			if (isSkill(event.getEffectInstance(), event.getEntity())) return;
 			schedule(() -> CleanseEffect.clearOnEntity(event.getEntity()));
 		}
 	}

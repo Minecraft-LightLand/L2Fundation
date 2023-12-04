@@ -65,7 +65,10 @@ public class LangData {
 		HELLFIRE_WAND("tooltip.misc.hellfire_wand", "Hold use to start. Gradually grows a ring of fire on target position. On release, damage all mobs inside the ring.", 0),
 		WINTERSTORM_WAND("tooltip.misc.winterstorm_wand", "Hold use to create a ring of storm. Push mobs away and freeze them.", 0),
 		DIFFUSION_WAND("tooltip.misc.diffusion_wand", "Right click a block of gem/dust to diffuse it into nearby stones to create ore. Check JEI for recipe", 0),
-		BANNED("tooltip.misc.banned", "This item is disabled.", 0);
+		BANNED("tooltip.misc.banned", "This item is disabled.", 0),
+		EFFECT_REFRESH_CURIO("tooltip.misc.effect_refresh","Grants wearer: ",1)
+
+		;
 
 		final String id, def;
 		final int count;

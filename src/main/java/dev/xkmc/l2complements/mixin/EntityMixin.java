@@ -22,7 +22,7 @@ public abstract class EntityMixin {
 				ItemStack stack = self.getItemBySlot(slot);
 				count += SpecialEquipmentEvents.blockSound(stack);
 			}
-			if (count >= 4) {
+			if (count > 0) {
 				cir.setReturnValue(true);
 			}
 		}

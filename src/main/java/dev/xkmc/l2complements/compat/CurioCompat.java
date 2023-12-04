@@ -24,7 +24,7 @@ public class CurioCompat {
 	}
 
 	private static void curioTotemSlots(LivingEntity self, List<Pair<ItemStack, Consumer<ItemStack>>> ans) {
-		var opt = CuriosApi.getCuriosHelper().getCuriosHandler(self);
+		var opt = CuriosApi.getCuriosInventory(self);
 		if (opt.resolve().isPresent()) {
 			var curio = opt.resolve().get();
 			for (var handler : curio.getCurios().values()) {
@@ -50,7 +50,7 @@ public class CurioCompat {
 	}
 
 	private static void fillSlots(LivingEntity le, List<ItemStack> list) {
-		var opt = CuriosApi.getCuriosHelper().getCuriosHandler(le);
+		var opt = CuriosApi.getCuriosInventory(le);
 		if (opt.resolve().isPresent()) {
 			var curio = opt.resolve().get();
 			for (var handler : curio.getCurios().values()) {

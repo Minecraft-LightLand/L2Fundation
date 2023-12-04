@@ -23,7 +23,7 @@ public class LCRecipes {
 	public static final RegistryEntry<BaseRecipe.RecType<DiffusionRecipe, DiffusionRecipe, DiffusionRecipe.Inv>> RS_DIFFUSION =
 			reg("diffusion", () -> new BaseRecipe.RecType<>(DiffusionRecipe.class, RT_DIFFUSION));
 
-	public static void register(IEventBus bus) {
+	public static void register() {
 	}
 
 	private static <A extends RecipeSerializer<?>> RegistryEntry<A> reg(String id, NonNullSupplier<A> sup) {

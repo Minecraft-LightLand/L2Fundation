@@ -21,11 +21,9 @@ import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -47,7 +45,7 @@ public class L2Complements {
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
 	public static final GenItemVanillaType MATS = new GenItemVanillaType(MODID, REGISTRATE);
 
-	private static void registerRegistrates(IEventBus bus) {
+	public L2Complements() {
 		ForgeMod.enableMilkFluid();
 		LCItems.register();
 		LCBlocks.register();
@@ -55,7 +53,8 @@ public class L2Complements {
 		LCParticle.register();
 		LCEnchantments.register();
 		LCEntities.register();
-		LCRecipes.register(bus);
+		LCPandora.register();
+		LCRecipes.register();
 		LCConfig.init();
 		SoulBoundPlayerData.register();
 		new L2ComplementsClick(new ResourceLocation(MODID, "main"));
@@ -66,12 +65,6 @@ public class L2Complements {
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, TagGen::onItemTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, TagGen::onEntityTagGen);
 		REGISTRATE.addDataGenerator(TagGen.EFF_TAGS, TagGen::onEffectTagGen);
-	}
-
-	public L2Complements() {
-		FMLJavaModLoadingContext ctx = FMLJavaModLoadingContext.get();
-		IEventBus bus = ctx.getModEventBus();
-		registerRegistrates(bus);
 	}
 
 	@SubscribeEvent

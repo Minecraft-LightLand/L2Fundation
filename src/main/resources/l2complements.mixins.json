@@ -16,6 +16,7 @@
   ],
   "client": [
 	"AnvilScreenMixin",
+	"FogRendererMixin",
 	"HumanoidArmorLayerMixin",
 	"ItemInHandLayerMixin",
 	"LocalPlayerMixin"

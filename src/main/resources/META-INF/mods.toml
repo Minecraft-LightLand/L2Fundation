@@ -28,3 +28,9 @@ description='''
     versionRange="[2.4.19,)"
     ordering="AFTER"
     side="BOTH"
+[[dependencies.l2complements]]
+    modId="curios"
+    mandatory=true
+    versionRange="[5.4.3,)"
+    ordering="AFTER"
+    side="BOTH"

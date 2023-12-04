@@ -10,12 +10,10 @@ import dev.xkmc.l2complements.content.recipe.BurntRecipeBuilder;
 import dev.xkmc.l2complements.content.recipe.DiffusionRecipeBuilder;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.materials.LCMats;
-import dev.xkmc.l2complements.init.registrate.LCBlocks;
-import dev.xkmc.l2complements.init.registrate.LCEffects;
-import dev.xkmc.l2complements.init.registrate.LCEnchantments;
-import dev.xkmc.l2complements.init.registrate.LCItems;
+import dev.xkmc.l2complements.init.registrate.*;
 import dev.xkmc.l2library.compat.jeed.JeedDataGenerator;
 import dev.xkmc.l2library.serial.ingredients.EnchantmentIngredient;
+import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
@@ -25,6 +23,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -294,46 +293,6 @@ public class RecipeGen {
 			// protections
 			{
 
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENCH_PROJECTILE.get(), 1)::unlockedBy, LCItems.FORCE_FIELD.get())
-						.pattern("1B1").pattern("BCB").pattern("2B2")
-						.define('1', new EnchantmentIngredient(Enchantments.PROJECTILE_PROTECTION, 4))
-						.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
-						.define('B', LCItems.FORCE_FIELD.get())
-						.define('C', new EnchantmentIngredient(Enchantments.INFINITY_ARROWS, 1))
-						.save(pvd, getID(LCEnchantments.ENCH_PROJECTILE.get()));
-
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENCH_EXPLOSION.get(), 1)::unlockedBy, LCItems.EXPLOSION_SHARD.get())
-						.pattern("1B1").pattern("BCB").pattern("2B2")
-						.define('1', new EnchantmentIngredient(Enchantments.BLAST_PROTECTION, 4))
-						.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
-						.define('B', LCItems.EXPLOSION_SHARD.get())
-						.define('C', Items.CRYING_OBSIDIAN)
-						.save(pvd, getID(LCEnchantments.ENCH_EXPLOSION.get()));
-
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENCH_FIRE.get(), 1)::unlockedBy, LCItems.SUN_MEMBRANE.get())
-						.pattern("1B1").pattern("BCB").pattern("2B2")
-						.define('1', new EnchantmentIngredient(Enchantments.FIRE_PROTECTION, 4))
-						.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
-						.define('B', LCItems.SOUL_FLAME.get())
-						.define('C', LCItems.HARD_ICE.get())
-						.save(pvd, getID(LCEnchantments.ENCH_FIRE.get()));
-
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENCH_ENVIRONMENT.get(), 1)::unlockedBy, LCItems.VOID_EYE.get())
-						.pattern("1B1").pattern("BCB").pattern("2B2")
-						.define('1', LCItems.SUN_MEMBRANE.get())
-						.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
-						.define('B', LCItems.VOID_EYE.get())
-						.define('C', LCItems.CAPTURED_WIND.get())
-						.save(pvd, getID(LCEnchantments.ENCH_ENVIRONMENT.get()));
-
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENCH_MAGIC.get(), 1)::unlockedBy, LCItems.RESONANT_FEATHER.get())
-						.pattern("1B1").pattern("BCB").pattern("2B2")
-						.define('1', LCItems.VOID_EYE.get())
-						.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
-						.define('B', LCItems.RESONANT_FEATHER.get())
-						.define('C', LCItems.FORCE_FIELD.get())
-						.save(pvd, getID(LCEnchantments.ENCH_MAGIC.get()));
-
 				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENCH_INVINCIBLE.get(), 1)::unlockedBy, LCItems.SPACE_SHARD.get())
 						.pattern("A1A").pattern("203").pattern("A4A")
 						.define('A', LCItems.SPACE_SHARD.get())
@@ -344,12 +303,6 @@ public class RecipeGen {
 						.define('4', new EnchantmentIngredient(LCEnchantments.ENCH_PROJECTILE.get(), 1))
 						.save(pvd, getID(LCEnchantments.ENCH_INVINCIBLE.get()));
 
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENCH_MATES.get(), 1)::unlockedBy, Items.NETHER_STAR)
-						.pattern("BAB").pattern("B1B").pattern("BAB")
-						.define('1', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
-						.define('A', Items.NETHER_STAR)
-						.define('B', Items.END_ROD)
-						.save(pvd, getID(LCEnchantments.ENCH_MATES.get()));
 			}
 
 			// misc
@@ -362,14 +315,6 @@ public class RecipeGen {
 						.define('C', Items.GLASS)
 						.define('L', Items.LAPIS_LAZULI)
 						.save(pvd, getID(LCEnchantments.SHULKER_ARMOR.get()));
-
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.STABLE_BODY.get(), 1)::unlockedBy, Items.CRYING_OBSIDIAN)
-						.pattern("LCL").pattern("ABA").pattern("LAL")
-						.define('A', Items.OBSIDIAN)
-						.define('B', Items.BOOK)
-						.define('C', Items.CRYING_OBSIDIAN)
-						.define('L', Items.LAPIS_LAZULI)
-						.save(pvd, getID(LCEnchantments.STABLE_BODY.get()));
 
 				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.LIFE_SYNC.get(), 1)::unlockedBy, LCItems.FORCE_FIELD.get())
 						.pattern("LCL").pattern("ABA").pattern("LAL")
@@ -396,28 +341,6 @@ public class RecipeGen {
 						.define('L', Items.LAPIS_LAZULI)
 						.define('F', Items.NETHERITE_SCRAP)
 						.save(pvd, getID(LCEnchantments.SAFEGUARD.get()));
-
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENDER_MASK.get(), 1)::unlockedBy, Items.ENDER_EYE)
-						.pattern("LCL").pattern("ABA").pattern("LAL")
-						.define('A', Items.ENDER_EYE)
-						.define('B', Items.BOOK)
-						.define('C', Items.CARVED_PUMPKIN)
-						.define('L', Items.LAPIS_LAZULI)
-						.save(pvd, getID(LCEnchantments.ENDER_MASK.get()));
-
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.SHINNY.get(), 1)::unlockedBy, Items.GOLD_INGOT)
-						.pattern("LAL").pattern("ABA").pattern("LAL")
-						.define('A', Items.GOLD_INGOT)
-						.define('B', Items.BOOK)
-						.define('L', Items.LAPIS_LAZULI)
-						.save(pvd, getID(LCEnchantments.SHINNY.get()));
-
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.SNOW_WALKER.get(), 1)::unlockedBy, Items.LEATHER)
-						.pattern("LAL").pattern("ABA").pattern("LAL")
-						.define('A', Items.LEATHER)
-						.define('B', Items.BOOK)
-						.define('L', Items.LAPIS_LAZULI)
-						.save(pvd, getID(LCEnchantments.SNOW_WALKER.get()));
 
 				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.SOUL_BOUND.get(), 1)::unlockedBy, LCItems.VOID_EYE.get())
 						.pattern("LAL").pattern("ABA").pattern("LAL")
@@ -630,8 +553,176 @@ public class RecipeGen {
 
 		}
 
+		// pandora
+		{
+			currentFolder = "pandora/";
+
+			// beacons
+			{
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.MINI_BEACON.get())::unlockedBy, LCPandora.CHARM.get())
+						.pattern("EBE").pattern("ACA").pattern("EDE")
+						.define('B', Items.BEACON)
+						.define('C', LCPandora.CHARM.get())
+						.define('D', LCPandora.MINI_BEACON_BASE.get())
+						.define('A', LCItems.STORM_CORE.get())
+						.define('E', Items.ENDER_PEARL)
+						.save(pvd, getID(LCPandora.MINI_BEACON.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.MINI_BEACON_SPEED.get())::unlockedBy, LCPandora.MINI_BEACON.get())
+						.pattern("ABA").pattern("BCB").pattern("ADA")
+						.define('A', Items.BLAZE_POWDER)
+						.define('B', new PotionIngredient(Potions.STRONG_SWIFTNESS))
+						.define('C', LCPandora.MINI_BEACON.get())
+						.define('D', ItemTags.BEACON_PAYMENT_ITEMS)
+						.save(pvd, getID(LCPandora.MINI_BEACON_SPEED.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.MINI_BEACON_JUMP.get())::unlockedBy, LCPandora.MINI_BEACON.get())
+						.pattern("ABA").pattern("BCB").pattern("ADA")
+						.define('A', Items.BLAZE_POWDER)
+						.define('B', new PotionIngredient(Potions.STRONG_LEAPING))
+						.define('C', LCPandora.MINI_BEACON.get())
+						.define('D', ItemTags.BEACON_PAYMENT_ITEMS)
+						.save(pvd, getID(LCPandora.MINI_BEACON_JUMP.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.MINI_BEACON_RESISTANCE.get())::unlockedBy, LCPandora.MINI_BEACON.get())
+						.pattern("ABA").pattern("BCB").pattern("ADA")
+						.define('A', Items.BLAZE_POWDER)
+						.define('B', new PotionIngredient(Potions.TURTLE_MASTER))
+						.define('C', LCPandora.MINI_BEACON.get())
+						.define('D', ItemTags.BEACON_PAYMENT_ITEMS)
+						.save(pvd, getID(LCPandora.MINI_BEACON_RESISTANCE.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.MINI_BEACON_REGEN.get())::unlockedBy, LCPandora.MINI_BEACON.get())
+						.pattern("ABA").pattern("BCB").pattern("ADA")
+						.define('A', Items.BLAZE_POWDER)
+						.define('B', new PotionIngredient(Potions.STRONG_REGENERATION))
+						.define('C', LCPandora.MINI_BEACON.get())
+						.define('D', ItemTags.BEACON_PAYMENT_ITEMS)
+						.save(pvd, getID(LCPandora.MINI_BEACON_REGEN.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.MINI_BEACON_ATTACK.get())::unlockedBy, LCPandora.MINI_BEACON.get())
+						.pattern("ABA").pattern("BCB").pattern("ADA")
+						.define('A', Items.BLAZE_POWDER)
+						.define('B', new PotionIngredient(Potions.STRONG_STRENGTH))
+						.define('C', LCPandora.MINI_BEACON.get())
+						.define('D', ItemTags.BEACON_PAYMENT_ITEMS)
+						.save(pvd, getID(LCPandora.MINI_BEACON_ATTACK.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.MINI_BEACON_HASTE.get())::unlockedBy, LCPandora.MINI_BEACON.get())
+						.pattern("ABA").pattern("BCB").pattern("ADA")
+						.define('A', Items.BLAZE_POWDER)
+						.define('B', Items.GOLD_INGOT)
+						.define('C', LCPandora.MINI_BEACON.get())
+						.define('D', ItemTags.BEACON_PAYMENT_ITEMS)
+						.save(pvd, getID(LCPandora.MINI_BEACON_HASTE.get()));
+
+			}
+
+			// reject
+			{
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.PROJECTILE_REJECT.get())::unlockedBy, LCPandora.CHARM.get())
+						.pattern("1B1").pattern("BCB").pattern("2B2")
+						.define('1', new EnchantmentIngredient(Enchantments.PROJECTILE_PROTECTION, 4))
+						.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
+						.define('B', LCItems.FORCE_FIELD.get())
+						.define('C', LCPandora.CHARM.get())
+						.save(pvd, getID(LCPandora.PROJECTILE_REJECT.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.EXPLOSION_REJECT.get())::unlockedBy, LCPandora.CHARM.get())
+						.pattern("1B1").pattern("BCB").pattern("2B2")
+						.define('1', new EnchantmentIngredient(Enchantments.BLAST_PROTECTION, 4))
+						.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
+						.define('B', LCItems.EXPLOSION_SHARD.get())
+						.define('C', LCPandora.CHARM.get())
+						.save(pvd, getID(LCPandora.EXPLOSION_REJECT.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.FIRE_REJECT.get())::unlockedBy, LCPandora.CHARM.get())
+						.pattern("1B1").pattern("BCB").pattern("2B2")
+						.define('1', new EnchantmentIngredient(Enchantments.FIRE_PROTECTION, 4))
+						.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
+						.define('B', LCItems.SOUL_FLAME.get())
+						.define('C', LCPandora.CHARM.get())
+						.save(pvd, getID(LCPandora.FIRE_REJECT.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.ENVIRONMENTAL_REJECT.get())::unlockedBy, LCPandora.CHARM.get())
+						.pattern("1B1").pattern("BCB").pattern("2B2")
+						.define('1', LCItems.SUN_MEMBRANE.get())
+						.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
+						.define('B', LCItems.VOID_EYE.get())
+						.define('C', LCPandora.CHARM.get())
+						.save(pvd, getID(LCPandora.ENVIRONMENTAL_REJECT.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.MAGIC_REJECT.get())::unlockedBy, LCPandora.CHARM.get())
+						.pattern("1B1").pattern("BCB").pattern("2B2")
+						.define('1', LCItems.VOID_EYE.get())
+						.define('C', LCPandora.CHARM.get())
+						.define('B', LCItems.RESONANT_FEATHER.get())
+						.define('2', LCItems.FORCE_FIELD.get())
+						.save(pvd, getID(LCPandora.MAGIC_REJECT.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.OWNER_PROTECTION.get())::unlockedBy, LCPandora.CHARM.get())
+						.pattern("BAB").pattern("B1B").pattern("BAB")
+						.define('1', LCPandora.CHARM.get())
+						.define('A', Items.NETHER_STAR)
+						.define('B', Items.END_ROD)
+						.save(pvd, getID(LCPandora.OWNER_PROTECTION.get()));
+			}
+
+			// ench
+			{
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.STABLE_BODY.get())::unlockedBy, LCPandora.CHARM.get())
+						.pattern(" C ").pattern("ABA").pattern(" A ")
+						.define('A', Items.OBSIDIAN)
+						.define('B', LCPandora.CHARM.get())
+						.define('C', Items.CRYING_OBSIDIAN)
+						.save(pvd, getID(LCPandora.STABLE_BODY.get()));
+
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.ENDER_CHARM.get())::unlockedBy, LCPandora.CHARM.get())
+						.pattern(" C ").pattern("ABA").pattern(" A ")
+						.define('A', Items.ENDER_EYE)
+						.define('B', LCPandora.CHARM.get())
+						.define('C', Items.CARVED_PUMPKIN)
+						.save(pvd, getID(LCPandora.ENDER_CHARM.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.GOLDEN_HEART.get())::unlockedBy, LCPandora.CHARM.get())
+						.pattern(" A ").pattern("ABA").pattern(" A ")
+						.define('A', Items.GOLD_INGOT)
+						.define('B', LCPandora.CHARM.get())
+						.save(pvd, getID(LCPandora.GOLDEN_HEART.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.BLESS_SNOW_WALKER.get())::unlockedBy, LCPandora.CHARM.get())
+						.pattern(" A ").pattern("ABA").pattern(" A ")
+						.define('A', Items.LEATHER)
+						.define('B', LCPandora.CHARM.get())
+						.save(pvd, getID(LCPandora.BLESS_SNOW_WALKER.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.BLESS_LAVA_WALKER.get())::unlockedBy, LCPandora.CHARM.get())
+						.pattern(" C ").pattern("ABA").pattern(" A ")
+						.define('A', Items.MAGMA_CREAM)
+						.define('C', LCItems.HARD_ICE)
+						.define('B', LCPandora.CHARM.get())
+						.save(pvd, getID(LCPandora.BLESS_LAVA_WALKER.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.NIGHT_VISION_CHARM.get())::unlockedBy, LCPandora.CHARM.get())
+						.pattern(" C ").pattern("ABA").pattern(" A ")
+						.define('A', new PotionIngredient(Potions.NIGHT_VISION))
+						.define('C', LCItems.SOUL_FLAME)
+						.define('B', LCPandora.CHARM.get())
+						.save(pvd, getID(LCPandora.NIGHT_VISION_CHARM.get()));
+
+			}
+
+		}
+
 		currentFolder = "burnt/";
 		{
+			convert(pvd, Ingredient.of(ItemTags.BEACON_PAYMENT_ITEMS), LCPandora.MINI_BEACON_BASE.get(), 164 * 9, "_ingot");
+			convert(pvd, Ingredient.of(Items.IRON_BLOCK, Items.GOLD_BLOCK, Items.EMERALD_BLOCK,
+					Items.DIAMOND_BLOCK, Items.NETHERITE_BLOCK), LCPandora.MINI_BEACON_BASE.get(), 164, "_block");
+
 			convert(pvd, Items.EMERALD, LCItems.EMERALD.get(), 64 * 27 * 9);
 			convert(pvd, Items.EMERALD_BLOCK, LCItems.EMERALD.get(), 64 * 27);
 			convert(pvd, Items.ROTTEN_FLESH, LCItems.CURSED_DROPLET.get(), 64 * 27 * 9);
@@ -984,6 +1075,10 @@ public class RecipeGen {
 
 	private static void convert(RegistrateRecipeProvider pvd, Item in, Item out, int count) {
 		unlock(pvd, new BurntRecipeBuilder(Ingredient.of(in), out.getDefaultInstance(), count)::unlockedBy, in).save(pvd, getID(in));
+	}
+
+	private static void convert(RegistrateRecipeProvider pvd, Ingredient ing, Item out, int count, String id) {
+		unlock(pvd, new BurntRecipeBuilder(ing, out.getDefaultInstance(), count)::unlockedBy, ing.getItems()[0].getItem()).save(pvd, getID(out).withSuffix(id));
 	}
 
 	private static void diffuse(RegistrateRecipeProvider pvd, Block in, Block base, Block out) {

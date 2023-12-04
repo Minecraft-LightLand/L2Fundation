@@ -1,6 +1,8 @@
 package dev.xkmc.l2complements.events;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.mojang.datafixers.util.Pair;
+import dev.xkmc.l2complements.content.feature.EntityFeature;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2damagetracker.contents.materials.generic.GenericArmorItem;
@@ -8,11 +10,15 @@ import dev.xkmc.l2damagetracker.contents.materials.generic.GenericTieredItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.block.PowderSnowBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -90,4 +96,33 @@ public class SpecialEquipmentEvents {
 		if (PLAYER.get().peek().getFirst() == player)
 			PLAYER.get().pop();
 	}
+
+	public static boolean canWalkOn(FluidState state, LivingEntity self) {
+		if (state.getType() == Fluids.LAVA) {
+			double dy = self.getY();
+			double vy = self.getDeltaMovement().y;
+			if (vy > 0 && dy - Math.floor(dy) < 0.5) return false;
+			return EntityFeature.LAVA_WALKER.test(self);
+		}
+		return false;
+	}
+
+	public static boolean canSee(Entity instance, Operation<Boolean> original) {
+		boolean ans = original.call(instance);
+		if (ans) return true;
+		if (instance instanceof LivingEntity le) {
+			if (le.isInLava()) {
+				if (EntityFeature.FIRE_REJECT.test(le) || EntityFeature.ENVIRONMENTAL_REJECT.test(le) || EntityFeature.LAVA_WALKER.test(le)) {
+					return true;
+				}
+			}
+			if (le.isInPowderSnow) {
+				if (PowderSnowBlock.canEntityWalkOnPowderSnow(instance) || EntityFeature.ENVIRONMENTAL_REJECT.test(le)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 }

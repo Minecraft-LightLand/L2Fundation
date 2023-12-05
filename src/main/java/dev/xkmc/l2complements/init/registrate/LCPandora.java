@@ -6,13 +6,9 @@ import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.l2complements.content.item.curios.DescCurioItem;
 import dev.xkmc.l2complements.content.item.pandora.*;
 import dev.xkmc.l2complements.init.L2Complements;
-import dev.xkmc.l2hostility.init.data.TagGen;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.pandora.init.data.PandoraTagGen;
 import dev.xkmc.pandora.init.registrate.PandoraItems;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -46,7 +42,8 @@ public class LCPandora {
 	public static final ItemEntry<AttributeItem> CHARM_SPEED;
 	public static final ItemEntry<AttributeItem> CHARM_DAMAGE;
 	public static final ItemEntry<AttributeItem> CHARM_HEAVY;
-	public static final ItemEntry<RestrictItem> CURSE_OF_REALITY;
+	public static final ItemEntry<CurseOfInertiaItem> CURSE_OF_INERTIA;
+	public static final ItemEntry<CurseOfProximityItem> CURSE_OF_PROXIMITY;
 
 
 	static {
@@ -185,16 +182,17 @@ public class LCPandora {
 
 			CHARM_HEAVY = item("charm_of_heavy_weapon", p -> new AttributeItem(p,
 					(uuid, map) -> map.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(uuid, "charm_of_heavy_weapon",
-							1, AttributeModifier.Operation.MULTIPLY_TOTAL)),
+							1, AttributeModifier.Operation.MULTIPLY_BASE)),
 					(uuid, map) -> map.put(Attributes.ATTACK_SPEED, new AttributeModifier(uuid, "charm_of_heavy_weapon",
 							-2, AttributeModifier.Operation.ADDITION))
 			)).tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE).register();
 
+			CURSE_OF_INERTIA = item("curse_of_inertia", CurseOfInertiaItem::new)
+					.tag(PandoraTagGen.PANDORA_SLOT).register();
 
-			TagKey<Item> charm = ItemTags.create(new ResourceLocation("curios", "charm"));
-			TagKey<Item> curio = ItemTags.create(new ResourceLocation("curios", "curio"));
-			CURSE_OF_REALITY = item("curse_of_reality", RestrictItem::new)
-					.tag(TagGen.CURSE_SLOT, charm, curio).register();
+			CURSE_OF_PROXIMITY = item("curse_of_proximity", CurseOfProximityItem::new)
+					.tag(PandoraTagGen.PANDORA_SLOT).register();
+
 		}
 
 	}

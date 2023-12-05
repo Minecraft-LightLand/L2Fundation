@@ -22,6 +22,8 @@
     "l2complements:charm_of_armor",
     "l2complements:charm_of_speed",
     "l2complements:charm_of_damage",
-    "l2complements:charm_of_heavy_weapon"
+    "l2complements:charm_of_heavy_weapon",
+    "l2complements:curse_of_inertia",
+    "l2complements:curse_of_proximity"
   ]
 }

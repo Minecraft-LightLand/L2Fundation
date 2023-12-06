@@ -5,6 +5,7 @@ import dev.xkmc.l2complements.content.item.curios.EffectValidItem;
 import dev.xkmc.l2complements.content.item.curios.ICapItem;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2library.base.effects.EffectUtil;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -42,7 +43,7 @@ public class EffectRefreshItem extends CurioItem implements EffectValidItem, ICa
 					Component.translatable("potion.potency." + ins.getAmplifier()));
 		}
 		ans = ans.withStyle(ins.getEffect().getCategory().getTooltipFormatting());
-		list.add(LangData.IDS.EFFECT_REFRESH_CURIO.get(ans));
+		list.add(LangData.IDS.EFFECT_REFRESH_CURIO.get().withStyle(ChatFormatting.GRAY).append(ans));
 	}
 
 	@Override

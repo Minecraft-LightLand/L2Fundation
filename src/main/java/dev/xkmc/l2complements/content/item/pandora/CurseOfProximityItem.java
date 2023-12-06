@@ -111,17 +111,17 @@ public class CurseOfProximityItem extends CurioItem implements ICapItem<CurseOfP
 			var map = player.getMainHandItem().getAttributeModifiers(EquipmentSlot.MAINHAND);
 			var list = map.get(ForgeMod.ENTITY_REACH.get());
 			var set = list.stream().map(AttributeModifier::getId).collect(Collectors.toSet());
-			CursePandora.Add valAdd = new CursePandora.Add();
-			CursePandora.remove(attr, AttributeModifier.Operation.ADDITION,
+			CursePandoraUtil.Add valAdd = new CursePandoraUtil.Add();
+			CursePandoraUtil.remove(attr, AttributeModifier.Operation.ADDITION,
 					NEGATE_REACH_ADD, "restriction_negate_reach_add",
-					set, new CursePandora.Add(), valAdd);
-			CursePandora.Add valBase = new CursePandora.Add();
-			CursePandora.remove(attr, AttributeModifier.Operation.MULTIPLY_BASE,
+					set, new CursePandoraUtil.Add(), valAdd);
+			CursePandoraUtil.Add valBase = new CursePandoraUtil.Add();
+			CursePandoraUtil.remove(attr, AttributeModifier.Operation.MULTIPLY_BASE,
 					NEGATE_REACH_BASE, "restriction_negate_reach_base",
-					Set.of(), new CursePandora.Add(), valBase);
+					Set.of(), new CursePandoraUtil.Add(), valBase);
 			double finVal = (attr.getBaseValue() + valAdd.get()) * (1 + valBase.get());
-			CursePandora.Mult valMult = new CursePandora.Mult();
-			CursePandora.remove(attr, AttributeModifier.Operation.MULTIPLY_TOTAL,
+			CursePandoraUtil.Mult valMult = new CursePandoraUtil.Mult();
+			CursePandoraUtil.remove(attr, AttributeModifier.Operation.MULTIPLY_TOTAL,
 					NEGATE_REACH_TOTAL, "restriction_negate_reach_total",
 					Set.of(), new CurseMult(finVal, valMult), valMult);
 		}
@@ -136,12 +136,12 @@ public class CurseOfProximityItem extends CurioItem implements ICapItem<CurseOfP
 
 	}
 
-	private static class CurseMult extends CursePandora.Mult {
+	private static class CurseMult extends CursePandoraUtil.Mult {
 
 		private final double finVal;
-		private final CursePandora.ValueConsumer last;
+		private final CursePandoraUtil.ValueConsumer last;
 
-		private CurseMult(double finVal, CursePandora.ValueConsumer last) {
+		private CurseMult(double finVal, CursePandoraUtil.ValueConsumer last) {
 			this.finVal = finVal;
 			this.last = last;
 		}

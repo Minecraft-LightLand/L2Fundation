@@ -26,7 +26,7 @@ import java.util.UUID;
 public class CurseOfInertiaItem extends CurioItem implements ICapItem<CurseOfInertiaItem.Data> {
 
 	private static int getCap() {
-		return 2;
+		return 3;
 	}
 
 	private static double getBase() {
@@ -108,17 +108,17 @@ public class CurseOfInertiaItem extends CurioItem implements ICapItem<CurseOfIne
 		private void calculateAttributes(Player player) {
 			var attr = player.getAttribute(Attributes.ATTACK_SPEED);
 			if (attr == null) return;
-			CursePandora.Add valAdd = new CursePandora.Add();
-			CursePandora.remove(attr, AttributeModifier.Operation.ADDITION,
+			CursePandoraUtil.Add valAdd = new CursePandoraUtil.Add();
+			CursePandoraUtil.remove(attr, AttributeModifier.Operation.ADDITION,
 					NEGATE_SPEED_ADD, "restriction_negate_speed_add",
-					Set.of(WEAPON_SPEED), new CursePandora.Add(), valAdd);
-			CursePandora.Add valBase = new CursePandora.Add();
-			CursePandora.remove(attr, AttributeModifier.Operation.MULTIPLY_BASE,
+					Set.of(WEAPON_SPEED), new CursePandoraUtil.Add(), valAdd);
+			CursePandoraUtil.Add valBase = new CursePandoraUtil.Add();
+			CursePandoraUtil.remove(attr, AttributeModifier.Operation.MULTIPLY_BASE,
 					NEGATE_SPEED_BASE, "restriction_negate_speed_base",
-					Set.of(), new CursePandora.Add(), valBase);
+					Set.of(), new CursePandoraUtil.Add(), valBase);
 			double finVal = (attr.getBaseValue() + valAdd.get()) * (1 + valBase.get());
-			CursePandora.Mult valMult = new CursePandora.Mult();
-			CursePandora.remove(attr, AttributeModifier.Operation.MULTIPLY_TOTAL,
+			CursePandoraUtil.Mult valMult = new CursePandoraUtil.Mult();
+			CursePandoraUtil.remove(attr, AttributeModifier.Operation.MULTIPLY_TOTAL,
 					NEGATE_SPEED_TOTAL, "restriction_negate_speed_total",
 					Set.of(), new CurseMult(finVal, valMult), valMult);
 		}
@@ -133,12 +133,12 @@ public class CurseOfInertiaItem extends CurioItem implements ICapItem<CurseOfIne
 
 	}
 
-	private static class CurseMult extends CursePandora.Mult {
+	private static class CurseMult extends CursePandoraUtil.Mult {
 
 		private final double finVal;
-		private final CursePandora.ValueConsumer last;
+		private final CursePandoraUtil.ValueConsumer last;
 
-		private CurseMult(double finVal, CursePandora.ValueConsumer last) {
+		private CurseMult(double finVal, CursePandoraUtil.ValueConsumer last) {
 			this.finVal = finVal;
 			this.last = last;
 		}

@@ -66,7 +66,9 @@ public class LangData {
 		WINTERSTORM_WAND("tooltip.misc.winterstorm_wand", "Hold use to create a ring of storm. Push mobs away and freeze them.", 0),
 		DIFFUSION_WAND("tooltip.misc.diffusion_wand", "Right click a block of gem/dust to diffuse it into nearby stones to create ore. Check JEI for recipe", 0),
 		BANNED("tooltip.misc.banned", "This item is disabled.", 0),
-		EFFECT_REFRESH_CURIO("tooltip.misc.effect_refresh", "Grants wearer: ", 1),
+
+		// pandora
+		EFFECT_REFRESH_CURIO("tooltip.misc.effect_refresh", "Grants wearer: ", 0),
 		BIND("tooltip.misc.bind", "This item cannot be taken down.", 0),
 		CURSE_INERTIA("tooltip.misc.curse_inertia", "Negate all other non-tool attack speed bonus. Cap player attack speed to %s. When player attack speed is %s or lower, grant %s%% attack speed bonus.", 3),
 		CURSE_PROXIMITY("tooltip.misc.curse_proximity", "Negate all other non-tool attack reach bonus. Cap player attack reach to %s. When player attack reach is %s or lower, grant %s%% attack reach bonus.", 3),

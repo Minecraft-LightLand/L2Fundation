@@ -6,7 +6,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import java.util.Set;
 import java.util.UUID;
 
-public class CursePandora {
+public class CursePandoraUtil {
 
 	public static void remove(AttributeInstance attr, AttributeModifier.Operation op, UUID negId, String negName,
 							  Set<UUID> ignore, ValueConsumer negate, ValueConsumer val) {

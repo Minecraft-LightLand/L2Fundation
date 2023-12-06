@@ -68,12 +68,12 @@ public class UnobtainableEnchantment extends Enchantment implements CraftableEnc
 
 	@Override
 	public int getMinCost(int lv) {
-		return 200;
+		return 5;
 	}
 
 	@Override
 	public int getMaxCost(int lv) {
-		return 150;
+		return 1;
 	}
 
 	@Override
@@ -89,11 +89,6 @@ public class UnobtainableEnchantment extends Enchantment implements CraftableEnc
 	@Override
 	public boolean isDiscoverable() {
 		return false;
-	}
-
-	@Override
-	public boolean isAllowedOnBooks() {
-		return true;
 	}
 
 	public ChatFormatting getColor() {

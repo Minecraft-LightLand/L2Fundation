@@ -1,12 +1,12 @@
-// 1.20.1	2023-12-05T10:19:22.643458	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
+// 1.20.1	2023-12-06T18:00:13.492821	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
 b2a769b51ddce14c173a64b5457cccb4d8ef6a45 assets/l2complements/blockstates/sculkium_block.json
 2b88df6f8b01f3c72273ce13dbcb556f7dab321d assets/l2complements/blockstates/shulkerate_block.json
 65262ae0f886f61c163059f15c2ad1a7ba9c264a assets/l2complements/blockstates/totemic_gold_block.json
-104e4a8d9fd288c4bbd295ab242614421df11a6d assets/l2complements/lang/en_ud.json
-4cd9ed870eaf300cd24ca0a86a7c9362b21737cb assets/l2complements/lang/en_us.json
+675177f8a83e5eecc07a3eca9903a827a6c4b8b6 assets/l2complements/lang/en_ud.json
+36e964a997635ecf7f4716966c38c2994ab2b137 assets/l2complements/lang/en_us.json
 bb63c088704d714f1763cb16cec8af6cd1006d66 assets/l2complements/models/block/eternium_block.json
 a45ee09acc262fd67be22de093136ad757f08e61 assets/l2complements/models/block/poseidite_block.json
 a52909a3a44a80695da32b5c3c5f931a0f72f74d assets/l2complements/models/block/sculkium_block.json
@@ -18,8 +18,11 @@ d058c1f716a936e0dff83f7a2d50ad49fab10f22 assets/l2complements/models/item/black_
 fc3d9841e6e5760fc3928c1e9f67fc4ee624b7c5 assets/l2complements/models/item/bless_of_snow_walker.json
 87713a84b41607d4d6a9f3009ded23732960678c assets/l2complements/models/item/captured_shulker_bullet.json
 debd9b7eb7f11bf8efabb81e1505237434ed9f6b assets/l2complements/models/item/captured_wind.json
+97647d8c48ee7ea5b6dc95af943478b803fc636a assets/l2complements/models/item/charm_of_accuracy.json
+afd79776f74a21e72819a52affe91ea8d9ac3ada assets/l2complements/models/item/charm_of_archery.json
 5ebba6a57fd69835471e484ff97888cae0855581 assets/l2complements/models/item/charm_of_armor.json
 b5fe14df522ed757d20465888c0deb9bc86cebe6 assets/l2complements/models/item/charm_of_calmness.json
+9dd08be8737f9b259789ff590a58a830ebcb3c53 assets/l2complements/models/item/charm_of_critical.json
 a6d8b339d8aef59c160abb6c884d1eeada647ef1 assets/l2complements/models/item/charm_of_damage.json
 c88cf089b7be69994b66a143456ff6df810097b6 assets/l2complements/models/item/charm_of_health.json
 d53eb1af9173f98d8dee5a7b9233205dda28940c assets/l2complements/models/item/charm_of_heavy_weapon.json
@@ -140,7 +143,7 @@ f2bed6f2f6ac106334a113f4cedef4cb8be322d2 assets/l2complements/models/item/totemi
 41d0259e5a214bd80a27be90dbc2ec142fe7a367 assets/l2complements/models/item/warden_bone_shard.json
 ea0f2e6ba9ca3a87c8e7e75860e1e01eb421eedd assets/l2complements/models/item/wind_capture_bottle.json
 e398ec09b3d644e800f9502edf6bbff62a943c2b assets/l2complements/models/item/winterstorm_wand.json
-fcf02f5a5e60b41ba682b882c2abfc4d03da2171 data/curios/tags/items/pandora_charm.json
+baee97c62911b1c682601b6ccac351e0c5e283ca data/curios/tags/items/pandora_charm.json
 3d8bcdff520aba2f8196e7fe08ace2661e9d9dff data/forge/tags/blocks/storage_blocks.json
 fd164107c6c9780424b95cac45176d5b3bc50868 data/forge/tags/items/armors/boots.json
 dd515d3f4b06e1fc884572007bbb8fa84ca0b3fc data/forge/tags/items/armors/chestplates.json
@@ -380,8 +383,11 @@ ac548c66e1646c4674eaa17db333f3b8e9e4beb7 data/l2complements/advancements/recipes
 87946baacd428dc3457b26955447a0805b4ff34b data/l2complements/advancements/recipes/misc/generated_tools/totemic_gold/upgrade/totemic_gold_sword.json
 fd450b45524e6e2b4072b592d33c74bd2cb9cd9c data/l2complements/advancements/recipes/misc/pandora/bless_of_lava_walker.json
 19ee88e64b0c1b429db9f0e23c0b61bd551cd668 data/l2complements/advancements/recipes/misc/pandora/bless_of_snow_walker.json
+29bf498b1f749c4cefafe09e1d06610e4c4f5c85 data/l2complements/advancements/recipes/misc/pandora/charm_of_accuracy.json
+92563861624f4514d23f9b0b2d560c10068a4988 data/l2complements/advancements/recipes/misc/pandora/charm_of_archery.json
 c4f6112a63d3220eceef10be8eb0aa23096932af data/l2complements/advancements/recipes/misc/pandora/charm_of_armor.json
 a217ab8e60b393d377a8a46c35eb35b9d2fdf449 data/l2complements/advancements/recipes/misc/pandora/charm_of_calmness.json
+ab75b7c85108a7064e8576e256d1e200a362e1d0 data/l2complements/advancements/recipes/misc/pandora/charm_of_critical.json
 d50dc6a7b6900f156f9d65c3843710fdab064163 data/l2complements/advancements/recipes/misc/pandora/charm_of_damage.json
 d972ab531e9f8114754f9e13ca1ce9274c169085 data/l2complements/advancements/recipes/misc/pandora/charm_of_health.json
 274aa6a03a77aa0babd3c1c7562160e0de7bb5df data/l2complements/advancements/recipes/misc/pandora/charm_of_heavy_weapon.json
@@ -744,8 +750,11 @@ eb4ded07ed77740ba7170e59aec04f63b4b83de5 data/l2complements/recipes/generated_to
 43dcf25bb358f4234fa24b601089073da5969543 data/l2complements/recipes/jeed/stone_cage.json
 126359701fc727daed05dc52d62843615eefc3ae data/l2complements/recipes/pandora/bless_of_lava_walker.json
 ab3d5be183ef0580dda37c5772f12298d9267589 data/l2complements/recipes/pandora/bless_of_snow_walker.json
+6a321e62fbf934e6aa69f5e97ab838d2246e82dc data/l2complements/recipes/pandora/charm_of_accuracy.json
+2e7d62265021d7f84600cf9c177e623a6b9ef99e data/l2complements/recipes/pandora/charm_of_archery.json
 95de17b88bfac3c665350504da3f8afa3c385fb9 data/l2complements/recipes/pandora/charm_of_armor.json
 0157509a4d9ab987da78a2e8e9c71759c9806219 data/l2complements/recipes/pandora/charm_of_calmness.json
+a5e9a554337bf20393e55ea2667ae2b9233fdb3a data/l2complements/recipes/pandora/charm_of_critical.json
 b107ef014c19af17418a24c9fb9db72f73331da2 data/l2complements/recipes/pandora/charm_of_damage.json
 7d3d52d687945ef997c3764a46e890491cf26022 data/l2complements/recipes/pandora/charm_of_health.json
 ad925085b7b02627e99c57b7fbf57433c9fb3e68 data/l2complements/recipes/pandora/charm_of_heavy_weapon.json
@@ -840,6 +849,6 @@ d19ab7ba64367c164ddcf3701466affbdb2a0696 data/minecraft/tags/items/shovels.json
 ffafe5187c5335776931d711661d66d6648bd197 data/minecraft/tags/items/swords.json
 8dfa95c4fbc2acb115714fc7f071fb14b931b5e5 data/minecraft/tags/items/trimmable_armor.json
 b376083721f28306ed48a8752be7f13fd2bb0d3c data/modulargolems/tags/items/sculk_materials.json
-2d0e22b405bcef41b165dd5893348c69f16e94ec data/pandora/tags/items/allow_duplicates.json
+e268aabfa8134cfa243cd7a49c5b49d1456a104f data/pandora/tags/items/allow_duplicates.json
 8c79cc8b251cc60f27a9a722af6f1b61073261ec data/twilightforest/tags/items/banned_uncraftables.json
 fdc504265c73665e2952b114a767cbe1cfea025a data/twilightforest/tags/items/banned_uncrafting_ingredients.json

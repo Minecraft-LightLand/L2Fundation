@@ -758,6 +758,27 @@ public class RecipeGen {
 						.define('B', LCPandora.CHARM.get())
 						.define('C', LHTraits.SLOWNESS.get().asItem())
 						.save(pvd, getID(LCPandora.CHARM_HEAVY.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.CHARM_BOW.get())::unlockedBy, LCPandora.CHARM.get())
+						.pattern("CAC").pattern("ABA").pattern("CAC")
+						.define('A', LHTraits.WEAKNESS.get().asItem())
+						.define('B', LCPandora.CHARM.get())
+						.define('C', LHTraits.SHULKER.get().asItem())
+						.save(pvd, getID(LCPandora.CHARM_BOW.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.CHARM_CRIT.get())::unlockedBy, LCPandora.CHARM.get())
+						.pattern("CAC").pattern("ABA").pattern("CAC")
+						.define('A', LHTraits.MOONWALK.get().asItem())
+						.define('B', LCPandora.CHARM.get())
+						.define('C', LHTraits.LEVITATION.get().asItem())
+						.save(pvd, getID(LCPandora.CHARM_CRIT.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.CHARM_ACCURACY.get())::unlockedBy, LCPandora.CHARM.get())
+						.pattern("CAC").pattern("ABA").pattern("CAC")
+						.define('A', LHTraits.FREEZING.get().asItem())
+						.define('B', LCPandora.CHARM.get())
+						.define('C', LHTraits.REFLECT.get().asItem())
+						.save(pvd, getID(LCPandora.CHARM_ACCURACY.get()));
 			}
 
 		}

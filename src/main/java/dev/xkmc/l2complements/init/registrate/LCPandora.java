@@ -6,6 +6,7 @@ import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.l2complements.content.item.curios.DescCurioItem;
 import dev.xkmc.l2complements.content.item.pandora.*;
 import dev.xkmc.l2complements.init.L2Complements;
+import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.pandora.init.data.PandoraTagGen;
 import dev.xkmc.pandora.init.registrate.PandoraItems;
@@ -42,6 +43,9 @@ public class LCPandora {
 	public static final ItemEntry<AttributeItem> CHARM_SPEED;
 	public static final ItemEntry<AttributeItem> CHARM_DAMAGE;
 	public static final ItemEntry<AttributeItem> CHARM_HEAVY;
+	public static final ItemEntry<AttributeItem> CHARM_ACCURACY;
+	public static final ItemEntry<AttributeItem> CHARM_CRIT;
+	public static final ItemEntry<AttributeItem> CHARM_BOW;
 	public static final ItemEntry<CurseOfInertiaItem> CURSE_OF_INERTIA;
 	public static final ItemEntry<CurseOfProximityItem> CURSE_OF_PROXIMITY;
 
@@ -180,11 +184,28 @@ public class LCPandora {
 							0.05, AttributeModifier.Operation.MULTIPLY_BASE))))
 					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE).register();
 
+			CHARM_CRIT = item("charm_of_critical", p -> new AttributeItem(p,
+					(uuid, map) -> map.put(L2DamageTracker.CRIT_DMG.get(), new AttributeModifier(uuid, "charm_of_critical",
+							0.05, AttributeModifier.Operation.ADDITION))))
+					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE).register();
+
+			CHARM_BOW = item("charm_of_archery", p -> new AttributeItem(p,
+					(uuid, map) -> map.put(L2DamageTracker.BOW_STRENGTH.get(), new AttributeModifier(uuid, "charm_of_archery",
+							0.05, AttributeModifier.Operation.ADDITION))))
+					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE).register();
+
 			CHARM_HEAVY = item("charm_of_heavy_weapon", p -> new AttributeItem(p,
 					(uuid, map) -> map.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(uuid, "charm_of_heavy_weapon",
 							1, AttributeModifier.Operation.MULTIPLY_BASE)),
 					(uuid, map) -> map.put(Attributes.ATTACK_SPEED, new AttributeModifier(uuid, "charm_of_heavy_weapon",
 							-2, AttributeModifier.Operation.ADDITION))
+			)).tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE).register();
+
+			CHARM_ACCURACY = item("charm_of_accuracy", p -> new AttributeItem(p,
+					(uuid, map) -> map.put(L2DamageTracker.CRIT_RATE.get(), new AttributeModifier(uuid, "charm_of_accuracy",
+							0.2, AttributeModifier.Operation.ADDITION)),
+					(uuid, map) -> map.put(Attributes.ATTACK_SPEED, new AttributeModifier(uuid, "charm_of_accuracy",
+							-0.5, AttributeModifier.Operation.ADDITION))
 			)).tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE).register();
 
 			CURSE_OF_INERTIA = item("curse_of_inertia", CurseOfInertiaItem::new)

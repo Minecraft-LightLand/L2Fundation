@@ -46,6 +46,9 @@ public class TagGen {
 	public static final TagKey<Item> DELICATE_BONE = ItemTags.create(new ResourceLocation(L2Complements.MODID, "delicate_bone"));
 	public static final TagKey<MobEffect> SKILL_EFFECT = TagKey.create(ForgeRegistries.MOB_EFFECTS.getRegistryKey(), new ResourceLocation(L2Complements.MODID, "skill_effect"));
 
+	// pandora
+	public static final TagKey<Item> PANDORA_BASE = ItemTags.create(new ResourceLocation(L2Complements.MODID,"pandora_base"));
+
 	public static void onBlockTagGen(RegistrateTagsProvider.IntrinsicImpl<Block> pvd) {
 		pvd.addTag(REQUIRES_SCULK_TOOL).add(Blocks.REINFORCED_DEEPSLATE);
 		pvd.addTag(BlockTags.MINEABLE_WITH_PICKAXE).add(Blocks.REINFORCED_DEEPSLATE);

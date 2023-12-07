@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_plain_charm": {
+    "has_chaos_ingot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "l2complements:plain_charm"
+              "l2hostility:chaos_ingot"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "l2complements:pandora/plain_charm"
+        "recipe": "l2complements:pandora/curse_of_proximity"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_plain_charm",
+      "has_chaos_ingot",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "l2complements:pandora/plain_charm"
+      "l2complements:pandora/curse_of_proximity"
     ]
   },
   "sends_telemetry_event": false

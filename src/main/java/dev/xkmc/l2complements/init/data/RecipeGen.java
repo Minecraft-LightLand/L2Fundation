@@ -12,6 +12,7 @@ import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.materials.LCMats;
 import dev.xkmc.l2complements.init.registrate.*;
 import dev.xkmc.l2hostility.init.L2Hostility;
+import dev.xkmc.l2hostility.init.registrate.LHItems;
 import dev.xkmc.l2hostility.init.registrate.LHTraits;
 import dev.xkmc.l2library.compat.jeed.JeedDataGenerator;
 import dev.xkmc.l2library.serial.ingredients.EnchantmentIngredient;
@@ -722,9 +723,19 @@ public class RecipeGen {
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.CHARM.get(), 2)::unlockedBy, LCPandora.CHARM.get())
 						.pattern("AAA").pattern("ABA").pattern("AAA")
-						.define('A', dev.xkmc.l2hostility.init.data.TagGen.TRAIT_ITEM)
+						.define('A', LHItems.MIRACLE_POWDER.get())
 						.define('B', LCPandora.CHARM.get())
-						.save(pvd, getID(LCPandora.CHARM.get()));
+						.save(pvd, getID(LCPandora.CHARM.get(), "_renew"));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.CHARM.get(), 1)::unlockedBy, LCPandora.CHARM.get())
+						.pattern("AAA").pattern("ABA").pattern("AAA")
+						.define('A', LHItems.HOSTILITY_ESSENCE.get())
+						.define('B', LHItems.MIRACLE_INGOT.get())
+						.save(pvd, getID(LCPandora.CHARM.get(), "_from_new"));
+
+				unlock(pvd, SimpleCookingRecipeBuilder.blasting(Ingredient.of(TagGen.PANDORA_BASE),
+						RecipeCategory.MISC, LCPandora.CHARM.get(), 1, 200)::unlockedBy, LCPandora.CHARM.get())
+						.save(pvd, getID(LCPandora.CHARM.get(), "_smelt"));
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.CHARM_HEALTH.get())::unlockedBy, LCPandora.CHARM.get())
 						.pattern("AAA").pattern("ABA").pattern("AAA")
@@ -779,6 +790,20 @@ public class RecipeGen {
 						.define('B', LCPandora.CHARM.get())
 						.define('C', LHTraits.REFLECT.get().asItem())
 						.save(pvd, getID(LCPandora.CHARM_ACCURACY.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.CURSE_OF_INERTIA.get())::unlockedBy, LHItems.CHAOS_INGOT.get())
+						.pattern(" C ").pattern("ABA").pattern(" C ")
+						.define('A', LHTraits.WEAKNESS.get().asItem())
+						.define('B', LHItems.CHAOS_INGOT.get())
+						.define('C', LHTraits.SLOWNESS.get().asItem())
+						.save(pvd, getID(LCPandora.CURSE_OF_INERTIA.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.CURSE_OF_PROXIMITY.get())::unlockedBy, LHItems.CHAOS_INGOT.get())
+						.pattern(" C ").pattern("ABA").pattern(" C ")
+						.define('A', LHTraits.BLIND.get().asItem())
+						.define('B', LHItems.CHAOS_INGOT.get())
+						.define('C', LHTraits.CONFUSION.get().asItem())
+						.save(pvd, getID(LCPandora.CURSE_OF_PROXIMITY.get()));
 			}
 
 		}

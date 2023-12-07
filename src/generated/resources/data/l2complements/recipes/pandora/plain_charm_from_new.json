@@ -3,10 +3,10 @@
   "category": "misc",
   "key": {
     "A": {
-      "tag": "l2hostility:trait_item"
+      "item": "l2hostility:hostility_essence"
     },
     "B": {
-      "item": "l2complements:plain_charm"
+      "item": "l2hostility:miracle_ingot"
     }
   },
   "pattern": [
@@ -15,7 +15,6 @@
     "AAA"
   ],
   "result": {
-    "count": 2,
     "item": "l2complements:plain_charm"
   },
   "show_notification": true

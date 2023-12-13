@@ -722,14 +722,16 @@ public class RecipeGen {
 			if (ModList.get().isLoaded(L2Hostility.MODID)) {
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.CHARM.get(), 2)::unlockedBy, LCPandora.CHARM.get())
-						.pattern("AAA").pattern("ABA").pattern("AAA")
+						.pattern("ACA").pattern("ABA").pattern("AAA")
 						.define('A', LHItems.MIRACLE_POWDER.get())
 						.define('B', LCPandora.CHARM.get())
+						.define('C', LHItems.HOSTILITY_ESSENCE.get())
 						.save(pvd, getID(LCPandora.CHARM.get(), "_renew"));
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LCPandora.CHARM.get(), 1)::unlockedBy, LCPandora.CHARM.get())
-						.pattern("AAA").pattern("ABA").pattern("AAA")
-						.define('A', LHItems.HOSTILITY_ESSENCE.get())
+						.pattern("ACA").pattern("CBC").pattern("ACA")
+						.define('A', LHItems.MIRACLE_POWDER.get())
+						.define('C', LHItems.HOSTILITY_ESSENCE.get())
 						.define('B', LHItems.MIRACLE_INGOT.get())
 						.save(pvd, getID(LCPandora.CHARM.get(), "_from_new"));
 

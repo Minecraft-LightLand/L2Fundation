@@ -190,14 +190,14 @@ dependencies {
         jarJar.ranged(it, "[0.2.1,)")
     }
 
-    implementation(jarJar(fg.deobf("dev.xkmc.l2tabs:l2tabs:0.1.9"))) {
+    implementation(jarJar(fg.deobf("dev.xkmc.l2tabs:l2tabs:0.1.11"))) {
         transitive = false
-        jarJar.ranged(it, "[0.1.9,)")
+        jarJar.ranged(it, "[0.1.11,)")
     }
 
-    implementation(jarJar(fg.deobf("dev.xkmc.pandora:pandora:0.0.7-slim"))) {
+    implementation(jarJar(fg.deobf("dev.xkmc.pandora:pandora:0.0.8-slim"))) {
         transitive = false
-        jarJar.ranged(it, "[0.0.7,)")
+        jarJar.ranged(it, "[0.0.8,)")
     }
 
     runtimeOnly fg.deobf("dev.xkmc.l2modularblock:l2modularblock:1.1.0")
@@ -227,4 +227,5 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:umapyoi-776121:4589608")
 
     implementation fg.deobf("zip.local:emi:1.0.24+1.20.1+forge")
+    runtimeOnly fg.deobf("zip.local:celestial_artifacts:1.0-slim")
 }

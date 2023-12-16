@@ -1,4 +1,4 @@
-package dev.xkmc.l2complements.content.item.pandora;
+package dev.xkmc.curseofpandora.content.pandora;
 
 import dev.xkmc.l2complements.content.item.curios.CurioItem;
 import dev.xkmc.l2complements.content.item.curios.EffectValidItem;

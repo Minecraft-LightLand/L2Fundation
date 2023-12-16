@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-10T22:15:45.842331	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
+// 1.20.1	2023-12-16T20:49:44.718517	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
@@ -410,7 +410,7 @@ b41677550e83694502404ece3cd97209a3e99032 data/l2complements/advancements/recipes
 bba00839faad25c02450345dcb097cf310ab336e data/l2complements/advancements/recipes/misc/pandora/orb_of_nature.json
 763c5eb4a35cbf55430b77f8982cfecbbb1bd1f2 data/l2complements/advancements/recipes/misc/pandora/orb_of_projectile_rejection.json
 8889bc651126b562732728113e7043dec3a75b74 data/l2complements/advancements/recipes/misc/pandora/orb_of_stability.json
-65a0342abb8491b303b0af1a1c102ee8b2132b62 data/l2complements/advancements/recipes/misc/pandora/plain_charm_from_new.json
+1dccb1fd1afeabde9eb57661cecf8d0c81c1387f data/l2complements/advancements/recipes/misc/pandora/plain_charm_craft.json
 6727d5bba876b30ab53c3d3a97b5c013c7a08589 data/l2complements/advancements/recipes/misc/pandora/plain_charm_renew.json
 54b874afda6cf11a1f8249efe63da397afa0fccc data/l2complements/advancements/recipes/misc/pandora/plain_charm_smelt.json
 c4ebec46f7126690e7f3b5e6b3ffda7c471b4095 data/l2complements/advancements/recipes/misc/storage/eternium_block_storage.json
@@ -781,8 +781,8 @@ d8c2dab13ba3ab8630a752d757418131d8e2b481 data/l2complements/recipes/pandora/orb_
 8d8fe3d51006079556442d453964d714f22ef9b7 data/l2complements/recipes/pandora/orb_of_nature.json
 f566c41d1cca35e54a1835d10c7aa13f5e3addc3 data/l2complements/recipes/pandora/orb_of_projectile_rejection.json
 d90798cf8dbea2e820e23fe73500857ca6646343 data/l2complements/recipes/pandora/orb_of_stability.json
-aa799a39b2215bcc536c9a11e56998d1fc35f0f3 data/l2complements/recipes/pandora/plain_charm_from_new.json
-4c1f1473846fcb360e68655e5f6e4da58d27434b data/l2complements/recipes/pandora/plain_charm_renew.json
+44f107f99efa6d61311c34e573525460b1be3acf data/l2complements/recipes/pandora/plain_charm_craft.json
+7a3aa021339308b4e8f72d3cd9696d91706a604d data/l2complements/recipes/pandora/plain_charm_renew.json
 320683f19534838686236a9a346f28d4da490ede data/l2complements/recipes/pandora/plain_charm_smelt.json
 52b80255c44fa98f8e6a89c69acd0859c0714554 data/l2complements/recipes/storage/eternium_block_storage.json
 33e5a30a77e99f61aa92b90270c451b38b32eaa6 data/l2complements/recipes/storage/eternium_block_unpack.json

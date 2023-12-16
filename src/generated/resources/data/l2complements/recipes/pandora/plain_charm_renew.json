@@ -7,13 +7,10 @@
     },
     "B": {
       "item": "l2complements:plain_charm"
-    },
-    "C": {
-      "item": "l2hostility:hostility_essence"
     }
   },
   "pattern": [
-    "ACA",
+    "AAA",
     "ABA",
     "AAA"
   ],

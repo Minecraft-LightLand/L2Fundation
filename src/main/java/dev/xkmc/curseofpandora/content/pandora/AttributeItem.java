@@ -1,4 +1,4 @@
-package dev.xkmc.l2complements.content.item.pandora;
+package dev.xkmc.curseofpandora.content.pandora;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;

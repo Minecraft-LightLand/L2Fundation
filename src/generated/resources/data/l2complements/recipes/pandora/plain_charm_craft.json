@@ -3,21 +3,19 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "l2hostility:miracle_powder"
-    },
-    "B": {
       "item": "l2hostility:miracle_ingot"
     },
-    "C": {
-      "item": "l2hostility:hostility_essence"
+    "B": {
+      "item": "l2complements:plain_charm"
     }
   },
   "pattern": [
-    "ACA",
-    "CBC",
-    "ACA"
+    "AAA",
+    "ABA",
+    "AAA"
   ],
   "result": {
+    "count": 2,
     "item": "l2complements:plain_charm"
   },
   "show_notification": true

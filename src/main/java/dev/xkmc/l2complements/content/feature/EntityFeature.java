@@ -1,7 +1,7 @@
 package dev.xkmc.l2complements.content.feature;
 
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
-import dev.xkmc.l2complements.init.registrate.LCPandora;
+import dev.xkmc.curseofpandora.init.registrate.LCPandora;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 

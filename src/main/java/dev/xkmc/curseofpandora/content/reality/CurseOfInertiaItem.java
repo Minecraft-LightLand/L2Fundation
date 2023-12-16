@@ -1,13 +1,7 @@
-package dev.xkmc.l2complements.content.item.pandora;
+package dev.xkmc.curseofpandora.content.reality;
 
 import dev.xkmc.l2complements.content.item.curios.CurioItem;
-import dev.xkmc.l2complements.content.item.curios.ICapItem;
-import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LangData;
-import dev.xkmc.l2library.capability.conditionals.ConditionalData;
-import dev.xkmc.l2library.capability.conditionals.Context;
-import dev.xkmc.l2library.capability.conditionals.TokenKey;
-import dev.xkmc.l2library.capability.conditionals.TokenProvider;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -17,8 +11,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
-import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 import java.util.Set;

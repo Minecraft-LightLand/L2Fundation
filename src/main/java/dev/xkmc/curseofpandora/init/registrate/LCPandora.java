@@ -1,12 +1,15 @@
-package dev.xkmc.l2complements.init.registrate;
+package dev.xkmc.curseofpandora.init.registrate;
 
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
+import dev.xkmc.curseofpandora.content.pandora.*;
+import dev.xkmc.curseofpandora.content.reality.CurseOfInertiaItem;
+import dev.xkmc.curseofpandora.content.reality.CurseOfProximityItem;
 import dev.xkmc.l2complements.content.item.curios.DescCurioItem;
-import dev.xkmc.l2complements.content.item.pandora.*;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.TagGen;
+import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.pandora.init.data.PandoraTagGen;

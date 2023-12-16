@@ -1,6 +1,5 @@
-package dev.xkmc.l2complements.content.item.pandora;
+package dev.xkmc.curseofpandora.content.pandora;
 
-import dev.xkmc.l2complements.content.item.curios.CurioItem;
 import dev.xkmc.l2complements.content.item.curios.ICapItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -9,9 +8,9 @@ import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.function.Supplier;
 
-public class SnowWalkerCharm extends EnchDescItem implements ICapItem<SnowWalkerCharm.Data> {
+public class PiglinShinnyCharm extends EnchDescItem implements ICapItem<PiglinShinnyCharm.Data> {
 
-	public SnowWalkerCharm(Properties properties, Supplier<Enchantment> sup) {
+	public PiglinShinnyCharm(Properties properties, Supplier<Enchantment> sup) {
 		super(properties, sup);
 	}
 
@@ -28,11 +27,10 @@ public class SnowWalkerCharm extends EnchDescItem implements ICapItem<SnowWalker
 		}
 
 		@Override
-		public boolean canWalkOnPowderedSnow(SlotContext slotContext) {
+		public boolean makesPiglinsNeutral(SlotContext slotContext) {
 			return true;
 		}
 
 	}
 
 }
-

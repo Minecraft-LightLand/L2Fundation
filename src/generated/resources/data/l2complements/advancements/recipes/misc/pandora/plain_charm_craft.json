@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "l2complements:pandora/plain_charm_from_new"
+        "recipe": "l2complements:pandora/plain_charm_craft"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "l2complements:pandora/plain_charm_from_new"
+      "l2complements:pandora/plain_charm_craft"
     ]
   },
   "sends_telemetry_event": false

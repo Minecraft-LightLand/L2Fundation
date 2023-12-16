@@ -1,4 +1,4 @@
-package dev.xkmc.l2complements.content.item.pandora;
+package dev.xkmc.curseofpandora.content.reality;
 
 import dev.xkmc.l2complements.content.item.curios.ICapItem;
 import dev.xkmc.l2complements.init.L2Complements;

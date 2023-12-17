@@ -19,7 +19,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
 
-public class LCPandora {
+public class CoPItems {
 
 	public static final ItemEntry<Item> CHARM, MINI_BEACON, MINI_BEACON_BASE;
 	public static final ItemEntry<EnchDescItem> FIRE_REJECT, EXPLOSION_REJECT, MAGIC_REJECT,

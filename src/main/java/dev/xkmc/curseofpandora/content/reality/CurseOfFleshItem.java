@@ -40,7 +40,7 @@ public class CurseOfFleshItem extends ITokenProviderItem<CurseOfFleshItem.Ticker
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		list.add(CoPLangData.IDS.CURSE_FLESH.get(getThreshold(), getDuration() * 60, getBonus() * 100).withStyle(ChatFormatting.GRAY));
+		list.add(CoPLangData.IDS.CURSE_FLESH.get(getThreshold(), getDuration(), getBonus() * 100).withStyle(ChatFormatting.GRAY));
 	}
 
 	@SerialClass

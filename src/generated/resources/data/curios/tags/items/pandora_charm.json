@@ -27,6 +27,10 @@
     "l2complements:charm_of_heavy_weapon",
     "l2complements:charm_of_accuracy",
     "l2complements:curse_of_inertia",
-    "l2complements:curse_of_proximity"
+    "l2complements:curse_of_proximity",
+    "l2complements:curse_of_flesh",
+    "l2complements:curse_of_metabolism",
+    "l2complements:curse_of_tension",
+    "l2complements:curse_of_prudence"
   ]
 }

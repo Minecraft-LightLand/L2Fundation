@@ -1,6 +1,9 @@
 package dev.xkmc.l2complements.init;
 
 import com.tterrag.registrate.providers.ProviderType;
+import dev.xkmc.curseofpandora.event.PandoraAttackListener;
+import dev.xkmc.curseofpandora.init.registrate.CoPFakeEffects;
+import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.l2complements.content.enchantment.special.SoulBoundPlayerData;
 import dev.xkmc.l2complements.events.L2ComplementsClick;
 import dev.xkmc.l2complements.events.MaterialDamageListener;
@@ -15,7 +18,6 @@ import dev.xkmc.l2library.init.events.EffectSyncEvents;
 import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
 import dev.xkmc.l2screentracker.click.quickaccess.DefaultQuickAccessActions;
 import dev.xkmc.l2screentracker.compat.arclight.AnvilMenuArclight;
-import dev.xkmc.curseofpandora.init.registrate.LCPandora;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.MenuType;
@@ -54,12 +56,14 @@ public class L2Complements {
 		LCParticle.register();
 		LCEnchantments.register();
 		LCEntities.register();
-		LCPandora.register();
+		CoPItems.register();
+		CoPFakeEffects.register();
 		LCRecipes.register();
 		LCConfig.init();
 		SoulBoundPlayerData.register();
 		new L2ComplementsClick(new ResourceLocation(MODID, "main"));
 		AttackEventHandler.register(5000, new MaterialDamageListener());
+		AttackEventHandler.register(5200, new PandoraAttackListener());
 		REGISTRATE.addDataGenerator(ProviderType.LANG, LangData::addTranslations);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, RecipeGen::genRecipe);
 		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, TagGen::onBlockTagGen);

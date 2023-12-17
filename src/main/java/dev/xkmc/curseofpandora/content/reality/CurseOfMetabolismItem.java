@@ -50,7 +50,7 @@ public class CurseOfMetabolismItem extends ITokenProviderItem<CurseOfMetabolismI
 		int b = (int) Math.round(getBonus() * 100);
 		int t = getThreshold();
 		list.add(CoPLangData.IDS.CURSE_METABOLISM_1.get(f, t).withStyle(ChatFormatting.GRAY));
-		list.add(CoPLangData.IDS.CURSE_METABOLISM_2.get(f, t).withStyle(ChatFormatting.GRAY));
+		list.add(CoPLangData.IDS.CURSE_METABOLISM_2.get(f, t).withStyle(ChatFormatting.RED));
 		list.add(CoPLangData.IDS.CURSE_METABOLISM_3.get(b).withStyle(ChatFormatting.GRAY));
 	}
 

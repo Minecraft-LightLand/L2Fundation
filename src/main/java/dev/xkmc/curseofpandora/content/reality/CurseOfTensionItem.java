@@ -65,7 +65,7 @@ public class CurseOfTensionItem extends ITokenProviderItem<CurseOfTensionItem.Ti
 		int max = getMaxLevel();
 		int damage = Math.round(getDamageBonus() * 100);
 		int th = (int) Math.round(getDamageThreshold() * 100);
-		list.add(CoPLangData.IDS.CURSE_TENSION_1.get(tkMat, damage, tkLife, max).withStyle(ChatFormatting.GRAY));
+		list.add(CoPLangData.IDS.CURSE_TENSION_1.get(tkMat / 20, damage, tkLife / 20, max).withStyle(ChatFormatting.GRAY));
 		list.add(CoPLangData.IDS.CURSE_TENSION_2.get(th, dur).withStyle(ChatFormatting.RED));
 	}
 

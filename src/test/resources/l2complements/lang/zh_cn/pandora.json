@@ -30,13 +30,25 @@
 	"charm_of_accuracy": "凝神宝珠",
 	"charm_of_archery": "射手宝珠",
 	"charm_of_critical": "狂暴宝珠",
-	"curse_of_inertia": "现实第一诅咒",
-	"curse_of_proximity": "现实第二诅咒"
+	"curse_of_inertia": "现实第一诅咒：囚笼",
+	"curse_of_proximity": "现实第二诅咒：制限",
+	"curse_of_flesh": "现实第三诅咒：血肉",
+	"curse_of_metabolism": "现实第四诅咒：羸弱",
+	"curse_of_tension": "现实第五诅咒：恐惧",
+	"curse_of_prudence": "现实第六诅咒：碎魂"
   },
   "l2complements.tooltip.misc": {
 	"curse_inertia": "抹除其他所有攻击速度加成。玩家最高攻击速度为%s。如果玩家攻击速度在%s及以下，给予玩家%s%%攻击速度加成。",
 	"curse_proximity": "抹除其他所有攻击距离加成。玩家最高攻击距离为%s。如果玩家攻击距离在%s及以下，给予玩家%s%%攻击距离加成。",
 	"effect_refresh": "给穿戴者提供：",
-	"bind": "这个物品不可取下"
+	"bind": "这个物品不可取下",
+	"curse_metabolism_1": "对于%2$s以上的每点饱食度，获得+%1$s%%的攻击伤害和移动速度",
+	"curse_metabolism_2": "对于不足%2$s的每点饱食度，失去%1$s%%的攻击伤害、移动速度、攻击速度",
+	"curse_metabolism_3": "满饱食度时额外获得+%s%%攻击伤害和移动速度，并且抵消所有移动速度减益",
+	"curse_prudence_1": "对目标造成伤害后%s秒内对同一目标造成的伤害下降%s%%，可叠加",
+	"curse_prudence_2": "单次对一个目标造成的伤害无法超过对方%s%%的血量上限",
+	"curse_tension_1": "你击中目标后在其身上放置一个恐惧标记。这个标记%1$s秒后成熟，之后%3$s秒内你对这个目标造成的伤害+%2$s%%，最多可叠加%s层",
+	"curse_tension_2": "当一个生物对你造成大于当前生命%s%%的伤害时，你%s秒内无法对这个生物造成伤害，且抹除你在这个生物身上放置的恐惧标记",
+	"curse_flesh": "抹除其他所有血量上限加成。如果玩家保持了至少%s的饱食度持续%s分钟，获得+%s%%血量上限"
   }
 }

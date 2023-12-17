@@ -3,10 +3,10 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "l2hostility:miracle_ingot"
+      "item": "l2hostility:miracle_powder"
     },
     "B": {
-      "item": "l2complements:plain_charm"
+      "item": "l2hostility:miracle_ingot"
     }
   },
   "pattern": [

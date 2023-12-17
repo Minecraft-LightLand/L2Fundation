@@ -1,12 +1,12 @@
-// 1.20.1	2023-12-16T20:49:44.718517	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
+// 1.20.1	2023-12-17T20:09:37.812042	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
 b2a769b51ddce14c173a64b5457cccb4d8ef6a45 assets/l2complements/blockstates/sculkium_block.json
 2b88df6f8b01f3c72273ce13dbcb556f7dab321d assets/l2complements/blockstates/shulkerate_block.json
 65262ae0f886f61c163059f15c2ad1a7ba9c264a assets/l2complements/blockstates/totemic_gold_block.json
-675177f8a83e5eecc07a3eca9903a827a6c4b8b6 assets/l2complements/lang/en_ud.json
-36e964a997635ecf7f4716966c38c2994ab2b137 assets/l2complements/lang/en_us.json
+3ba64e71b048b9b825b52fae01749b55f710bc0e assets/l2complements/lang/en_ud.json
+295b14f6b335a8d295214435b151447555340fd2 assets/l2complements/lang/en_us.json
 bb63c088704d714f1763cb16cec8af6cd1006d66 assets/l2complements/models/block/eternium_block.json
 a45ee09acc262fd67be22de093136ad757f08e61 assets/l2complements/models/block/poseidite_block.json
 a52909a3a44a80695da32b5c3c5f931a0f72f74d assets/l2complements/models/block/sculkium_block.json
@@ -28,8 +28,12 @@ c88cf089b7be69994b66a143456ff6df810097b6 assets/l2complements/models/item/charm_
 d53eb1af9173f98d8dee5a7b9233205dda28940c assets/l2complements/models/item/charm_of_heavy_weapon.json
 ecdc0e1ca58b60803fe24fc9434bc2b1b2373b89 assets/l2complements/models/item/charm_of_night_vision.json
 685095d2a10d510baa575a3724d17b52030b22ae assets/l2complements/models/item/charm_of_speed.json
+c1be8cbde2b3a568a03290a312a796a6716a9577 assets/l2complements/models/item/curse_of_flesh.json
 c5ac6591d095c9ec43e9b104599b2898caa8642f assets/l2complements/models/item/curse_of_inertia.json
+5f9c0b4812cee0887f2325809522eb58955461b7 assets/l2complements/models/item/curse_of_metabolism.json
 12ebe282612b7eaa68f5cc7d15535df2c52dde6d assets/l2complements/models/item/curse_of_proximity.json
+e0481eacdf514a50b1dad166acf90d5b02708ce7 assets/l2complements/models/item/curse_of_prudence.json
+98ddca9c509bd25be0883b59cac921c76a74a22c assets/l2complements/models/item/curse_of_tension.json
 4a8f29bb3be16fab44de47bbc1527a6c0ae363c7 assets/l2complements/models/item/cursed_droplet.json
 209f34e5941914ce894acda22c2303d988ed5194 assets/l2complements/models/item/diffusion_wand.json
 9385bae957223dd231be2dfc1c90b6ac9bd9fd19 assets/l2complements/models/item/enchanted_totemic_apple.json
@@ -143,7 +147,7 @@ f2bed6f2f6ac106334a113f4cedef4cb8be322d2 assets/l2complements/models/item/totemi
 41d0259e5a214bd80a27be90dbc2ec142fe7a367 assets/l2complements/models/item/warden_bone_shard.json
 ea0f2e6ba9ca3a87c8e7e75860e1e01eb421eedd assets/l2complements/models/item/wind_capture_bottle.json
 e398ec09b3d644e800f9502edf6bbff62a943c2b assets/l2complements/models/item/winterstorm_wand.json
-baee97c62911b1c682601b6ccac351e0c5e283ca data/curios/tags/items/pandora_charm.json
+3dca4d775806ddc3d1f5bd2589f1d665a7af9883 data/curios/tags/items/pandora_charm.json
 3d8bcdff520aba2f8196e7fe08ace2661e9d9dff data/forge/tags/blocks/storage_blocks.json
 fd164107c6c9780424b95cac45176d5b3bc50868 data/forge/tags/items/armors/boots.json
 dd515d3f4b06e1fc884572007bbb8fa84ca0b3fc data/forge/tags/items/armors/chestplates.json
@@ -781,7 +785,7 @@ d8c2dab13ba3ab8630a752d757418131d8e2b481 data/l2complements/recipes/pandora/orb_
 8d8fe3d51006079556442d453964d714f22ef9b7 data/l2complements/recipes/pandora/orb_of_nature.json
 f566c41d1cca35e54a1835d10c7aa13f5e3addc3 data/l2complements/recipes/pandora/orb_of_projectile_rejection.json
 d90798cf8dbea2e820e23fe73500857ca6646343 data/l2complements/recipes/pandora/orb_of_stability.json
-44f107f99efa6d61311c34e573525460b1be3acf data/l2complements/recipes/pandora/plain_charm_craft.json
+75a58a5250aee2b7a71e02e12bf9b1ae448a86ac data/l2complements/recipes/pandora/plain_charm_craft.json
 7a3aa021339308b4e8f72d3cd9696d91706a604d data/l2complements/recipes/pandora/plain_charm_renew.json
 320683f19534838686236a9a346f28d4da490ede data/l2complements/recipes/pandora/plain_charm_smelt.json
 52b80255c44fa98f8e6a89c69acd0859c0714554 data/l2complements/recipes/storage/eternium_block_storage.json
@@ -844,6 +848,7 @@ d0d10d015074535d1001cbc559ccc2e5681a8fa2 data/l2complements/tags/items/delicate_
 9f1119c6fdd4c13eac16f64322754cb3c4c99bf1 data/l2complements/tags/items/l2c_legendary.json
 8bc2e79599af169e6f9f11cc081dd692ab81d86c data/l2complements/tags/items/l2c_totems.json
 427baaad6ff87f5f2af86a3654e688d15f1f56b9 data/l2complements/tags/items/pandora_base.json
+518133d32864be966c016f93e2605feea27188e8 data/l2complements/tags/items/pandora_curse.json
 b307f7df6c3f4814c759c845fbe07cf91ee6db85 data/l2complements/tags/mob_effect/skill_effect.json
 e37ba910b8c93bc8d4baf7b90643a6b16e56e0bb data/l2screentracker/tags/items/quick_access_vanilla.json
 e37ba910b8c93bc8d4baf7b90643a6b16e56e0bb data/minecraft/tags/blocks/anvil.json

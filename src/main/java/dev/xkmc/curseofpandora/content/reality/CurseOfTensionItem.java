@@ -4,9 +4,13 @@ import dev.xkmc.curseofpandora.content.complex.BaseTickingToken;
 import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
+import dev.xkmc.curseofpandora.init.registrate.CoPFakeEffects;
 import dev.xkmc.l2complements.init.L2Complements;
+import dev.xkmc.l2complements.mixin.LevelAccessor;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
+import dev.xkmc.l2library.base.effects.ClientEffectCap;
+import dev.xkmc.l2library.capability.conditionals.NetworkSensitiveToken;
 import dev.xkmc.l2library.capability.conditionals.TokenKey;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
@@ -70,7 +74,7 @@ public class CurseOfTensionItem extends ITokenProviderItem<CurseOfTensionItem.Ti
 	}
 
 	@SerialClass
-	public static class Ticker extends BaseTickingToken implements IAttackListenerToken {
+	public static class Ticker extends BaseTickingToken implements IAttackListenerToken, NetworkSensitiveToken<Ticker> {
 
 		@SerialClass.SerialField
 		public HashMap<UUID, Long> terror = new HashMap<>();
@@ -84,6 +88,7 @@ public class CurseOfTensionItem extends ITokenProviderItem<CurseOfTensionItem.Ti
 		@Override
 		protected void removeImpl(Player player) {
 			terror.clear();
+			removeEffect(player);
 		}
 
 		@Override
@@ -104,7 +109,7 @@ public class CurseOfTensionItem extends ITokenProviderItem<CurseOfTensionItem.Ti
 				if (sync) {
 					sync(sp);
 				}
-			}
+			} else checkEffect(player);
 		}
 
 		@Override
@@ -141,7 +146,60 @@ public class CurseOfTensionItem extends ITokenProviderItem<CurseOfTensionItem.Ti
 		}
 
 		private void sync(ServerPlayer sp) {
-			//ConditionalData.HOLDER.network.toClientSyncAll(sp);//TODO
+			sync(KEY, this, sp);
+		}
+
+		@Override
+		public void onSync(@Nullable CurseOfTensionItem.Ticker old, Player player) {
+			if (old != null)
+				old.removeEffect(player);
+			checkEffect(player);
+		}
+
+		private void removeEffect(Player player) {
+			for (var id : brave.keySet()) {
+				var ent = ((LevelAccessor) player.level()).callGetEntities().get(id);
+				if (ent instanceof LivingEntity le) {
+					var cap = ClientEffectCap.HOLDER.get(le);
+					cap.map.remove(CoPFakeEffects.FAKE_TERROR_PRE.get());
+					cap.map.remove(CoPFakeEffects.FAKE_TERROR.get());
+					cap.map.remove(CoPFakeEffects.FAKE_TERRORIZED.get());
+				}
+			}
+		}
+
+		private void checkEffect(Player player) {
+			long time = player.level().getGameTime();
+			for (var pair : brave.entrySet()) {
+				var ent = ((LevelAccessor) player.level()).callGetEntities().get(pair.getKey());
+				if (ent instanceof LivingEntity le) {
+					var cap = ClientEffectCap.HOLDER.get(le);
+					cap.map.remove(CoPFakeEffects.FAKE_TERROR_PRE.get());
+					cap.map.remove(CoPFakeEffects.FAKE_TERROR.get());
+					int pre = 0;
+					int lost = 0;
+					for (long t : pair.getValue()) {
+						if (time > t + getTokenMature()) {
+							lost++;
+						} else {
+							pre++;
+						}
+					}
+					if (pre > 0) {
+						cap.map.put(CoPFakeEffects.FAKE_TERROR_PRE.get(), pre - 1);
+					}
+					if (lost > 0) {
+						cap.map.put(CoPFakeEffects.FAKE_TERROR.get(), lost - 1);
+					}
+				}
+			}
+			for (var pair : terror.entrySet()) {
+				var ent = ((LevelAccessor) player.level()).callGetEntities().get(pair.getKey());
+				if (ent instanceof LivingEntity le) {
+					var cap = ClientEffectCap.HOLDER.get(le);
+					cap.map.put(CoPFakeEffects.FAKE_TERRORIZED.get(), 0);
+				}
+			}
 		}
 
 	}

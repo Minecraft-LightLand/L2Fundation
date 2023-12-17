@@ -5,9 +5,13 @@ import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.content.complex.ISlotAdderItem;
 import dev.xkmc.curseofpandora.content.complex.SlotAdder;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
+import dev.xkmc.curseofpandora.init.registrate.CoPFakeEffects;
 import dev.xkmc.l2complements.init.L2Complements;
+import dev.xkmc.l2complements.mixin.LevelAccessor;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
+import dev.xkmc.l2library.base.effects.ClientEffectCap;
+import dev.xkmc.l2library.capability.conditionals.NetworkSensitiveToken;
 import dev.xkmc.l2library.capability.conditionals.TokenKey;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
@@ -59,7 +63,8 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 	}
 
 	@SerialClass
-	public static class Ticker extends BaseTickingToken implements IAttackListenerToken {
+	public static class Ticker extends BaseTickingToken
+			implements IAttackListenerToken, NetworkSensitiveToken<Ticker> {
 
 		@SerialClass.SerialField
 		public HashMap<UUID, HashSet<Long>> fear = new HashMap<>();
@@ -70,6 +75,7 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 		protected void removeImpl(Player player) {
 			ADDER.removeImpl(player);
 			fear.clear();
+			removeEffect(player);
 		}
 
 		@Override
@@ -88,7 +94,7 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 				if (sync) {
 					sync(sp);
 				}
-			}
+			} else checkEffect(player);
 		}
 
 		@Override
@@ -109,7 +115,34 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 		}
 
 		private void sync(ServerPlayer sp) {
-			//ConditionalData.HOLDER.network.toClientSyncAll(sp);//TODO
+			sync(KEY, this, sp);
+		}
+
+		@Override
+		public void onSync(@Nullable Ticker old, Player player) {
+			if (old != null)
+				old.removeEffect(player);
+			checkEffect(player);
+		}
+
+		private void removeEffect(Player player) {
+			for (var id : fear.keySet()) {
+				var ent = ((LevelAccessor) player.level()).callGetEntities().get(id);
+				if (ent instanceof LivingEntity le) {
+					var cap = ClientEffectCap.HOLDER.get(le);
+					cap.map.remove(CoPFakeEffects.PRUDENCE.get());
+				}
+			}
+		}
+
+		private void checkEffect(Player player) {
+			for (var pair : fear.entrySet()) {
+				var ent = ((LevelAccessor) player.level()).callGetEntities().get(pair.getKey());
+				if (ent instanceof LivingEntity le) {
+					var cap = ClientEffectCap.HOLDER.get(le);
+					cap.map.put(CoPFakeEffects.PRUDENCE.get(), 0);
+				}
+			}
 		}
 
 	}

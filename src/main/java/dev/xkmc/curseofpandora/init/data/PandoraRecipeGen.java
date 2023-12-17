@@ -5,7 +5,6 @@ import com.tterrag.registrate.util.DataIngredient;
 import dev.xkmc.curseofpandora.init.registrate.LCPandora;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.RecipeGen;
-import dev.xkmc.l2complements.init.data.TagGen;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2hostility.init.L2Hostility;
 import dev.xkmc.l2hostility.init.registrate.LHItems;
@@ -102,7 +101,7 @@ public class PandoraRecipeGen {
 					.define('B', LHItems.MIRACLE_INGOT.get())
 					.save(pvd, getID(LCPandora.CHARM.get(), "_craft"));
 
-			unlock(pvd, SimpleCookingRecipeBuilder.blasting(Ingredient.of(TagGen.PANDORA_BASE),
+			unlock(pvd, SimpleCookingRecipeBuilder.blasting(Ingredient.of(CoPTagGen.PANDORA_BASE),
 					RecipeCategory.MISC, LCPandora.CHARM.get(), 1, 200)::unlockedBy, LCPandora.CHARM.get())
 					.save(pvd, getID(LCPandora.CHARM.get(), "_smelt"));
 

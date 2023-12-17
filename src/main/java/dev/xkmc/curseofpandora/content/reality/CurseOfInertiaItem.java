@@ -1,7 +1,11 @@
 package dev.xkmc.curseofpandora.content.reality;
 
-import dev.xkmc.l2complements.content.item.curios.CurioItem;
-import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.curseofpandora.content.complex.ISlotAdderItem;
+import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
+import dev.xkmc.curseofpandora.content.complex.SlotAdder;
+import dev.xkmc.curseofpandora.init.data.CoPLangData;
+import dev.xkmc.l2complements.init.L2Complements;
+import dev.xkmc.l2library.capability.conditionals.TokenKey;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -16,9 +20,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-public class CurseOfInertiaItem extends CurioItem implements CursePandoraUtil.CurseItem<CurseOfInertiaItem.Ticker> {
+public class CurseOfInertiaItem extends ISlotAdderItem<CurseOfInertiaItem.Ticker> {
 
-	private static final String SLOT = "necklace";
+	private static final SlotAdder ADDER = SlotAdder.of("curse_of_inertia", "necklace", 1);
+	private static final TokenKey<CurseOfInertiaItem.Ticker> KEY = new TokenKey<>(L2Complements.MODID, "curse_of_inertia");
 
 	private static int getCap() {
 		return 3;
@@ -33,71 +38,40 @@ public class CurseOfInertiaItem extends CurioItem implements CursePandoraUtil.Cu
 	}
 
 	public CurseOfInertiaItem(Properties properties) {
-		super(properties);
-	}
-
-	@Override
-	public Ticker getTicker() {
-		return new Ticker();
-	}
-
-	@Override
-	public String getName() {
-		return "curse_of_inertia";
-	}
-
-	@Override
-	public String getSlotId() {
-		return SLOT;
+		super(properties, KEY, Ticker::new, ADDER);
 	}
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		list.add(LangData.IDS.CURSE_INERTIA.get(getCap(), getBase(), Math.round(getBonus() * 100)).withStyle(ChatFormatting.GRAY));
+		list.add(CoPLangData.IDS.CURSE_INERTIA.get(getCap(), getBase(), Math.round(getBonus() * 100)).withStyle(ChatFormatting.GRAY));
 	}
 
 	@SerialClass
-	public static class Ticker extends CursePandoraUtil.BaseTicker {
+	public static class Ticker extends ListTickingToken {
+
+		public Ticker() {
+			super(List.of(ADDER, new Lim()));
+		}
+
+	}
+
+	public static class Lim extends AttributeLimiter {
 
 		private static final UUID WEAPON_SPEED = UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3");
 
-		protected Ticker() {
-			super("inertia", SLOT);
+		protected Lim() {
+			super("inertia");
 		}
 
-		protected void calculateAttributes(Player player) {
+		public void tickImpl(Player player) {
 			var attr = player.getAttribute(Attributes.ATTACK_SPEED);
 			if (attr == null) return;
-			doAttributeLimit(player, attr, Set.of(WEAPON_SPEED));
+			doAttributeLimit(player, attr, Set.of(WEAPON_SPEED), false);
 		}
 
 		@Override
 		protected CursePandoraUtil.ValueConsumer curseMult(double finVal, CursePandoraUtil.Mult valMult) {
-			return new CurseMult(finVal, valMult);
-		}
-
-	}
-
-	private static class CurseMult extends CursePandoraUtil.Mult {
-
-		private final double finVal;
-		private final CursePandoraUtil.ValueConsumer last;
-
-		private CurseMult(double finVal, CursePandoraUtil.ValueConsumer last) {
-			this.finVal = finVal;
-			this.last = last;
-		}
-
-		@Override
-		public double reverse() {
-			double base = 1;
-			double fv = finVal * last.get() / val;
-			if (fv > getCap()) {
-				val *= fv / getCap();
-			} else if (fv <= getBase()) {
-				base += getBonus();
-			}
-			return base / val - 1;
+			return new ClipMultiplierData(finVal, valMult, getCap(), getBase(), getBonus());
 		}
 
 	}

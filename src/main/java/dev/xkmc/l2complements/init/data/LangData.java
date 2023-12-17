@@ -2,6 +2,7 @@ package dev.xkmc.l2complements.init.data;
 
 import com.tterrag.registrate.providers.RegistrateLangProvider;
 import com.tterrag.registrate.util.entry.RegistryEntry;
+import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
 import net.minecraft.network.chat.Component;
@@ -67,11 +68,6 @@ public class LangData {
 		DIFFUSION_WAND("tooltip.misc.diffusion_wand", "Right click a block of gem/dust to diffuse it into nearby stones to create ore. Check JEI for recipe", 0),
 		BANNED("tooltip.misc.banned", "This item is disabled.", 0),
 
-		// pandora
-		EFFECT_REFRESH_CURIO("tooltip.misc.effect_refresh", "Grants wearer: ", 0),
-		BIND("tooltip.misc.bind", "This item cannot be taken down.", 0),
-		CURSE_INERTIA("tooltip.misc.curse_inertia", "Negate all other non-tool attack speed bonus. Cap player attack speed to %s. When player attack speed is %s or lower, grant %s%% attack speed bonus.", 3),
-		CURSE_PROXIMITY("tooltip.misc.curse_proximity", "Negate all other non-tool attack reach bonus. Cap player attack reach to %s. When player attack reach is %s or lower, grant %s%% attack reach bonus.", 3),
 		;
 
 		final String id, def;
@@ -136,6 +132,7 @@ public class LangData {
 				pvd.add(str, pref_name + " of " + name);
 			}
 		}
+		CoPLangData.addTranslations(pvd);
 	}
 
 	public static String asId(String name) {

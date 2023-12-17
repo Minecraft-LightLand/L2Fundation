@@ -1,5 +1,6 @@
 package dev.xkmc.curseofpandora.content.pandora;
 
+import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.l2complements.content.item.curios.CurioItem;
 import dev.xkmc.l2complements.content.item.curios.EffectValidItem;
 import dev.xkmc.l2complements.content.item.curios.ICapItem;
@@ -43,7 +44,7 @@ public class EffectRefreshItem extends CurioItem implements EffectValidItem, ICa
 					Component.translatable("potion.potency." + ins.getAmplifier()));
 		}
 		ans = ans.withStyle(ins.getEffect().getCategory().getTooltipFormatting());
-		list.add(LangData.IDS.EFFECT_REFRESH_CURIO.get().withStyle(ChatFormatting.GRAY).append(ans));
+		list.add(CoPLangData.IDS.EFFECT_REFRESH_CURIO.get().withStyle(ChatFormatting.GRAY).append(ans));
 	}
 
 	@Override

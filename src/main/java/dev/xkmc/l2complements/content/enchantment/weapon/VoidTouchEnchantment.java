@@ -80,7 +80,7 @@ public class VoidTouchEnchantment extends UnobtainableEnchantment {
 	public void initDamage(AttackCache cache, ItemStack weapon) {
 		if (!allow(cache, weapon)) return;
 		float finalDamage = cache.getPreDamage();
-		cache.addDealtModifier(DamageModifier.nonlinearPre(10000, e -> Math.max(e, finalDamage)));
+		cache.addDealtModifier(DamageModifier.nonlinearPre(5000, e -> Math.max(e, finalDamage)));
 	}
 
 	public ChatFormatting getColor() {

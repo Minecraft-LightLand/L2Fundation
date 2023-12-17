@@ -3,6 +3,7 @@ package dev.xkmc.l2complements.init.data;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.providers.RegistrateItemTagsProvider;
 import com.tterrag.registrate.providers.RegistrateTagsProvider;
+import dev.xkmc.curseofpandora.init.data.CoPTagGen;
 import dev.xkmc.l2complements.compat.TFCompat;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.materials.LCMats;
@@ -46,9 +47,6 @@ public class TagGen {
 	public static final TagKey<Item> DELICATE_BONE = ItemTags.create(new ResourceLocation(L2Complements.MODID, "delicate_bone"));
 	public static final TagKey<MobEffect> SKILL_EFFECT = TagKey.create(ForgeRegistries.MOB_EFFECTS.getRegistryKey(), new ResourceLocation(L2Complements.MODID, "skill_effect"));
 
-	// pandora
-	public static final TagKey<Item> PANDORA_BASE = ItemTags.create(new ResourceLocation(L2Complements.MODID,"pandora_base"));
-
 	public static void onBlockTagGen(RegistrateTagsProvider.IntrinsicImpl<Block> pvd) {
 		pvd.addTag(REQUIRES_SCULK_TOOL).add(Blocks.REINFORCED_DEEPSLATE);
 		pvd.addTag(BlockTags.MINEABLE_WITH_PICKAXE).add(Blocks.REINFORCED_DEEPSLATE);
@@ -72,6 +70,7 @@ public class TagGen {
 		pvd.addTag(DELICATE_BONE).add(Items.SCULK_CATALYST, Items.SCULK_SHRIEKER);
 		TFCompat.onItemTagGen(pvd);
 		pvd.addTag(L2STTagGen.QUICK_ACCESS_VANILLA).add(LCBlocks.ETERNAL_ANVIL.asItem());
+		CoPTagGen.onItemTagGen(pvd);
 	}
 
 	public static void onEntityTagGen(RegistrateTagsProvider.IntrinsicImpl<EntityType<?>> pvd) {

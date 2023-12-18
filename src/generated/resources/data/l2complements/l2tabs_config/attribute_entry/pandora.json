@@ -1,0 +1,16 @@
+{
+  "list": [
+    {
+      "id": "l2complements:spell_tolerance",
+      "intrinsic": 0.0,
+      "order": 20000,
+      "usePercent": false
+    },
+    {
+      "id": "l2complements:reality_index",
+      "intrinsic": 0.0,
+      "order": 21000,
+      "usePercent": false
+    }
+  ]
+}

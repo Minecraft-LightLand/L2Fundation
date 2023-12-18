@@ -41,7 +41,7 @@ public class CurseOfMetabolismItem extends ISlotAdderItem<CurseOfMetabolismItem.
 	}
 
 	public CurseOfMetabolismItem(Properties properties) {
-		super(properties, KEY, Ticker::new);
+		super(properties, KEY, Ticker::new, CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY));
 	}
 
 	@Override

@@ -38,7 +38,7 @@ public class CurseOfInertiaItem extends ISlotAdderItem<CurseOfInertiaItem.Ticker
 	}
 
 	public CurseOfInertiaItem(Properties properties) {
-		super(properties, KEY, Ticker::new, ADDER);
+		super(properties, KEY, Ticker::new, ADDER, CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY));
 	}
 
 	@Override

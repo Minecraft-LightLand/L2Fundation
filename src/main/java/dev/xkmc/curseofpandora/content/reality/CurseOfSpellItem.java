@@ -11,6 +11,7 @@ import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import dev.xkmc.l2library.capability.conditionals.TokenKey;
+import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -49,7 +50,7 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 	}
 
 	public CurseOfSpellItem(Properties properties) {
-		super(properties, KEY, Ticker::new, ADDER);
+		super(properties, KEY, Ticker::new, ADDER, CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY));
 	}
 
 	@Override
@@ -60,6 +61,7 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 		}
 	}
 
+	@SerialClass
 	public static class Ticker extends ListTickingToken implements IAttackListenerToken {
 
 		public Ticker() {

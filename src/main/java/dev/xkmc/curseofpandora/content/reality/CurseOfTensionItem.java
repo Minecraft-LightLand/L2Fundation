@@ -58,7 +58,7 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 	}
 
 	public CurseOfTensionItem(Properties properties) {
-		super(properties, KEY, Ticker::new);
+		super(properties, KEY, Ticker::new, CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY));
 	}
 
 	@Override

@@ -35,7 +35,7 @@ public class CurseOfFleshItem extends ISlotAdderItem<CurseOfFleshItem.Ticker> {
 	}
 
 	public CurseOfFleshItem(Properties properties) {
-		super(properties, KEY, Ticker::new);
+		super(properties, KEY, Ticker::new, CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY));
 	}
 
 	@Override

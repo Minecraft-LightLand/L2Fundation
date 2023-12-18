@@ -39,7 +39,7 @@ public class CurseOfProximityItem extends ISlotAdderItem<CurseOfProximityItem.Ti
 	}
 
 	public CurseOfProximityItem(Properties properties) {
-		super(properties, KEY, Ticker::new, ADDER);
+		super(properties, KEY, Ticker::new, ADDER, CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY));
 	}
 
 	@Override

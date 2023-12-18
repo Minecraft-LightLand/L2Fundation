@@ -3,6 +3,9 @@ package dev.xkmc.l2complements.init;
 import com.tterrag.registrate.providers.ProviderType;
 import dev.xkmc.curseofpandora.event.PandoraAttackListener;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
+import dev.xkmc.curseofpandora.init.data.CoPAdvGen;
+import dev.xkmc.curseofpandora.init.data.CoPConfigGen;
+import dev.xkmc.curseofpandora.init.data.CoPTagGen;
 import dev.xkmc.curseofpandora.init.registrate.CoPFakeEffects;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.l2complements.content.enchantment.special.SoulBoundPlayerData;
@@ -21,7 +24,6 @@ import dev.xkmc.l2screentracker.click.quickaccess.DefaultQuickAccessActions;
 import dev.xkmc.l2screentracker.compat.arclight.AnvilMenuArclight;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraftforge.common.ForgeMod;
@@ -71,8 +73,10 @@ public class L2Complements {
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, RecipeGen::genRecipe);
 		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, TagGen::onBlockTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, TagGen::onItemTagGen);
+		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, CoPTagGen::onItemTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, TagGen::onEntityTagGen);
 		REGISTRATE.addDataGenerator(TagGen.EFF_TAGS, TagGen::onEffectTagGen);
+		REGISTRATE.addDataGenerator(ProviderType.ADVANCEMENT, CoPAdvGen::onAdvGen);
 	}
 
 	@SubscribeEvent
@@ -108,6 +112,7 @@ public class L2Complements {
 		var helper = event.getExistingFileHelper();
 		new DamageTypeGen(output, pvd, helper).generate(gen, event.getGenerator());
 		event.getGenerator().addProvider(gen, new LCConfigGen(event.getGenerator()));
+		event.getGenerator().addProvider(gen, new CoPConfigGen(event.getGenerator()));
 	}
 
 }

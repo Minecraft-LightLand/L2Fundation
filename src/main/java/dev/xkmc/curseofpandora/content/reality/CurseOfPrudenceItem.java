@@ -1,8 +1,8 @@
 package dev.xkmc.curseofpandora.content.reality;
 
-import dev.xkmc.curseofpandora.content.complex.BaseTickingToken;
 import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.content.complex.ISlotAdderItem;
+import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
 import dev.xkmc.curseofpandora.content.complex.SlotAdder;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPFakeEffects;
@@ -63,7 +63,7 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 	}
 
 	@SerialClass
-	public static class Ticker extends BaseTickingToken
+	public static class Ticker extends ListTickingToken
 			implements IAttackListenerToken, NetworkSensitiveToken<Ticker> {
 
 		@SerialClass.SerialField
@@ -71,16 +71,20 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 
 		private boolean sync = false;
 
+		public Ticker() {
+			super(List.of(ADDER, CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY)));
+		}
+
 		@Override
 		protected void removeImpl(Player player) {
-			ADDER.removeImpl(player);
+			super.removeImpl(player);
 			fear.clear();
 			removeEffect(player);
 		}
 
 		@Override
 		protected void tickImpl(Player player) {
-			ADDER.tickImpl(player);
+			super.tickImpl(player);
 			Level level = player.level();
 			sync = false;
 			if (player instanceof ServerPlayer sp) {

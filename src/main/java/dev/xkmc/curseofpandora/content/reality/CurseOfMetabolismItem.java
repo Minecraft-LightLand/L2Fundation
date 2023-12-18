@@ -1,7 +1,7 @@
 package dev.xkmc.curseofpandora.content.reality;
 
+import dev.xkmc.curseofpandora.content.complex.ISlotAdderItem;
 import dev.xkmc.curseofpandora.content.complex.ISubToken;
-import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.l2complements.init.L2Complements;
@@ -24,7 +24,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.function.Supplier;
 
-public class CurseOfMetabolismItem extends ITokenProviderItem<CurseOfMetabolismItem.Ticker> {
+public class CurseOfMetabolismItem extends ISlotAdderItem<CurseOfMetabolismItem.Ticker> {
 
 	private static final TokenKey<Ticker> KEY = new TokenKey<>(L2Complements.MODID, "curse_of_metabolism");
 
@@ -63,7 +63,7 @@ public class CurseOfMetabolismItem extends ITokenProviderItem<CurseOfMetabolismI
 				"curse_of_metabolism_speed", true);
 
 		public Ticker() {
-			super(List.of(ATK, SPEED, new Lim()));
+			super(List.of(ATK, SPEED, new Lim(), CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY)));
 		}
 
 	}

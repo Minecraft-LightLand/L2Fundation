@@ -5,9 +5,9 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.curseofpandora.content.pandora.*;
 import dev.xkmc.curseofpandora.content.reality.*;
+import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPTagGen;
 import dev.xkmc.l2complements.content.item.curios.DescCurioItem;
-import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2library.base.L2Registrate;
@@ -18,6 +18,8 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
+
+import static dev.xkmc.curseofpandora.init.CurseOfPandora.REGISTRATE;
 
 public class CoPItems {
 
@@ -39,10 +41,11 @@ public class CoPItems {
 	public static final ItemEntry<CurseOfMetabolismItem> CURSE_OF_METABOLISM;
 	public static final ItemEntry<CurseOfTensionItem> CURSE_OF_TENSION;
 	public static final ItemEntry<CurseOfPrudenceItem> CURSE_OF_PRUDENCE;
+	public static final ItemEntry<CurseOfSpellItem> CURSE_OF_SPELL;
 
 
 	static {
-		L2Complements.REGISTRATE.defaultCreativeTab(PandoraItems.TAB.getKey());
+		REGISTRATE.defaultCreativeTab(PandoraItems.TAB.getKey());
 
 		{
 
@@ -224,17 +227,20 @@ public class CoPItems {
 			CURSE_OF_PRUDENCE = item("curse_of_prudence", CurseOfPrudenceItem::new)
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.CURSE).register();
 
+			CURSE_OF_SPELL = item("curse_of_spell", CurseOfSpellItem::new)
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.CURSE).register();
+
 		}
 
 	}
 
 	public static <T extends Item> ItemBuilder<T, L2Registrate> item(String id, NonNullFunction<Item.Properties, T> factory) {
-		return L2Complements.REGISTRATE.item(id, factory)
+		return REGISTRATE.item(id, factory)
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/pandora/" + id)));
 	}
 
 	public static ItemEntry<DescCurioItem> descItem(String id, String name, String desc) {
-		L2Complements.REGISTRATE.addRawLang("item." + L2Complements.MODID + "." + id + ".desc", desc);
+		REGISTRATE.addRawLang("item." + CurseOfPandora.MODID + "." + id + ".desc", desc);
 		return item(id, DescCurioItem::new)
 				.lang(name).tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
 	}

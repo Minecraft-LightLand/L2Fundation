@@ -16,7 +16,9 @@ public record BaseCurseCurio(Item item, ItemStack stack) implements ICurio {
 	public List<Component> getAttributesTooltip(List<Component> tooltips) {
 		var ans = new ArrayList<>(ICurio.super.getAttributesTooltip(tooltips));
 		if (item instanceof ISlotAdderItem<?> sa) {
-			ans.add(sa.getSlotAdder().getTooltip());
+			for (var e : sa.getSlotAdder()) {
+				ans.add(e.getTooltip());
+			}
 		}
 		return ans;
 	}

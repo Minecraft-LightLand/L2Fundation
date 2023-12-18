@@ -51,7 +51,7 @@ public class CurseOfProximityItem extends ISlotAdderItem<CurseOfProximityItem.Ti
 	public static class Ticker extends ListTickingToken {
 
 		public Ticker() {
-			super(List.of(ADDER, new Lim()));
+			super(List.of(ADDER, new Lim(), CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY)));
 		}
 
 	}

@@ -50,7 +50,7 @@ public class CurseOfInertiaItem extends ISlotAdderItem<CurseOfInertiaItem.Ticker
 	public static class Ticker extends ListTickingToken {
 
 		public Ticker() {
-			super(List.of(ADDER, new Lim()));
+			super(List.of(ADDER, new Lim(), CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY)));
 		}
 
 	}

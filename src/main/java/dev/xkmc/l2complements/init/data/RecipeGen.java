@@ -17,7 +17,7 @@ import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2library.compat.jeed.JeedDataGenerator;
 import dev.xkmc.l2library.serial.ingredients.EnchantmentIngredient;
 import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
-import dev.xkmc.curseofpandora.init.data.PandoraRecipeGen;
+import dev.xkmc.curseofpandora.init.data.CoPRecipeGen;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.*;
@@ -1011,7 +1011,7 @@ public class RecipeGen {
 			jeed.generate(pvd);
 		}
 
-		PandoraRecipeGen.recipeGen(pvd);
+		CoPRecipeGen.recipeGen(pvd);
 
 	}
 

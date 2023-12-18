@@ -4,7 +4,6 @@ import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.l2complements.content.item.curios.CurioItem;
 import dev.xkmc.l2complements.content.item.curios.EffectValidItem;
 import dev.xkmc.l2complements.content.item.curios.ICapItem;
-import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2library.base.effects.EffectUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;

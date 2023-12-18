@@ -8,6 +8,10 @@ public interface IAttackListenerToken {
 
 	}
 
+	default void onPlayerAttackTarget(Player player, AttackCache cache) {
+
+	}
+
 	default void onPlayerHurtTarget(Player player, AttackCache cache) {
 
 	}
@@ -16,7 +20,15 @@ public interface IAttackListenerToken {
 
 	}
 
-	default void onPlayerAttackTarget(Player player, AttackCache cache) {
+	default void onPlayerAttacked(Player player, AttackCache cache) {
+
+	}
+
+	default void onPlayerHurt(Player player, AttackCache cache) {
+
+	}
+
+	default void onPlayerDamaged(Player player, AttackCache cache) {
 
 	}
 

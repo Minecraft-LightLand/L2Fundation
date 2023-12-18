@@ -6,14 +6,14 @@ import java.util.function.Supplier;
 
 public abstract class ISlotAdderItem<T extends BaseTickingToken> extends ITokenProviderItem<T> {
 
-	public final SlotAdder adder;
+	public final IAttrAdder[] adder;
 
-	public ISlotAdderItem(Properties properties, TokenKey<T> key, Supplier<T> sup, SlotAdder adder) {
+	public ISlotAdderItem(Properties properties, TokenKey<T> key, Supplier<T> sup, IAttrAdder... adder) {
 		super(properties, key, sup);
 		this.adder = adder;
 	}
 
-	public final SlotAdder getSlotAdder() {
+	public final IAttrAdder[] getSlotAdder() {
 		return adder;
 	}
 

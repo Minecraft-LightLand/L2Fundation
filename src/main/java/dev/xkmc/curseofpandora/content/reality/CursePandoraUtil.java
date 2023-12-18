@@ -1,16 +1,23 @@
 package dev.xkmc.curseofpandora.content.reality;
 
-import dev.xkmc.curseofpandora.content.complex.ISubToken;
-import dev.xkmc.l2library.util.math.MathHelper;
+import dev.xkmc.curseofpandora.content.complex.AttrAdder;
+import dev.xkmc.curseofpandora.init.CurseOfPandora;
+import dev.xkmc.l2library.capability.conditionals.TokenKey;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.common.ForgeMod;
 
 import java.util.Set;
 import java.util.UUID;
 
 public class CursePandoraUtil {
+
+	public static AttrAdder spell(TokenKey<?> key) {
+		return AttrAdder.of(key.id(), CurseOfPandora.SPELL, AttributeModifier.Operation.ADDITION, 1);
+	}
+
+	public static AttrAdder reality(TokenKey<?> key) {
+		return AttrAdder.of(key.id(), CurseOfPandora.REALITY, AttributeModifier.Operation.ADDITION, 1);
+	}
 
 	public static void remove(AttributeInstance attr, AttributeModifier.Operation op, UUID negId, String negName,
 							  Set<UUID> ignore, ValueConsumer negate, ValueConsumer val, boolean posOnly) {

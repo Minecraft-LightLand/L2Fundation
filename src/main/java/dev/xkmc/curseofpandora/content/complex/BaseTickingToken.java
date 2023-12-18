@@ -26,6 +26,7 @@ public abstract class BaseTickingToken extends ConditionalToken {
 	}
 
 	protected abstract void removeImpl(Player player);
+
 	protected abstract void tickImpl(Player player);
 
 

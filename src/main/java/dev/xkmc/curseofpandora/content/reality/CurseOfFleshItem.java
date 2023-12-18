@@ -1,7 +1,7 @@
 package dev.xkmc.curseofpandora.content.reality;
 
-import dev.xkmc.curseofpandora.content.complex.BaseTickingToken;
-import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
+import dev.xkmc.curseofpandora.content.complex.ISlotAdderItem;
+import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2library.capability.conditionals.TokenKey;
@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Set;
 
-public class CurseOfFleshItem extends ITokenProviderItem<CurseOfFleshItem.Ticker> {
+public class CurseOfFleshItem extends ISlotAdderItem<CurseOfFleshItem.Ticker> {
 
 	private static final TokenKey<Ticker> KEY = new TokenKey<>(L2Complements.MODID, "curse_of_flesh");
 
@@ -44,15 +44,20 @@ public class CurseOfFleshItem extends ITokenProviderItem<CurseOfFleshItem.Ticker
 	}
 
 	@SerialClass
-	public static class Ticker extends BaseTickingToken {
+	public static class Ticker extends ListTickingToken {
 
 		private final Lim lim = new Lim(this);
 
 		@SerialClass.SerialField
 		public int maintain = 0;
 
+		public Ticker() {
+			super(List.of(CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY)));
+		}
+
 		@Override
 		protected void removeImpl(Player player) {
+			super.removeImpl(player);
 			lim.removeImpl(player);
 		}
 
@@ -63,6 +68,7 @@ public class CurseOfFleshItem extends ITokenProviderItem<CurseOfFleshItem.Ticker
 					maintain++;
 				else maintain = 0;
 			}
+			super.tickImpl(player);
 			lim.tickImpl(player);
 		}
 

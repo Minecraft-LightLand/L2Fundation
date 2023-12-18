@@ -2,6 +2,7 @@ package dev.xkmc.l2complements.init;
 
 import com.tterrag.registrate.providers.ProviderType;
 import dev.xkmc.curseofpandora.event.PandoraAttackListener;
+import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.registrate.CoPFakeEffects;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.l2complements.content.enchantment.special.SoulBoundPlayerData;
@@ -20,10 +21,12 @@ import dev.xkmc.l2screentracker.click.quickaccess.DefaultQuickAccessActions;
 import dev.xkmc.l2screentracker.compat.arclight.AnvilMenuArclight;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.data.event.GatherDataEvent;
+import net.minecraftforge.event.entity.EntityAttributeModificationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -90,6 +93,11 @@ public class L2Complements {
 
 			DefaultQuickAccessActions.quickAccess(MenuType.ANVIL, LCBlocks.ETERNAL_ANVIL.asItem(), AnvilMenuArclight::new, "container.repair");
 		});
+	}
+
+	@SubscribeEvent
+	public static void modifyAttributes(EntityAttributeModificationEvent event) {
+		CurseOfPandora.modifyAttributes(event);
 	}
 
 	@SubscribeEvent

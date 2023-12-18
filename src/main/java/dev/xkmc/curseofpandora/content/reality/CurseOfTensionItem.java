@@ -1,8 +1,8 @@
 package dev.xkmc.curseofpandora.content.reality;
 
-import dev.xkmc.curseofpandora.content.complex.BaseTickingToken;
 import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
-import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
+import dev.xkmc.curseofpandora.content.complex.ISlotAdderItem;
+import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPFakeEffects;
 import dev.xkmc.l2complements.init.L2Complements;
@@ -29,7 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
-public class CurseOfTensionItem extends ITokenProviderItem<CurseOfTensionItem.Ticker> {
+public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker> {
 
 	public static final TokenKey<Ticker> KEY = new TokenKey<>(L2Complements.MODID, "curse_of_tension");
 
@@ -74,7 +74,7 @@ public class CurseOfTensionItem extends ITokenProviderItem<CurseOfTensionItem.Ti
 	}
 
 	@SerialClass
-	public static class Ticker extends BaseTickingToken implements IAttackListenerToken, NetworkSensitiveToken<Ticker> {
+	public static class Ticker extends ListTickingToken implements IAttackListenerToken, NetworkSensitiveToken<Ticker> {
 
 		@SerialClass.SerialField
 		public HashMap<UUID, Long> terror = new HashMap<>();
@@ -85,14 +85,20 @@ public class CurseOfTensionItem extends ITokenProviderItem<CurseOfTensionItem.Ti
 
 		private boolean sync = false;
 
+		public Ticker() {
+			super(List.of(CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY)));
+		}
+
 		@Override
 		protected void removeImpl(Player player) {
+			super.removeImpl(player);
 			terror.clear();
 			removeEffect(player);
 		}
 
 		@Override
 		protected void tickImpl(Player player) {
+			super.tickImpl(player);
 			Level level = player.level();
 			sync = false;
 			if (player instanceof ServerPlayer sp) {

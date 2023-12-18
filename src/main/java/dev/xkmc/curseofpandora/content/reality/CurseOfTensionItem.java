@@ -157,6 +157,7 @@ public class CurseOfTensionItem extends ITokenProviderItem<CurseOfTensionItem.Ti
 		}
 
 		private void removeEffect(Player player) {
+			if (!player.level().isClientSide()) return;
 			for (var id : brave.keySet()) {
 				var ent = ((LevelAccessor) player.level()).callGetEntities().get(id);
 				if (ent instanceof LivingEntity le) {
@@ -169,6 +170,7 @@ public class CurseOfTensionItem extends ITokenProviderItem<CurseOfTensionItem.Ti
 		}
 
 		private void checkEffect(Player player) {
+			if (!player.level().isClientSide()) return;
 			long time = player.level().getGameTime();
 			for (var pair : brave.entrySet()) {
 				var ent = ((LevelAccessor) player.level()).callGetEntities().get(pair.getKey());

@@ -50,5 +50,15 @@
 	"curse_tension_1": "你击中目标后在其身上放置一个恐惧标记。这个标记%1$s秒后成熟，之后%3$s秒内你对这个目标造成的伤害+%2$s%%，最多可叠加%s层",
 	"curse_tension_2": "当一个生物对你造成大于当前生命%s%%的伤害时，你%s秒内无法对这个生物造成伤害，且抹除你在这个生物身上放置的恐惧标记",
 	"curse_flesh": "抹除其他所有血量上限加成。如果玩家保持了至少%s的饱食度持续%s分钟，获得+%s%%血量上限"
+  },
+  "effect.l2complements": {
+	"prudence": "碎魂指示物",
+	"prudence.description": "只用于渲染。显示你对该目标的伤害是否因为现实第六诅咒的效果而下降",
+	"terror_token": "恐惧标记",
+	"terror_token.description": "只用于渲染。显示目标身上成熟的恐惧标记的数量",
+	"terror_token_pre": "未成熟的恐惧标记",
+	"terror_token_pre.description": "只用于渲染。显示目标身上是否有未成熟的恐惧标记",
+	"terrorized": "恐惧指示物",
+	"terrorized.description": "只用于渲染。显示你是否因为现实第五诅咒的效果无法对该目标造成伤害"
   }
 }

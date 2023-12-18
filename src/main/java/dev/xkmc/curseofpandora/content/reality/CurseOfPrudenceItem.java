@@ -106,7 +106,7 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 			int count = list == null ? 0 : list.size();
 			if (count > 0) {
 				count = Math.min(count, getMaxLevel());
-				cache.addHurtModifier(DamageModifier.multTotal((float) Math.pow(getDamageFactor(), count)));
+				cache.addDealtModifier(DamageModifier.multTotal((float) Math.pow(getDamageFactor(), count)));
 			}
 			fear.computeIfAbsent(target.getUUID(), k -> new HashSet<>()).add(time);
 			sync(sp);
@@ -126,6 +126,7 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 		}
 
 		private void removeEffect(Player player) {
+			if (!player.level().isClientSide()) return;
 			for (var id : fear.keySet()) {
 				var ent = ((LevelAccessor) player.level()).callGetEntities().get(id);
 				if (ent instanceof LivingEntity le) {
@@ -136,6 +137,7 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 		}
 
 		private void checkEffect(Player player) {
+			if (!player.level().isClientSide()) return;
 			for (var pair : fear.entrySet()) {
 				var ent = ((LevelAccessor) player.level()).callGetEntities().get(pair.getKey());
 				if (ent instanceof LivingEntity le) {

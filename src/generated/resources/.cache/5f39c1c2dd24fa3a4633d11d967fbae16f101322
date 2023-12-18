@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-18T14:40:33.640657	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
+// 1.20.1	2023-12-18T19:44:51.152755	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
@@ -157,6 +157,7 @@ c75bc5b94f9e42943b0b9d4fe1d1c8ced1f018c8 data/forge/tags/items/armors/leggings.j
 5e49934bebf32310486d03d5092a61b18f44cdd5 data/forge/tags/items/ingots.json
 fe6b13a1131af30af5e2ee3190343e095e283f49 data/forge/tags/items/nuggets.json
 3d8bcdff520aba2f8196e7fe08ace2661e9d9dff data/forge/tags/items/storage_blocks.json
+39c284177b589c193b8d381d011468d8b715e6ad data/l2complements/advancements/pandora/pandora_box.json
 17bf6d1229bb24230d385329f1f4141f00610574 data/l2complements/advancements/recipes/burnt/burnt/beef.json
 8a075a83a6d0eaf000cc2e3b003623428269d48a data/l2complements/advancements/recipes/burnt/burnt/chicken.json
 581a71fcf02382ae7b343f4ca0d0b6e5b8441647 data/l2complements/advancements/recipes/burnt/burnt/cod.json
@@ -503,6 +504,7 @@ a05656dfdc90de52a1e9888c2dd182cacf117dde data/l2complements/loot_tables/blocks/p
 ccd1fcc38b1b2a11f8ddda8ffc64b839b5d7afeb data/l2complements/loot_tables/blocks/sculkium_block.json
 60cd7e57621600a866b3fa99cb313a217b772df8 data/l2complements/loot_tables/blocks/shulkerate_block.json
 80879803bc85c6807c069100c4cb085193ec05e9 data/l2complements/loot_tables/blocks/totemic_gold_block.json
+a1d998ccacc4b59290f5ab5ac000eb5fd9846ccc data/l2complements/loot_tables/pandora_initial.json
 c11ed53f38ad50a20439941c1d3fe50f08a11421 data/l2complements/recipes/burnt/beef.json
 9f1201ec92fcbe523a148fef58517920a4b64d2a data/l2complements/recipes/burnt/chicken.json
 571c4e0a952737527871e41da00a8715ea6636a2 data/l2complements/recipes/burnt/cod.json

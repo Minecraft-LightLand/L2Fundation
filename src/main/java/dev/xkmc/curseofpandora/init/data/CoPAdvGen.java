@@ -18,12 +18,8 @@ public class CoPAdvGen {
 
 	public static void onAdvGen(RegistrateAdvancementProvider pvd) {
 		var gen = new AdvancementGenerator(pvd, CurseOfPandora.MODID);
-		gen.new TabBuilder("pandora")
-				.root("pandora_box", CoPItems.CHARM.asStack(),
-						CriterionBuilder.one(PlayerTrigger.TriggerInstance.tick()),
-						"The Pandora Box", "Open the Pandora Box and Wear the 7 curses"
-				)
-				.type(FrameType.TASK, false, false, true)
+		var builder = gen.new TabBuilder("pandora");
+		builder.hidden("pandora_box", CriterionBuilder.one(PlayerTrigger.TriggerInstance.tick()))
 				.add(new RewardBuilder(CurseOfPandora.REGISTRATE, 0,
 						new ResourceLocation(CurseOfPandora.MODID, "pandora_initial"),
 						() -> LootTable.lootTable()
@@ -35,7 +31,7 @@ public class CoPAdvGen {
 								.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(CoPItems.CURSE_OF_TENSION.asItem(), 1)))
 								.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(CoPItems.CURSE_OF_PRUDENCE.asItem(), 1)))
 								.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(CoPItems.CURSE_OF_SPELL.asItem(), 1)))
-				)).finish();
+				)).build();
 	}
 
 }

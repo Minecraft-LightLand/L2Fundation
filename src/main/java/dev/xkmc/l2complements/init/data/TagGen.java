@@ -3,7 +3,6 @@ package dev.xkmc.l2complements.init.data;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.providers.RegistrateItemTagsProvider;
 import com.tterrag.registrate.providers.RegistrateTagsProvider;
-import dev.xkmc.curseofpandora.init.data.CoPTagGen;
 import dev.xkmc.l2complements.compat.TFCompat;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.materials.LCMats;

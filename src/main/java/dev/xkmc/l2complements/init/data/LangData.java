@@ -2,7 +2,6 @@ package dev.xkmc.l2complements.init.data;
 
 import com.tterrag.registrate.providers.RegistrateLangProvider;
 import com.tterrag.registrate.util.entry.RegistryEntry;
-import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
 import net.minecraft.network.chat.Component;
@@ -132,7 +131,6 @@ public class LangData {
 				pvd.add(str, pref_name + " of " + name);
 			}
 		}
-		CoPLangData.addTranslations(pvd);
 	}
 
 	public static String asId(String name) {

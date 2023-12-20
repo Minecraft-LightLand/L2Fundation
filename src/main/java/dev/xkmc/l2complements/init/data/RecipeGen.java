@@ -16,9 +16,6 @@ import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2library.compat.jeed.JeedDataGenerator;
 import dev.xkmc.l2library.serial.ingredients.EnchantmentIngredient;
-import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
-import dev.xkmc.curseofpandora.init.data.CoPRecipeGen;
-import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
@@ -28,7 +25,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -558,130 +554,8 @@ public class RecipeGen {
 
 		}
 
-		// pandora
-		{
-			currentFolder = "pandora/";
-
-			// beacons
-			{
-
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.MINI_BEACON.get())::unlockedBy, CoPItems.CHARM.get())
-						.pattern("EBE").pattern("ACA").pattern("EDE")
-						.define('B', Items.BEACON)
-						.define('C', CoPItems.CHARM.get())
-						.define('D', CoPItems.MINI_BEACON_BASE.get())
-						.define('A', LCItems.STORM_CORE.get())
-						.define('E', Items.ENDER_PEARL)
-						.save(pvd, getID(CoPItems.MINI_BEACON.get()));
-
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.MINI_BEACON_SPEED.get())::unlockedBy, CoPItems.MINI_BEACON.get())
-						.pattern("ABA").pattern("BCB").pattern("ADA")
-						.define('A', Items.BLAZE_POWDER)
-						.define('B', new PotionIngredient(Potions.STRONG_SWIFTNESS))
-						.define('C', CoPItems.MINI_BEACON.get())
-						.define('D', ItemTags.BEACON_PAYMENT_ITEMS)
-						.save(pvd, getID(CoPItems.MINI_BEACON_SPEED.get()));
-
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.MINI_BEACON_JUMP.get())::unlockedBy, CoPItems.MINI_BEACON.get())
-						.pattern("ABA").pattern("BCB").pattern("ADA")
-						.define('A', Items.BLAZE_POWDER)
-						.define('B', new PotionIngredient(Potions.STRONG_LEAPING))
-						.define('C', CoPItems.MINI_BEACON.get())
-						.define('D', ItemTags.BEACON_PAYMENT_ITEMS)
-						.save(pvd, getID(CoPItems.MINI_BEACON_JUMP.get()));
-
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.MINI_BEACON_RESISTANCE.get())::unlockedBy, CoPItems.MINI_BEACON.get())
-						.pattern("ABA").pattern("BCB").pattern("ADA")
-						.define('A', Items.BLAZE_POWDER)
-						.define('B', new PotionIngredient(Potions.TURTLE_MASTER))
-						.define('C', CoPItems.MINI_BEACON.get())
-						.define('D', ItemTags.BEACON_PAYMENT_ITEMS)
-						.save(pvd, getID(CoPItems.MINI_BEACON_RESISTANCE.get()));
-
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.MINI_BEACON_REGEN.get())::unlockedBy, CoPItems.MINI_BEACON.get())
-						.pattern("ABA").pattern("BCB").pattern("ADA")
-						.define('A', Items.BLAZE_POWDER)
-						.define('B', new PotionIngredient(Potions.STRONG_REGENERATION))
-						.define('C', CoPItems.MINI_BEACON.get())
-						.define('D', ItemTags.BEACON_PAYMENT_ITEMS)
-						.save(pvd, getID(CoPItems.MINI_BEACON_REGEN.get()));
-
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.MINI_BEACON_ATTACK.get())::unlockedBy, CoPItems.MINI_BEACON.get())
-						.pattern("ABA").pattern("BCB").pattern("ADA")
-						.define('A', Items.BLAZE_POWDER)
-						.define('B', new PotionIngredient(Potions.STRONG_STRENGTH))
-						.define('C', CoPItems.MINI_BEACON.get())
-						.define('D', ItemTags.BEACON_PAYMENT_ITEMS)
-						.save(pvd, getID(CoPItems.MINI_BEACON_ATTACK.get()));
-
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.MINI_BEACON_HASTE.get())::unlockedBy, CoPItems.MINI_BEACON.get())
-						.pattern("ABA").pattern("BCB").pattern("ADA")
-						.define('A', Items.BLAZE_POWDER)
-						.define('B', Items.GOLD_INGOT)
-						.define('C', CoPItems.MINI_BEACON.get())
-						.define('D', ItemTags.BEACON_PAYMENT_ITEMS)
-						.save(pvd, getID(CoPItems.MINI_BEACON_HASTE.get()));
-
-			}
-
-			// reject
-			{
-
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.PROJECTILE_REJECT.get())::unlockedBy, CoPItems.CHARM.get())
-						.pattern("1B1").pattern("BCB").pattern("2B2")
-						.define('1', new EnchantmentIngredient(Enchantments.PROJECTILE_PROTECTION, 4))
-						.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
-						.define('B', LCItems.FORCE_FIELD.get())
-						.define('C', CoPItems.CHARM.get())
-						.save(pvd, getID(CoPItems.PROJECTILE_REJECT.get()));
-
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.EXPLOSION_REJECT.get())::unlockedBy, CoPItems.CHARM.get())
-						.pattern("1B1").pattern("BCB").pattern("2B2")
-						.define('1', new EnchantmentIngredient(Enchantments.BLAST_PROTECTION, 4))
-						.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
-						.define('B', LCItems.EXPLOSION_SHARD.get())
-						.define('C', CoPItems.CHARM.get())
-						.save(pvd, getID(CoPItems.EXPLOSION_REJECT.get()));
-
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.FIRE_REJECT.get())::unlockedBy, CoPItems.CHARM.get())
-						.pattern("1B1").pattern("BCB").pattern("2B2")
-						.define('1', new EnchantmentIngredient(Enchantments.FIRE_PROTECTION, 4))
-						.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
-						.define('B', LCItems.SOUL_FLAME.get())
-						.define('C', CoPItems.CHARM.get())
-						.save(pvd, getID(CoPItems.FIRE_REJECT.get()));
-
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ENVIRONMENTAL_REJECT.get())::unlockedBy, CoPItems.CHARM.get())
-						.pattern("1B1").pattern("BCB").pattern("2B2")
-						.define('1', LCItems.SUN_MEMBRANE.get())
-						.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
-						.define('B', LCItems.VOID_EYE.get())
-						.define('C', CoPItems.CHARM.get())
-						.save(pvd, getID(CoPItems.ENVIRONMENTAL_REJECT.get()));
-
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.MAGIC_REJECT.get())::unlockedBy, CoPItems.CHARM.get())
-						.pattern("1B1").pattern("BCB").pattern("2B2")
-						.define('1', LCItems.VOID_EYE.get())
-						.define('C', CoPItems.CHARM.get())
-						.define('B', LCItems.RESONANT_FEATHER.get())
-						.define('2', LCItems.FORCE_FIELD.get())
-						.save(pvd, getID(CoPItems.MAGIC_REJECT.get()));
-
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.OWNER_PROTECTION.get())::unlockedBy, CoPItems.CHARM.get())
-						.pattern("BAB").pattern("B1B").pattern("BAB")
-						.define('1', CoPItems.CHARM.get())
-						.define('A', Items.NETHER_STAR)
-						.define('B', Items.END_ROD)
-						.save(pvd, getID(CoPItems.OWNER_PROTECTION.get()));
-			}
-
-		}
-
 		currentFolder = "burnt/";
 		{
-			convert(pvd, Ingredient.of(ItemTags.BEACON_PAYMENT_ITEMS), CoPItems.MINI_BEACON_BASE.get(), 164 * 9, "_ingot");
-			convert(pvd, Ingredient.of(Items.IRON_BLOCK, Items.GOLD_BLOCK, Items.EMERALD_BLOCK,
-					Items.DIAMOND_BLOCK, Items.NETHERITE_BLOCK), CoPItems.MINI_BEACON_BASE.get(), 164, "_block");
 
 			convert(pvd, Items.EMERALD, LCItems.EMERALD.get(), 64 * 27 * 9);
 			convert(pvd, Items.EMERALD_BLOCK, LCItems.EMERALD.get(), 64 * 27);
@@ -1010,8 +884,6 @@ public class RecipeGen {
 			jeed.add(LCMats.POSEIDITE.getArmor(EquipmentSlot.FEET), MobEffects.CONDUIT_POWER, MobEffects.DOLPHINS_GRACE);
 			jeed.generate(pvd);
 		}
-
-		CoPRecipeGen.recipeGen(pvd);
 
 	}
 

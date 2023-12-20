@@ -1,13 +1,6 @@
 package dev.xkmc.l2complements.init;
 
 import com.tterrag.registrate.providers.ProviderType;
-import dev.xkmc.curseofpandora.event.PandoraAttackListener;
-import dev.xkmc.curseofpandora.init.CurseOfPandora;
-import dev.xkmc.curseofpandora.init.data.CoPAdvGen;
-import dev.xkmc.curseofpandora.init.data.CoPConfigGen;
-import dev.xkmc.curseofpandora.init.data.CoPTagGen;
-import dev.xkmc.curseofpandora.init.registrate.CoPFakeEffects;
-import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.l2complements.content.enchantment.special.SoulBoundPlayerData;
 import dev.xkmc.l2complements.events.L2ComplementsClick;
 import dev.xkmc.l2complements.events.MaterialDamageListener;
@@ -28,7 +21,6 @@ import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.event.entity.EntityAttributeModificationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -61,22 +53,17 @@ public class L2Complements {
 		LCParticle.register();
 		LCEnchantments.register();
 		LCEntities.register();
-		CoPItems.register();
-		CoPFakeEffects.register();
 		LCRecipes.register();
 		LCConfig.init();
 		SoulBoundPlayerData.register();
 		new L2ComplementsClick(new ResourceLocation(MODID, "main"));
 		AttackEventHandler.register(5000, new MaterialDamageListener());
-		AttackEventHandler.register(5200, new PandoraAttackListener());
 		REGISTRATE.addDataGenerator(ProviderType.LANG, LangData::addTranslations);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, RecipeGen::genRecipe);
 		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, TagGen::onBlockTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, TagGen::onItemTagGen);
-		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, CoPTagGen::onItemTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, TagGen::onEntityTagGen);
 		REGISTRATE.addDataGenerator(TagGen.EFF_TAGS, TagGen::onEffectTagGen);
-		REGISTRATE.addDataGenerator(ProviderType.ADVANCEMENT, CoPAdvGen::onAdvGen);
 	}
 
 	@SubscribeEvent
@@ -100,11 +87,6 @@ public class L2Complements {
 	}
 
 	@SubscribeEvent
-	public static void modifyAttributes(EntityAttributeModificationEvent event) {
-		CurseOfPandora.modifyAttributes(event);
-	}
-
-	@SubscribeEvent
 	public static void gatherData(GatherDataEvent event) {
 		boolean gen = event.includeServer();
 		PackOutput output = event.getGenerator().getPackOutput();
@@ -112,7 +94,6 @@ public class L2Complements {
 		var helper = event.getExistingFileHelper();
 		new DamageTypeGen(output, pvd, helper).generate(gen, event.getGenerator());
 		event.getGenerator().addProvider(gen, new LCConfigGen(event.getGenerator()));
-		event.getGenerator().addProvider(gen, new CoPConfigGen(event.getGenerator()));
 	}
 
 }

@@ -8,6 +8,7 @@ import dev.xkmc.l2library.util.Proxy;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -32,9 +33,15 @@ public class ClientSpellText {
 		if (!event.getItemStack().isEnchanted()) return;
 		double bonus = event.getEntity().getAttributeValue(CurseOfPandora.SPELL.get());
 		bonus = Math.max(1, bonus);
-		double penalty = CurseOfSpellItem.getItemSpellPenalty(event.getItemStack()) / bonus;
+		double penalty = CurseOfSpellItem.getItemSpellPenalty(bonus, event.getItemStack());
 		int load = (int) Math.round(penalty * 100);
 		event.getToolTip().add(CoPLangData.IDS.CURSE_OF_SPELL_3.get(load).withStyle(load > 100 ? ChatFormatting.RED : ChatFormatting.GRAY));
 	}
 
+	public static int getReality(Level level) {
+		Player player = Proxy.getClientPlayer();
+		if (player == null) return 0;
+		var ins = player.getAttribute(CurseOfPandora.REALITY.get());
+		return ins == null ? 0 : (int) Math.round(ins.getValue());
+	}
 }

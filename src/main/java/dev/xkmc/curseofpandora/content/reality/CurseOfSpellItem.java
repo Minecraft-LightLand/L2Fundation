@@ -28,13 +28,13 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 	private static final SlotAdder ADDER = SlotAdder.of("curse_of_spell", "hostility_curse", 1);
 	public static final TokenKey<Ticker> KEY = new TokenKey<>(L2Complements.MODID, "curse_of_spell");
 
-	public static double getItemSpellPenalty(ItemStack stack) {
+	public static double getItemSpellPenalty(double base, ItemStack stack) {
 		double level = 0;
 		for (var i : stack.getAllEnchantments().values()) {
 			level += Math.pow(2, i);
 		}
-		int val = Math.max(1, stack.getEnchantmentValue());
-		return level / val;
+		double val = base + stack.getEnchantmentValue();
+		return level / val / base;
 	}
 
 	public static double getSpellPenalty(Player player) {
@@ -43,8 +43,8 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 		double penalty = 0;
 		for (var e : EquipmentSlot.values()) {
 			ItemStack stack = player.getItemBySlot(e);
-			double val = getItemSpellPenalty(stack);
-			penalty += Math.max(0, val / bonus - 1);
+			double val = getItemSpellPenalty(bonus, stack);
+			penalty += Math.max(0, val - 1);
 		}
 		return penalty;
 	}

@@ -1,7 +1,7 @@
 package dev.xkmc.l2complements.content.feature;
 
-import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
+import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 
@@ -39,6 +39,10 @@ public enum EntityFeature {
 
 	EntityFeature(List<FeaturePredicate> list) {
 		this.list = new ArrayList<>(list);
+	}
+
+	public void add(FeaturePredicate pred) {
+		list.add(pred);
 	}
 
 	public boolean test(LivingEntity e) {

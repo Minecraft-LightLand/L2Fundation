@@ -12,6 +12,7 @@ public class CoPLangData {
 	public enum IDS {
 		EFFECT_REFRESH_CURIO("tooltip.misc.effect_refresh", "Grants wearer: ", 0),
 		BIND("tooltip.misc.bind", "This item cannot be taken down.", 0),
+		REALITY_INDEX("tooltip.misc.reality", "When you have at least %s Reality Index:", 1),
 		CURSE_INERTIA("tooltip.misc.curse_inertia", "Negate all other non-tool attack speed bonus. Cap player attack speed to %s. When player attack speed is %s or lower, grant %s%% attack speed bonus.", 3),
 		CURSE_PROXIMITY("tooltip.misc.curse_proximity", "Negate all other non-tool attack reach bonus. Cap player attack reach to %s. When player attack reach is %s or lower, grant %s%% attack reach bonus.", 3),
 		CURSE_FLESH("tooltip.misc.curse_flesh", "Negate all max health bonus. If player maintains at least %s food level for %s minutes, grant +%s%% max health.", 3),

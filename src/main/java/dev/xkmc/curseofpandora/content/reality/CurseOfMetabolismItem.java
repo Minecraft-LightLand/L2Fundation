@@ -3,6 +3,8 @@ package dev.xkmc.curseofpandora.content.reality;
 import dev.xkmc.curseofpandora.content.complex.ISlotAdderItem;
 import dev.xkmc.curseofpandora.content.complex.ISubToken;
 import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
+import dev.xkmc.curseofpandora.event.ClientSpellText;
+import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2library.capability.conditionals.TokenKey;
@@ -40,6 +42,10 @@ public class CurseOfMetabolismItem extends ISlotAdderItem<CurseOfMetabolismItem.
 		return 0.3;
 	}
 
+	private static int getIndexReq() {
+		return 5;
+	}
+
 	public CurseOfMetabolismItem(Properties properties) {
 		super(properties, KEY, Ticker::new, CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY));
 	}
@@ -49,9 +55,11 @@ public class CurseOfMetabolismItem extends ISlotAdderItem<CurseOfMetabolismItem.
 		int f = (int) Math.round(getFactor() * 100);
 		int b = (int) Math.round(getBonus() * 100);
 		int t = getThreshold();
-		list.add(CoPLangData.IDS.CURSE_METABOLISM_1.get(f, t).withStyle(ChatFormatting.GRAY));
+		boolean pass = (level == null ? 0 : ClientSpellText.getReality(level)) >= getIndexReq();
 		list.add(CoPLangData.IDS.CURSE_METABOLISM_2.get(f, t).withStyle(ChatFormatting.RED));
-		list.add(CoPLangData.IDS.CURSE_METABOLISM_3.get(b).withStyle(ChatFormatting.GRAY));
+		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq()).withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
+		list.add(CoPLangData.IDS.CURSE_METABOLISM_1.get(f, t).withStyle(pass ? ChatFormatting.DARK_GREEN : ChatFormatting.DARK_GRAY));
+		list.add(CoPLangData.IDS.CURSE_METABOLISM_3.get(b).withStyle(pass ? ChatFormatting.DARK_GREEN : ChatFormatting.DARK_GRAY));
 	}
 
 	@SerialClass
@@ -112,7 +120,8 @@ public class CurseOfMetabolismItem extends ISlotAdderItem<CurseOfMetabolismItem.
 			var ins = player.getAttribute(attr.get());
 			if (ins == null) return;
 			double val = (player.getFoodData().getFoodLevel() - getThreshold()) * getFactor();
-			if (!bonus && val > 0) return;
+			boolean doBonus = bonus && player.getAttributeValue(CurseOfPandora.REALITY.get()) >= getIndexReq();
+			if (!doBonus && val > 0) return;
 			if (!player.getFoodData().needsFood()) val += getBonus();
 			var old = ins.getModifier(id);
 			if (old != null && old.getAmount() == val &&

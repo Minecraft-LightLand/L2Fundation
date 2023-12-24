@@ -1,0 +1,54 @@
+{
+  "type": "ars_nouveau:enchantment",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ars_nouveau"
+    }
+  ],
+  "enchantment": "l2complements:ice_blade",
+  "level": 1,
+  "pedestalItems": [
+    {
+      "item": {
+        "item": "l2complements:hard_ice"
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:hard_ice"
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:hard_ice"
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:hard_ice"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    }
+  ],
+  "sourceCost": 2000
+}

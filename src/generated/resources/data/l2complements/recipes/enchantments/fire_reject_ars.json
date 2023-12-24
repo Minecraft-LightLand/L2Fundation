@@ -1,0 +1,67 @@
+{
+  "type": "ars_nouveau:enchantment",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ars_nouveau"
+    }
+  ],
+  "enchantment": "l2complements:fire_reject",
+  "level": 1,
+  "pedestalItems": [
+    {
+      "item": {
+        "type": "l2library:enchantment",
+        "enchantment": "minecraft:fire_protection",
+        "min_level": 4
+      }
+    },
+    {
+      "item": {
+        "type": "l2library:enchantment",
+        "enchantment": "minecraft:fire_protection",
+        "min_level": 4
+      }
+    },
+    {
+      "item": {
+        "type": "l2library:enchantment",
+        "enchantment": "minecraft:protection",
+        "min_level": 4
+      }
+    },
+    {
+      "item": {
+        "type": "l2library:enchantment",
+        "enchantment": "minecraft:protection",
+        "min_level": 4
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:hard_ice"
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:soul_flame"
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:soul_flame"
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:soul_flame"
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:soul_flame"
+      }
+    }
+  ],
+  "sourceCost": 2000
+}

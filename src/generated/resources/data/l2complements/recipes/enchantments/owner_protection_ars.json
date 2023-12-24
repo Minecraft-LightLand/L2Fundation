@@ -1,0 +1,61 @@
+{
+  "type": "ars_nouveau:enchantment",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ars_nouveau"
+    }
+  ],
+  "enchantment": "l2complements:owner_protection",
+  "level": 1,
+  "pedestalItems": [
+    {
+      "item": {
+        "type": "l2library:enchantment",
+        "enchantment": "minecraft:protection",
+        "min_level": 4
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:end_rod"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:end_rod"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:end_rod"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:end_rod"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:end_rod"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:end_rod"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:nether_star"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:nether_star"
+      }
+    }
+  ],
+  "sourceCost": 2000
+}

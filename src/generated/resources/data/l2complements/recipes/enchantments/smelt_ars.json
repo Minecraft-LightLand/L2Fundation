@@ -1,0 +1,54 @@
+{
+  "type": "ars_nouveau:enchantment",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ars_nouveau"
+    }
+  ],
+  "enchantment": "l2complements:smelt",
+  "level": 1,
+  "pedestalItems": [
+    {
+      "item": {
+        "item": "l2complements:soul_flame"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lava_bucket"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lava_bucket"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lava_bucket"
+      }
+    }
+  ],
+  "sourceCost": 2000
+}

@@ -1,0 +1,54 @@
+{
+  "type": "ars_nouveau:enchantment",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ars_nouveau"
+    }
+  ],
+  "enchantment": "l2complements:life_sync",
+  "level": 1,
+  "pedestalItems": [
+    {
+      "item": {
+        "item": "l2complements:force_field"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:wither_rose"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:wither_rose"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:wither_rose"
+      }
+    }
+  ],
+  "sourceCost": 2000
+}

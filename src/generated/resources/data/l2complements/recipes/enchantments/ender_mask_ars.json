@@ -1,0 +1,54 @@
+{
+  "type": "ars_nouveau:enchantment",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ars_nouveau"
+    }
+  ],
+  "enchantment": "l2complements:ender_mask",
+  "level": 1,
+  "pedestalItems": [
+    {
+      "item": {
+        "item": "minecraft:carved_pumpkin"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:ender_eye"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:ender_eye"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:ender_eye"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    }
+  ],
+  "sourceCost": 2000
+}

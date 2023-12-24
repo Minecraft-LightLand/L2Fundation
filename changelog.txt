@@ -1,3 +1,6 @@
+2.4.24
+- Add Ars Nouveau compat
+
 2.4.23
 - Fix refmap
 

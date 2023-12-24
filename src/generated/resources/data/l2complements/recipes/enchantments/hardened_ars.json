@@ -1,0 +1,54 @@
+{
+  "type": "ars_nouveau:enchantment",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ars_nouveau"
+    }
+  ],
+  "enchantment": "l2complements:hardened",
+  "level": 1,
+  "pedestalItems": [
+    {
+      "item": {
+        "item": "l2complements:explosion_shard"
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:shulkerate_ingot"
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:shulkerate_ingot"
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:shulkerate_ingot"
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:warden_bone_shard"
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:warden_bone_shard"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    }
+  ],
+  "sourceCost": 2000
+}

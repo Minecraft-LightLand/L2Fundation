@@ -1,0 +1,67 @@
+{
+  "type": "ars_nouveau:enchantment",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ars_nouveau"
+    }
+  ],
+  "enchantment": "l2complements:explosion_reject",
+  "level": 1,
+  "pedestalItems": [
+    {
+      "item": {
+        "type": "l2library:enchantment",
+        "enchantment": "minecraft:blast_protection",
+        "min_level": 4
+      }
+    },
+    {
+      "item": {
+        "type": "l2library:enchantment",
+        "enchantment": "minecraft:blast_protection",
+        "min_level": 4
+      }
+    },
+    {
+      "item": {
+        "type": "l2library:enchantment",
+        "enchantment": "minecraft:protection",
+        "min_level": 4
+      }
+    },
+    {
+      "item": {
+        "type": "l2library:enchantment",
+        "enchantment": "minecraft:protection",
+        "min_level": 4
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:explosion_shard"
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:explosion_shard"
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:explosion_shard"
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:explosion_shard"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:crying_obsidian"
+      }
+    }
+  ],
+  "sourceCost": 2000
+}

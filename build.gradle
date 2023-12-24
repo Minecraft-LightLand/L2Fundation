@@ -184,8 +184,12 @@ dependencies {
     implementation fg.deobf("dev.xkmc.l2serial:l2serial:1.2.1")
     implementation fg.deobf("dev.xkmc.l2screentracker:l2screentracker:0.1.4")
     implementation fg.deobf("dev.xkmc.l2itemselector:l2itemselector:0.1.7")
-    implementation fg.deobf("dev.xkmc.l2damagetracker:l2damagetracker:0.2.2")
     implementation fg.deobf("dev.xkmc.l2tabs:l2tabs:0.2.3")
+
+    implementation fg.deobf(jarJar("dev.xkmc.l2damagetracker:l2damagetracker:0.2.4")) {
+        transitive = false
+        jarJar.ranged(it, "[0.2.4,)")
+    }
 
     runtimeOnly fg.deobf("dev.xkmc.pandora:pandora:0.1.0-slim")
     runtimeOnly fg.deobf("dev.xkmc.l2modularblock:l2modularblock:1.1.0")
@@ -206,6 +210,13 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:bookshelf-228525:4581675")
     runtimeOnly fg.deobf("curse.maven:enchantment-descriptions-250419:4587429")
     runtimeOnly fg.deobf("curse.maven:patchouli-306770:4636277")
+
+
+    runtimeOnly fg.deobf("curse.maven:geckolib-388172:4711657")
+    runtimeOnly fg.deobf("curse.maven:playeranimator-658587:4587214")
+    implementation fg.deobf("curse.maven:caelus-308989:4581481")
+    implementation fg.deobf("curse.maven:irons-spells-n-spellbooks-855414:4693050")
+    implementation fg.deobf("curse.maven:ars-nouveau-401955:4751471")
 
     runtimeOnly fg.deobf("curse.maven:just-enough-effect-descriptions-jeed-532286:4599236")
 

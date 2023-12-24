@@ -1,0 +1,61 @@
+{
+  "type": "ars_nouveau:enchantment",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ars_nouveau"
+    }
+  ],
+  "enchantment": "l2complements:drill_digging",
+  "level": 1,
+  "pedestalItems": [
+    {
+      "item": {
+        "type": "l2library:enchantment",
+        "enchantment": "minecraft:efficiency",
+        "min_level": 1
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:storm_core"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:iron_ingot"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:iron_ingot"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:stone_shovel"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:stone_shovel"
+      }
+    },
+    {
+      "item": {
+        "item": "minecraft:stone_shovel"
+      }
+    }
+  ],
+  "sourceCost": 2000
+}

@@ -5,6 +5,7 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import dev.xkmc.l2complements.compat.ars.ArsRecipeCompat;
 import dev.xkmc.l2complements.init.L2Complements;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
@@ -30,10 +31,10 @@ import java.util.Set;
 import java.util.function.Consumer;
 
 public class EnchantmentRecipeBuilder implements RecipeBuilder {
-	private final Enchantment enchantment;
-	private final int level;
-	private final List<String> rows = Lists.newArrayList();
-	private final Map<Character, Ingredient> key = Maps.newLinkedHashMap();
+	public final Enchantment enchantment;
+	public final int level;
+	public final List<String> rows = Lists.newArrayList();
+	public final Map<Character, Ingredient> key = Maps.newLinkedHashMap();
 	private final Advancement.Builder advancement = Advancement.Builder.advancement();
 	@Nullable
 	private String group;
@@ -89,10 +90,11 @@ public class EnchantmentRecipeBuilder implements RecipeBuilder {
 		this.save(p_176499_, new ResourceLocation(L2Complements.MODID, ForgeRegistries.ENCHANTMENTS.getKey(this.enchantment).getPath()));
 	}
 
-	public void save(Consumer<FinishedRecipe> p_126141_, ResourceLocation p_126142_) {
-		this.ensureValid(p_126142_);
-		this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(p_126142_)).rewards(AdvancementRewards.Builder.recipe(p_126142_)).requirements(RequirementsStrategy.OR);
-		p_126141_.accept(new Result(p_126142_, this.enchantment, this.level, this.group == null ? "" : this.group, this.rows, this.key, this.advancement, new ResourceLocation(p_126142_.getNamespace(), "recipes/enchantments/" + p_126142_.getPath())));
+	public void save(Consumer<FinishedRecipe> pvd, ResourceLocation loc) {
+		pvd = ArsRecipeCompat.saveCompat(this, pvd, loc);
+		this.ensureValid(loc);
+		this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(loc)).rewards(AdvancementRewards.Builder.recipe(loc)).requirements(RequirementsStrategy.OR);
+		pvd.accept(new Result(loc, this.enchantment, this.level, this.group == null ? "" : this.group, this.rows, this.key, this.advancement, new ResourceLocation(loc.getNamespace(), "recipes/enchantments/" + loc.getPath())));
 	}
 
 	private void ensureValid(ResourceLocation p_126144_) {

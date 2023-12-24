@@ -1,0 +1,63 @@
+{
+  "type": "ars_nouveau:enchantment",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ars_nouveau"
+    }
+  ],
+  "enchantment": "l2complements:environment_reject",
+  "level": 1,
+  "pedestalItems": [
+    {
+      "item": {
+        "type": "l2library:enchantment",
+        "enchantment": "minecraft:protection",
+        "min_level": 4
+      }
+    },
+    {
+      "item": {
+        "type": "l2library:enchantment",
+        "enchantment": "minecraft:protection",
+        "min_level": 4
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:captured_wind"
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:sun_membrane"
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:sun_membrane"
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:void_eye"
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:void_eye"
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:void_eye"
+      }
+    },
+    {
+      "item": {
+        "item": "l2complements:void_eye"
+      }
+    }
+  ],
+  "sourceCost": 2000
+}

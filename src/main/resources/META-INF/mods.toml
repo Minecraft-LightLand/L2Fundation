@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[46,)"
+loaderVersion="[47,)"
 license="All rights reserved"
 [[mods]]
 modId="l2complements"
@@ -13,30 +13,18 @@ description='''
 [[dependencies.l2complements]]
     modId="forge"
     mandatory=true
-    versionRange="[46.0.0,)"
+    versionRange="[47.1.0,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.l2complements]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.20,1.21)"
+    versionRange="[1.20.1,1.20.2)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.l2complements]]
     modId="l2library"
     mandatory=true
     versionRange="[2.4.19,)"
-    ordering="AFTER"
-    side="BOTH"
-[[dependencies.l2complements]]
-    modId="l2tabs"
-    mandatory=true
-    versionRange="[0.2.3,)"
-    ordering="AFTER"
-    side="BOTH"
-[[dependencies.l2complements]]
-    modId="curios"
-    mandatory=true
-    versionRange="[5.4.3,)"
     ordering="AFTER"
     side="BOTH"

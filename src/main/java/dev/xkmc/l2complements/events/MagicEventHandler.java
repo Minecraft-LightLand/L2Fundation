@@ -7,7 +7,6 @@ import dev.xkmc.l2complements.content.enchantment.core.AttributeEnchantment;
 import dev.xkmc.l2complements.content.enchantment.digging.RangeDiggingEnchantment;
 import dev.xkmc.l2complements.content.enchantment.special.SoulBoundPlayerData;
 import dev.xkmc.l2complements.content.feature.EntityFeature;
-import dev.xkmc.l2complements.content.item.curios.EffectValidItem;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.TagGen;
@@ -37,7 +36,6 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
-import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -145,9 +143,7 @@ public class MagicEventHandler {
 		if (tag != null && tag.getTag(TagGen.SKILL_EFFECT).contains(ins.getEffect())) {
 			return true;
 		}
-		return CuriosApi.getCuriosInventory(entity).resolve().map(cap ->
-				cap.findFirstCurio(e -> e.getItem() instanceof EffectValidItem item &&
-						item.isEffectValid(ins, e, entity))).isPresent();
+		return CurioCompat.testEffect(ins, entity);
 	}
 
 	@SubscribeEvent

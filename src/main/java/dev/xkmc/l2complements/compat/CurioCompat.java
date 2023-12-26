@@ -1,6 +1,8 @@
 package dev.xkmc.l2complements.compat;
 
 import com.mojang.datafixers.util.Pair;
+import dev.xkmc.l2complements.content.item.curios.EffectValidItem;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -61,6 +63,19 @@ public class CurioCompat {
 				}
 			}
 		}
+	}
+
+	public static boolean testEffect(MobEffectInstance ins, LivingEntity entity) {
+		if (ModList.get().isLoaded("curios")) {
+			return testEffectImpl(ins, entity);
+		}
+		return false;
+	}
+
+	private static boolean testEffectImpl(MobEffectInstance ins, LivingEntity entity) {
+		return CuriosApi.getCuriosInventory(entity).resolve().map(cap ->
+				cap.findFirstCurio(e -> e.getItem() instanceof EffectValidItem item &&
+						item.isEffectValid(ins, e, entity))).isPresent();
 	}
 
 }

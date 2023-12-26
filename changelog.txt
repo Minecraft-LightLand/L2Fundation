@@ -1,5 +1,11 @@
+2.4.25
+- Fix anvil not able to exit when containing items
+- Fix version requirement
+- Remove curios dependency
+
 2.4.24
-- Add Ars Nouveau compat
+- Ars Nouveau magic is now recognized as magic damage
+- Add Ars Nouveau recipe compat for enchantment recipes
 
 2.4.23
 - Fix refmap

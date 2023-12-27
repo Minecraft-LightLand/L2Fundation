@@ -73,7 +73,7 @@ public class CurioCompat {
 	}
 
 	private static boolean testEffectImpl(MobEffectInstance ins, LivingEntity entity) {
-		return CuriosApi.getCuriosInventory(entity).resolve().map(cap ->
+		return CuriosApi.getCuriosInventory(entity).resolve().flatMap(cap ->
 				cap.findFirstCurio(e -> e.getItem() instanceof EffectValidItem item &&
 						item.isEffectValid(ins, e, entity))).isPresent();
 	}

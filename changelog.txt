@@ -1,3 +1,6 @@
+2.4.26
+- Fix Cleanse Effect
+
 2.4.25
 - Fix anvil not able to exit when containing items
 - Fix version requirement

@@ -1,3 +1,6 @@
+2.4.27
+- Fix incorrect projectile damage factor on old saves
+
 2.4.26
 - Fix Cleanse Effect
 

@@ -24,6 +24,8 @@ import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffectUtil;
@@ -145,12 +147,15 @@ public class LCItems {
 			REINFORCED_WARP_STONE = REGISTRATE.item("reinforced_warp_stone", p ->
 							new WarpStone(p.fireResistant().stacksTo(1).durability(64).rarity(Rarity.RARE), false))
 					.defaultModel().defaultLang().register();
+
+			TagKey<Item> charm = ItemTags.create(new ResourceLocation("curios", "charm"));
+
 			TOTEM_OF_DREAM = REGISTRATE.item("totem_of_dream", p ->
 							new HomeTotem(p.fireResistant().stacksTo(1).rarity(Rarity.EPIC)))
-					.defaultModel().defaultLang().register();
+					.tag(charm).defaultModel().defaultLang().register();
 			TOTEM_OF_THE_SEA = REGISTRATE.item("totem_of_the_sea", p ->
 							new PoseiditeTotem(p.fireResistant().stacksTo(16).rarity(Rarity.EPIC)))
-					.defaultModel().defaultLang().register();
+					.tag(charm).defaultModel().defaultLang().register();
 		}
 		{
 			SOUL_CHARGE = REGISTRATE.item("soul_fire_charge", p ->

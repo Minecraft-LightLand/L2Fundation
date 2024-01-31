@@ -59,7 +59,11 @@ public class LCConfig {
 		public final ForgeConfigSpec.DoubleValue chainDiggingHardnessRange;
 		public final ForgeConfigSpec.BooleanValue delayDiggingRequireEnder;
 
+		public final ForgeConfigSpec.BooleanValue useArsNouveauForEnchantmentRecipe;
+
 		Common(ForgeConfigSpec.Builder builder) {
+			useArsNouveauForEnchantmentRecipe = builder.comment("When Ars Nouveau is present, use apparatus recipe for enchantments")
+					.define("useArsNouveauForEnchantmentRecipe", true);
 			builder.push("materials");
 			windSpeed = builder.comment("Requirement for obtaining Captured Wind. Unit: Block per Tick")
 					.defineInRange("windSpeed", 10, 0.1, 100);
@@ -152,6 +156,7 @@ public class LCConfig {
 
 	public static final ForgeConfigSpec COMMON_SPEC;
 	public static final Common COMMON;
+	public static String COMMON_PATH;
 
 	static {
 		final Pair<Client, ForgeConfigSpec> client = new ForgeConfigSpec.Builder().configure(Client::new);
@@ -165,13 +170,14 @@ public class LCConfig {
 
 	public static void init() {
 		register(ModConfig.Type.CLIENT, CLIENT_SPEC);
-		register(ModConfig.Type.COMMON, COMMON_SPEC);
+		COMMON_PATH = register(ModConfig.Type.COMMON, COMMON_SPEC);
 	}
 
-	private static void register(ModConfig.Type type, IConfigSpec<?> spec) {
+	private static String register(ModConfig.Type type, IConfigSpec<?> spec) {
 		var mod = ModLoadingContext.get().getActiveContainer();
 		String path = "l2_configs/" + mod.getModId() + "-" + type.extension() + ".toml";
 		ModLoadingContext.get().registerConfig(type, spec, path);
+		return path;
 	}
 
 }

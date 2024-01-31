@@ -2,6 +2,7 @@ package dev.xkmc.l2complements.compat;
 
 import com.mojang.datafixers.util.Pair;
 import dev.xkmc.l2complements.content.item.curios.EffectValidItem;
+import dev.xkmc.l2complements.init.data.TagGen;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -34,7 +35,9 @@ public class CurioCompat {
 				int n = stacks.getSlots();
 				for (int i = 0; i < n; i++) {
 					int finalI = i;
-					ans.add(Pair.of(stacks.getStackInSlot(i), stack -> stacks.setStackInSlot(finalI, stack)));
+					if (stacks.getStackInSlot(i).is(TagGen.TOTEM)) {
+						ans.add(Pair.of(stacks.getStackInSlot(i), stack -> stacks.setStackInSlot(finalI, stack)));
+					}
 				}
 			}
 		}
@@ -59,7 +62,9 @@ public class CurioCompat {
 				var stacks = handler.getStacks();
 				int n = stacks.getSlots();
 				for (int i = 0; i < n; i++) {
-					list.add(stacks.getStackInSlot(i));
+					var stack = stacks.getStackInSlot(i);
+					if (!stack.isEmpty())
+						list.add(stack);
 				}
 			}
 		}

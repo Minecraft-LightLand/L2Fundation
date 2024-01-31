@@ -6,6 +6,7 @@ import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
+import dev.xkmc.l2library.init.events.GeneralEventHandler;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -107,7 +108,7 @@ public class RangeDiggingEnchantment extends UnobtainableEnchantment {
 						return;
 					}
 				}
-				MagicEventHandler.schedulePersistent(new DelayedBlockBreaker(player, blocks)::tick);
+				GeneralEventHandler.schedulePersistent(new DelayedBlockBreaker(player, blocks)::tick);
 			}
 		});
 	}

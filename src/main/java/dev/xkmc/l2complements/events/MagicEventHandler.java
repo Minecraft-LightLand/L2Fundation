@@ -15,6 +15,7 @@ import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
 import dev.xkmc.l2library.base.effects.EffectUtil;
 import dev.xkmc.l2library.base.effects.ForceAddEffectEvent;
+import dev.xkmc.l2library.init.events.GeneralEventHandler;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -166,7 +167,7 @@ public class MagicEventHandler {
 	public static void onPotionAdded(MobEffectEvent.Added event) {
 		if (event.getEntity().hasEffect(LCEffects.CLEANSE.get())) {
 			if (isSkill(event.getEffectInstance(), event.getEntity())) return;
-			schedule(() -> CleanseEffect.clearOnEntity(event.getEntity()));
+			GeneralEventHandler.schedule(() -> CleanseEffect.clearOnEntity(event.getEntity()));
 		}
 	}
 
@@ -184,6 +185,7 @@ public class MagicEventHandler {
 
 	private static List<BooleanSupplier> TASKS = new ArrayList<>();
 
+	@Deprecated(forRemoval = true)
 	public static synchronized void schedule(Runnable runnable) {
 		TASKS.add(() -> {
 			runnable.run();
@@ -191,12 +193,13 @@ public class MagicEventHandler {
 		});
 	}
 
+	@Deprecated(forRemoval = true)
 	public static synchronized void schedulePersistent(BooleanSupplier runnable) {
 		TASKS.add(runnable);
 	}
 
 	private static synchronized void execute() {
-		if (TASKS.size() == 0) return;
+		if (TASKS.isEmpty()) return;
 		var temp = TASKS;
 		TASKS = new ArrayList<>();
 		temp.removeIf(BooleanSupplier::getAsBoolean);

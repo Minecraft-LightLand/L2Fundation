@@ -6,6 +6,7 @@ import dev.xkmc.l2complements.content.enchantment.armors.DurableArmorEnchantment
 import dev.xkmc.l2complements.content.enchantment.armors.FlameThornEnchantment;
 import dev.xkmc.l2complements.content.enchantment.armors.IceThornEnchantment;
 import dev.xkmc.l2complements.content.enchantment.armors.StableBodyEnchantment;
+import dev.xkmc.l2complements.content.enchantment.core.BannableEnchantment;
 import dev.xkmc.l2complements.content.enchantment.core.ImmuneEnchantment;
 import dev.xkmc.l2complements.content.enchantment.core.SingleLevelEnchantment;
 import dev.xkmc.l2complements.content.enchantment.digging.*;
@@ -25,8 +26,10 @@ public class LCEnchantments {
 
 	public static final EnchantmentCategory ALL = EnchantmentCategory.create("ALL", e -> e.getMaxStackSize() == 1);
 
-	public static final RegistryEntry<ImmuneEnchantment> ENCH_PROJECTILE, ENCH_FIRE, ENCH_ENVIRONMENT,
-			ENCH_EXPLOSION, ENCH_MAGIC, ENCH_INVINCIBLE, ENCH_MATES;
+	public static final RegistryEntry<BannableEnchantment> ENCH_PROJECTILE, ENCH_FIRE, ENCH_ENVIRONMENT,
+			ENCH_EXPLOSION, ENCH_MAGIC, ENCH_INVINCIBLE;
+
+	public static final RegistryEntry<ImmuneEnchantment> ENCH_MATES;
 
 	public static final RegistryEntry<SingleLevelEnchantment> SHULKER_ARMOR, ENDER_MASK, SHINNY,
 			SNOW_WALKER, DAMPENED, ENDER, SMELT, SAFEGUARD;
@@ -170,9 +173,9 @@ public class LCEnchantments {
 			ENCH_INVINCIBLE =
 					regImmune("invincible", "Invincible (Creative)",
 							"Player is invincible to all damage.");
-			ENCH_MATES =
-					regImmune("owner_protection", "Owner Protection",
-							"Negate all damages from entities owned by you.");
+			ENCH_MATES = reg("owner_protection", EnchantmentCategory.ARMOR, ImmuneEnchantment::new,
+					"Negate all damages from entities owned by you.")
+					.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).lang("Owner Protection").register();
 		}
 
 		{
@@ -230,8 +233,8 @@ public class LCEnchantments {
 		}
 	}
 
-	private static RegistryEntry<ImmuneEnchantment> regImmune(String id, String name, String desc) {
-		return reg(id, EnchantmentCategory.ARMOR, ImmuneEnchantment::new, desc)
+	private static RegistryEntry<BannableEnchantment> regImmune(String id, String name, String desc) {
+		return reg(id, EnchantmentCategory.ARMOR, BannableEnchantment::new, desc)
 				.addArmorSlots().rarity(Enchantment.Rarity.VERY_RARE).lang(name).register();
 	}
 

@@ -291,6 +291,7 @@
   "l2complements.jei.diffuse.title": "Diffusion",
   "l2complements.msg.delay_warning": "Your tool needs %s to break more than %s blocks",
   "l2complements.tooltip.misc.banned": "This item is disabled.",
+  "l2complements.tooltip.misc.banned_ench": "Disabled",
   "l2complements.tooltip.misc.blackstone_core": "Obtained by killing a Piglin Brute that has Incarceration effect.",
   "l2complements.tooltip.misc.captured_shulker_bullet": "Obtained by right clicking shulker bullet with Wind Bottle.",
   "l2complements.tooltip.misc.captured_wind": "Obtained by moving faster than %s blocks per second while having Wind Bottle in hand or inventory.",

@@ -66,6 +66,7 @@ public class LangData {
 		WINTERSTORM_WAND("tooltip.misc.winterstorm_wand", "Hold use to create a ring of storm. Push mobs away and freeze them.", 0),
 		DIFFUSION_WAND("tooltip.misc.diffusion_wand", "Right click a block of gem/dust to diffuse it into nearby stones to create ore. Check JEI for recipe", 0),
 		BANNED("tooltip.misc.banned", "This item is disabled.", 0),
+		BANNED_ENCH("tooltip.misc.banned_ench", "Disabled", 0),
 
 		;
 

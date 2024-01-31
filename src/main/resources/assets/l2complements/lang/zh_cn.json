@@ -212,6 +212,7 @@
   "l2complements.tooltip.misc.sonic_shooter": "按住右键开始充能，充能结束自动发射音爆，对前方所有生物造成伤害",
   "l2complements.tooltip.misc.winterstorm_wand": "按住右键创造风暴，持续推开怪物并且施加寒流",
   "l2complements.tooltip.misc.banned": "这个物品被禁用了",
+  "l2complements.tooltip.misc.banned_ench": "已禁用",
   "l2complements.tooltip.tool.poseidite_armor": "当使用者在水/雨中时，提供额外保护，提升移动/游泳速度，提供潮涌/海豚祝福效果",
   "l2complements.tooltip.tool.poseidite_tool": "在水/雨中时提升伤害和攻击速度。对水生生物和怕水生物造成更高伤害",
   "l2complements.tooltip.tool.sculkium_armor": "沉默:穿着4件带有沉默效果的装备时，玩家发出的任何震动都会被抵消",

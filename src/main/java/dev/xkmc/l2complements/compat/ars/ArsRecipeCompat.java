@@ -2,8 +2,8 @@ package dev.xkmc.l2complements.compat.ars;
 
 import com.hollingsworth.arsnouveau.ArsNouveau;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
+import dev.xkmc.l2complements.content.enchantment.core.BannableEnchantment;
 import dev.xkmc.l2complements.content.enchantment.core.EnchantmentRecipeBuilder;
-import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2library.serial.conditions.BooleanValueCondition;
 import dev.xkmc.l2library.serial.recipe.ConditionalRecipeWrapper;
@@ -44,7 +44,7 @@ public class ArsRecipeCompat {
 		var cond = new AndCondition(new ModLoadedCondition(ArsNouveau.MODID),
 				BooleanValueCondition.of(LCConfig.COMMON_PATH,
 						LCConfig.COMMON.useArsNouveauForEnchantmentRecipe, true));
-		if (id.getNamespace().equals(L2Complements.MODID) && (id.getPath().endsWith("reject") || id.getPath().endsWith("invincible"))) {
+		if (builder.enchantment instanceof BannableEnchantment) {
 			var additional = BooleanValueCondition.of(LCConfig.COMMON_PATH,
 					LCConfig.COMMON.enableImmunityEnchantments, true);
 			ConditionalRecipeWrapper.of((RegistrateRecipeProvider) pvd, cond, additional).accept(new ArsFinished(ars, id.withSuffix("_ars")));

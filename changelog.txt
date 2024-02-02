@@ -1,5 +1,6 @@
 2.4.29
 - Add config to switch between ars enchantment recipe and crafting table enchantment recipe
+- When disabling immunity enchantments, disable their recipes as well
 
 2.4.28
 - Fix crit effects on client

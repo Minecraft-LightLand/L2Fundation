@@ -27,10 +27,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.ItemAttributeModifierEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityTeleportEvent;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.living.LivingHealEvent;
-import net.minecraftforge.event.entity.living.MobEffectEvent;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -77,6 +74,15 @@ public class MagicEventHandler {
 		}
 		if (EntityFeature.EXPLOSION_REJECT.test(event.getEntity())) {
 			if (event.getSource().is(DamageTypeTags.IS_EXPLOSION)) event.setCanceled(true);
+		}
+	}
+
+	@SubscribeEvent
+	public static void onLivingTick(LivingEvent.LivingTickEvent event) {
+		if (event.getEntity().isOnFire()) {
+			if (EntityFeature.FIRE_REJECT.test(event.getEntity())) {
+				event.getEntity().clearFire();
+			}
 		}
 	}
 

@@ -1,3 +1,7 @@
+2.4.31
+- Fix snow walker enchantment
+- Fire Reject enchantment will now prevent you from being of fire at all
+
 2.4.30
 - Make cyclic damage detection default off
 - Fix elytra compatibility with transparent

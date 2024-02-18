@@ -61,4 +61,12 @@ public abstract class LivingEntityMixin {
 		}
 	}
 
+	@Inject(at = @At("HEAD"), method = "canFreeze", cancellable = true)
+	public void l2complments_canFreeze_checkFeature(CallbackInfoReturnable<Boolean> cir) {
+		LivingEntity self = (LivingEntity) (Object) this;
+		if (EntityFeature.SNOW_WALKER.test(self)) {
+			cir.setReturnValue(false);
+		}
+	}
+
 }

@@ -16,6 +16,7 @@ public enum EntityFeature {
 	MAGIC_REJECT(List.of(new EnchantmentFeaturePredicate(LCEnchantments.ENCH_MAGIC::get))),
 	OWNER_PROTECTION(List.of(new EnchantmentFeaturePredicate(LCEnchantments.ENCH_MATES::get))),
 	INVINCIBLE(List.of(new EnchantmentFeaturePredicate(LCEnchantments.ENCH_INVINCIBLE::get))),
+	SNOW_WALKER(List.of(new EnchantmentFeaturePredicate(LCEnchantments.SNOW_WALKER::get))),
 	LAVA_WALKER(List.of()),
 	;
 

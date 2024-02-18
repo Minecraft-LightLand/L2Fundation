@@ -1,6 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "conditions": [
+    {
+      "type": "l2library:boolean_config",
+      "expected": true,
+      "line": [
+        "enableVanillaItemRecipe"
+      ],
+      "path": "l2_configs/l2complements-common.toml"
+    }
+  ],
   "key": {
     "A": {
       "item": "l2complements:explosion_shard"

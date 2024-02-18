@@ -1,3 +1,11 @@
+2.4.30
+- Make cyclic damage detection default off
+- Fix elytra compatibility with transparent
+- Add config for enchantment overlay
+- Add config to disable vanilla recipes
+- Add config to disable tool recraft recipes
+- Add config to disable spawn egg recipes
+
 2.4.29
 - Add config to switch between ars enchantment recipe and crafting table enchantment recipe
 - When disabling immunity enchantments, disable their recipes as well

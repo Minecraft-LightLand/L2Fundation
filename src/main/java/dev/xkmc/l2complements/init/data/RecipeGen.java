@@ -15,7 +15,9 @@ import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2library.compat.jeed.JeedDataGenerator;
+import dev.xkmc.l2library.serial.conditions.BooleanValueCondition;
 import dev.xkmc.l2library.serial.ingredients.EnchantmentIngredient;
+import dev.xkmc.l2library.serial.recipe.ConditionalRecipeWrapper;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
@@ -37,6 +39,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
 import static dev.xkmc.l2library.serial.recipe.AbstractSmithingRecipe.TEMPLATE_PLACEHOLDER;
 
@@ -232,11 +235,14 @@ public class RecipeGen {
 		currentFolder = "vanilla/renew/";
 		// misc
 		{
+			var cond = ConditionalRecipeWrapper.of(pvd, BooleanValueCondition.of(LCConfig.COMMON_PATH, LCConfig.COMMON.enableVanillaItemRecipe, true));
+
+
 			unlock(pvd, new ShapelessRecipeBuilder(RecipeCategory.MISC, Items.ECHO_SHARD, 1)::unlockedBy, LCItems.RESONANT_FEATHER.get())
 					.requires(LCItems.RESONANT_FEATHER.get())
 					.requires(Items.AMETHYST_SHARD)
 					.requires(Items.SCULK, 4)
-					.save(pvd, getID(Items.ECHO_SHARD));
+					.save(cond, getID(Items.ECHO_SHARD));
 			unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.ELYTRA, 1)::unlockedBy, LCItems.SUN_MEMBRANE.get())
 					.pattern("ABA").pattern("CEC").pattern("D D")
 					.define('A', LCItems.EXPLOSION_SHARD.get())
@@ -244,46 +250,49 @@ public class RecipeGen {
 					.define('C', LCItems.SUN_MEMBRANE.get())
 					.define('D', LCItems.RESONANT_FEATHER.get())
 					.define('E', LCItems.STORM_CORE.get())
-					.save(pvd, getID(Items.ELYTRA));
+					.save(cond, getID(Items.ELYTRA));
 			unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.ANCIENT_DEBRIS, 1)::unlockedBy, LCItems.EXPLOSION_SHARD.get())
 					.pattern("ABA").pattern("ACA").pattern("ADA")
 					.define('A', LCItems.EXPLOSION_SHARD.get())
 					.define('B', Items.NETHER_STAR)
 					.define('C', Items.CRYING_OBSIDIAN)
 					.define('D', LCItems.FORCE_FIELD.get())
-					.save(pvd, getID(Items.ANCIENT_DEBRIS));
+					.save(cond, getID(Items.ANCIENT_DEBRIS));
 			unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.GILDED_BLACKSTONE, 1)::unlockedBy, LCItems.BLACKSTONE_CORE.get())
 					.pattern("ABA").pattern("BCB").pattern("ABA")
 					.define('A', Items.BLACKSTONE)
 					.define('B', Items.GOLD_INGOT)
 					.define('C', LCItems.BLACKSTONE_CORE.get())
-					.save(pvd, getID(Items.GILDED_BLACKSTONE));
+					.save(cond, getID(Items.GILDED_BLACKSTONE));
 			unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.REINFORCED_DEEPSLATE, 1)::unlockedBy, LCItems.WARDEN_BONE_SHARD.get())
 					.pattern(" B ").pattern("BAB").pattern(" B ")
 					.define('A', Items.DEEPSLATE)
 					.define('B', LCItems.WARDEN_BONE_SHARD.get())
-					.save(pvd, getID(Items.REINFORCED_DEEPSLATE));
+					.save(cond, getID(Items.REINFORCED_DEEPSLATE));
 			unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.HEART_OF_THE_SEA, 1)::unlockedBy, LCItems.GUARDIAN_EYE.get())
 					.pattern("ABA").pattern("BCB").pattern("ABA")
 					.define('A', Items.PRISMARINE_SHARD)
 					.define('B', Items.PRISMARINE_CRYSTALS)
 					.define('C', LCItems.GUARDIAN_EYE.get())
-					.save(pvd, getID(Items.HEART_OF_THE_SEA));
+					.save(cond, getID(Items.HEART_OF_THE_SEA));
 
 			unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, 1)::unlockedBy, LCItems.BLACKSTONE_CORE.get())
 					.pattern("BAB").pattern("BCB").pattern("BBB")
 					.define('B', Items.DIAMOND)
 					.define('C', Items.NETHERRACK)
 					.define('A', LCItems.BLACKSTONE_CORE.get())
-					.save(pvd, getID(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE));
+					.save(cond, getID(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE));
 		}
 
 		currentFolder = "vanilla/upgrade/";
 		{
+
+			var cond = ConditionalRecipeWrapper.of(pvd, BooleanValueCondition.of(LCConfig.COMMON_PATH, LCConfig.COMMON.enableToolRecraftRecipe, true));
+
 			for (int i = 0; i < 9; i++) {
-				smithing(pvd, TOOLS[i], Items.IRON_BLOCK, ForgeRegistries.ITEMS.getValue(new ResourceLocation("iron_" + TOOL_NAME[i])));
-				smithing(pvd, TOOLS[i], Items.GOLD_BLOCK, ForgeRegistries.ITEMS.getValue(new ResourceLocation("golden_" + TOOL_NAME[i])));
-				smithing(pvd, TOOLS[i], Items.DIAMOND_BLOCK, ForgeRegistries.ITEMS.getValue(new ResourceLocation("diamond_" + TOOL_NAME[i])));
+				smithing(pvd, TOOLS[i], Items.IRON_BLOCK, ForgeRegistries.ITEMS.getValue(new ResourceLocation("iron_" + TOOL_NAME[i])), cond);
+				smithing(pvd, TOOLS[i], Items.GOLD_BLOCK, ForgeRegistries.ITEMS.getValue(new ResourceLocation("golden_" + TOOL_NAME[i])), cond);
+				smithing(pvd, TOOLS[i], Items.DIAMOND_BLOCK, ForgeRegistries.ITEMS.getValue(new ResourceLocation("diamond_" + TOOL_NAME[i])), cond);
 			}
 		}
 
@@ -677,6 +686,8 @@ public class RecipeGen {
 		// eggs
 		{
 
+			var cond = ConditionalRecipeWrapper.of(pvd, BooleanValueCondition.of(LCConfig.COMMON_PATH, LCConfig.COMMON.enableSpawnEggRecipe, true));
+
 			// undead
 			/* zombie, husk, drowned, zombified piglin, skeleton, stray, wither skeleton, phantom, ghast*/
 			currentFolder = "eggs/undead/";
@@ -686,7 +697,7 @@ public class RecipeGen {
 						.define('A', Items.ROTTEN_FLESH)
 						.define('B', LCItems.CURSED_DROPLET.get())
 						.define('C', Items.EGG)
-						.save(pvd, getID(Items.ZOMBIE_SPAWN_EGG));
+						.save(cond, getID(Items.ZOMBIE_SPAWN_EGG));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.HUSK_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
 						.pattern("ADA").pattern("ABA").pattern("ACA")
@@ -694,7 +705,7 @@ public class RecipeGen {
 						.define('B', LCItems.CURSED_DROPLET.get())
 						.define('C', Items.EGG)
 						.define('D', Items.SAND)
-						.save(pvd, getID(Items.HUSK_SPAWN_EGG));
+						.save(cond, getID(Items.HUSK_SPAWN_EGG));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.DROWNED_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
 						.pattern("ADA").pattern("ABA").pattern("ACA")
@@ -702,7 +713,7 @@ public class RecipeGen {
 						.define('B', LCItems.CURSED_DROPLET.get())
 						.define('C', Items.EGG)
 						.define('D', Items.KELP)
-						.save(pvd, getID(Items.DROWNED_SPAWN_EGG));
+						.save(cond, getID(Items.DROWNED_SPAWN_EGG));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.ZOMBIFIED_PIGLIN_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
 						.pattern("ADA").pattern("ABA").pattern("ACA")
@@ -710,14 +721,14 @@ public class RecipeGen {
 						.define('B', LCItems.CURSED_DROPLET.get())
 						.define('C', Items.EGG)
 						.define('D', Items.GOLD_INGOT)
-						.save(pvd, getID(Items.ZOMBIFIED_PIGLIN_SPAWN_EGG));
+						.save(cond, getID(Items.ZOMBIFIED_PIGLIN_SPAWN_EGG));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.SKELETON_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
 						.pattern("AAA").pattern("ABA").pattern("ACA")
 						.define('A', Items.BONE)
 						.define('B', LCItems.CURSED_DROPLET.get())
 						.define('C', Items.EGG)
-						.save(pvd, getID(Items.SKELETON_SPAWN_EGG));
+						.save(cond, getID(Items.SKELETON_SPAWN_EGG));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.STRAY_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
 						.pattern("ADA").pattern("ABA").pattern("ACA")
@@ -725,7 +736,7 @@ public class RecipeGen {
 						.define('B', LCItems.CURSED_DROPLET.get())
 						.define('C', Items.EGG)
 						.define('D', Items.SNOWBALL)
-						.save(pvd, getID(Items.STRAY_SPAWN_EGG));
+						.save(cond, getID(Items.STRAY_SPAWN_EGG));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.WITHER_SKELETON_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
 						.pattern("ADA").pattern("ABA").pattern("ACA")
@@ -733,21 +744,21 @@ public class RecipeGen {
 						.define('B', LCItems.CURSED_DROPLET.get())
 						.define('C', Items.EGG)
 						.define('D', Items.WITHER_SKELETON_SKULL)
-						.save(pvd, getID(Items.WITHER_SKELETON_SPAWN_EGG));
+						.save(cond, getID(Items.WITHER_SKELETON_SPAWN_EGG));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.PHANTOM_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
 						.pattern("AAA").pattern("ABA").pattern("ACA")
 						.define('A', Items.PHANTOM_MEMBRANE)
 						.define('B', LCItems.CURSED_DROPLET.get())
 						.define('C', Items.EGG)
-						.save(pvd, getID(Items.PHANTOM_SPAWN_EGG));
+						.save(cond, getID(Items.PHANTOM_SPAWN_EGG));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.GHAST_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
 						.pattern("AAA").pattern("ABA").pattern("ACA")
 						.define('A', Items.GHAST_TEAR)
 						.define('B', LCItems.CURSED_DROPLET.get())
 						.define('C', Items.EGG)
-						.save(pvd, getID(Items.GHAST_SPAWN_EGG));
+						.save(cond, getID(Items.GHAST_SPAWN_EGG));
 			}
 
 			// passive
@@ -761,7 +772,7 @@ public class RecipeGen {
 						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.EGG)
-						.save(pvd, getID(Items.PIG_SPAWN_EGG));
+						.save(cond, getID(Items.PIG_SPAWN_EGG));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.COW_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
 						.pattern("AAA").pattern("LBL").pattern("ACA")
@@ -769,7 +780,7 @@ public class RecipeGen {
 						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.EGG)
-						.save(pvd, getID(Items.COW_SPAWN_EGG));
+						.save(cond, getID(Items.COW_SPAWN_EGG));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.MOOSHROOM_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
 						.pattern("AAA").pattern("LBL").pattern("ACA")
@@ -777,7 +788,7 @@ public class RecipeGen {
 						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.COW_SPAWN_EGG)
-						.save(pvd, getID(Items.MOOSHROOM_SPAWN_EGG));
+						.save(cond, getID(Items.MOOSHROOM_SPAWN_EGG));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.SHEEP_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
 						.pattern("AAA").pattern("LBL").pattern("ACA")
@@ -785,7 +796,7 @@ public class RecipeGen {
 						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.EGG)
-						.save(pvd, getID(Items.SHEEP_SPAWN_EGG));
+						.save(cond, getID(Items.SHEEP_SPAWN_EGG));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.CHICKEN_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
 						.pattern("AAA").pattern("LBL").pattern("ACA")
@@ -793,7 +804,7 @@ public class RecipeGen {
 						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.EGG)
-						.save(pvd, getID(Items.CHICKEN_SPAWN_EGG));
+						.save(cond, getID(Items.CHICKEN_SPAWN_EGG));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.RABBIT_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
 						.pattern("AAA").pattern("LBL").pattern("ACA")
@@ -801,7 +812,7 @@ public class RecipeGen {
 						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.EGG)
-						.save(pvd, getID(Items.RABBIT_SPAWN_EGG));
+						.save(cond, getID(Items.RABBIT_SPAWN_EGG));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.BEE_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
 						.pattern("AAA").pattern("LBL").pattern("ACA")
@@ -809,7 +820,7 @@ public class RecipeGen {
 						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.EGG)
-						.save(pvd, getID(Items.BEE_SPAWN_EGG));
+						.save(cond, getID(Items.BEE_SPAWN_EGG));
 
 				currentFolder = "eggs/aquatic_spawn/";
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.COD_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
@@ -818,7 +829,7 @@ public class RecipeGen {
 						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.EGG)
-						.save(pvd, getID(Items.COD_SPAWN_EGG));
+						.save(cond, getID(Items.COD_SPAWN_EGG));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.SALMON_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
 						.pattern("AAA").pattern("LBL").pattern("ACA")
@@ -826,7 +837,7 @@ public class RecipeGen {
 						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.EGG)
-						.save(pvd, getID(Items.SALMON_SPAWN_EGG));
+						.save(cond, getID(Items.SALMON_SPAWN_EGG));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.TROPICAL_FISH_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
 						.pattern("AAA").pattern("LBL").pattern("ACA")
@@ -834,7 +845,7 @@ public class RecipeGen {
 						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.EGG)
-						.save(pvd, getID(Items.TROPICAL_FISH_SPAWN_EGG));
+						.save(cond, getID(Items.TROPICAL_FISH_SPAWN_EGG));
 
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.SQUID_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
@@ -843,7 +854,7 @@ public class RecipeGen {
 						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.EGG)
-						.save(pvd, getID(Items.SQUID_SPAWN_EGG));
+						.save(cond, getID(Items.SQUID_SPAWN_EGG));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.GLOW_SQUID_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
 						.pattern("AAA").pattern("LBL").pattern("ACA")
@@ -851,7 +862,7 @@ public class RecipeGen {
 						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.EGG)
-						.save(pvd, getID(Items.GLOW_SQUID_SPAWN_EGG));
+						.save(cond, getID(Items.GLOW_SQUID_SPAWN_EGG));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.FROG_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
 						.pattern(" A ").pattern("LBL").pattern(" C ")
@@ -859,7 +870,7 @@ public class RecipeGen {
 						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.EGG)
-						.save(pvd, getID(Items.FROG_SPAWN_EGG));
+						.save(cond, getID(Items.FROG_SPAWN_EGG));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.TURTLE_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
 						.pattern("AAA").pattern("LBL").pattern("ACA")
@@ -867,7 +878,7 @@ public class RecipeGen {
 						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.EGG)
-						.save(pvd, getID(Items.TURTLE_SPAWN_EGG));
+						.save(cond, getID(Items.TURTLE_SPAWN_EGG));
 
 				currentFolder = "eggs/aquatic_alternate/";
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.COD_BUCKET, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
@@ -876,7 +887,7 @@ public class RecipeGen {
 						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.BUCKET)
-						.save(pvd, getID(Items.COD_BUCKET));
+						.save(cond, getID(Items.COD_BUCKET));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.SALMON_BUCKET, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
 						.pattern(" A ").pattern("LBL").pattern(" C ")
@@ -884,7 +895,7 @@ public class RecipeGen {
 						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.BUCKET)
-						.save(pvd, getID(Items.SALMON_BUCKET));
+						.save(cond, getID(Items.SALMON_BUCKET));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.TROPICAL_FISH_BUCKET, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
 						.pattern(" A ").pattern("LBL").pattern(" C ")
@@ -892,14 +903,14 @@ public class RecipeGen {
 						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.BUCKET)
-						.save(pvd, getID(Items.TROPICAL_FISH_BUCKET));
+						.save(cond, getID(Items.TROPICAL_FISH_BUCKET));
 
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.TURTLE_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
 						.pattern("LBL").pattern(" C ")
 						.define('B', LCItems.LIFE_ESSENCE.get())
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.TURTLE_EGG)
-						.save(pvd, getID(Items.TURTLE_SPAWN_EGG));
+						.save(cond, getID(Items.TURTLE_SPAWN_EGG));
 
 				// panda
 				// polar bear
@@ -1038,8 +1049,9 @@ public class RecipeGen {
 		}
 		currentFolder = "generated_tools/" + mat.name().toLowerCase(Locale.ROOT) + "/upgrade/";
 		Item block = mat.getBlock().asItem();
+		var cond = ConditionalRecipeWrapper.of(pvd, BooleanValueCondition.of(LCConfig.COMMON_PATH, LCConfig.COMMON.enableToolRecraftRecipe, true));
 		for (int i = 0; i < 9; i++) {
-			smithing(pvd, TOOLS[i], block, arr[i].get());
+			smithing(pvd, TOOLS[i], block, arr[i].get(), cond);
 		}
 
 	}
@@ -1049,7 +1061,11 @@ public class RecipeGen {
 	}
 
 	public static void smithing(RegistrateRecipeProvider pvd, TagKey<Item> in, Item mat, Item out) {
-		unlock(pvd, SmithingTransformRecipeBuilder.smithing(TEMPLATE_PLACEHOLDER, Ingredient.of(in), Ingredient.of(mat), RecipeCategory.MISC, out)::unlocks, mat).save(pvd, getID(out));
+		smithing(pvd, in, mat, out, pvd);
+	}
+
+	public static void smithing(RegistrateRecipeProvider pvd, TagKey<Item> in, Item mat, Item out, Consumer<FinishedRecipe> cons) {
+		unlock(pvd, SmithingTransformRecipeBuilder.smithing(TEMPLATE_PLACEHOLDER, Ingredient.of(in), Ingredient.of(mat), RecipeCategory.MISC, out)::unlocks, mat).save(cons, getID(out));
 	}
 
 	public static void smithing(RegistrateRecipeProvider pvd, Item in, Item mat, Item out) {

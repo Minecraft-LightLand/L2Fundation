@@ -10,7 +10,14 @@ public class LCConfig {
 
 	public static class Client {
 
+		public final ForgeConfigSpec.BooleanValue renderEnchOverlay;
+		public final ForgeConfigSpec.IntValue enchOverlayZVal;
+
 		Client(ForgeConfigSpec.Builder builder) {
+			renderEnchOverlay = builder.comment("Render enchantment character overlay")
+					.define("renderEnchOverlay", true);
+			enchOverlayZVal = builder.comment("The height of enchantment character overlay")
+					.defineInRange("enchOverlayZVal", 250, -1000000, 1000000);
 		}
 
 	}
@@ -60,10 +67,19 @@ public class LCConfig {
 		public final ForgeConfigSpec.BooleanValue delayDiggingRequireEnder;
 
 		public final ForgeConfigSpec.BooleanValue useArsNouveauForEnchantmentRecipe;
+		public final ForgeConfigSpec.BooleanValue enableVanillaItemRecipe;
+		public final ForgeConfigSpec.BooleanValue enableToolRecraftRecipe;
+		public final ForgeConfigSpec.BooleanValue enableSpawnEggRecipe;
 
 		Common(ForgeConfigSpec.Builder builder) {
 			useArsNouveauForEnchantmentRecipe = builder.comment("When Ars Nouveau is present, use apparatus recipe for enchantments")
 					.define("useArsNouveauForEnchantmentRecipe", true);
+			enableVanillaItemRecipe = builder.comment("Allow vanilla items such as elytra and ancient debris to be crafted with L2Complements materials")
+					.define("enableVanillaItemRecipe", true);
+			enableToolRecraftRecipe = builder.comment("Allow tools to be upgraded from tools with same typ but different materials")
+					.define("enableToolRecraftRecipe", true);
+			enableSpawnEggRecipe = builder.comment("Allow spawn eggs to be crafted with L2Complements materials")
+					.define("enableSpawnEggRecipe", true);
 			builder.push("materials");
 			windSpeed = builder.comment("Requirement for obtaining Captured Wind. Unit: Block per Tick")
 					.defineInRange("windSpeed", 10, 0.1, 100);

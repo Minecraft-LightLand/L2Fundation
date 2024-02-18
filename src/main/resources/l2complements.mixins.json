@@ -17,6 +17,7 @@
   ],
   "client": [
 	"AnvilScreenMixin",
+	"ElytraLayerMixin",
 	"FogRendererMixin",
 	"HumanoidArmorLayerMixin",
 	"ItemInHandLayerMixin",

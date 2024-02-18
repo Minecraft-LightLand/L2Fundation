@@ -1,5 +1,15 @@
 {
   "parent": "minecraft:recipes/root",
+  "conditions": [
+    {
+      "type": "l2library:boolean_config",
+      "expected": true,
+      "line": [
+        "enableToolRecraftRecipe"
+      ],
+      "path": "l2_configs/l2complements-common.toml"
+    }
+  ],
   "criteria": {
     "has_sculkium_block": {
       "conditions": {

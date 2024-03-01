@@ -1,5 +1,6 @@
 package dev.xkmc.l2complements.events;
 
+import dev.xkmc.l2complements.content.item.misc.WarpStone;
 import dev.xkmc.l2complements.content.recipe.BurntRecipe;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
@@ -17,9 +18,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ShulkerBullet;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.event.GrindstoneEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -90,6 +91,18 @@ public class MaterialEventHandler {
 			bullet.hurt(event.getLevel().damageSources().playerAttack(event.getEntity()), 1);
 			event.getItemStack().shrink(1);
 			event.getEntity().getInventory().placeItemBackInInventory(LCItems.CAPTURED_BULLET.asStack());
+		}
+	}
+
+	@SubscribeEvent
+	public static void onGrind(GrindstoneEvent.OnPlaceItem event) {
+		if (event.getTopItem().getItem() instanceof WarpStone) {
+			ItemStack copy = event.getTopItem().copy();
+			if (WarpStone.getPos(copy).isPresent()) {
+				copy.getOrCreateTag().remove("pos");
+				event.setOutput(copy);
+				event.setXp(0);
+			}
 		}
 	}
 

@@ -12,8 +12,11 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(ElytraLayer.class)
 public class ElytraLayerMixin {
 
-	@WrapOperation(at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/entity/layers/ElytraLayer;shouldRender(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/LivingEntity;)Z"), method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/LivingEntity;FFFFFF)V")
-	public boolean l2complements$shouldRender$hideTransparent(ElytraLayer instance, ItemStack stack, LivingEntity entity, Operation<Boolean> original) {
+	@WrapOperation(at = @At(value = "INVOKE", remap = false, target =
+			"Lnet/minecraft/client/renderer/entity/layers/ElytraLayer;shouldRender(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/LivingEntity;)Z"),
+			method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/LivingEntity;FFFFFF)V"
+	)
+	public boolean l2complements$shouldRender$hideTransparent(ElytraLayer<?, ?> instance, ItemStack stack, LivingEntity entity, Operation<Boolean> original) {
 		return original.call(instance, stack, entity) && SpecialEquipmentEvents.isVisible(entity, stack);
 	}
 

@@ -4,6 +4,7 @@ import com.mojang.datafixers.util.Pair;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2library.util.nbt.NBTObj;
 import dev.xkmc.l2library.util.tools.TeleportTool;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -100,10 +101,13 @@ public class WarpStone extends Item {
 			var cpos = pos.get();
 			var clevel = Component.translatable(cpos.getFirst().location().toString());
 			var bpos = cpos.getSecond();
-			list.add(LangData.IDS.WARP_POS.get(clevel, Math.round(bpos.x), Math.round(bpos.y), Math.round(bpos.x)));
-			list.add(LangData.IDS.WARP_TELEPORT.get(dur));
+			list.add(LangData.IDS.WARP_POS
+					.get(clevel, Math.round(bpos.x), Math.round(bpos.y), Math.round(bpos.x))
+					.withStyle(ChatFormatting.GRAY));
+			list.add(LangData.IDS.WARP_TELEPORT.get(dur).withStyle(ChatFormatting.GRAY));
+			list.add(LangData.IDS.WARP_GRIND.get().withStyle(ChatFormatting.GRAY));
 		} else {
-			list.add(LangData.IDS.WARP_RECORD.get(dur));
+			list.add(LangData.IDS.WARP_RECORD.get(dur).withStyle(ChatFormatting.GRAY));
 		}
 	}
 

@@ -1,11 +1,14 @@
 package dev.xkmc.l2complements.content.item.misc;
 
 import dev.xkmc.l2complements.content.entity.fireball.BaseFireball;
+import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockSource;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -15,10 +18,13 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 public class FireChargeItem<T extends BaseFireball<T>> extends TooltipItem {
@@ -64,14 +70,12 @@ public class FireChargeItem<T extends BaseFireball<T>> extends TooltipItem {
 
 	private final PlayerFire<T> playerFire;
 	private final BlockFire<T> blockFire;
-	private final Supplier<MutableComponent> tooltip;
 
 	public FireChargeItem(Properties pProperties, PlayerFire<T> playerFire, BlockFire<T> blockFire,
 						  Supplier<MutableComponent> tooltip) {
 		super(pProperties, tooltip);
 		this.playerFire = playerFire;
 		this.blockFire = blockFire;
-		this.tooltip = tooltip;
 	}
 
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
@@ -95,4 +99,10 @@ public class FireChargeItem<T extends BaseFireball<T>> extends TooltipItem {
 		return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
 	}
 
+	@Override
+	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+		list.add(LangData.IDS.CHARGE_THROW.get().withStyle(ChatFormatting.GRAY));
+		super.appendHoverText(stack, level, list, flag);
+
+	}
 }

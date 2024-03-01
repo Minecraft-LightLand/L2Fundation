@@ -42,11 +42,13 @@ public class LangData {
 		FLOAT("tooltip.misc.float", "This item will float in the air.", 0),
 
 		WARP_RECORD("tooltip.misc.warp_record", "Right click to record position. After that, right click to teleport. Durability: %s", 1),
-		WARP_TELEPORT("tooltip.misc.warp_teleport", "Right click to teleport. Durability: %s", 1),
+		WARP_TELEPORT("tooltip.misc.warp_teleport", "Right click in inventory or UI to teleport. Durability: %s", 1),
 		WARP_POS("tooltip.misc.warp_pos", "Target: %s, (%s,%s,%s)", 4),
+		WARP_GRIND("tooltip.misc.warp_grind", "Use grindstone to remove record", 0),
 		TOTEM_DREAM("tooltip.misc.totem_dream", "Return players back to home when triggers, and becomes a fragile warp stone to go back. Valid against void damage. Also heal player to full health.", 0),
 		TOTEM_SEA("tooltip.misc.totem_sea", "It's stackable, but can only be triggered when in water or rain.", 0),
 
+		CHARGE_THROW("tooltip.misc.charge_throw","Right click to throw at target",0),
 		EFFECT_CHARGE("tooltip.misc.effect_charge", "Apply on Hit: %s", 1),
 		EXPLOSION_CHARGE("tooltip.misc.explosion_charge", "Create explosion of level %s on Hit", 1),
 		ARMOR_IMMUNE("tooltip.tool.immune", "Immune to: ", 0),

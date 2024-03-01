@@ -3,6 +3,7 @@ package dev.xkmc.l2complements.content.item.misc;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2library.util.tools.TeleportTool;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -42,7 +43,7 @@ public class HomeTotem extends Item implements ILCTotem {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		list.add(LangData.IDS.TOTEM_DREAM.get());
+		list.add(LangData.IDS.TOTEM_DREAM.get().withStyle(ChatFormatting.GRAY));
 	}
 
 }

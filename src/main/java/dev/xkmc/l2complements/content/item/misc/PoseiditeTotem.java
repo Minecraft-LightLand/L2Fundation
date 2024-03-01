@@ -1,6 +1,7 @@
 package dev.xkmc.l2complements.content.item.misc;
 
 import dev.xkmc.l2complements.init.data.LangData;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
@@ -26,7 +27,7 @@ public class PoseiditeTotem extends Item implements ILCTotem {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		list.add(LangData.IDS.TOTEM_SEA.get());
+		list.add(LangData.IDS.TOTEM_SEA.get().withStyle(ChatFormatting.GRAY));
 	}
 
 }

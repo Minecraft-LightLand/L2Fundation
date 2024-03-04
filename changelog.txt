@@ -1,5 +1,7 @@
 2.4.32
 - Allow grindstone to remove recorded position on warp stone
+- Make special items immune to fire and lightning damage
+- Add config for cleanse effect cleasing targets
 
 2.4.31
 - Fix snow walker enchantment

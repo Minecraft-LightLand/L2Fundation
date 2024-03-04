@@ -18,6 +18,7 @@ import dev.xkmc.l2library.base.effects.ForceAddEffectEvent;
 import dev.xkmc.l2library.init.events.GeneralEventHandler;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.OwnableEntity;
@@ -146,6 +147,9 @@ public class MagicEventHandler {
 			return true;
 		if (EffectUtil.getReason() == EffectUtil.AddReason.SKILL)
 			return true;
+		int pred = LCConfig.COMMON.cleansePredicate.get();
+		if (ins.getEffect().isBeneficial() && pred > 0) return true;
+		if (ins.getEffect().getCategory() == MobEffectCategory.NEUTRAL && pred > 1) return true;
 		var tag = ForgeRegistries.MOB_EFFECTS.tags();
 		if (tag != null && tag.getTag(TagGen.SKILL_EFFECT).contains(ins.getEffect())) {
 			return true;
@@ -177,7 +181,6 @@ public class MagicEventHandler {
 		}
 	}
 
-
 	@SubscribeEvent(priority = EventPriority.LOW)
 	public static void onBlockBreak(BlockEvent.BreakEvent event) {
 		if (!(event.getPlayer() instanceof ServerPlayer player)) return;
@@ -187,6 +190,35 @@ public class MagicEventHandler {
 				ench.onBlockBreak(player, event.getPos(), stack, ent.getValue());
 			}
 		}
+	}
+
+	private static List<BooleanSupplier> TASKS = new ArrayList<>();
+
+	@Deprecated(forRemoval = true)
+	public static synchronized void schedule(Runnable runnable) {
+		TASKS.add(() -> {
+			runnable.run();
+			return true;
+		});
+	}
+
+	@Deprecated(forRemoval = true)
+	public static synchronized void schedulePersistent(BooleanSupplier runnable) {
+		TASKS.add(runnable);
+	}
+
+	private static synchronized void execute() {
+		if (TASKS.isEmpty()) return;
+		var temp = TASKS;
+		TASKS = new ArrayList<>();
+		temp.removeIf(BooleanSupplier::getAsBoolean);
+		temp.addAll(TASKS);
+		TASKS = temp;
+	}
+
+	@SubscribeEvent
+	public static void onTick(TickEvent.ServerTickEvent event) {
+		execute();
 	}
 
 }

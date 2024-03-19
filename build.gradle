@@ -183,21 +183,26 @@ dependencies {
     implementation fg.deobf("dev.xkmc.l2library:l2library:${l2library_version}-slim")
     implementation fg.deobf("dev.xkmc.l2serial:l2serial:1.2.2")
     implementation fg.deobf("dev.xkmc.l2screentracker:l2screentracker:0.1.4")
-    implementation fg.deobf("dev.xkmc.l2itemselector:l2itemselector:0.1.7")
-    implementation fg.deobf("dev.xkmc.l2tabs:l2tabs:0.2.6")
+    implementation fg.deobf("dev.xkmc.l2itemselector:l2itemselector:0.1.8")
+    implementation fg.deobf("dev.xkmc.l2tabs:l2tabs:0.3.1")
 
-    implementation fg.deobf(jarJar("dev.xkmc.l2damagetracker:l2damagetracker:0.3.0")) {
+    implementation fg.deobf(jarJar("dev.xkmc.l2damagetracker:l2damagetracker:0.3.7")) {
         transitive = false
-        jarJar.ranged(it, "[0.3.0,)")
+        jarJar.ranged(it, "[0.3.7,)")
     }
 
-    runtimeOnly fg.deobf("dev.xkmc.pandora:pandora:0.1.0-slim")
+    runtimeOnly fg.deobf("dev.xkmc.pandora:pandora:0.1.9-slim")
     runtimeOnly fg.deobf("dev.xkmc.l2modularblock:l2modularblock:1.1.0")
-    runtimeOnly fg.deobf("dev.xkmc.l2backpack:l2backpack:2.4.5-slim")
-    runtimeOnly fg.deobf("dev.xkmc.modulargolems:modulargolems:2.4.19-slim")
+    runtimeOnly fg.deobf("dev.xkmc.l2backpack:l2backpack:2.4.19-slim")
+    runtimeOnly fg.deobf("dev.xkmc.modulargolems:modulargolems:2.4.30-slim")
     runtimeOnly fg.deobf("dev.xkmc.l2archery:l2archery:2.4.13")
     runtimeOnly fg.deobf("dev.xkmc.l2weaponry:l2weaponry:2.4.25")
-    runtimeOnly fg.deobf("dev.xkmc.l2hostility:l2hostility:2.4.13-pre2-slim")
+    runtimeOnly fg.deobf("dev.xkmc.l2hostility:l2hostility:2.4.20-slim")
+    runtimeOnly fg.deobf("dev.xkmc.curseofpandora:curseofpandora:2.4.13-slim")
+
+    runtimeOnly fg.deobf("com.xiaoyue.celestial_core:celestial_core:1.3.1-slim")
+    runtimeOnly fg.deobf("com.xiaoyue.celestial_artifacts:celestial_artifacts:1.2.4-slim")
+    runtimeOnly fg.deobf("com.xiaoyue.celestial_enchantments:celestial_enchantments:1.2.1")
 
     implementation fg.deobf("mezz.jei:jei-${jei_minecraft_version}:${jei_version}")
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
@@ -210,6 +215,8 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:bookshelf-228525:4581675")
     runtimeOnly fg.deobf("curse.maven:enchantment-descriptions-250419:4587429")
     runtimeOnly fg.deobf("curse.maven:patchouli-306770:4636277")
+    runtimeOnly fg.deobf("curse.maven:lendercataclysm-551586:5058433")
+    runtimeOnly fg.deobf("curse.maven:citadel-331936:4848887")
 
 
     runtimeOnly fg.deobf("curse.maven:geckolib-388172:4711657")
@@ -219,10 +226,4 @@ dependencies {
     implementation fg.deobf("curse.maven:ars-nouveau-401955:4751471")
 
     runtimeOnly fg.deobf("curse.maven:just-enough-effect-descriptions-jeed-532286:4599236")
-
-    // TODO debug only
-    runtimeOnly fg.deobf("curse.maven:mysterious-mountain-lib-368098:4589606")
-    runtimeOnly fg.deobf("curse.maven:umapyoi-776121:4589608")
-
-    runtimeOnly fg.deobf("zip.local:celestial_artifacts:1.0-slim")
 }

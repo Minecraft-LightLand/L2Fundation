@@ -1,10 +1,14 @@
+2.4.34
+- Fix safeguard
+- Switch to new totem system
+
 2.4.33
 - Use new DamageTracker lib
 
 2.4.32
 - Allow grindstone to remove recorded position on warp stone
 - Make special items immune to fire and lightning damage
-- Add config for cleanse effect cleasing targets
+- Add config for cleanse effect cleansing targets
 
 2.4.31
 - Fix snow walker enchantment

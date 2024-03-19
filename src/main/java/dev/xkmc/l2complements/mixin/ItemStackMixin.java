@@ -77,7 +77,7 @@ public abstract class ItemStackMixin implements IForgeItemStack {
 					if (current == time) {
 						val = old;
 					} else if (max > old + 1) {
-						val = max - old - 1;
+						val = max - 1;
 						self.getOrCreateTag().putLong(key, current);
 					}
 				} else if (max == val + 1) {

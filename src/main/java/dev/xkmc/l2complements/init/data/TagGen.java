@@ -65,7 +65,6 @@ public class TagGen {
 
 	public static void onItemTagGen(RegistrateItemTagsProvider pvd) {
 		pvd.addTag(SCULK_MATS).add(LCMats.SCULKIUM.getIngot());
-		pvd.addTag(TOTEM).add(LCItems.TOTEM_OF_DREAM.get(), LCItems.TOTEM_OF_THE_SEA.get());
 		pvd.addTag(DELICATE_BONE).add(Items.SCULK_CATALYST, Items.SCULK_SHRIEKER);
 		TFCompat.onItemTagGen(pvd);
 		pvd.addTag(L2STTagGen.QUICK_ACCESS_VANILLA).add(LCBlocks.ETERNAL_ANVIL.asItem());

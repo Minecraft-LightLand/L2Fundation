@@ -1,4 +1,4 @@
-// 1.20.1	2024-03-19T11:22:36.439375	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
+// 1.20.1	2024-04-14T10:48:59.204581	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (enchantments), Tags (mob_effects), Tags (traits), Patchouli Provider]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
@@ -800,6 +800,7 @@ c36b85b4199e7dd90e1ee5ff91360e751623b2d3 data/l2complements/recipes/vanilla/upgr
 077d8d1f7d7494ce8a41d27583d4ed19035b27d6 data/l2complements/recipes/vanilla/upgrade/iron_sword.json
 76c776fed1a51a9fab0264a084fef21bc8cc0f6b data/l2complements/tags/blocks/as_leaf.json
 bfdfab925d3aae515709e426b963be6ae6fc0d4b data/l2complements/tags/blocks/requires_sculk_tool.json
+d5dce21023a73335d73c8428192318a4b58f6395 data/l2complements/tags/enchantment/chain_digging.json
 d0d10d015074535d1001cbc559ccc2e5681a8fa2 data/l2complements/tags/items/delicate_bone.json
 9f1119c6fdd4c13eac16f64322754cb3c4c99bf1 data/l2complements/tags/items/l2c_legendary.json
 b307f7df6c3f4814c759c845fbe07cf91ee6db85 data/l2complements/tags/mob_effect/skill_effect.json
@@ -814,6 +815,7 @@ e37ba910b8c93bc8d4baf7b90643a6b16e56e0bb data/minecraft/tags/items/anvil.json
 f7ab431f322b795b1fc9fbb914eb6aceca6aeb50 data/minecraft/tags/items/pickaxes.json
 d19ab7ba64367c164ddcf3701466affbdb2a0696 data/minecraft/tags/items/shovels.json
 ffafe5187c5335776931d711661d66d6648bd197 data/minecraft/tags/items/swords.json
+5e49934bebf32310486d03d5092a61b18f44cdd5 data/minecraft/tags/items/trim_materials.json
 8dfa95c4fbc2acb115714fc7f071fb14b931b5e5 data/minecraft/tags/items/trimmable_armor.json
 b376083721f28306ed48a8752be7f13fd2bb0d3c data/modulargolems/tags/items/sculk_materials.json
 8c79cc8b251cc60f27a9a722af6f1b61073261ec data/twilightforest/tags/items/banned_uncraftables.json

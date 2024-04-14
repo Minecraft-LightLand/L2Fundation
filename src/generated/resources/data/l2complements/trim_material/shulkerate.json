@@ -1,0 +1,9 @@
+{
+  "asset_name": "shulkerate",
+  "description": {
+    "color": "light_purple",
+    "translate": "item.l2complements.shulkerate_ingot"
+  },
+  "ingredient": "l2complements:shulkerate_ingot",
+  "item_model_index": 0.29430002
+}

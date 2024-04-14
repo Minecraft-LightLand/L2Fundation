@@ -1,6 +1,12 @@
+2.4.35
+- Make items not destroyable by explosion
+- Add trims TODO
+- Add Digger enchants tag TODO
+
 2.4.34
 - Fix safeguard
 - Switch to new totem system
+- Add command-based player damage profiling
 
 2.4.33
 - Use new DamageTracker lib

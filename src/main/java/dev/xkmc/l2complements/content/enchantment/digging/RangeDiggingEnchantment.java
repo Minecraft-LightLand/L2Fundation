@@ -1,10 +1,10 @@
 package dev.xkmc.l2complements.content.enchantment.digging;
 
 import dev.xkmc.l2complements.content.enchantment.core.UnobtainableEnchantment;
-import dev.xkmc.l2complements.events.MagicEventHandler;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.TagGen;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2library.init.events.GeneralEventHandler;
 import net.minecraft.ChatFormatting;
@@ -14,6 +14,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
@@ -21,6 +22,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeMod;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.HashSet;
 import java.util.List;
@@ -111,6 +113,11 @@ public class RangeDiggingEnchantment extends UnobtainableEnchantment {
 				GeneralEventHandler.schedulePersistent(new DelayedBlockBreaker(player, blocks)::tick);
 			}
 		});
+	}
+
+	@Override
+	protected boolean checkCompatibility(Enchantment e) {
+		return !ForgeRegistries.ENCHANTMENTS.tags().getTag(TagGen.DIGGER_ENCH).contains(e);
 	}
 
 	@Override

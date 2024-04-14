@@ -1,0 +1,11 @@
+{
+  "values": [
+    "l2complements:cubic_digging",
+    "l2complements:plane_digging",
+    "l2complements:drill_digging",
+    "l2complements:vien_mining",
+    "l2complements:tree_chopping",
+    "l2complements:cubic_eater",
+    "l2complements:plane_eater"
+  ]
+}

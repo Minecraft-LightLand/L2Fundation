@@ -28,3 +28,17 @@ description='''
     versionRange="[2.4.23,)"
     ordering="AFTER"
     side="BOTH"
+
+[[dependencies.l2complements]]
+    modId="l2hostility"
+    mandatory=false
+    versionRange="[2.4.20,)"
+    ordering="BEFORE"
+    side="BOTH"
+
+[[dependencies.l2complements]]
+    modId="curseofpandora"
+    mandatory=false
+    versionRange="[2.4.13,)"
+    ordering="BEFORE"
+    side="BOTH"

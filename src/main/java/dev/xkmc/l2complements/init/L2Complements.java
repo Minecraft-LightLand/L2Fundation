@@ -20,6 +20,7 @@ import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.data.event.GatherDataEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -61,6 +62,7 @@ public class L2Complements {
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, TagGen::onItemTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, TagGen::onEntityTagGen);
 		REGISTRATE.addDataGenerator(TagGen.EFF_TAGS, TagGen::onEffectTagGen);
+		REGISTRATE.addDataGenerator(TagGen.ENCH_TAGS, TagGen::onEnchTagGen);
 	}
 
 	@SubscribeEvent
@@ -83,14 +85,16 @@ public class L2Complements {
 		});
 	}
 
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void gatherData(GatherDataEvent event) {
-		boolean gen = event.includeServer();
-		PackOutput output = event.getGenerator().getPackOutput();
+		boolean run = event.includeServer();
+		var gen = event.getGenerator();
+		PackOutput output = gen.getPackOutput();
 		var pvd = event.getLookupProvider();
 		var helper = event.getExistingFileHelper();
-		new DamageTypeGen(output, pvd, helper).generate(gen, event.getGenerator());
-		event.getGenerator().addProvider(gen, new LCConfigGen(event.getGenerator()));
+		new DamageTypeGen(output, pvd, helper).generate(run, gen);
+		gen.addProvider(run, new LCConfigGen(gen));
+		gen.addProvider(run, new LCDatapackRegistriesGen(output, pvd));
 	}
 
 }

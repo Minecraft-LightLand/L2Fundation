@@ -11,6 +11,7 @@ import dev.xkmc.l2damagetracker.contents.materials.generic.ExtraArmorConfig;
 import dev.xkmc.l2damagetracker.contents.materials.generic.ExtraToolConfig;
 import dev.xkmc.l2damagetracker.contents.materials.vanilla.GenItemVanillaType;
 import dev.xkmc.l2damagetracker.contents.materials.vanilla.ToolStats;
+import net.minecraft.ChatFormatting;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.ArmorMaterial;
@@ -28,30 +29,35 @@ public enum LCMats implements IMatVanillaType {
 			new ToolStats(1000, 12, 7, 1, 22),
 			new ArmorStats(15, new int[]{2, 5, 6, 2}, 0, 0, 25),
 			GenItemVanillaType.TOOL_GEN, GenItemVanillaType.ARMOR_GEN,
-			new TotemicTool().setStick(e -> Items.EMERALD, true), new TotemicArmor()),
+			new TotemicTool().setStick(e -> Items.EMERALD, true), new TotemicArmor(),
+			ChatFormatting.YELLOW),
 	POSEIDITE("poseidite", 4, SoundEvents.ARMOR_EQUIP_IRON,
 			new ToolStats(1500, 8, 7, 1, 14),
 			new ArmorStats(33, new int[]{3, 6, 8, 3}, 2, 0, 9),
 			GenItemVanillaType.TOOL_GEN, GenItemVanillaType.ARMOR_GEN,
-			new PoseiditeTool().setStick(e -> Items.PRISMARINE_SHARD, false), new PoseiditeArmor()),
+			new PoseiditeTool().setStick(e -> Items.PRISMARINE_SHARD, false), new PoseiditeArmor(),
+			ChatFormatting.AQUA),
 	SHULKERATE("shulkerate", 4, SoundEvents.ARMOR_EQUIP_IRON,
 			new ToolStats(4000, 8, 7, 1, 14),
 			new ArmorStats(400, new int[]{3, 6, 8, 3}, 2, 0, 9),
 			GenItemVanillaType.TOOL_GEN, GenItemVanillaType.ARMOR_GEN,
-			new ShulkerateTool().setStick(e -> Items.IRON_INGOT, false), new ShulkerateArmor()),
+			new ShulkerateTool().setStick(e -> Items.IRON_INGOT, false), new ShulkerateArmor(),
+			ChatFormatting.LIGHT_PURPLE),
 	SCULKIUM("sculkium", 5, SoundEvents.ARMOR_EQUIP_IRON,
 			new ToolStats(2000, 8, 9, 1.2f, 15),
 			new ArmorStats(100, new int[]{5, 9, 10, 6}, 4, 1, 15),
 			GenItemVanillaType.TOOL_GEN, GenItemVanillaType.ARMOR_GEN,
 			new SculkiumTool().setStick(e -> Items.NETHERITE_INGOT, false)
-					.setTier(e -> TagGen.REQUIRES_SCULK_TOOL), new SculkiumArmor()),
+					.setTier(e -> TagGen.REQUIRES_SCULK_TOOL), new SculkiumArmor(),
+			ChatFormatting.DARK_AQUA),
 	ETERNIUM("eternium", 5, SoundEvents.ARMOR_EQUIP_IRON,
 			new ToolStats(9999, 8, 7, 1, 1),
 			new ArmorStats(9999, new int[]{3, 6, 8, 3}, 10, 1, 1),
 			GenItemVanillaType.TOOL_GEN, GenItemVanillaType.ARMOR_GEN,
 			new ExtraToolConfig().damageChance(0).repairChance(1)
 					.setStick(e -> LCItems.EXPLOSION_SHARD.get(), false),
-			new ExtraArmorConfig().damageChance(0).repairChance(1));
+			new ExtraArmorConfig().damageChance(0).repairChance(1),
+			ChatFormatting.BLUE);
 
 	final String id;
 	final Tier tier;
@@ -61,11 +67,13 @@ public enum LCMats implements IMatVanillaType {
 	final IToolStats tool_stats;
 	final ExtraToolConfig tool_extra;
 	final ExtraArmorConfig armor_extra;
+	public final ChatFormatting trim_text_color;
 
 	LCMats(String name, int level,
 		   SoundEvent equip_sound, IToolStats tool, ArmorStats armor,
 		   ToolConfig tool_config, ArmorConfig armor_config,
-		   ExtraToolConfig tool_extra, ExtraArmorConfig armor_extra) {
+		   ExtraToolConfig tool_extra, ExtraArmorConfig armor_extra, ChatFormatting trimTextColor) {
+		trim_text_color = trimTextColor;
 		Supplier<Ingredient> ing = () -> Ingredient.of(LCItems.MAT_INGOTS[ordinal()].get());
 		this.id = name;
 		this.tier = new ForgeTier(level, tool.durability(), tool.speed(), 0, tool.enchant(),

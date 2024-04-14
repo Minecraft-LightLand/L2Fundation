@@ -1,0 +1,9 @@
+{
+  "asset_name": "sculkium",
+  "description": {
+    "color": "dark_aqua",
+    "translate": "item.l2complements.sculkium_ingot"
+  },
+  "ingredient": "l2complements:sculkium_ingot",
+  "item_model_index": 0.3943
+}

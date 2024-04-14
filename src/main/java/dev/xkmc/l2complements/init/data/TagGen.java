@@ -7,8 +7,8 @@ import dev.xkmc.l2complements.compat.TFCompat;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.materials.LCMats;
 import dev.xkmc.l2complements.init.registrate.LCBlocks;
+import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2complements.init.registrate.LCEntities;
-import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2screentracker.init.L2STTagGen;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -22,12 +22,23 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.Arrays;
 
 public class TagGen {
 
+	public static final ProviderType<RegistrateTagsProvider.IntrinsicImpl<Enchantment>> ENCH_TAGS =
+			ProviderType.register("tags/enchantment",
+					type -> (p, e) -> new RegistrateTagsProvider.IntrinsicImpl<>(p, type, "enchantments",
+							e.getGenerator().getPackOutput(), Registries.ENCHANTMENT, e.getLookupProvider(),
+							ench -> ResourceKey.create(ForgeRegistries.ENCHANTMENTS.getRegistryKey(),
+									ForgeRegistries.ENCHANTMENTS.getKey(ench)),
+							e.getExistingFileHelper()));
 
 	public static final ProviderType<RegistrateTagsProvider.IntrinsicImpl<MobEffect>> EFF_TAGS =
 			ProviderType.register("tags/mob_effect",
@@ -37,7 +48,6 @@ public class TagGen {
 									ForgeRegistries.MOB_EFFECTS.getKey(ench)),
 							e.getExistingFileHelper()));
 
-
 	public static final TagKey<Block> REQUIRES_SCULK_TOOL = BlockTags.create(new ResourceLocation(L2Complements.MODID, "requires_sculk_tool"));
 	public static final TagKey<Block> AS_LEAF = BlockTags.create(new ResourceLocation(L2Complements.MODID, "as_leaf"));
 	public static final TagKey<Item> SCULK_MATS = ItemTags.create(new ResourceLocation("modulargolems", "sculk_materials"));
@@ -45,6 +55,7 @@ public class TagGen {
 	public static final TagKey<Item> SPECIAL_ITEM = ItemTags.create(new ResourceLocation(L2Complements.MODID, "l2c_legendary"));
 	public static final TagKey<Item> DELICATE_BONE = ItemTags.create(new ResourceLocation(L2Complements.MODID, "delicate_bone"));
 	public static final TagKey<MobEffect> SKILL_EFFECT = TagKey.create(ForgeRegistries.MOB_EFFECTS.getRegistryKey(), new ResourceLocation(L2Complements.MODID, "skill_effect"));
+	public static final TagKey<Enchantment> DIGGER_ENCH = TagKey.create(ForgeRegistries.ENCHANTMENTS.getRegistryKey(), new ResourceLocation(L2Complements.MODID, "chain_digging"));
 
 	public static void onBlockTagGen(RegistrateTagsProvider.IntrinsicImpl<Block> pvd) {
 		pvd.addTag(REQUIRES_SCULK_TOOL).add(Blocks.REINFORCED_DEEPSLATE);
@@ -63,11 +74,23 @@ public class TagGen {
 		);
 	}
 
+	public static void onEnchTagGen(RegistrateTagsProvider.IntrinsicImpl<Enchantment> pvd) {
+		pvd.addTag(DIGGER_ENCH).add(
+				LCEnchantments.CUBIC.get(),
+				LCEnchantments.PLANE.get(),
+				LCEnchantments.DRILL.get(),
+				LCEnchantments.VIEN.get(),
+				LCEnchantments.TREE.get(),
+				LCEnchantments.CHUNK_CUBIC.get(),
+				LCEnchantments.CHUNK_PLANE.get());
+	}
+
 	public static void onItemTagGen(RegistrateItemTagsProvider pvd) {
 		pvd.addTag(SCULK_MATS).add(LCMats.SCULKIUM.getIngot());
 		pvd.addTag(DELICATE_BONE).add(Items.SCULK_CATALYST, Items.SCULK_SHRIEKER);
 		TFCompat.onItemTagGen(pvd);
 		pvd.addTag(L2STTagGen.QUICK_ACCESS_VANILLA).add(LCBlocks.ETERNAL_ANVIL.asItem());
+		pvd.addTag(ItemTags.TRIM_MATERIALS).add(Arrays.stream(LCMats.values()).map(LCMats::getIngot).toArray(Item[]::new));
 	}
 
 	public static void onEntityTagGen(RegistrateTagsProvider.IntrinsicImpl<EntityType<?>> pvd) {

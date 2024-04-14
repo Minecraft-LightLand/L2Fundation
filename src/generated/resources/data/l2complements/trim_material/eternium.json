@@ -1,0 +1,9 @@
+{
+  "asset_name": "eternium",
+  "description": {
+    "color": "blue",
+    "translate": "item.l2complements.eternium_ingot"
+  },
+  "ingredient": "l2complements:eternium_ingot",
+  "item_model_index": 0.4943
+}

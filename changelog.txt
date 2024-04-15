@@ -1,7 +1,7 @@
 2.4.35
 - Make items not destroyable by explosion
-- Add trims TODO
-- Add Digger enchants tag TODO
+- Add trims (only on armor models. Not on items)
+- Add Digger enchants tag
 
 2.4.34
 - Fix safeguard

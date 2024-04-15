@@ -95,6 +95,7 @@ public class L2Complements {
 		new DamageTypeGen(output, pvd, helper).generate(run, gen);
 		gen.addProvider(run, new LCConfigGen(gen));
 		gen.addProvider(run, new LCDatapackRegistriesGen(output, pvd));
+		gen.addProvider(run, new LCSpriteSourceProvider(output, helper));
 	}
 
 }

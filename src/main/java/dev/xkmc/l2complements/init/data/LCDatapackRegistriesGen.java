@@ -23,7 +23,7 @@ public class LCDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 			.add(Registries.TRIM_MATERIAL, ctx -> Arrays.stream(LCMats.values())
 					.forEach(e -> ctx.register(ResourceKey.create(Registries.TRIM_MATERIAL,
 									new ResourceLocation(L2Complements.MODID, e.getID())),
-							TrimMaterial.create(e.getID(), e.getIngot(), e.ordinal() * 0.1f + 0.0943f,
+							TrimMaterial.create(e.getID(), e.getIngot(), 0,
 									e.getIngot().getDescription().copy().withStyle(e.trim_text_color), Map.of()))));
 
 	public LCDatapackRegistriesGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {

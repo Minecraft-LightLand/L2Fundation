@@ -136,7 +136,7 @@ public class LCItems {
 			GUARDIAN_RUNE = simpleItem("guardian_rune", "Rune of Guardian", (p, t) -> new TransformItem(p, t,
 							() -> EntityType.GUARDIAN, () -> EntityType.ELDER_GUARDIAN),
 					Rarity.RARE, LangData.IDS.GUARDIAN_RUNE::get);
-			PIGLIN_RUNE = simpleItem("piglin_rune", "Rune of Pigin", (p, t) -> new TransformItem(p, t,
+			PIGLIN_RUNE = simpleItem("piglin_rune", "Rune of Piglin", (p, t) -> new TransformItem(p, t,
 							() -> EntityType.PIGLIN, () -> EntityType.PIGLIN_BRUTE),
 					Rarity.RARE, LangData.IDS.PIGLIN_RUNE::get);
 		}

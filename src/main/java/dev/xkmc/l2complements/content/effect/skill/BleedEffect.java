@@ -18,7 +18,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 
 import java.util.UUID;
 
-public class BleedEffect extends InherentEffect implements ForceEffect, NoSelfRenderEffect, SkillEffect, StackingEffect<BleedEffect> {
+public class BleedEffect extends InherentEffect implements ForceEffect, IconOverlayEffect, SkillEffect, StackingEffect<BleedEffect> {
 
 	private static final UUID ID_SLOW = MathHelper.getUUIDFromString(L2Complements.MODID + ":bleed_slow");
 	private static final UUID ID_ATK = MathHelper.getUUIDFromString(L2Complements.MODID + ":bleed_atk");

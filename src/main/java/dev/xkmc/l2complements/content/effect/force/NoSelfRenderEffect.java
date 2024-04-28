@@ -7,6 +7,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 import java.util.function.Consumer;
 
+@Deprecated
 public interface NoSelfRenderEffect extends IconOverlayEffect {
 
 	@Override

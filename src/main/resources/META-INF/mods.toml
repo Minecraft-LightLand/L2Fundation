@@ -25,7 +25,7 @@ description='''
 [[dependencies.l2complements]]
     modId="l2library"
     mandatory=true
-    versionRange="[2.4.23,)"
+    versionRange="[2.4.25,)"
     ordering="AFTER"
     side="BOTH"
 
@@ -39,6 +39,6 @@ description='''
 [[dependencies.l2complements]]
     modId="curseofpandora"
     mandatory=false
-    versionRange="[2.4.13,)"
+    versionRange="[2.4.15,)"
     ordering="BEFORE"
     side="BOTH"

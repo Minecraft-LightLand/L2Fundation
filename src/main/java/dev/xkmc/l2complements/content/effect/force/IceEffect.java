@@ -3,6 +3,7 @@ package dev.xkmc.l2complements.content.effect.force;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2library.base.effects.api.DelayedEntityRender;
 import dev.xkmc.l2library.base.effects.api.ForceEffect;
+import dev.xkmc.l2library.base.effects.api.IconOverlayEffect;
 import dev.xkmc.l2library.base.effects.api.InherentEffect;
 import dev.xkmc.l2library.util.math.MathHelper;
 import net.minecraft.resources.ResourceLocation;
@@ -13,7 +14,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 
 import java.util.UUID;
 
-public class IceEffect extends InherentEffect implements ForceEffect, NoSelfRenderEffect {
+public class IceEffect extends InherentEffect implements ForceEffect, IconOverlayEffect {
 
 	private static final UUID ID = MathHelper.getUUIDFromString(L2Complements.MODID + ":ice");
 

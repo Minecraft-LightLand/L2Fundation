@@ -11,7 +11,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 
-public class FlameEffect extends InherentEffect implements ForceEffect, NoSelfRenderEffect {
+public class FlameEffect extends InherentEffect implements ForceEffect, IconOverlayEffect {
 
 	public FlameEffect(MobEffectCategory type, int color) {
 		super(type, color);

@@ -7,11 +7,11 @@ import dev.xkmc.l2complements.compat.TFCompat;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.materials.LCMats;
 import dev.xkmc.l2complements.init.registrate.LCBlocks;
+import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2complements.init.registrate.LCEntities;
+import dev.xkmc.l2library.init.data.L2TagGen;
 import dev.xkmc.l2screentracker.init.L2STTagGen;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.EntityTypeTags;
@@ -25,33 +25,19 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Arrays;
 
 public class TagGen {
 
-	public static final ProviderType<RegistrateTagsProvider.IntrinsicImpl<Enchantment>> ENCH_TAGS =
-			ProviderType.register("tags/enchantment",
-					type -> (p, e) -> new RegistrateTagsProvider.IntrinsicImpl<>(p, type, "enchantments",
-							e.getGenerator().getPackOutput(), Registries.ENCHANTMENT, e.getLookupProvider(),
-							ench -> ResourceKey.create(ForgeRegistries.ENCHANTMENTS.getRegistryKey(),
-									ForgeRegistries.ENCHANTMENTS.getKey(ench)),
-							e.getExistingFileHelper()));
+	public static final ProviderType<RegistrateTagsProvider.IntrinsicImpl<Enchantment>> ENCH_TAGS = L2TagGen.ENCH_TAGS;
 
-	public static final ProviderType<RegistrateTagsProvider.IntrinsicImpl<MobEffect>> EFF_TAGS =
-			ProviderType.register("tags/mob_effect",
-					type -> (p, e) -> new RegistrateTagsProvider.IntrinsicImpl<>(p, type, "mob_effects",
-							e.getGenerator().getPackOutput(), Registries.MOB_EFFECT, e.getLookupProvider(),
-							ench -> ResourceKey.create(ForgeRegistries.MOB_EFFECTS.getRegistryKey(),
-									ForgeRegistries.MOB_EFFECTS.getKey(ench)),
-							e.getExistingFileHelper()));
+	public static final ProviderType<RegistrateTagsProvider.IntrinsicImpl<MobEffect>> EFF_TAGS = L2TagGen.EFF_TAGS;
 
 	public static final TagKey<Block> REQUIRES_SCULK_TOOL = BlockTags.create(new ResourceLocation(L2Complements.MODID, "requires_sculk_tool"));
 	public static final TagKey<Block> AS_LEAF = BlockTags.create(new ResourceLocation(L2Complements.MODID, "as_leaf"));
 	public static final TagKey<Item> SCULK_MATS = ItemTags.create(new ResourceLocation("modulargolems", "sculk_materials"));
-	public static final TagKey<Item> TOTEM = ItemTags.create(new ResourceLocation(L2Complements.MODID, "l2c_totems"));
 	public static final TagKey<Item> SPECIAL_ITEM = ItemTags.create(new ResourceLocation(L2Complements.MODID, "l2c_legendary"));
 	public static final TagKey<Item> DELICATE_BONE = ItemTags.create(new ResourceLocation(L2Complements.MODID, "delicate_bone"));
 	public static final TagKey<MobEffect> SKILL_EFFECT = TagKey.create(ForgeRegistries.MOB_EFFECTS.getRegistryKey(), new ResourceLocation(L2Complements.MODID, "skill_effect"));
@@ -72,6 +58,8 @@ public class TagGen {
 				MobEffects.CONDUIT_POWER,
 				MobEffects.WATER_BREATHING
 		);
+		pvd.addTag(L2TagGen.TRACKED_EFFECTS).add(LCEffects.FLAME.get(), LCEffects.EMERALD.get(), LCEffects.ICE.get(),
+				LCEffects.STONE_CAGE.get(), LCEffects.BLEED.get(), LCEffects.CLEANSE.get(), LCEffects.CURSE.get());
 	}
 
 	public static void onEnchTagGen(RegistrateTagsProvider.IntrinsicImpl<Enchantment> pvd) {

@@ -34,7 +34,10 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
+import umpaz.nethersdelight.NethersDelight;
+import umpaz.nethersdelight.common.registry.NDItems;
 
 import java.util.List;
 import java.util.Locale;
@@ -664,6 +667,11 @@ public class RecipeGen {
 			convert(pvd, Items.COD, LCItems.LIFE_ESSENCE.get(), 64 * 27 * 9);
 			convert(pvd, Items.SALMON, LCItems.LIFE_ESSENCE.get(), 64 * 27 * 9);
 			convert(pvd, Items.TOTEM_OF_UNDYING, LCItems.LIFE_ESSENCE.get(), 64);
+
+			if (ModList.get().isLoaded(NethersDelight.MODID)) {
+				convert(pvd, NDItems.HOGLIN_LOIN.get(), LCItems.LIFE_ESSENCE.get(), 64 * 27 * 9, NethersDelight.MODID);
+				convert(pvd, NDItems.HOGLIN_SIRLOIN.get(), LCItems.LIFE_ESSENCE.get(), 64 * 27 * 9, NethersDelight.MODID);
+			}
 		}
 
 		currentFolder = "diffusion/";
@@ -995,6 +1003,11 @@ public class RecipeGen {
 
 	private static void convert(RegistrateRecipeProvider pvd, Item in, Item out, int count) {
 		unlock(pvd, new BurntRecipeBuilder(Ingredient.of(in), out.getDefaultInstance(), count)::unlockedBy, in).save(pvd, getID(in));
+	}
+
+	private static void convert(RegistrateRecipeProvider pvd, Item in, Item out, int count, String modid) {
+		unlock(pvd, new BurntRecipeBuilder(Ingredient.of(in), out.getDefaultInstance(), count)::unlockedBy, in).save(
+				ConditionalRecipeWrapper.mod(pvd, modid), getID(in));
 	}
 
 	private static void diffuse(RegistrateRecipeProvider pvd, Block in, Block base, Block out) {

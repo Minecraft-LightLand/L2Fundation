@@ -184,7 +184,7 @@ dependencies {
     implementation fg.deobf("dev.xkmc.l2serial:l2serial:1.2.2")
     implementation fg.deobf("dev.xkmc.l2screentracker:l2screentracker:0.1.4")
     implementation fg.deobf("dev.xkmc.l2itemselector:l2itemselector:0.1.8")
-    implementation fg.deobf("dev.xkmc.l2tabs:l2tabs:0.3.1")
+    implementation fg.deobf("dev.xkmc.l2tabs:l2tabs:0.3.2")
 
     implementation fg.deobf(jarJar("dev.xkmc.l2damagetracker:l2damagetracker:0.3.7")) {
         transitive = false
@@ -226,4 +226,7 @@ dependencies {
     implementation fg.deobf("curse.maven:ars-nouveau-401955:4751471")
 
     runtimeOnly fg.deobf("curse.maven:just-enough-effect-descriptions-jeed-532286:4599236")
+
+    implementation fg.deobf("curse.maven:farmers-delight-398521:5051242")
+    implementation fg.deobf("curse.maven:nethers-delight-496394:4736227")
 }

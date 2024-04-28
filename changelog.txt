@@ -1,3 +1,8 @@
+2.4.36
+- Nether Delight burning compat
+- Random start up crash fix
+- Typo fix
+
 2.4.35
 - Make items not destroyable by explosion
 - Add trims (only on armor models. Not on items)

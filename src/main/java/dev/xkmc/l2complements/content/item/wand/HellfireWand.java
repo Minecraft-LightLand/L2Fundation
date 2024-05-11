@@ -24,7 +24,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class HellfireWand extends Item {
+public class HellfireWand extends WandItem {
 
 	public static final int RANGE = 64, CHARGE = 200, SIZE = 10;
 

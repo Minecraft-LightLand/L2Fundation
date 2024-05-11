@@ -23,6 +23,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -41,7 +42,8 @@ public class TagGen {
 	public static final TagKey<Item> SPECIAL_ITEM = ItemTags.create(new ResourceLocation(L2Complements.MODID, "l2c_legendary"));
 	public static final TagKey<Item> DELICATE_BONE = ItemTags.create(new ResourceLocation(L2Complements.MODID, "delicate_bone"));
 	public static final TagKey<MobEffect> SKILL_EFFECT = TagKey.create(ForgeRegistries.MOB_EFFECTS.getRegistryKey(), new ResourceLocation(L2Complements.MODID, "skill_effect"));
-	public static final TagKey<Enchantment> DIGGER_ENCH = TagKey.create(ForgeRegistries.ENCHANTMENTS.getRegistryKey(), new ResourceLocation(L2Complements.MODID, "chain_digging"));
+	public static final TagKey<Enchantment> DIGGER_ENCH = enchTag("chain_digging");
+	public static final TagKey<Enchantment> WAND_ENCH = enchTag("applicable_on_wand");
 
 	public static void onBlockTagGen(RegistrateTagsProvider.IntrinsicImpl<Block> pvd) {
 		pvd.addTag(REQUIRES_SCULK_TOOL).add(Blocks.REINFORCED_DEEPSLATE);
@@ -71,6 +73,11 @@ public class TagGen {
 				LCEnchantments.TREE.get(),
 				LCEnchantments.CHUNK_CUBIC.get(),
 				LCEnchantments.CHUNK_PLANE.get());
+		pvd.addTag(WAND_ENCH).add(
+				Enchantments.UNBREAKING,
+				LCEnchantments.LIFE_SYNC.get(),
+				LCEnchantments.ETERNAL.get()
+		);
 	}
 
 	public static void onItemTagGen(RegistrateItemTagsProvider pvd) {
@@ -86,6 +93,10 @@ public class TagGen {
 				LCEntities.ETFB_BLACK.get(),
 				LCEntities.ETFB_SOUL.get(),
 				LCEntities.ETFB_STRONG.get());
+	}
+
+	private static TagKey<Enchantment> enchTag(String id) {
+		return TagKey.create(ForgeRegistries.ENCHANTMENTS.getRegistryKey(), new ResourceLocation(L2Complements.MODID, id));
 	}
 
 }

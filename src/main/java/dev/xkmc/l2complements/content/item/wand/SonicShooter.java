@@ -27,7 +27,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SonicShooter extends Item implements IGlowingTarget {
+public class SonicShooter extends WandItem implements IGlowingTarget {
 
 	private static final int RANGE = 17;
 

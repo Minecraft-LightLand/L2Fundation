@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class DiffusionWand extends Item {
+public class DiffusionWand extends WandItem {
 
 	public DiffusionWand(Properties properties) {
 		super(properties);

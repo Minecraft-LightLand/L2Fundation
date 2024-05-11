@@ -72,6 +72,9 @@ public class LCConfig {
 		public final ForgeConfigSpec.BooleanValue enableToolRecraftRecipe;
 		public final ForgeConfigSpec.BooleanValue enableSpawnEggRecipe;
 
+		public final ForgeConfigSpec.BooleanValue enableWandEnchantments;
+		public final ForgeConfigSpec.BooleanValue useTagsForWandEnchantmentWhiteList;
+
 		Common(ForgeConfigSpec.Builder builder) {
 			useArsNouveauForEnchantmentRecipe = builder.comment("When Ars Nouveau is present, use apparatus recipe for enchantments")
 					.define("useArsNouveauForEnchantmentRecipe", true);
@@ -172,6 +175,15 @@ public class LCConfig {
 						.defineInRange("chainDiggingHardnessRange", 3d, 1, 100);
 				delayDiggingRequireEnder = builder.comment("Delayed breaking requires Ender Transport to take effect to reduce lag")
 						.define("delayDiggingRequireEnder", true);
+			}
+			builder.pop();
+
+			builder.push("enchantability");
+			{
+				enableWandEnchantments = builder.comment("Allow enchantments on wands")
+						.define("enableWandEnchantments", true);
+				useTagsForWandEnchantmentWhiteList = builder.comment("Use tag for wand enchantment whitelisting")
+						.define("useTagsForWandEnchantmentWhiteList", true);
 			}
 			builder.pop();
 

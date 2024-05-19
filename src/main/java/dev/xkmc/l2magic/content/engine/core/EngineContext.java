@@ -1,5 +1,6 @@
 package dev.xkmc.l2magic.content.engine.core;
 
+import dev.xkmc.shadow.objecthunter.exp4j.Expression;
 import dev.xkmc.shadow.objecthunter.exp4j.ExpressionBuilder;
 import net.minecraft.world.phys.Vec3;
 
@@ -29,6 +30,10 @@ public record EngineContext(UserContext user, LocationContext loc, Map<String, D
 	public double eval(String val) {
 		return new ExpressionBuilder(val).variables(parameters.keySet())
 				.build().setVariables(parameters).evaluate();
+	}
+
+	public double eval(Expression exp) {
+		return exp.setVariables(parameters).evaluate();
 	}
 
 	public void schedule(int tick, Runnable o) {

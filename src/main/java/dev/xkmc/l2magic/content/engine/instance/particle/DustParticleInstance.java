@@ -1,27 +1,33 @@
 package dev.xkmc.l2magic.content.engine.instance.particle;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.xkmc.l2magic.content.engine.core.ConfigurationRegistry;
+import dev.xkmc.l2magic.content.engine.core.ConfigurationType;
+import dev.xkmc.l2magic.content.engine.core.EngineContext;
+import dev.xkmc.l2magic.content.engine.variable.ColorVariable;
+import dev.xkmc.l2magic.content.engine.variable.DoubleVariable;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.world.phys.Vec3;
 import org.apache.logging.log4j.Logger;
 
-public record DustParticleInstance(String color, float scale, String speed)
+public record DustParticleInstance(ColorVariable color, DoubleVariable scale, DoubleVariable speed)
 		implements ParticleInstance<DustParticleInstance> {
 
+	public static final Codec<DustParticleInstance> CODEC = RecordCodecBuilder.create(i -> i.group(
+			ColorVariable.CODEC.fieldOf("color").forGetter(e -> e.color),
+			DoubleVariable.CODEC.fieldOf("scale").forGetter(e -> e.scale),
+			DoubleVariable.CODEC.fieldOf("speed").forGetter(e -> e.speed)
+	).apply(i, DustParticleInstance::new));
+
 	@Override
-	public ParticleOptions particle() {
-		return new DustParticleOptions(Vec3.fromRGB24(Integer.parseInt(color, 16)).toVector3f(), scale);
+	public ConfigurationType<DustParticleInstance> type() {
+		return ConfigurationRegistry.DUST_PARTICLE.get();
 	}
 
 	@Override
-	public boolean verify(Logger logger, String path) {
-		try {
-			Integer.parseInt(color, 16);
-		} catch (Exception e) {
-			logger.error(path + ": color " + color + " is not a valid color hex string");
-			return false;
-		}
-		return true;
+	public ParticleOptions particle(EngineContext ctx) {
+		return new DustParticleOptions(color.eval(ctx), (float) scale.eval(ctx));
 	}
 
 }

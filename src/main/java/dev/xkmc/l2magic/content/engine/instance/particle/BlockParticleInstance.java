@@ -1,30 +1,33 @@
 package dev.xkmc.l2magic.content.engine.instance.particle;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.xkmc.l2magic.content.engine.core.ConfigurationRegistry;
+import dev.xkmc.l2magic.content.engine.core.ConfigurationType;
+import dev.xkmc.l2magic.content.engine.core.EngineContext;
+import dev.xkmc.l2magic.content.engine.variable.DoubleVariable;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.level.block.Block;
-import org.apache.logging.log4j.Logger;
+import net.minecraftforge.registries.ForgeRegistries;
 
-import javax.annotation.Nullable;
-
-public record BlockParticleInstance(@Nullable Block block, String speed)
+public record BlockParticleInstance(Block block, DoubleVariable speed)
 		implements ParticleInstance<BlockParticleInstance> {
 
-	@Nullable
+	public static final Codec<BlockParticleInstance> CODEC = RecordCodecBuilder.create(i -> i.group(
+			ForgeRegistries.BLOCKS.getCodec().fieldOf("block").forGetter(e -> e.block),
+			DoubleVariable.CODEC.fieldOf("speed").forGetter(e -> e.speed)
+	).apply(i, BlockParticleInstance::new));
+
 	@Override
-	public ParticleOptions particle() {
-		if (block == null) return null;
-		return new BlockParticleOption(ParticleTypes.BLOCK, block.defaultBlockState());
+	public ConfigurationType<BlockParticleInstance> type() {
+		return ConfigurationRegistry.BLOCK_PARTICLE.get();
 	}
 
 	@Override
-	public boolean verify(Logger logger, String path) {
-		if (block == null) {
-			logger.error(path + ": [block] is not a valid block id");
-			return false;
-		}
-		return true;
+	public ParticleOptions particle(EngineContext ctx) {
+		return new BlockParticleOption(ParticleTypes.BLOCK, block.defaultBlockState());
 	}
 
 }

@@ -1,42 +1,44 @@
 package dev.xkmc.l2magic.content.engine.instance.particle;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.xkmc.l2magic.content.engine.core.BuilderContext;
+import dev.xkmc.l2magic.content.engine.core.ConfigurationRegistry;
+import dev.xkmc.l2magic.content.engine.core.ConfigurationType;
+import dev.xkmc.l2magic.content.engine.core.EngineContext;
+import dev.xkmc.l2magic.content.engine.variable.DoubleVariable;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.registries.ForgeRegistries;
-import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nullable;
 
-public record SimpleParticleInstance(@Nullable ParticleType<?> type, String speed)
+public record SimpleParticleInstance(ParticleType<?> particle, DoubleVariable speed)
 		implements ParticleInstance<SimpleParticleInstance> {
 
-	@Deprecated
-	public SimpleParticleInstance {
-	}
+	public static final Codec<SimpleParticleInstance> CODEC = RecordCodecBuilder.create(i -> i.group(
+			ForgeRegistries.PARTICLE_TYPES.getCodec().fieldOf("particle").forGetter(e -> e.particle),
+			DoubleVariable.CODEC.fieldOf("speed").forGetter(e -> e.speed)
+	).apply(i, SimpleParticleInstance::new));
 
-	public SimpleParticleInstance of(SimpleParticleType type, String speed) {
-		return new SimpleParticleInstance(type, speed);
+	@Override
+	public ConfigurationType<SimpleParticleInstance> type() {
+		return ConfigurationRegistry.SIMPLE_PARTICLE.get();
 	}
 
 	@Nullable
 	@Override
-	public ParticleOptions particle() {
-		return type instanceof ParticleOptions opt ? opt : null;
+	public ParticleOptions particle(EngineContext ctx) {
+		return particle instanceof ParticleOptions opt ? opt : null;
 	}
 
 	@Override
-	public boolean verify(Logger logger, String path) {
-		boolean ans = true;
-		if (type == null) {
-			logger.error(path + ": [type] is not a valid particle type");
-			ans = false;
+	public boolean verify(BuilderContext ctx) {
+		if (!(particle instanceof ParticleOptions)) {
+			ctx.of("particle").error("Invalid particle type");
+			ParticleInstance.super.verify(ctx);
+			return false;
 		}
-		if (particle() == null) {
-			logger.error(path + ": <" + ForgeRegistries.PARTICLE_TYPES.getKey(type) + "> of class <" + type.getClass().getSimpleName() + ">is not a valid simple particle type");
-			ans = false;
-		}
-		return ans;
+		return ParticleInstance.super.verify(ctx);
 	}
-
 }

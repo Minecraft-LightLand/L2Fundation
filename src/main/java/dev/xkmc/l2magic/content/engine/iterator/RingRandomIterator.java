@@ -1,20 +1,41 @@
 package dev.xkmc.l2magic.content.engine.iterator;
 
-import dev.xkmc.l2magic.content.engine.core.EngineConfiguration;
-import dev.xkmc.l2magic.content.engine.core.EngineContext;
-import dev.xkmc.l2magic.content.engine.core.LocationContext;
-import dev.xkmc.l2magic.content.engine.core.Orientation;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.xkmc.l2magic.content.engine.core.*;
+import dev.xkmc.l2magic.content.engine.variable.DoubleVariable;
+import dev.xkmc.l2magic.content.engine.variable.IntVariable;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
 import java.util.LinkedHashMap;
+import java.util.Optional;
+import java.util.Set;
 
-public record RingRandomIterator(String minRadius, String maxRadius,
-								 String minAngle, String maxAngle,
-								 String count,
+public record RingRandomIterator(DoubleVariable minRadius, DoubleVariable maxRadius,
+								 DoubleVariable minAngle, DoubleVariable maxAngle,
+								 IntVariable count,
 								 EngineConfiguration<?> child, @Nullable String index)
 		implements Iterator<RingRandomIterator> {
+
+	public static Codec<RingRandomIterator> CODEC = RecordCodecBuilder.create(i -> i.group(
+			DoubleVariable.CODEC.optionalFieldOf("minRadius").forGetter(e -> Optional.of(e.minRadius)),
+			DoubleVariable.CODEC.fieldOf("maxRadius").forGetter(e -> e.maxRadius),
+			DoubleVariable.CODEC.optionalFieldOf("minAngle").forGetter(e -> Optional.of(e.minAngle)),
+			DoubleVariable.CODEC.optionalFieldOf("maxAngle").forGetter(e -> Optional.of(e.maxAngle)),
+			IntVariable.CODEC.fieldOf("count").forGetter(e -> e.count),
+			EngineConfiguration.CODEC.fieldOf("child").forGetter(e -> e.child),
+			Codec.STRING.optionalFieldOf("index").forGetter(e -> Optional.ofNullable(e.index))
+	).apply(i, (a, b, c, d, e, f, g) -> new RingRandomIterator(
+			a.orElse(DoubleVariable.ZERO), b,
+			c.orElse(DoubleVariable.of("-180")), d.orElse(DoubleVariable.of("180")),
+			e, f, g.orElse(null))));
+
+	@Override
+	public ConfigurationType<RingRandomIterator> type() {
+		return ConfigurationRegistry.RANDOM_FAN.get();
+	}
 
 	private static double randomRadius(double min, double max, RandomSource rand) {
 		double a = rand.nextDouble();
@@ -30,11 +51,11 @@ public record RingRandomIterator(String minRadius, String maxRadius,
 
 	@Override
 	public void execute(EngineContext ctx) {
-		double minRadius = ctx.eval(minRadius());
-		double maxRadius = ctx.eval(maxRadius());
-		double minAngle = ctx.eval(minAngle());
-		double maxAngle = ctx.eval(maxAngle());
-		int count = (int) ctx.eval(count());
+		double minRadius = minRadius().eval(ctx);
+		double maxRadius = maxRadius().eval(ctx);
+		double minAngle = minAngle().eval(ctx);
+		double maxAngle = maxAngle().eval(ctx);
+		int count = count().eval(ctx);
 		var ori = Orientation.fromNormal(ctx.loc().dir());
 		for (int i = 0; i < count; i++) {
 			double th = ctx.user().rand().nextDouble() * (maxAngle - minAngle) + minAngle;
@@ -49,6 +70,12 @@ public record RingRandomIterator(String minRadius, String maxRadius,
 			}
 			child.execute(new EngineContext(ctx.user(), LocationContext.of(off, dir, ori.normal()), param));
 		}
+	}
+
+	@Override
+	public Set<String> params() {
+		if (index == null) return Set.of();
+		return Set.of(index, index + "_angle", index + "_radius");
 	}
 
 }

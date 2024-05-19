@@ -1,9 +1,9 @@
 package dev.xkmc.l2magic.content.engine.modifier;
 
+import dev.xkmc.l2magic.content.engine.core.BuilderContext;
 import dev.xkmc.l2magic.content.engine.core.EngineConfiguration;
 import dev.xkmc.l2magic.content.engine.core.EngineContext;
 import dev.xkmc.l2magic.content.engine.core.LocationContext;
-import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 
 public interface Modifier<T extends Record & Modifier<T>> extends EngineConfiguration<T> {
@@ -19,8 +19,8 @@ public interface Modifier<T extends Record & Modifier<T>> extends EngineConfigur
 
 	@MustBeInvokedByOverriders
 	@Override
-	default boolean verify(Logger logger, String path) {
-		return child().verify(logger, path + "/child");
+	default boolean verify(BuilderContext ctx) {
+		return EngineConfiguration.super.verify(ctx) & child().verify(ctx.of("child"));
 	}
 
 }

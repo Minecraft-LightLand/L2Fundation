@@ -1,12 +1,15 @@
 package dev.xkmc.l2magic.content.engine.modifier;
 
-import dev.xkmc.l2magic.content.engine.core.EngineConfiguration;
-import dev.xkmc.l2magic.content.engine.core.EngineContext;
-import dev.xkmc.l2magic.content.engine.core.LocationContext;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.xkmc.l2magic.content.engine.core.*;
+import dev.xkmc.l2magic.content.engine.variable.DoubleVariable;
 import net.minecraft.world.phys.Vec3;
-import org.apache.logging.log4j.Logger;
 
-public record RandomOffsetModifier(RandomOffsetModifier.Type type, Vec3 amount,
+import java.util.Optional;
+
+public record RandomOffsetModifier(RandomOffsetModifier.Type shape,
+								   DoubleVariable x, DoubleVariable y, DoubleVariable z,
 								   EngineConfiguration<?> child)
 		implements Modifier<RandomOffsetModifier> {
 
@@ -14,9 +17,25 @@ public record RandomOffsetModifier(RandomOffsetModifier.Type type, Vec3 amount,
 		RECT, BALL, GAUSSIAN
 	}
 
+	public static Codec<RandomOffsetModifier> CODEC = RecordCodecBuilder.create(i -> i.group(
+			ConfigurationAutomation.enumCodec(Type.class, Type.values()).fieldOf("shape").forGetter(e -> e.shape),
+			DoubleVariable.CODEC.optionalFieldOf("x").forGetter(e -> Optional.of(e.x)),
+			DoubleVariable.CODEC.optionalFieldOf("y").forGetter(e -> Optional.of(e.y)),
+			DoubleVariable.CODEC.optionalFieldOf("z").forGetter(e -> Optional.of(e.z)),
+			EngineConfiguration.CODEC.fieldOf("child").forGetter(e -> e.child)
+	).apply(i, (t, x, y, z, c) -> new RandomOffsetModifier(t,
+			x.orElse(DoubleVariable.ZERO),
+			y.orElse(DoubleVariable.ZERO),
+			z.orElse(DoubleVariable.ZERO), c)));
+
+	@Override
+	public ConfigurationType<RandomOffsetModifier> type() {
+		return ConfigurationRegistry.RANDOM_OFFSET.get();
+	}
+
 	@Override
 	public LocationContext modify(EngineContext ctx) {
-		Vec3 r = switch (type) {
+		Vec3 r = switch (shape) {
 			case RECT -> new Vec3(
 					ctx.user().rand().nextDouble() * 2 - 1,
 					ctx.user().rand().nextDouble() * 2 - 1,
@@ -33,16 +52,7 @@ public record RandomOffsetModifier(RandomOffsetModifier.Type type, Vec3 amount,
 					ctx.user().rand().nextGaussian()
 			);
 		};
-		return ctx.loc().add(r.multiply(amount));
+		return ctx.loc().add(r.multiply(x.eval(ctx), y.eval(ctx), z.eval(ctx)));
 	}
 
-	@Override
-	public boolean verify(Logger logger, String path) {
-		boolean ans = Modifier.super.verify(logger, path);
-		if (type == null) {
-			logger.error(path + "/type: not a valid type. Type can be RECT, BALL, or GAUSSIAN");
-			ans = false;
-		}
-		return ans;
-	}
 }

@@ -67,12 +67,12 @@
 	"plane_digging": "平面挖掘连锁",
 	"plane_digging.desc": "挖掘%1$sx%1$s范围",
 	"tree_chopping": "砍树",
-	"tree_chopping.desc": "一次采集一整棵树。等级II会同时清理树叶，且破坏树叶不消耗耐久",
+	"tree_chopping.desc": "一次采集一整棵树",
 	"vien_mining": "连锁采集",
 	"vien_mining.desc": "一次挖掘所有相同的周围的方块，上限%s个",
 	"cubic_eater": "立体区块吞噬者",
-	"cubic_eater.desc": "一次挖掘%1$sx%1$sx%1$s区块对齐的方块",
+	"cubic_eater.desc": "一次挖掘区块对齐的%1$sx%1$sx%1$s的方块",
 	"plane_eater": "平面区块吞噬者",
-	"plane_eater.desc": "一次挖掘16x16区块对齐的%s层方块"
+	"plane_eater.desc": "一次挖掘区块对齐的16x16的%s层方块"
   }
 }

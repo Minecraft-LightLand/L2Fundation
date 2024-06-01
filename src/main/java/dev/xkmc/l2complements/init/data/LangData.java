@@ -3,7 +3,6 @@ package dev.xkmc.l2complements.init.data;
 import com.tterrag.registrate.providers.RegistrateLangProvider;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.l2complements.init.L2Complements;
-import dev.xkmc.l2complements.init.L2ComplementsClient;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -72,7 +71,7 @@ public class LangData {
 		BANNED_ENCH("tooltip.misc.banned_ench", "Disabled", 0),
 		DIGGER_ACTIVATED("msg.digger_activated", "Activated: %s", 1),
 		TREE_CHOP("tooltip.ench.tree", "Breaks leaves as well, and doesn't cost durability when breaking leaves", 0),
-		DIGGER_ROTATE("tooltip.ench.rotate","Press keybind (default [`]) to toggle",0);
+		DIGGER_ROTATE("tooltip.ench.rotate","Press keybind [%s] to toggle",1);
 
 		final String id, def;
 		final int count;
@@ -111,7 +110,7 @@ public class LangData {
 		for (IDS id : IDS.values()) {
 			pvd.add(L2Complements.MODID + "." + id.id, id.def);
 		}
-		for (var lang : L2ComplementsClient.LCKeys.values()) {
+		for (var lang : LCKeys.values()) {
 			pvd.add(lang.id, lang.def);
 		}
 
@@ -145,6 +144,10 @@ public class LangData {
 
 	public static MutableComponent translate(String key, Object... objs) {
 		return Component.translatable(key, objs);
+	}
+
+	public static MutableComponent diggerRotate() {
+		return IDS.DIGGER_ROTATE.get(LCKeys.DIG.map.getKey().getDisplayName());
 	}
 
 }

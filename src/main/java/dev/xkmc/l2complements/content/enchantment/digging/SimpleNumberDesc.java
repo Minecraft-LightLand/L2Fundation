@@ -12,8 +12,8 @@ public interface SimpleNumberDesc extends BlockBreaker {
 	default List<Component> descFull(int lv, String key, boolean alt, boolean book) {
 		return List.of(Component.translatable(key,
 								range(Math.min(getMaxLevel(), lv)) + "")
-						.withStyle(ChatFormatting.DARK_GRAY),
-				LangData.IDS.DIGGER_ROTATE.get().withStyle(ChatFormatting.DARK_GRAY)
+						.withStyle(ChatFormatting.GRAY),
+				LangData.diggerRotate().withStyle(ChatFormatting.DARK_GRAY)
 		);
 	}
 

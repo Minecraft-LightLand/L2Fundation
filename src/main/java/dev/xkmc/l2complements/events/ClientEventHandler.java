@@ -5,7 +5,7 @@ import com.mojang.datafixers.util.Either;
 import dev.xkmc.l2complements.content.enchantment.core.CustomDescEnchantment;
 import dev.xkmc.l2complements.content.feature.EntityFeature;
 import dev.xkmc.l2complements.init.L2Complements;
-import dev.xkmc.l2complements.init.L2ComplementsClient;
+import dev.xkmc.l2complements.init.data.LCKeys;
 import dev.xkmc.l2complements.network.RotateDiggerToServer;
 import dev.xkmc.l2itemselector.events.GenericKeyEvent;
 import dev.xkmc.l2library.util.Proxy;
@@ -44,9 +44,9 @@ public class ClientEventHandler {
 
 	@SubscribeEvent
 	public static void onInput(GenericKeyEvent event) {
-		if (event.test(L2ComplementsClient.LCKeys.DIG.map.getKey())) {
+		if (event.test(LCKeys.DIG.map.getKey()) && event.getAction() == 1) {
 			if (Proxy.getClientPlayer() != null && Proxy.getClientPlayer().getMainHandItem().isEnchanted())
-				L2Complements.HANDLER.toServer(new RotateDiggerToServer());
+				L2Complements.HANDLER.toServer(new RotateDiggerToServer(Screen.hasShiftDown()));
 		}
 	}
 

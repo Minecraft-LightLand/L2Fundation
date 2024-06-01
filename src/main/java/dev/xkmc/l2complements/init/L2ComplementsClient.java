@@ -3,9 +3,9 @@ package dev.xkmc.l2complements.init;
 import dev.xkmc.l2complements.content.client.EnchStackDeco;
 import dev.xkmc.l2complements.content.client.RangeDiggingOverlay;
 import dev.xkmc.l2complements.content.item.misc.LCBEWLR;
+import dev.xkmc.l2complements.init.data.LCKeys;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2complements.init.registrate.LCParticle;
-import net.minecraft.client.KeyMapping;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
@@ -15,26 +15,9 @@ import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import org.lwjgl.glfw.GLFW;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, modid = L2Complements.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class L2ComplementsClient {
-
-	public enum LCKeys {
-		DIG("key.l2mods.dig", "Range Digging Toggle", GLFW.GLFW_KEY_GRAVE_ACCENT);
-
-		public final String id, def;
-		public final int key;
-		public final KeyMapping map;
-
-		LCKeys(String id, String def, int key) {
-			this.id = id;
-			this.def = def;
-			this.key = key;
-			this.map = new KeyMapping(id, key, "key.categories.l2mods");
-		}
-	}
-
 
 	@SubscribeEvent
 	public static void onParticleRegistryEvent(RegisterParticleProvidersEvent event) {

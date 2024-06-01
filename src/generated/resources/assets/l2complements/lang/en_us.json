@@ -292,7 +292,7 @@
   "l2complements.jei.diffuse.title": "Diffusion",
   "l2complements.msg.delay_warning": "Your tool needs %s to break more than %s blocks",
   "l2complements.msg.digger_activated": "Activated: %s",
-  "l2complements.tooltip.ench.rotate": "Press keybind (default [`]) to toggle",
+  "l2complements.tooltip.ench.rotate": "Press keybind [%s] to toggle",
   "l2complements.tooltip.ench.tree": "Breaks leaves as well, and doesn't cost durability when breaking leaves",
   "l2complements.tooltip.misc.banned": "This item is disabled.",
   "l2complements.tooltip.misc.banned_ench": "Disabled",

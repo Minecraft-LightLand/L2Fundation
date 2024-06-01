@@ -13,7 +13,7 @@ public record PlaneBlockBreaker(int radius) implements SimpleNumberDesc {
 
 	@Override
 	public int range(int lv) {
-		return (radius + lv - 1) * 2 - 1;
+		return (radius + lv - 1) * 2 + 1;
 	}
 
 	@Override

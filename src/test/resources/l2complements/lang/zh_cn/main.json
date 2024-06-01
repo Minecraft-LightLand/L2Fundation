@@ -18,6 +18,7 @@
 	"emerald": "%s被绿宝石水花杀死了",
 	"emerald.player": "%s被%s的绿宝石水花杀死了"
   },
+  "key.l2mods.dig": "范围挖掘附魔切换/开关",
   "l2complements": {
 	"tooltip": {
 	  "misc": {
@@ -65,9 +66,16 @@
 		"totemic_armor": "消耗耐久时治疗使用者，缓慢回复生命",
 		"totemic_tool": "消耗耐久时治疗使用者。对亡灵生物造成更高伤害。",
 		"immune": "免疫: "
+	  },
+	  "ench": {
+		"tree": "同时清理树叶，且破坏树叶不消耗耐久",
+		"rotate": "按[%s]切换/开关范围挖掘附魔"
 	  }
 	},
-	"msg.delay_warning": "为了降低卡顿，你需要%s附魔才能一次破坏%s个方块以上",
+	"msg":{
+	  "delay_warning": "为了降低卡顿，你需要%s附魔才能一次破坏%s个方块以上",
+	  "digger_activated": "激活：%s"
+	},
 	"jei": {
 	  "burnt": {
 		"count": "1/%s的概率转化",

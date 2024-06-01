@@ -33,11 +33,11 @@ public record TreeDigger() implements BlockBreaker {
 	@Override
 	public List<Component> descFull(int lv, String key, boolean alt, boolean book) {
 		List<Component> ans = new ArrayList<>();
-		ans.add(Component.translatable(key).withStyle(ChatFormatting.DARK_GRAY));
+		ans.add(Component.translatable(key).withStyle(ChatFormatting.GRAY));
 		if (lv > 0) {
-			ans.add(LangData.IDS.TREE_CHOP.get().withStyle(ChatFormatting.DARK_GRAY));
+			ans.add(LangData.IDS.TREE_CHOP.get().withStyle(ChatFormatting.GRAY));
 		}
-		ans.add(LangData.IDS.DIGGER_ROTATE.get().withStyle(ChatFormatting.DARK_GRAY));
+		ans.add(LangData.diggerRotate().withStyle(ChatFormatting.DARK_GRAY));
 		return ans;
 	}
 

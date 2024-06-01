@@ -2,7 +2,7 @@ package dev.xkmc.l2complements.content.enchantment.digging;
 
 import net.minecraft.core.BlockPos;
 
-public record PlaneChunkBreaker(int h) implements BlockBreaker {
+public record PlaneChunkBreaker(int h) implements SimpleNumberDesc {
 
 	@Override
 	public BlockBreakerInstance getInstance(DiggerContext ctx) {
@@ -21,6 +21,11 @@ public record PlaneChunkBreaker(int h) implements BlockBreaker {
 		z1 = sz == 0 ? r : sz < 0 ? d : 0;
 
 		return new WrappedInstance(pos -> modulate(sx, sy, sz, pos), new RectInstance(x0, x1, y0, y1, z0, z1));
+	}
+
+	@Override
+	public int range(int lv) {
+		return h << (lv - 1);
 	}
 
 	private BlockPos modulate(int x, int y, int z, BlockPos pos) {

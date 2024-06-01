@@ -31,7 +31,6 @@ public class LCConfig {
 		public final ForgeConfigSpec.IntValue spaceDamage;
 		public final ForgeConfigSpec.BooleanValue allowModBanSpaceShard;
 		public final ForgeConfigSpec.BooleanValue enableImmunityEnchantments;
-		public final ForgeConfigSpec.BooleanValue diggingEnchantmentRequiresShiftToWork;
 		public final ForgeConfigSpec.IntValue cleansePredicate;
 
 		public final ForgeConfigSpec.IntValue totemicHealDuration;
@@ -101,9 +100,6 @@ public class LCConfig {
 				enableImmunityEnchantments = builder.comment("Enable immunity enchantments")
 						.comment("Be sure to inform players when you turn this off")
 						.define("enableImmunityEnchantments", true);
-				diggingEnchantmentRequiresShiftToWork = builder.comment("digging Enchantment Requires Shift to work")
-						.comment("Be sure to inform players when you turn this on, as it's opposite to enchantment descriptions")
-						.define("diggingEnchantmentRequiresShiftToWork", false);
 			}
 			builder.pop();
 

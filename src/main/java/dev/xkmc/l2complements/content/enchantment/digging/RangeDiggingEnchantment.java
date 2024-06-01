@@ -1,5 +1,6 @@
 package dev.xkmc.l2complements.content.enchantment.digging;
 
+import dev.xkmc.l2complements.content.enchantment.core.CustomDescEnchantment;
 import dev.xkmc.l2complements.content.enchantment.core.UnobtainableEnchantment;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
@@ -10,6 +11,7 @@ import dev.xkmc.l2library.init.events.GeneralEventHandler;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
@@ -31,7 +33,7 @@ import java.util.UUID;
 
 import static org.apache.logging.log4j.Level.ERROR;
 
-public class RangeDiggingEnchantment extends UnobtainableEnchantment {
+public class RangeDiggingEnchantment extends UnobtainableEnchantment implements CustomDescEnchantment {
 
 	private static final Set<UUID> BREAKER = new HashSet<>();
 
@@ -93,7 +95,6 @@ public class RangeDiggingEnchantment extends UnobtainableEnchantment {
 	}
 
 	public void onBlockBreak(ServerPlayer player, BlockPos pos, ItemStack stack, int lv) {
-		if (player.isShiftKeyDown() ^ LCConfig.COMMON.diggingEnchantmentRequiresShiftToWork.get()) return;
 		var blocks = getTargets(player, pos, stack, lv);
 		execute(player, () -> {
 			int max = LCConfig.COMMON.chainDiggingDelayThreshold.get();
@@ -113,6 +114,11 @@ public class RangeDiggingEnchantment extends UnobtainableEnchantment {
 				GeneralEventHandler.schedulePersistent(new DelayedBlockBreaker(player, blocks)::tick);
 			}
 		});
+	}
+
+	@Override
+	public List<Component> descFull(int lv, String key, boolean alt, boolean book) {
+		return breaker.descFull(lv, key, alt, book);
 	}
 
 	@Override

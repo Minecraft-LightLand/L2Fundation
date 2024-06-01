@@ -65,14 +65,7 @@ public class TagGen {
 	}
 
 	public static void onEnchTagGen(RegistrateTagsProvider.IntrinsicImpl<Enchantment> pvd) {
-		pvd.addTag(DIGGER_ENCH).add(
-				LCEnchantments.CUBIC.get(),
-				LCEnchantments.PLANE.get(),
-				LCEnchantments.DRILL.get(),
-				LCEnchantments.VIEN.get(),
-				LCEnchantments.TREE.get(),
-				LCEnchantments.CHUNK_CUBIC.get(),
-				LCEnchantments.CHUNK_PLANE.get());
+		pvd.addTag(DIGGER_ENCH);
 		pvd.addTag(WAND_ENCH).add(
 				Enchantments.UNBREAKING,
 				LCEnchantments.LIFE_SYNC.get(),

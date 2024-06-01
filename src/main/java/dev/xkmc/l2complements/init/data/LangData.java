@@ -3,6 +3,7 @@ package dev.xkmc.l2complements.init.data;
 import com.tterrag.registrate.providers.RegistrateLangProvider;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.l2complements.init.L2Complements;
+import dev.xkmc.l2complements.init.L2ComplementsClient;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -69,8 +70,9 @@ public class LangData {
 		DIFFUSION_WAND("tooltip.misc.diffusion_wand", "Right click a block of gem/dust to diffuse it into nearby stones to create ore. Check JEI for recipe", 0),
 		BANNED("tooltip.misc.banned", "This item is disabled.", 0),
 		BANNED_ENCH("tooltip.misc.banned_ench", "Disabled", 0),
-
-		;
+		DIGGER_ACTIVATED("msg.digger_activated", "Activated: %s", 1),
+		TREE_CHOP("tooltip.ench.tree", "Breaks leaves as well, and doesn't cost durability when breaking leaves", 0),
+		DIGGER_ROTATE("tooltip.ench.rotate","Press keybind (default [`]) to toggle",0);
 
 		final String id, def;
 		final int count;
@@ -107,9 +109,10 @@ public class LangData {
 
 	public static void addTranslations(RegistrateLangProvider pvd) {
 		for (IDS id : IDS.values()) {
-			String[] strs = id.id.split("\\.");
-			String str = strs[strs.length - 1];
 			pvd.add(L2Complements.MODID + "." + id.id, id.def);
+		}
+		for (var lang : L2ComplementsClient.LCKeys.values()) {
+			pvd.add(lang.id, lang.def);
 		}
 
 		pvd.add("death.attack.soul_flame", "%s has its soul burnt out");

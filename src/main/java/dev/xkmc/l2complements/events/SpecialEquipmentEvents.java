@@ -3,6 +3,7 @@ package dev.xkmc.l2complements.events;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.mojang.datafixers.util.Pair;
 import dev.xkmc.l2complements.content.feature.EntityFeature;
+import dev.xkmc.l2complements.events.event.EnderPickupEvent;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2damagetracker.contents.materials.generic.GenericArmorItem;
@@ -15,11 +16,14 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.PowderSnowBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -54,6 +58,48 @@ public class SpecialEquipmentEvents {
 		return stack.getEnchantmentLevel(LCEnchantments.DAMPENED.get());
 	}
 
+	private static ItemStack process(Level level, ItemStack stack) {
+		ItemStack input = stack.copy();
+		SimpleContainer cont = new SimpleContainer(input);
+		var opt = level.getRecipeManager().getRecipeFor(RecipeType.SMELTING, cont, level);
+		if (opt.isPresent()) {
+			ItemStack ans = opt.get().assemble(cont, level.registryAccess());
+			int count = ans.getCount() * input.getCount();
+			ans.setCount(count);
+			return ans;
+		}
+		return stack;
+	}
+
+	@SubscribeEvent(priority = EventPriority.LOWEST)
+	public static void onEntityDrop(LivingDropsEvent event) {
+		if (event.getSource().getEntity() instanceof LivingEntity player) {
+			if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.SMELT.get()) > 0) {
+				for (var e : event.getDrops()) {
+					ItemStack result = process(player.level(), e.getItem());
+					e.setItem(result);
+				}
+			}
+		}
+		if (event.getSource().getEntity() instanceof ServerPlayer player) {
+			if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.ENDER.get()) > 0) {
+				for (var e : event.getDrops()) {
+					EnderPickupEvent ender = new EnderPickupEvent(player, e.getItem().copy());
+					MinecraftForge.EVENT_BUS.post(ender);
+					ItemStack stack = ender.getStack();
+					if (!stack.isEmpty() && !player.getInventory().add(stack)) {
+						e.setItem(stack);
+						e.teleportTo(player.getX(), player.getY(), player.getZ());
+					} else {
+						e.setItem(ItemStack.EMPTY);
+					}
+				}
+				event.getDrops().removeIf(e -> e.getItem().isEmpty());
+			}
+		}
+
+	}
+
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void onEntityJoinLevel(EntityJoinLevelEvent event) {
 		var players = PLAYER.get();
@@ -61,20 +107,14 @@ public class SpecialEquipmentEvents {
 		ServerPlayer player = players.peek().getFirst();
 		if (!(event.getEntity() instanceof ItemEntity e)) return;
 		if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.SMELT.get()) > 0) {
-			ItemStack input = e.getItem().copy();
-			SimpleContainer cont = new SimpleContainer(input);
-			var opt = event.getLevel().getRecipeManager()
-					.getRecipeFor(RecipeType.SMELTING, cont, event.getLevel());
-			if (opt.isPresent()) {
-				ItemStack ans = opt.get().assemble(cont, event.getLevel().registryAccess());
-				int count = ans.getCount() * input.getCount();
-				ans.setCount(count);
-				e.setItem(ans);
-			}
+			ItemStack result = process(event.getLevel(), e.getItem());
+			e.setItem(result);
 		}
 		if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.ENDER.get()) > 0) {
-			ItemStack stack = e.getItem().copy();
-			if (!player.getInventory().add(stack)) {
+			EnderPickupEvent ender = new EnderPickupEvent(player, e.getItem().copy());
+			MinecraftForge.EVENT_BUS.post(ender);
+			ItemStack stack = ender.getStack();
+			if (!stack.isEmpty() && !player.getInventory().add(stack)) {
 				e.setItem(stack);
 				e.teleportTo(player.getX(), player.getY(), player.getZ());
 			} else {

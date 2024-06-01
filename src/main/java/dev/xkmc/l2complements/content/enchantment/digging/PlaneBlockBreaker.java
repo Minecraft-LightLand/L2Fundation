@@ -1,6 +1,6 @@
 package dev.xkmc.l2complements.content.enchantment.digging;
 
-public record PlaneBlockBreaker(int radius) implements BlockBreaker {
+public record PlaneBlockBreaker(int radius) implements SimpleNumberDesc {
 
 	@Override
 	public BlockBreakerInstance getInstance(DiggerContext ctx) {
@@ -9,6 +9,11 @@ public record PlaneBlockBreaker(int radius) implements BlockBreaker {
 		int y = r * (1 - Math.abs(ctx.dire().getStepY()));
 		int z = r * (1 - Math.abs(ctx.dire().getStepZ()));
 		return new RectInstance(-x, x, -y, y, -z, z);
+	}
+
+	@Override
+	public int range(int lv) {
+		return (radius + lv - 1) * 2 - 1;
 	}
 
 	@Override

@@ -1,9 +1,15 @@
 package dev.xkmc.l2complements.content.enchantment.digging;
 
 import dev.xkmc.l2complements.init.data.LCConfig;
+import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2complements.init.data.TagGen;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.state.BlockState;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public record TreeDigger() implements BlockBreaker {
 	@Override
@@ -22,6 +28,17 @@ public record TreeDigger() implements BlockBreaker {
 			return 1;
 		}
 		return 0;
+	}
+
+	@Override
+	public List<Component> descFull(int lv, String key, boolean alt, boolean book) {
+		List<Component> ans = new ArrayList<>();
+		ans.add(Component.translatable(key).withStyle(ChatFormatting.DARK_GRAY));
+		if (lv > 0) {
+			ans.add(LangData.IDS.TREE_CHOP.get().withStyle(ChatFormatting.DARK_GRAY));
+		}
+		ans.add(LangData.IDS.DIGGER_ROTATE.get().withStyle(ChatFormatting.DARK_GRAY));
+		return ans;
 	}
 
 	@Override

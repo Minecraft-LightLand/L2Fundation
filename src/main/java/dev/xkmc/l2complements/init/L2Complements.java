@@ -7,10 +7,10 @@ import dev.xkmc.l2complements.events.MaterialDamageListener;
 import dev.xkmc.l2complements.init.data.*;
 import dev.xkmc.l2complements.init.registrate.*;
 import dev.xkmc.l2complements.network.EmptyRightClickToServer;
+import dev.xkmc.l2complements.network.RotateDiggerToServer;
 import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2damagetracker.contents.materials.vanilla.GenItemVanillaType;
 import dev.xkmc.l2library.base.L2Registrate;
-import dev.xkmc.l2library.init.events.EffectSyncEvents;
 import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
 import dev.xkmc.l2screentracker.click.quickaccess.DefaultQuickAccessActions;
 import dev.xkmc.l2screentracker.compat.arclight.AnvilMenuArclight;
@@ -37,7 +37,8 @@ public class L2Complements {
 	public static final String MODID = "l2complements";
 	public static final PacketHandlerWithConfig HANDLER = new PacketHandlerWithConfig(
 			new ResourceLocation(MODID, "main"), 3,
-			e -> e.create(EmptyRightClickToServer.class, PLAY_TO_SERVER)
+			e -> e.create(EmptyRightClickToServer.class, PLAY_TO_SERVER),
+			e -> e.create(RotateDiggerToServer.class, PLAY_TO_SERVER)
 	);
 	public static final Logger LOGGER = LogManager.getLogger();
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);

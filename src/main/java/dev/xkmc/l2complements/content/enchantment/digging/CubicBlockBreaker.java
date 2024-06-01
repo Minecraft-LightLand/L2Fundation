@@ -1,6 +1,6 @@
 package dev.xkmc.l2complements.content.enchantment.digging;
 
-public record CubicBlockBreaker(int radius) implements BlockBreaker {
+public record CubicBlockBreaker(int radius) implements SimpleNumberDesc {
 
 	@Override
 	public BlockBreakerInstance getInstance(DiggerContext ctx) {
@@ -11,6 +11,11 @@ public record CubicBlockBreaker(int radius) implements BlockBreaker {
 	@Override
 	public int getMaxLevel() {
 		return 2;
+	}
+
+	@Override
+	public int range(int lv) {
+		return (radius + lv - 1) * 2 + 1;
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import dev.xkmc.l2complements.content.enchantment.armors.FlameThornEnchantment;
 import dev.xkmc.l2complements.content.enchantment.armors.IceThornEnchantment;
 import dev.xkmc.l2complements.content.enchantment.armors.StableBodyEnchantment;
 import dev.xkmc.l2complements.content.enchantment.core.BannableEnchantment;
+import dev.xkmc.l2complements.content.enchantment.core.DiggerAndSwordEnchantment;
 import dev.xkmc.l2complements.content.enchantment.core.ImmuneEnchantment;
 import dev.xkmc.l2complements.content.enchantment.core.SingleLevelEnchantment;
 import dev.xkmc.l2complements.content.enchantment.digging.*;
@@ -32,7 +33,9 @@ public class LCEnchantments {
 	public static final RegistryEntry<ImmuneEnchantment> ENCH_MATES;
 
 	public static final RegistryEntry<SingleLevelEnchantment> SHULKER_ARMOR, ENDER_MASK, SHINNY,
-			SNOW_WALKER, DAMPENED, ENDER, SMELT, SAFEGUARD;
+			SNOW_WALKER, DAMPENED, SAFEGUARD;
+
+	public static final RegistryEntry<DiggerAndSwordEnchantment> ENDER, SMELT;
 
 	public static final RegistryEntry<StableBodyEnchantment> STABLE_BODY;
 	public static final RegistryEntry<LifeSyncEnchantment> LIFE_SYNC;
@@ -78,16 +81,16 @@ public class LCEnchantments {
 					"Player won't be knocked back when wearing chestplate with this enchantment.")
 					.addSlots(EquipmentSlot.CHEST).rarity(Enchantment.Rarity.VERY_RARE).defaultLang().register();
 
-			ENDER = reg("ender_reach", EnchantmentCategory.DIGGER, SingleLevelEnchantment::new,
-					"Teleport mined items to inventory if possible.")
+			ENDER = reg("ender_reach", EnchantmentCategory.DIGGER, DiggerAndSwordEnchantment::new,
+					"Teleport mined items and mob drops to inventory if possible.")
 					.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
 
 			DURABLE_ARMOR = reg("durable_armor", EnchantmentCategory.ARMOR, DurableArmorEnchantment::new,
 					"Armor will have higher durability. Conflict with Unbreaking.")
 					.addSlots(EquipmentSlot.values()).rarity(Enchantment.Rarity.VERY_RARE).lang("Durable Armor").register();
 
-			SMELT = reg("smelt", EnchantmentCategory.DIGGER, SingleLevelEnchantment::new,
-					"Smelt mined items if possible, including items in chests!")
+			SMELT = reg("smelt", EnchantmentCategory.DIGGER, DiggerAndSwordEnchantment::new,
+					"Smelt mined items and mob drops if possible, including items in chests!")
 					.addSlots(EquipmentSlot.MAINHAND).rarity(Enchantment.Rarity.VERY_RARE).register();
 
 			LIFE_MENDING = reg("life_mending", EnchantmentCategory.BREAKABLE, LifeMendingEnchantment::new,
@@ -181,21 +184,21 @@ public class LCEnchantments {
 		{
 			CUBIC = reg("cubic_digging", EnchantmentCategory.DIGGER, (r, c, s) ->
 							new RangeDiggingEnchantment(new CubicBlockBreaker(1), r, c, s),
-					"Dig 3x3x3 blocks at once. Higher level increase radius. Sneak to bypass")
+					"Dig %1$sx%1$sx%1$s blocks at once")
 					.addSlots(EquipmentSlot.MAINHAND)
 					.rarity(Enchantment.Rarity.VERY_RARE).lang("Cubic Digging")
 					.register();
 
 			PLANE = reg("plane_digging", EnchantmentCategory.DIGGER, (r, c, s) ->
 							new RangeDiggingEnchantment(new PlaneBlockBreaker(2), r, c, s),
-					"Dig 5x5 blocks at once. Higher level increase radius. Sneak to bypass")
+					"Dig %1$sx%1$s blocks at once")
 					.addSlots(EquipmentSlot.MAINHAND)
 					.rarity(Enchantment.Rarity.VERY_RARE).lang("Plane Digging")
 					.register();
 
 			DRILL = reg("drill_digging", EnchantmentCategory.DIGGER, (r, c, s) ->
 							new RangeDiggingEnchantment(new DrillBlockBreaker(7), r, c, s),
-					"Dig 7 blocks at once. Higher level increase range. Sneak to bypass")
+					"Dig %s blocks at once")
 					.addSlots(EquipmentSlot.MAINHAND)
 					.rarity(Enchantment.Rarity.VERY_RARE).lang("Drill Digging")
 					.register();
@@ -203,7 +206,7 @@ public class LCEnchantments {
 
 			VIEN = reg("vien_mining", EnchantmentCategory.DIGGER, (r, c, s) ->
 							new RangeDiggingEnchantment(new OreDigger(7, 8), r, c, s),
-					"Dig connected blocks of the same type. Higher level increase max count. Sneak to bypass")
+					"Dig connected blocks of the same type, up to %s blocks")
 					.addSlots(EquipmentSlot.MAINHAND)
 					.rarity(Enchantment.Rarity.VERY_RARE).lang("Vien Mining")
 					.register();
@@ -211,21 +214,21 @@ public class LCEnchantments {
 
 			TREE = reg("tree_chopping", EnchantmentCategory.DIGGER, (r, c, s) ->
 							new RangeDiggingEnchantment(new TreeDigger(), r, c, s),
-					"Chop logs and adjacent leaves. Level 2 cleans leaves as well, and doesn't cost durability when breaking leaves. Sneak to bypass")
+					"Chop logs and adjacent leaves")
 					.addSlots(EquipmentSlot.MAINHAND)
 					.rarity(Enchantment.Rarity.VERY_RARE).lang("Tree Chopper")
 					.register();
 
 			CHUNK_CUBIC = reg("cubic_eater", EnchantmentCategory.DIGGER, (r, c, s) ->
 							new RangeDiggingEnchantment(new CubicChunkBreaker(2), r, c, s),
-					"Dig 4x4x4 chunk-aligned blocks at once. Level 2 makes it 8x8x8. Sneak to bypass")
+					"Dig %1$sx%1$sx%1$s chunk-aligned blocks at once")
 					.addSlots(EquipmentSlot.MAINHAND)
 					.rarity(Enchantment.Rarity.VERY_RARE).lang("Cubic Chunk Eater")
 					.register();
 
 			CHUNK_PLANE = reg("plane_eater", EnchantmentCategory.DIGGER, (r, c, s) ->
 							new RangeDiggingEnchantment(new PlaneChunkBreaker(1), r, c, s),
-					"Dig 16x16 chunk-aligned blocks at once. Higher level increase depth. Sneak to bypass")
+					"Dig 16x16 chunk-aligned blocks at once for %s layers")
 					.addSlots(EquipmentSlot.MAINHAND)
 					.rarity(Enchantment.Rarity.VERY_RARE).lang("Planar Chunk Eater")
 					.register();

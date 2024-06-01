@@ -4,7 +4,7 @@ import dev.xkmc.l2complements.compat.CurioCompat;
 import dev.xkmc.l2complements.content.effect.skill.CleanseEffect;
 import dev.xkmc.l2complements.content.effect.skill.SkillEffect;
 import dev.xkmc.l2complements.content.enchantment.core.AttributeEnchantment;
-import dev.xkmc.l2complements.content.enchantment.digging.RangeDiggingEnchantment;
+import dev.xkmc.l2complements.content.enchantment.digging.DiggerHelper;
 import dev.xkmc.l2complements.content.enchantment.special.SoulBoundPlayerData;
 import dev.xkmc.l2complements.content.feature.EntityFeature;
 import dev.xkmc.l2complements.init.L2Complements;
@@ -185,11 +185,10 @@ public class MagicEventHandler {
 	public static void onBlockBreak(BlockEvent.BreakEvent event) {
 		if (!(event.getPlayer() instanceof ServerPlayer player)) return;
 		ItemStack stack = player.getMainHandItem();
-		for (var ent : stack.getAllEnchantments().entrySet()) {
-			if (ent.getKey() instanceof RangeDiggingEnchantment ench) {
-				ench.onBlockBreak(player, event.getPos(), stack, ent.getValue());
-			}
-		}
+		var ent = DiggerHelper.getDigger(stack);
+		if (ent == null) return;
+		ent.getFirst().onBlockBreak(player, event.getPos(), stack, Math.min(ent.getFirst().getMaxLevel(), ent.getSecond()));
+
 	}
 
 	private static List<BooleanSupplier> TASKS = new ArrayList<>();

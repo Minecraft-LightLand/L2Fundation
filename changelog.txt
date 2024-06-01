@@ -1,5 +1,7 @@
 2.4.37
 - Add configs and tags for wand enchantability
+- smelt touch and ender touch support entity loot
+- Add event for ender pickup
 
 2.4.36
 - Nether Delight burning compat

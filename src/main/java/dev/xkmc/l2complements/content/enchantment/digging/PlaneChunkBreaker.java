@@ -6,7 +6,7 @@ public record PlaneChunkBreaker(int h) implements SimpleNumberDesc {
 
 	@Override
 	public BlockBreakerInstance getInstance(DiggerContext ctx) {
-		int d = h << (ctx.level() - 1);
+		int d = (h << (ctx.level() - 1)) - 1;
 		int r = 15;
 		int sx = ctx.dire().getStepX();
 		int sy = ctx.dire().getStepY();

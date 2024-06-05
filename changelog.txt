@@ -2,6 +2,7 @@
 - Digger Enchant overhaul:
   - Now use keybind to toggle and rotate digger enchants to be enabled
   - Improve descriptions
+- Fix Planar Chunk Digger
 
 2.4.37
 - Add configs and tags for wand enchantability

@@ -1,5 +1,6 @@
 package dev.xkmc.l2complements.content.entity.fireball;
 
+import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCEntities;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -21,7 +22,10 @@ public class StrongFireball extends BaseFireball<StrongFireball> {
 	}
 
 	protected void onHitAction(Vec3 pos) {
-		this.level().explode(this, pos.x, pos.y, pos.z, 2, Level.ExplosionInteraction.MOB);
+		int val = LCConfig.COMMON.strongFireChargePower.get();
+		boolean breaking = LCConfig.COMMON.strongFireChargeBreakBlock.get();
+		this.level().explode(this, pos.x, pos.y, pos.z, val,
+				breaking ? Level.ExplosionInteraction.MOB : Level.ExplosionInteraction.NONE);
 	}
 
 }

@@ -32,13 +32,13 @@ public class DamageTypeGen extends DamageTypeAndTagsGen {
 				.add(DamageTypeTags.AVOIDS_GUARDIAN_THORNS);
 
 		new DamageTypeHolder(SOUL_FLAME, new DamageType("soul_flame", DamageScaling.NEVER, 0, DamageEffects.BURNING))
-				.add(DamageTypeTags.BYPASSES_ARMOR, L2DamageTypes.MAGIC, DamageTypeTags.AVOIDS_GUARDIAN_THORNS, L2DamageTypes.NO_SCALE);
+				.add(DamageTypeTags.BYPASSES_ARMOR, L2DamageTypes.MAGIC, DamageTypeTags.AVOIDS_GUARDIAN_THORNS, L2DamageTypes.NO_SCALE, DamageTypeTags.NO_IMPACT);
 		new DamageTypeHolder(BLEED, new DamageType("bleed", DamageScaling.NEVER, 0.1f))
-				.add(DamageTypeTags.BYPASSES_ARMOR, L2DamageTypes.NO_SCALE).add(L2DamageTypes.BYPASS_MAGIC);
+				.add(DamageTypeTags.BYPASSES_ARMOR, L2DamageTypes.NO_SCALE, DamageTypeTags.NO_IMPACT).add(L2DamageTypes.BYPASS_MAGIC);
 		new DamageTypeHolder(LIFE_SYNC, new DamageType("life_sync", DamageScaling.NEVER, 0f))
-				.add(DamageTypeTags.BYPASSES_ARMOR, L2DamageTypes.NO_SCALE).add(L2DamageTypes.BYPASS_MAGIC);
+				.add(DamageTypeTags.BYPASSES_ARMOR, L2DamageTypes.NO_SCALE, DamageTypeTags.NO_IMPACT).add(L2DamageTypes.BYPASS_MAGIC);
 		new DamageTypeHolder(VOID_EYE, new DamageType("void_eye", DamageScaling.NEVER, 0f))
-				.add(L2DamageTypes.BYPASS_INVUL);
+				.add(DamageTypeTags.NO_IMPACT).add(L2DamageTypes.BYPASS_INVUL);
 	}
 
 	public static Holder<DamageType> forKey(Level level, ResourceKey<DamageType> key) {

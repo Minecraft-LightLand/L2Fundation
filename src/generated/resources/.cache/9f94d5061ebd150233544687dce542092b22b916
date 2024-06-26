@@ -1,4 +1,4 @@
-// 1.20.1	2024-03-14T00:27:57.01453	Tags for minecraft:damage_type mod id l2complements
+// 1.20.1	2024-06-25T19:41:35.016649	Tags for minecraft:damage_type mod id l2complements
 a29411a9b8c58819d8b1290b5eb1036ca122fd05 data/forge/tags/damage_type/ignore_scaling.json
 eef3476cb56d3eb5a86642dbeec6d062a55fb809 data/forge/tags/damage_type/is_magic.json
 e2b353a13904df5806ded55399b3d21feaf3e9d8 data/minecraft/tags/damage_type/avoids_guardian_thorns.json
@@ -7,3 +7,4 @@ b0ad167a9b1ff9d27b746621f0945ae180ec8998 data/minecraft/tags/damage_type/bypasse
 b0ad167a9b1ff9d27b746621f0945ae180ec8998 data/minecraft/tags/damage_type/bypasses_enchantments.json
 b0ff9b20b6f09e0e62a26bfd030c66c53d92358c data/minecraft/tags/damage_type/bypasses_invulnerability.json
 b0ad167a9b1ff9d27b746621f0945ae180ec8998 data/minecraft/tags/damage_type/bypasses_resistance.json
+43d4130dd268d43e99fe1e1bd8528f67fc1695c1 data/minecraft/tags/damage_type/no_impact.json

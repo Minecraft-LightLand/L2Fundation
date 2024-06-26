@@ -19,12 +19,7 @@ public class FlameEffect extends InherentEffect implements ForceEffect, IconOver
 
 	@Override
 	public void applyEffectTick(LivingEntity target, int level) {
-		DamageSource source = new DamageSource(DamageTypeGen.forKey(target.level(), DamageTypeGen.SOUL_FLAME), null, target.getLastHurtByMob());
-		if (target.fireImmune()) {
-			if (target.isSensitiveToWater()) {
-				return;
-			}
-		}
+		DamageSource source = new DamageSource(DamageTypeGen.forKey(target.level(), DamageTypeGen.SOUL_FLAME));
 		target.hurt(source, 2 << level);
 	}
 

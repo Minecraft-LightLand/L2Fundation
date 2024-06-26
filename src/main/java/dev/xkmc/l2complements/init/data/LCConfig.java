@@ -41,6 +41,7 @@ public class LCConfig {
 		public final ForgeConfigSpec.IntValue soulFireChargeDuration;
 		public final ForgeConfigSpec.IntValue blackFireChargeDuration;
 		public final ForgeConfigSpec.IntValue strongFireChargePower;
+		public final ForgeConfigSpec.BooleanValue strongFireChargeBreakBlock;
 
 		public final ForgeConfigSpec.DoubleValue emeraldDamageFactor;
 		public final ForgeConfigSpec.IntValue emeraldBaseRange;
@@ -111,6 +112,8 @@ public class LCConfig {
 						.defineInRange("blackFireChargeDuration", 100, 1, 10000);
 				strongFireChargePower = builder.comment("Strong Fire Charge Power")
 						.defineInRange("strongFireChargePower", 2, 1, 10);
+				strongFireChargeBreakBlock = builder.comment("Strong Fire Charge Breaks Block")
+						.define("strongFireChargeBreakBlock", true);
 			}
 			builder.pop();
 

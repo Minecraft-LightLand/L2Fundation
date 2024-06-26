@@ -54,9 +54,9 @@ public enum LCMats implements IMatVanillaType {
 			new ToolStats(9999, 8, 7, 1, 1),
 			new ArmorStats(9999, new int[]{3, 6, 8, 3}, 10, 1, 1),
 			GenItemVanillaType.TOOL_GEN, GenItemVanillaType.ARMOR_GEN,
-			new ExtraToolConfig().damageChance(0).repairChance(1)
+			new EterniumTool().damageChance(0).repairChance(1)
 					.setStick(e -> LCItems.EXPLOSION_SHARD.get(), false),
-			new ExtraArmorConfig().damageChance(0).repairChance(1),
+			new EterniumArmor().damageChance(0).repairChance(1),
 			ChatFormatting.BLUE);
 
 	final String id;

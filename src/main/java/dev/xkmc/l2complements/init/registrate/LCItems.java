@@ -90,6 +90,7 @@ public class LCItems {
 	public static final ItemEntry<WarpStone> REINFORCED_WARP_STONE;
 	public static final ItemEntry<HomeTotem> TOTEM_OF_DREAM;
 	public static final ItemEntry<PoseiditeTotem> TOTEM_OF_THE_SEA;
+	public static final ItemEntry<EternalTotem> ETERNAL_TOTEM;
 
 	public static final ItemEntry<FireChargeItem<SoulFireball>> SOUL_CHARGE;
 	public static final ItemEntry<FireChargeItem<StrongFireball>> STRONG_CHARGE;
@@ -155,6 +156,9 @@ public class LCItems {
 					.tag(charm).defaultModel().defaultLang().register();
 			TOTEM_OF_THE_SEA = REGISTRATE.item("totem_of_the_sea", p ->
 							new PoseiditeTotem(p.fireResistant().stacksTo(16).rarity(Rarity.EPIC)))
+					.tag(charm).defaultModel().defaultLang().register();
+			ETERNAL_TOTEM = REGISTRATE.item("eternal_totem_of_dream", p ->
+							new EternalTotem(p.fireResistant().stacksTo(1).rarity(Rarity.EPIC)))
 					.tag(charm).defaultModel().defaultLang().register();
 		}
 		{

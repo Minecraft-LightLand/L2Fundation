@@ -1,12 +1,12 @@
-// 1.20.1	2024-06-01T14:20:37.739437	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (enchantments), Tags (mob_effects), Patchouli Provider]
+// 1.20.1	2024-07-10T08:57:38.472524	Registrate Provider for l2complements [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (enchantments), Tags (mob_effects), Patchouli Provider]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
 b2a769b51ddce14c173a64b5457cccb4d8ef6a45 assets/l2complements/blockstates/sculkium_block.json
 2b88df6f8b01f3c72273ce13dbcb556f7dab321d assets/l2complements/blockstates/shulkerate_block.json
 65262ae0f886f61c163059f15c2ad1a7ba9c264a assets/l2complements/blockstates/totemic_gold_block.json
-4dfe83e2c20a213fa4aa99995f7c2ca440a1641f assets/l2complements/lang/en_ud.json
-c7693e294e80363647cfbe81d4915ae5e167e84e assets/l2complements/lang/en_us.json
+aa74c3876e3aae350c76a612781027206f613931 assets/l2complements/lang/en_ud.json
+53faf317ddb302f1fdc877befa72aa1000369ee0 assets/l2complements/lang/en_us.json
 bb63c088704d714f1763cb16cec8af6cd1006d66 assets/l2complements/models/block/eternium_block.json
 a45ee09acc262fd67be22de093136ad757f08e61 assets/l2complements/models/block/poseidite_block.json
 a52909a3a44a80695da32b5c3c5f931a0f72f74d assets/l2complements/models/block/sculkium_block.json
@@ -21,6 +21,7 @@ debd9b7eb7f11bf8efabb81e1505237434ed9f6b assets/l2complements/models/item/captur
 9385bae957223dd231be2dfc1c90b6ac9bd9fd19 assets/l2complements/models/item/enchanted_totemic_apple.json
 74544c95c121afbce7df3ac54c072a2048e9807b assets/l2complements/models/item/enchanted_totemic_carrot.json
 b2b751784bf8788af80c1c13da724d78b5907fd7 assets/l2complements/models/item/eternal_anvil.json
+14a7acb6a8c18ff2748479c75b2a22de23486a4c assets/l2complements/models/item/eternal_totem_of_dream.json
 255a0bc40c23e9b31cf6fafe47cc08e5b46b2a3b assets/l2complements/models/item/eternium_axe.json
 354c90e8388aa8f32760b2d4e50855b9593b0b24 assets/l2complements/models/item/eternium_block.json
 9139b7917c94d4cc307864a91c243137723da9c8 assets/l2complements/models/item/eternium_boots.json
@@ -112,7 +113,7 @@ f2bed6f2f6ac106334a113f4cedef4cb8be322d2 assets/l2complements/models/item/totemi
 41d0259e5a214bd80a27be90dbc2ec142fe7a367 assets/l2complements/models/item/warden_bone_shard.json
 ea0f2e6ba9ca3a87c8e7e75860e1e01eb421eedd assets/l2complements/models/item/wind_capture_bottle.json
 e398ec09b3d644e800f9502edf6bbff62a943c2b assets/l2complements/models/item/winterstorm_wand.json
-8bc2e79599af169e6f9f11cc081dd692ab81d86c data/curios/tags/items/charm.json
+ebc7d18ba5e1ccb46af51be5fabfbb79d63e93df data/curios/tags/items/charm.json
 3d8bcdff520aba2f8196e7fe08ace2661e9d9dff data/forge/tags/blocks/storage_blocks.json
 fd164107c6c9780424b95cac45176d5b3bc50868 data/forge/tags/items/armors/boots.json
 dd515d3f4b06e1fc884572007bbb8fa84ca0b3fc data/forge/tags/items/armors/chestplates.json
@@ -223,6 +224,7 @@ d311e2939d6597dbc12c5189a15a9f710ca8ae78 data/l2complements/advancements/recipes
 76babcdfc25eca6420c6caeb728aeb76dd74f07f data/l2complements/advancements/recipes/misc/craft/enchanted_totemic_apple.json
 b6f8fb90043ed93de17d9ed5d2d5366331f53ade data/l2complements/advancements/recipes/misc/craft/enchanted_totemic_carrot.json
 4abc168abee859f22e624c2111f8a09ec0fe9603 data/l2complements/advancements/recipes/misc/craft/eternal_anvil.json
+42737e0980d0ad96568f69d266d1db4aaf92f85d data/l2complements/advancements/recipes/misc/craft/eternal_totem_of_dream.json
 2dd8c3651b39a2680f3b17f228a3074353f39248 data/l2complements/advancements/recipes/misc/craft/eternium_nugget.json
 e69ca83953d072177a2cba62d0398289bf533aa4 data/l2complements/advancements/recipes/misc/craft/fragile_warp_stone.json
 25285c30a84dbb426e9fbdf8a7f043d013137daf data/l2complements/advancements/recipes/misc/craft/guardian_rune.json
@@ -469,6 +471,7 @@ a25c942e5f3ce1fbe543ddd74bede115f9e94ce4 data/l2complements/recipes/burnt/totem_
 5cd88e2c4de5b0d0e44a4c086f1c0f02dfcf7fd3 data/l2complements/recipes/craft/enchanted_totemic_apple.json
 1beeec2610123849223f3ebed528ad2f4cbbb255 data/l2complements/recipes/craft/enchanted_totemic_carrot.json
 2db049dc7d31342265d8a0e18bb3f7073658d47d data/l2complements/recipes/craft/eternal_anvil.json
+16db088577650abfb4d6e53e8fd28fad2a1753de data/l2complements/recipes/craft/eternal_totem_of_dream.json
 56319ef4ada70ea4f0dd36cc1399d440841c0262 data/l2complements/recipes/craft/eternium_nugget.json
 c1e0581d56e5da979ca4e4a9dc937cb639c2ba8b data/l2complements/recipes/craft/fragile_warp_stone.json
 1116787f65ce7578da2591ac67c68814f1f1befd data/l2complements/recipes/craft/guardian_rune.json

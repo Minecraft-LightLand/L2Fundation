@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "l2complements:eternium_ingot"
+    },
+    "B": {
+      "item": "l2complements:totem_of_dream"
+    },
+    "C": {
+      "item": "l2complements:force_field"
+    }
+  },
+  "pattern": [
+    "ACA",
+    "ABA",
+    "ACA"
+  ],
+  "result": {
+    "item": "l2complements:eternal_totem_of_dream"
+  },
+  "show_notification": true
+}

@@ -154,6 +154,13 @@ public class RecipeGen {
 					.define('C', LCMats.POSEIDITE.getIngot())
 					.save(pvd, getID(LCItems.TOTEM_OF_THE_SEA.get()));
 
+			unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, LCItems.ETERNAL_TOTEM.get(), 1)::unlockedBy, LCItems.FRAGILE_WARP_STONE.get())
+					.pattern("ACA").pattern("ABA").pattern("ACA")
+					.define('A', LCMats.ETERNIUM.getIngot())
+					.define('B', LCItems.TOTEM_OF_DREAM.get())
+					.define('C', LCItems.FORCE_FIELD)
+					.save(pvd, getID(LCItems.ETERNAL_TOTEM.get()));
+
 			unlock(pvd, new ShapelessRecipeBuilder(RecipeCategory.MISC, LCItems.SOUL_CHARGE.get(), 2)::unlockedBy, Items.BLAZE_POWDER)
 					.requires(ItemTags.SOUL_FIRE_BASE_BLOCKS)
 					.requires(Items.BLAZE_POWDER, 2)

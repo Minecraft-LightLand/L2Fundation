@@ -47,6 +47,7 @@ public class LangData {
 		WARP_GRIND("tooltip.misc.warp_grind", "Use grindstone to remove record", 0),
 		TOTEM_DREAM("tooltip.misc.totem_dream", "Return players back to home when triggers, and becomes a fragile warp stone to go back. Valid against void damage. Also heal player to full health.", 0),
 		TOTEM_SEA("tooltip.misc.totem_sea", "It's stackable, but can only be triggered when in water or rain.", 0),
+		TOTEM_ETERNAL("tooltip.misc.totem_eternal","Reusable Totem of Dream with cool down of %s seconds",1),
 
 		CHARGE_THROW("tooltip.misc.charge_throw","Right click to throw at target",0),
 		EFFECT_CHARGE("tooltip.misc.effect_charge", "Apply on Hit: %s", 1),

@@ -35,6 +35,8 @@ public class LCConfig {
 
 		public final ForgeConfigSpec.IntValue totemicHealDuration;
 		public final ForgeConfigSpec.IntValue totemicHealAmount;
+		public final ForgeConfigSpec.IntValue eternalTotemCoolDown;
+		public final ForgeConfigSpec.BooleanValue eternalTotemGiveWarpStone;
 
 		public final ForgeConfigSpec.DoubleValue windSweepIncrement;
 
@@ -124,6 +126,10 @@ public class LCConfig {
 						.comment("1 for clearing neutral and negative only")
 						.comment("2 for clearing negative only")
 						.defineInRange("cleansePredicate", 0, 0, 2);
+				eternalTotemCoolDown = builder.comment("Cool down of Eternal Totem of Dream")
+						.defineInRange("eternalTotemCoolDown", 2400, 0, 10000);
+				eternalTotemGiveWarpStone = builder.comment("Whether Eternal Totem of Dream gives you warp stone")
+						.define("eternalTotemGiveWarpStone", true);
 				totemicHealDuration = builder.comment("Totemic Armor healing interval")
 						.defineInRange("totemicHealDuration", 100, 1, 1000);
 				totemicHealAmount = builder.comment("Totemic Armor healing amount")

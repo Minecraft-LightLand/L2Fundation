@@ -105,7 +105,7 @@ public class WarpStone extends Item {
 					.get(clevel, Math.round(bpos.x), Math.round(bpos.y), Math.round(bpos.x))
 					.withStyle(ChatFormatting.GRAY));
 			list.add(LangData.IDS.WARP_TELEPORT.get(dur).withStyle(ChatFormatting.GRAY));
-			list.add(LangData.IDS.WARP_GRIND.get().withStyle(ChatFormatting.GRAY));
+			if (!fragile) list.add(LangData.IDS.WARP_GRIND.get().withStyle(ChatFormatting.GRAY));
 		} else {
 			list.add(LangData.IDS.WARP_RECORD.get(dur).withStyle(ChatFormatting.GRAY));
 		}

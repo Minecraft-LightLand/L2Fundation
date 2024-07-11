@@ -1,3 +1,7 @@
+2.4.40
+- Eternal Totem of Dream
+- Fix fragile warpstone tooltip
+
 2.4.39
 - Soul flame is no longer entity induced damage
 - Now blaze is no longer immune to soul flame

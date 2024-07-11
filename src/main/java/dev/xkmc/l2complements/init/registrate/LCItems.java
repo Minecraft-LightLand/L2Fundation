@@ -20,13 +20,14 @@ import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2complements.init.data.TagGen;
 import dev.xkmc.l2complements.init.materials.LCMats;
+import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
 import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.effect.MobEffects;
@@ -34,8 +35,8 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.common.Tags;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.common.Tags;
 
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
@@ -46,9 +47,9 @@ import static dev.xkmc.l2complements.init.L2Complements.REGISTRATE;
 @MethodsReturnNonnullByDefault
 public class LCItems {
 
-	public static final RegistryEntry<CreativeModeTab> TAB_ITEM;
-	public static final RegistryEntry<CreativeModeTab> TAB_ENCHMIN;
-	public static final RegistryEntry<CreativeModeTab> TAB_ENCHMAX;
+	public static final SimpleEntry<CreativeModeTab> TAB_ITEM;
+	public static final SimpleEntry<CreativeModeTab> TAB_ENCHMIN;
+	public static final SimpleEntry<CreativeModeTab> TAB_ENCHMAX;
 
 	static {
 		TAB_ENCHMIN = REGISTRATE.buildL2CreativeTab("enchantments_low", "L2 Enchantments - Craftable", b -> b
@@ -101,8 +102,7 @@ public class LCItems {
 	public static final ItemEntry<WinterStormWand> WINTERSTORM_WAND;
 	public static final ItemEntry<DiffusionWand> DIFFUSION_WAND;
 
-	public static final ItemEntry<Item> TOTEMIC_CARROT, TOTEMIC_APPLE;
-	public static final ItemEntry<EnchantedGoldenAppleItem> ENCHANT_TOTEMIC_CARROT, ENCHANTED_TOTEMIC_APPLE;
+	public static final ItemEntry<Item> TOTEMIC_CARROT, TOTEMIC_APPLE, ENCHANT_TOTEMIC_CARROT, ENCHANTED_TOTEMIC_APPLE;
 
 	public static final ItemEntry<Item>[] MAT_INGOTS, MAT_NUGGETS;
 	public static final ItemEntry<Item>[][] GEN_ITEM;
@@ -129,7 +129,7 @@ public class LCItems {
 			EMERALD = REGISTRATE.item("heirophant_green", p -> new BurntItem(p.fireResistant().rarity(Rarity.EPIC))).defaultModel().tag(TagGen.SPECIAL_ITEM).lang("Heirophant Green").register();
 			CURSED_DROPLET = REGISTRATE.item("cursed_droplet", p -> new BurntItem(p.fireResistant().rarity(Rarity.RARE))).defaultModel().tag(TagGen.SPECIAL_ITEM).lang("Cursed Droplet").register();
 			LIFE_ESSENCE = REGISTRATE.item("life_essence", p -> new BurntItem(p.fireResistant().rarity(Rarity.RARE)
-							.food(new FoodProperties.Builder().nutrition(20).saturationMod(1.2f).alwaysEat().fast().build())))
+							.food(new FoodProperties.Builder().nutrition(20).saturationModifier(1.2f).alwaysEdible().fast().build())))
 					.defaultModel().tag(TagGen.SPECIAL_ITEM).lang("Essence of Life").register();
 			FORCE_FIELD = REGISTRATE.item("force_field", p -> new SpecialRenderItem(p.fireResistant().rarity(Rarity.EPIC), LangData.IDS.FORCE_FIELD::get))
 					.model((ctx, pvd) -> pvd.getBuilder(ctx.getName()).parent(new ModelFile.UncheckedModelFile("builtin/entity")))
@@ -149,7 +149,7 @@ public class LCItems {
 							new WarpStone(p.fireResistant().stacksTo(1).durability(64).rarity(Rarity.RARE), false))
 					.defaultModel().defaultLang().register();
 
-			TagKey<Item> charm = ItemTags.create(new ResourceLocation("curios", "charm"));
+			TagKey<Item> charm = ItemTags.create(ResourceLocation.fromNamespaceAndPath("curios", "charm"));
 
 			TOTEM_OF_DREAM = REGISTRATE.item("totem_of_dream", p ->
 							new HomeTotem(p.fireResistant().stacksTo(1).rarity(Rarity.EPIC)))
@@ -165,7 +165,7 @@ public class LCItems {
 			SOUL_CHARGE = REGISTRATE.item("soul_fire_charge", p ->
 							new FireChargeItem<>(p, SoulFireball::new, SoulFireball::new,
 									() -> LangData.IDS.EFFECT_CHARGE.get(getTooltip(
-											new MobEffectInstance(LCEffects.FLAME.get(),
+											new MobEffectInstance(LCEffects.FLAME.holder(),
 													LCConfig.COMMON.soulFireChargeDuration.get())))))
 					.defaultModel().defaultLang().register();
 
@@ -177,7 +177,7 @@ public class LCItems {
 			BLACK_CHARGE = REGISTRATE.item("black_fire_charge", p ->
 							new FireChargeItem<>(p, BlackFireball::new, BlackFireball::new,
 									() -> LangData.IDS.EFFECT_CHARGE.get(getTooltip(
-											new MobEffectInstance(LCEffects.STONE_CAGE.get(),
+											new MobEffectInstance(LCEffects.STONE_CAGE.holder(),
 													LCConfig.COMMON.blackFireChargeDuration.get())))))
 					.defaultModel().defaultLang().register();
 
@@ -187,7 +187,7 @@ public class LCItems {
 								var parent = new ModelFile.UncheckedModelFile(pvd.modLoc("item/gun"));
 								var base = pvd.getBuilder(ctx.getName()).parent(parent)
 										.texture("layer0", "item/" + ctx.getName());
-								var id = new ResourceLocation(L2Complements.MODID, "shoot");
+								var id = L2Complements.loc("shoot");
 								for (int i = 0; i < 4; i++) {
 									String str = ctx.getName() + "_" + i;
 									base.override().predicate(id, i * 0.2f + 0.2f)
@@ -211,23 +211,24 @@ public class LCItems {
 		}
 		{
 			TOTEMIC_CARROT = REGISTRATE.item("totemic_carrot", p -> new Item(p.food(
-					new FoodProperties.Builder().nutrition(6).saturationMod(1.2f).alwaysEat()
+					new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).alwaysEdible()
 							.effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 1200), 1)
 							.effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 1), 1)
 							.build()
 			))).defaultModel().defaultLang().register();
 
-			ENCHANT_TOTEMIC_CARROT = REGISTRATE.item("enchanted_totemic_carrot", p -> new EnchantedGoldenAppleItem(p.food(
-					new FoodProperties.Builder().nutrition(6).saturationMod(1.2f).alwaysEat()
+			ENCHANT_TOTEMIC_CARROT = REGISTRATE.item("enchanted_totemic_carrot", p ->
+					new Item(p.food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).alwaysEdible()
 							.effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 3600), 1)
 							.effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 3600, 2), 1)
 							.effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 3600, 1), 1)
 							.effect(() -> new MobEffectInstance(MobEffects.SATURATION, 20), 1)
 							.build()
-			))).defaultModel().defaultLang().register();
+					).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true))
+			).defaultModel().defaultLang().register();
 
 			TOTEMIC_APPLE = REGISTRATE.item("totemic_apple", p -> new Item(p.food(
-					new FoodProperties.Builder().nutrition(6).saturationMod(1.2f).alwaysEat()
+					new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).alwaysEdible()
 							.effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 2400), 1)
 							.effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 2400, 1), 1)
 							.effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 2400, 4), 1)
@@ -235,14 +236,15 @@ public class LCItems {
 							.build()
 			))).defaultModel().defaultLang().register();
 
-			ENCHANTED_TOTEMIC_APPLE = REGISTRATE.item("enchanted_totemic_apple", p -> new EnchantedGoldenAppleItem(p.food(
-					new FoodProperties.Builder().nutrition(6).saturationMod(1.2f).alwaysEat()
+			ENCHANTED_TOTEMIC_APPLE = REGISTRATE.item("enchanted_totemic_apple", p ->
+					new Item(p.food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.2f).alwaysEdible()
 							.effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 2400), 1)
 							.effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 2400, 3), 1)
 							.effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 2400, 4), 1)
 							.effect(() -> new MobEffectInstance(MobEffects.SATURATION, 100), 1)
 							.build()
-			))).defaultModel().defaultLang().register();
+					).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true))
+			).defaultModel().defaultLang().register();
 		}
 		GEN_ITEM = L2Complements.MATS.genItem(LCMats.values());
 
@@ -251,14 +253,14 @@ public class LCItems {
 
 	public static MutableComponent getTooltip(MobEffectInstance eff) {
 		MutableComponent comp = Component.translatable(eff.getDescriptionId());
-		MobEffect mobeffect = eff.getEffect();
+		var mobeffect = eff.getEffect().value();
 		if (eff.getAmplifier() > 0) {
 			comp = Component.translatable("potion.withAmplifier", comp,
 					Component.translatable("potion.potency." + eff.getAmplifier()));
 		}
 		if (eff.getDuration() > 20) {
 			comp = Component.translatable("potion.withDuration", comp,
-					MobEffectUtil.formatDuration(eff, 1));
+					MobEffectUtil.formatDuration(eff, 1, 20));
 		}
 		return comp.withStyle(mobeffect.getCategory().getTooltipFormatting());
 	}

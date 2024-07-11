@@ -1,24 +1,25 @@
 package dev.xkmc.l2complements.content.recipe;
 
 import dev.xkmc.l2complements.init.registrate.LCRecipes;
-import dev.xkmc.l2library.serial.recipe.BaseRecipe;
-import dev.xkmc.l2serial.serialization.SerialClass;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.ResourceLocation;
+import dev.xkmc.l2core.serial.recipe.BaseRecipe;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 
 @SerialClass
 public class DiffusionRecipe extends BaseRecipe<DiffusionRecipe, DiffusionRecipe, DiffusionRecipe.Inv> {
 
-	@SerialClass.SerialField
+	@SerialField
 	public Block ingredient, base, result;
 
-	public DiffusionRecipe(ResourceLocation id) {
-		super(id, LCRecipes.RS_DIFFUSION.get());
+	public DiffusionRecipe() {
+		super(LCRecipes.RS_DIFFUSION.get());
 	}
 
 	@Override
@@ -28,7 +29,7 @@ public class DiffusionRecipe extends BaseRecipe<DiffusionRecipe, DiffusionRecipe
 	}
 
 	@Override
-	public ItemStack assemble(Inv inv, RegistryAccess access) {
+	public ItemStack assemble(Inv inv, HolderLookup.Provider access) {
 		return result.asItem().getDefaultInstance();
 	}
 
@@ -38,14 +39,19 @@ public class DiffusionRecipe extends BaseRecipe<DiffusionRecipe, DiffusionRecipe
 	}
 
 	@Override
-	public ItemStack getResultItem(RegistryAccess access) {
+	public ItemStack getResultItem(HolderLookup.Provider access) {
 		return result.asItem().getDefaultInstance();
 	}
 
-	public static class Inv extends SimpleContainer implements RecInv<DiffusionRecipe> {
+	public static class Inv extends SimpleContainer implements RecipeInput {
 
 		public Inv() {
 			super(2);
+		}
+
+		@Override
+		public int size() {
+			return 2;
 		}
 
 	}

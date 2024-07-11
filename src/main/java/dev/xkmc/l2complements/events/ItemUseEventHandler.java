@@ -4,18 +4,18 @@ import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.network.EmptyRightClickToServer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import net.minecraftforge.event.entity.player.CriticalHitEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.EventPriority;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
+import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = L2Complements.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(modid = L2Complements.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class ItemUseEventHandler {
 
 	public static final List<ItemClickHandler> LIST = new ArrayList<>();
@@ -31,7 +31,7 @@ public class ItemUseEventHandler {
 	@SubscribeEvent
 	public static void onPlayerLeftClickEmpty(PlayerInteractEvent.LeftClickEmpty event) {
 		if (event.getEntity().level().isClientSide()) {
-			new EmptyRightClickToServer(false, event.getHand() == InteractionHand.MAIN_HAND).toServer();
+			L2Complements.HANDLER.toServer(new EmptyRightClickToServer(false, event.getHand() == InteractionHand.MAIN_HAND));
 		}
 		execute(event.getItemStack(), event, ItemClickHandler::onPlayerLeftClickEmpty);
 	}
@@ -49,7 +49,7 @@ public class ItemUseEventHandler {
 	@SubscribeEvent
 	public static void onPlayerRightClickEmpty(PlayerInteractEvent.RightClickEmpty event) {
 		if (event.getEntity().level().isClientSide()) {
-			new EmptyRightClickToServer(true, event.getHand() == InteractionHand.MAIN_HAND).toServer();
+			L2Complements.HANDLER.toServer(new EmptyRightClickToServer(true, event.getHand() == InteractionHand.MAIN_HAND));
 		}
 		execute(event.getEntity().getItemInHand(event.getHand() == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND), event, ItemClickHandler::onPlayerRightClickEmpty);
 	}

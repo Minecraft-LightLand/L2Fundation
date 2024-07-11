@@ -12,9 +12,8 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.projectile.ItemSupplier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
 public class LCEntities {
 
@@ -49,9 +48,6 @@ public class LCEntities {
 	}
 
 	public static void register() {
-	}
-
-	public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
 	}
 
 }

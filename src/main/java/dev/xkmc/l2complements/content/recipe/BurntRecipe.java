@@ -1,29 +1,30 @@
 package dev.xkmc.l2complements.content.recipe;
 
 import dev.xkmc.l2complements.init.registrate.LCRecipes;
-import dev.xkmc.l2library.serial.recipe.BaseRecipe;
-import dev.xkmc.l2serial.serialization.SerialClass;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.ResourceLocation;
+import dev.xkmc.l2core.serial.recipe.BaseRecipe;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.level.Level;
 
 @SerialClass
 public class BurntRecipe extends BaseRecipe<BurntRecipe, BurntRecipe, BurntRecipe.Inv> {
 
-	@SerialClass.SerialField
+	@SerialField
 	public Ingredient ingredient;
 
-	@SerialClass.SerialField
+	@SerialField
 	public ItemStack result;
 
-	@SerialClass.SerialField
+	@SerialField
 	public int chance;
 
-	public BurntRecipe(ResourceLocation id) {
-		super(id, LCRecipes.RS_BURNT.get());
+	public BurntRecipe() {
+		super(LCRecipes.RS_BURNT.get());
 	}
 
 	@Override
@@ -32,7 +33,7 @@ public class BurntRecipe extends BaseRecipe<BurntRecipe, BurntRecipe, BurntRecip
 	}
 
 	@Override
-	public ItemStack assemble(Inv inv, RegistryAccess access) {
+	public ItemStack assemble(Inv inv, HolderLookup.Provider access) {
 		return result.copy();
 	}
 
@@ -42,14 +43,19 @@ public class BurntRecipe extends BaseRecipe<BurntRecipe, BurntRecipe, BurntRecip
 	}
 
 	@Override
-	public ItemStack getResultItem(RegistryAccess access) {
+	public ItemStack getResultItem(HolderLookup.Provider access) {
 		return result;
 	}
 
-	public static class Inv extends SimpleContainer implements RecInv<BurntRecipe> {
+	public static class Inv extends SimpleContainer implements RecipeInput {
 
 		public Inv() {
 			super(1);
+		}
+
+		@Override
+		public int size() {
+			return 1;
 		}
 
 	}

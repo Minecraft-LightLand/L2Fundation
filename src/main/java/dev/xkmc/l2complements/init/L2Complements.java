@@ -8,44 +8,47 @@ import dev.xkmc.l2complements.init.data.*;
 import dev.xkmc.l2complements.init.registrate.*;
 import dev.xkmc.l2complements.network.EmptyRightClickToServer;
 import dev.xkmc.l2complements.network.RotateDiggerToServer;
+import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
+import dev.xkmc.l2core.init.reg.simple.Reg;
+import dev.xkmc.l2core.serial.config.PacketHandlerWithConfig;
 import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2damagetracker.contents.materials.vanilla.GenItemVanillaType;
-import dev.xkmc.l2library.base.L2Registrate;
-import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
+import dev.xkmc.l2menustacker.click.quickaccess.DefaultQuickAccessActions;
+import dev.xkmc.l2menustacker.compat.arclight.AnvilMenuArclight;
 import dev.xkmc.l2screentracker.click.quickaccess.DefaultQuickAccessActions;
 import dev.xkmc.l2screentracker.compat.arclight.AnvilMenuArclight;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.bus.api.EventPriority;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static net.minecraftforge.network.NetworkDirection.PLAY_TO_SERVER;
+import static dev.xkmc.l2serial.network.PacketHandler.NetDir.PLAY_TO_SERVER;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(L2Complements.MODID)
-@Mod.EventBusSubscriber(modid = L2Complements.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = L2Complements.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class L2Complements {
 
 	public static final String MODID = "l2complements";
 	public static final PacketHandlerWithConfig HANDLER = new PacketHandlerWithConfig(
-			new ResourceLocation(MODID, "main"), 3,
+			MODID, 3,
 			e -> e.create(EmptyRightClickToServer.class, PLAY_TO_SERVER),
 			e -> e.create(RotateDiggerToServer.class, PLAY_TO_SERVER)
 	);
 	public static final Logger LOGGER = LogManager.getLogger();
+	public static final Reg REG = new Reg(MODID);
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
 	public static final GenItemVanillaType MATS = new GenItemVanillaType(MODID, REGISTRATE);
 
 	public L2Complements() {
-		ForgeMod.enableMilkFluid();
 		LCItems.register();
 		LCBlocks.register();
 		LCEffects.register();
@@ -55,7 +58,7 @@ public class L2Complements {
 		LCRecipes.register();
 		LCConfig.init();
 		SoulBoundPlayerData.register();
-		new L2ComplementsClick(new ResourceLocation(MODID, "main"));
+		new L2ComplementsClick(loc("main"));
 		AttackEventHandler.register(5000, new MaterialDamageListener());
 		REGISTRATE.addDataGenerator(ProviderType.LANG, LangData::addTranslations);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, RecipeGen::genRecipe);
@@ -90,6 +93,10 @@ public class L2Complements {
 		gen.addProvider(run, new LCConfigGen(gen));
 		gen.addProvider(run, new LCDatapackRegistriesGen(output, pvd));
 		gen.addProvider(run, new LCSpriteSourceProvider(output, helper));
+	}
+
+	public static ResourceLocation loc(String id) {
+		return ResourceLocation.fromNamespaceAndPath(MODID, id);
 	}
 
 }

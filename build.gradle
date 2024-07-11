@@ -153,6 +153,10 @@ dependencies {
     implementation "dev.xkmc:l2itemselector:${l2itemselector_ver}"
     implementation "dev.xkmc:l2library:${l2library_ver}"
 
+    implementation jarJar(group: 'dev.xkmc', name: 'l2damagetracker', version: "[${l2damagetracker_ver},)")
+
+    implementation "dev.xkmc:l2backpack:${l2backpack_ver}"
+
     implementation "mezz.jei:jei-${jei_minecraft_version}:${jei_version}"
     implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
     compileOnly "curse.maven:mouse-tweaks-60089:5437296"

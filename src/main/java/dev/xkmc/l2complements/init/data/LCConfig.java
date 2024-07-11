@@ -1,19 +1,19 @@
 package dev.xkmc.l2complements.init.data;
 
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.config.IConfigSpec;
-import net.minecraftforge.fml.config.ModConfig;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.config.IConfigSpec;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class LCConfig {
 
 	public static class Client {
 
-		public final ForgeConfigSpec.BooleanValue renderEnchOverlay;
-		public final ForgeConfigSpec.IntValue enchOverlayZVal;
+		public final ModConfigSpec.BooleanValue renderEnchOverlay;
+		public final ModConfigSpec.IntValue enchOverlayZVal;
 
-		Client(ForgeConfigSpec.Builder builder) {
+		Client(ModConfigSpec.Builder builder) {
 			renderEnchOverlay = builder.comment("Render enchantment character overlay")
 					.define("renderEnchOverlay", true);
 			enchOverlayZVal = builder.comment("The height of enchantment character overlay")
@@ -24,60 +24,60 @@ public class LCConfig {
 
 	public static class Common {
 
-		public final ForgeConfigSpec.DoubleValue windSpeed;
-		public final ForgeConfigSpec.IntValue belowVoid;
-		public final ForgeConfigSpec.IntValue phantomHeight;
-		public final ForgeConfigSpec.IntValue explosionDamage;
-		public final ForgeConfigSpec.IntValue spaceDamage;
-		public final ForgeConfigSpec.BooleanValue allowModBanSpaceShard;
-		public final ForgeConfigSpec.BooleanValue enableImmunityEnchantments;
-		public final ForgeConfigSpec.IntValue cleansePredicate;
+		public final ModConfigSpec.DoubleValue windSpeed;
+		public final ModConfigSpec.IntValue belowVoid;
+		public final ModConfigSpec.IntValue phantomHeight;
+		public final ModConfigSpec.IntValue explosionDamage;
+		public final ModConfigSpec.IntValue spaceDamage;
+		public final ModConfigSpec.BooleanValue allowModBanSpaceShard;
+		public final ModConfigSpec.BooleanValue enableImmunityEnchantments;
+		public final ModConfigSpec.IntValue cleansePredicate;
 
-		public final ForgeConfigSpec.IntValue totemicHealDuration;
-		public final ForgeConfigSpec.IntValue totemicHealAmount;
-		public final ForgeConfigSpec.IntValue eternalTotemCoolDown;
-		public final ForgeConfigSpec.BooleanValue eternalTotemGiveWarpStone;
+		public final ModConfigSpec.IntValue totemicHealDuration;
+		public final ModConfigSpec.IntValue totemicHealAmount;
+		public final ModConfigSpec.IntValue eternalTotemCoolDown;
+		public final ModConfigSpec.BooleanValue eternalTotemGiveWarpStone;
 
-		public final ForgeConfigSpec.DoubleValue windSweepIncrement;
+		public final ModConfigSpec.DoubleValue windSweepIncrement;
 
-		public final ForgeConfigSpec.IntValue soulFireChargeDuration;
-		public final ForgeConfigSpec.IntValue blackFireChargeDuration;
-		public final ForgeConfigSpec.IntValue strongFireChargePower;
-		public final ForgeConfigSpec.BooleanValue strongFireChargeBreakBlock;
+		public final ModConfigSpec.IntValue soulFireChargeDuration;
+		public final ModConfigSpec.IntValue blackFireChargeDuration;
+		public final ModConfigSpec.IntValue strongFireChargePower;
+		public final ModConfigSpec.BooleanValue strongFireChargeBreakBlock;
 
-		public final ForgeConfigSpec.DoubleValue emeraldDamageFactor;
-		public final ForgeConfigSpec.IntValue emeraldBaseRange;
-		public final ForgeConfigSpec.IntValue sonicShooterDamage;
-		public final ForgeConfigSpec.IntValue hellfireWandDamage;
+		public final ModConfigSpec.DoubleValue emeraldDamageFactor;
+		public final ModConfigSpec.IntValue emeraldBaseRange;
+		public final ModConfigSpec.IntValue sonicShooterDamage;
+		public final ModConfigSpec.IntValue hellfireWandDamage;
 
-		public final ForgeConfigSpec.IntValue iceEnchantDuration;
-		public final ForgeConfigSpec.IntValue flameEnchantDuration;
-		public final ForgeConfigSpec.IntValue bleedEnchantDuration;
-		public final ForgeConfigSpec.IntValue curseEnchantDuration;
-		public final ForgeConfigSpec.IntValue bleedEnchantMax;
-		public final ForgeConfigSpec.DoubleValue voidTouchChance;
-		public final ForgeConfigSpec.DoubleValue voidTouchChanceBonus;
-		public final ForgeConfigSpec.DoubleValue lifeSyncFactor;
+		public final ModConfigSpec.IntValue iceEnchantDuration;
+		public final ModConfigSpec.IntValue flameEnchantDuration;
+		public final ModConfigSpec.IntValue bleedEnchantDuration;
+		public final ModConfigSpec.IntValue curseEnchantDuration;
+		public final ModConfigSpec.IntValue bleedEnchantMax;
+		public final ModConfigSpec.DoubleValue voidTouchChance;
+		public final ModConfigSpec.DoubleValue voidTouchChanceBonus;
+		public final ModConfigSpec.DoubleValue lifeSyncFactor;
 
-		public final ForgeConfigSpec.DoubleValue mobTypeBonus;
+		public final ModConfigSpec.DoubleValue mobTypeBonus;
 
-		public final ForgeConfigSpec.IntValue treeChopMaxRadius;
-		public final ForgeConfigSpec.IntValue treeChopMaxHeight;
-		public final ForgeConfigSpec.IntValue treeChopMaxBlock;
-		public final ForgeConfigSpec.IntValue chainDiggingDelayThreshold;
-		public final ForgeConfigSpec.IntValue chainDiggingBlockPerTick;
-		public final ForgeConfigSpec.DoubleValue chainDiggingHardnessRange;
-		public final ForgeConfigSpec.BooleanValue delayDiggingRequireEnder;
+		public final ModConfigSpec.IntValue treeChopMaxRadius;
+		public final ModConfigSpec.IntValue treeChopMaxHeight;
+		public final ModConfigSpec.IntValue treeChopMaxBlock;
+		public final ModConfigSpec.IntValue chainDiggingDelayThreshold;
+		public final ModConfigSpec.IntValue chainDiggingBlockPerTick;
+		public final ModConfigSpec.DoubleValue chainDiggingHardnessRange;
+		public final ModConfigSpec.BooleanValue delayDiggingRequireEnder;
 
-		public final ForgeConfigSpec.BooleanValue useArsNouveauForEnchantmentRecipe;
-		public final ForgeConfigSpec.BooleanValue enableVanillaItemRecipe;
-		public final ForgeConfigSpec.BooleanValue enableToolRecraftRecipe;
-		public final ForgeConfigSpec.BooleanValue enableSpawnEggRecipe;
+		public final ModConfigSpec.BooleanValue useArsNouveauForEnchantmentRecipe;
+		public final ModConfigSpec.BooleanValue enableVanillaItemRecipe;
+		public final ModConfigSpec.BooleanValue enableToolRecraftRecipe;
+		public final ModConfigSpec.BooleanValue enableSpawnEggRecipe;
 
-		public final ForgeConfigSpec.BooleanValue enableWandEnchantments;
-		public final ForgeConfigSpec.BooleanValue useTagsForWandEnchantmentWhiteList;
+		public final ModConfigSpec.BooleanValue enableWandEnchantments;
+		public final ModConfigSpec.BooleanValue useTagsForWandEnchantmentWhiteList;
 
-		Common(ForgeConfigSpec.Builder builder) {
+		Common(ModConfigSpec.Builder builder) {
 			useArsNouveauForEnchantmentRecipe = builder.comment("When Ars Nouveau is present, use apparatus recipe for enchantments")
 					.define("useArsNouveauForEnchantmentRecipe", true);
 			enableVanillaItemRecipe = builder.comment("Allow vanilla items such as elytra and ancient debris to be crafted with L2Complements materials")
@@ -196,19 +196,19 @@ public class LCConfig {
 
 	}
 
-	public static final ForgeConfigSpec CLIENT_SPEC;
+	public static final ModConfigSpec CLIENT_SPEC;
 	public static final Client CLIENT;
 
-	public static final ForgeConfigSpec COMMON_SPEC;
+	public static final ModConfigSpec COMMON_SPEC;
 	public static final Common COMMON;
 	public static String COMMON_PATH;
 
 	static {
-		final Pair<Client, ForgeConfigSpec> client = new ForgeConfigSpec.Builder().configure(Client::new);
+		final Pair<Client, ModConfigSpec> client = new ModConfigSpec.Builder().configure(Client::new);
 		CLIENT_SPEC = client.getRight();
 		CLIENT = client.getLeft();
 
-		final Pair<Common, ForgeConfigSpec> common = new ForgeConfigSpec.Builder().configure(Common::new);
+		final Pair<Common, ModConfigSpec> common = new ModConfigSpec.Builder().configure(Common::new);
 		COMMON_SPEC = common.getRight();
 		COMMON = common.getLeft();
 	}
@@ -218,10 +218,10 @@ public class LCConfig {
 		COMMON_PATH = register(ModConfig.Type.COMMON, COMMON_SPEC);
 	}
 
-	private static String register(ModConfig.Type type, IConfigSpec<?> spec) {
+	private static String register(ModConfig.Type type, IConfigSpec spec) {
 		var mod = ModLoadingContext.get().getActiveContainer();
 		String path = "l2_configs/" + mod.getModId() + "-" + type.extension() + ".toml";
-		ModLoadingContext.get().registerConfig(type, spec, path);
+		mod.registerConfig(type, spec, path);
 		return path;
 	}
 

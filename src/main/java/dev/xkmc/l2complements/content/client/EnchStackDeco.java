@@ -10,6 +10,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.client.IItemDecorator;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.client.IItemDecorator;
 
 import java.util.ArrayList;
 import java.util.Locale;

@@ -9,13 +9,9 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
 public class FlameThornEnchantment extends AbstractThornEnchantment {
 
-	public FlameThornEnchantment(Rarity pRarity, EnchantmentCategory pCategory, EquipmentSlot[] pApplicableSlots) {
-		super(pRarity, pCategory, pApplicableSlots);
-	}
-
 	@Override
 	protected MobEffectInstance getEffect(int pLevel) {
-		return new MobEffectInstance(LCEffects.FLAME.get(), LCConfig.COMMON.iceEnchantDuration.get(), pLevel - 1);
+		return new MobEffectInstance(LCEffects.FLAME.holder(), LCConfig.COMMON.iceEnchantDuration.get(), pLevel - 1);
 	}
 
 }

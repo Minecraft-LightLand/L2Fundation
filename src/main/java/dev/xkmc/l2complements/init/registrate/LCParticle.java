@@ -1,17 +1,19 @@
 package dev.xkmc.l2complements.init.registrate;
 
-import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.l2complements.content.particle.EmeraldParticle;
 import dev.xkmc.l2complements.init.L2Complements;
+import dev.xkmc.l2core.init.reg.simple.SR;
+import dev.xkmc.l2core.init.reg.simple.Val;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
 public class LCParticle {
 
-	public static final RegistryEntry<SimpleParticleType> EMERALD = L2Complements.REGISTRATE.simple("emerald_splash", ForgeRegistries.Keys.PARTICLE_TYPES, () -> new SimpleParticleType(false));
+	public static final Val<SimpleParticleType> EMERALD = SR.of(L2Complements.REG, BuiltInRegistries.PARTICLE_TYPE)
+			.reg("emerald_splash", () -> new SimpleParticleType(false));
 
 	public static void register() {
 

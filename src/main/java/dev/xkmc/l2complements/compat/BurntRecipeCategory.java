@@ -3,7 +3,7 @@ package dev.xkmc.l2complements.compat;
 import dev.xkmc.l2complements.content.recipe.BurntRecipe;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LangData;
-import dev.xkmc.l2library.serial.recipe.BaseRecipeCategory;
+import dev.xkmc.l2core.compat.jei.BaseRecipeCategory;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -15,10 +15,10 @@ import net.minecraft.world.item.Items;
 
 public class BurntRecipeCategory extends BaseRecipeCategory<BurntRecipe, BurntRecipeCategory> {
 
-	protected static final ResourceLocation BG = new ResourceLocation(L2Complements.MODID, "textures/jei/background.png");
+	protected static final ResourceLocation BG = L2Complements.loc("textures/jei/background.png");
 
 	public BurntRecipeCategory() {
-		super(new ResourceLocation(L2Complements.MODID, "ritual"), BurntRecipe.class);
+		super(L2Complements.loc("burning"), BurntRecipe.class);
 	}
 
 	public BurntRecipeCategory init(IGuiHelper guiHelper) {

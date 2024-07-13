@@ -1,13 +1,13 @@
 package dev.xkmc.l2complements.init;
 
 import com.tterrag.registrate.providers.ProviderType;
-import dev.xkmc.l2complements.content.enchantment.special.SoulBoundPlayerData;
 import dev.xkmc.l2complements.events.L2ComplementsClick;
 import dev.xkmc.l2complements.events.MaterialDamageListener;
 import dev.xkmc.l2complements.init.data.*;
 import dev.xkmc.l2complements.init.registrate.*;
 import dev.xkmc.l2complements.network.EmptyRightClickToServer;
 import dev.xkmc.l2complements.network.RotateDiggerToServer;
+import dev.xkmc.l2core.init.L2TagGen;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.init.reg.simple.Reg;
 import dev.xkmc.l2core.serial.config.PacketHandlerWithConfig;
@@ -15,8 +15,6 @@ import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2damagetracker.contents.materials.vanilla.GenItemVanillaType;
 import dev.xkmc.l2menustacker.click.quickaccess.DefaultQuickAccessActions;
 import dev.xkmc.l2menustacker.compat.arclight.AnvilMenuArclight;
-import dev.xkmc.l2screentracker.click.quickaccess.DefaultQuickAccessActions;
-import dev.xkmc.l2screentracker.compat.arclight.AnvilMenuArclight;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.MenuType;
@@ -57,16 +55,15 @@ public class L2Complements {
 		LCEntities.register();
 		LCRecipes.register();
 		LCConfig.init();
-		SoulBoundPlayerData.register();
 		new L2ComplementsClick(loc("main"));
 		AttackEventHandler.register(5000, new MaterialDamageListener());
 		REGISTRATE.addDataGenerator(ProviderType.LANG, LangData::addTranslations);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, RecipeGen::genRecipe);
-		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, TagGen::onBlockTagGen);
-		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, TagGen::onItemTagGen);
-		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, TagGen::onEntityTagGen);
-		REGISTRATE.addDataGenerator(TagGen.EFF_TAGS, TagGen::onEffectTagGen);
-		REGISTRATE.addDataGenerator(TagGen.ENCH_TAGS, TagGen::onEnchTagGen);
+		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, LCTagGen::onBlockTagGen);
+		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, LCTagGen::onItemTagGen);
+		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, LCTagGen::onEntityTagGen);
+		REGISTRATE.addDataGenerator(L2TagGen.EFF_TAGS, LCTagGen::onEffectTagGen);
+		REGISTRATE.addDataGenerator(LCTagGen.ENCH_TAGS, LCTagGen::onEnchTagGen);
 	}
 
 	@SubscribeEvent

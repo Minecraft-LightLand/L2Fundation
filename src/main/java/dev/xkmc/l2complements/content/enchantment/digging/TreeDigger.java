@@ -2,7 +2,7 @@ package dev.xkmc.l2complements.content.enchantment.digging;
 
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
-import dev.xkmc.l2complements.init.data.TagGen;
+import dev.xkmc.l2complements.init.data.LCTagGen;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.BlockTags;
@@ -24,7 +24,7 @@ public record TreeDigger() implements BlockBreaker {
 		if (state.is(BlockTags.LOGS)) {
 			return 2;
 		}
-		if (state.is(TagGen.AS_LEAF)) {
+		if (state.is(LCTagGen.AS_LEAF)) {
 			return 1;
 		}
 		return 0;

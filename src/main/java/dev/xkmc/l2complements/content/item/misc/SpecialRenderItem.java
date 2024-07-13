@@ -1,7 +1,7 @@
 package dev.xkmc.l2complements.content.item.misc;
 
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;

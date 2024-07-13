@@ -3,10 +3,10 @@ package dev.xkmc.l2complements.content.effect.skill;
 import dev.xkmc.l2complements.init.data.DamageTypeGen;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCParticle;
-import dev.xkmc.l2library.base.effects.api.ClientRenderEffect;
-import dev.xkmc.l2library.base.effects.api.DelayedEntityRender;
-import dev.xkmc.l2library.base.effects.api.FirstPlayerRenderEffect;
-import dev.xkmc.l2library.util.Proxy;
+import dev.xkmc.l2core.base.effects.api.ClientRenderEffect;
+import dev.xkmc.l2core.base.effects.api.DelayedEntityRender;
+import dev.xkmc.l2core.base.effects.api.FirstPlayerRenderEffect;
+import dev.xkmc.l2core.util.Proxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.world.damagesource.DamageSource;
@@ -20,8 +20,8 @@ import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
 import java.util.function.Consumer;
 

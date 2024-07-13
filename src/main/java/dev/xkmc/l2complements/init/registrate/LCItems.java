@@ -1,7 +1,6 @@
 package dev.xkmc.l2complements.init.registrate;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
-import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.l2complements.content.enchantment.core.UnobtainableEnchantment;
 import dev.xkmc.l2complements.content.entity.fireball.BlackFireball;
 import dev.xkmc.l2complements.content.entity.fireball.SoulFireball;
@@ -17,8 +16,8 @@ import dev.xkmc.l2complements.content.item.wand.WinterStormWand;
 import dev.xkmc.l2complements.events.MaterialDamageListener;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
+import dev.xkmc.l2complements.init.data.LCTagGen;
 import dev.xkmc.l2complements.init.data.LangData;
-import dev.xkmc.l2complements.init.data.TagGen;
 import dev.xkmc.l2complements.init.materials.LCMats;
 import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -57,7 +56,7 @@ public class LCItems {
 
 		TAB_ENCHMAX = REGISTRATE.buildL2CreativeTab("enchantments_max", "L2 Enchantments - Lv Max", b -> b
 				.icon(() -> EnchantedBookItem.createForEnchantment(
-						new EnchantmentInstance(LCEnchantments.SOUL_BOUND.get(), 1))));
+						new EnchantmentInstance(LCEnchantments.SOUL_BOUND.holder(), 1))));
 
 		TAB_ITEM = REGISTRATE.buildL2CreativeTab("l2complements", "L2Complements Items", b -> b
 				.icon(LCItems.RESONANT_FEATHER::asStack));
@@ -126,14 +125,14 @@ public class LCItems {
 			SPACE_SHARD = simpleItem("space_shard", "Space Shard (Creative)", TooltipItem::new, Rarity.EPIC, () -> MaterialDamageListener.isSpaceShardBanned() ? null : LangData.IDS.SPACE_SHARD.get(LCConfig.COMMON.spaceDamage.get())); // deal 500 arrow damage
 			WARDEN_BONE_SHARD = simpleItem("warden_bone_shard", "Warden Bone Shard", TooltipItem::new, Rarity.RARE, LangData.IDS.WARDEN_BONE_SHARD::get);
 			GUARDIAN_EYE = simpleItem("guardian_eye", "Eye of Elder Guardian", TooltipItem::new, Rarity.RARE, LangData.IDS.GUARDIAN_EYE::get);
-			EMERALD = REGISTRATE.item("heirophant_green", p -> new BurntItem(p.fireResistant().rarity(Rarity.EPIC))).defaultModel().tag(TagGen.SPECIAL_ITEM).lang("Heirophant Green").register();
-			CURSED_DROPLET = REGISTRATE.item("cursed_droplet", p -> new BurntItem(p.fireResistant().rarity(Rarity.RARE))).defaultModel().tag(TagGen.SPECIAL_ITEM).lang("Cursed Droplet").register();
+			EMERALD = REGISTRATE.item("heirophant_green", p -> new BurntItem(p.fireResistant().rarity(Rarity.EPIC))).defaultModel().tag(LCTagGen.SPECIAL_ITEM).lang("Heirophant Green").register();
+			CURSED_DROPLET = REGISTRATE.item("cursed_droplet", p -> new BurntItem(p.fireResistant().rarity(Rarity.RARE))).defaultModel().tag(LCTagGen.SPECIAL_ITEM).lang("Cursed Droplet").register();
 			LIFE_ESSENCE = REGISTRATE.item("life_essence", p -> new BurntItem(p.fireResistant().rarity(Rarity.RARE)
 							.food(new FoodProperties.Builder().nutrition(20).saturationModifier(1.2f).alwaysEdible().fast().build())))
-					.defaultModel().tag(TagGen.SPECIAL_ITEM).lang("Essence of Life").register();
+					.defaultModel().tag(LCTagGen.SPECIAL_ITEM).lang("Essence of Life").register();
 			FORCE_FIELD = REGISTRATE.item("force_field", p -> new SpecialRenderItem(p.fireResistant().rarity(Rarity.EPIC), LangData.IDS.FORCE_FIELD::get))
 					.model((ctx, pvd) -> pvd.getBuilder(ctx.getName()).parent(new ModelFile.UncheckedModelFile("builtin/entity")))
-					.lang("Wither Force Field").tag(TagGen.SPECIAL_ITEM).register();
+					.lang("Wither Force Field").tag(LCTagGen.SPECIAL_ITEM).register();
 			GUARDIAN_RUNE = simpleItem("guardian_rune", "Rune of Guardian", (p, t) -> new TransformItem(p, t,
 							() -> EntityType.GUARDIAN, () -> EntityType.ELDER_GUARDIAN),
 					Rarity.RARE, LangData.IDS.GUARDIAN_RUNE::get);
@@ -177,7 +176,7 @@ public class LCItems {
 			BLACK_CHARGE = REGISTRATE.item("black_fire_charge", p ->
 							new FireChargeItem<>(p, BlackFireball::new, BlackFireball::new,
 									() -> LangData.IDS.EFFECT_CHARGE.get(getTooltip(
-											new MobEffectInstance(LCEffects.STONE_CAGE.holder(),
+											new MobEffectInstance(LCEffects.INCARCERATE.holder(),
 													LCConfig.COMMON.blackFireChargeDuration.get())))))
 					.defaultModel().defaultLang().register();
 
@@ -266,7 +265,7 @@ public class LCItems {
 	}
 
 	public static <T extends Item> ItemEntry<T> simpleItem(String id, String name, BiFunction<Item.Properties, Supplier<MutableComponent>, T> func, Rarity r, Supplier<MutableComponent> sup) {
-		return REGISTRATE.item(id, p -> func.apply(p.fireResistant().rarity(r), sup)).defaultModel().tag(TagGen.SPECIAL_ITEM).lang(name).register();
+		return REGISTRATE.item(id, p -> func.apply(p.fireResistant().rarity(r), sup)).defaultModel().tag(LCTagGen.SPECIAL_ITEM).lang(name).register();
 	}
 
 	public static void register() {

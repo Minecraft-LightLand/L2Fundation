@@ -1,99 +1,66 @@
 package dev.xkmc.l2complements.content.enchantment.weapon;
 
-import dev.xkmc.l2complements.content.enchantment.core.UnobtainableEnchantment;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
+import dev.xkmc.l2damagetracker.contents.attack.DamageData;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
-import net.minecraft.ChatFormatting;
+import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentCategory;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 import java.util.Random;
 
-public class VoidTouchEnchantment extends UnobtainableEnchantment {
+public class VoidTouchEnchantment {
 
-	public VoidTouchEnchantment(Rarity rarity, EnchantmentCategory category, EquipmentSlot[] slots) {
-		super(rarity, category, slots);
-	}
-
-	private double getChance(AttackCache cache, ItemStack weapon, int level) {
-		if (cache.getStrength() < 0.95f) return 0;
+	private static double getChance(DamageData data, int level) {
+		if (data.getStrength() < 0.95f) return 0;
 		double chance = LCConfig.COMMON.voidTouchChance.get() * level;
-		DamageSource source = null;
-		if (cache.getLivingHurtEvent() != null)
-			source = cache.getLivingHurtEvent().getSource();
-		else if (cache.getLivingAttackEvent() != null) {
-			source = cache.getLivingAttackEvent().getSource();
-		}
-		if (source != null) {
-			if (source.is(DamageTypeTags.BYPASSES_ARMOR))
-				chance += LCConfig.COMMON.voidTouchChanceBonus.get();
-			if (source.is(DamageTypeTags.BYPASSES_EFFECTS) && source.is(DamageTypeTags.BYPASSES_ENCHANTMENTS))
-				chance += LCConfig.COMMON.voidTouchChanceBonus.get();
-		}
+		DamageSource source = data.getSource();
+		if (source.is(DamageTypeTags.BYPASSES_ARMOR))
+			chance += LCConfig.COMMON.voidTouchChanceBonus.get();
+		if (source.is(DamageTypeTags.BYPASSES_EFFECTS) && source.is(DamageTypeTags.BYPASSES_ENCHANTMENTS))
+			chance += LCConfig.COMMON.voidTouchChanceBonus.get();
 		return chance;
 	}
 
-	private boolean allow(AttackCache cache, ItemStack weapon) {
-		int level = weapon.getEnchantmentLevel(LCEnchantments.VOID_TOUCH.get());
+	private static boolean allow(DamageData cache, ItemStack weapon) {
+		int level = LCEnchantments.VOID_TOUCH.getLv(weapon);
 		if (level <= 0) return false;
-		double chance = getChance(cache, weapon, level);
-		double rr = new Random(new Random(cache.getAttackTarget().tickCount).nextLong()).nextDouble();
+		double chance = getChance(cache, level);
+		double rr = new Random(new Random(cache.getTarget().tickCount).nextLong()).nextDouble();
 		if (rr > chance) return false;
 		return true;
 	}
 
-	public void postAttack(AttackCache cache, LivingAttackEvent event, ItemStack weapon) {
-		if (!allow(cache, weapon)) return;
-		if (event.isCanceled()) {
-			event.setCanceled(false);
-		}
+	public static void postAttack(DamageData.Attack data, ItemStack weapon) {
+		if (!allow(data, weapon)) return;
+		data.setNonCancellable();
 	}
 
-	public void initAttack(AttackCache cache, ItemStack weapon) {
-		if (!allow(cache, weapon)) return;
-		if (cache.getAttacker() == null) return;
-		if (cache.getAttacker().getAttribute(Attributes.ATTACK_DAMAGE) == null) return;
-		double damage = cache.getAttacker().getAttributeValue(Attributes.ATTACK_DAMAGE);
-		if (cache.getCriticalHitEvent() != null) {
-			damage *= cache.getCriticalHitEvent().getDamageModifier();
+	public static void initAttack(DamageData.Offence data, ItemStack weapon) {
+		if (!allow(data, weapon)) return;
+		if (data.getAttacker() == null) return;
+		if (data.getAttacker().getAttribute(Attributes.ATTACK_DAMAGE) == null) return;
+		float maxDmg = data.getDamageOriginal();
+		if (data.getSource().is(L2DamageTypes.DIRECT)) {
+			double damage = data.getAttacker().getAttributeValue(Attributes.ATTACK_DAMAGE);
+			var pl = data.getPlayerData();
+			var crit = pl == null ? null : pl.getCriticalHitEvent();
+			if (crit != null) {
+				damage *= crit.getDamageMultiplier();
+			}
+			maxDmg = (float) Math.max(damage, maxDmg);
 		}
-		float finalDamage = (float) damage;
-		cache.addHurtModifier(DamageModifier.nonlinearPre(0, e -> Math.max(e, finalDamage)));
+		float finDmg = maxDmg;
+		data.addHurtModifier(DamageModifier.nonlinearPre(0, e -> Math.max(e, finDmg)));
 	}
 
-	public void postHurt(AttackCache cache, LivingHurtEvent event, ItemStack weapon) {
+	public static void initDamage(DamageData.Defence cache, ItemStack weapon) {
 		if (!allow(cache, weapon)) return;
-		if (event.isCanceled()) {
-			event.setCanceled(false);
-		}
-		event.setAmount(Math.max(event.getAmount(), cache.getPreDamage()));
-	}
-
-	public void initDamage(AttackCache cache, ItemStack weapon) {
-		if (!allow(cache, weapon)) return;
-		float finalDamage = cache.getPreDamage();
+		float finalDamage = Math.max(cache.getDamageOriginal(), cache.getDamageIncoming());
 		cache.addDealtModifier(DamageModifier.nonlinearPre(5000, e -> Math.max(e, finalDamage)));
 	}
 
-	public ChatFormatting getColor() {
-		return ChatFormatting.GOLD;
-	}
-
-	@Override
-	public int getMinLevel() {
-		return 1;
-	}
-
-	@Override
-	public int getMaxLevel() {
-		return 3;
-	}
 }

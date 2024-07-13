@@ -1,30 +1,25 @@
 package dev.xkmc.l2complements.content.enchantment.digging;
 
-import dev.xkmc.l2complements.content.enchantment.core.CustomDescEnchantment;
-import dev.xkmc.l2complements.content.enchantment.core.UnobtainableEnchantment;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
-import dev.xkmc.l2complements.init.data.TagGen;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
-import dev.xkmc.l2library.init.events.GeneralEventHandler;
+import dev.xkmc.l2core.events.SchedulerHandler;
+import dev.xkmc.l2core.init.reg.ench.LegacyEnchantment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.HashSet;
 import java.util.List;
@@ -33,7 +28,7 @@ import java.util.UUID;
 
 import static org.apache.logging.log4j.Level.ERROR;
 
-public class RangeDiggingEnchantment extends UnobtainableEnchantment implements CustomDescEnchantment {
+public class RangeDiggingEnchantment extends LegacyEnchantment {
 
 	private static final Set<UUID> BREAKER = new HashSet<>();
 
@@ -54,7 +49,7 @@ public class RangeDiggingEnchantment extends UnobtainableEnchantment implements 
 		Level level = player.level();
 		Vec3 base = player.getEyePosition(0);
 		Vec3 look = player.getLookAngle();
-		double reach = player.getAttributeValue(ForgeMod.BLOCK_REACH.get());
+		double reach = player.getAttributeValue(Attributes.BLOCK_INTERACTION_RANGE);
 		Vec3 target = base.add(look.x * reach, look.y * reach, look.z * reach);
 		BlockHitResult trace = level.clip(new ClipContext(base, target, ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, player));
 		return trace.getDirection();
@@ -67,7 +62,7 @@ public class RangeDiggingEnchantment extends UnobtainableEnchantment implements 
 	private static boolean canBreak(BlockPos i, Level level, Player player, double hardness) {
 		BlockState state = level.getBlockState(i);
 		if (state.isAir()) return false;
-		if (!player.hasCorrectToolForDrops(state))
+		if (!player.hasCorrectToolForDrops(state, level, i))
 			return false;
 		float speed = state.getDestroySpeed(player.level(), i);
 		if (speed < 0) return false;
@@ -76,14 +71,8 @@ public class RangeDiggingEnchantment extends UnobtainableEnchantment implements 
 
 	private final BlockBreaker breaker;
 
-	public RangeDiggingEnchantment(BlockBreaker breaker, Rarity pRarity, EnchantmentCategory pCategory, EquipmentSlot[] pApplicableSlots) {
-		super(pRarity, pCategory, pApplicableSlots);
+	public RangeDiggingEnchantment(BlockBreaker breaker) {
 		this.breaker = breaker;
-	}
-
-	@Override
-	public int getMaxLevel() {
-		return breaker.getMaxLevel();
 	}
 
 	public List<BlockPos> getTargets(Player player, BlockPos pos, ItemStack stack, int lv) {
@@ -104,14 +93,14 @@ public class RangeDiggingEnchantment extends UnobtainableEnchantment implements 
 				}
 			} else {
 				if (LCConfig.COMMON.delayDiggingRequireEnder.get()) {
-					if (stack.getEnchantmentLevel(LCEnchantments.ENDER.get()) <= 0) {
+					if (stack.getEnchantmentLevel(LCEnchantments.ENDER_TOUCH.holder()) <= 0) {
 						player.sendSystemMessage(LangData.IDS.DELAY_WARNING.get(
-										LCEnchantments.ENDER.get().getFullname(1), max)
+										Enchantment.getFullname(LCEnchantments.ENDER_TOUCH.holder(), 1), max)
 								.withStyle(ChatFormatting.RED), true);
 						return;
 					}
 				}
-				GeneralEventHandler.schedulePersistent(new DelayedBlockBreaker(player, blocks)::tick);
+				SchedulerHandler.schedulePersistent(new DelayedBlockBreaker(player, blocks)::tick);
 			}
 		});
 	}
@@ -121,13 +110,4 @@ public class RangeDiggingEnchantment extends UnobtainableEnchantment implements 
 		return breaker.descFull(lv, key, alt, book);
 	}
 
-	@Override
-	protected boolean checkCompatibility(Enchantment e) {
-		return !ForgeRegistries.ENCHANTMENTS.tags().getTag(TagGen.DIGGER_ENCH).contains(e);
-	}
-
-	@Override
-	public int getDecoColor(String s) {
-		return 0xffafafaf;
-	}
 }

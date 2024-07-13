@@ -1,14 +1,12 @@
 package dev.xkmc.l2complements.content.effect.skill;
 
-import dev.xkmc.l2complements.content.effect.force.NoSelfRenderEffect;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.DamageTypeGen;
-import dev.xkmc.l2library.base.effects.api.DelayedEntityRender;
-import dev.xkmc.l2library.base.effects.api.ForceEffect;
-import dev.xkmc.l2library.base.effects.api.IconOverlayEffect;
-import dev.xkmc.l2library.base.effects.api.InherentEffect;
+import dev.xkmc.l2core.base.effects.api.DelayedEntityRender;
+import dev.xkmc.l2core.base.effects.api.ForceEffect;
+import dev.xkmc.l2core.base.effects.api.IconOverlayEffect;
+import dev.xkmc.l2core.base.effects.api.InherentEffect;
 import dev.xkmc.l2library.util.math.MathHelper;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -47,8 +45,7 @@ public class BleedEffect extends InherentEffect implements ForceEffect, IconOver
 
 	@Override
 	public DelayedEntityRender getIcon(LivingEntity entity, int lv) {
-		return DelayedEntityRender.icon(entity, new ResourceLocation(L2Complements.MODID,
-				"textures/effect_overlay/bleed_" + Mth.clamp(lv, 0, 8) + ".png"));
+		return DelayedEntityRender.icon(entity, L2Complements.loc("textures/effect_overlay/bleed_" + Mth.clamp(lv, 0, 8) + ".png"));
 	}
 
 }

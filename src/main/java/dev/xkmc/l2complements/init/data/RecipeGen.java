@@ -14,11 +14,13 @@ import dev.xkmc.l2complements.init.registrate.LCBlocks;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2complements.init.registrate.LCItems;
+import dev.xkmc.l2core.serial.configval.BooleanValueCondition;
+import dev.xkmc.l2core.serial.ingredients.EnchantmentIngredient;
+import dev.xkmc.l2core.serial.recipe.ConditionalRecipeWrapper;
 import dev.xkmc.l2library.compat.jeed.JeedDataGenerator;
-import dev.xkmc.l2library.serial.conditions.BooleanValueCondition;
-import dev.xkmc.l2library.serial.ingredients.EnchantmentIngredient;
-import dev.xkmc.l2library.serial.recipe.ConditionalRecipeWrapper;
+import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -33,7 +35,6 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 import umpaz.nethersdelight.NethersDelight;
@@ -42,19 +43,18 @@ import umpaz.nethersdelight.common.registry.NDItems;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.BiFunction;
-import java.util.function.Consumer;
 
-import static dev.xkmc.l2library.serial.recipe.AbstractSmithingRecipe.TEMPLATE_PLACEHOLDER;
+import static dev.xkmc.l2core.serial.recipe.AbstractSmithingRecipe.TEMPLATE_PLACEHOLDER;
 
 @SuppressWarnings("removal")
 public class RecipeGen {
 
 	@SuppressWarnings("unchecked")
 	private static final TagKey<Item>[] TOOLS = List.of(
-			Tags.Items.ARMORS_BOOTS,
-			Tags.Items.ARMORS_LEGGINGS,
-			Tags.Items.ARMORS_CHESTPLATES,
-			Tags.Items.ARMORS_HELMETS,
+			ItemTags.HEAD_ARMOR,
+			ItemTags.CHEST_ARMOR,
+			ItemTags.LEG_ARMOR,
+			ItemTags.FOOT_ARMOR,
 			ItemTags.SWORDS,
 			ItemTags.AXES,
 			ItemTags.SHOVELS,
@@ -207,7 +207,7 @@ public class RecipeGen {
 					.save(pvd, getID(LCItems.ENCHANTED_TOTEMIC_APPLE.get()));
 
 			unlock(pvd, new ShapelessRecipeBuilder(RecipeCategory.MISC, LCItems.WARDEN_BONE_SHARD.get(), 1)::unlockedBy, LCItems.RESONANT_FEATHER.get())
-					.requires(TagGen.DELICATE_BONE)
+					.requires(LCTagGen.DELICATE_BONE)
 					.requires(LCItems.RESONANT_FEATHER.get())
 					.save(pvd, getID(LCItems.WARDEN_BONE_SHARD.get()));
 
@@ -300,9 +300,9 @@ public class RecipeGen {
 			var cond = ConditionalRecipeWrapper.of(pvd, BooleanValueCondition.of(LCConfig.COMMON_PATH, LCConfig.COMMON.enableToolRecraftRecipe, true));
 
 			for (int i = 0; i < 9; i++) {
-				smithing(pvd, TOOLS[i], Items.IRON_BLOCK, ForgeRegistries.ITEMS.getValue(new ResourceLocation("iron_" + TOOL_NAME[i])), cond);
-				smithing(pvd, TOOLS[i], Items.GOLD_BLOCK, ForgeRegistries.ITEMS.getValue(new ResourceLocation("golden_" + TOOL_NAME[i])), cond);
-				smithing(pvd, TOOLS[i], Items.DIAMOND_BLOCK, ForgeRegistries.ITEMS.getValue(new ResourceLocation("diamond_" + TOOL_NAME[i])), cond);
+				smithing(pvd, TOOLS[i], Items.IRON_BLOCK, BuiltInRegistries.ITEM.get(ResourceLocation.withDefaultNamespace("iron_" + TOOL_NAME[i])), cond);
+				smithing(pvd, TOOLS[i], Items.GOLD_BLOCK, BuiltInRegistries.ITEM.get(ResourceLocation.withDefaultNamespace("golden_" + TOOL_NAME[i])), cond);
+				smithing(pvd, TOOLS[i], Items.DIAMOND_BLOCK, BuiltInRegistries.ITEM.get(ResourceLocation.withDefaultNamespace("diamond_" + TOOL_NAME[i])), cond);
 			}
 		}
 
@@ -313,62 +313,62 @@ public class RecipeGen {
 			// protections
 			{
 
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENCH_PROJECTILE.get(), 1)::unlockedBy, LCItems.FORCE_FIELD.get())
+				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.IMM_PROJECTILE.get(), 1)::unlockedBy, LCItems.FORCE_FIELD.get())
 						.pattern("1B1").pattern("BCB").pattern("2B2")
 						.define('1', new EnchantmentIngredient(Enchantments.PROJECTILE_PROTECTION, 4))
 						.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
 						.define('B', LCItems.FORCE_FIELD.get())
 						.define('C', new EnchantmentIngredient(Enchantments.INFINITY_ARROWS, 1))
-						.save(pvd, getID(LCEnchantments.ENCH_PROJECTILE.get()));
+						.save(pvd, getID(LCEnchantments.IMM_PROJECTILE.get()));
 
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENCH_EXPLOSION.get(), 1)::unlockedBy, LCItems.EXPLOSION_SHARD.get())
+				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.IMM_EXPLOSION.get(), 1)::unlockedBy, LCItems.EXPLOSION_SHARD.get())
 						.pattern("1B1").pattern("BCB").pattern("2B2")
 						.define('1', new EnchantmentIngredient(Enchantments.BLAST_PROTECTION, 4))
 						.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
 						.define('B', LCItems.EXPLOSION_SHARD.get())
 						.define('C', Items.CRYING_OBSIDIAN)
-						.save(pvd, getID(LCEnchantments.ENCH_EXPLOSION.get()));
+						.save(pvd, getID(LCEnchantments.IMM_EXPLOSION.get()));
 
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENCH_FIRE.get(), 1)::unlockedBy, LCItems.SUN_MEMBRANE.get())
+				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.IMM_FIRE.get(), 1)::unlockedBy, LCItems.SUN_MEMBRANE.get())
 						.pattern("1B1").pattern("BCB").pattern("2B2")
 						.define('1', new EnchantmentIngredient(Enchantments.FIRE_PROTECTION, 4))
 						.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
 						.define('B', LCItems.SOUL_FLAME.get())
 						.define('C', LCItems.HARD_ICE.get())
-						.save(pvd, getID(LCEnchantments.ENCH_FIRE.get()));
+						.save(pvd, getID(LCEnchantments.IMM_FIRE.get()));
 
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENCH_ENVIRONMENT.get(), 1)::unlockedBy, LCItems.VOID_EYE.get())
+				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.IMM_ENVIRONMENT.get(), 1)::unlockedBy, LCItems.VOID_EYE.get())
 						.pattern("1B1").pattern("BCB").pattern("2B2")
 						.define('1', LCItems.SUN_MEMBRANE.get())
 						.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
 						.define('B', LCItems.VOID_EYE.get())
 						.define('C', LCItems.CAPTURED_WIND.get())
-						.save(pvd, getID(LCEnchantments.ENCH_ENVIRONMENT.get()));
+						.save(pvd, getID(LCEnchantments.IMM_ENVIRONMENT.get()));
 
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENCH_MAGIC.get(), 1)::unlockedBy, LCItems.RESONANT_FEATHER.get())
+				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.IMM_MAGIC.get(), 1)::unlockedBy, LCItems.RESONANT_FEATHER.get())
 						.pattern("1B1").pattern("BCB").pattern("2B2")
 						.define('1', LCItems.VOID_EYE.get())
 						.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
 						.define('B', LCItems.RESONANT_FEATHER.get())
 						.define('C', LCItems.FORCE_FIELD.get())
-						.save(pvd, getID(LCEnchantments.ENCH_MAGIC.get()));
+						.save(pvd, getID(LCEnchantments.IMM_MAGIC.get()));
 
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENCH_INVINCIBLE.get(), 1)::unlockedBy, LCItems.SPACE_SHARD.get())
+				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.INVINCIBLE.get(), 1)::unlockedBy, LCItems.SPACE_SHARD.get())
 						.pattern("A1A").pattern("203").pattern("A4A")
 						.define('A', LCItems.SPACE_SHARD.get())
-						.define('0', new EnchantmentIngredient(LCEnchantments.ENCH_ENVIRONMENT.get(), 1))
-						.define('1', new EnchantmentIngredient(LCEnchantments.ENCH_MAGIC.get(), 1))
-						.define('2', new EnchantmentIngredient(LCEnchantments.ENCH_EXPLOSION.get(), 1))
-						.define('3', new EnchantmentIngredient(LCEnchantments.ENCH_FIRE.get(), 1))
-						.define('4', new EnchantmentIngredient(LCEnchantments.ENCH_PROJECTILE.get(), 1))
-						.save(pvd, getID(LCEnchantments.ENCH_INVINCIBLE.get()));
+						.define('0', new EnchantmentIngredient(LCEnchantments.IMM_ENVIRONMENT.get(), 1))
+						.define('1', new EnchantmentIngredient(LCEnchantments.IMM_MAGIC.get(), 1))
+						.define('2', new EnchantmentIngredient(LCEnchantments.IMM_EXPLOSION.get(), 1))
+						.define('3', new EnchantmentIngredient(LCEnchantments.IMM_FIRE.get(), 1))
+						.define('4', new EnchantmentIngredient(LCEnchantments.IMM_PROJECTILE.get(), 1))
+						.save(pvd, getID(LCEnchantments.INVINCIBLE.get()));
 
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENCH_MATES.get(), 1)::unlockedBy, Items.NETHER_STAR)
+				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.IMM_MATES.get(), 1)::unlockedBy, Items.NETHER_STAR)
 						.pattern("BAB").pattern("B1B").pattern("BAB")
 						.define('1', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
 						.define('A', Items.NETHER_STAR)
 						.define('B', Items.END_ROD)
-						.save(pvd, getID(LCEnchantments.ENCH_MATES.get()));
+						.save(pvd, getID(LCEnchantments.IMM_MATES.get()));
 			}
 
 			// misc
@@ -452,13 +452,13 @@ public class RecipeGen {
 						.define('L', Items.LAPIS_LAZULI)
 						.save(pvd, getID(LCEnchantments.DAMPENED.get()));
 
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENDER.get(), 1)::unlockedBy, Items.ENDER_PEARL)
+				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ENDER_TOUCH.get(), 1)::unlockedBy, Items.ENDER_PEARL)
 						.pattern("LAL").pattern("ABA").pattern("LCL")
 						.define('A', Items.ENDER_PEARL)
 						.define('B', Items.BOOK)
 						.define('C', Items.HOPPER)
 						.define('L', Items.LAPIS_LAZULI)
-						.save(pvd, getID(LCEnchantments.ENDER.get()));
+						.save(pvd, getID(LCEnchantments.ENDER_TOUCH.get()));
 
 				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.HARDENED.get(), 1)::unlockedBy, LCMats.SHULKERATE.getIngot())
 						.pattern("SCS").pattern("ABA").pattern("LAL")
@@ -970,7 +970,7 @@ public class RecipeGen {
 		{
 			var jeed = new JeedDataGenerator(L2Complements.MODID);
 			jeed.add(LCItems.SOUL_CHARGE.get(), LCEffects.FLAME.get());
-			jeed.add(LCItems.BLACK_CHARGE.get(), LCEffects.STONE_CAGE.get());
+			jeed.add(LCItems.BLACK_CHARGE.get(), LCEffects.INCARCERATE.get());
 			jeed.add(new EnchantmentIngredient(LCEnchantments.FLAME_BLADE.get(), 1), LCEffects.FLAME.get());
 			jeed.add(new EnchantmentIngredient(LCEnchantments.FLAME_THORN.get(), 1), LCEffects.FLAME.get());
 			jeed.add(new EnchantmentIngredient(LCEnchantments.ICE_BLADE.get(), 1), LCEffects.ICE.get());
@@ -990,22 +990,22 @@ public class RecipeGen {
 
 	@SuppressWarnings("ConstantConditions")
 	private static ResourceLocation getID(Enchantment item) {
-		return new ResourceLocation(L2Complements.MODID, currentFolder + ForgeRegistries.ENCHANTMENTS.getKey(item).getPath());
+		return new ResourceLocation(L2Complements.MODID, currentFolder + BuiltInRegistries.ENCHANTMENTS.getKey(item).getPath());
 	}
 
 	@SuppressWarnings("ConstantConditions")
 	private static ResourceLocation getID(Enchantment item, String suffix) {
-		return new ResourceLocation(L2Complements.MODID, currentFolder + ForgeRegistries.ENCHANTMENTS.getKey(item).getPath() + suffix);
+		return new ResourceLocation(L2Complements.MODID, currentFolder + BuiltInRegistries.ENCHANTMENTS.getKey(item).getPath() + suffix);
 	}
 
 	@SuppressWarnings("ConstantConditions")
 	private static ResourceLocation getID(Item item) {
-		return new ResourceLocation(L2Complements.MODID, currentFolder + ForgeRegistries.ITEMS.getKey(item).getPath());
+		return L2Complements.loc(currentFolder + BuiltInRegistries.ITEM.getKey(item).getPath());
 	}
 
 	@SuppressWarnings("ConstantConditions")
 	private static ResourceLocation getID(Item item, String suffix) {
-		return new ResourceLocation(L2Complements.MODID, currentFolder + ForgeRegistries.ITEMS.getKey(item).getPath() + suffix);
+		return L2Complements.loc(currentFolder + BuiltInRegistries.ITEM.getKey(item).getPath() + suffix);
 	}
 
 	private static void convert(RegistrateRecipeProvider pvd, Item in, Item out, int count) {
@@ -1076,15 +1076,15 @@ public class RecipeGen {
 
 	}
 
-	public static <T> T unlock(RegistrateRecipeProvider pvd, BiFunction<String, InventoryChangeTrigger.TriggerInstance, T> func, Item item) {
-		return func.apply("has_" + pvd.safeName(item), DataIngredient.items(item).getCritereon(pvd));
+	public static <T> T unlock(RegistrateRecipeProvider pvd, BiFunction<String, Criterion<InventoryChangeTrigger.TriggerInstance>, T> func, Item item) {
+		return func.apply("has_" + pvd.safeName(item), DataIngredient.items(item).getCriterion(pvd));
 	}
 
 	public static void smithing(RegistrateRecipeProvider pvd, TagKey<Item> in, Item mat, Item out) {
 		smithing(pvd, in, mat, out, pvd);
 	}
 
-	public static void smithing(RegistrateRecipeProvider pvd, TagKey<Item> in, Item mat, Item out, Consumer<FinishedRecipe> cons) {
+	public static void smithing(RegistrateRecipeProvider pvd, TagKey<Item> in, Item mat, Item out, RecipeOutput cons) {
 		unlock(pvd, SmithingTransformRecipeBuilder.smithing(TEMPLATE_PLACEHOLDER, Ingredient.of(in), Ingredient.of(mat), RecipeCategory.MISC, out)::unlocks, mat).save(cons, getID(out));
 	}
 

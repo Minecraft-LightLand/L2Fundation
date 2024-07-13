@@ -1,6 +1,7 @@
 package dev.xkmc.l2complements.content.effect.force;
 
 import dev.xkmc.l2complements.init.L2Complements;
+import dev.xkmc.l2core.base.effects.api.ForceEffect;
 import dev.xkmc.l2library.base.effects.api.ForceEffect;
 import dev.xkmc.l2library.util.math.MathHelper;
 import net.minecraft.world.effect.MobEffect;

@@ -1,7 +1,7 @@
 package dev.xkmc.l2complements.content.item.wand;
 
 import dev.xkmc.l2complements.init.data.LCConfig;
-import dev.xkmc.l2complements.init.data.TagGen;
+import dev.xkmc.l2complements.init.data.LCTagGen;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -24,7 +24,7 @@ public class WandItem extends Item {
 		if (LCConfig.COMMON.useTagsForWandEnchantmentWhiteList.get()) {
 			var manager = ForgeRegistries.ENCHANTMENTS.tags();
 			if (manager != null) {
-				return manager.getTag(TagGen.WAND_ENCH).contains(enchantment);
+				return manager.getTag(LCTagGen.WAND_ENCH).contains(enchantment);
 			}
 		}
 		return super.canApplyAtEnchantingTable(stack, enchantment);

@@ -8,15 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum EntityFeature {
-	STABLE_BODY(List.of(new SlotEnchantmentFeaturePredicate(EquipmentSlot.CHEST, LCEnchantments.STABLE_BODY::get))),
-	PROJECTILE_REJECT(List.of(new EnchantmentFeaturePredicate(LCEnchantments.ENCH_PROJECTILE::get))),
-	EXPLOSION_REJECT(List.of(new EnchantmentFeaturePredicate(LCEnchantments.ENCH_EXPLOSION::get))),
-	FIRE_REJECT(List.of(new EnchantmentFeaturePredicate(LCEnchantments.ENCH_FIRE::get))),
-	ENVIRONMENTAL_REJECT(List.of(new EnchantmentFeaturePredicate(LCEnchantments.ENCH_ENVIRONMENT::get))),
-	MAGIC_REJECT(List.of(new EnchantmentFeaturePredicate(LCEnchantments.ENCH_MAGIC::get))),
-	OWNER_PROTECTION(List.of(new EnchantmentFeaturePredicate(LCEnchantments.ENCH_MATES::get))),
-	INVINCIBLE(List.of(new EnchantmentFeaturePredicate(LCEnchantments.ENCH_INVINCIBLE::get))),
-	SNOW_WALKER(List.of(new EnchantmentFeaturePredicate(LCEnchantments.SNOW_WALKER::get))),
+	STABLE_BODY(List.of(new SlotEnchantmentFeaturePredicate(EquipmentSlot.CHEST, LCEnchantments.STABLE_BODY::holder))),
+	PROJECTILE_REJECT(List.of(new EnchantmentFeaturePredicate(LCEnchantments.IMM_PROJECTILE::holder))),
+	EXPLOSION_REJECT(List.of(new EnchantmentFeaturePredicate(LCEnchantments.IMM_EXPLOSION::holder))),
+	FIRE_REJECT(List.of(new EnchantmentFeaturePredicate(LCEnchantments.IMM_FIRE::holder))),
+	ENVIRONMENTAL_REJECT(List.of(new EnchantmentFeaturePredicate(LCEnchantments.IMM_ENVIRONMENT::holder))),
+	MAGIC_REJECT(List.of(new EnchantmentFeaturePredicate(LCEnchantments.IMM_MAGIC::holder))),
+	OWNER_PROTECTION(List.of(new EnchantmentFeaturePredicate(LCEnchantments.IMM_MATES::holder))),
+	INVINCIBLE(List.of(new EnchantmentFeaturePredicate(LCEnchantments.INVINCIBLE::holder))),
+	SNOW_WALKER(List.of(new EnchantmentFeaturePredicate(LCEnchantments.SNOW_WALKER::holder))),
 	LAVA_WALKER(List.of()),
 	;
 

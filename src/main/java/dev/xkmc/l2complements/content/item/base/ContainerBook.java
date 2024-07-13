@@ -2,6 +2,7 @@ package dev.xkmc.l2complements.content.item.base;
 
 import com.tterrag.registrate.util.entry.MenuEntry;
 import dev.xkmc.l2complements.init.data.LangData;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
@@ -15,7 +16,6 @@ import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
 import java.util.Objects;
@@ -59,7 +59,7 @@ public class ContainerBook extends Item implements MenuProvider {
 
 
 	public static String getLangKey(MenuType<?> menu) {
-		ResourceLocation rl = Objects.requireNonNull(ForgeRegistries.MENU_TYPES.getKey(menu));
+		ResourceLocation rl = Objects.requireNonNull(BuiltInRegistries.MENU.getKey(menu));
 		return "container." + rl.getNamespace() + "." + rl.getPath();
 	}
 

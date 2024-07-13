@@ -2,11 +2,11 @@ package dev.xkmc.l2complements.content.item.misc;
 
 import dev.xkmc.l2complements.content.entity.fireball.BaseFireball;
 import dev.xkmc.l2complements.init.data.LangData;
-import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
+import dev.xkmc.l2library.content.raytrace.RayTraceUtil;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockSource;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
+import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -44,12 +44,12 @@ public class FireChargeItem<T extends BaseFireball<T>> extends TooltipItem {
 	public class FireChargeBehavior extends DefaultDispenseItemBehavior {
 
 		public ItemStack execute(BlockSource source, ItemStack stack) {
-			Direction direction = source.getBlockState().getValue(DispenserBlock.FACING);
+			Direction direction = source.state().getValue(DispenserBlock.FACING);
 			Position position = DispenserBlock.getDispensePosition(source);
 			double d0 = position.x() + (double) ((float) direction.getStepX() * 0.3F);
 			double d1 = position.y() + (double) ((float) direction.getStepY() * 0.3F);
 			double d2 = position.z() + (double) ((float) direction.getStepZ() * 0.3F);
-			Level level = source.getLevel();
+			Level level = source.level();
 			RandomSource randomsource = level.random;
 			double d3 = randomsource.triangle(direction.getStepX(), 0.11485D);
 			double d4 = randomsource.triangle(direction.getStepY(), 0.11485D);
@@ -63,7 +63,7 @@ public class FireChargeItem<T extends BaseFireball<T>> extends TooltipItem {
 		}
 
 		protected void playSound(BlockSource level) {
-			level.getLevel().levelEvent(1018, level.getPos(), 0);
+			level.level().levelEvent(1018, level.pos(), 0);
 		}
 
 	}

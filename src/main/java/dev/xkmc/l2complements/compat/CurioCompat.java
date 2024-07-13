@@ -5,7 +5,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fml.ModList;
+import net.neoforged.fml.ModList;
 import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.ArrayList;
@@ -26,8 +26,8 @@ public class CurioCompat {
 
 	private static void fillSlots(LivingEntity le, List<ItemStack> list) {
 		var opt = CuriosApi.getCuriosInventory(le);
-		if (opt.resolve().isPresent()) {
-			var curio = opt.resolve().get();
+		if (opt.isPresent()) {
+			var curio = opt.get();
 			for (var handler : curio.getCurios().values()) {
 				var stacks = handler.getStacks();
 				int n = stacks.getSlots();
@@ -48,7 +48,7 @@ public class CurioCompat {
 	}
 
 	private static boolean testEffectImpl(MobEffectInstance ins, LivingEntity entity) {
-		return CuriosApi.getCuriosInventory(entity).resolve().flatMap(cap ->
+		return CuriosApi.getCuriosInventory(entity).flatMap(cap ->
 				cap.findFirstCurio(e -> e.getItem() instanceof EffectValidItem item &&
 						item.isEffectValid(ins, e, entity))).isPresent();
 	}

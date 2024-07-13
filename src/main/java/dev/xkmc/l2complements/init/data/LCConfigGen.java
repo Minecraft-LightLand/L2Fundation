@@ -4,20 +4,24 @@ import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.materials.LCMats;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2damagetracker.init.data.ArmorEffectConfig;
-import dev.xkmc.l2library.serial.config.ConfigDataProvider;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
 import net.minecraft.world.effect.MobEffects;
+import net.neoforged.neoforge.common.data.DataMapProvider;
 
-public class LCConfigGen extends ConfigDataProvider {
+import java.util.concurrent.CompletableFuture;
 
-	public LCConfigGen(DataGenerator generator) {
-		super(generator, "L2Complements Armor Config");
+public class LCConfigGen extends DataMapProvider {
+
+	public LCConfigGen(PackOutput output, CompletableFuture<HolderLookup.Provider> lookup) {
+		super(output, lookup);
 	}
 
 	@Override
-	public void add(Collector collector) {
-		collector.add(L2DamageTracker.ARMOR, new ResourceLocation(L2Complements.MODID, "default"), new ArmorEffectConfig()
+	protected void gather() {
+		var b = builder(L2DamageTracker.ARMOR.reg());
+
+		collector.add(L2DamageTracker.ARMOR, L2Complements.loc("default"), new ArmorEffectConfig()
 				.add(LCMats.TOTEMIC_GOLD.armorPrefix(), MobEffects.POISON, MobEffects.WITHER, MobEffects.HUNGER)
 				.add(LCMats.POSEIDITE.armorPrefix(), MobEffects.DIG_SLOWDOWN)
 				.add(LCMats.POSEIDITE.armorPrefix(), MobEffects.DIG_SLOWDOWN)

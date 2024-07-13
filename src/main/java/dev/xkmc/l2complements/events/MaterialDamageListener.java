@@ -1,21 +1,21 @@
 package dev.xkmc.l2complements.events;
 
 import dev.xkmc.l2complements.content.enchantment.core.SourceModifierEnchantment;
+import dev.xkmc.l2complements.content.enchantment.weapon.VoidTouchEnchantment;
 import dev.xkmc.l2complements.init.data.LCConfig;
-import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2complements.init.registrate.LCItems;
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
+import dev.xkmc.l2core.init.L2LibReg;
 import dev.xkmc.l2damagetracker.contents.attack.AttackListener;
 import dev.xkmc.l2damagetracker.contents.attack.CreateSourceEvent;
+import dev.xkmc.l2damagetracker.contents.attack.DamageData;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.fml.ModList;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
+import net.neoforged.fml.ModList;
 
 import java.util.HashSet;
 
@@ -44,62 +44,59 @@ public class MaterialDamageListener implements AttackListener {
 	public void onCreateSource(CreateSourceEvent event) {
 		if (event.getOriginal().equals(DamageTypes.MOB_ATTACK) || event.getOriginal().equals(DamageTypes.PLAYER_ATTACK)) {
 			ItemStack stack = event.getAttacker().getMainHandItem();
-			SourceModifierEnchantment.modifySource(stack, event);
+			for (var e : stack.getOrDefault(DataComponents.ENCHANTMENTS, ItemEnchantments.EMPTY).entrySet()) {
+				for (var c : e.getKey().value().getEffects(L2LibReg.LEGACY.get())) {
+					if (c instanceof SourceModifierEnchantment mod)
+						mod.modify(event, stack, e.getIntValue());
+				}
+			}
 		}
 	}
 
 	@Override
-	public void onDamageFinalized(AttackCache cache, ItemStack weapon) {
-		LivingDamageEvent event = cache.getLivingDamageEvent();
-		if (event == null) return;
-		if (cache.getAttackTarget() instanceof Player player) {
-			float damage = cache.getPreDamage();
-			if (event.getSource().is(DamageTypeTags.IS_EXPLOSION) && damage >= LCConfig.COMMON.explosionDamage.get()) {
-				if (cache.getDamageDealt() < player.getHealth() + player.getAbsorptionAmount()) {
+	public void onDamageFinalized(DamageData.DefenceMax data) {
+		if (data.getTarget() instanceof Player player) {
+			float damage = data.getDamageIncoming();
+			if (data.getSource().is(DamageTypeTags.IS_EXPLOSION) && damage >= LCConfig.COMMON.explosionDamage.get()) {
+				if (data.getDamageFinal() < player.getHealth() + player.getAbsorptionAmount()) {
 					player.getInventory().placeItemBackInInventory(LCItems.EXPLOSION_SHARD.asStack());
 				}
 			}
 		}
-		if (cache.getAttackTarget() instanceof Chicken chicken) {
-			if (event.getSource().getMsgId().equals("sonic_boom")) {
-				if (cache.getDamageDealt() < chicken.getHealth() + chicken.getAbsorptionAmount()) {
+		if (data.getTarget() instanceof Chicken chicken) {
+			if (data.getSource().getMsgId().equals("sonic_boom")) {
+				if (data.getDamageFinal() < chicken.getHealth() + chicken.getAbsorptionAmount()) {
 					chicken.spawnAtLocation(LCItems.RESONANT_FEATHER.asStack());
 				}
 			}
 		}
-		if (event.getSource().is(DamageTypeTags.IS_PROJECTILE) && event.getSource().getEntity() instanceof Player) {
-			if (!isSpaceShardBanned() && cache.getPreDamage() >= LCConfig.COMMON.spaceDamage.get()) {
-				cache.getAttackTarget().spawnAtLocation(LCItems.SPACE_SHARD.asStack());
+		if (data.getSource().is(DamageTypeTags.IS_PROJECTILE) && data.getAttacker() instanceof Player) {
+			if (!isSpaceShardBanned() && data.getDamageIncoming() >= LCConfig.COMMON.spaceDamage.get()) {
+				data.getTarget().spawnAtLocation(LCItems.SPACE_SHARD.asStack());
 			}
 		}
 
 	}
 
 	@Override
-	public void postAttack(AttackCache cache, LivingAttackEvent event, ItemStack weapon) {
-		if (!weapon.isEmpty()) {
-			LCEnchantments.VOID_TOUCH.get().postAttack(cache, event, weapon);
+	public boolean onAttack(DamageData.Attack data) {
+		if (!data.getWeapon().isEmpty()) {
+			VoidTouchEnchantment.postAttack(data, data.getWeapon());
+		}
+		return false;
+	}
+
+	@Override
+	public void onHurt(DamageData.Offence data) {
+		if (!data.getWeapon().isEmpty()) {
+			VoidTouchEnchantment.initAttack(data, data.getWeapon());
 		}
 	}
 
 	@Override
-	public void onHurt(AttackCache cache, ItemStack weapon) {
-		if (!weapon.isEmpty()) {
-			LCEnchantments.VOID_TOUCH.get().initAttack(cache, weapon);
-		}
-	}
-
-	@Override
-	public void postHurt(AttackCache cache, LivingHurtEvent event, ItemStack weapon) {
-		if (!weapon.isEmpty()) {
-			LCEnchantments.VOID_TOUCH.get().postHurt(cache, event, weapon);
-		}
-	}
-
-	@Override
-	public void onDamage(AttackCache cache, ItemStack weapon) {
-		if (!weapon.isEmpty()) {
-			LCEnchantments.VOID_TOUCH.get().initDamage(cache, weapon);
+	public void onDamage(DamageData.Defence data) {
+		if (!data.getWeapon().isEmpty()) {
+			VoidTouchEnchantment.initDamage(data, data.getWeapon());
 		}
 	}
 

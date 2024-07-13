@@ -1,11 +1,10 @@
 package dev.xkmc.l2complements.content.effect.force;
 
 import dev.xkmc.l2complements.init.L2Complements;
-import dev.xkmc.l2library.base.effects.api.DelayedEntityRender;
-import dev.xkmc.l2library.base.effects.api.ForceEffect;
-import dev.xkmc.l2library.base.effects.api.IconOverlayEffect;
-import dev.xkmc.l2library.base.effects.api.InherentEffect;
-import net.minecraft.resources.ResourceLocation;
+import dev.xkmc.l2core.base.effects.api.DelayedEntityRender;
+import dev.xkmc.l2core.base.effects.api.ForceEffect;
+import dev.xkmc.l2core.base.effects.api.IconOverlayEffect;
+import dev.xkmc.l2core.base.effects.api.InherentEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 
@@ -17,8 +16,7 @@ public class CurseEffect extends InherentEffect implements ForceEffect, IconOver
 
 	@Override
 	public DelayedEntityRender getIcon(LivingEntity entity, int lv) {
-		return DelayedEntityRender.icon(entity, new ResourceLocation(L2Complements.MODID,
-				"textures/effect_overlay/curse.png"));
+		return DelayedEntityRender.icon(entity, L2Complements.loc("textures/effect_overlay/curse.png"));
 	}
 
 }

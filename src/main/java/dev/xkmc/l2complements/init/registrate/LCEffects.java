@@ -20,9 +20,7 @@ import net.minecraft.world.item.alchemy.Potions;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Supplier;
 
 public class LCEffects {
@@ -35,7 +33,7 @@ public class LCEffects {
 			"Slow down entity, and freeze them as if they are on powdered snow.");
 	public static final SimpleEntry<MobEffect> ARMOR_REDUCE = genEffect("armor_reduce", "Armor Corrosion", () -> new ArmorReduceEffect(MobEffectCategory.HARMFUL, 0xFFFFFF),
 			"Reduce armor value significantly.");
-	public static final SimpleEntry<MobEffect> STONE_CAGE = genEffect("stone_cage", "Incarceration", () -> new StoneCageEffect(MobEffectCategory.HARMFUL, 0x000000),
+	public static final SimpleEntry<MobEffect> INCARCERATE = genEffect("stone_cage", "Incarceration", () -> new IncarcreationEffect(MobEffectCategory.HARMFUL, 0x000000),
 			"Immobilize the entity. Making it cannot move and unaffected by external forces.");
 	public static final SimpleEntry<MobEffect> CURSE = genEffect("curse", "Cursed", () -> new CurseEffect(MobEffectCategory.HARMFUL, 0x3f3f3f),
 			"Make the entity cannot heal.");
@@ -61,7 +59,7 @@ public class LCEffects {
 	public static void register() {
 		regPotion3("flame", FLAME, LCItems.SOUL_FLAME::get, 400, 600, 1000, 0, 1);
 		regPotion2("frozen", ICE, LCItems.HARD_ICE::get, 3600, 9600);
-		regPotion2("stone_cage", STONE_CAGE, LCItems.BLACKSTONE_CORE::get, 1200, 3600);
+		regPotion2("stone_cage", INCARCERATE, LCItems.BLACKSTONE_CORE::get, 1200, 3600);
 		regPotion2("curse", CURSE, LCItems.CURSED_DROPLET::get, 3600, 9600);
 		regPotion2("cleanse", CLEANSE, LCItems.LIFE_ESSENCE::get, 3600, 9600);
 		regPotion3("armor_reduce", ARMOR_REDUCE, 600, 1200, 3600, 0, 1,

@@ -1,10 +1,9 @@
 package dev.xkmc.l2complements.content.item.equipments;
 
-import dev.xkmc.l2complements.events.MagicEventHandler;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2core.events.SchedulerHandler;
 import dev.xkmc.l2damagetracker.contents.materials.generic.ExtraArmorConfig;
-import dev.xkmc.l2library.init.events.GeneralEventHandler;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
@@ -27,7 +26,7 @@ public class TotemicArmor extends ExtraArmorConfig {
 	@Override
 	public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, T entity) {
 		if (entity instanceof Player player) {
-			GeneralEventHandler.schedule(() -> player.heal(amount));
+			SchedulerHandler.schedule(() -> player.heal(amount));
 		}
 		return super.damageItem(stack, amount, entity);
 	}

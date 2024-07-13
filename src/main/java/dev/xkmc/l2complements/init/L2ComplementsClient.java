@@ -7,16 +7,15 @@ import dev.xkmc.l2complements.init.data.LCKeys;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2complements.init.registrate.LCParticle;
 import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.*;
-import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.*;
+import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 
-@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = L2Complements.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(value = Dist.CLIENT, modid = L2Complements.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class L2ComplementsClient {
 
 	@SubscribeEvent
@@ -27,16 +26,16 @@ public class L2ComplementsClient {
 	@SubscribeEvent
 	public static void clientSetup(FMLClientSetupEvent event) {
 		event.enqueueWork(() -> {
-			ItemProperties.register(LCItems.SONIC_SHOOTER.get(), new ResourceLocation(L2Complements.MODID, "shoot"),
+			ItemProperties.register(LCItems.SONIC_SHOOTER.get(), L2Complements.loc("shoot"),
 					(stack, level, user, index) -> user == null || !user.isUsingItem() ? 0 :
-							1 - 1f * user.getUseItemRemainingTicks() / stack.getUseDuration());
+							1 - 1f * user.getUseItemRemainingTicks() / stack.getUseDuration(user));
 		});
 	}
 
 
 	@SubscribeEvent
-	public static void registerOverlay(RegisterGuiOverlaysEvent event) {
-		event.registerAbove(VanillaGuiOverlay.CROSSHAIR.id(), "range_digging", new RangeDiggingOverlay());
+	public static void registerOverlay(RegisterGuiLayersEvent event) {
+		event.registerAbove(VanillaGuiLayers.CROSSHAIR, L2Complements.loc("range_digging"), new RangeDiggingOverlay());
 	}
 
 	@SubscribeEvent

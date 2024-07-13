@@ -6,8 +6,8 @@ import net.minecraft.Util;
 import net.minecraft.client.renderer.texture.atlas.sources.PalettedPermutations;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.data.SpriteSourceProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.SpriteSourceProvider;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -52,7 +52,7 @@ public class LCSpriteSourceProvider extends SpriteSourceProvider {
 				"trims/models/armor/raiser_leggings",
 				"trims/models/armor/host",
 				"trims/models/armor/host_leggings"
-		).map(ResourceLocation::new).toList();
+		).map(ResourceLocation::withDefaultNamespace).toList();
 	}
 
 	public LCSpriteSourceProvider(PackOutput output, ExistingFileHelper fileHelper) {

@@ -25,7 +25,7 @@ public class BlackFireball extends BaseFireball<BlackFireball> {
 
 	protected void onHitEntity(Entity target) {
 		if (target instanceof LivingEntity le) {
-			EffectUtil.addEffect(le, new MobEffectInstance(LCEffects.STONE_CAGE.get(), 100), EffectUtil.AddReason.NONE, getOwner());
+			EffectUtil.addEffect(le, new MobEffectInstance(LCEffects.INCARCERATE.get(), 100), EffectUtil.AddReason.NONE, getOwner());
 		}
 		target.hurt(level().damageSources().fireball(this, getOwner()), 6.0F);
 	}

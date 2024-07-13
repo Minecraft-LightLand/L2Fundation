@@ -27,10 +27,16 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.EventPriority;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 
 import java.util.Stack;
 
-@Mod.EventBusSubscriber(modid = L2Complements.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(modid = L2Complements.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class SpecialEquipmentEvents {
 
 	public static ThreadLocal<Stack<Pair<ServerPlayer, BlockState>>> PLAYER = ThreadLocal.withInitial(Stack::new);
@@ -45,7 +51,7 @@ public class SpecialEquipmentEvents {
 				if (item.getConfig().hideWithEffect())
 					return false;
 			}
-			return stack.getEnchantmentLevel(LCEnchantments.SHULKER_ARMOR.get()) == 0;
+			return stack.getEnchantmentLevel(LCEnchantments.TRANSPARENT.holder()) == 0;
 		}
 		return true;
 	}
@@ -55,7 +61,7 @@ public class SpecialEquipmentEvents {
 			if (item.getConfig().dampenVibration())
 				return 1;
 		}
-		return stack.getEnchantmentLevel(LCEnchantments.DAMPENED.get());
+		return stack.getEnchantmentLevel(LCEnchantments.DAMPENED.holder());
 	}
 
 	private static ItemStack process(Level level, ItemStack stack) {
@@ -82,10 +88,10 @@ public class SpecialEquipmentEvents {
 			}
 		}
 		if (event.getSource().getEntity() instanceof ServerPlayer player) {
-			if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.ENDER.get()) > 0) {
+			if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.ENDER_TOUCH.get()) > 0) {
 				for (var e : event.getDrops()) {
 					EnderPickupEvent ender = new EnderPickupEvent(player, e.getItem().copy());
-					MinecraftForge.EVENT_BUS.post(ender);
+					NeoForge.EVENT_BUS.post(ender);
 					ItemStack stack = ender.getStack();
 					if (!stack.isEmpty() && !player.getInventory().add(stack)) {
 						e.setItem(stack);
@@ -106,13 +112,13 @@ public class SpecialEquipmentEvents {
 		if (players.isEmpty()) return;
 		ServerPlayer player = players.peek().getFirst();
 		if (!(event.getEntity() instanceof ItemEntity e)) return;
-		if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.SMELT.get()) > 0) {
+		if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.SMELT.holder()) > 0) {
 			ItemStack result = process(event.getLevel(), e.getItem());
 			e.setItem(result);
 		}
-		if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.ENDER.get()) > 0) {
+		if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.ENDER_TOUCH.holder()) > 0) {
 			EnderPickupEvent ender = new EnderPickupEvent(player, e.getItem().copy());
-			MinecraftForge.EVENT_BUS.post(ender);
+			NeoForge.EVENT_BUS.post(ender);
 			ItemStack stack = ender.getStack();
 			if (!stack.isEmpty() && !player.getInventory().add(stack)) {
 				e.setItem(stack);

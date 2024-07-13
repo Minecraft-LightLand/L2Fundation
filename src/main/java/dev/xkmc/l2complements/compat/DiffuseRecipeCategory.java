@@ -4,7 +4,7 @@ import dev.xkmc.l2complements.content.recipe.DiffusionRecipe;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2complements.init.registrate.LCItems;
-import dev.xkmc.l2library.serial.recipe.BaseRecipeCategory;
+import dev.xkmc.l2core.compat.jei.BaseRecipeCategory;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -15,10 +15,10 @@ import net.minecraft.resources.ResourceLocation;
 
 public class DiffuseRecipeCategory extends BaseRecipeCategory<DiffusionRecipe, DiffuseRecipeCategory> {
 
-	protected static final ResourceLocation BG = new ResourceLocation(L2Complements.MODID, "textures/jei/background.png");
+	protected static final ResourceLocation BG = L2Complements.loc("textures/jei/background.png");
 
 	public DiffuseRecipeCategory() {
-		super(new ResourceLocation(L2Complements.MODID, "diffusion"), DiffusionRecipe.class);
+		super(L2Complements.loc("diffusion"), DiffusionRecipe.class);
 	}
 
 	public DiffuseRecipeCategory init(IGuiHelper guiHelper) {

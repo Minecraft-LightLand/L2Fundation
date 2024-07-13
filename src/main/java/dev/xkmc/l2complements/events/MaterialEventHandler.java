@@ -18,14 +18,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ShulkerBullet;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.GrindstoneEvent;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.EventPriority;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.GrindstoneEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
-@Mod.EventBusSubscriber(modid = L2Complements.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(modid = L2Complements.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class MaterialEventHandler {
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
@@ -57,7 +57,7 @@ public class MaterialEventHandler {
 			}
 		}
 		if (event.getEntity() instanceof PiglinBrute brute) {
-			if (!brute.level().isClientSide() && brute.hasEffect(LCEffects.STONE_CAGE.get())) {
+			if (!brute.level().isClientSide() && brute.hasEffect(LCEffects.INCARCERATE.holder())) {
 				brute.spawnAtLocation(LCItems.BLACKSTONE_CORE.asStack());
 			}
 		}
@@ -78,7 +78,7 @@ public class MaterialEventHandler {
 		}
 		if (event.getEntity() instanceof Ghast ghast) {
 			Level level = ghast.level();
-			if (!level.isClientSide() && ghast.hasEffect(LCEffects.FLAME.get())) {
+			if (!level.isClientSide() && ghast.hasEffect(LCEffects.FLAME.holder())) {
 				ghast.spawnAtLocation(LCItems.SOUL_FLAME.asStack());
 			}
 		}
@@ -111,7 +111,7 @@ public class MaterialEventHandler {
 		inv.setItem(0, stack);
 		var opt = level.getRecipeManager().getRecipeFor(LCRecipes.RT_BURNT.get(), inv, level);
 		if (opt.isPresent()) {
-			BurntRecipe r = opt.get();
+			BurntRecipe r = opt.get().value();
 			ItemStack result = r.assemble(inv, level.registryAccess());
 			int chance = r.chance;
 			int trial = stack.getCount();

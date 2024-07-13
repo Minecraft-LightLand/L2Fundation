@@ -3,7 +3,7 @@ package dev.xkmc.l2complements.init.materials;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2complements.content.item.equipments.*;
 import dev.xkmc.l2complements.init.L2Complements;
-import dev.xkmc.l2complements.init.data.TagGen;
+import dev.xkmc.l2complements.init.data.LCTagGen;
 import dev.xkmc.l2complements.init.registrate.LCBlocks;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2damagetracker.contents.materials.api.*;
@@ -48,7 +48,7 @@ public enum LCMats implements IMatVanillaType {
 			new ArmorStats(100, new int[]{5, 9, 10, 6}, 4, 1, 15),
 			GenItemVanillaType.TOOL_GEN, GenItemVanillaType.ARMOR_GEN,
 			new SculkiumTool().setStick(e -> Items.NETHERITE_INGOT, false)
-					.setTier(e -> TagGen.REQUIRES_SCULK_TOOL), new SculkiumArmor(),
+					.setTier(e -> LCTagGen.REQUIRES_SCULK_TOOL), new SculkiumArmor(),
 			ChatFormatting.DARK_AQUA),
 	ETERNIUM("eternium", 5, SoundEvents.ARMOR_EQUIP_IRON,
 			new ToolStats(9999, 8, 7, 1, 1),

@@ -4,7 +4,7 @@ import com.google.common.base.Suppliers;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import dev.xkmc.l2complements.init.registrate.LCItems;
-import dev.xkmc.l2library.util.Proxy;
+import dev.xkmc.l2core.util.Proxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.WitherBossModel;
 import net.minecraft.client.model.geom.EntityModelSet;
@@ -21,7 +21,7 @@ import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 
 import java.util.function.Supplier;
 
@@ -39,8 +39,8 @@ public class LCBEWLR extends BlockEntityWithoutLevelRenderer {
 
 	};
 
-	private static final ResourceLocation WITHER_ARMOR = new ResourceLocation("textures/entity/wither/wither_armor.png");
-	private static final ResourceLocation WITHER_LOCATION = new ResourceLocation("textures/entity/wither/wither.png");
+	private static final ResourceLocation WITHER_ARMOR = ResourceLocation.withDefaultNamespace("textures/entity/wither/wither_armor.png");
+	private static final ResourceLocation WITHER_LOCATION = ResourceLocation.withDefaultNamespace("textures/entity/wither/wither.png");
 
 	private final EntityModelSet entityModelSet;
 	private WitherBossModel<WitherBoss> wither_model;
@@ -83,7 +83,7 @@ public class LCBEWLR extends BlockEntityWithoutLevelRenderer {
 		translateWither(poseStack, type);
 		wither_armor.render(poseStack, bufferSource, light, wither,
 				0, 0,
-				Minecraft.getInstance().getPartialTick(), wither.tickCount,
+				Minecraft.getInstance().getTimer().getGameTimeDeltaTicks(), wither.tickCount,
 				0, 0);
 		poseStack.popPose();
 	}

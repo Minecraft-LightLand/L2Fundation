@@ -3,6 +3,7 @@ package dev.xkmc.l2complements.content.item.misc;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2complements.init.registrate.LCItems;
+import dev.xkmc.l2core.util.Proxy;
 import dev.xkmc.l2damagetracker.contents.curios.TotemUseToClient;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2library.util.Proxy;
@@ -38,7 +39,7 @@ public class EternalTotem extends Item implements ILCTotem {
 
 	@Override
 	public void trigger(LivingEntity self, ItemStack holded, Consumer<ItemStack> second) {
-		L2DamageTracker.PACKET_HANDLER.toTrackingPlayers(new TotemUseToClient(self, holded), self);
+		L2DamageTracker.PACKET_HANDLER.toTrackingPlayers(TotemUseToClient.of(self, holded), self);
 		self.removeAllEffects();
 		self.setHealth(self.getMaxHealth());
 		self.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 900, 1));

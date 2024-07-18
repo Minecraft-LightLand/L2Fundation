@@ -4,23 +4,24 @@ import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.registrate.LCBlocks;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2complements.init.registrate.LCRecipes;
-import dev.xkmc.l2library.util.Proxy;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.registration.*;
 import mezz.jei.api.runtime.IJeiRuntime;
+import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.fml.ModList;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.neoforged.fml.ModList;
 
 @JeiPlugin
 public class LCJeiPlugin implements IModPlugin {
 
 	public static LCJeiPlugin INSTANCE;
 
-	public final ResourceLocation UID = new ResourceLocation(L2Complements.MODID, "main");
+	public final ResourceLocation UID = L2Complements.loc("main");
 
 	public final BurntRecipeCategory BURNT = new BurntRecipeCategory();
 	public final DiffuseRecipeCategory DIFFUSE = new DiffuseRecipeCategory();
@@ -60,10 +61,10 @@ public class LCJeiPlugin implements IModPlugin {
 
 	@Override
 	public void registerRecipes(IRecipeRegistration registration) {
-		var level = Proxy.getClientWorld();
+		var level = Minecraft.getInstance().level;
 		assert level != null;
-		registration.addRecipes(BURNT.getRecipeType(), level.getRecipeManager().getAllRecipesFor(LCRecipes.RT_BURNT.get()));
-		registration.addRecipes(DIFFUSE.getRecipeType(), level.getRecipeManager().getAllRecipesFor(LCRecipes.RT_DIFFUSION.get()));
+		registration.addRecipes(BURNT.getRecipeType(), level.getRecipeManager().getAllRecipesFor(LCRecipes.RT_BURNT.get()).stream().map(RecipeHolder::value).toList());
+		registration.addRecipes(DIFFUSE.getRecipeType(), level.getRecipeManager().getAllRecipesFor(LCRecipes.RT_DIFFUSION.get()).stream().map(RecipeHolder::value).toList());
 	}
 
 	@Override

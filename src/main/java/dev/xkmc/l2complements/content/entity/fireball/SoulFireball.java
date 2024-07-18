@@ -8,6 +8,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 
 public class SoulFireball extends BaseFireball<SoulFireball> {
 
@@ -15,12 +16,12 @@ public class SoulFireball extends BaseFireball<SoulFireball> {
 		super(type, level);
 	}
 
-	public SoulFireball(double x, double y, double z, double vx, double vy, double vz, Level level) {
-		super(LCEntities.ETFB_SOUL.get(), x, y, z, vx, vy, vz, level);
+	public SoulFireball(double x, double y, double z, Vec3 vec, Level level) {
+		super(LCEntities.ETFB_SOUL.get(), x, y, z, vec, level);
 	}
 
-	public SoulFireball(LivingEntity owner, double vx, double vy, double vz, Level level) {
-		super(LCEntities.ETFB_SOUL.get(), owner, vx, vy, vz, level);
+	public SoulFireball(LivingEntity owner, Vec3 vec, Level level) {
+		super(LCEntities.ETFB_SOUL.get(), owner, vec, level);
 	}
 
 	protected void onHitEntity(Entity target) {

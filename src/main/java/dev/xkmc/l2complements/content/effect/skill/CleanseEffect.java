@@ -42,18 +42,19 @@ public class CleanseEffect extends InherentEffect implements ForceEffect, IconOv
 	}
 
 	@Override
-	public void addAttributeModifiers(LivingEntity pLivingEntity, AttributeMap pAttributeMap, int pAmplifier) {
-		clearOnEntity(pLivingEntity);
+	public void onEffectAdded(LivingEntity livingEntity, int amplifier) {
+		clearOnEntity(livingEntity);
 	}
 
 	@Override
-	public boolean isDurationEffectTick(int tick, int amp) {
+	public boolean shouldApplyEffectTickThisTick(int tick, int amp) {
 		return tick % 10 == 0;
 	}
 
 	@Override
-	public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
+	public boolean applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
 		clearOnEntity(pLivingEntity);
+		return true;
 	}
 
 }

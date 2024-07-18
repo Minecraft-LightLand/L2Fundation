@@ -26,7 +26,7 @@ public class TooltipItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext level, List<Component> list, TooltipFlag flag) {
 		var e = sup.get();
 		if (e == null) {
 			list.add(LangData.IDS.BANNED.get().withStyle(ChatFormatting.RED));
@@ -38,7 +38,7 @@ public class TooltipItem extends Item {
 
 	@Override
 	public boolean canBeHurtBy(DamageSource source) {
-		if (getRarity(getDefaultInstance()) != Rarity.COMMON) {
+		if (getDefaultInstance().getRarity() != Rarity.COMMON) {
 			if (source.is(DamageTypeTags.IS_LIGHTNING) || source.is(DamageTypeTags.IS_FIRE) || source.is(DamageTypeTags.IS_EXPLOSION))
 				return false;
 		}

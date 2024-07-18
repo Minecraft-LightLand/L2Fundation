@@ -24,8 +24,7 @@ public class LCDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 					.forEach(e -> ctx.register(ResourceKey.create(Registries.TRIM_MATERIAL,
 									L2Complements.loc(e.getID())),
 							TrimMaterial.create(e.getID(), e.getIngot(), 0,
-									e.getIngot().getDescription().copy().withStyle(e.trim_text_color), Map.of()))))
-			.add(Registries.ENCHANTMENT, LCEnchantments::build);
+									e.getIngot().getDescription().copy().withStyle(e.trim_text_color), Map.of()))));
 
 	public LCDatapackRegistriesGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
 		super(output, registries, BUILDER, Set.of("minecraft", L2Complements.MODID));

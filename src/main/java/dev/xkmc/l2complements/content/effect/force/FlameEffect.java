@@ -17,13 +17,14 @@ public class FlameEffect extends InherentEffect implements ForceEffect, IconOver
 	}
 
 	@Override
-	public void applyEffectTick(LivingEntity target, int level) {
+	public boolean applyEffectTick(LivingEntity target, int level) {
 		DamageSource source = new DamageSource(DamageTypeGen.forKey(target.level(), DamageTypeGen.SOUL_FLAME));
 		target.hurt(source, 2 << level);
+		return true;
 	}
 
 	@Override
-	public boolean isDurationEffectTick(int tick, int level) {
+	public boolean shouldApplyEffectTickThisTick(int tick, int level) {
 		return tick % 20 == 0;
 	}
 

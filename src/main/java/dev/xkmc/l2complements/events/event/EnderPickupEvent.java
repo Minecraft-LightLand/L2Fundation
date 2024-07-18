@@ -1,8 +1,8 @@
 package dev.xkmc.l2complements.events.event;
 
-import jdk.jfr.Event;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
+import net.neoforged.bus.api.Event;
 
 public class EnderPickupEvent extends Event {
 

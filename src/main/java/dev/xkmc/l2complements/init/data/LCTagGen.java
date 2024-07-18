@@ -10,7 +10,6 @@ import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2complements.init.registrate.LCEntities;
 import dev.xkmc.l2core.init.L2TagGen;
-import dev.xkmc.l2library.init.data.L2TagGen;
 import dev.xkmc.l2menustacker.init.L2MSTagGen;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -27,7 +26,6 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Arrays;
 
@@ -35,11 +33,13 @@ public class LCTagGen {
 
 	public static final TagKey<Block> REQUIRES_SCULK_TOOL = BlockTags.create(L2Complements.loc("requires_sculk_tool"));
 	public static final TagKey<Block> AS_LEAF = BlockTags.create(L2Complements.loc("as_leaf"));
+	public static final TagKey<Item> DAMPENS_VIBRATION = ItemTags.create(L2Complements.loc("dampens_vibration"));
+	public static final TagKey<Item> HIDE_WITH_INVISIBILITY = ItemTags.create(L2Complements.loc("hide_with_invisibility"));
+
 	public static final TagKey<Item> SCULK_MATS = ItemTags.create(ResourceLocation.fromNamespaceAndPath("modulargolems", "sculk_materials"));
 	public static final TagKey<Item> SPECIAL_ITEM = ItemTags.create(L2Complements.loc("l2c_legendary"));
 	public static final TagKey<Item> DELICATE_BONE = ItemTags.create(L2Complements.loc("delicate_bone"));
 	public static final TagKey<MobEffect> SKILL_EFFECT = TagKey.create(Registries.MOB_EFFECT, L2Complements.loc("skill_effect"));
-	public static final TagKey<Enchantment> DIGGER_ENCH = enchTag("chain_digging");
 	public static final TagKey<Enchantment> WAND_ENCH = enchTag("applicable_on_wand");
 
 
@@ -66,12 +66,12 @@ public class LCTagGen {
 				LCEffects.INCARCERATE.get(), LCEffects.BLEED.get(), LCEffects.CLEANSE.get(), LCEffects.CURSE.get());
 	}
 
-	public static void onEnchTagGen(RegistrateTagsProvider.IntrinsicImpl<Enchantment> pvd) {
-		pvd.addTag(DIGGER_ENCH);
+	public static void onEnchTagGen(RegistrateTagsProvider.Impl<Enchantment> pvd) {
+		pvd.addTag(THORN).add(Enchantments.THORNS);
 		pvd.addTag(WAND_ENCH).add(
 				Enchantments.UNBREAKING,
-				LCEnchantments.LIFE_SYNC.holder(),
-				LCEnchantments.ETERNAL.holder()
+				LCEnchantments.LIFE_SYNC.id(),
+				LCEnchantments.ETERNAL.id()
 		);
 	}
 
@@ -96,7 +96,7 @@ public class LCTagGen {
 	}
 
 	private static TagKey<Enchantment> enchTag(String id) {
-		return TagKey.create(ForgeRegistries.ENCHANTMENTS.getRegistryKey(), L2Complements.loc(id));
+		return TagKey.create(Registries.ENCHANTMENT, L2Complements.loc(id));
 	}
 
 }

@@ -6,12 +6,16 @@ import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCTagGen;
 import dev.xkmc.l2complements.init.registrate.LCBlocks;
 import dev.xkmc.l2complements.init.registrate.LCItems;
+import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
 import dev.xkmc.l2damagetracker.contents.materials.api.*;
 import dev.xkmc.l2damagetracker.contents.materials.generic.ExtraArmorConfig;
 import dev.xkmc.l2damagetracker.contents.materials.generic.ExtraToolConfig;
 import dev.xkmc.l2damagetracker.contents.materials.vanilla.GenItemVanillaType;
 import dev.xkmc.l2damagetracker.contents.materials.vanilla.ToolStats;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.ArmorMaterial;
@@ -20,8 +24,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.ForgeTier;
+import net.neoforged.neoforge.common.SimpleTier;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 public enum LCMats implements IMatVanillaType {
@@ -41,27 +46,28 @@ public enum LCMats implements IMatVanillaType {
 			new ToolStats(4000, 8, 7, 1, 14),
 			new ArmorStats(400, new int[]{3, 6, 8, 3}, 2, 0, 9),
 			GenItemVanillaType.TOOL_GEN, GenItemVanillaType.ARMOR_GEN,
-			new ShulkerateTool().setStick(e -> Items.IRON_INGOT, false), new ShulkerateArmor(),
+			new ShulkerateTool().setStick(e -> Items.IRON_INGOT, false).tags(LCTagGen.HIDE_WITH_INVISIBILITY),
+			new ShulkerateArmor().tags(LCTagGen.HIDE_WITH_INVISIBILITY),
 			ChatFormatting.LIGHT_PURPLE),
 	SCULKIUM("sculkium", 5, SoundEvents.ARMOR_EQUIP_IRON,
 			new ToolStats(2000, 8, 9, 1.2f, 15),
 			new ArmorStats(100, new int[]{5, 9, 10, 6}, 4, 1, 15),
 			GenItemVanillaType.TOOL_GEN, GenItemVanillaType.ARMOR_GEN,
 			new SculkiumTool().setStick(e -> Items.NETHERITE_INGOT, false)
-					.setTier(e -> LCTagGen.REQUIRES_SCULK_TOOL), new SculkiumArmor(),
+					.setTier(e -> LCTagGen.REQUIRES_SCULK_TOOL),
+			new SculkiumArmor().tags(LCTagGen.DAMPENS_VIBRATION),
 			ChatFormatting.DARK_AQUA),
 	ETERNIUM("eternium", 5, SoundEvents.ARMOR_EQUIP_IRON,
 			new ToolStats(9999, 8, 7, 1, 1),
 			new ArmorStats(9999, new int[]{3, 6, 8, 3}, 10, 1, 1),
 			GenItemVanillaType.TOOL_GEN, GenItemVanillaType.ARMOR_GEN,
-			new EterniumTool().damageChance(0).repairChance(1)
-					.setStick(e -> LCItems.EXPLOSION_SHARD.get(), false),
-			new EterniumArmor().damageChance(0).repairChance(1),
+			new EterniumTool().setStick(e -> LCItems.EXPLOSION_SHARD.get(), false),
+			new EterniumArmor(),
 			ChatFormatting.BLUE);
 
 	final String id;
 	final Tier tier;
-	final ArmorMaterial mat;
+	final SimpleEntry<ArmorMaterial> mat;
 	final ToolConfig tool_config;
 	final ArmorConfig armor_config;
 	final IToolStats tool_stats;
@@ -70,16 +76,16 @@ public enum LCMats implements IMatVanillaType {
 	public final ChatFormatting trim_text_color;
 
 	LCMats(String name, int level,
-		   SoundEvent equip_sound, IToolStats tool, ArmorStats armor,
+		   Holder<SoundEvent> equip_sound, IToolStats tool, ArmorStats armor,
 		   ToolConfig tool_config, ArmorConfig armor_config,
 		   ExtraToolConfig tool_extra, ExtraArmorConfig armor_extra, ChatFormatting trimTextColor) {
 		trim_text_color = trimTextColor;
 		Supplier<Ingredient> ing = () -> Ingredient.of(LCItems.MAT_INGOTS[ordinal()].get());
 		this.id = name;
-		this.tier = new ForgeTier(level, tool.durability(), tool.speed(), 0, tool.enchant(),
-				tool_extra.getTier(level), ing);
-		this.mat = new ArmorMat(armorPrefix(), armor.durability(), armor.protection(),
-				armor.enchant(), equip_sound, armor.tough(), armor.kb(), ing);
+		this.tier = new SimpleTier(tool_extra.getTier(level), tool.durability(), tool.speed(), 0, tool.enchant(), ing);
+		this.mat = new SimpleEntry<>(L2Complements.REGISTRATE.simple(name, Registries.ARMOR_MATERIAL, () -> new ArmorMaterial(armor.defense(), armor.enchant(), equip_sound, ing,
+				List.of(new ArmorMaterial.Layer(L2Complements.loc(name))),
+				armor.tough(), armor.kb())));
 		this.tool_config = tool_config;
 		this.armor_config = armor_config;
 		this.tool_stats = tool;
@@ -99,8 +105,8 @@ public enum LCMats implements IMatVanillaType {
 		return LCBlocks.GEN_BLOCK[ordinal()].get();
 	}
 
-	public String armorPrefix() {
-		return L2Complements.MODID + ":" + id;
+	public ResourceLocation id() {
+		return L2Complements.loc(id);
 	}
 
 	// --- interface ---
@@ -135,8 +141,8 @@ public enum LCMats implements IMatVanillaType {
 	}
 
 	@Override
-	public ArmorMaterial getArmorMaterial() {
-		return mat;
+	public Holder<ArmorMaterial> getArmorMaterial() {
+		return mat.holder();
 	}
 
 	@Override

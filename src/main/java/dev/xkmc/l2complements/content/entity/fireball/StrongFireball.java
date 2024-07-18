@@ -13,12 +13,12 @@ public class StrongFireball extends BaseFireball<StrongFireball> {
 		super(type, level);
 	}
 
-	public StrongFireball(double x, double y, double z, double vx, double vy, double vz, Level level) {
-		super(LCEntities.ETFB_STRONG.get(), x, y, z, vx, vy, vz, level);
+	public StrongFireball(double x, double y, double z, Vec3 vec, Level level) {
+		super(LCEntities.ETFB_STRONG.get(), x, y, z, vec, level);
 	}
 
-	public StrongFireball(LivingEntity owner, double vx, double vy, double vz, Level level) {
-		super(LCEntities.ETFB_STRONG.get(), owner, vx, vy, vz, level);
+	public StrongFireball(LivingEntity owner, Vec3 vec, Level level) {
+		super(LCEntities.ETFB_STRONG.get(), owner, vec, level);
 	}
 
 	protected void onHitAction(Vec3 pos) {

@@ -10,6 +10,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.neoforged.neoforge.common.NeoForgeMod;
 
 public class IncarcreationEffect extends InherentEffect implements ForceEffect, IconOverlayEffect {
 
@@ -22,19 +23,20 @@ public class IncarcreationEffect extends InherentEffect implements ForceEffect, 
 
 	public IncarcreationEffect(MobEffectCategory type, int color) {
 		super(type, color);
-		addAttributeModifier(Attributes.MOVEMENT_SPEED, ID_SLOW.toString(), -1F, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
-		addAttributeModifier(Attributes.FLYING_SPEED, ID_FLY.toString(), -1F, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
-		addAttributeModifier(Attributes.KNOCKBACK_RESISTANCE, ID_KB.toString(), 1F, AttributeModifier.Operation.ADD_VALUE);
-		addAttributeModifier(ForgeMod.SWIM_SPEED.get(), ID_JUMP.toString(), -1F, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+		addAttributeModifier(Attributes.MOVEMENT_SPEED, ID_SLOW, -1F, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+		addAttributeModifier(Attributes.FLYING_SPEED, ID_FLY, -1F, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+		addAttributeModifier(Attributes.KNOCKBACK_RESISTANCE, ID_KB, 1F, AttributeModifier.Operation.ADD_VALUE);
+		addAttributeModifier(NeoForgeMod.SWIM_SPEED.getDelegate(), ID_JUMP, -1F, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
 	}
 
 	@Override
-	public void applyEffectTick(LivingEntity entity, int p_19468_) {
+	public boolean applyEffectTick(LivingEntity entity, int p_19468_) {
 		entity.setDeltaMovement(0, 0, 0);
+		return true;
 	}
 
 	@Override
-	public boolean isDurationEffectTick(int p_19455_, int p_19456_) {
+	public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
 		return true;
 	}
 

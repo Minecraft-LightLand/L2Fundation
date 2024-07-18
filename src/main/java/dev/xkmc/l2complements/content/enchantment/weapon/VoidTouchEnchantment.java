@@ -5,6 +5,7 @@ import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2damagetracker.contents.attack.DamageData;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -13,6 +14,9 @@ import net.minecraft.world.item.ItemStack;
 import java.util.Random;
 
 public class VoidTouchEnchantment {
+
+	private static final ResourceLocation VOID_ATTACK = LCEnchantments.VOID_TOUCH.id().location().withSuffix("_attack");
+	private static final ResourceLocation VOID_DAMAGE = LCEnchantments.VOID_TOUCH.id().location().withSuffix("_damage");
 
 	private static double getChance(DamageData data, int level) {
 		if (data.getStrength() < 0.95f) return 0;
@@ -54,13 +58,13 @@ public class VoidTouchEnchantment {
 			maxDmg = (float) Math.max(damage, maxDmg);
 		}
 		float finDmg = maxDmg;
-		data.addHurtModifier(DamageModifier.nonlinearPre(0, e -> Math.max(e, finDmg)));
+		data.addHurtModifier(DamageModifier.nonlinearPre(0, e -> Math.max(e, finDmg), VOID_ATTACK));
 	}
 
 	public static void initDamage(DamageData.Defence cache, ItemStack weapon) {
 		if (!allow(cache, weapon)) return;
 		float finalDamage = Math.max(cache.getDamageOriginal(), cache.getDamageIncoming());
-		cache.addDealtModifier(DamageModifier.nonlinearPre(5000, e -> Math.max(e, finalDamage)));
+		cache.addDealtModifier(DamageModifier.nonlinearPre(5000, e -> Math.max(e, finalDamage), VOID_DAMAGE));
 	}
 
 }

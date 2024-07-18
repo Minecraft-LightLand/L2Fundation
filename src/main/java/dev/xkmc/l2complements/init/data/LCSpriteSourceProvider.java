@@ -4,6 +4,7 @@ import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.materials.LCMats;
 import net.minecraft.Util;
 import net.minecraft.client.renderer.texture.atlas.sources.PalettedPermutations;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -12,6 +13,7 @@ import net.neoforged.neoforge.common.data.SpriteSourceProvider;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
 public class LCSpriteSourceProvider extends SpriteSourceProvider {
@@ -55,18 +57,16 @@ public class LCSpriteSourceProvider extends SpriteSourceProvider {
 		).map(ResourceLocation::withDefaultNamespace).toList();
 	}
 
-	public LCSpriteSourceProvider(PackOutput output, ExistingFileHelper fileHelper) {
-		super(output, fileHelper, L2Complements.MODID);
+	public LCSpriteSourceProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> pvd, ExistingFileHelper fileHelper) {
+		super(output, pvd, L2Complements.MODID, fileHelper);
 	}
 
 	@Override
-	protected void addSources() {
-		atlas(new ResourceLocation("armor_trims"))
-				.addSource(new PalettedPermutations(DEF,
-						new ResourceLocation("trims/color_palettes/trim_palette"),
+	protected void gather() {
+		atlas(ResourceLocation.withDefaultNamespace("armor_trims"))
+				.addSource(new PalettedPermutations(DEF, ResourceLocation.withDefaultNamespace("trims/color_palettes/trim_palette"),
 						Util.make(new LinkedHashMap<>(), map -> Arrays.stream(LCMats.values())
-								.forEach(e -> map.put(e.getID(), new ResourceLocation(L2Complements.MODID,
-										"trims/color_palettes/" + e.getID()))))));
+								.forEach(e -> map.put(e.getID(), L2Complements.loc("trims/color_palettes/" + e.getID()))))));
 	}
 
 }

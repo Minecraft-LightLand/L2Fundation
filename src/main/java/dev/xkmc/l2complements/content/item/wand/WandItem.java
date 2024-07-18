@@ -1,11 +1,11 @@
 package dev.xkmc.l2complements.content.item.wand;
 
-import dev.xkmc.l2complements.init.data.LCConfig;
-import dev.xkmc.l2complements.init.data.LCTagGen;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 
 public class WandItem extends Item {
 
@@ -14,19 +14,13 @@ public class WandItem extends Item {
 	}
 
 	@Override
-	public boolean isEnchantable(ItemStack stack) {
-		return LCConfig.COMMON.enableWandEnchantments.get();
+	public int getEnchantmentLevel(ItemStack stack, Holder<Enchantment> enchantment) {
+		return super.getEnchantmentLevel(stack, enchantment);
 	}
 
 	@Override
-	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-		if (!LCConfig.COMMON.enableWandEnchantments.get()) return false;
-		if (LCConfig.COMMON.useTagsForWandEnchantmentWhiteList.get()) {
-			var manager = ForgeRegistries.ENCHANTMENTS.tags();
-			if (manager != null) {
-				return manager.getTag(LCTagGen.WAND_ENCH).contains(enchantment);
-			}
-		}
-		return super.canApplyAtEnchantingTable(stack, enchantment);
+	public ItemEnchantments getAllEnchantments(ItemStack stack, HolderLookup.RegistryLookup<Enchantment> lookup) {
+		return super.getAllEnchantments(stack, lookup);
 	}
+
 }

@@ -31,9 +31,9 @@ public class EmeraldPopeEffect extends MobEffect implements FirstPlayerRenderEff
 		super(type, color);
 	}
 
-	public void applyEffectTick(LivingEntity self, int level) {
+	public boolean applyEffectTick(LivingEntity self, int level) {
 		if (self.level().isClientSide())
-			return;
+			return true;
 		int radius = (level + 1) * LCConfig.COMMON.emeraldBaseRange.get();
 		var atk = self.getAttribute(Attributes.ATTACK_DAMAGE);
 		int damage = (int) (LCConfig.COMMON.emeraldDamageFactor.get() * (atk == null ? 1 : atk.getValue()));
@@ -48,10 +48,12 @@ public class EmeraldPopeEffect extends MobEffect implements FirstPlayerRenderEff
 				e.hurt(source, damage);
 			}
 		}
+		return true;
 	}
 
-	public boolean isDurationEffectTick(int tick, int lv) {
-		return tick % 10 == 0;
+	@Override
+	public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
+		return duration % 10 == 0;
 	}
 
 	@Override
@@ -75,7 +77,6 @@ public class EmeraldPopeEffect extends MobEffect implements FirstPlayerRenderEff
 		}
 	}
 
-	@OnlyIn(Dist.CLIENT)
 	private static void addParticle(Level w, Vec3 vec, int r) {
 		float tpi = (float) (Math.PI * 2);
 		Vec3 v0 = new Vec3(0, r, 0);

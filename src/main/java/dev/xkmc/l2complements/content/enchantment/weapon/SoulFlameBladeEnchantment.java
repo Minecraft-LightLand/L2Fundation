@@ -4,7 +4,7 @@ import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 
-public class SoulFlameBladeEnchantment extends AbstractBladeEnchantment {
+public class SoulFlameBladeEnchantment extends EffectBladeEnchantment {
 
 	@Override
 	protected MobEffectInstance getEffect(int pLevel) {

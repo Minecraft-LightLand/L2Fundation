@@ -1,5 +1,6 @@
 package dev.xkmc.l2complements.content.enchantment.digging;
 
+import dev.xkmc.l2complements.content.enchantment.core.CustomDecoColorEnchantment;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
@@ -28,7 +29,7 @@ import java.util.UUID;
 
 import static org.apache.logging.log4j.Level.ERROR;
 
-public class RangeDiggingEnchantment extends LegacyEnchantment {
+public class RangeDiggingEnchantment extends LegacyEnchantment implements CustomDecoColorEnchantment {
 
 	private static final Set<UUID> BREAKER = new HashSet<>();
 
@@ -110,4 +111,8 @@ public class RangeDiggingEnchantment extends LegacyEnchantment {
 		return breaker.descFull(lv, key, alt, book);
 	}
 
+	@Override
+	public int getDecoColor() {
+		return 0xffafafaf;
+	}
 }

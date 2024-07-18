@@ -22,7 +22,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -31,13 +30,13 @@ public class FireChargeItem<T extends BaseFireball<T>> extends TooltipItem {
 
 	public interface PlayerFire<T extends BaseFireball<T>> {
 
-		T create(Player player, double vx, double vy, double vz, Level level);
+		T create(Player player, Vec3 vec, Level level);
 
 	}
 
 	public interface BlockFire<T extends BaseFireball<T>> {
 
-		T create(double x, double y, double z, double vx, double vy, double vz, Level level);
+		T create(double x, double y, double z, Vec3 vec, Level level);
 
 	}
 
@@ -54,7 +53,7 @@ public class FireChargeItem<T extends BaseFireball<T>> extends TooltipItem {
 			double d3 = randomsource.triangle(direction.getStepX(), 0.11485D);
 			double d4 = randomsource.triangle(direction.getStepY(), 0.11485D);
 			double d5 = randomsource.triangle(direction.getStepZ(), 0.11485D);
-			T t = blockFire.create(d0, d1, d2, 0, 0, 0, level);
+			T t = blockFire.create(d0, d1, d2, Vec3.ZERO, level);
 			t.setItem(stack);
 			t.setDeltaMovement(new Vec3(d3, d4, d5).normalize());
 			level.addFreshEntity(t);
@@ -86,7 +85,7 @@ public class FireChargeItem<T extends BaseFireball<T>> extends TooltipItem {
 				1.0F, (r.nextFloat() - r.nextFloat()) * 0.2F + 1.0F);
 		if (!level.isClientSide) {
 			Vec3 v = RayTraceUtil.getRayTerm(Vec3.ZERO, player.getXRot(), player.getYRot(), 1);
-			T t = playerFire.create(player, 0, 0, 0, level);
+			T t = playerFire.create(player, Vec3.ZERO, level);
 			t.setItem(itemstack);
 			t.setPos(player.getEyePosition().add(0, -0.1, 0).add(v));
 			t.setDeltaMovement(v);
@@ -100,7 +99,7 @@ public class FireChargeItem<T extends BaseFireball<T>> extends TooltipItem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext level, List<Component> list, TooltipFlag flag) {
 		list.add(LangData.IDS.CHARGE_THROW.get().withStyle(ChatFormatting.GRAY));
 		super.appendHoverText(stack, level, list, flag);
 

@@ -79,7 +79,7 @@ public class NoGravMagicalDohickyItem extends TooltipItem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(stack, level, list, flag);
 		list.add(LangData.IDS.FLOAT.get().withStyle(ChatFormatting.GRAY));
 	}

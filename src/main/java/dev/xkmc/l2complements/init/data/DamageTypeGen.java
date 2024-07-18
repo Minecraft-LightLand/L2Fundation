@@ -8,13 +8,13 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageEffects;
 import net.minecraft.world.damagesource.DamageScaling;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -32,13 +32,13 @@ public class DamageTypeGen extends DamageTypeAndTagsGen {
 				.add(DamageTypeTags.AVOIDS_GUARDIAN_THORNS);
 
 		new DamageTypeHolder(SOUL_FLAME, new DamageType("soul_flame", DamageScaling.NEVER, 0, DamageEffects.BURNING))
-				.add(DamageTypeTags.BYPASSES_ARMOR, L2DamageTypes.MAGIC, DamageTypeTags.AVOIDS_GUARDIAN_THORNS, L2DamageTypes.NO_SCALE, DamageTypeTags.NO_IMPACT);
+				.add(DamageTypeTags.BYPASSES_ARMOR, Tags.DamageTypes.IS_MAGIC, DamageTypeTags.AVOIDS_GUARDIAN_THORNS, L2DamageTypes.NO_SCALE, DamageTypeTags.NO_KNOCKBACK);
 		new DamageTypeHolder(BLEED, new DamageType("bleed", DamageScaling.NEVER, 0.1f))
-				.add(DamageTypeTags.BYPASSES_ARMOR, L2DamageTypes.NO_SCALE, DamageTypeTags.NO_IMPACT).add(L2DamageTypes.BYPASS_MAGIC);
+				.add(DamageTypeTags.BYPASSES_ARMOR, L2DamageTypes.NO_SCALE, DamageTypeTags.NO_KNOCKBACK).add(L2DamageTypes.BYPASS_MAGIC);
 		new DamageTypeHolder(LIFE_SYNC, new DamageType("life_sync", DamageScaling.NEVER, 0f))
-				.add(DamageTypeTags.BYPASSES_ARMOR, L2DamageTypes.NO_SCALE, DamageTypeTags.NO_IMPACT).add(L2DamageTypes.BYPASS_MAGIC);
+				.add(DamageTypeTags.BYPASSES_ARMOR, L2DamageTypes.NO_SCALE, DamageTypeTags.NO_KNOCKBACK).add(L2DamageTypes.BYPASS_MAGIC);
 		new DamageTypeHolder(VOID_EYE, new DamageType("void_eye", DamageScaling.NEVER, 0f))
-				.add(DamageTypeTags.NO_IMPACT).add(L2DamageTypes.BYPASS_INVUL);
+				.add(DamageTypeTags.NO_KNOCKBACK).add(L2DamageTypes.BYPASS_INVUL);
 	}
 
 	public static Holder<DamageType> forKey(Level level, ResourceKey<DamageType> key) {
@@ -46,7 +46,7 @@ public class DamageTypeGen extends DamageTypeAndTagsGen {
 	}
 
 	private static ResourceKey<DamageType> create(String id) {
-		return ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(L2Complements.MODID, id));
+		return ResourceKey.create(Registries.DAMAGE_TYPE, L2Complements.loc(id));
 	}
 
 }

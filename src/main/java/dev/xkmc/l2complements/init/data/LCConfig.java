@@ -74,9 +74,6 @@ public class LCConfig {
 		public final ModConfigSpec.BooleanValue enableToolRecraftRecipe;
 		public final ModConfigSpec.BooleanValue enableSpawnEggRecipe;
 
-		public final ModConfigSpec.BooleanValue enableWandEnchantments;
-		public final ModConfigSpec.BooleanValue useTagsForWandEnchantmentWhiteList;
-
 		Common(ModConfigSpec.Builder builder) {
 			useArsNouveauForEnchantmentRecipe = builder.comment("When Ars Nouveau is present, use apparatus recipe for enchantments")
 					.define("useArsNouveauForEnchantmentRecipe", true);
@@ -183,15 +180,6 @@ public class LCConfig {
 			}
 			builder.pop();
 
-			builder.push("enchantability");
-			{
-				enableWandEnchantments = builder.comment("Allow enchantments on wands")
-						.define("enableWandEnchantments", true);
-				useTagsForWandEnchantmentWhiteList = builder.comment("Use tag for wand enchantment whitelisting")
-						.define("useTagsForWandEnchantmentWhiteList", true);
-			}
-			builder.pop();
-
 		}
 
 	}
@@ -215,7 +203,7 @@ public class LCConfig {
 
 	public static void init() {
 		register(ModConfig.Type.CLIENT, CLIENT_SPEC);
-		COMMON_PATH = register(ModConfig.Type.COMMON, COMMON_SPEC);
+		COMMON_PATH = register(ModConfig.Type.SERVER, COMMON_SPEC);
 	}
 
 	private static String register(ModConfig.Type type, IConfigSpec spec) {

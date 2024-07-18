@@ -22,6 +22,7 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.GrindstoneEvent;
+import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
@@ -98,12 +99,17 @@ public class MaterialEventHandler {
 	public static void onGrind(GrindstoneEvent.OnPlaceItem event) {
 		if (event.getTopItem().getItem() instanceof WarpStone) {
 			ItemStack copy = event.getTopItem().copy();
-			if (WarpStone.getPos(copy).isPresent()) {
-				copy.getOrCreateTag().remove("pos");
+			if (copy.has(LCItems.POS_DATA.get())) {
+				copy.remove(LCItems.POS_DATA.get());
 				event.setOutput(copy);
 				event.setXp(0);
 			}
 		}
+	}
+
+	@SubscribeEvent
+	public static void onPotionReg(RegisterBrewingRecipesEvent event) {
+		LCEffects.registerBrewingRecipe(event);
 	}
 
 	public static void onItemKill(Level level, Entity entity, ItemStack stack) {

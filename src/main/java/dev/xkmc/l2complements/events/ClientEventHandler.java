@@ -1,8 +1,6 @@
 package dev.xkmc.l2complements.events;
 
 
-import com.mojang.datafixers.util.Either;
-import dev.xkmc.l2complements.content.enchantment.core.CustomDescEnchantment;
 import dev.xkmc.l2complements.content.feature.EntityFeature;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCKeys;
@@ -10,26 +8,12 @@ import dev.xkmc.l2complements.network.RotateDiggerToServer;
 import dev.xkmc.l2core.util.Proxy;
 import dev.xkmc.l2itemselector.events.GenericKeyEvent;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.contents.LiteralContents;
-import net.minecraft.network.chat.contents.PlainTextContents;
-import net.minecraft.network.chat.contents.TranslatableContents;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderBlockScreenEffectEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Stream;
 
 @EventBusSubscriber(value = Dist.CLIENT, modid = L2Complements.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class ClientEventHandler {
@@ -54,6 +38,7 @@ public class ClientEventHandler {
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void modifyItemTooltip(ItemTooltipEvent event) {
+		/* TODO enchantment description
 		var list = event.getToolTip();
 		int n = list.size();
 		if (!event.getItemStack().isEnchanted() && !event.getItemStack().is(Items.ENCHANTED_BOOK)) return;
@@ -93,6 +78,8 @@ public class ClientEventHandler {
 			list.clear();
 			list.addAll(compound.stream().flatMap(e -> e.map(Stream::of, Collection::stream)).toList());
 		}
+
+		 */
 	}
 
 }

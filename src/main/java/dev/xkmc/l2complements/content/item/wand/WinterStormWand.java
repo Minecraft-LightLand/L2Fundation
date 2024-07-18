@@ -2,7 +2,7 @@ package dev.xkmc.l2complements.content.item.wand;
 
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
-import dev.xkmc.l2library.base.effects.EffectUtil;
+import dev.xkmc.l2core.base.effects.EffectUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -19,7 +19,6 @@ import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -42,9 +41,9 @@ public class WinterStormWand extends Item {
 	public void onUseTick(Level level, LivingEntity user, ItemStack stack, int remain) {
 		if (!(user instanceof Player player)) return;
 		var center = player.position();
-		int time = Math.min(CHARGE, getUseDuration(stack) - remain);
+		int time = Math.min(CHARGE, getUseDuration(stack, user) - remain);
 		if (remain % 20 == 0) {
-			stack.hurtAndBreak(1, user, e -> e.broadcastBreakEvent(e.getUsedItemHand()));
+			stack.hurtAndBreak(1, user, LivingEntity.getSlotForHand(user.getUsedItemHand()));
 		}
 		double radius = SIZE_0 + time * 1.0 * SIZE_1 / CHARGE;
 		if (level.isClientSide()) {
@@ -70,7 +69,7 @@ public class WinterStormWand extends Item {
 				if (e.getTicksFrozen() < 140) {
 					e.setTicksFrozen(140);
 				}
-				EffectUtil.refreshEffect(e, new MobEffectInstance(LCEffects.ICE.get(), 40), EffectUtil.AddReason.NONE, player);
+				EffectUtil.refreshEffect(e, new MobEffectInstance(LCEffects.ICE.holder(), 40), player);
 			}
 		}
 	}
@@ -78,11 +77,11 @@ public class WinterStormWand extends Item {
 	@Override
 	public void releaseUsing(ItemStack stack, Level level, LivingEntity user, int remain) {
 		if (!(user instanceof Player)) return;
-		stack.hurtAndBreak(1, user, e -> e.broadcastBreakEvent(e.getUsedItemHand()));
+		stack.hurtAndBreak(1, user, LivingEntity.getSlotForHand(user.getUsedItemHand()));
 	}
 
 	@Override
-	public int getUseDuration(ItemStack stack) {
+	public int getUseDuration(ItemStack stack, LivingEntity le) {
 		return 72000;
 	}
 
@@ -92,7 +91,7 @@ public class WinterStormWand extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext level, List<Component> list, TooltipFlag flag) {
 		list.add(LangData.IDS.WINTERSTORM_WAND.get().withStyle(ChatFormatting.GRAY));
 	}
 

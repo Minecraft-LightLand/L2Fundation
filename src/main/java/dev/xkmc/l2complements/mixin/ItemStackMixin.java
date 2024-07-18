@@ -9,6 +9,7 @@ import dev.xkmc.l2complements.events.SpecialEquipmentEvents;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LCTagGen;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
+import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2core.events.SchedulerHandler;
 import dev.xkmc.l2core.util.Proxy;
 import dev.xkmc.l2serial.util.Wrappers;
@@ -54,18 +55,17 @@ public abstract class ItemStackMixin implements IItemStackExtension {
 			var opt = Proxy.getServer();
 			if (opt.isPresent()) {
 				int old = self.getDamageValue();
-				String key = LCEnchantments.SAFEGUARD.getId().toString();
-				long time = self.getOrCreateTag().getLong(key);
-				long current = opt.get().overworld().getGameTime();
+				long time = LCItems.SAFEGUARD_TIME.getOrDefault(self, 0L);
+				long current = opt.orElseThrow().overworld().getGameTime();
 				if (max <= val) {
 					if (current == time) {
 						val = old;
 					} else if (max > old + 1) {
 						val = max - 1;
-						self.getOrCreateTag().putLong(key, current);
+						LCItems.SAFEGUARD_TIME.set(self, current);
 					}
 				} else if (max == val + 1) {
-					self.getOrCreateTag().putLong(key, current);
+					LCItems.SAFEGUARD_TIME.set(self, current);
 				}
 			}
 		}

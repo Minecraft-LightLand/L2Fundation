@@ -167,7 +167,7 @@ public class MagicEventHandler {
 		ItemStack stack = player.getMainHandItem();
 		var ent = DiggerHelper.getDigger(stack);
 		if (ent == null) return;
-		ent.getFirst().onBlockBreak(player, event.getPos(), stack, Math.min(ent.getFirst().getMaxLevel(), ent.getSecond()));
+		ent.digger().onBlockBreak(player, event.getPos(), stack, Math.min(ent.ench().value().getMaxLevel(), ent.level()));
 	}
 
 }

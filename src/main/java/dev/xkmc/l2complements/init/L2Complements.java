@@ -2,7 +2,7 @@ package dev.xkmc.l2complements.init;
 
 import com.tterrag.registrate.providers.ProviderType;
 import dev.xkmc.l2complements.events.L2ComplementsClick;
-import dev.xkmc.l2complements.events.MaterialDamageListener;
+import dev.xkmc.l2complements.events.LCAttackListener;
 import dev.xkmc.l2complements.init.data.*;
 import dev.xkmc.l2complements.init.registrate.*;
 import dev.xkmc.l2complements.network.EmptyRightClickToServer;
@@ -56,21 +56,19 @@ public class L2Complements {
 		LCRecipes.register();
 		LCConfig.init();
 		new L2ComplementsClick(loc("main"));
-		AttackEventHandler.register(5000, new MaterialDamageListener());
+		AttackEventHandler.register(5000, new LCAttackListener());
 		REGISTRATE.addDataGenerator(ProviderType.LANG, LangData::addTranslations);
-		REGISTRATE.addDataGenerator(ProviderType.RECIPE, RecipeGen::genRecipe);
 		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, LCTagGen::onBlockTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, LCTagGen::onItemTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, LCTagGen::onEntityTagGen);
 		REGISTRATE.addDataGenerator(L2TagGen.EFF_TAGS, LCTagGen::onEffectTagGen);
-		REGISTRATE.addDataGenerator(LCTagGen.ENCH_TAGS, LCTagGen::onEnchTagGen);
+		REGISTRATE.addDataGenerator(L2TagGen.ENCH_TAGS, LCTagGen::onEnchTagGen);
+		REGISTRATE.addDataGenerator(ProviderType.RECIPE, RecipeGen::genRecipe);
 	}
 
 	@SubscribeEvent
 	public static void setup(final FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
-			LCEffects.registerBrewingRecipe();
-
 			DispenserBlock.registerBehavior(LCItems.SOUL_CHARGE.get(), LCItems.SOUL_CHARGE.get().new FireChargeBehavior());
 			DispenserBlock.registerBehavior(LCItems.STRONG_CHARGE.get(), LCItems.STRONG_CHARGE.get().new FireChargeBehavior());
 			DispenserBlock.registerBehavior(LCItems.BLACK_CHARGE.get(), LCItems.BLACK_CHARGE.get().new FireChargeBehavior());
@@ -87,9 +85,9 @@ public class L2Complements {
 		var pvd = event.getLookupProvider();
 		var helper = event.getExistingFileHelper();
 		new DamageTypeGen(output, pvd, helper).generate(run, gen);
-		gen.addProvider(run, new LCConfigGen(gen));
+		gen.addProvider(run, new LCConfigGen(output, pvd));
 		gen.addProvider(run, new LCDatapackRegistriesGen(output, pvd));
-		gen.addProvider(run, new LCSpriteSourceProvider(output, helper));
+		gen.addProvider(run, new LCSpriteSourceProvider(output, pvd, helper));
 	}
 
 	public static ResourceLocation loc(String id) {

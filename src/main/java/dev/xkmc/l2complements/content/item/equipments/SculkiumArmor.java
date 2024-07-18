@@ -1,57 +1,46 @@
 package dev.xkmc.l2complements.content.item.equipments;
 
-import com.google.common.collect.Multimap;
+import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2damagetracker.contents.materials.generic.ExtraArmorConfig;
-import dev.xkmc.l2library.util.math.MathHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 
 import java.util.List;
-import java.util.Locale;
 
 public class SculkiumArmor extends ExtraArmorConfig {
 
-	private static final String NAME_SPEED = "sculkium_speed", NAME_HASTE = "sculkium_haste", NAME_HEALTH = "sculkium_health";
-
-	private static final AttributeModifier[] HASTE = makeModifiers(NAME_HASTE, 0.06d, 0.09d, AttributeModifier.Operation.MULTIPLY_BASE);
-	private static final AttributeModifier[] SPEED = makeModifiers(NAME_SPEED, 0.1d, 0.15d, AttributeModifier.Operation.MULTIPLY_BASE);
-	private static final AttributeModifier[] HEALTH = makeModifiers(NAME_HEALTH, 4, 6, AttributeModifier.Operation.ADDITION);
-
-	private static AttributeModifier[] makeModifiers(String name, double val, double val2, AttributeModifier.Operation op) {
-		AttributeModifier[] ans = new AttributeModifier[4];
-		for (int i = 0; i < 4; i++) {
-			EquipmentSlot slot = EquipmentSlot.byTypeAndIndex(EquipmentSlot.Type.ARMOR, i);
-			double v = slot == EquipmentSlot.CHEST || slot == EquipmentSlot.LEGS ? val2 : val;
-			String str = name + "/" + slot.getName().toLowerCase(Locale.ROOT);
-			ans[i] = new AttributeModifier(MathHelper.getUUIDFromString(str), str, v, op);
-		}
-		return ans;
-	}
-
 	@Override
-	public Multimap<Attribute, AttributeModifier> modify(Multimap<Attribute, AttributeModifier> map, EquipmentSlot slot, ItemStack stack) {
-		if (slot == EquipmentSlot.HEAD || slot == EquipmentSlot.CHEST)
-			map.put(Attributes.ATTACK_SPEED, HASTE[slot.getIndex()]);
-		else
-			map.put(Attributes.MOVEMENT_SPEED, SPEED[slot.getIndex()]);
-		map.put(Attributes.MAX_HEALTH, HEALTH[slot.getIndex()]);
-		return map;
+	public void configureAttributes(ItemAttributeModifiers.Builder builder, EquipmentSlot slot) {
+		double factor = slot == EquipmentSlot.CHEST || slot == EquipmentSlot.LEGS ? 1.5 : 1;
+		var group = EquipmentSlotGroup.bySlot(slot);
+		if (slot == EquipmentSlot.HEAD || slot == EquipmentSlot.CHEST) {
+			builder.add(Attributes.MAX_HEALTH, new AttributeModifier(
+					L2Complements.loc("sculkium_attack_" + slot.getName()),
+					0.06 * factor,
+					AttributeModifier.Operation.ADD_MULTIPLIED_BASE), group);
+		} else {
+			builder.add(Attributes.MAX_HEALTH, new AttributeModifier(
+					L2Complements.loc("sculkium_walk_" + slot.getName()),
+					0.1 * factor,
+					AttributeModifier.Operation.ADD_MULTIPLIED_BASE), group);
+		}
+		builder.add(Attributes.MAX_HEALTH, new AttributeModifier(
+				L2Complements.loc("sculkium_health_" + slot.getName()),
+				4 * factor,
+				AttributeModifier.Operation.ADD_VALUE), group);
 	}
 
 	@Override
 	public void addTooltip(ItemStack stack, List<Component> list) {
 		list.add(LangData.IDS.SCULKIUM_ARMOR.get().withStyle(ChatFormatting.GRAY));
 		super.addTooltip(stack, list);
-	}
-
-	public boolean dampenVibration() {
-		return true;
 	}
 
 }

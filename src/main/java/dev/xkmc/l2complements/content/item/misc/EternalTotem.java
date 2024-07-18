@@ -4,10 +4,9 @@ import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2core.util.Proxy;
+import dev.xkmc.l2core.util.TeleportTool;
 import dev.xkmc.l2damagetracker.contents.curios.TotemUseToClient;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
-import dev.xkmc.l2library.util.Proxy;
-import dev.xkmc.l2library.util.tools.TeleportTool;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -20,8 +19,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -49,7 +46,7 @@ public class EternalTotem extends Item implements ILCTotem {
 			player.getCooldowns().addCooldown(this, LCConfig.COMMON.eternalTotemCoolDown.get());
 			if (LCConfig.COMMON.eternalTotemGiveWarpStone.get()) {
 				ItemStack stone = LCItems.FRAGILE_WARP_STONE.asStack();
-				WarpStone.setPos(stone, self.level(), self.getX(), self.getY() + 1e-3, self.getZ());
+				WarpStone.set(stone, self.level(), self);
 				player.getInventory().add(stone);
 			}
 			TeleportTool.teleportHome(level, player);
@@ -58,10 +55,10 @@ public class EternalTotem extends Item implements ILCTotem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext level, List<Component> list, TooltipFlag flag) {
 		int time = LCConfig.COMMON.eternalTotemCoolDown.get() / 20;
 		Component cd = Component.literal("" + time);
-		if (level != null && level.isClientSide()) {
+		if (level.registries() != null) {
 			var player = Proxy.getClientPlayer();
 			if (player != null && player.getCooldowns().isOnCooldown(this)) {
 				time = (int) (player.getCooldowns().getCooldownPercent(this, 0) * time);

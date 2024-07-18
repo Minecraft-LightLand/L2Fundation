@@ -1,52 +1,71 @@
 package dev.xkmc.l2complements.content.enchantment.digging;
 
 import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
+import dev.xkmc.l2complements.init.registrate.LCItems;
+import dev.xkmc.l2core.init.L2LibReg;
+import dev.xkmc.l2core.init.reg.ench.LegacyEnchantment;
+import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
+import net.neoforged.neoforge.common.CommonHooks;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
 public class DiggerHelper {
 
 	private static final String KEY = "l2complements:selected_digger";
 
 	@Nullable
-	public static Pair<RangeDiggingEnchantment, Integer> getDigger(ItemStack stack) {
+	private static RangeDiggingEnchantment of(Enchantment ench) {
+		var list = ench.getEffects(L2LibReg.LEGACY.get());
+		for (var e : list) {
+			if (e instanceof RangeDiggingEnchantment digger) {
+				return digger;
+			}
+		}
+		return null;
+	}
+
+	@Nullable
+	public static Digger getDigger(ItemStack stack) {
 		if (stack.isEmpty() || !stack.isEnchanted()) return null;
-		var root = stack.getTag();
-		if (root == null) return null;
-		String str = root.getString(KEY);
-		if (!ResourceLocation.isValidResourceLocation(str)) return null;
-		var e = ForgeRegistries.ENCHANTMENTS.getValue(new ResourceLocation(str));
-		if (!(e instanceof RangeDiggingEnchantment ench)) return null;
-		int lv = stack.getEnchantmentLevel(e);
+		var reg = CommonHooks.resolveLookup(Registries.ENCHANTMENT);
+		if (reg == null) return null;
+		var ench = Optional.ofNullable(stack.get(LCItems.DIGGER_SEL))
+				.map(ResourceLocation::tryParse)
+				.map(e -> reg.getOrThrow(ResourceKey.create(Registries.ENCHANTMENT, e)));
+		var list = ench.map(e -> e.value().getEffects(L2LibReg.LEGACY.get()));
+		if (ench.isEmpty() || list.get().isEmpty()) return null;
+		var legacy = list.get().getFirst();
+		if (!(legacy instanceof RangeDiggingEnchantment digger)) return null;
+		int lv = stack.getOrDefault(DataComponents.ENCHANTMENTS, ItemEnchantments.EMPTY).getLevel(ench.get());
 		if (lv <= 0) return null;
-		return Pair.of(ench, lv);
+		return new Digger(ench.get(), digger, lv);
 	}
 
 	public static void rotateDigger(ItemStack stack, boolean reverse) {
-		var current = getDigger(stack);
-		List<Enchantment> list = new ArrayList<>(stack.getAllEnchantments().keySet());
+		var list = LegacyEnchantment.findAll(stack, RangeDiggingEnchantment.class, true);
 		if (reverse) list = Lists.reverse(list);
+		var current = getDigger(stack);
 		for (var ent : list) {
-			if (ent instanceof RangeDiggingEnchantment ench) {
-				if (current == null) {
-					var rl = ForgeRegistries.ENCHANTMENTS.getKey(ench);
-					assert rl == null;
-					stack.getOrCreateTag().putString(KEY, rl.toString());
-					return;
-				}
-				if (ench == current.getFirst()) {
-					current = null;
-				}
+			if (current == null) {
+				LCItems.DIGGER_SEL.set(stack, ent.holder().unwrapKey().orElseThrow().location().toString());
+				return;
+			}
+			if (ent.holder().value() == current.ench().value()) {
+				current = null;
 			}
 		}
-		stack.getOrCreateTag().remove(KEY);
+		stack.remove(LCItems.DIGGER_SEL.get());
+	}
+
+	public record Digger(Holder<Enchantment> ench, RangeDiggingEnchantment digger, int level) {
 	}
 
 }

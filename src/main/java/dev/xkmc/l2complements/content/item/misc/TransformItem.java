@@ -12,7 +12,7 @@ import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.ForgeEventFactory;
+import net.neoforged.neoforge.event.EventHooks;
 
 import java.util.function.Supplier;
 
@@ -35,19 +35,20 @@ public class TransformItem extends TooltipItem {
 		if (target.getType() != from.get()) return InteractionResult.FAIL;
 		if (level.getDifficulty() == Difficulty.PEACEFUL) return InteractionResult.FAIL;
 		if (level instanceof ServerLevel server) {
-			if (ForgeEventFactory.canLivingConvert(target, to.get(), (timer) -> {
+			if (EventHooks.canLivingConvert(target, to.get(), (timer) -> {
 			})) {
 				Mob result = to.get().create(level);
 				assert result != null;
 				result.moveTo(target.getX(), target.getY(), target.getZ(), target.getYRot(), target.getXRot());
-				ForgeEventFactory.onFinalizeSpawn(result, server, level.getCurrentDifficultyAt(result.blockPosition()), MobSpawnType.CONVERSION, null, null);
+				EventHooks.finalizeMobSpawn(result, server, level.getCurrentDifficultyAt(result.blockPosition()),
+						MobSpawnType.CONVERSION, null);
 				result.setNoAi(((Mob) target).isNoAi());
 				if (target.hasCustomName()) {
 					result.setCustomName(target.getCustomName());
 					result.setCustomNameVisible(target.isCustomNameVisible());
 				}
 				result.setPersistenceRequired();
-				ForgeEventFactory.onLivingConvert(target, result);
+				EventHooks.onLivingConvert(target, result);
 				level.addFreshEntity(result);
 				target.discard();
 				stack.shrink(1);

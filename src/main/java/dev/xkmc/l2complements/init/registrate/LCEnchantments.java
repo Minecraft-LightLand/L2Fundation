@@ -68,11 +68,11 @@ public class LCEnchantments {
 	public static final EnchVal WIND_SWEEP;
 	public static final EnchVal SOUL_BOUND;
 	public static final EnchVal ICE_BLADE;
-	public static final EnchVal FLAME_BLADE;
+	public static final EnchVal HELLFIRE_BLADE;
 	public static final EnchVal CURSE_BLADE;
 	public static final EnchVal SHARP_BLADE;
 	public static final EnchVal ICE_THORN;
-	public static final EnchVal FLAME_THORN;
+	public static final EnchVal HELLFIRE_THORN;
 	public static final EnchVal DURABLE_ARMOR;
 	public static final EnchVal VOID_TOUCH;
 	public static final EnchVal CUBIC;
@@ -159,7 +159,7 @@ public class LCEnchantments {
 					e -> e.items(ItemTags.WEAPON_ENCHANTABLE).maxLevel(3),
 					IceBladeEnchantment::new);
 
-			FLAME_BLADE = REG.enchLegacy("hellfire_blade", "Hellfire Blade", "Apply %s on target",
+			HELLFIRE_BLADE = REG.enchLegacy("hellfire_blade", "Hellfire Blade", "Apply %s on target",
 					e -> e.items(ItemTags.WEAPON_ENCHANTABLE).maxLevel(3),
 					SoulFlameBladeEnchantment::new);
 
@@ -171,11 +171,13 @@ public class LCEnchantments {
 					e -> e.items(ItemTags.WEAPON_ENCHANTABLE).maxLevel(3),
 					SharpBladeEnchantment::new);
 
-			ICE_THORN = REG.ench("freezing_thorn", "Ice Thorn", "When attacked, apply %s attacker.",
-					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.THORN).maxLevel(3));
+			ICE_THORN = REG.ench("freezing_thorn", "Ice Thorn", "When attacked, apply %s to attacker.",
+					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).group(EquipmentSlotGroup.ARMOR)
+							.exclusive(LCTagGen.THORN).tags(LCTagGen.THORN).maxLevel(3));
 
-			FLAME_THORN = REG.ench("hellfire_thorn", "Hellfire Thorn", "When attacked, apply %s to attacker.",
-					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.THORN).maxLevel(3));
+			HELLFIRE_THORN = REG.ench("hellfire_thorn", "Hellfire Thorn", "When attacked, apply %s to attacker.",
+					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).group(EquipmentSlotGroup.ARMOR)
+							.exclusive(LCTagGen.THORN).tags(LCTagGen.THORN));
 
 		}
 

@@ -1,9 +1,8 @@
 package dev.xkmc.l2complements.init.data;
 
-import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.materials.LCMats;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
-import dev.xkmc.l2damagetracker.init.data.ArmorEffectConfig;
+import dev.xkmc.l2damagetracker.init.data.ArmorImmunity;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.effect.MobEffects;
@@ -20,14 +19,19 @@ public class LCConfigGen extends DataMapProvider {
 	@Override
 	protected void gather() {
 		var b = builder(L2DamageTracker.ARMOR.reg());
-
-		collector.add(L2DamageTracker.ARMOR, L2Complements.loc("default"), new ArmorEffectConfig()
-				.add(LCMats.TOTEMIC_GOLD.armorPrefix(), MobEffects.POISON, MobEffects.WITHER, MobEffects.HUNGER)
-				.add(LCMats.POSEIDITE.armorPrefix(), MobEffects.DIG_SLOWDOWN)
-				.add(LCMats.POSEIDITE.armorPrefix(), MobEffects.DIG_SLOWDOWN)
-				.add(LCMats.SCULKIUM.armorPrefix(),
-						MobEffects.DARKNESS, MobEffects.BLINDNESS, MobEffects.CONFUSION,
-						MobEffects.DIG_SLOWDOWN, MobEffects.WEAKNESS, MobEffects.MOVEMENT_SLOWDOWN));
+		b.add(LCMats.TOTEMIC_GOLD.getArmorMaterial(), ArmorImmunity.of(false,
+				MobEffects.POISON.value(), MobEffects.WITHER.value(), MobEffects.HUNGER.value()
+		), false);
+		b.add(LCMats.POSEIDITE.getArmorMaterial(), ArmorImmunity.of(false,
+				MobEffects.DIG_SLOWDOWN.value()
+		), false);
+		b.add(LCMats.POSEIDITE.getArmorMaterial(), ArmorImmunity.of(false,
+				MobEffects.DIG_SLOWDOWN.value()
+		), false);
+		b.add(LCMats.SCULKIUM.getArmorMaterial(), ArmorImmunity.of(false,
+				MobEffects.DARKNESS.value(), MobEffects.BLINDNESS.value(), MobEffects.CONFUSION.value(),
+				MobEffects.DIG_SLOWDOWN.value(), MobEffects.WEAKNESS.value(), MobEffects.MOVEMENT_SLOWDOWN.value()
+		), false);
 	}
 
 }

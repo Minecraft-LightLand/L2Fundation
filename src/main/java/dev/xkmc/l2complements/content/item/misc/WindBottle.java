@@ -19,7 +19,7 @@ public class WindBottle extends TooltipItem {
 	@Override
 	public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean select) {
 		if (!level.isClientSide() && entity instanceof Player player) {
-			if (entity.getDeltaMovement().length() >= LCConfig.COMMON.windSpeed.get()) {
+			if (entity.getDeltaMovement().length() >= LCConfig.SERVER.windSpeed.get()) {
 				stack.shrink(1);
 				player.getInventory().placeItemBackInInventory(LCItems.CAPTURED_WIND.asStack());
 			}

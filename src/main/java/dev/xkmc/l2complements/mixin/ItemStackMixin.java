@@ -37,7 +37,7 @@ public abstract class ItemStackMixin implements IItemStackExtension {
 			return;
 		}
 		if (user != null && getEnchantmentLevel(LCEnchantments.LIFE_SYNC.holder()) > 0) {
-			float dmg = (float) (val * LCConfig.COMMON.lifeSyncFactor.get());
+			float dmg = (float) (val * LCConfig.SERVER.lifeSyncFactor.get());
 			SchedulerHandler.schedule(() -> user.hurt(LifeSyncEnchantment.getSource(user.level()), dmg));
 			return;
 		}

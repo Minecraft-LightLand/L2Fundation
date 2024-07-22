@@ -8,7 +8,7 @@ public class SoulFlameBladeEnchantment extends EffectBladeEnchantment {
 
 	@Override
 	protected MobEffectInstance getEffect(int pLevel) {
-		return new MobEffectInstance(LCEffects.FLAME.holder(), LCConfig.COMMON.flameEnchantDuration.get(), pLevel - 1);
+		return new MobEffectInstance(LCEffects.FLAME.holder(), LCConfig.SERVER.flameEnchantDuration.get(), pLevel - 1);
 	}
 
 }

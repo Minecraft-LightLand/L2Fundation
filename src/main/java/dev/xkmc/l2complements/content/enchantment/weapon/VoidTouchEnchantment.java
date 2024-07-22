@@ -20,12 +20,12 @@ public class VoidTouchEnchantment {
 
 	private static double getChance(DamageData data, int level) {
 		if (data.getStrength() < 0.95f) return 0;
-		double chance = LCConfig.COMMON.voidTouchChance.get() * level;
+		double chance = LCConfig.SERVER.voidTouchChance.get() * level;
 		DamageSource source = data.getSource();
 		if (source.is(DamageTypeTags.BYPASSES_ARMOR))
-			chance += LCConfig.COMMON.voidTouchChanceBonus.get();
+			chance += LCConfig.SERVER.voidTouchChanceBonus.get();
 		if (source.is(DamageTypeTags.BYPASSES_EFFECTS) && source.is(DamageTypeTags.BYPASSES_ENCHANTMENTS))
-			chance += LCConfig.COMMON.voidTouchChanceBonus.get();
+			chance += LCConfig.SERVER.voidTouchChanceBonus.get();
 		return chance;
 	}
 

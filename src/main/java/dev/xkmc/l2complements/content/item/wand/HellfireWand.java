@@ -98,7 +98,7 @@ public class HellfireWand extends WandItem {
 			for (var e : level.getEntities(user, AABB.ofSize(center.add(0, radius, 0),
 					radius * 2, radius * 2, radius * 2))) {
 				if (e instanceof LivingEntity x) {
-					x.hurt(sl.damageSources().indirectMagic(null, user), LCConfig.COMMON.hellfireWandDamage.get());
+					x.hurt(sl.damageSources().indirectMagic(null, user), LCConfig.SERVER.hellfireWandDamage.get());
 				}
 			}
 		}

@@ -31,7 +31,7 @@ public class DelayedBlockBreaker {
 	public boolean tick() {
 		if (!check()) return true;
 		RangeDiggingEnchantment.execute(player, () -> {
-			int n = LCConfig.COMMON.chainDiggingBlockPerTick.get();
+			int n = LCConfig.SERVER.chainDiggingBlockPerTick.get();
 			for (int i = 0; i < n; i++) {
 				player.gameMode.destroyBlock(list.get(count));
 				count++;

@@ -37,7 +37,7 @@ public class TooltipItem extends Item {
 	}
 
 	@Override
-	public boolean canBeHurtBy(DamageSource source) {
+	public boolean canBeHurtBy(ItemStack stack, DamageSource source) {
 		if (getDefaultInstance().getRarity() != Rarity.COMMON) {
 			if (source.is(DamageTypeTags.IS_LIGHTNING) || source.is(DamageTypeTags.IS_FIRE) || source.is(DamageTypeTags.IS_EXPLOSION))
 				return false;

@@ -34,9 +34,9 @@ public class EmeraldPopeEffect extends MobEffect implements FirstPlayerRenderEff
 	public boolean applyEffectTick(LivingEntity self, int level) {
 		if (self.level().isClientSide())
 			return true;
-		int radius = (level + 1) * LCConfig.COMMON.emeraldBaseRange.get();
+		int radius = (level + 1) * LCConfig.SERVER.emeraldBaseRange.get();
 		var atk = self.getAttribute(Attributes.ATTACK_DAMAGE);
-		int damage = (int) (LCConfig.COMMON.emeraldDamageFactor.get() * (atk == null ? 1 : atk.getValue()));
+		int damage = (int) (LCConfig.SERVER.emeraldDamageFactor.get() * (atk == null ? 1 : atk.getValue()));
 		DamageSource source = new DamageSource(DamageTypeGen.forKey(self.level(), DamageTypeGen.EMERALD), null, self);
 		for (Entity e : self.level().getEntities(self, new AABB(self.blockPosition()).inflate(radius))) {
 			if (e instanceof Enemy && !e.isAlliedTo(self) && ((LivingEntity) e).hurtTime == 0 &&
@@ -70,7 +70,7 @@ public class EmeraldPopeEffect extends MobEffect implements FirstPlayerRenderEff
 
 	private static void renderEffect(int lv, Entity entity) {
 		if (Minecraft.getInstance().isPaused()) return;
-		int r = (lv + 1) * LCConfig.COMMON.emeraldBaseRange.get();
+		int r = (lv + 1) * LCConfig.SERVER.emeraldBaseRange.get();
 		int count = (1 + lv) * (1 + lv) * 4;
 		for (int i = 0; i < count; i++) {
 			addParticle(entity.level(), entity.position(), r);

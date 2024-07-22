@@ -237,7 +237,7 @@ public class RecipeGen {
 		currentFolder = "vanilla/renew/";
 		// misc
 		{
-			var cond = ConditionalRecipeWrapper.of(pvd, BooleanValueCondition.of(LCConfig.COMMON_PATH, LCConfig.COMMON.enableVanillaItemRecipe, true));
+			var cond = ConditionalRecipeWrapper.of(pvd, BooleanValueCondition.of(LCConfig.SERVER.getPath(), LCConfig.SERVER.enableVanillaItemRecipe, true));
 
 
 			unlock(pvd, new ShapelessRecipeBuilder(RecipeCategory.MISC, Items.ECHO_SHARD, 1)::unlockedBy, LCItems.RESONANT_FEATHER.get())
@@ -289,7 +289,7 @@ public class RecipeGen {
 		currentFolder = "vanilla/upgrade/";
 		{
 
-			var cond = ConditionalRecipeWrapper.of(pvd, BooleanValueCondition.of(LCConfig.COMMON_PATH, LCConfig.COMMON.enableToolRecraftRecipe, true));
+			var cond = ConditionalRecipeWrapper.of(pvd, BooleanValueCondition.of(LCConfig.SERVER.getPath(), LCConfig.SERVER.enableToolRecraftRecipe, true));
 
 			for (int i = 0; i < 9; i++) {
 				smithing(pvd, TOOLS[i], Items.IRON_BLOCK, BuiltInRegistries.ITEM.get(ResourceLocation.withDefaultNamespace("iron_" + TOOL_NAME[i])), cond);
@@ -694,7 +694,7 @@ public class RecipeGen {
 		// eggs
 		{
 
-			var cond = ConditionalRecipeWrapper.of(pvd, BooleanValueCondition.of(LCConfig.COMMON_PATH, LCConfig.COMMON.enableSpawnEggRecipe, true));
+			var cond = ConditionalRecipeWrapper.of(pvd, BooleanValueCondition.of(LCConfig.SERVER.getPath(), LCConfig.SERVER.enableSpawnEggRecipe, true));
 
 			// undead
 			/* zombie, husk, drowned, zombified piglin, skeleton, stray, wither skeleton, phantom, ghast*/
@@ -1064,7 +1064,7 @@ public class RecipeGen {
 		}
 		currentFolder = "generated_tools/" + mat.name().toLowerCase(Locale.ROOT) + "/upgrade/";
 		Item block = mat.getBlock().asItem();
-		var cond = ConditionalRecipeWrapper.of(pvd, BooleanValueCondition.of(LCConfig.COMMON_PATH, LCConfig.COMMON.enableToolRecraftRecipe, true));
+		var cond = ConditionalRecipeWrapper.of(pvd, BooleanValueCondition.of(LCConfig.SERVER.getPath(), LCConfig.SERVER.enableToolRecraftRecipe, true));
 		for (int i = 0; i < 9; i++) {
 			smithing(pvd, TOOLS[i], block, arr[i].get(), cond);
 		}

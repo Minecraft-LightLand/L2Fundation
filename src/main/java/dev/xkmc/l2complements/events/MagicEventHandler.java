@@ -43,7 +43,7 @@ public class MagicEventHandler {
 				event.setCanceled(true);
 			}
 		}
-		if (!LCConfig.COMMON.enableImmunityEnchantments.get()) {
+		if (!LCConfig.SERVER.enableImmunityEnchantments.get()) {
 			return;
 		}
 		if (EntityFeature.INVINCIBLE.test(event.getEntity())) {
@@ -126,7 +126,7 @@ public class MagicEventHandler {
 	public static boolean isSkill(MobEffectInstance ins, LivingEntity entity) {
 		if (ins.getEffect() instanceof SkillEffect)
 			return true;
-		int pred = LCConfig.COMMON.cleansePredicate.get();
+		int pred = LCConfig.SERVER.cleansePredicate.get();
 		if (ins.getEffect().value().isBeneficial() && pred > 0) return true;
 		if (ins.getEffect().value().getCategory() == MobEffectCategory.NEUTRAL && pred > 1) return true;
 		var tag = BuiltInRegistries.MOB_EFFECT.getTag(LCTagGen.SKILL_EFFECT);

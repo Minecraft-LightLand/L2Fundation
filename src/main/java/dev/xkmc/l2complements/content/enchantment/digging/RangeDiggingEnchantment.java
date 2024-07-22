@@ -57,7 +57,7 @@ public class RangeDiggingEnchantment extends LegacyEnchantment implements Custom
 	}
 
 	private static double hardnessFactor() {
-		return LCConfig.COMMON.chainDiggingHardnessRange.get();
+		return LCConfig.SERVER.chainDiggingHardnessRange.get();
 	}
 
 	private static boolean canBreak(BlockPos i, Level level, Player player, double hardness) {
@@ -87,13 +87,13 @@ public class RangeDiggingEnchantment extends LegacyEnchantment implements Custom
 	public void onBlockBreak(ServerPlayer player, BlockPos pos, ItemStack stack, int lv) {
 		var blocks = getTargets(player, pos, stack, lv);
 		execute(player, () -> {
-			int max = LCConfig.COMMON.chainDiggingDelayThreshold.get();
+			int max = LCConfig.SERVER.chainDiggingDelayThreshold.get();
 			if (blocks.size() <= max) {
 				for (var i : blocks) {
 					player.gameMode.destroyBlock(i);
 				}
 			} else {
-				if (LCConfig.COMMON.delayDiggingRequireEnder.get()) {
+				if (LCConfig.SERVER.delayDiggingRequireEnder.get()) {
 					if (stack.getEnchantmentLevel(LCEnchantments.ENDER_TOUCH.holder()) <= 0) {
 						player.sendSystemMessage(LangData.IDS.DELAY_WARNING.get(
 										Enchantment.getFullname(LCEnchantments.ENDER_TOUCH.holder(), 1), max)

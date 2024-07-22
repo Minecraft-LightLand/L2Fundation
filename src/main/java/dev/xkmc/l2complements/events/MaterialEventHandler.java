@@ -33,7 +33,7 @@ public class MaterialEventHandler {
 	public static void onEntityDeath(LivingDeathEvent event) {
 		if (event.getEntity() instanceof EnderMan ender) {
 			if (!ender.level().isClientSide() && event.getSource().getEntity() instanceof Player player) {
-				if (ender.isCreepy() && ender.getOnPos().getY() <= ender.level().getMinBuildHeight() - LCConfig.COMMON.belowVoid.get()) {
+				if (ender.isCreepy() && ender.getOnPos().getY() <= ender.level().getMinBuildHeight() - LCConfig.SERVER.belowVoid.get()) {
 					ender.spawnAtLocation(LCItems.VOID_EYE.asStack());
 				}
 			}
@@ -41,7 +41,7 @@ public class MaterialEventHandler {
 		if (event.getEntity() instanceof Phantom phantom) {
 			Level level = phantom.level();
 			if (!level.isClientSide()) {
-				if (phantom.getOnPos().getY() >= level.getMaxBuildHeight() + LCConfig.COMMON.phantomHeight.get()) {
+				if (phantom.getOnPos().getY() >= level.getMaxBuildHeight() + LCConfig.SERVER.phantomHeight.get()) {
 					if (level.isDay() && level.canSeeSky(phantom.getOnPos()) && phantom.isOnFire()) {
 						phantom.spawnAtLocation(LCItems.SUN_MEMBRANE.asStack());
 					}

@@ -8,7 +8,7 @@ public class IceBladeEnchantment extends EffectBladeEnchantment {
 
 	@Override
 	protected MobEffectInstance getEffect(int pLevel) {
-		return new MobEffectInstance(LCEffects.ICE.holder(), LCConfig.COMMON.iceEnchantDuration.get() << (pLevel - 1));
+		return new MobEffectInstance(LCEffects.ICE.holder(), LCConfig.SERVER.iceEnchantDuration.get() << (pLevel - 1));
 	}
 
 

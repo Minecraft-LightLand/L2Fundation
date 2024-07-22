@@ -1,19 +1,18 @@
 package dev.xkmc.l2complements.init.data;
 
-import net.neoforged.fml.ModLoadingContext;
-import net.neoforged.fml.config.IConfigSpec;
-import net.neoforged.fml.config.ModConfig;
+import dev.xkmc.l2complements.init.L2Complements;
+import dev.xkmc.l2core.util.ConfigInit;
 import net.neoforged.neoforge.common.ModConfigSpec;
-import org.apache.commons.lang3.tuple.Pair;
 
 public class LCConfig {
 
-	public static class Client {
+	public static class Client extends ConfigInit {
 
 		public final ModConfigSpec.BooleanValue renderEnchOverlay;
 		public final ModConfigSpec.IntValue enchOverlayZVal;
 
 		Client(ModConfigSpec.Builder builder) {
+			markL2();
 			renderEnchOverlay = builder.comment("Render enchantment character overlay")
 					.define("renderEnchOverlay", true);
 			enchOverlayZVal = builder.comment("The height of enchantment character overlay")
@@ -22,7 +21,7 @@ public class LCConfig {
 
 	}
 
-	public static class Common {
+	public static class Server extends ConfigInit {
 
 		public final ModConfigSpec.DoubleValue windSpeed;
 		public final ModConfigSpec.IntValue belowVoid;
@@ -74,7 +73,8 @@ public class LCConfig {
 		public final ModConfigSpec.BooleanValue enableToolRecraftRecipe;
 		public final ModConfigSpec.BooleanValue enableSpawnEggRecipe;
 
-		Common(ModConfigSpec.Builder builder) {
+		Server(ModConfigSpec.Builder builder) {
+			markL2();
 			useArsNouveauForEnchantmentRecipe = builder.comment("When Ars Nouveau is present, use apparatus recipe for enchantments")
 					.define("useArsNouveauForEnchantmentRecipe", true);
 			enableVanillaItemRecipe = builder.comment("Allow vanilla items such as elytra and ancient debris to be crafted with L2Complements materials")
@@ -184,33 +184,10 @@ public class LCConfig {
 
 	}
 
-	public static final ModConfigSpec CLIENT_SPEC;
-	public static final Client CLIENT;
-
-	public static final ModConfigSpec COMMON_SPEC;
-	public static final Common COMMON;
-	public static String COMMON_PATH;
-
-	static {
-		final Pair<Client, ModConfigSpec> client = new ModConfigSpec.Builder().configure(Client::new);
-		CLIENT_SPEC = client.getRight();
-		CLIENT = client.getLeft();
-
-		final Pair<Common, ModConfigSpec> common = new ModConfigSpec.Builder().configure(Common::new);
-		COMMON_SPEC = common.getRight();
-		COMMON = common.getLeft();
-	}
+	public static final Client CLIENT = L2Complements.REGISTRATE.registerClient(Client::new);
+	public static final Server SERVER = L2Complements.REGISTRATE.registerSynced(Server::new);
 
 	public static void init() {
-		register(ModConfig.Type.CLIENT, CLIENT_SPEC);
-		COMMON_PATH = register(ModConfig.Type.SERVER, COMMON_SPEC);
-	}
-
-	private static String register(ModConfig.Type type, IConfigSpec spec) {
-		var mod = ModLoadingContext.get().getActiveContainer();
-		String path = "l2_configs/" + mod.getModId() + "-" + type.extension() + ".toml";
-		mod.registerConfig(type, spec, path);
-		return path;
 	}
 
 }

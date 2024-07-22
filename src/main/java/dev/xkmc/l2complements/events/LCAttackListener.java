@@ -30,7 +30,7 @@ public class LCAttackListener implements AttackListener {
 	}
 
 	public static boolean isSpaceShardBanned() {
-		if (LCConfig.COMMON.allowModBanSpaceShard.get()) {
+		if (LCConfig.SERVER.allowModBanSpaceShard.get()) {
 			for (var e : BAN_SPACE_SHARD) {
 				if (ModList.get().isLoaded(e)) {
 					return true;
@@ -54,7 +54,7 @@ public class LCAttackListener implements AttackListener {
 	public void onDamageFinalized(DamageData.DefenceMax data) {
 		if (data.getTarget() instanceof Player player) {
 			float damage = data.getDamageIncoming();
-			if (data.getSource().is(DamageTypeTags.IS_EXPLOSION) && damage >= LCConfig.COMMON.explosionDamage.get()) {
+			if (data.getSource().is(DamageTypeTags.IS_EXPLOSION) && damage >= LCConfig.SERVER.explosionDamage.get()) {
 				if (data.getDamageFinal() < player.getHealth() + player.getAbsorptionAmount()) {
 					player.getInventory().placeItemBackInInventory(LCItems.EXPLOSION_SHARD.asStack());
 				}
@@ -68,7 +68,7 @@ public class LCAttackListener implements AttackListener {
 			}
 		}
 		if (data.getSource().is(DamageTypeTags.IS_PROJECTILE) && data.getAttacker() instanceof Player) {
-			if (!isSpaceShardBanned() && data.getDamageIncoming() >= LCConfig.COMMON.spaceDamage.get()) {
+			if (!isSpaceShardBanned() && data.getDamageIncoming() >= LCConfig.SERVER.spaceDamage.get()) {
 				data.getTarget().spawnAtLocation(LCItems.SPACE_SHARD.asStack());
 			}
 		}

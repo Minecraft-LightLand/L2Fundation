@@ -22,8 +22,8 @@ public class StrongFireball extends BaseFireball<StrongFireball> {
 	}
 
 	protected void onHitAction(Vec3 pos) {
-		int val = LCConfig.COMMON.strongFireChargePower.get();
-		boolean breaking = LCConfig.COMMON.strongFireChargeBreakBlock.get();
+		int val = LCConfig.SERVER.strongFireChargePower.get();
+		boolean breaking = LCConfig.SERVER.strongFireChargeBreakBlock.get();
 		this.level().explode(this, pos.x, pos.y, pos.z, val,
 				breaking ? Level.ExplosionInteraction.MOB : Level.ExplosionInteraction.NONE);
 	}

@@ -52,7 +52,7 @@ public interface IItemStackExtensionMixin {
 	default AABB l2complements_getSweepHitBox_enchantOverride(AABB box) {
 		int lv = getEnchantmentLevel(LCEnchantments.WIND_SWEEP.holder());
 		if (lv > 0) {
-			double amount = LCConfig.COMMON.windSweepIncrement.get();
+			double amount = LCConfig.SERVER.windSweepIncrement.get();
 			box = box.inflate(amount * lv, amount * lv, amount * lv);
 		}
 		return box;

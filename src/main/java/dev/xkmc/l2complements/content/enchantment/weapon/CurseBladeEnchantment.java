@@ -8,7 +8,7 @@ public class CurseBladeEnchantment extends EffectBladeEnchantment {
 
 	@Override
 	protected MobEffectInstance getEffect(int pLevel) {
-		return new MobEffectInstance(LCEffects.CURSE.holder(), LCConfig.COMMON.curseEnchantDuration.get() << (pLevel - 1));
+		return new MobEffectInstance(LCEffects.CURSE.holder(), LCConfig.SERVER.curseEnchantDuration.get() << (pLevel - 1));
 	}
 
 }

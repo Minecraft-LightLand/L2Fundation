@@ -43,8 +43,8 @@ public class EternalTotem extends Item implements ILCTotem {
 		self.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 100, 1));
 		self.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 800, 0));
 		if (self instanceof ServerPlayer player && self.level() instanceof ServerLevel level) {
-			player.getCooldowns().addCooldown(this, LCConfig.COMMON.eternalTotemCoolDown.get());
-			if (LCConfig.COMMON.eternalTotemGiveWarpStone.get()) {
+			player.getCooldowns().addCooldown(this, LCConfig.SERVER.eternalTotemCoolDown.get());
+			if (LCConfig.SERVER.eternalTotemGiveWarpStone.get()) {
 				ItemStack stone = LCItems.FRAGILE_WARP_STONE.asStack();
 				WarpStone.set(stone, self.level(), self);
 				player.getInventory().add(stone);
@@ -56,7 +56,7 @@ public class EternalTotem extends Item implements ILCTotem {
 
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext level, List<Component> list, TooltipFlag flag) {
-		int time = LCConfig.COMMON.eternalTotemCoolDown.get() / 20;
+		int time = LCConfig.SERVER.eternalTotemCoolDown.get() / 20;
 		Component cd = Component.literal("" + time);
 		if (level.registries() != null) {
 			var player = Proxy.getClientPlayer();

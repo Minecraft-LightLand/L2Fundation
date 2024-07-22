@@ -18,8 +18,8 @@ public class TotemicArmor extends ExtraArmorConfig {
 	@Override
 	public void onArmorTick(ItemStack stack, Level world, Player player) {
 		super.onArmorTick(stack, world, player);
-		if (player.tickCount % LCConfig.COMMON.totemicHealDuration.get() == 0) {
-			player.heal(LCConfig.COMMON.totemicHealAmount.get());
+		if (player.tickCount % LCConfig.SERVER.totemicHealDuration.get() == 0) {
+			player.heal(LCConfig.SERVER.totemicHealAmount.get());
 		}
 	}
 

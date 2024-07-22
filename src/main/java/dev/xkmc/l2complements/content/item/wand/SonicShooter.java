@@ -75,7 +75,7 @@ public class SonicShooter extends WandItem implements IGlowingTarget {
 				}
 			}
 			for (var e : target) {
-				e.hurt(sl.damageSources().sonicBoom(user), LCConfig.COMMON.sonicShooterDamage.get());
+				e.hurt(sl.damageSources().sonicBoom(user), LCConfig.SERVER.sonicShooterDamage.get());
 				double d1 = 0.5D * (1.0D - e.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
 				double d0 = 2.5D * (1.0D - e.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
 				e.push(dir.x() * d0, dir.y() * d1, dir.z() * d0);

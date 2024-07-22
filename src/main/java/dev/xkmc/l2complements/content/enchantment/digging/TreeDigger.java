@@ -14,9 +14,9 @@ import java.util.List;
 public record TreeDigger() implements BlockBreaker {
 	@Override
 	public BlockBreakerInstance getInstance(DiggerContext ctx) {
-		int r = LCConfig.COMMON.treeChopMaxRadius.get();
-		int h = LCConfig.COMMON.treeChopMaxHeight.get();
-		int max = LCConfig.COMMON.treeChopMaxBlock.get();
+		int r = LCConfig.SERVER.treeChopMaxRadius.get();
+		int h = LCConfig.SERVER.treeChopMaxHeight.get();
+		int max = LCConfig.SERVER.treeChopMaxBlock.get();
 		return new TreeInstance(-r, r, -r, h, -r, r, max, ctx.level(), this::match);
 	}
 

@@ -84,7 +84,7 @@ public class L2Complements {
 		PackOutput output = gen.getPackOutput();
 		var pvd = event.getLookupProvider();
 		var helper = event.getExistingFileHelper();
-		new DamageTypeGen(output, pvd, helper).generate(run, gen);
+		new DamageTypeGen(REGISTRATE).generate();
 		gen.addProvider(run, new LCConfigGen(output, pvd));
 		gen.addProvider(run, new LCDatapackRegistriesGen(output, pvd));
 		gen.addProvider(run, new LCSpriteSourceProvider(output, pvd, helper));

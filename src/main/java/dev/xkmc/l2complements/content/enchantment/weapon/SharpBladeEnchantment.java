@@ -11,7 +11,7 @@ public class SharpBladeEnchantment extends AbstractBladeEnchantment {
 	@Override
 	public void onAttack(LivingEntity attacker, LivingEntity target, int level) {
 		if (!attacker.level().isClientSide())
-			StackingEffect.addTo(LCEffects.BLEED.holder(), target, LCConfig.COMMON.bleedEnchantDuration.get(), level * 3 - 1, attacker);
+			StackingEffect.addTo(LCEffects.BLEED.holder(), target, LCConfig.SERVER.bleedEnchantDuration.get(), level * 3 - 1, attacker);
 	}
 
 }

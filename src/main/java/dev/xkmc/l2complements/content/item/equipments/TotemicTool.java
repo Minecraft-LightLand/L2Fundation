@@ -34,7 +34,7 @@ public class TotemicTool extends ExtraToolConfig {
 	@Override
 	public void onDamage(DamageData.Offence cache, ItemStack stack) {
 		if (cache.getTarget().getType().is(EntityTypeTags.SENSITIVE_TO_SMITE)) {
-			cache.addHurtModifier(DamageModifier.multAttr((float) (1 + LCConfig.COMMON.mobTypeBonus.get()),
+			cache.addHurtModifier(DamageModifier.multAttr((float) (1 + LCConfig.SERVER.mobTypeBonus.get()),
 					LCMats.POSEIDITE.id().withSuffix("_smite")));
 		}
 	}

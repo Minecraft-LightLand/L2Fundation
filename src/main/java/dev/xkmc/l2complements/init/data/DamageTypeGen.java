@@ -1,6 +1,7 @@
 package dev.xkmc.l2complements.init.data;
 
 import dev.xkmc.l2complements.init.L2Complements;
+import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2damagetracker.init.data.DamageTypeAndTagsGen;
 import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
 import net.minecraft.core.Holder;
@@ -26,8 +27,8 @@ public class DamageTypeGen extends DamageTypeAndTagsGen {
 	public static final ResourceKey<DamageType> LIFE_SYNC = create("life_sync");
 	public static final ResourceKey<DamageType> VOID_EYE = create("void_eye");
 
-	public DamageTypeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> pvd, ExistingFileHelper helper) {
-		super(output, pvd, helper, L2Complements.MODID);
+	public DamageTypeGen(L2Registrate reg) {
+		super(reg);
 		new DamageTypeHolder(EMERALD, new DamageType("emerald", DamageScaling.NEVER, 0.1f))
 				.add(DamageTypeTags.AVOIDS_GUARDIAN_THORNS);
 

@@ -1,0 +1,99 @@
+{
+  "item.l2complements": {
+	"wind_capture_bottle": "捕风瓶",
+	"void_eye": "虚空之眼",
+	"captured_wind": "千风精华",
+	"captured_shulker_bullet": "瓶中潜影弹",
+	"sun_membrane": "逐日之翼",
+	"explosion_shard": "破灭残片",
+	"hard_ice": "告死寒霜",
+	"soul_flame": "灵魂火种",
+	"storm_core": "烈空结晶",
+	"blackstone_core": "黑石核心",
+	"resonant_feather": "共振之羽",
+	"space_shard": "空间碎片(创造)",
+	"force_field": "守护力场",
+	"warden_bone_shard": "强化骨片",
+	"fragile_warp_stone": "易碎的传送石",
+	"reinforced_warp_stone": "坚固的传送石",
+	"totem_of_dream": "幻梦图腾",
+	"totem_of_the_sea": "海神图腾",
+	"black_fire_charge": "黑炎弹",
+	"soul_fire_charge": "魂炎弹",
+	"strong_fire_charge": "爆炎弹",
+	"heirophant_green": "法皇之绿",
+	"cursed_droplet": "亡魂之泪",
+	"enchanted_totemic_apple": "附魔生命苹果",
+	"enchanted_totemic_carrot": "附魔生命胡萝卜",
+	"totemic_apple": "生命苹果",
+	"totemic_carrot": "生命胡萝卜",
+	"guardian_eye": "守卫者之眼",
+	"guardian_rune": "守卫者强化符文",
+	"piglin_rune": "猪灵强化符文",
+	"life_essence": "生命精华",
+	"hellfire_wand": "狱火法杖",
+	"sonic_shooter": "音爆枪",
+	"winterstorm_wand": "风雪法杖",
+	"diffusion_wand": "结晶渗透法杖",
+	"eternal_totem_of_dream": "永恒幻梦图腾"
+  },
+  "block.l2complements": {
+	"eternal_anvil": "永恒铁砧"
+  },
+  "-cartesian": {
+	"gen_item": {
+	  "path": "item.l2complements",
+	  "list": [
+		{
+		  "totemic_gold": "生命",
+		  "poseidite": "海神",
+		  "shulkerate": "潜影",
+		  "sculkium": "幽匿",
+		  "eternium": "永恒"
+		},
+		{
+		  "helmet": "头盔",
+		  "chestplate": "胸甲",
+		  "leggings": "护腿",
+		  "boots": "靴子",
+		  "sword": "剑",
+		  "axe": "斧",
+		  "shovel": "锹",
+		  "pickaxe": "镐",
+		  "hoe": "锄"
+		}
+	  ]
+	},
+	"gen_item_mat": {
+	  "path": "item.l2complements",
+	  "list": [
+		{
+		  "totemic_gold": "生命",
+		  "poseidite": "海神",
+		  "shulkerate": "潜影",
+		  "sculkium": "幽匿",
+		  "eternium": "永恒"
+		},
+		{
+		  "ingot": "锭",
+		  "nugget": "粒"
+		}
+	  ]
+	},
+	"gen_block_mat": {
+	  "path": "block.l2complements",
+	  "list": [
+		{
+		  "totemic_gold": "生命",
+		  "poseidite": "海神",
+		  "shulkerate": "潜影",
+		  "sculkium": "幽匿",
+		  "eternium": "永恒"
+		},
+		{
+		  "block": "块"
+		}
+	  ]
+	}
+  }
+}

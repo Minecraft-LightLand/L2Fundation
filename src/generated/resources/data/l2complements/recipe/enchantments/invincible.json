@@ -1,0 +1,50 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "0": {
+      "type": "l2core:enchantment",
+      "enchantment": "l2complements:environment_immunity",
+      "minLevel": 1
+    },
+    "1": {
+      "type": "l2core:enchantment",
+      "enchantment": "l2complements:magic_immunity",
+      "minLevel": 1
+    },
+    "2": {
+      "type": "l2core:enchantment",
+      "enchantment": "l2complements:explosion_immunity",
+      "minLevel": 1
+    },
+    "3": {
+      "type": "l2core:enchantment",
+      "enchantment": "l2complements:fire_immunity",
+      "minLevel": 1
+    },
+    "4": {
+      "type": "l2core:enchantment",
+      "enchantment": "l2complements:projectile_immunity",
+      "minLevel": 1
+    },
+    "A": {
+      "item": "l2complements:space_shard"
+    }
+  },
+  "pattern": [
+    "A1A",
+    "203",
+    "A4A"
+  ],
+  "result": {
+    "components": {
+      "minecraft:stored_enchantments": {
+        "levels": {
+          "l2complements:invincible": 1
+        }
+      }
+    },
+    "count": 1,
+    "id": "minecraft:enchanted_book"
+  }
+}

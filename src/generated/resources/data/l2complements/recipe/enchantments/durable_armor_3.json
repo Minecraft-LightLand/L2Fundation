@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "1": {
+      "item": "minecraft:diamond_helmet"
+    },
+    "2": {
+      "item": "minecraft:diamond_chestplate"
+    },
+    "3": {
+      "item": "minecraft:diamond_leggings"
+    },
+    "4": {
+      "item": "minecraft:diamond_boots"
+    },
+    "B": {
+      "type": "l2core:enchantment",
+      "enchantment": "minecraft:unbreaking",
+      "minLevel": 3
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    }
+  },
+  "pattern": [
+    "L1L",
+    "2B3",
+    "L4L"
+  ],
+  "result": {
+    "components": {
+      "minecraft:stored_enchantments": {
+        "levels": {
+          "l2complements:durable_armor": 3
+        }
+      }
+    },
+    "count": 1,
+    "id": "minecraft:enchanted_book"
+  }
+}

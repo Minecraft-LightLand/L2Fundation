@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:lava_bucket"
+    },
+    "B": {
+      "item": "minecraft:book"
+    },
+    "C": {
+      "item": "l2complements:soul_flame"
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    }
+  },
+  "pattern": [
+    "LCL",
+    "ABA",
+    "LAL"
+  ],
+  "result": {
+    "components": {
+      "minecraft:stored_enchantments": {
+        "levels": {
+          "l2complements:smelt_touch": 1
+        }
+      }
+    },
+    "count": 1,
+    "id": "minecraft:enchanted_book"
+  }
+}

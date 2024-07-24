@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_storm_core": {
+      "conditions": {
+        "items": [
+          {
+            "items": "l2complements:storm_core"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "l2complements:enchantments/cubic_mining"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_storm_core"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "l2complements:enchantments/cubic_mining"
+    ]
+  }
+}

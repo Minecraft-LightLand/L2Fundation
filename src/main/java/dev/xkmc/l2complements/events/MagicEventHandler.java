@@ -36,6 +36,10 @@ import net.neoforged.neoforge.event.tick.EntityTickEvent;
 @EventBusSubscriber(modid = L2Complements.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class MagicEventHandler {
 
+	public enum CleanseTest {
+		ALL, EXCEPT_BENEFICIAL, HARMFUL_ONLY
+	}
+
 	@SubscribeEvent
 	public static void onLivingAttack(LivingIncomingDamageEvent event) {
 		if (EntityFeature.OWNER_PROTECTION.test(event.getEntity())) {
@@ -71,7 +75,7 @@ public class MagicEventHandler {
 	}
 
 	@SubscribeEvent
-	public static void onLivingTick(EntityTickEvent event) {
+	public static void onLivingTick(EntityTickEvent.Post event) {
 		var e = event.getEntity();
 		if (e instanceof LivingEntity le && le.isOnFire()) {
 			if (EntityFeature.FIRE_REJECT.test(le)) {
@@ -126,9 +130,11 @@ public class MagicEventHandler {
 	public static boolean isSkill(MobEffectInstance ins, LivingEntity entity) {
 		if (ins.getEffect() instanceof SkillEffect)
 			return true;
-		int pred = LCConfig.SERVER.cleansePredicate.get();
-		if (ins.getEffect().value().isBeneficial() && pred > 0) return true;
-		if (ins.getEffect().value().getCategory() == MobEffectCategory.NEUTRAL && pred > 1) return true;
+		var pred = LCConfig.SERVER.cleansePredicate.get();
+		if (ins.getEffect().value().isBeneficial() &&
+				pred != CleanseTest.ALL) return true;
+		if (ins.getEffect().value().getCategory() == MobEffectCategory.NEUTRAL &&
+				pred == CleanseTest.HARMFUL_ONLY) return true;
 		var tag = BuiltInRegistries.MOB_EFFECT.getTag(LCTagGen.SKILL_EFFECT);
 		if (tag.isPresent() && tag.get().contains(ins.getEffect())) {
 			return true;

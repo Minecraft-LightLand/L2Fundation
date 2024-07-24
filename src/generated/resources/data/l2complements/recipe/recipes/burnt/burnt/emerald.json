@@ -1,0 +1,11 @@
+{
+  "type": "l2complements:burnt",
+  "chance": 15552,
+  "ingredient": {
+    "item": "minecraft:emerald"
+  },
+  "result": {
+    "count": 1,
+    "id": "l2complements:heirophant_green"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "l2core:bool_config",
+      "expected": true,
+      "line": [
+        "recipe",
+        "enableToolRecraftRecipe"
+      ],
+      "path": "l2configs/l2complements-server.toml"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "l2complements:generated_tools/totemic_gold/upgrade/totemic_gold_hoe"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_totemic_gold_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "l2complements:totemic_gold_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_totemic_gold_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "l2complements:generated_tools/totemic_gold/upgrade/totemic_gold_hoe"
+    ]
+  }
+}

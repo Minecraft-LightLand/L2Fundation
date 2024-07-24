@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:leather"
+    },
+    "B": {
+      "item": "minecraft:book"
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    }
+  },
+  "pattern": [
+    "LAL",
+    "ABA",
+    "LAL"
+  ],
+  "result": {
+    "components": {
+      "minecraft:stored_enchantments": {
+        "levels": {
+          "l2complements:snow_walker": 1
+        }
+      }
+    },
+    "count": 1,
+    "id": "minecraft:enchanted_book"
+  }
+}

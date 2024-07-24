@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "l2core:bool_config",
+      "expected": true,
+      "line": [
+        "recipe",
+        "enableVanillaItemRecipe"
+      ],
+      "path": "l2configs/l2complements-server.toml"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:deepslate"
+    },
+    "B": {
+      "item": "l2complements:warden_bone_shard"
+    }
+  },
+  "pattern": [
+    " B ",
+    "BAB",
+    " B "
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:reinforced_deepslate"
+  }
+}

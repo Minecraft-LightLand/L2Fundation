@@ -14,8 +14,8 @@ public class ArmorReduceEffect extends MobEffect implements ForceEffect {
 		this.addAttributeModifier(Attributes.ARMOR, L2Complements.loc("armor_reduce"), -0.5f, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
 	}
 
-	@Override
+	//@Override
 	public double getAttributeModifierValue(int pAmplifier, AttributeModifier pModifier) {
-		return Math.pow(1 + pModifier.getAmount(), pAmplifier + 1) - 1;
+		return 0;//TODO Math.pow(1 + pModifier.getAmount(), pAmplifier + 1) - 1;
 	}
 }

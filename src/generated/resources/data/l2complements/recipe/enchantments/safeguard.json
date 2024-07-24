@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "l2complements:shulkerate_nugget"
+    },
+    "B": {
+      "item": "minecraft:book"
+    },
+    "C": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "F": {
+      "item": "minecraft:netherite_scrap"
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    }
+  },
+  "pattern": [
+    "LCL",
+    "ABA",
+    "FCF"
+  ],
+  "result": {
+    "components": {
+      "minecraft:stored_enchantments": {
+        "levels": {
+          "l2complements:safeguard": 1
+        }
+      }
+    },
+    "count": 1,
+    "id": "minecraft:enchanted_book"
+  }
+}

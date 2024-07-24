@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "type": "l2core:enchantment",
+      "enchantment": "l2complements:cubic_mining",
+      "minLevel": 1
+    },
+    "B": {
+      "item": "minecraft:netherite_pickaxe"
+    },
+    "C": {
+      "item": "l2complements:blackstone_core"
+    },
+    "D": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "E": {
+      "item": "l2complements:sculkium_ingot"
+    }
+  },
+  "pattern": [
+    "ECE",
+    "BAB",
+    "DBD"
+  ],
+  "result": {
+    "components": {
+      "minecraft:stored_enchantments": {
+        "levels": {
+          "l2complements:cubic_chunk_eater": 1
+        }
+      }
+    },
+    "count": 1,
+    "id": "minecraft:enchanted_book"
+  }
+}

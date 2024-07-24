@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "l2core:bool_config",
+      "expected": true,
+      "line": [
+        "recipe",
+        "enableVanillaItemRecipe"
+      ],
+      "path": "l2configs/l2complements-server.toml"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "l2complements:explosion_shard"
+    },
+    "B": {
+      "item": "l2complements:captured_wind"
+    },
+    "C": {
+      "item": "l2complements:sun_membrane"
+    },
+    "D": {
+      "item": "l2complements:resonant_feather"
+    },
+    "E": {
+      "item": "l2complements:storm_core"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "CEC",
+    "D D"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:elytra"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "l2complements:shulkerate_ingot"
+    },
+    "B": {
+      "item": "minecraft:book"
+    },
+    "C": {
+      "item": "l2complements:explosion_shard"
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "S": {
+      "item": "l2complements:warden_bone_shard"
+    }
+  },
+  "pattern": [
+    "SCS",
+    "ABA",
+    "LAL"
+  ],
+  "result": {
+    "components": {
+      "minecraft:stored_enchantments": {
+        "levels": {
+          "l2complements:hardened": 1
+        }
+      }
+    },
+    "count": 1,
+    "id": "minecraft:enchanted_book"
+  }
+}

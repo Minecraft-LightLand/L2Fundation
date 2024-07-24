@@ -1,0 +1,11 @@
+{
+  "type": "l2complements:burnt",
+  "chance": 64,
+  "ingredient": {
+    "item": "minecraft:nether_star"
+  },
+  "result": {
+    "count": 1,
+    "id": "l2complements:cursed_droplet"
+  }
+}

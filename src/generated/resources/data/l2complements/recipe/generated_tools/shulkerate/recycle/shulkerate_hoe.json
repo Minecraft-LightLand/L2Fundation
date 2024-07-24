@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "l2complements:shulkerate_hoe"
+  },
+  "result": {
+    "count": 1,
+    "id": "l2complements:shulkerate_nugget"
+  }
+}

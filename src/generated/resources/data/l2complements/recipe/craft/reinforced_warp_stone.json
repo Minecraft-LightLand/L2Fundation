@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "l2complements:shulkerate_ingot"
+  },
+  "base": {
+    "item": "l2complements:fragile_warp_stone"
+  },
+  "result": {
+    "count": 1,
+    "id": "l2complements:reinforced_warp_stone"
+  },
+  "template": []
+}

@@ -25,9 +25,9 @@ public class BleedEffect extends InherentEffect implements ForceEffect, IconOver
 		addAttributeModifier(Attributes.ATTACK_DAMAGE, ID_ATK, -0.1F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
 	}
 
-	@Override
+	//@Override
 	public double getAttributeModifierValue(int amp, AttributeModifier mod) {
-		return Math.pow(1 + mod.getAmount(), amp + 1) - 1;
+		return 0;//TODO Math.pow(1 + mod.getAmount(), amp + 1) - 1;
 	}
 
 	@Override

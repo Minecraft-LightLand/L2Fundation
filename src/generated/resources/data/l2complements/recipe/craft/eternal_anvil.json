@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "l2complements:eternium_block"
+    },
+    "B": {
+      "item": "l2complements:eternium_ingot"
+    }
+  },
+  "pattern": [
+    "AAA",
+    " B ",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "l2complements:eternal_anvil"
+  }
+}

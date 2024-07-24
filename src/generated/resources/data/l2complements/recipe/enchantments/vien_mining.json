@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "type": "l2core:enchantment",
+      "enchantment": "minecraft:efficiency",
+      "minLevel": 1
+    },
+    "B": {
+      "item": "minecraft:iron_pickaxe"
+    },
+    "C": {
+      "item": "l2complements:storm_core"
+    },
+    "D": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "E": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    "ECE",
+    "BAB",
+    "DBD"
+  ],
+  "result": {
+    "components": {
+      "minecraft:stored_enchantments": {
+        "levels": {
+          "l2complements:vien_mining": 1
+        }
+      }
+    },
+    "count": 1,
+    "id": "minecraft:enchanted_book"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "1": {
+      "type": "l2core:enchantment",
+      "enchantment": "minecraft:blast_protection",
+      "minLevel": 4
+    },
+    "2": {
+      "type": "l2core:enchantment",
+      "enchantment": "minecraft:protection",
+      "minLevel": 4
+    },
+    "B": {
+      "item": "l2complements:explosion_shard"
+    },
+    "C": {
+      "item": "minecraft:crying_obsidian"
+    }
+  },
+  "pattern": [
+    "1B1",
+    "BCB",
+    "2B2"
+  ],
+  "result": {
+    "components": {
+      "minecraft:stored_enchantments": {
+        "levels": {
+          "l2complements:explosion_immunity": 1
+        }
+      }
+    },
+    "count": 1,
+    "id": "minecraft:enchanted_book"
+  }
+}

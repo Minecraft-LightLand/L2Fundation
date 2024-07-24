@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "l2core:bool_config",
+      "expected": true,
+      "line": [
+        "recipe",
+        "enableSpawnEggRecipe"
+      ],
+      "path": "l2configs/l2complements-server.toml"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:bone"
+    },
+    "B": {
+      "item": "l2complements:cursed_droplet"
+    },
+    "C": {
+      "item": "minecraft:egg"
+    },
+    "D": {
+      "item": "minecraft:snowball"
+    }
+  },
+  "pattern": [
+    "ADA",
+    "ABA",
+    "ACA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:stray_spawn_egg"
+  }
+}

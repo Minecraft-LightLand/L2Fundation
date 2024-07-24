@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "l2core:bool_config",
+      "expected": true,
+      "line": [
+        "recipe",
+        "enableToolRecraftRecipe"
+      ],
+      "path": "l2configs/l2complements-server.toml"
+    }
+  ],
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "l2complements:totemic_gold_block"
+  },
+  "base": {
+    "tag": "minecraft:shovels"
+  },
+  "result": {
+    "count": 1,
+    "id": "l2complements:totemic_gold_shovel"
+  },
+  "template": []
+}

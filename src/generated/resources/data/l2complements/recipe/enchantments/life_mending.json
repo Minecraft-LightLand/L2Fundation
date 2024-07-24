@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:weeping_vines"
+    },
+    "B": {
+      "item": "minecraft:book"
+    },
+    "C": {
+      "item": "minecraft:twisting_vines"
+    },
+    "F": {
+      "item": "minecraft:rotten_flesh"
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    }
+  },
+  "pattern": [
+    "LCL",
+    "ABA",
+    "FCF"
+  ],
+  "result": {
+    "components": {
+      "minecraft:stored_enchantments": {
+        "levels": {
+          "l2complements:life_mending": 1
+        }
+      }
+    },
+    "count": 1,
+    "id": "minecraft:enchanted_book"
+  }
+}

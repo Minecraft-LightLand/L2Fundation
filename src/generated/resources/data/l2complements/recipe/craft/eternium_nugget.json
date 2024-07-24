@@ -1,0 +1,44 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "1": {
+      "type": "l2core:enchantment",
+      "enchantment": "minecraft:mending",
+      "minLevel": 1
+    },
+    "2": {
+      "type": "l2core:enchantment",
+      "enchantment": "minecraft:infinity",
+      "minLevel": 1
+    },
+    "3": {
+      "type": "l2core:enchantment",
+      "enchantment": "minecraft:protection",
+      "minLevel": 4
+    },
+    "4": {
+      "type": "l2core:enchantment",
+      "enchantment": "minecraft:unbreaking",
+      "minLevel": 3
+    },
+    "A": {
+      "item": "l2complements:explosion_shard"
+    },
+    "B": {
+      "item": "minecraft:anvil"
+    },
+    "C": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "pattern": [
+    "3C4",
+    "BAB",
+    "1C2"
+  ],
+  "result": {
+    "count": 1,
+    "id": "l2complements:eternium_nugget"
+  }
+}

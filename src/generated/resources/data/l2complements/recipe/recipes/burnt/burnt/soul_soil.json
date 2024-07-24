@@ -1,0 +1,11 @@
+{
+  "type": "l2complements:burnt",
+  "chance": 27648,
+  "ingredient": {
+    "item": "minecraft:soul_soil"
+  },
+  "result": {
+    "count": 1,
+    "id": "l2complements:cursed_droplet"
+  }
+}

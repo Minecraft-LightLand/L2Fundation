@@ -21,6 +21,10 @@ import java.util.HashSet;
 
 public class LCAttackListener implements AttackListener {
 
+	public enum SpaceShardCondition {
+		ALLOW, DEFAULT, DENY
+	}
+
 	public static final HashSet<String> BAN_SPACE_SHARD = new HashSet<>();
 
 	static {
@@ -30,11 +34,12 @@ public class LCAttackListener implements AttackListener {
 	}
 
 	public static boolean isSpaceShardBanned() {
-		if (LCConfig.SERVER.allowModBanSpaceShard.get()) {
-			for (var e : BAN_SPACE_SHARD) {
-				if (ModList.get().isLoaded(e)) {
-					return true;
-				}
+		var config = LCConfig.SERVER.spaceShardDrop.get();
+		if (config == SpaceShardCondition.DENY) return true;
+		if (config == SpaceShardCondition.ALLOW) return false;
+		for (var e : BAN_SPACE_SHARD) {
+			if (ModList.get().isLoaded(e)) {
+				return true;
 			}
 		}
 		return false;

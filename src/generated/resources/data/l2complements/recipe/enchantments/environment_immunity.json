@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "1": {
+      "item": "l2complements:sun_membrane"
+    },
+    "2": {
+      "type": "l2core:enchantment",
+      "enchantment": "minecraft:protection",
+      "minLevel": 4
+    },
+    "B": {
+      "item": "l2complements:void_eye"
+    },
+    "C": {
+      "item": "l2complements:captured_wind"
+    }
+  },
+  "pattern": [
+    "1B1",
+    "BCB",
+    "2B2"
+  ],
+  "result": {
+    "components": {
+      "minecraft:stored_enchantments": {
+        "levels": {
+          "l2complements:environment_immunity": 1
+        }
+      }
+    },
+    "count": 1,
+    "id": "minecraft:enchanted_book"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "l2complements:burnt",
+  "chance": 576,
+  "ingredient": {
+    "item": "minecraft:ghast_tear"
+  },
+  "result": {
+    "count": 1,
+    "id": "l2complements:cursed_droplet"
+  }
+}

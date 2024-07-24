@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "l2core:bool_config",
+      "expected": true,
+      "line": [
+        "recipe",
+        "enableVanillaItemRecipe"
+      ],
+      "path": "l2configs/l2complements-server.toml"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:prismarine_shard"
+    },
+    "B": {
+      "item": "minecraft:prismarine_crystals"
+    },
+    "C": {
+      "item": "l2complements:guardian_eye"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:heart_of_the_sea"
+  }
+}

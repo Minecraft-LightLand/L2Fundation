@@ -15,6 +15,7 @@ import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2damagetracker.contents.materials.vanilla.GenItemVanillaType;
 import dev.xkmc.l2menustacker.click.quickaccess.DefaultQuickAccessActions;
 import dev.xkmc.l2menustacker.compat.arclight.AnvilMenuArclight;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.MenuType;
@@ -57,13 +58,6 @@ public class L2Complements {
 		LCConfig.init();
 		new L2ComplementsClick(loc("main"));
 		AttackEventHandler.register(5000, new LCAttackListener());
-		REGISTRATE.addDataGenerator(ProviderType.LANG, LangData::addTranslations);
-		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, LCTagGen::onBlockTagGen);
-		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, LCTagGen::onItemTagGen);
-		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, LCTagGen::onEntityTagGen);
-		REGISTRATE.addDataGenerator(L2TagGen.EFF_TAGS, LCTagGen::onEffectTagGen);
-		REGISTRATE.addDataGenerator(L2TagGen.ENCH_TAGS, LCTagGen::onEnchTagGen);
-		REGISTRATE.addDataGenerator(ProviderType.RECIPE, RecipeGen::genRecipe);
 	}
 
 	@SubscribeEvent
@@ -79,14 +73,25 @@ public class L2Complements {
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void gatherData(GatherDataEvent event) {
+		REGISTRATE.addDataGenerator(ProviderType.LANG, LangData::addTranslations);
+		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, LCTagGen::onBlockTagGen);
+		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, LCTagGen::onItemTagGen);
+		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, LCTagGen::onEntityTagGen);
+		REGISTRATE.addDataGenerator(L2TagGen.EFF_TAGS, LCTagGen::onEffectTagGen);
+		REGISTRATE.addDataGenerator(L2TagGen.ENCH_TAGS, LCTagGen::onEnchTagGen);
+		REGISTRATE.addDataGenerator(ProviderType.RECIPE, RecipeGen::genRecipe);
+		REGISTRATE.addDataGenerator(ProviderType.DATA_MAP, LCDataMapGen::onGather);
+		var init = REGISTRATE.getDataGenInitializer();
+		init.addDependency(ProviderType.DYNAMIC, ProviderType.ITEM_TAGS);
+		init.addDependency(ProviderType.RECIPE, L2TagGen.ENCH_TAGS);
+		init.add(Registries.TRIM_MATERIAL, LCTrimsGen::build);
+		new DamageTypeGen(REGISTRATE).generate();
+
 		boolean run = event.includeServer();
 		var gen = event.getGenerator();
 		PackOutput output = gen.getPackOutput();
 		var pvd = event.getLookupProvider();
 		var helper = event.getExistingFileHelper();
-		new DamageTypeGen(REGISTRATE).generate();
-		gen.addProvider(run, new LCConfigGen(output, pvd));
-		gen.addProvider(run, new LCDatapackRegistriesGen(output, pvd));
 		gen.addProvider(run, new LCSpriteSourceProvider(output, pvd, helper));
 	}
 

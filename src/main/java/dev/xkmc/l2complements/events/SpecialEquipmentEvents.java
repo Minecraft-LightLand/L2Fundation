@@ -69,7 +69,7 @@ public class SpecialEquipmentEvents {
 			}
 		}
 		if (event.getSource().getEntity() instanceof ServerPlayer player) {
-			if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.ENDER_TOUCH.holder()) > 0) {
+			if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.ENDER_TRANSPORT.holder()) > 0) {
 				for (var e : event.getDrops()) {
 					EnderPickupEvent ender = new EnderPickupEvent(player, e.getItem().copy());
 					NeoForge.EVENT_BUS.post(ender);
@@ -97,7 +97,7 @@ public class SpecialEquipmentEvents {
 			ItemStack result = process(event.getLevel(), e.getItem());
 			e.setItem(result);
 		}
-		if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.ENDER_TOUCH.holder()) > 0) {
+		if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.ENDER_TRANSPORT.holder()) > 0) {
 			EnderPickupEvent ender = new EnderPickupEvent(player, e.getItem().copy());
 			NeoForge.EVENT_BUS.post(ender);
 			ItemStack stack = ender.getStack();

@@ -1,0 +1,40 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "1": {
+      "type": "l2core:enchantment",
+      "enchantment": "minecraft:projectile_protection",
+      "minLevel": 4
+    },
+    "2": {
+      "type": "l2core:enchantment",
+      "enchantment": "minecraft:protection",
+      "minLevel": 4
+    },
+    "B": {
+      "item": "l2complements:force_field"
+    },
+    "C": {
+      "type": "l2core:enchantment",
+      "enchantment": "minecraft:infinity",
+      "minLevel": 1
+    }
+  },
+  "pattern": [
+    "1B1",
+    "BCB",
+    "2B2"
+  ],
+  "result": {
+    "components": {
+      "minecraft:stored_enchantments": {
+        "levels": {
+          "l2complements:projectile_immunity": 1
+        }
+      }
+    },
+    "count": 1,
+    "id": "minecraft:enchanted_book"
+  }
+}

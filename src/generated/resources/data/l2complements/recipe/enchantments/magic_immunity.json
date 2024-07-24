@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "1": {
+      "item": "l2complements:void_eye"
+    },
+    "2": {
+      "type": "l2core:enchantment",
+      "enchantment": "minecraft:protection",
+      "minLevel": 4
+    },
+    "B": {
+      "item": "l2complements:resonant_feather"
+    },
+    "C": {
+      "item": "l2complements:force_field"
+    }
+  },
+  "pattern": [
+    "1B1",
+    "BCB",
+    "2B2"
+  ],
+  "result": {
+    "components": {
+      "minecraft:stored_enchantments": {
+        "levels": {
+          "l2complements:magic_immunity": 1
+        }
+      }
+    },
+    "count": 1,
+    "id": "minecraft:enchanted_book"
+  }
+}

@@ -94,9 +94,9 @@ public class RangeDiggingEnchantment extends LegacyEnchantment implements Custom
 				}
 			} else {
 				if (LCConfig.SERVER.delayDiggingRequireEnder.get()) {
-					if (stack.getEnchantmentLevel(LCEnchantments.ENDER_TOUCH.holder()) <= 0) {
+					if (stack.getEnchantmentLevel(LCEnchantments.ENDER_TRANSPORT.holder()) <= 0) {
 						player.sendSystemMessage(LangData.IDS.DELAY_WARNING.get(
-										Enchantment.getFullname(LCEnchantments.ENDER_TOUCH.holder(), 1), max)
+										Enchantment.getFullname(LCEnchantments.ENDER_TRANSPORT.holder(), 1), max)
 								.withStyle(ChatFormatting.RED), true);
 						return;
 					}

@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "l2core:bool_config",
+      "expected": true,
+      "line": [
+        "recipe",
+        "enableVanillaItemRecipe"
+      ],
+      "path": "l2configs/l2complements-server.toml"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:blackstone"
+    },
+    "B": {
+      "item": "minecraft:gold_ingot"
+    },
+    "C": {
+      "item": "l2complements:blackstone_core"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:gilded_blackstone"
+  }
+}

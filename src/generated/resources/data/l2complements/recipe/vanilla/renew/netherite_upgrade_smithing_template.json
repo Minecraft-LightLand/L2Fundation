@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "l2core:bool_config",
+      "expected": true,
+      "line": [
+        "recipe",
+        "enableVanillaItemRecipe"
+      ],
+      "path": "l2configs/l2complements-server.toml"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "l2complements:blackstone_core"
+    },
+    "B": {
+      "item": "minecraft:diamond"
+    },
+    "C": {
+      "item": "minecraft:netherrack"
+    }
+  },
+  "pattern": [
+    "BAB",
+    "BCB",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:netherite_upgrade_smithing_template"
+  }
+}

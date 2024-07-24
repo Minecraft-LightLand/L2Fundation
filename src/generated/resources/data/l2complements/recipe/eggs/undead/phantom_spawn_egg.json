@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "l2core:bool_config",
+      "expected": true,
+      "line": [
+        "recipe",
+        "enableSpawnEggRecipe"
+      ],
+      "path": "l2configs/l2complements-server.toml"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:phantom_membrane"
+    },
+    "B": {
+      "item": "l2complements:cursed_droplet"
+    },
+    "C": {
+      "item": "minecraft:egg"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "ACA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:phantom_spawn_egg"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "values": {
+    "l2complements:poseidite": {
+      "full": false,
+      "set": [
+        "minecraft:mining_fatigue"
+      ]
+    },
+    "l2complements:sculkium": {
+      "full": false,
+      "set": [
+        "minecraft:darkness",
+        "minecraft:blindness",
+        "minecraft:nausea",
+        "minecraft:mining_fatigue",
+        "minecraft:weakness",
+        "minecraft:slowness"
+      ]
+    },
+    "l2complements:totemic_gold": {
+      "full": false,
+      "set": [
+        "minecraft:poison",
+        "minecraft:wither",
+        "minecraft:hunger"
+      ]
+    }
+  }
+}

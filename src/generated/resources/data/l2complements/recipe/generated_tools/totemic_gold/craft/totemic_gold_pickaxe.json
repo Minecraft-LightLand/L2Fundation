@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "minecraft:emerald"
+    },
+    "B": {
+      "item": "l2complements:totemic_gold_ingot"
+    }
+  },
+  "pattern": [
+    "AAA",
+    " B ",
+    " B "
+  ],
+  "result": {
+    "count": 1,
+    "id": "l2complements:totemic_gold_pickaxe"
+  }
+}

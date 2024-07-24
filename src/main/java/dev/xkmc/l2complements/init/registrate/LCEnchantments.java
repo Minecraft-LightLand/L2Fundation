@@ -48,7 +48,7 @@ public class LCEnchantments {
 	public static final EnchVal SHINNY;
 	public static final EnchVal SNOW_WALKER;
 	public static final EnchVal DAMPENED;
-	public static final EnchVal ENDER_TOUCH;
+	public static final EnchVal ENDER_TRANSPORT;
 	public static final EnchVal SMELT;
 	public static final EnchVal STABLE_BODY;
 	public static final EnchVal TRANSPARENT;
@@ -109,7 +109,7 @@ public class LCEnchantments {
 			SNOW_WALKER = REG.ench("snow_walker", "Snow Walker", "Allow Wearer to walk on powdered snow.",
 					e -> e.items(ItemTags.FOOT_ARMOR_ENCHANTABLE));
 
-			ENDER_TOUCH = REG.ench("ender_touch", "Ender Touch", "Teleport mined items and mob drops to inventory if possible.",
+			ENDER_TRANSPORT = REG.ench("ender_transport", "Ender Transport", "Teleport mined items and mob drops to inventory if possible.",
 					e -> e.items(LCTagGen.WEAPON_MINING_ENCHANTABLE));
 
 			SMELT = REG.ench("smelt_touch", "Smelt Touch", "Smelt mined items and mob drops if possible, including items in chests!",
@@ -171,7 +171,7 @@ public class LCEnchantments {
 					e -> e.items(ItemTags.WEAPON_ENCHANTABLE).maxLevel(3),
 					SharpBladeEnchantment::new);
 
-			ICE_THORN = REG.ench("freezing_thorn", "Ice Thorn", "When attacked, apply %s to attacker.",
+			ICE_THORN = REG.ench("freezing_thorn", "Freezing Thorn", "When attacked, apply %s to attacker.",
 					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).group(EquipmentSlotGroup.ARMOR)
 							.exclusive(LCTagGen.THORN).tags(LCTagGen.THORN).maxLevel(3));
 

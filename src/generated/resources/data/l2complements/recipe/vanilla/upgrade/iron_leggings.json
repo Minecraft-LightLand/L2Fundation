@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "l2core:bool_config",
+      "expected": true,
+      "line": [
+        "recipe",
+        "enableToolRecraftRecipe"
+      ],
+      "path": "l2configs/l2complements-server.toml"
+    }
+  ],
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "minecraft:iron_block"
+  },
+  "base": {
+    "tag": "minecraft:chest_armor"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:iron_leggings"
+  },
+  "template": []
+}

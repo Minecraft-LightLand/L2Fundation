@@ -1,0 +1,39 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "l2core:bool_config",
+      "expected": true,
+      "line": [
+        "recipe",
+        "enableVanillaItemRecipe"
+      ],
+      "path": "l2configs/l2complements-server.toml"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "l2complements:resonant_feather"
+    },
+    {
+      "item": "minecraft:amethyst_shard"
+    },
+    {
+      "item": "minecraft:sculk"
+    },
+    {
+      "item": "minecraft:sculk"
+    },
+    {
+      "item": "minecraft:sculk"
+    },
+    {
+      "item": "minecraft:sculk"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:echo_shard"
+  }
+}

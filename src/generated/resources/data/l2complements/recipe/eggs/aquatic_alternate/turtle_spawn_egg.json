@@ -1,0 +1,34 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "l2core:bool_config",
+      "expected": true,
+      "line": [
+        "recipe",
+        "enableSpawnEggRecipe"
+      ],
+      "path": "l2configs/l2complements-server.toml"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "l2complements:life_essence"
+    },
+    "C": {
+      "item": "minecraft:turtle_egg"
+    },
+    "L": {
+      "item": "l2complements:totemic_gold_ingot"
+    }
+  },
+  "pattern": [
+    "LBL",
+    " C "
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:turtle_spawn_egg"
+  }
+}

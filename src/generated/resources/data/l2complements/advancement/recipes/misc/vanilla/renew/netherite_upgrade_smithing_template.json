@@ -1,0 +1,43 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "l2core:bool_config",
+      "expected": true,
+      "line": [
+        "recipe",
+        "enableVanillaItemRecipe"
+      ],
+      "path": "l2configs/l2complements-server.toml"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_blackstone_core": {
+      "conditions": {
+        "items": [
+          {
+            "items": "l2complements:blackstone_core"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "l2complements:vanilla/renew/netherite_upgrade_smithing_template"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_blackstone_core"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "l2complements:vanilla/renew/netherite_upgrade_smithing_template"
+    ]
+  }
+}

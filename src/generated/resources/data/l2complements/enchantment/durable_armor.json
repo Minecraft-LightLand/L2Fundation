@@ -1,0 +1,31 @@
+{
+  "anvil_cost": 1,
+  "description": {
+    "translate": "enchantment.l2complements.durable_armor"
+  },
+  "max_cost": {
+    "base": 10,
+    "per_level_above_first": 5
+  },
+  "max_level": 3,
+  "min_cost": {
+    "base": 10,
+    "per_level_above_first": 5
+  },
+  "primary_items": {
+    "type": "neoforge:and",
+    "values": [
+      "#minecraft:enchantable/armor",
+      "#minecraft:enchantable/durability"
+    ]
+  },
+  "slots": [],
+  "supported_items": {
+    "type": "neoforge:and",
+    "values": [
+      "#minecraft:enchantable/armor",
+      "#minecraft:enchantable/durability"
+    ]
+  },
+  "weight": 1
+}

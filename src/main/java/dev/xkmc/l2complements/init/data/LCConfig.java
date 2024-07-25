@@ -1,6 +1,5 @@
 package dev.xkmc.l2complements.init.data;
 
-import dev.xkmc.l2complements.events.ClientEventHandler;
 import dev.xkmc.l2complements.events.LCAttackListener;
 import dev.xkmc.l2complements.events.MagicEventHandler;
 import dev.xkmc.l2complements.init.L2Complements;
@@ -8,6 +7,52 @@ import dev.xkmc.l2core.util.ConfigInit;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class LCConfig {
+
+	public static class Client extends ConfigInit {
+
+		public final ModConfigSpec.BooleanValue renderEnchOverlay;
+
+		public Client(Builder builder) {
+			markL2();
+			renderEnchOverlay = builder
+					.text("Render L2 enchantment book overlay")
+					.comment("Render a colored char on enchantment book to tell it apart from vanilla ones")
+					.define("renderEnchOverlay", true);
+		}
+	}
+
+	public static class Recipe extends ConfigInit {
+
+		public final ModConfigSpec.BooleanValue useArsNouveauForEnchantmentRecipe;
+		public final ModConfigSpec.BooleanValue enableVanillaItemRecipe;
+		public final ModConfigSpec.BooleanValue enableToolRecraftRecipe;
+		public final ModConfigSpec.BooleanValue enableSpawnEggRecipe;
+
+		public Recipe(Builder builder) {
+			markL2();
+
+			builder.push("recipe", "Recipe Toggles");
+			{
+				useArsNouveauForEnchantmentRecipe = builder
+						.text("Ars Nouveau: Apparatus Enchanting")
+						.comment("When Ars Nouveau is present, use apparatus recipe for enchantments")
+						.define("useArsNouveauForEnchantmentRecipe", true);
+				enableVanillaItemRecipe = builder
+						.text("Extra recipes for vanilla items")
+						.comment("Allow vanilla items such as elytra and ancient debris to be crafted with L2Complements materials")
+						.define("enableVanillaItemRecipe", true);
+				enableToolRecraftRecipe = builder
+						.text("Tool upgrade recipes")
+						.comment("Allow tools to be upgraded from tools with same type but different materials")
+						.define("enableToolRecraftRecipe", true);
+				enableSpawnEggRecipe = builder
+						.text("Spawn egg recipes")
+						.comment("Allow spawn eggs to be crafted with L2Complements materials")
+						.define("enableSpawnEggRecipe", true);
+			}
+			builder.pop();
+		}
+	}
 
 	public static class Server extends ConfigInit {
 
@@ -56,33 +101,9 @@ public class LCConfig {
 		public final ModConfigSpec.DoubleValue chainDiggingHardnessRange;
 		public final ModConfigSpec.BooleanValue delayDiggingRequireEnder;
 
-		public final ModConfigSpec.BooleanValue useArsNouveauForEnchantmentRecipe;
-		public final ModConfigSpec.BooleanValue enableVanillaItemRecipe;
-		public final ModConfigSpec.BooleanValue enableToolRecraftRecipe;
-		public final ModConfigSpec.BooleanValue enableSpawnEggRecipe;
 
 		Server(Builder builder) {
 			markL2();
-			builder.push("recipe", "Recipe Toggles");
-			{
-				useArsNouveauForEnchantmentRecipe = builder
-						.text("Ars Nouveau: Apparatus Enchanting")
-						.comment("When Ars Nouveau is present, use apparatus recipe for enchantments")
-						.define("useArsNouveauForEnchantmentRecipe", true);
-				enableVanillaItemRecipe = builder
-						.text("Extra recipes for vanilla items")
-						.comment("Allow vanilla items such as elytra and ancient debris to be crafted with L2Complements materials")
-						.define("enableVanillaItemRecipe", true);
-				enableToolRecraftRecipe = builder
-						.text("Tool upgrade recipes")
-						.comment("Allow tools to be upgraded from tools with same type but different materials")
-						.define("enableToolRecraftRecipe", true);
-				enableSpawnEggRecipe = builder
-						.text("Spawn egg recipes")
-						.comment("Allow spawn eggs to be crafted with L2Complements materials")
-						.define("enableSpawnEggRecipe", true);
-			}
-			builder.pop();
 
 			builder.push("materials", "Material Drop Conditions");
 			{
@@ -223,6 +244,8 @@ public class LCConfig {
 
 	}
 
+	public static final Client CLIENT = L2Complements.REGISTRATE.registerClient(Client::new);
+	public static final Recipe RECIPE = L2Complements.REGISTRATE.registerUnsynced(Recipe::new);
 	public static final Server SERVER = L2Complements.REGISTRATE.registerSynced(Server::new);
 
 	public static void init() {

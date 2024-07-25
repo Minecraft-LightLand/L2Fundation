@@ -4,6 +4,13 @@
     "translate": "enchantment.l2complements.cubic_chunk_eater"
   },
   "effects": {
+    "l2complements:craftable": [
+      {
+        "color": -5263441,
+        "max": 1,
+        "order": 35
+      }
+    ],
     "l2core:color": [
       {
         "base": "gold",

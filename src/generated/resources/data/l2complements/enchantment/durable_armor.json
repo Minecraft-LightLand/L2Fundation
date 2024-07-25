@@ -4,6 +4,13 @@
     "translate": "enchantment.l2complements.durable_armor"
   },
   "effects": {
+    "l2complements:craftable": [
+      {
+        "color": -11550721,
+        "max": 3,
+        "order": 11
+      }
+    ],
     "l2core:color": [
       {
         "base": "green",

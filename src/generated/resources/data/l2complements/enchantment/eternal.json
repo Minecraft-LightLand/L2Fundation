@@ -4,6 +4,13 @@
     "translate": "enchantment.l2complements.eternal"
   },
   "effects": {
+    "l2complements:craftable": [
+      {
+        "color": -8388737,
+        "max": 1,
+        "order": 9
+      }
+    ],
     "l2core:color": [
       {
         "base": "gold",

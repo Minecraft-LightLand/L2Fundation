@@ -3,6 +3,17 @@
   "description": {
     "translate": "enchantment.l2complements.hellfire_thorn"
   },
+  "effects": {
+    "l2core:color": [
+      {
+        "base": "green",
+        "desc": "gray"
+      }
+    ],
+    "l2core:legacy": [
+      "l2complements:hellfire_thorn"
+    ]
+  },
   "exclusive_set": "#l2complements:thorn",
   "max_cost": {
     "base": 10,

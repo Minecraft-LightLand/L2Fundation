@@ -3,6 +3,14 @@
   "description": {
     "translate": "enchantment.l2complements.smelt_touch"
   },
+  "effects": {
+    "l2core:color": [
+      {
+        "base": "green",
+        "desc": "gray"
+      }
+    ]
+  },
   "max_cost": {
     "base": 10,
     "per_level_above_first": 5

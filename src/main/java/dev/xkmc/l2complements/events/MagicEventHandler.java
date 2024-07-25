@@ -4,7 +4,7 @@ import dev.xkmc.l2complements.compat.CurioCompat;
 import dev.xkmc.l2complements.content.effect.skill.CleanseEffect;
 import dev.xkmc.l2complements.content.effect.skill.SkillEffect;
 import dev.xkmc.l2complements.content.enchantment.digging.DiggerHelper;
-import dev.xkmc.l2complements.content.enchantment.special.SoulBoundPlayerData;
+import dev.xkmc.l2complements.content.enchantment.core.SoulBoundPlayerData;
 import dev.xkmc.l2complements.content.feature.EntityFeature;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;

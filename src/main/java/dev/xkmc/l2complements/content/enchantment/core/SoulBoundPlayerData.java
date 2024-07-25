@@ -1,4 +1,4 @@
-package dev.xkmc.l2complements.content.enchantment.special;
+package dev.xkmc.l2complements.content.enchantment.core;
 
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2core.capability.player.PlayerCapabilityTemplate;

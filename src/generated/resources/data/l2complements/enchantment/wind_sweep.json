@@ -3,6 +3,17 @@
   "description": {
     "translate": "enchantment.l2complements.wind_sweep"
   },
+  "effects": {
+    "l2core:color": [
+      {
+        "base": "green",
+        "desc": "gray"
+      }
+    ],
+    "l2core:legacy": [
+      "l2complements:wind_sweep"
+    ]
+  },
   "max_cost": {
     "base": 10,
     "per_level_above_first": 5

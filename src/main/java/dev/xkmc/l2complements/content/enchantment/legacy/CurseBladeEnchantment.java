@@ -1,4 +1,4 @@
-package dev.xkmc.l2complements.content.enchantment.weapon;
+package dev.xkmc.l2complements.content.enchantment.legacy;
 
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCEffects;

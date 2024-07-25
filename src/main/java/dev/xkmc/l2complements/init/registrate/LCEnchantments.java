@@ -1,17 +1,13 @@
 package dev.xkmc.l2complements.init.registrate;
 
-import dev.xkmc.l2complements.content.enchantment.data.ConfigExponentValue;
-import dev.xkmc.l2complements.content.enchantment.data.ConfigLinearValue;
-import dev.xkmc.l2complements.content.enchantment.data.Limit;
+import dev.xkmc.l2complements.content.enchantment.core.LimitValue;
+import dev.xkmc.l2complements.content.enchantment.core.SoulBoundPlayerData;
 import dev.xkmc.l2complements.content.enchantment.digging.*;
-import dev.xkmc.l2complements.content.enchantment.special.SoulBoundPlayerData;
-import dev.xkmc.l2complements.content.enchantment.weapon.CurseBladeEnchantment;
-import dev.xkmc.l2complements.content.enchantment.weapon.IceBladeEnchantment;
-import dev.xkmc.l2complements.content.enchantment.weapon.SharpBladeEnchantment;
-import dev.xkmc.l2complements.content.enchantment.weapon.SoulFlameBladeEnchantment;
+import dev.xkmc.l2complements.content.enchantment.legacy.*;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCTagGen;
 import dev.xkmc.l2core.capability.player.PlayerCapabilityNetworkHandler;
+import dev.xkmc.l2core.init.reg.ench.EnchColor;
 import dev.xkmc.l2core.init.reg.ench.EnchReg;
 import dev.xkmc.l2core.init.reg.ench.EnchVal;
 import dev.xkmc.l2core.init.reg.ench.HolderSetBuilder;
@@ -19,6 +15,7 @@ import dev.xkmc.l2core.init.reg.simple.AttReg;
 import dev.xkmc.l2core.init.reg.simple.AttVal;
 import dev.xkmc.l2core.init.reg.simple.CdcReg;
 import dev.xkmc.l2core.init.reg.simple.CdcVal;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -40,9 +37,7 @@ public class LCEnchantments {
 	private static final CdcReg<EnchantmentValueEffect> EVE = CdcReg.of(L2Complements.REG, BuiltInRegistries.ENCHANTMENT_VALUE_EFFECT_TYPE);
 	private static final CdcReg<LevelBasedValue> LBV = CdcReg.of(L2Complements.REG, BuiltInRegistries.ENCHANTMENT_LEVEL_BASED_VALUE_TYPE);
 
-	public static final CdcVal<Limit> EVE_LIMIT = EVE.reg("limit", Limit.MAP_CODEC);
-	public static final CdcVal<ConfigLinearValue> LBV_LINEAR = LBV.reg("linear", ConfigLinearValue.class);
-	public static final CdcVal<ConfigExponentValue> LBV_EXP = LBV.reg("exponent", ConfigExponentValue.class);
+	public static final CdcVal<LimitValue> EVE_LIMIT = EVE.reg("limit", LimitValue.MAP_CODEC);
 
 	public static final EnchVal ENDER_MASK;
 	public static final EnchVal SHINNY;
@@ -90,148 +85,156 @@ public class LCEnchantments {
 
 	static {
 
+		EnchColor green = new EnchColor(ChatFormatting.GREEN, ChatFormatting.GRAY);
+		EnchColor gold = new EnchColor(ChatFormatting.GOLD, ChatFormatting.GRAY);
+		EnchColor purple = new EnchColor(ChatFormatting.LIGHT_PURPLE, ChatFormatting.GRAY);
+
 		{
 			SHINNY = REG.ench("shinny", "Shinny", "Piglins loves it.",
-					e -> e.items(ItemTags.EQUIPPABLE_ENCHANTABLE));
+					e -> e.items(ItemTags.EQUIPPABLE_ENCHANTABLE).color(green));
 
 			DAMPENED = REG.ench("dampened", "Dampened", "Cancel all vibrations emitted by wearer",
-					e -> e.items(ItemTags.EQUIPPABLE_ENCHANTABLE));
+					e -> e.items(ItemTags.EQUIPPABLE_ENCHANTABLE).color(green));
 
 			TRANSPARENT = REG.ench("transparent", "Transparent", "Items become invisible when player has invisibility effect",
-					e -> e.items(HolderSetBuilder.any()));
+					e -> e.items(HolderSetBuilder.any()).color(green));
 
 			SOUL_BOUND = REG.ench("soul_bound", "Soul Bound", "Remain in inventory after death.",
-					e -> e.items(HolderSetBuilder.any()).exclusive(Enchantments.VANISHING_CURSE));
+					e -> e.items(HolderSetBuilder.any()).exclusive(Enchantments.VANISHING_CURSE).color(gold));
 
 			ENDER_MASK = REG.ench("ender_mask", "Ender Mask", "Enderman won't be mad at you for direct eye contact",
-					e -> e.items(ItemTags.HEAD_ARMOR_ENCHANTABLE));
+					e -> e.items(ItemTags.HEAD_ARMOR_ENCHANTABLE).color(green));
 
 			SNOW_WALKER = REG.ench("snow_walker", "Snow Walker", "Allow Wearer to walk on powdered snow.",
-					e -> e.items(ItemTags.FOOT_ARMOR_ENCHANTABLE));
+					e -> e.items(ItemTags.FOOT_ARMOR_ENCHANTABLE).color(green));
 
 			ENDER_TRANSPORT = REG.ench("ender_transport", "Ender Transport", "Teleport mined items and mob drops to inventory if possible.",
-					e -> e.items(LCTagGen.WEAPON_MINING_ENCHANTABLE));
+					e -> e.items(LCTagGen.WEAPON_MINING_ENCHANTABLE).color(green));
 
 			SMELT = REG.ench("smelt_touch", "Smelt Touch", "Smelt mined items and mob drops if possible, including items in chests!",
-					e -> e.items(LCTagGen.WEAPON_MINING_ENCHANTABLE));
+					e -> e.items(LCTagGen.WEAPON_MINING_ENCHANTABLE).color(green));
 
 			LIFE_SYNC = REG.ench("life_sync", "Life Sync", "Cost health instead of durability when possible. May kill the user",
-					e -> e.items(ItemTags.DURABILITY_ENCHANTABLE));
+					e -> e.items(ItemTags.DURABILITY_ENCHANTABLE).color(purple));
 
 			ETERNAL = REG.ench("eternal", "Eternal (Creative Only)", "Item will ignore all durability damage",
-					e -> e.items(ItemTags.DURABILITY_ENCHANTABLE));
+					e -> e.items(ItemTags.DURABILITY_ENCHANTABLE).color(gold));
 
 			SAFEGUARD = REG.ench("safeguard", "Safeguard", "when item has more than 1 durability, it will keep at least 1 durability when damaged",
-					e -> e.items(ItemTags.DURABILITY_ENCHANTABLE));
+					e -> e.items(ItemTags.DURABILITY_ENCHANTABLE).color(green));
 
 			DURABLE_ARMOR = REG.ench("durable_armor", "Durable Armor", "Armor will have higher durability.",
 					e -> e.items(HolderSetBuilder.and(List.of(
 							HolderSetBuilder.tag(ItemTags.ARMOR_ENCHANTABLE),
 							HolderSetBuilder.tag(ItemTags.DURABILITY_ENCHANTABLE)
-					))).maxLevel(3));
+					))).maxLevel(3).color(green));
 
 			LIFE_MENDING = REG.ench("life_mending", "Life Mending", "When healing, cost heal amount to repair item durability.",
-					e -> e.items(ItemTags.DURABILITY_ENCHANTABLE).maxLevel(3));
+					e -> e.items(ItemTags.DURABILITY_ENCHANTABLE).maxLevel(3).color(green));
 
 			HARDENED = REG.ench("hardened", "Hardened", "Durability loss will be capped to 1.",
 					e -> e.items(ItemTags.DURABILITY_ENCHANTABLE).effect(b -> b.withEffect(
-							EnchantmentEffectComponents.ITEM_DAMAGE, new Limit(() -> 1)
-					)));
+							EnchantmentEffectComponents.ITEM_DAMAGE, new LimitValue(() -> 1)
+					)).color(gold));
 
 			STABLE_BODY = REG.ench("stable_body", "Stable Body", "Player won't be knocked back when wearing chestplate with this enchantment.",
 					e -> e.items(ItemTags.CHEST_ARMOR_ENCHANTABLE).group(EquipmentSlotGroup.CHEST).effect(b -> b.withEffect(
 							EnchantmentEffectComponents.ATTRIBUTES,
 							new EnchantmentAttributeEffect(e.id, Attributes.KNOCKBACK_RESISTANCE,
 									LevelBasedValue.constant(1), AttributeModifier.Operation.ADD_VALUE)
-					)));
+					)).color(green));
 
 		}
 
 		{
 
-			WIND_SWEEP = REG.ench("wind_sweep", "Wind Sweep", "Increase sweeping hit box by %s",
-					e -> e.items(ItemTags.WEAPON_ENCHANTABLE).maxLevel(5));
+			WIND_SWEEP = REG.enchLegacy("wind_sweep", "Wind Sweep", "Increase sweeping hit box by %s",
+					e -> e.items(ItemTags.WEAPON_ENCHANTABLE).maxLevel(5).color(green),
+					WindSweepDesc::new);
 
-			VOID_TOUCH = REG.ench("void_touch", "Void Touch", "Have %s chance to deal true damage. +%s chance if the damage bypasses armor or magic already.",
-					e -> e.items(ItemTags.WEAPON_ENCHANTABLE).maxLevel(3));
+			VOID_TOUCH = REG.enchLegacy("void_touch", "Void Touch", "Have %s chance to deal true damage. +%s chance if the damage bypasses armor or magic already.",
+					e -> e.items(ItemTags.WEAPON_ENCHANTABLE).maxLevel(3).color(gold),
+					VoidTouchEnchantment::new);
 
 			ICE_BLADE = REG.enchLegacy("freezing_blade", "Freezing Blade", "Apply %s on target",
-					e -> e.items(ItemTags.WEAPON_ENCHANTABLE).maxLevel(3),
+					e -> e.items(ItemTags.WEAPON_ENCHANTABLE).maxLevel(3).color(green),
 					IceBladeEnchantment::new);
 
 			HELLFIRE_BLADE = REG.enchLegacy("hellfire_blade", "Hellfire Blade", "Apply %s on target",
-					e -> e.items(ItemTags.WEAPON_ENCHANTABLE).maxLevel(3),
+					e -> e.items(ItemTags.WEAPON_ENCHANTABLE).maxLevel(3).color(green),
 					SoulFlameBladeEnchantment::new);
 
 			CURSE_BLADE = REG.enchLegacy("cursed_blade", "Cursed Blade", "Apply %s on target",
-					e -> e.items(ItemTags.WEAPON_ENCHANTABLE).maxLevel(3),
+					e -> e.items(ItemTags.WEAPON_ENCHANTABLE).maxLevel(3).color(green),
 					CurseBladeEnchantment::new);
 
 			SHARP_BLADE = REG.enchLegacy("sharp_blade", "Sharp Blade", "Stack %s on target, up to %s level.",
-					e -> e.items(ItemTags.WEAPON_ENCHANTABLE).maxLevel(3),
+					e -> e.items(ItemTags.WEAPON_ENCHANTABLE).maxLevel(3).color(green),
 					SharpBladeEnchantment::new);
 
-			ICE_THORN = REG.ench("freezing_thorn", "Freezing Thorn", "When attacked, apply %s to attacker.",
+			ICE_THORN = REG.enchLegacy("freezing_thorn", "Freezing Thorn", "When attacked, apply %s to attacker.",
 					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).group(EquipmentSlotGroup.ARMOR)
-							.exclusive(LCTagGen.THORN).tags(LCTagGen.THORN).maxLevel(3));
+							.exclusive(LCTagGen.THORN).tags(LCTagGen.THORN).maxLevel(3).color(green),
+					IceThornEnchantment::new);
 
-			HELLFIRE_THORN = REG.ench("hellfire_thorn", "Hellfire Thorn", "When attacked, apply %s to attacker.",
+			HELLFIRE_THORN = REG.enchLegacy("hellfire_thorn", "Hellfire Thorn", "When attacked, apply %s to attacker.",
 					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).group(EquipmentSlotGroup.ARMOR)
-							.exclusive(LCTagGen.THORN).tags(LCTagGen.THORN));
+							.exclusive(LCTagGen.THORN).tags(LCTagGen.THORN).color(green),
+					FlameThornEnchantment::new);
 
 		}
 
 		{
 			IMM_PROJECTILE = REG.ench("projectile_immunity", "Projectile Immunity", "Deflects all projectiles. Make wearer immune to projectile damage.",
-					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY));
+					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).color(gold));
 
 			IMM_FIRE = REG.ench("fire_immunity", "Fire Immunity", "Puts down fire. Makes wearer immune to fire damage.",
-					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY));
+					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).color(gold));
 
 			IMM_ENVIRONMENT = REG.ench("environment_immunity", "Environment Immunity", "Makes wearer immune to damage without attacker.",
-					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY));
+					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).color(gold));
 
 			IMM_EXPLOSION = REG.ench("explosion_immunity", "Explosion Immunity", "Makes wearer immune to explosion damage.",
-					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY));
+					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).color(gold));
 
 			IMM_MAGIC = REG.ench("magic_immunity", "Magic Immunity", "Makes wearer immune to magic damage.",
-					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY));
+					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).color(gold));
 
 			INVINCIBLE = REG.ench("invincible", "Invincible (Creative Only)", "Makes wearer immune to all damage.",
-					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY));
+					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).color(gold));
 
 			IMM_MATES = REG.ench("friendly_fire_protection", "Friendly Fire Protection", "Makes wearer immune to damage from its owner and followers.",
-					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY));
+					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).color(gold));
 		}
 
 		{
 
 			CUBIC = REG.enchLegacy("cubic_mining", "Cubic Mining", "Dig %1$sx%1$sx%1$s blocks at once",
-					e -> e.items(ItemTags.MINING_ENCHANTABLE).maxLevel(2),
+					e -> e.items(ItemTags.MINING_ENCHANTABLE).maxLevel(2).color(green),
 					() -> new RangeDiggingEnchantment(new CubicBlockBreaker(1)));
 
 			PLANE = REG.enchLegacy("planar_mining", "Planar Mining", "Dig %1$sx%1$s blocks at once",
-					e -> e.items(ItemTags.MINING_ENCHANTABLE).maxLevel(3),
+					e -> e.items(ItemTags.MINING_ENCHANTABLE).maxLevel(3).color(green),
 					() -> new RangeDiggingEnchantment(new PlaneBlockBreaker(2)));
 
 			DRILL = REG.enchLegacy("drilling", "Drilling", "Dig %s blocks at once",
-					e -> e.items(ItemTags.MINING_ENCHANTABLE).maxLevel(3),
+					e -> e.items(ItemTags.MINING_ENCHANTABLE).maxLevel(3).color(green),
 					() -> new RangeDiggingEnchantment(new DrillBlockBreaker(7)));
 
 			VIEN = REG.enchLegacy("vien_mining", "Vien Mining", "Dig connected blocks of the same type, up to %s blocks",
-					e -> e.items(ItemTags.MINING_ENCHANTABLE).maxLevel(3),
+					e -> e.items(ItemTags.MINING_ENCHANTABLE).maxLevel(3).color(green),
 					() -> new RangeDiggingEnchantment(new OreDigger(7, 8)));
 
 			TREE = REG.enchLegacy("tree_chopper", "Tree Tropper", "Chop logs and adjacent leaves",
-					e -> e.items(ItemTags.MINING_ENCHANTABLE).maxLevel(2),
+					e -> e.items(ItemTags.MINING_ENCHANTABLE).maxLevel(2).color(green),
 					() -> new RangeDiggingEnchantment(new TreeDigger()));
 
 			CHUNK_CUBIC = REG.enchLegacy("cubic_chunk_eater", "Cubic Chunk Eater", "Dig %1$sx%1$sx%1$s chunk-aligned blocks at once",
-					e -> e.items(ItemTags.MINING_ENCHANTABLE).maxLevel(2),
+					e -> e.items(ItemTags.MINING_ENCHANTABLE).maxLevel(2).color(gold),
 					() -> new RangeDiggingEnchantment(new CubicChunkBreaker(2)));
 
 			CHUNK_PLANE = REG.enchLegacy("planar_chunk_eater", "Planar Chunk Eater", "Dig 16x16 chunk-aligned blocks at once for %s layers",
-					e -> e.items(ItemTags.MINING_ENCHANTABLE).maxLevel(3),
+					e -> e.items(ItemTags.MINING_ENCHANTABLE).maxLevel(3).color(gold),
 					() -> new RangeDiggingEnchantment(new PlaneChunkBreaker(1)));
 
 		}

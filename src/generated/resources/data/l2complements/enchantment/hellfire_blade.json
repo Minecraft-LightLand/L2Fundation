@@ -4,6 +4,12 @@
     "translate": "enchantment.l2complements.hellfire_blade"
   },
   "effects": {
+    "l2core:color": [
+      {
+        "base": "green",
+        "desc": "gray"
+      }
+    ],
     "l2core:legacy": [
       "l2complements:hellfire_blade"
     ]

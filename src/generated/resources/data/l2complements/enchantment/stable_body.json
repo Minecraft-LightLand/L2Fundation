@@ -4,6 +4,12 @@
     "translate": "enchantment.l2complements.stable_body"
   },
   "effects": {
+    "l2core:color": [
+      {
+        "base": "green",
+        "desc": "gray"
+      }
+    ],
     "minecraft:attributes": [
       {
         "amount": 1.0,

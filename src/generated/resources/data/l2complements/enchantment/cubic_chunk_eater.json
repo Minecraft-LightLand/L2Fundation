@@ -4,6 +4,12 @@
     "translate": "enchantment.l2complements.cubic_chunk_eater"
   },
   "effects": {
+    "l2core:color": [
+      {
+        "base": "gold",
+        "desc": "gray"
+      }
+    ],
     "l2core:legacy": [
       "l2complements:cubic_chunk_eater"
     ]

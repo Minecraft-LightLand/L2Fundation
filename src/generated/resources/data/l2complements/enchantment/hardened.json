@@ -4,6 +4,12 @@
     "translate": "enchantment.l2complements.hardened"
   },
   "effects": {
+    "l2core:color": [
+      {
+        "base": "gold",
+        "desc": "gray"
+      }
+    ],
     "minecraft:item_damage": [
       {
         "effect": {

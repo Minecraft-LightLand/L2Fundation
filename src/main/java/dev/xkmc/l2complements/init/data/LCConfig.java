@@ -1,5 +1,6 @@
 package dev.xkmc.l2complements.init.data;
 
+import dev.xkmc.l2complements.events.ClientEventHandler;
 import dev.xkmc.l2complements.events.LCAttackListener;
 import dev.xkmc.l2complements.events.MagicEventHandler;
 import dev.xkmc.l2complements.init.L2Complements;
@@ -7,18 +8,6 @@ import dev.xkmc.l2core.util.ConfigInit;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class LCConfig {
-
-	public static class Client extends ConfigInit {
-
-		public final ModConfigSpec.IntValue overlayZVal;
-
-		Client(Builder builder) {
-			markL2();
-			overlayZVal = builder.text("The height of item character overlay")
-					.defineInRange("overlayZVal", 250, -1000000, 1000000);
-		}
-
-	}
 
 	public static class Server extends ConfigInit {
 
@@ -234,7 +223,6 @@ public class LCConfig {
 
 	}
 
-	public static final Client CLIENT = L2Complements.REGISTRATE.registerClient(Client::new);
 	public static final Server SERVER = L2Complements.REGISTRATE.registerSynced(Server::new);
 
 	public static void init() {

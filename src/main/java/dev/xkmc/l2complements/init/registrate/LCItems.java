@@ -1,6 +1,7 @@
 package dev.xkmc.l2complements.init.registrate;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
+import dev.xkmc.l2complements.content.enchantment.core.EnchantmentInjector;
 import dev.xkmc.l2complements.content.entity.fireball.BlackFireball;
 import dev.xkmc.l2complements.content.entity.fireball.SoulFireball;
 import dev.xkmc.l2complements.content.entity.fireball.StrongFireball;
@@ -87,7 +88,7 @@ public class LCItems {
 	public static final ItemEntry<BurntItem> EMERALD;
 	public static final ItemEntry<BurntItem> CURSED_DROPLET;
 	public static final ItemEntry<BurntItem> LIFE_ESSENCE;
-	public static final ItemEntry<SpecialRenderItem> FORCE_FIELD;
+	public static final ItemEntry<TooltipItem> FORCE_FIELD;
 
 	public static final ItemEntry<WarpStone> FRAGILE_WARP_STONE;
 	public static final ItemEntry<WarpStone> REINFORCED_WARP_STONE;
@@ -138,9 +139,10 @@ public class LCItems {
 			LIFE_ESSENCE = REGISTRATE.item("life_essence", p -> new BurntItem(p.fireResistant().rarity(Rarity.RARE)
 							.food(new FoodProperties.Builder().nutrition(20).saturationModifier(1.2f).alwaysEdible().fast().build())))
 					.defaultModel().tag(LCTagGen.SPECIAL_ITEM).lang("Essence of Life").register();
-			FORCE_FIELD = REGISTRATE.item("force_field", p -> new SpecialRenderItem(p.fireResistant().rarity(Rarity.EPIC), LangData.IDS.FORCE_FIELD::get))
+			FORCE_FIELD = REGISTRATE.item("force_field", p -> new TooltipItem(p.fireResistant().rarity(Rarity.EPIC), LangData.IDS.FORCE_FIELD::get))
 					.model((ctx, pvd) -> pvd.getBuilder(ctx.getName()).parent(new ModelFile.UncheckedModelFile("builtin/entity")))
-					.lang("Wither Force Field").tag(LCTagGen.SPECIAL_ITEM).register();
+					.lang("Wither Force Field").tag(LCTagGen.SPECIAL_ITEM)
+					.clientExtension(() -> () -> LCBEWLR.EXTENSIONS).register();
 			GUARDIAN_RUNE = simpleItem("guardian_rune", "Rune of Guardian", (p, t) -> new TransformItem(p, t,
 							() -> EntityType.GUARDIAN, () -> EntityType.ELDER_GUARDIAN),
 					Rarity.RARE, LangData.IDS.GUARDIAN_RUNE::get);
@@ -254,8 +256,8 @@ public class LCItems {
 			).defaultModel().defaultLang().register();
 		}
 		GEN_ITEM = L2Complements.MATS.genItem(LCMats.values());
-
-		//UnobtainableEnchantment.injectTab(REGISTRATE, LCEnchantments.ALL);
+		EnchantmentInjector.register(L2Complements.MODID);
+		EnchantmentInjector.injectTab(REGISTRATE);
 	}
 
 	public static MutableComponent getTooltip(MobEffectInstance eff) {

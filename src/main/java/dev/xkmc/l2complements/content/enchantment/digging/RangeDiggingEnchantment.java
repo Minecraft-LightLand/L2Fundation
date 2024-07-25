@@ -1,11 +1,12 @@
 package dev.xkmc.l2complements.content.enchantment.digging;
 
-import dev.xkmc.l2complements.content.enchantment.core.CustomDecoColorEnchantment;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LangData;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2core.events.SchedulerHandler;
+import dev.xkmc.l2core.init.reg.ench.CustomDescEnchantment;
+import dev.xkmc.l2core.init.reg.ench.EnchColor;
 import dev.xkmc.l2core.init.reg.ench.LegacyEnchantment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -29,7 +30,7 @@ import java.util.UUID;
 
 import static org.apache.logging.log4j.Level.ERROR;
 
-public class RangeDiggingEnchantment extends LegacyEnchantment implements CustomDecoColorEnchantment {
+public class RangeDiggingEnchantment extends LegacyEnchantment implements CustomDescEnchantment {
 
 	private static final Set<UUID> BREAKER = new HashSet<>();
 
@@ -107,12 +108,8 @@ public class RangeDiggingEnchantment extends LegacyEnchantment implements Custom
 	}
 
 	@Override
-	public List<Component> descFull(int lv, String key, boolean alt, boolean book) {
+	public List<Component> descFull(int lv, String key, boolean alt, boolean book, EnchColor color) {
 		return breaker.descFull(lv, key, alt, book);
 	}
 
-	@Override
-	public int getDecoColor() {
-		return 0xffafafaf;
-	}
 }

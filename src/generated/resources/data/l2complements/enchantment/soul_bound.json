@@ -3,6 +3,14 @@
   "description": {
     "translate": "enchantment.l2complements.soul_bound"
   },
+  "effects": {
+    "l2core:color": [
+      {
+        "base": "gold",
+        "desc": "gray"
+      }
+    ]
+  },
   "exclusive_set": "minecraft:vanishing_curse",
   "max_cost": {
     "base": 10,

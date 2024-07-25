@@ -4,8 +4,8 @@ import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
-import dev.xkmc.l2complements.content.enchantment.special.LifeSyncEnchantment;
 import dev.xkmc.l2complements.events.SpecialEquipmentEvents;
+import dev.xkmc.l2complements.init.data.DamageTypeGen;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LCTagGen;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
@@ -15,6 +15,7 @@ import dev.xkmc.l2core.util.Proxy;
 import dev.xkmc.l2serial.util.Wrappers;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -38,7 +39,8 @@ public abstract class ItemStackMixin implements IItemStackExtension {
 		}
 		if (user != null && getEnchantmentLevel(LCEnchantments.LIFE_SYNC.holder()) > 0) {
 			float dmg = (float) (val * LCConfig.SERVER.lifeSyncFactor.get());
-			SchedulerHandler.schedule(() -> user.hurt(LifeSyncEnchantment.getSource(user.level()), dmg));
+			SchedulerHandler.schedule(() -> user.hurt(new DamageSource(
+					DamageTypeGen.forKey(user.level(), DamageTypeGen.LIFE_SYNC)), dmg));
 			return;
 		}
 		if (!SpecialEquipmentEvents.PLAYER.get().isEmpty()) {

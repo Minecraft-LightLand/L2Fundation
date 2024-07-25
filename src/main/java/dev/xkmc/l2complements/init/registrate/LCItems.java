@@ -256,7 +256,6 @@ public class LCItems {
 			).defaultModel().defaultLang().register();
 		}
 		GEN_ITEM = L2Complements.MATS.genItem(LCMats.values());
-		EnchantmentInjector.register(L2Complements.MODID);
 		EnchantmentInjector.injectTab(REGISTRATE);
 	}
 

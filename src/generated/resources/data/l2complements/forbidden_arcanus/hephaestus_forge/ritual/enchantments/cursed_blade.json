@@ -1,0 +1,46 @@
+{
+  "essences": {
+    "aureal": 1100,
+    "blood": 2300,
+    "experience": 10,
+    "souls": 2
+  },
+  "inputs": [
+    {
+      "amount": 2,
+      "ingredient": {
+        "item": "l2complements:cursed_droplet"
+      }
+    },
+    {
+      "amount": 2,
+      "ingredient": {
+        "item": "minecraft:fermented_spider_eye"
+      }
+    },
+    {
+      "amount": 4,
+      "ingredient": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    }
+  ],
+  "main_ingredient": {
+    "item": "minecraft:book"
+  },
+  "result": {
+    "type": "forbidden_arcanus:create_item",
+    "result_item": {
+      "Count": 1,
+      "id": "minecraft:enchanted_book",
+      "tag": {
+        "StoredEnchantments": [
+          {
+            "id": "l2complements:cursed_blade",
+            "lvl": 1
+          }
+        ]
+      }
+    }
+  }
+}

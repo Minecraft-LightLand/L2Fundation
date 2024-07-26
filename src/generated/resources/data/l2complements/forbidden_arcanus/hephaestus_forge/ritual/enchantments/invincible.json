@@ -1,0 +1,68 @@
+{
+  "essences": {
+    "aureal": 1100,
+    "blood": 2300,
+    "experience": 10,
+    "souls": 2
+  },
+  "inputs": [
+    {
+      "amount": 1,
+      "ingredient": {
+        "type": "l2library:enchantment",
+        "enchantment": "l2complements:explosion_reject",
+        "min_level": 1
+      }
+    },
+    {
+      "amount": 1,
+      "ingredient": {
+        "type": "l2library:enchantment",
+        "enchantment": "l2complements:fire_reject",
+        "min_level": 1
+      }
+    },
+    {
+      "amount": 1,
+      "ingredient": {
+        "type": "l2library:enchantment",
+        "enchantment": "l2complements:magic_reject",
+        "min_level": 1
+      }
+    },
+    {
+      "amount": 1,
+      "ingredient": {
+        "type": "l2library:enchantment",
+        "enchantment": "l2complements:projectile_reject",
+        "min_level": 1
+      }
+    },
+    {
+      "amount": 4,
+      "ingredient": {
+        "item": "l2complements:space_shard"
+      }
+    }
+  ],
+  "main_ingredient": {
+    "type": "l2library:enchantment",
+    "enchantment": "l2complements:environment_reject",
+    "min_level": 1
+  },
+  "result": {
+    "type": "forbidden_arcanus:create_item",
+    "result_item": {
+      "Count": 1,
+      "id": "minecraft:enchanted_book",
+      "tag": {
+        "StoredEnchantments": [
+          {
+            "id": "l2complements:invincible",
+            "lvl": 1
+          }
+        ]
+      }
+    }
+  }
+}

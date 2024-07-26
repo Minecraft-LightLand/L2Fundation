@@ -1,0 +1,66 @@
+{
+  "essences": {
+    "aureal": 1100,
+    "blood": 2300,
+    "experience": 10,
+    "souls": 2
+  },
+  "inputs": [
+    {
+      "amount": 1,
+      "ingredient": {
+        "item": "l2complements:storm_core"
+      }
+    },
+    {
+      "amount": 2,
+      "ingredient": {
+        "item": "minecraft:gold_ingot"
+      }
+    },
+    {
+      "amount": 1,
+      "ingredient": {
+        "item": "minecraft:iron_pickaxe"
+      }
+    },
+    {
+      "amount": 1,
+      "ingredient": {
+        "item": "minecraft:iron_pickaxe"
+      }
+    },
+    {
+      "amount": 1,
+      "ingredient": {
+        "item": "minecraft:iron_pickaxe"
+      }
+    },
+    {
+      "amount": 2,
+      "ingredient": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    }
+  ],
+  "main_ingredient": {
+    "type": "l2library:enchantment",
+    "enchantment": "minecraft:efficiency",
+    "min_level": 1
+  },
+  "result": {
+    "type": "forbidden_arcanus:create_item",
+    "result_item": {
+      "Count": 1,
+      "id": "minecraft:enchanted_book",
+      "tag": {
+        "StoredEnchantments": [
+          {
+            "id": "l2complements:vien_mining",
+            "lvl": 1
+          }
+        ]
+      }
+    }
+  }
+}

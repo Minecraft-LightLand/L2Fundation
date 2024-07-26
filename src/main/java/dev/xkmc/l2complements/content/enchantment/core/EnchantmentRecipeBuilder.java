@@ -6,6 +6,7 @@ import com.google.common.collect.Sets;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import dev.xkmc.l2complements.compat.ars.ArsRecipeCompat;
+import dev.xkmc.l2complements.compat.forbidden.FaARecipe;
 import dev.xkmc.l2complements.init.L2Complements;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
@@ -92,6 +93,7 @@ public class EnchantmentRecipeBuilder implements RecipeBuilder {
 
 	public void save(Consumer<FinishedRecipe> pvd, ResourceLocation loc) {
 		pvd = ArsRecipeCompat.saveCompat(this, pvd, loc);
+		FaARecipe.saveCompat(this, loc);
 		this.ensureValid(loc);
 		this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(loc)).rewards(AdvancementRewards.Builder.recipe(loc)).requirements(RequirementsStrategy.OR);
 		pvd.accept(new Result(loc, this.enchantment, this.level, this.group == null ? "" : this.group, this.rows, this.key, this.advancement, new ResourceLocation(loc.getNamespace(), "recipes/enchantments/" + loc.getPath())));

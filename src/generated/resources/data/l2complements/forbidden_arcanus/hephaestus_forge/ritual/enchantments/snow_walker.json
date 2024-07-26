@@ -1,0 +1,40 @@
+{
+  "essences": {
+    "aureal": 1100,
+    "blood": 2300,
+    "experience": 10,
+    "souls": 2
+  },
+  "inputs": [
+    {
+      "amount": 4,
+      "ingredient": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "amount": 4,
+      "ingredient": {
+        "item": "minecraft:leather"
+      }
+    }
+  ],
+  "main_ingredient": {
+    "item": "minecraft:book"
+  },
+  "result": {
+    "type": "forbidden_arcanus:create_item",
+    "result_item": {
+      "Count": 1,
+      "id": "minecraft:enchanted_book",
+      "tag": {
+        "StoredEnchantments": [
+          {
+            "id": "l2complements:snow_walker",
+            "lvl": 1
+          }
+        ]
+      }
+    }
+  }
+}

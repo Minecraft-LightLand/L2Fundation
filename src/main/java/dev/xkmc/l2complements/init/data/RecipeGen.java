@@ -5,6 +5,7 @@ import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
+import dev.xkmc.l2complements.compat.forbidden.FaARecipe;
 import dev.xkmc.l2complements.content.enchantment.core.EnchantmentRecipeBuilder;
 import dev.xkmc.l2complements.content.recipe.BurntRecipeBuilder;
 import dev.xkmc.l2complements.content.recipe.DiffusionRecipeBuilder;
@@ -985,6 +986,8 @@ public class RecipeGen {
 			jeed.add(LCMats.POSEIDITE.getArmor(EquipmentSlot.FEET), MobEffects.CONDUIT_POWER, MobEffects.DOLPHINS_GRACE);
 			jeed.generate(pvd);
 		}
+
+		FaARecipe.finish();
 
 	}
 

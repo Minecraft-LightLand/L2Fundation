@@ -234,6 +234,9 @@ dependencies {
 
     implementation fg.deobf("curse.maven:farmers-delight-398521:5051242")
     implementation fg.deobf("curse.maven:nethers-delight-496394:4736227")
+
+    implementation fg.deobf("curse.maven:valhelsia-core-416935:5189548")
+    implementation fg.deobf("curse.maven:forbidden-arcanus-309858:5198323")
 }
 
 tasks.register('publishCurseForge', TaskPublishCurseForge) {

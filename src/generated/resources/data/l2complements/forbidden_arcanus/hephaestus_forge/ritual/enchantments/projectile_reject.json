@@ -1,0 +1,68 @@
+{
+  "essences": {
+    "aureal": 1100,
+    "blood": 2300,
+    "experience": 10,
+    "souls": 2
+  },
+  "inputs": [
+    {
+      "amount": 1,
+      "ingredient": {
+        "type": "l2library:enchantment",
+        "enchantment": "minecraft:projectile_protection",
+        "min_level": 4
+      }
+    },
+    {
+      "amount": 1,
+      "ingredient": {
+        "type": "l2library:enchantment",
+        "enchantment": "minecraft:projectile_protection",
+        "min_level": 4
+      }
+    },
+    {
+      "amount": 1,
+      "ingredient": {
+        "type": "l2library:enchantment",
+        "enchantment": "minecraft:protection",
+        "min_level": 4
+      }
+    },
+    {
+      "amount": 1,
+      "ingredient": {
+        "type": "l2library:enchantment",
+        "enchantment": "minecraft:protection",
+        "min_level": 4
+      }
+    },
+    {
+      "amount": 4,
+      "ingredient": {
+        "item": "l2complements:force_field"
+      }
+    }
+  ],
+  "main_ingredient": {
+    "type": "l2library:enchantment",
+    "enchantment": "minecraft:infinity",
+    "min_level": 1
+  },
+  "result": {
+    "type": "forbidden_arcanus:create_item",
+    "result_item": {
+      "Count": 1,
+      "id": "minecraft:enchanted_book",
+      "tag": {
+        "StoredEnchantments": [
+          {
+            "id": "l2complements:projectile_reject",
+            "lvl": 1
+          }
+        ]
+      }
+    }
+  }
+}

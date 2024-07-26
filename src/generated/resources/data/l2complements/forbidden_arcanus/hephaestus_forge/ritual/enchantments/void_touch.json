@@ -1,0 +1,46 @@
+{
+  "essences": {
+    "aureal": 1100,
+    "blood": 2300,
+    "experience": 10,
+    "souls": 2
+  },
+  "inputs": [
+    {
+      "amount": 4,
+      "ingredient": {
+        "item": "l2complements:resonant_feather"
+      }
+    },
+    {
+      "amount": 2,
+      "ingredient": {
+        "item": "l2complements:sun_membrane"
+      }
+    },
+    {
+      "amount": 2,
+      "ingredient": {
+        "item": "l2complements:void_eye"
+      }
+    }
+  ],
+  "main_ingredient": {
+    "item": "minecraft:book"
+  },
+  "result": {
+    "type": "forbidden_arcanus:create_item",
+    "result_item": {
+      "Count": 1,
+      "id": "minecraft:enchanted_book",
+      "tag": {
+        "StoredEnchantments": [
+          {
+            "id": "l2complements:void_touch",
+            "lvl": 1
+          }
+        ]
+      }
+    }
+  }
+}

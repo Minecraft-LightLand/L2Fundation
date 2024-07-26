@@ -211,31 +211,31 @@ public class LCEnchantments {
 
 		{
 			IMM_PROJECTILE = REG.ench("projectile_immunity", "Projectile Immunity", "Deflects all projectiles. Make wearer immune to projectile damage.",
-					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY)
+					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
 							.color(gold).special(CRAFT, order.of(armor)));
 
 			IMM_FIRE = REG.ench("fire_immunity", "Fire Immunity", "Puts down fire. Makes wearer immune to fire damage.",
-					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY)
+					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
 							.color(gold).special(CRAFT, order.of(armor)));
 
 			IMM_ENVIRONMENT = REG.ench("environment_immunity", "Environment Immunity", "Makes wearer immune to damage without attacker.",
-					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY)
+					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
 							.color(gold).special(CRAFT, order.of(armor)));
 
 			IMM_EXPLOSION = REG.ench("explosion_immunity", "Explosion Immunity", "Makes wearer immune to explosion damage.",
-					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY)
+					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
 							.color(gold).special(CRAFT, order.of(armor)));
 
 			IMM_MAGIC = REG.ench("magic_immunity", "Magic Immunity", "Makes wearer immune to magic damage.",
-					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY)
+					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
 							.color(gold).special(CRAFT, order.of(armor)));
 
 			INVINCIBLE = REG.ench("invincible", "Invincible (Creative Only)", "Makes wearer immune to all damage.",
-					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY)
+					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
 							.color(gold).special(CRAFT, order.of(armor)));
 
 			IMM_MATES = REG.ench("friendly_fire_protection", "Friendly Fire Protection", "Makes wearer immune to damage from its owner and followers.",
-					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY)
+					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
 							.color(gold).special(CRAFT, order.of(armor)));
 		}
 

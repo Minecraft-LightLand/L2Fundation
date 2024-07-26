@@ -74,6 +74,7 @@ public enum LCMats implements IMatVanillaType {
 	final ExtraToolConfig tool_extra;
 	final ExtraArmorConfig armor_extra;
 	public final ChatFormatting trim_text_color;
+	final int durability;
 
 	LCMats(String name, int level,
 		   Holder<SoundEvent> equip_sound, IToolStats tool, ArmorStats armor,
@@ -91,6 +92,7 @@ public enum LCMats implements IMatVanillaType {
 		this.tool_stats = tool;
 		this.tool_extra = tool_extra;
 		this.armor_extra = armor_extra;
+		this.durability = armor.durability();
 	}
 
 	public Item getIngot() {
@@ -138,6 +140,11 @@ public enum LCMats implements IMatVanillaType {
 	@Override
 	public ExtraArmorConfig getExtraArmorConfig() {
 		return armor_extra;
+	}
+
+	@Override
+	public int armorDurability() {
+		return durability;
 	}
 
 	@Override

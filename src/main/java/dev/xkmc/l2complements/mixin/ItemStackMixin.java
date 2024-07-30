@@ -5,7 +5,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import dev.xkmc.l2complements.events.SpecialEquipmentEvents;
-import dev.xkmc.l2complements.init.data.DamageTypeGen;
+import dev.xkmc.l2complements.init.data.LCDamageTypes;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.LCTagGen;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
@@ -40,7 +40,7 @@ public abstract class ItemStackMixin implements IItemStackExtension {
 		if (user != null && getEnchantmentLevel(LCEnchantments.LIFE_SYNC.holder()) > 0) {
 			float dmg = (float) (val * LCConfig.SERVER.lifeSyncFactor.get());
 			SchedulerHandler.schedule(() -> user.hurt(new DamageSource(
-					DamageTypeGen.forKey(user.level(), DamageTypeGen.LIFE_SYNC)), dmg));
+					LCDamageTypes.forKey(user.level(), LCDamageTypes.LIFE_SYNC)), dmg));
 			return;
 		}
 		if (!SpecialEquipmentEvents.PLAYER.get().isEmpty()) {

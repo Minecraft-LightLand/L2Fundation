@@ -1,7 +1,7 @@
 package dev.xkmc.l2complements.content.item.wand;
 
 import dev.xkmc.l2complements.init.data.LCConfig;
-import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.LCLang;
 import dev.xkmc.l2library.content.raytrace.RayTraceUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
@@ -117,7 +117,7 @@ public class HellfireWand extends WandItem {
 
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext level, List<Component> list, TooltipFlag flag) {
-		list.add(LangData.IDS.HELLFIRE_WAND.get().withStyle(ChatFormatting.GRAY));
+		list.add(LCLang.IDS.HELLFIRE_WAND.get().withStyle(ChatFormatting.GRAY));
 	}
 
 }

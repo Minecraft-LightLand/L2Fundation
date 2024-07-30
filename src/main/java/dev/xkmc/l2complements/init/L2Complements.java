@@ -73,19 +73,19 @@ public class L2Complements {
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void gatherData(GatherDataEvent event) {
-		REGISTRATE.addDataGenerator(ProviderType.LANG, LangData::addTranslations);
+		REGISTRATE.addDataGenerator(ProviderType.LANG, LCLang::addTranslations);
 		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, LCTagGen::onBlockTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, LCTagGen::onItemTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, LCTagGen::onEntityTagGen);
 		REGISTRATE.addDataGenerator(L2TagGen.EFF_TAGS, LCTagGen::onEffectTagGen);
 		REGISTRATE.addDataGenerator(L2TagGen.ENCH_TAGS, LCTagGen::onEnchTagGen);
-		REGISTRATE.addDataGenerator(ProviderType.RECIPE, RecipeGen::genRecipe);
+		REGISTRATE.addDataGenerator(ProviderType.RECIPE, LCRecipeGen::genRecipe);
 		REGISTRATE.addDataGenerator(ProviderType.DATA_MAP, LCDataMapGen::onGather);
 		var init = REGISTRATE.getDataGenInitializer();
 		init.addDependency(ProviderType.DYNAMIC, ProviderType.ITEM_TAGS);
 		init.addDependency(ProviderType.RECIPE, L2TagGen.ENCH_TAGS);
 		init.add(Registries.TRIM_MATERIAL, LCTrimsGen::build);
-		new DamageTypeGen(REGISTRATE).generate();
+		new LCDamageTypes(REGISTRATE).generate();
 
 		boolean run = event.includeServer();
 		var gen = event.getGenerator();

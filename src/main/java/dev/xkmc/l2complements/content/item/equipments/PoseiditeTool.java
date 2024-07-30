@@ -2,7 +2,7 @@ package dev.xkmc.l2complements.content.item.equipments;
 
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
-import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.LCLang;
 import dev.xkmc.l2complements.init.materials.LCMats;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2damagetracker.contents.attack.DamageData;
@@ -51,7 +51,7 @@ public class PoseiditeTool extends ExtraToolConfig {
 
 	@Override
 	public void addTooltip(ItemStack stack, List<Component> list) {
-		list.add(LangData.IDS.POSEIDITE_TOOL.get().withStyle(ChatFormatting.GRAY));
+		list.add(LCLang.IDS.POSEIDITE_TOOL.get().withStyle(ChatFormatting.GRAY));
 	}
 
 	@Override

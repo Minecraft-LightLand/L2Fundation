@@ -39,7 +39,7 @@ import java.util.function.BiFunction;
 
 import static dev.xkmc.l2core.serial.recipe.AbstractSmithingRecipe.TEMPLATE_PLACEHOLDER;
 
-public class RecipeGen {
+public class LCRecipeGen {
 
 	@SuppressWarnings("unchecked")
 	private static final TagKey<Item>[] TOOLS = List.of(

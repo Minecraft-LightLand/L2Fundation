@@ -1,7 +1,7 @@
 package dev.xkmc.l2complements.content.item.wand;
 
 import dev.xkmc.l2complements.init.data.LCConfig;
-import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.LCLang;
 import dev.xkmc.l2library.content.raytrace.IGlowingTarget;
 import dev.xkmc.l2library.content.raytrace.RayTraceUtil;
 import net.minecraft.ChatFormatting;
@@ -103,7 +103,7 @@ public class SonicShooter extends WandItem implements IGlowingTarget {
 
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag tooltipFlag) {
-		list.add(LangData.IDS.SONIC_SHOOTER.get().withStyle(ChatFormatting.GRAY));
+		list.add(LCLang.IDS.SONIC_SHOOTER.get().withStyle(ChatFormatting.GRAY));
 	}
 
 }

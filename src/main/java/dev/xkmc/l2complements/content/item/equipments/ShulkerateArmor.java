@@ -1,6 +1,6 @@
 package dev.xkmc.l2complements.content.item.equipments;
 
-import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.LCLang;
 import dev.xkmc.l2damagetracker.contents.materials.generic.ExtraArmorConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -19,7 +19,7 @@ public class ShulkerateArmor extends ExtraArmorConfig {
 
 	@Override
 	public void addTooltip(ItemStack stack, List<Component> list) {
-		list.add(LangData.IDS.SHULKERATE_ARMOR.get().withStyle(ChatFormatting.GRAY));
+		list.add(LCLang.IDS.SHULKERATE_ARMOR.get().withStyle(ChatFormatting.GRAY));
 		super.addTooltip(stack, list);
 	}
 

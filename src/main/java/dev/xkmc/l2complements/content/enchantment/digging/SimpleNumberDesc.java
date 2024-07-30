@@ -1,6 +1,6 @@
 package dev.xkmc.l2complements.content.enchantment.digging;
 
-import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.LCLang;
 import dev.xkmc.l2core.init.reg.ench.CustomDescEnchantment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -14,7 +14,7 @@ public interface SimpleNumberDesc extends BlockBreaker {
 		return List.of(Component.translatable(key,
 								CustomDescEnchantment.num(range(Math.min(getMaxLevel(), lv))))
 						.withStyle(ChatFormatting.GRAY),
-				LangData.diggerRotate().withStyle(ChatFormatting.DARK_GRAY)
+				LCLang.diggerRotate().withStyle(ChatFormatting.DARK_GRAY)
 		);
 	}
 

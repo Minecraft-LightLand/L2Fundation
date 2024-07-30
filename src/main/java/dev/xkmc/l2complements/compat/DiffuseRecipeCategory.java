@@ -2,7 +2,7 @@ package dev.xkmc.l2complements.compat;
 
 import dev.xkmc.l2complements.content.recipe.DiffusionRecipe;
 import dev.xkmc.l2complements.init.L2Complements;
-import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.LCLang;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2core.compat.jei.BaseRecipeCategory;
 import mezz.jei.api.constants.VanillaTypes;
@@ -29,7 +29,7 @@ public class DiffuseRecipeCategory extends BaseRecipeCategory<DiffusionRecipe, D
 
 	@Override
 	public Component getTitle() {
-		return LangData.IDS.DIFFUSE_TITLE.get();
+		return LCLang.IDS.DIFFUSE_TITLE.get();
 	}
 
 	@Override

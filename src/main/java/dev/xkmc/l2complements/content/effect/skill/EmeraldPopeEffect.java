@@ -1,6 +1,6 @@
 package dev.xkmc.l2complements.content.effect.skill;
 
-import dev.xkmc.l2complements.init.data.DamageTypeGen;
+import dev.xkmc.l2complements.init.data.LCDamageTypes;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCParticle;
 import dev.xkmc.l2core.base.effects.api.ClientRenderEffect;
@@ -37,7 +37,7 @@ public class EmeraldPopeEffect extends MobEffect implements FirstPlayerRenderEff
 		int radius = (level + 1) * LCConfig.SERVER.emeraldBaseRange.get();
 		var atk = self.getAttribute(Attributes.ATTACK_DAMAGE);
 		int damage = (int) (LCConfig.SERVER.emeraldDamageFactor.get() * (atk == null ? 1 : atk.getValue()));
-		DamageSource source = new DamageSource(DamageTypeGen.forKey(self.level(), DamageTypeGen.EMERALD), null, self);
+		DamageSource source = new DamageSource(LCDamageTypes.forKey(self.level(), LCDamageTypes.EMERALD), null, self);
 		for (Entity e : self.level().getEntities(self, new AABB(self.blockPosition()).inflate(radius))) {
 			if (e instanceof Enemy && !e.isAlliedTo(self) && ((LivingEntity) e).hurtTime == 0 &&
 					e.position().distanceToSqr(self.position()) < radius * radius) {

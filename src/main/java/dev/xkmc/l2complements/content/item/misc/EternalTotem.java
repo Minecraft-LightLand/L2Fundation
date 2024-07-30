@@ -1,7 +1,7 @@
 package dev.xkmc.l2complements.content.item.misc;
 
 import dev.xkmc.l2complements.init.data.LCConfig;
-import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.LCLang;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2core.util.Proxy;
 import dev.xkmc.l2core.util.TeleportTool;
@@ -65,7 +65,7 @@ public class EternalTotem extends Item implements ILCTotem {
 				cd = Component.literal("" + time).withStyle(ChatFormatting.RED);
 			}
 		}
-		list.add(LangData.IDS.TOTEM_ETERNAL.get(cd).withStyle(ChatFormatting.GRAY));
+		list.add(LCLang.IDS.TOTEM_ETERNAL.get(cd).withStyle(ChatFormatting.GRAY));
 	}
 
 }

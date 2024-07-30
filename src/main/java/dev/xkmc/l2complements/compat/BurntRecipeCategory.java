@@ -2,7 +2,7 @@ package dev.xkmc.l2complements.compat;
 
 import dev.xkmc.l2complements.content.recipe.BurntRecipe;
 import dev.xkmc.l2complements.init.L2Complements;
-import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.LCLang;
 import dev.xkmc.l2core.compat.jei.BaseRecipeCategory;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -29,14 +29,14 @@ public class BurntRecipeCategory extends BaseRecipeCategory<BurntRecipe, BurntRe
 
 	@Override
 	public Component getTitle() {
-		return LangData.IDS.BURNT_TITLE.get();
+		return LCLang.IDS.BURNT_TITLE.get();
 	}
 
 	@Override
 	public void setRecipe(IRecipeLayoutBuilder builder, BurntRecipe recipe, IFocusGroup focuses) {
 		builder.addSlot(RecipeIngredientRole.INPUT, 1, 1).addIngredients(recipe.ingredient);
 		builder.addSlot(RecipeIngredientRole.OUTPUT, 55, 1).addItemStack(recipe.result)
-				.addTooltipCallback((e, list) -> list.add(LangData.IDS.BURNT_COUNT.get(recipe.chance)));
+				.addTooltipCallback((e, list) -> list.add(LCLang.IDS.BURNT_COUNT.get(recipe.chance)));
 	}
 
 }

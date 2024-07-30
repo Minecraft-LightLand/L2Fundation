@@ -1,6 +1,6 @@
 package dev.xkmc.l2complements.content.item.equipments;
 
-import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.LCLang;
 import dev.xkmc.l2damagetracker.contents.materials.generic.ExtraToolConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -20,7 +20,7 @@ public class SculkiumTool extends ExtraToolConfig {
 
 	@Override
 	public void addTooltip(ItemStack stack, List<Component> list) {
-		list.add(LangData.IDS.SCULKIUM_TOOL.get().withStyle(ChatFormatting.GRAY));
+		list.add(LCLang.IDS.SCULKIUM_TOOL.get().withStyle(ChatFormatting.GRAY));
 	}
 
 }

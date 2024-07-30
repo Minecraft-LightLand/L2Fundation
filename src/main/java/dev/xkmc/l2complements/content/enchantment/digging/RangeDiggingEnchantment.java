@@ -2,7 +2,7 @@ package dev.xkmc.l2complements.content.enchantment.digging;
 
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
-import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.LCLang;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2core.events.SchedulerHandler;
 import dev.xkmc.l2core.init.reg.ench.CustomDescEnchantment;
@@ -96,7 +96,7 @@ public class RangeDiggingEnchantment extends LegacyEnchantment implements Custom
 			} else {
 				if (LCConfig.SERVER.delayDiggingRequireEnder.get()) {
 					if (stack.getEnchantmentLevel(LCEnchantments.ENDER_TRANSPORT.holder()) <= 0) {
-						player.sendSystemMessage(LangData.IDS.DELAY_WARNING.get(
+						player.sendSystemMessage(LCLang.IDS.DELAY_WARNING.get(
 										Enchantment.getFullname(LCEnchantments.ENDER_TRANSPORT.holder(), 1), max)
 								.withStyle(ChatFormatting.RED), true);
 						return;

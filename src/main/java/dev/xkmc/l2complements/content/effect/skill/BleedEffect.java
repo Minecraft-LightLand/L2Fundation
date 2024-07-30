@@ -1,7 +1,7 @@
 package dev.xkmc.l2complements.content.effect.skill;
 
 import dev.xkmc.l2complements.init.L2Complements;
-import dev.xkmc.l2complements.init.data.DamageTypeGen;
+import dev.xkmc.l2complements.init.data.LCDamageTypes;
 import dev.xkmc.l2core.base.effects.api.DelayedEntityRender;
 import dev.xkmc.l2core.base.effects.api.ForceEffect;
 import dev.xkmc.l2core.base.effects.api.IconOverlayEffect;
@@ -32,7 +32,7 @@ public class BleedEffect extends InherentEffect implements ForceEffect, IconOver
 
 	@Override
 	public boolean applyEffectTick(LivingEntity target, int level) {
-		DamageSource source = new DamageSource(DamageTypeGen.forKey(target.level(), DamageTypeGen.BLEED));
+		DamageSource source = new DamageSource(LCDamageTypes.forKey(target.level(), LCDamageTypes.BLEED));
 		target.hurt(source, 6 * (level + 1));
 		return true;
 	}

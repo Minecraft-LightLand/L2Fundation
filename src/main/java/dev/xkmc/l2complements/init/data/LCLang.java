@@ -1,20 +1,14 @@
 package dev.xkmc.l2complements.init.data;
 
 import com.tterrag.registrate.providers.RegistrateLangProvider;
-import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.l2complements.init.L2Complements;
-import dev.xkmc.l2complements.init.registrate.LCEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.Potion;
 
 import javax.annotation.Nullable;
-import java.util.List;
 import java.util.Locale;
 
-public class LangData {
+public class LCLang {
 
 	public enum IDS {
 		WIND_BOTTLE("tooltip.misc.wind_bottle", "Used to obtain Captured Wind or Captured Bullet.", 0),

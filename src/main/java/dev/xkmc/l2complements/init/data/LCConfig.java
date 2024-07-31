@@ -184,6 +184,7 @@ public class LCConfig {
 						.defineInRange("hellfireWandDamage", 10, 1, 1000);
 
 			}
+			builder.pop();
 
 			builder.push("enchantments", "Enchantment Properties");
 			{

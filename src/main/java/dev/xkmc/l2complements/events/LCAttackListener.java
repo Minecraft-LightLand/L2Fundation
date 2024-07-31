@@ -1,9 +1,9 @@
 package dev.xkmc.l2complements.events;
 
-import dev.xkmc.l2complements.content.enchantment.armors.AbstractThornEnchantment;
-import dev.xkmc.l2complements.content.enchantment.core.AbstractBladeEnchantment;
+import dev.xkmc.l2complements.content.enchantment.legacy.AbstractThornEnchantment;
+import dev.xkmc.l2complements.content.enchantment.legacy.AbstractBladeEnchantment;
 import dev.xkmc.l2complements.content.enchantment.core.SourceModifierEnchantment;
-import dev.xkmc.l2complements.content.enchantment.weapon.VoidTouchEnchantment;
+import dev.xkmc.l2complements.content.enchantment.legacy.VoidTouchEnchantment;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2core.init.reg.ench.LegacyEnchantment;

@@ -3,6 +3,21 @@
   "description": {
     "translate": "enchantment.l2complements.ender_mask"
   },
+  "effects": {
+    "l2complements:craftable": [
+      {
+        "color": -129,
+        "max": 1,
+        "order": 4
+      }
+    ],
+    "l2core:color": [
+      {
+        "base": "green",
+        "desc": "gray"
+      }
+    ]
+  },
   "max_cost": {
     "base": 10,
     "per_level_above_first": 5

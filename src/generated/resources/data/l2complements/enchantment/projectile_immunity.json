@@ -3,6 +3,24 @@
   "description": {
     "translate": "enchantment.l2complements.projectile_immunity"
   },
+  "effects": {
+    "l2complements:craftable": [
+      {
+        "color": -11550721,
+        "max": 1,
+        "order": 23
+      }
+    ],
+    "l2core:color": [
+      {
+        "base": "gold",
+        "desc": "gray"
+      }
+    ],
+    "l2core:legacy": [
+      "l2complements:projectile_immunity"
+    ]
+  },
   "exclusive_set": "#l2complements:immunity",
   "max_cost": {
     "base": 10,
@@ -14,7 +32,9 @@
     "per_level_above_first": 5
   },
   "primary_items": "#minecraft:enchantable/armor",
-  "slots": [],
+  "slots": [
+    "armor"
+  ],
   "supported_items": "#minecraft:enchantable/armor",
   "weight": 1
 }

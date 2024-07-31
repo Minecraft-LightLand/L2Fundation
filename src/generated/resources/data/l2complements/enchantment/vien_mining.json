@@ -4,6 +4,19 @@
     "translate": "enchantment.l2complements.vien_mining"
   },
   "effects": {
+    "l2complements:craftable": [
+      {
+        "color": -5263441,
+        "max": 1,
+        "order": 33
+      }
+    ],
+    "l2core:color": [
+      {
+        "base": "green",
+        "desc": "gray"
+      }
+    ],
     "l2core:legacy": [
       "l2complements:vien_mining"
     ]

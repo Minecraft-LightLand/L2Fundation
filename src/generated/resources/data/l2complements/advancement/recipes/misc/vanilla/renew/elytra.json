@@ -7,7 +7,7 @@
         "recipe",
         "enableVanillaItemRecipe"
       ],
-      "path": "l2configs/l2complements-server.toml"
+      "path": "l2configs/l2complements-common.toml"
     }
   ],
   "parent": "minecraft:recipes/root",

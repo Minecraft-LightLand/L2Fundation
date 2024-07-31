@@ -1,6 +1,6 @@
 package dev.xkmc.l2complements.content.item.misc;
 
-import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.LCLang;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -10,8 +10,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -29,7 +27,7 @@ public class TooltipItem extends Item {
 	public void appendHoverText(ItemStack stack, TooltipContext level, List<Component> list, TooltipFlag flag) {
 		var e = sup.get();
 		if (e == null) {
-			list.add(LangData.IDS.BANNED.get().withStyle(ChatFormatting.RED));
+			list.add(LCLang.IDS.BANNED.get().withStyle(ChatFormatting.RED));
 		} else {
 			list.add(e.withStyle(ChatFormatting.GRAY));
 		}

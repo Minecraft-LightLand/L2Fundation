@@ -1,6 +1,6 @@
 package dev.xkmc.l2complements.content.item.wand;
 
-import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.LCLang;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2core.base.effects.EffectUtil;
 import net.minecraft.ChatFormatting;
@@ -92,7 +92,7 @@ public class WinterStormWand extends Item {
 
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext level, List<Component> list, TooltipFlag flag) {
-		list.add(LangData.IDS.WINTERSTORM_WAND.get().withStyle(ChatFormatting.GRAY));
+		list.add(LCLang.IDS.WINTERSTORM_WAND.get().withStyle(ChatFormatting.GRAY));
 	}
 
 }

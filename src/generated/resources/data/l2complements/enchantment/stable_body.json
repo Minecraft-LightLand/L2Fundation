@@ -4,6 +4,19 @@
     "translate": "enchantment.l2complements.stable_body"
   },
   "effects": {
+    "l2complements:craftable": [
+      {
+        "color": -129,
+        "max": 1,
+        "order": 14
+      }
+    ],
+    "l2core:color": [
+      {
+        "base": "green",
+        "desc": "gray"
+      }
+    ],
     "minecraft:attributes": [
       {
         "amount": 1.0,

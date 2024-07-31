@@ -1,7 +1,7 @@
 package dev.xkmc.l2complements.content.item.misc;
 
 import dev.xkmc.l2complements.content.entity.fireball.BaseFireball;
-import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.LCLang;
 import dev.xkmc.l2library.content.raytrace.RayTraceUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Direction;
@@ -100,7 +100,7 @@ public class FireChargeItem<T extends BaseFireball<T>> extends TooltipItem {
 
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext level, List<Component> list, TooltipFlag flag) {
-		list.add(LangData.IDS.CHARGE_THROW.get().withStyle(ChatFormatting.GRAY));
+		list.add(LCLang.IDS.CHARGE_THROW.get().withStyle(ChatFormatting.GRAY));
 		super.appendHoverText(stack, level, list, flag);
 
 	}

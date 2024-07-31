@@ -1,7 +1,7 @@
 package dev.xkmc.l2complements.content.client;
 
 import dev.xkmc.l2complements.content.enchantment.digging.DiggerHelper;
-import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.LCLang;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
@@ -24,7 +24,7 @@ public class RangeDiggingOverlay implements LayeredDraw.Layer {
 		if (e == null) return;
 		var name = Enchantment.getFullname(e.ench(), e.level());
 		renderText(Minecraft.getInstance().font, g, g.guiWidth() / 2, g.guiHeight() / 2 + 34,
-				LangData.IDS.DIGGER_ACTIVATED.get(name).withStyle(ChatFormatting.RED));
+				LCLang.IDS.DIGGER_ACTIVATED.get(name).withStyle(ChatFormatting.RED));
 	}
 
 	private static void renderText(Font font, GuiGraphics g, int x, int y, Component text) {

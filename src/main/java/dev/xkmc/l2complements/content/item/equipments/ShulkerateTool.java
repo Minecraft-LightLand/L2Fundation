@@ -1,15 +1,12 @@
 package dev.xkmc.l2complements.content.item.equipments;
 
-import com.google.common.collect.Multimap;
 import dev.xkmc.l2complements.init.L2Complements;
-import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.LCLang;
 import dev.xkmc.l2damagetracker.contents.materials.generic.ExtraToolConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
@@ -37,7 +34,7 @@ public class ShulkerateTool extends ExtraToolConfig {
 
 	@Override
 	public void addTooltip(ItemStack stack, List<Component> list) {
-		list.add(LangData.IDS.SHULKERATE_TOOL.get().withStyle(ChatFormatting.GRAY));
+		list.add(LCLang.IDS.SHULKERATE_TOOL.get().withStyle(ChatFormatting.GRAY));
 	}
 
 }

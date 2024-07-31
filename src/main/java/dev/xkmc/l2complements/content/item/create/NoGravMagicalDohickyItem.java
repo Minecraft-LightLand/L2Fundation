@@ -1,7 +1,7 @@
 package dev.xkmc.l2complements.content.item.create;
 
 import dev.xkmc.l2complements.content.item.misc.TooltipItem;
-import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.LCLang;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -14,7 +14,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -81,7 +80,7 @@ public class NoGravMagicalDohickyItem extends TooltipItem {
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(stack, level, list, flag);
-		list.add(LangData.IDS.FLOAT.get().withStyle(ChatFormatting.GRAY));
+		list.add(LCLang.IDS.FLOAT.get().withStyle(ChatFormatting.GRAY));
 	}
 
 }

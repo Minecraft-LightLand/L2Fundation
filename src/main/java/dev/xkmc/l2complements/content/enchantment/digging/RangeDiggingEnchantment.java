@@ -1,11 +1,12 @@
 package dev.xkmc.l2complements.content.enchantment.digging;
 
-import dev.xkmc.l2complements.content.enchantment.core.CustomDecoColorEnchantment;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
-import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.LCLang;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2core.events.SchedulerHandler;
+import dev.xkmc.l2core.init.reg.ench.CustomDescEnchantment;
+import dev.xkmc.l2core.init.reg.ench.EnchColor;
 import dev.xkmc.l2core.init.reg.ench.LegacyEnchantment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -29,7 +30,7 @@ import java.util.UUID;
 
 import static org.apache.logging.log4j.Level.ERROR;
 
-public class RangeDiggingEnchantment extends LegacyEnchantment implements CustomDecoColorEnchantment {
+public class RangeDiggingEnchantment extends LegacyEnchantment implements CustomDescEnchantment {
 
 	private static final Set<UUID> BREAKER = new HashSet<>();
 
@@ -95,7 +96,7 @@ public class RangeDiggingEnchantment extends LegacyEnchantment implements Custom
 			} else {
 				if (LCConfig.SERVER.delayDiggingRequireEnder.get()) {
 					if (stack.getEnchantmentLevel(LCEnchantments.ENDER_TRANSPORT.holder()) <= 0) {
-						player.sendSystemMessage(LangData.IDS.DELAY_WARNING.get(
+						player.sendSystemMessage(LCLang.IDS.DELAY_WARNING.get(
 										Enchantment.getFullname(LCEnchantments.ENDER_TRANSPORT.holder(), 1), max)
 								.withStyle(ChatFormatting.RED), true);
 						return;
@@ -107,12 +108,29 @@ public class RangeDiggingEnchantment extends LegacyEnchantment implements Custom
 	}
 
 	@Override
-	public List<Component> descFull(int lv, String key, boolean alt, boolean book) {
-		return breaker.descFull(lv, key, alt, book);
+	public Component title(ItemStack stack, Component comp, boolean alt, boolean book, EnchColor color) {
+		var ans = DiggerHelper.getDigger(stack);
+		if (ans != null) {
+			if (ans.digger() != this) {
+				return Component.literal("-> ").withStyle(ChatFormatting.DARK_GRAY)
+						.append(comp.copy().withStyle(color.base()));
+			} else {
+				return Component.literal("-> ").withStyle(ChatFormatting.GRAY)
+						.append(comp.copy().withStyle(color.base(), ChatFormatting.ITALIC));
+			}
+		}
+		return comp.copy().withStyle(color.base());
 	}
 
 	@Override
-	public int getDecoColor() {
-		return 0xffafafaf;
+	public List<Component> descFull(ItemStack stack, int lv, String key, boolean alt, boolean book, EnchColor color) {
+		var ans = DiggerHelper.getDigger(stack);
+		if (ans != null) {
+			if (ans.digger() != this) {
+				return List.of();
+			}
+		}
+		return breaker.descFull(lv, key, alt, book);
 	}
+
 }

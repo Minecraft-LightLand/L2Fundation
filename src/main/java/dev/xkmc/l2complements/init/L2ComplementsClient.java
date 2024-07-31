@@ -1,16 +1,19 @@
 package dev.xkmc.l2complements.init;
 
+import dev.xkmc.l2complements.content.client.EnchStackDeco;
 import dev.xkmc.l2complements.content.client.RangeDiggingOverlay;
 import dev.xkmc.l2complements.content.item.misc.LCBEWLR;
 import dev.xkmc.l2complements.init.data.LCKeys;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.world.item.Items;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
+import net.neoforged.neoforge.client.event.RegisterItemDecorationsEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 
@@ -24,6 +27,11 @@ public class L2ComplementsClient {
 					(stack, level, user, index) -> user == null || !user.isUsingItem() ? 0 :
 							1 - 1f * user.getUseItemRemainingTicks() / stack.getUseDuration(user));
 		});
+	}
+
+	@SubscribeEvent
+	public static void registerItemDeco(RegisterItemDecorationsEvent event) {
+		event.register(Items.ENCHANTED_BOOK, new EnchStackDeco());
 	}
 
 

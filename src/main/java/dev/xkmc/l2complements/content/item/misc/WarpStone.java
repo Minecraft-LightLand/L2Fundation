@@ -1,6 +1,6 @@
 package dev.xkmc.l2complements.content.item.misc;
 
-import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.LCLang;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2core.util.TeleportTool;
 import net.minecraft.ChatFormatting;
@@ -86,13 +86,13 @@ public class WarpStone extends Item {
 		if (pos != null) {
 			var clevel = Component.translatable(pos.id().toString());
 			var bpos = pos.pos();
-			list.add(LangData.IDS.WARP_POS
+			list.add(LCLang.IDS.WARP_POS
 					.get(clevel, Math.round(bpos.x), Math.round(bpos.y), Math.round(bpos.x))
 					.withStyle(ChatFormatting.GRAY));
-			list.add(LangData.IDS.WARP_TELEPORT.get(dur).withStyle(ChatFormatting.GRAY));
-			if (!fragile) list.add(LangData.IDS.WARP_GRIND.get().withStyle(ChatFormatting.GRAY));
+			list.add(LCLang.IDS.WARP_TELEPORT.get(dur).withStyle(ChatFormatting.GRAY));
+			if (!fragile) list.add(LCLang.IDS.WARP_GRIND.get().withStyle(ChatFormatting.GRAY));
 		} else {
-			list.add(LangData.IDS.WARP_RECORD.get(dur).withStyle(ChatFormatting.GRAY));
+			list.add(LCLang.IDS.WARP_RECORD.get(dur).withStyle(ChatFormatting.GRAY));
 		}
 	}
 

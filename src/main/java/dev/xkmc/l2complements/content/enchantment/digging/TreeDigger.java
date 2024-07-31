@@ -1,7 +1,7 @@
 package dev.xkmc.l2complements.content.enchantment.digging;
 
 import dev.xkmc.l2complements.init.data.LCConfig;
-import dev.xkmc.l2complements.init.data.LangData;
+import dev.xkmc.l2complements.init.data.LCLang;
 import dev.xkmc.l2complements.init.data.LCTagGen;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -35,9 +35,9 @@ public record TreeDigger() implements BlockBreaker {
 		List<Component> ans = new ArrayList<>();
 		ans.add(Component.translatable(key).withStyle(ChatFormatting.GRAY));
 		if (lv > 0) {
-			ans.add(LangData.IDS.TREE_CHOP.get().withStyle(ChatFormatting.GRAY));
+			ans.add(LCLang.IDS.TREE_CHOP.get().withStyle(ChatFormatting.GRAY));
 		}
-		ans.add(LangData.diggerRotate().withStyle(ChatFormatting.DARK_GRAY));
+		ans.add(LCLang.diggerRotate().withStyle(ChatFormatting.DARK_GRAY));
 		return ans;
 	}
 

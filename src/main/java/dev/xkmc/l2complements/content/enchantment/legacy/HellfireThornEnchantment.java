@@ -4,7 +4,7 @@ import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 
-public class FlameThornEnchantment extends AbstractThornEnchantment {
+public class HellfireThornEnchantment extends AbstractThornEnchantment {
 
 	@Override
 	protected MobEffectInstance getEffect(int pLevel) {

@@ -515,12 +515,12 @@ public class LCRecipeGen {
 						.save(pvd, getID(LCEnchantments.WIND_SWEEP.id()));
 
 
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ICE_BLADE, pvd, 1)::unlockedBy, LCItems.HARD_ICE.get())
+				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.FREEZING_BLADE, pvd, 1)::unlockedBy, LCItems.HARD_ICE.get())
 						.pattern("LAL").pattern("ABA").pattern("LAL")
 						.define('A', LCItems.HARD_ICE.get())
 						.define('B', Items.BOOK)
 						.define('L', Items.LAPIS_LAZULI)
-						.save(pvd, getID(LCEnchantments.ICE_BLADE.id()));
+						.save(pvd, getID(LCEnchantments.FREEZING_BLADE.id()));
 
 				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.HELLFIRE_BLADE, pvd, 1)::unlockedBy, LCItems.SOUL_FLAME.get())
 						.pattern("LAL").pattern("ABA").pattern("LAL")
@@ -529,12 +529,12 @@ public class LCRecipeGen {
 						.define('L', Items.LAPIS_LAZULI)
 						.save(pvd, getID(LCEnchantments.HELLFIRE_BLADE.id()));
 
-				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.ICE_THORN, pvd, 1)::unlockedBy, LCItems.HARD_ICE.get())
+				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.FREEZING_THORN, pvd, 1)::unlockedBy, LCItems.HARD_ICE.get())
 						.pattern("LAL").pattern("ABA").pattern("LAL")
 						.define('A', LCItems.HARD_ICE.get())
 						.define('B', EnchantmentIngredient.of(pvd.getProvider(), Enchantments.THORNS, 3))
 						.define('L', Items.LAPIS_LAZULI)
-						.save(pvd, getID(LCEnchantments.ICE_THORN.id()));
+						.save(pvd, getID(LCEnchantments.FREEZING_THORN.id()));
 
 				unlock(pvd, new EnchantmentRecipeBuilder(LCEnchantments.HELLFIRE_THORN, pvd, 1)::unlockedBy, LCItems.SOUL_FLAME.get())
 						.pattern("LAL").pattern("ABA").pattern("LAL")

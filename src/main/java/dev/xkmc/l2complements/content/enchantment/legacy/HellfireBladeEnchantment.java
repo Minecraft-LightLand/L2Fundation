@@ -4,12 +4,11 @@ import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 
-public class IceBladeEnchantment extends EffectBladeEnchantment {
+public class HellfireBladeEnchantment extends EffectBladeEnchantment {
 
 	@Override
 	protected MobEffectInstance getEffect(int pLevel) {
-		return new MobEffectInstance(LCEffects.ICE.holder(), LCConfig.SERVER.iceEnchantDuration.get() << (pLevel - 1));
+		return new MobEffectInstance(LCEffects.FLAME.holder(), LCConfig.SERVER.flameEnchantDuration.get(), pLevel - 1);
 	}
-
 
 }

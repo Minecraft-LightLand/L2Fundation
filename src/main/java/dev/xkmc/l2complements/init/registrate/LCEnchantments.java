@@ -47,7 +47,6 @@ public class LCEnchantments {
 	public static final EnchVal LIFE_SYNC;
 	public static final EnchVal SAFEGUARD;
 	public static final EnchVal ETERNAL;
-
 	public static final EnchVal HARDENED;
 
 	public static final EnchVal IMM_PROJECTILE;
@@ -59,22 +58,19 @@ public class LCEnchantments {
 	public static final EnchVal LIFE_MENDING;
 	public static final EnchVal WIND_SWEEP;
 	public static final EnchVal SOUL_BOUND;
-	public static final EnchVal ICE_BLADE;
-	public static final EnchVal HELLFIRE_BLADE;
-	public static final EnchVal CURSE_BLADE;
-	public static final EnchVal SHARP_BLADE;
-	public static final EnchVal ICE_THORN;
-	public static final EnchVal HELLFIRE_THORN;
 	public static final EnchVal DURABLE_ARMOR;
 	public static final EnchVal VOID_TOUCH;
-	public static final EnchVal CUBIC;
-	public static final EnchVal PLANE;
-	public static final EnchVal DRILL;
-	public static final EnchVal VIEN;
-	public static final EnchVal TREE;
-	public static final EnchVal CHUNK_CUBIC;
-	public static final EnchVal CHUNK_PLANE;
 	public static final EnchVal INVINCIBLE;
+
+	public static final EnchVal.Legacy<FreezingBladeEnchantment> FREEZING_BLADE;
+	public static final EnchVal.Legacy<HellfireBladeEnchantment> HELLFIRE_BLADE;
+	public static final EnchVal.Legacy<CurseBladeEnchantment> CURSE_BLADE;
+	public static final EnchVal.Legacy<SharpBladeEnchantment> SHARP_BLADE;
+	public static final EnchVal.Legacy<FreezingThornEnchantment> FREEZING_THORN;
+	public static final EnchVal.Legacy<HellfireThornEnchantment> HELLFIRE_THORN;
+
+	public static final EnchVal.Legacy<RangeDiggingEnchantment>
+			CUBIC, PLANE, DRILL, VIEN, TREE, CHUNK_CUBIC, CHUNK_PLANE;
 
 
 	public static final AttVal.PlayerVal<SoulBoundPlayerData> ATT_SOULBOUND = AttReg.of(L2Complements.REG).player("soulbound",
@@ -175,15 +171,15 @@ public class LCEnchantments {
 							.color(gold).special(CRAFT, order.of(weapon)),
 					VoidTouchEnchantment::new);
 
-			ICE_BLADE = REG.enchLegacy("freezing_blade", "Freezing Blade", "Apply %s on target",
+			FREEZING_BLADE = REG.enchLegacy("freezing_blade", "Freezing Blade", "Apply %s on target",
 					e -> e.items(ItemTags.WEAPON_ENCHANTABLE).maxLevel(3)
 							.color(green).special(CRAFT, order.of(weapon)),
-					IceBladeEnchantment::new);
+					FreezingBladeEnchantment::new);
 
 			HELLFIRE_BLADE = REG.enchLegacy("hellfire_blade", "Hellfire Blade", "Apply %s on target",
 					e -> e.items(ItemTags.WEAPON_ENCHANTABLE).maxLevel(3)
 							.color(green).special(CRAFT, order.of(weapon)),
-					SoulFlameBladeEnchantment::new);
+					HellfireBladeEnchantment::new);
 
 			CURSE_BLADE = REG.enchLegacy("cursed_blade", "Cursed Blade", "Apply %s on target",
 					e -> e.items(ItemTags.WEAPON_ENCHANTABLE).maxLevel(3)
@@ -195,44 +191,50 @@ public class LCEnchantments {
 							.color(green).special(CRAFT, order.of(weapon)),
 					SharpBladeEnchantment::new);
 
-			ICE_THORN = REG.enchLegacy("freezing_thorn", "Freezing Thorn", "When attacked, apply %s to attacker.",
+			FREEZING_THORN = REG.enchLegacy("freezing_thorn", "Freezing Thorn", "When attacked, apply %s to attacker.",
 					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).group(EquipmentSlotGroup.ARMOR)
 							.exclusive(LCTagGen.THORN).tags(LCTagGen.THORN).maxLevel(3)
 							.color(green).special(CRAFT, order.of(armor)),
-					IceThornEnchantment::new);
+					FreezingThornEnchantment::new);
 
 			HELLFIRE_THORN = REG.enchLegacy("hellfire_thorn", "Hellfire Thorn", "When attacked, apply %s to attacker.",
 					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).group(EquipmentSlotGroup.ARMOR)
 							.exclusive(LCTagGen.THORN).tags(LCTagGen.THORN)
 							.color(green).special(CRAFT, order.of(armor)),
-					FlameThornEnchantment::new);
+					HellfireThornEnchantment::new);
 
 		}
 
 		{
-			IMM_PROJECTILE = REG.ench("projectile_immunity", "Projectile Immunity", "Deflects all projectiles. Make wearer immune to projectile damage.",
+			IMM_PROJECTILE = REG.enchLegacy("projectile_immunity", "Projectile Immunity", "Deflects all projectiles. Make wearer immune to projectile damage.",
 					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
-							.color(gold).special(CRAFT, order.of(armor)));
+							.color(gold).special(CRAFT, order.of(armor)),
+					BannableEnchantment::new);
 
-			IMM_FIRE = REG.ench("fire_immunity", "Fire Immunity", "Puts down fire. Makes wearer immune to fire damage.",
+			IMM_FIRE = REG.enchLegacy("fire_immunity", "Fire Immunity", "Puts down fire. Makes wearer immune to fire damage.",
 					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
-							.color(gold).special(CRAFT, order.of(armor)));
+							.color(gold).special(CRAFT, order.of(armor)),
+					BannableEnchantment::new);
 
-			IMM_ENVIRONMENT = REG.ench("environment_immunity", "Environment Immunity", "Makes wearer immune to damage without attacker.",
+			IMM_ENVIRONMENT = REG.enchLegacy("environment_immunity", "Environment Immunity", "Makes wearer immune to damage without attacker.",
 					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
-							.color(gold).special(CRAFT, order.of(armor)));
+							.color(gold).special(CRAFT, order.of(armor)),
+					BannableEnchantment::new);
 
-			IMM_EXPLOSION = REG.ench("explosion_immunity", "Explosion Immunity", "Makes wearer immune to explosion damage.",
+			IMM_EXPLOSION = REG.enchLegacy("explosion_immunity", "Explosion Immunity", "Makes wearer immune to explosion damage.",
 					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
-							.color(gold).special(CRAFT, order.of(armor)));
+							.color(gold).special(CRAFT, order.of(armor)),
+					BannableEnchantment::new);
 
-			IMM_MAGIC = REG.ench("magic_immunity", "Magic Immunity", "Makes wearer immune to magic damage.",
+			IMM_MAGIC = REG.enchLegacy("magic_immunity", "Magic Immunity", "Makes wearer immune to magic damage.",
 					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
-							.color(gold).special(CRAFT, order.of(armor)));
+							.color(gold).special(CRAFT, order.of(armor)),
+					BannableEnchantment::new);
 
-			INVINCIBLE = REG.ench("invincible", "Invincible (Creative Only)", "Makes wearer immune to all damage.",
+			INVINCIBLE = REG.enchLegacy("invincible", "Invincible (Creative Only)", "Makes wearer immune to all damage.",
 					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
-							.color(gold).special(CRAFT, order.of(armor)));
+							.color(gold).special(CRAFT, order.of(armor)),
+					BannableEnchantment::new);
 
 			IMM_MATES = REG.ench("friendly_fire_protection", "Friendly Fire Protection", "Makes wearer immune to damage from its owner and followers.",
 					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)

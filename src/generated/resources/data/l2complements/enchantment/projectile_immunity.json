@@ -16,6 +16,9 @@
         "base": "gold",
         "desc": "gray"
       }
+    ],
+    "l2core:legacy": [
+      "l2complements:projectile_immunity"
     ]
   },
   "exclusive_set": "#l2complements:immunity",
@@ -29,7 +32,9 @@
     "per_level_above_first": 5
   },
   "primary_items": "#minecraft:enchantable/armor",
-  "slots": [],
+  "slots": [
+    "armor"
+  ],
   "supported_items": "#minecraft:enchantable/armor",
   "weight": 1
 }

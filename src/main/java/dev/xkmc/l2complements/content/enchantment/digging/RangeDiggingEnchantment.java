@@ -108,7 +108,28 @@ public class RangeDiggingEnchantment extends LegacyEnchantment implements Custom
 	}
 
 	@Override
-	public List<Component> descFull(int lv, String key, boolean alt, boolean book, EnchColor color) {
+	public Component title(ItemStack stack, Component comp, boolean alt, boolean book, EnchColor color) {
+		var ans = DiggerHelper.getDigger(stack);
+		if (ans != null) {
+			if (ans.digger() != this) {
+				return Component.literal("-> ").withStyle(ChatFormatting.DARK_GRAY)
+						.append(comp.copy().withStyle(color.base()));
+			} else {
+				return Component.literal("-> ").withStyle(ChatFormatting.GRAY)
+						.append(comp.copy().withStyle(color.base(), ChatFormatting.ITALIC));
+			}
+		}
+		return comp.copy().withStyle(color.base());
+	}
+
+	@Override
+	public List<Component> descFull(ItemStack stack, int lv, String key, boolean alt, boolean book, EnchColor color) {
+		var ans = DiggerHelper.getDigger(stack);
+		if (ans != null) {
+			if (ans.digger() != this) {
+				return List.of();
+			}
+		}
 		return breaker.descFull(lv, key, alt, book);
 	}
 

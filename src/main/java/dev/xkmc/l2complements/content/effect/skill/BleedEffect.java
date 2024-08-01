@@ -6,11 +6,13 @@ import dev.xkmc.l2core.base.effects.api.DelayedEntityRender;
 import dev.xkmc.l2core.base.effects.api.ForceEffect;
 import dev.xkmc.l2core.base.effects.api.IconOverlayEffect;
 import dev.xkmc.l2core.base.effects.api.InherentEffect;
+import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 
@@ -25,9 +27,8 @@ public class BleedEffect extends InherentEffect implements ForceEffect, IconOver
 		addAttributeModifier(Attributes.ATTACK_DAMAGE, ID_ATK, -0.1F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
 	}
 
-	//@Override
-	public double getAttributeModifierValue(int amp, AttributeModifier mod) {
-		return 0;//TODO Math.pow(1 + mod.getAmount(), amp + 1) - 1;
+	public double getAttributeModifierValue(double amount, int amplifier, Holder<Attribute> attribute, AttributeModifier.Operation operation, ResourceLocation id) {
+		return Math.pow(1 + amount, amplifier + 1) - 1;
 	}
 
 	@Override

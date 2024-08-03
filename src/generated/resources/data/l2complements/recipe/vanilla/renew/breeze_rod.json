@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "l2core:bool_config",
+      "expected": true,
+      "line": [
+        "recipe",
+        "enableVanillaItemRecipe"
+      ],
+      "path": "l2configs/l2complements-common.toml"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "l2complements:storm_core"
+    },
+    "B": {
+      "item": "l2complements:captured_wind"
+    },
+    "C": {
+      "item": "l2complements:hard_ice"
+    }
+  },
+  "pattern": [
+    " BC",
+    "BAB",
+    "CB "
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:breeze_rod"
+  }
+}

@@ -1,4 +1,4 @@
-// 1.21	2024-08-01T10:13:15.798242	Registrate Provider for l2complements [Data Maps, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Patchouli Provider, Tags (mob_effect), Tags (attribute), Registries, Tags (enchantment), Tags (damage_type), Recipes]
+// 1.21	2024-08-03T14:18:15.550584	Registrate Provider for l2complements [Data Maps, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Patchouli Provider, Tags (mob_effect), Tags (attribute), Registries, Tags (enchantment), Tags (damage_type), Recipes]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
@@ -207,6 +207,7 @@ aaa97c649a801fb76b9afd43297f6db9afdfcef9 data/l2complements/advancement/recipes/
 fe77ce532ca0b696f8474465d37122c4839ab055 data/l2complements/advancement/recipes/misc/eggs/animal/pig_spawn_egg.json
 95188ce86516e7291274f734d7a621b17f4a93a0 data/l2complements/advancement/recipes/misc/eggs/animal/rabbit_spawn_egg.json
 025177d8a65249ea3678b87b393d7dbbdfccdd83 data/l2complements/advancement/recipes/misc/eggs/animal/sheep_spawn_egg.json
+51b7f53bf4ee7e807d18ab5a092152e52bfc0b01 data/l2complements/advancement/recipes/misc/eggs/aquatic_alternate/armadillo_spawn_egg.json
 48b16b3dfffdee089c5ab1dbe96e92fb29cdef0b data/l2complements/advancement/recipes/misc/eggs/aquatic_alternate/cod_bucket.json
 33880535b48fda582dc1f449eeaf77592de6fece data/l2complements/advancement/recipes/misc/eggs/aquatic_alternate/salmon_bucket.json
 497c547ee6973ccd0152311e1398cd237a17d602 data/l2complements/advancement/recipes/misc/eggs/aquatic_alternate/tropical_fish_bucket.json
@@ -218,6 +219,7 @@ f6ebdeae51aef9e8257108d0497c1e4083d7e73f data/l2complements/advancement/recipes/
 a32f00a439f03e0cf634321e9ed2a0ba0333ffc9 data/l2complements/advancement/recipes/misc/eggs/aquatic_spawn/squid_spawn_egg.json
 ffa0df4b558de0507ae2898fdfec101880a6f30a data/l2complements/advancement/recipes/misc/eggs/aquatic_spawn/tropical_fish_spawn_egg.json
 f981bb7b012d2faaca56b0ac9f75a8d2f2d2d87d data/l2complements/advancement/recipes/misc/eggs/aquatic_spawn/turtle_spawn_egg.json
+0c160205350a6e1ffea120662294a013d56b132a data/l2complements/advancement/recipes/misc/eggs/undead/bogged_spawn_egg.json
 74a3b96677dfbfccac040c187fa6ea5b0d14ad9c data/l2complements/advancement/recipes/misc/eggs/undead/drowned_spawn_egg.json
 05ab3247b39e7fb79ca24cdf5537faec52a14f4a data/l2complements/advancement/recipes/misc/eggs/undead/ghast_spawn_egg.json
 a4dd37d53f9bbbc8b38a0454054c4abecfbc7e67 data/l2complements/advancement/recipes/misc/eggs/undead/husk_spawn_egg.json
@@ -377,10 +379,12 @@ b5a114cb52cc947e24e882757736b2714c853fb7 data/l2complements/advancement/recipes/
 7bd123cd995457e20adaea8c86c50850df2eac7d data/l2complements/advancement/recipes/misc/storage/totemic_gold_ingot_storage.json
 141c63b71b6d6aa93d3de4571057a32de013d769 data/l2complements/advancement/recipes/misc/storage/totemic_gold_ingot_unpack.json
 cf53d72dff6cd8ea86a6768c5f7e7f7ffd7b7c80 data/l2complements/advancement/recipes/misc/vanilla/renew/ancient_debris.json
+4030ec11e7aad76826081519c8b0df0c15ffc160 data/l2complements/advancement/recipes/misc/vanilla/renew/breeze_rod.json
 a0e580974cbe9c1a9a3fed438c5fccc3f2b48418 data/l2complements/advancement/recipes/misc/vanilla/renew/echo_shard.json
 6bc98ca407b5643e31a03b9c933a7c85ed384edb data/l2complements/advancement/recipes/misc/vanilla/renew/elytra.json
 62b16f1571364e116f989ef01c4d446e4299064c data/l2complements/advancement/recipes/misc/vanilla/renew/gilded_blackstone.json
 f8bc9458cb5538999e1d628452e5dad2f32494ee data/l2complements/advancement/recipes/misc/vanilla/renew/heart_of_the_sea.json
+7626bc67c9137746c23b12fedb9861285b308a4a data/l2complements/advancement/recipes/misc/vanilla/renew/heavy_core.json
 fce5d9c789751bd7d54d0ecc3e55e1fbfcabd1d7 data/l2complements/advancement/recipes/misc/vanilla/renew/netherite_upgrade_smithing_template.json
 4ff73505ea9b69c4fa6277a271fa6625038b4df2 data/l2complements/advancement/recipes/misc/vanilla/renew/reinforced_deepslate.json
 dc708ee4c21eaa75080546062867baa727df0108 data/l2complements/advancement/recipes/misc/vanilla/upgrade/diamond_axe.json
@@ -511,6 +515,7 @@ aba82e5a41e0003f94112123120d091e5aac6e38 data/l2complements/recipe/eggs/animal/c
 2daab7a68d50a0ce022885300174ad6766c0d929 data/l2complements/recipe/eggs/animal/pig_spawn_egg.json
 b7d6d388dab2e9cb9cf4d56c7b4de8f09a4c46c6 data/l2complements/recipe/eggs/animal/rabbit_spawn_egg.json
 614aeacd8d6b9a6103634abb8adc35387d4b8742 data/l2complements/recipe/eggs/animal/sheep_spawn_egg.json
+6dbfe9d3c5a3b7e4330f3cc647705a29c47e5df9 data/l2complements/recipe/eggs/aquatic_alternate/armadillo_spawn_egg.json
 6993970636ae7f3662855f0b2a4a1d4eab983eea data/l2complements/recipe/eggs/aquatic_alternate/cod_bucket.json
 4ad684e131dd6f4d463e7c30bc52d23888382dab data/l2complements/recipe/eggs/aquatic_alternate/salmon_bucket.json
 a3d8aedf18117ca62bcb795c95f34bda5cf332cb data/l2complements/recipe/eggs/aquatic_alternate/tropical_fish_bucket.json
@@ -522,6 +527,7 @@ a7ec24829a94a7d6184252466e7b6fb0269aa339 data/l2complements/recipe/eggs/aquatic_
 733bb1f00f61bc9e37ea91861e7c6f3cbb444e41 data/l2complements/recipe/eggs/aquatic_spawn/squid_spawn_egg.json
 26f524c06c9f5243d0e165aba114f37fcbfc8c9f data/l2complements/recipe/eggs/aquatic_spawn/tropical_fish_spawn_egg.json
 a5d63217dfeb9fe8fcc44a8899aa2176d87d0b1b data/l2complements/recipe/eggs/aquatic_spawn/turtle_spawn_egg.json
+df129c3421c784b8c2dd691a5bfceddbacb129e1 data/l2complements/recipe/eggs/undead/bogged_spawn_egg.json
 51e7b8003e24f22934a6b7105acb4834624db445 data/l2complements/recipe/eggs/undead/drowned_spawn_egg.json
 9fc3f459ee6b4bd7d012d0062a112b0d0e00ca24 data/l2complements/recipe/eggs/undead/ghast_spawn_egg.json
 c1ff70443f93b4b42e4091408746bbe0b374b954 data/l2complements/recipe/eggs/undead/husk_spawn_egg.json
@@ -757,10 +763,12 @@ cff6098906efa6ff47b1d1a12ebe1c138411a588 data/l2complements/recipe/storage/shulk
 10451c16bea645607dd7545f8fe7db134546017f data/l2complements/recipe/storage/totemic_gold_ingot_storage.json
 8a28f8cd8acefee1a7d62fd7b79f089a09a26cee data/l2complements/recipe/storage/totemic_gold_ingot_unpack.json
 6bfec619f0bc39b5884ae8a0f10b1b0fdfea9bc4 data/l2complements/recipe/vanilla/renew/ancient_debris.json
+c67c9efac6ae934f0b77f65f93931be87ed828e5 data/l2complements/recipe/vanilla/renew/breeze_rod.json
 a03850300b95c298dd344b7b3bca086bfe5beaa9 data/l2complements/recipe/vanilla/renew/echo_shard.json
 33a9e1f85cc1141dbebf929ad59ba363bc640cd0 data/l2complements/recipe/vanilla/renew/elytra.json
 37eef1140d55414f358a1b977cab190b92b4bba3 data/l2complements/recipe/vanilla/renew/gilded_blackstone.json
 d29e3b00bf5be09c6e323d8952fb07e027f1323a data/l2complements/recipe/vanilla/renew/heart_of_the_sea.json
+228994f6c137360604d35512c8cfca0159be6c9b data/l2complements/recipe/vanilla/renew/heavy_core.json
 9e8b97ff4f7660181bd64249b421507b44fcd70b data/l2complements/recipe/vanilla/renew/netherite_upgrade_smithing_template.json
 884f7de3511d173b989cb98b1f87b36380013dc7 data/l2complements/recipe/vanilla/renew/reinforced_deepslate.json
 044213f938c1ec15315c97c1150d540aef7ef55e data/l2complements/recipe/vanilla/upgrade/diamond_axe.json

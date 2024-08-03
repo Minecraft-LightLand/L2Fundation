@@ -1,0 +1,44 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "l2core:bool_config",
+      "expected": true,
+      "line": [
+        "recipe",
+        "enableSpawnEggRecipe"
+      ],
+      "path": "l2configs/l2complements-common.toml"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "1": {
+      "item": "minecraft:red_mushroom"
+    },
+    "2": {
+      "item": "minecraft:brown_mushroom"
+    },
+    "A": {
+      "item": "minecraft:bone"
+    },
+    "B": {
+      "item": "l2complements:cursed_droplet"
+    },
+    "C": {
+      "item": "minecraft:egg"
+    },
+    "D": {
+      "item": "minecraft:moss_block"
+    }
+  },
+  "pattern": [
+    "ADA",
+    "1B2",
+    "ACA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:bogged_spawn_egg"
+  }
+}

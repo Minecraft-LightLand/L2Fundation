@@ -1,4 +1,4 @@
-package dev.xkmc.l2complements.content.effect.skill;
+package dev.xkmc.l2complements.content.effect;
 
 import dev.xkmc.l2complements.init.data.LCDamageTypes;
 import dev.xkmc.l2complements.init.data.LCConfig;

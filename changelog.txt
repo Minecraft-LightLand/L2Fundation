@@ -1,2 +1,11 @@
-3.0.3
+3.0.2+5
+- Fix Bleed and Armor Corrosion effect, utilize NeoForge 163
+
+3.0.2+4
+- Fix LifeSync
+- Fix effect rendering
+- Fix empty click for L2Weaponry
+- Fix effect icon rendering (through L2Library 3.0.2+1)
+
+3.0.2+2
 - Add Breeze Rod, Heavy Core, Bogged spawn egg, Armadillo spawn egg

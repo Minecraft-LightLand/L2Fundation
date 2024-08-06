@@ -1,8 +1,7 @@
-package dev.xkmc.l2complements.content.effect.skill;
+package dev.xkmc.l2complements.content.effect;
 
 import dev.xkmc.l2core.base.effects.EffectUtil;
 import dev.xkmc.l2core.base.effects.api.InherentEffect;
-import dev.xkmc.l2serial.util.Wrappers;
 import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;

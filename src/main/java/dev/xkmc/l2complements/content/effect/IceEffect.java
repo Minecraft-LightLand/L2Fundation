@@ -1,16 +1,14 @@
-package dev.xkmc.l2complements.content.effect.force;
+package dev.xkmc.l2complements.content.effect;
 
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2core.base.effects.api.DelayedEntityRender;
-import dev.xkmc.l2core.base.effects.api.ForceEffect;
 import dev.xkmc.l2core.base.effects.api.IconOverlayEffect;
-import dev.xkmc.l2core.base.effects.api.InherentEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 
-public class IceEffect extends InherentEffect implements ForceEffect, IconOverlayEffect {
+public class IceEffect extends BaseEffect implements IconOverlayEffect {
 
 	public IceEffect(MobEffectCategory type, int color) {
 		super(type, color);

@@ -83,7 +83,7 @@ public class LCBEWLR extends BlockEntityWithoutLevelRenderer {
 		translateWither(poseStack, type);
 		wither_armor.render(poseStack, bufferSource, light, wither,
 				0, 0,
-				Minecraft.getInstance().getTimer().getGameTimeDeltaTicks(), wither.tickCount,
+				Minecraft.getInstance().getTimer().getGameTimeDeltaPartialTick(true), wither.tickCount,
 				0, 0);
 		poseStack.popPose();
 	}

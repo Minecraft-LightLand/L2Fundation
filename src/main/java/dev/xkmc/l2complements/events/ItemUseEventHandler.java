@@ -31,7 +31,7 @@ public class ItemUseEventHandler {
 	@SubscribeEvent
 	public static void onPlayerLeftClickEmpty(PlayerInteractEvent.LeftClickEmpty event) {
 		if (event.getEntity().level().isClientSide()) {
-			L2Complements.HANDLER.toServer(new EmptyRightClickToServer(false, event.getHand() == InteractionHand.MAIN_HAND));
+			L2Complements.HANDLER.toServer(new EmptyRightClickToServer(event.getHand() == InteractionHand.MAIN_HAND, false));
 		}
 		execute(event.getItemStack(), event, ItemClickHandler::onPlayerLeftClickEmpty);
 	}

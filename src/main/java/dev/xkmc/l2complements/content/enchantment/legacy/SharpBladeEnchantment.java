@@ -1,6 +1,6 @@
 package dev.xkmc.l2complements.content.enchantment.legacy;
 
-import dev.xkmc.l2complements.content.effect.skill.StackingEffect;
+import dev.xkmc.l2complements.content.effect.StackingEffect;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2core.init.reg.ench.CustomDescEnchantment;

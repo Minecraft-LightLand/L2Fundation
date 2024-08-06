@@ -1,4 +1,4 @@
-// 1.21	2024-08-03T14:18:15.550584	Registrate Provider for l2complements [Data Maps, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Patchouli Provider, Tags (mob_effect), Tags (attribute), Registries, Tags (enchantment), Tags (damage_type), Recipes]
+// 1.21	2024-08-05T18:14:18.776042	Registrate Provider for l2complements [Data Maps, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Patchouli Provider, Tags (mob_effect), Tags (attribute), Registries, Tags (enchantment), Tags (damage_type), Recipes]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
@@ -808,7 +808,7 @@ d0d10d015074535d1001cbc559ccc2e5681a8fa2 data/l2complements/tags/item/delicate_b
 705d7231c38360f5704c5ce925728f52ff743848 data/l2complements/tags/item/enchantable/weapon_mining.json
 fd4f146921b8ab1bbcbde1bfb45c859679730f40 data/l2complements/tags/item/hide_with_invisibility.json
 9f1119c6fdd4c13eac16f64322754cb3c4c99bf1 data/l2complements/tags/item/l2c_legendary.json
-b307f7df6c3f4814c759c845fbe07cf91ee6db85 data/l2complements/tags/mob_effect/skill_effect.json
+28fd3d33505961217659dc066270c133d41a7c1a data/l2complements/tags/mob_effect/skill_effect.json
 cf17f3c45c8498326f0fc253954bea43ecc5a51a data/l2complements/trim_material/eternium.json
 7163ae527eba8393f3bea0a343bdfda07f863da4 data/l2complements/trim_material/poseidite.json
 95f91566703e695f449a95388df2227086041a50 data/l2complements/trim_material/sculkium.json
@@ -823,10 +823,12 @@ e37ba910b8c93bc8d4baf7b90643a6b16e56e0bb data/minecraft/tags/block/anvil.json
 6ca30f314d5b5c27b3dd994fd64170066b3940c9 data/minecraft/tags/block/needs_stone_tool.json
 e2b353a13904df5806ded55399b3d21feaf3e9d8 data/minecraft/tags/damage_type/avoids_guardian_thorns.json
 43d4130dd268d43e99fe1e1bd8528f67fc1695c1 data/minecraft/tags/damage_type/bypasses_armor.json
+244ba49a0b1b82d1be80af27a746237dba14b331 data/minecraft/tags/damage_type/bypasses_cooldown.json
 b0ad167a9b1ff9d27b746621f0945ae180ec8998 data/minecraft/tags/damage_type/bypasses_effects.json
 b0ad167a9b1ff9d27b746621f0945ae180ec8998 data/minecraft/tags/damage_type/bypasses_enchantments.json
 b0ff9b20b6f09e0e62a26bfd030c66c53d92358c data/minecraft/tags/damage_type/bypasses_invulnerability.json
 b0ad167a9b1ff9d27b746621f0945ae180ec8998 data/minecraft/tags/damage_type/bypasses_resistance.json
+244ba49a0b1b82d1be80af27a746237dba14b331 data/minecraft/tags/damage_type/no_impact.json
 43d4130dd268d43e99fe1e1bd8528f67fc1695c1 data/minecraft/tags/damage_type/no_knockback.json
 332c35a3694d61c9ee0a4a50c99a0ab9077672ed data/minecraft/tags/entity_type/impact_projectiles.json
 e37ba910b8c93bc8d4baf7b90643a6b16e56e0bb data/minecraft/tags/item/anvil.json

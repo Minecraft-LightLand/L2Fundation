@@ -1,10 +1,8 @@
-package dev.xkmc.l2complements.content.effect.force;
+package dev.xkmc.l2complements.content.effect;
 
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2core.base.effects.api.DelayedEntityRender;
-import dev.xkmc.l2core.base.effects.api.ForceEffect;
 import dev.xkmc.l2core.base.effects.api.IconOverlayEffect;
-import dev.xkmc.l2core.base.effects.api.InherentEffect;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,7 +10,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.neoforged.neoforge.common.NeoForgeMod;
 
-public class IncarcreationEffect extends InherentEffect implements ForceEffect, IconOverlayEffect {
+public class IncarcreationEffect extends BaseEffect implements IconOverlayEffect {
 
 	private static final ResourceLocation ID_SLOW = L2Complements.loc("incarceration_slow");
 	private static final ResourceLocation ID_FLY = L2Complements.loc("incarceration_fly");

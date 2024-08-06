@@ -1,10 +1,9 @@
 package dev.xkmc.l2complements.events;
 
 import dev.xkmc.l2complements.compat.CurioCompat;
-import dev.xkmc.l2complements.content.effect.skill.CleanseEffect;
-import dev.xkmc.l2complements.content.effect.skill.SkillEffect;
-import dev.xkmc.l2complements.content.enchantment.digging.DiggerHelper;
+import dev.xkmc.l2complements.content.effect.CleanseEffect;
 import dev.xkmc.l2complements.content.enchantment.core.SoulBoundPlayerData;
+import dev.xkmc.l2complements.content.enchantment.digging.DiggerHelper;
 import dev.xkmc.l2complements.content.feature.EntityFeature;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
@@ -128,7 +127,7 @@ public class MagicEventHandler {
 	}
 
 	public static boolean isSkill(MobEffectInstance ins, LivingEntity entity) {
-		if (ins.getEffect() instanceof SkillEffect)
+		if (ins.getEffect().is(LCTagGen.SKILL_EFFECT))
 			return true;
 		var pred = LCConfig.SERVER.cleansePredicate.get();
 		if (ins.getEffect().value().isBeneficial() &&

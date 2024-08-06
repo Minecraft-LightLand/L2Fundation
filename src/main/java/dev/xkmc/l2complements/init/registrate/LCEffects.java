@@ -2,10 +2,7 @@ package dev.xkmc.l2complements.init.registrate;
 
 
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
-import dev.xkmc.l2complements.content.effect.force.*;
-import dev.xkmc.l2complements.content.effect.skill.BleedEffect;
-import dev.xkmc.l2complements.content.effect.skill.CleanseEffect;
-import dev.xkmc.l2complements.content.effect.skill.EmeraldPopeEffect;
+import dev.xkmc.l2complements.content.effect.*;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
 import net.minecraft.core.Holder;

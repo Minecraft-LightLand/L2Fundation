@@ -1,20 +1,17 @@
-package dev.xkmc.l2complements.content.effect.skill;
+package dev.xkmc.l2complements.content.effect;
 
 import dev.xkmc.l2complements.events.MagicEventHandler;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2core.base.effects.api.DelayedEntityRender;
-import dev.xkmc.l2core.base.effects.api.ForceEffect;
 import dev.xkmc.l2core.base.effects.api.IconOverlayEffect;
-import dev.xkmc.l2core.base.effects.api.InherentEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeMap;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CleanseEffect extends InherentEffect implements ForceEffect, IconOverlayEffect, SkillEffect {
+public class CleanseEffect extends BaseEffect implements IconOverlayEffect {
 
 	private static int recursive = 0;
 

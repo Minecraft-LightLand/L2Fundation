@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.l2complements.content.effect.skill;
+package dev.xkmc.l2complements.content.effect;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

@@ -5,6 +5,8 @@
     "minecraft:hero_of_the_village",
     "minecraft:dolphins_grace",
     "minecraft:conduit_power",
-    "minecraft:water_breathing"
+    "minecraft:water_breathing",
+    "l2complements:cleanse",
+    "l2complements:emerald_splash"
   ]
 }

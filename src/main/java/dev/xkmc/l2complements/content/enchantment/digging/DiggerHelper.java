@@ -58,7 +58,7 @@ public class DiggerHelper {
 				LCItems.DIGGER_SEL.set(stack, ent.holder().unwrapKey().orElseThrow().location().toString());
 				return;
 			}
-			if (ent.holder().value() == current.ench().value()) {
+			if (ent.holder().value() == current.ench().value()) {//TODO fix
 				current = null;
 			}
 		}

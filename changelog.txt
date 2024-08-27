@@ -1,3 +1,8 @@
+3.0.2+6
+- Fix Poseidite and Sculkium armor attributes
+- Fix Poseidite armor and weapon attributes in wet
+- Fix Armor immunity
+
 3.0.2+5
 - Fix Bleed and Armor Corrosion effect, utilize NeoForge 163
 

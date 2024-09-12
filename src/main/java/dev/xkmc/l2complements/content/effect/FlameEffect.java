@@ -28,6 +28,6 @@ public class FlameEffect extends BaseEffect implements IconOverlayEffect {
 
 	@Override
 	public DelayedEntityRender getIcon(LivingEntity entity, int lv) {
-		return DelayedEntityRender.icon(entity, L2Complements.loc("textures/effect_overlay/flame.png"));
+		return DelayedEntityRender.icon(entity, L2Complements.loc("textures/effect_overlay/soul_burning.png"));
 	}
 }

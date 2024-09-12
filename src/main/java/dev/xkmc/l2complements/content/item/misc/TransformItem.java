@@ -1,6 +1,6 @@
 package dev.xkmc.l2complements.content.item.misc;
 
-import net.minecraft.network.chat.MutableComponent;
+import dev.xkmc.l2complements.init.data.LCLang;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionHand;
@@ -21,10 +21,10 @@ public class TransformItem extends TooltipItem {
 	private final Supplier<EntityType<? extends Mob>> from;
 	private final Supplier<EntityType<? extends Mob>> to;
 
-	public TransformItem(Properties properties, Supplier<MutableComponent> sup,
+	public TransformItem(Properties properties,
 						 Supplier<EntityType<? extends Mob>> from,
 						 Supplier<EntityType<? extends Mob>> to) {
-		super(properties, sup);
+		super(properties, ()-> LCLang.Items.TRANSFORM_RUNE.get(from.get().getDescription(), to.get().getDescription()));
 		this.from = from;
 		this.to = to;
 	}

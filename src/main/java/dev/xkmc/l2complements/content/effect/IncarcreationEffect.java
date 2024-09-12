@@ -17,7 +17,7 @@ public class IncarcreationEffect extends BaseEffect implements IconOverlayEffect
 	private static final ResourceLocation ID_KB = L2Complements.loc("incarceration_kb");
 	private static final ResourceLocation ID_JUMP = L2Complements.loc("incarceration_jump");
 
-	private static final ResourceLocation ICON = L2Complements.loc("textures/effect_overlay/stone_cage.png");
+	private static final ResourceLocation ICON = L2Complements.loc("textures/effect_overlay/incarceration.png");
 
 	public IncarcreationEffect(MobEffectCategory type, int color) {
 		super(type, color);

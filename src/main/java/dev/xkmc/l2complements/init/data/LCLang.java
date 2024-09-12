@@ -1,34 +1,126 @@
 package dev.xkmc.l2complements.init.data;
 
 import com.tterrag.registrate.providers.RegistrateLangProvider;
+import dev.xkmc.l2complements.events.LCAttackListener;
 import dev.xkmc.l2complements.init.L2Complements;
+import dev.xkmc.l2complements.init.registrate.LCEffects;
+import dev.xkmc.l2complements.init.registrate.LCItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.entity.EntityType;
 
 import javax.annotation.Nullable;
 import java.util.Locale;
 
 public class LCLang {
 
-	public enum IDS {
-		WIND_BOTTLE("tooltip.misc.wind_bottle", "Used to obtain Captured Wind or Captured Bullet.", 0),
-		VOID_EYE("tooltip.misc.void_eye", "Obtained by killing an angry Enderman %s block below the void. This item kill holder in void, collect it with care.", 1),
-		SUN_MEMBRANE("tooltip.misc.sun_membrane", "Obtained by killing a sun-burning Phantom %s blocks above max build height.", 1),
-		SOUL_FLAME("tooltip.misc.soul_flame", "Obtained by killing a ghast with soul flame.", 0),
-		CAPTURED_WIND("tooltip.misc.captured_wind", "Obtained by moving faster than %s blocks per second while having Wind Bottle in hand or inventory.", 1),
-		CAPTURED_BULLET("tooltip.misc.captured_shulker_bullet", "Obtained by right clicking shulker bullet with Wind Bottle.", 0),
-		EXPLOSION_SHARD("tooltip.misc.explosion_shard", "Obtained by surviving an explosion damage of at least %s.", 1),
-		HARD_ICE("tooltip.misc.hard_ice", "Obtained by killing a Drowned with Powdered Snow.", 0),
-		STORM_CORE("tooltip.misc.storm_core", "Obtained by killing a Phantom with explosion.", 0),
-		BLACKSTONE_CORE("tooltip.misc.blackstone_core", "Obtained by killing a Piglin Brute that has Incarceration effect.", 0),
-		RESONANT_FEATHER("tooltip.misc.resonant_feather", "Obtained when a chicken survives a sonic boom attack.", 0),
-		SPACE_SHARD("tooltip.misc.space_shard", "Obtained by causing a projectile damage of at least %s.", 1),
-		FORCE_FIELD("tooltip.misc.force_field", "Obtained by killing a wither with arrow.", 0),
-		WARDEN_BONE_SHARD("tooltip.misc.warden_bone_shard", "Dropped when Warden is killed by player.", 0),
-		GUARDIAN_EYE("tooltip.misc.guardian_eye", "Dropped when Elder Guardian is killed by lightning strike.", 0),
-		GUARDIAN_RUNE("tooltip.misc.guardian_rune", "Right click guardian to turn it into an elder guardian.", 0),
-		PIGLIN_RUNE("tooltip.misc.piglin_rune", "Right click piglin to turn it into a piglin brute.", 0),
+	public static MutableComponent eff(MobEffect eff) {
+		return Component.translatable(eff.getDescriptionId()).withStyle(eff.getCategory().getTooltipFormatting());
+	}
 
+
+	public enum Items {
+		PRECURSOR("tooltip.misc.precursor", "Precursor to [%s] ans [%s].", 2),
+		EXPLOSION_KILL("tooltip.misc.explosion_kill", "Obtained by killing a %s with explosion.", 1),
+		ARROW_KILL("tooltip.misc.arrow_kill", "Obtained by killing a %s with arrow.", 1),
+		STRIKE_KILL("tooltip.misc.strike_kill", "Dropped when %s is killed by lightning strike.", 1),
+		PLAYER_KILL("tooltip.misc.player_kill", "Dropped when %s is killed by player.", 1),
+		EFFECT_KILL("tooltip.misc.effect_kill", "Obtained by killing a %s with %s effect.", 2),
+		CLICK("tooltip.misc.click", "Obtained by right clicking %s with [%s].", 2),
+		TRANSFORM_RUNE("tooltip.misc.transform_rune", "Right click %s to turn it into %s.", 2),
+
+		VOID_EYE("tooltip.misc.void_eye", "Obtained by killing an angry %s that is %s blocks into the void. This item kill holder in void, collect it with care.", 2),
+		SUN_MEMBRANE("tooltip.misc.sun_membrane", "Obtained by killing a sun-burning %s that is %s blocks above max build height.", 2),
+		CAPTURED_WIND("tooltip.misc.captured_wind", "Obtained by flying faster than %s blocks per second while having [%s] in hand or inventory.", 2),
+		EXPLOSION_SHARD("tooltip.misc.explosion_shard", "Obtained by surviving an explosion damage of at least %s.", 1),
+		HARD_ICE("tooltip.misc.hard_ice", "Obtained by killing a %s with Powdered Snow.", 1),
+		RESONANT_FEATHER("tooltip.misc.resonant_feather", "Obtained when a %s survives a sonic boom attack.", 1),
+
+		SPACE_SHARD("tooltip.misc.space_shard", "Obtained by causing a projectile damage of at least %s.", 1),
+
+		;
+
+		final String id, def;
+		final int count;
+
+		Items(String id, String def, int count) {
+			this.id = id;
+			this.def = def;
+			this.count = count;
+		}
+
+		public MutableComponent get(Object... objs) {
+			if (objs.length != count)
+				throw new IllegalArgumentException("for " + name() + ": expect " + count + " parameters, got " + objs.length);
+			return translate(L2Complements.MODID + "." + id, objs);
+		}
+
+		public static MutableComponent windBottle() {
+			return PRECURSOR.get(LCItems.CAPTURED_WIND.asStack().getHoverName(), LCItems.CAPTURED_BULLET.asStack().getHoverName());
+		}
+
+		public static MutableComponent voidEye() {
+			return VOID_EYE.get(EntityType.ENDERMAN.getDescription(), LCConfig.SERVER.belowVoid.get());
+		}
+
+		public static MutableComponent sunMembrane() {
+			return SUN_MEMBRANE.get(EntityType.PHANTOM.getDescription(), LCConfig.SERVER.phantomHeight.get());
+		}
+
+		public static MutableComponent soulFlame() {
+			return EFFECT_KILL.get(EntityType.GHAST.getDescription(), eff(LCEffects.FLAME.get()));
+		}
+
+		public static MutableComponent capturedWind() {
+			return CAPTURED_WIND.get(LCConfig.SERVER.windSpeed.get() * 20, LCItems.WIND_BOTTLE.asStack().getHoverName());
+		}
+
+		public static MutableComponent capturedBullet() {
+			return CLICK.get(EntityType.SHULKER_BULLET.getDescription(), LCItems.WIND_BOTTLE.asStack().getHoverName());
+		}
+
+		public static MutableComponent explosionShard() {
+			return EXPLOSION_SHARD.get(LCConfig.SERVER.explosionDamage.get());
+		}
+
+		public static MutableComponent hardIce() {
+			return HARD_ICE.get(EntityType.DROWNED.getDescription());
+		}
+
+		public static MutableComponent stormCore() {
+			return EXPLOSION_KILL.get(EntityType.PHANTOM.getDescription());
+		}
+
+		public static MutableComponent blackstoneCore() {
+			return EFFECT_KILL.get(EntityType.PIGLIN_BRUTE.getDescription(), eff(LCEffects.INCARCERATE.get()));
+		}
+
+		public static MutableComponent resonantFeather() {
+			return RESONANT_FEATHER.get(EntityType.CHICKEN.getDescription());
+		}
+
+		public static MutableComponent forceField() {
+			return ARROW_KILL.get(EntityType.WITHER.getDescription());
+		}
+
+		public static MutableComponent wardenBoneShard() {
+			return PLAYER_KILL.get(EntityType.WARDEN.getDescription());
+		}
+
+		public static MutableComponent guardianEye() {
+			return STRIKE_KILL.get(EntityType.ELDER_GUARDIAN.getDescription());
+		}
+
+		@Nullable
+		public static MutableComponent spaceShard() {
+			if (LCAttackListener.isSpaceShardBanned()) return null;
+			return SPACE_SHARD.get(LCConfig.SERVER.spaceDamage.get());
+		}
+
+	}
+
+	public enum IDS {
 		BURNT_TITLE("jei.burnt.title", "Burning", 0),
 		BURNT_COUNT("jei.burnt.count", "One in %s chance of conversion", 1),
 		DIFFUSE_TITLE("jei.diffuse.title", "Diffusion", 0),
@@ -41,9 +133,9 @@ public class LCLang {
 		WARP_GRIND("tooltip.misc.warp_grind", "Use grindstone to remove record", 0),
 		TOTEM_DREAM("tooltip.misc.totem_dream", "Return players back to home when triggers, and becomes a fragile warp stone to go back. Valid against void damage. Also heal player to full health.", 0),
 		TOTEM_SEA("tooltip.misc.totem_sea", "It's stackable, but can only be triggered when in water or rain.", 0),
-		TOTEM_ETERNAL("tooltip.misc.totem_eternal","Reusable Totem of Dream with cool down of %s seconds",1),
+		TOTEM_ETERNAL("tooltip.misc.totem_eternal", "Reusable Totem of Dream with cool down of %s seconds", 1),
 
-		CHARGE_THROW("tooltip.misc.charge_throw","Right click to throw at target",0),
+		CHARGE_THROW("tooltip.misc.charge_throw", "Right click to throw at target", 0),
 		EFFECT_CHARGE("tooltip.misc.effect_charge", "Apply on Hit: %s", 1),
 		EXPLOSION_CHARGE("tooltip.misc.explosion_charge", "Create explosion of level %s on Hit", 1),
 		ARMOR_IMMUNE("tooltip.tool.immune", "Immune to: ", 0),
@@ -66,7 +158,7 @@ public class LCLang {
 		BANNED_ENCH("tooltip.misc.banned_ench", "Disabled", 0),
 		DIGGER_ACTIVATED("msg.digger_activated", "Activated: %s", 1),
 		TREE_CHOP("tooltip.ench.tree", "Breaks leaves as well, and doesn't cost durability when breaking leaves", 0),
-		DIGGER_ROTATE("tooltip.ench.rotate","Press keybind [%s] to toggle",1);
+		DIGGER_ROTATE("tooltip.ench.rotate", "Press keybind [%s] to toggle", 1);
 
 		final String id, def;
 		final int count;
@@ -81,22 +173,6 @@ public class LCLang {
 			if (objs.length != count)
 				throw new IllegalArgumentException("for " + name() + ": expect " + count + " parameters, got " + objs.length);
 			return translate(L2Complements.MODID + "." + id, objs);
-		}
-
-	}
-
-	public interface LangEnum<T extends Enum<T> & LangEnum<T>> {
-
-		int getCount();
-
-		@Nullable
-		default Class<? extends Enum<?>> mux() {
-			return null;
-		}
-
-		@SuppressWarnings({"unchecked"})
-		default T getThis() {
-			return (T) this;
 		}
 
 	}

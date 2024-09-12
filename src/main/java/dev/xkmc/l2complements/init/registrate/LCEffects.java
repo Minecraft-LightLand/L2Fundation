@@ -21,7 +21,7 @@ public class LCEffects {
 			"Continuously damage the entity. Bypass fire resistance.");
 	public static final SimpleEntry<MobEffect> ICE = genEffect("frost", "Frost", () -> new IceEffect(MobEffectCategory.HARMFUL, 0x7f7fff),
 			"Slow down entity, and freeze them as if they are on powdered snow.");
-	public static final SimpleEntry<MobEffect> ARMOR_REDUCE = genEffect("armor_reduce", "Armor Corrosion", () -> new ArmorReduceEffect(MobEffectCategory.HARMFUL, 0xFFFFFF),
+	public static final SimpleEntry<MobEffect> ARMOR_REDUCE = genEffect("armor_corrosion", "Armor Corrosion", () -> new ArmorReduceEffect(MobEffectCategory.HARMFUL, 0xFFFFFF),
 			"Reduce armor value significantly.");
 	public static final SimpleEntry<MobEffect> INCARCERATE = genEffect("incarceration", "Incarceration", () -> new IncarcreationEffect(MobEffectCategory.HARMFUL, 0x000000),
 			"Immobilize the entity. Making it cannot move and unaffected by external forces.");
@@ -40,7 +40,7 @@ public class LCEffects {
 		BUILDER.regPotion2("incarceration", INCARCERATE, LCItems.BLACKSTONE_CORE, 1200, 3600);
 		BUILDER.regPotion2("curse", CURSE, LCItems.CURSED_DROPLET, 3600, 9600);
 		BUILDER.regPotion2("cleanse", CLEANSE, LCItems.LIFE_ESSENCE, 3600, 9600);
-		BUILDER.interleave("armor_reduce", ARMOR_REDUCE, 600, 1200, 3600, 0, 1,
+		BUILDER.interleave("armor_corrosion", ARMOR_REDUCE, 600, 1200, 3600, 0, 1,
 				Items.MAGMA_CREAM, Potions.WEAKNESS, Potions.LONG_WEAKNESS, null,
 				Items.FERMENTED_SPIDER_EYE, Potions.FIRE_RESISTANCE, Potions.LONG_FIRE_RESISTANCE, null
 		);

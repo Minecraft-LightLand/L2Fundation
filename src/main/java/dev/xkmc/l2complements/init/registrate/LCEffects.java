@@ -2,10 +2,7 @@ package dev.xkmc.l2complements.init.registrate;
 
 
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
-import dev.xkmc.l2complements.content.effect.force.*;
-import dev.xkmc.l2complements.content.effect.skill.BleedEffect;
-import dev.xkmc.l2complements.content.effect.skill.CleanseEffect;
-import dev.xkmc.l2complements.content.effect.skill.EmeraldPopeEffect;
+import dev.xkmc.l2complements.content.effect.*;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
 import net.minecraft.core.Holder;
@@ -30,19 +27,19 @@ public class LCEffects {
 
 	public static final SimpleEntry<MobEffect> EMERALD = genEffect("emerald_splash", () -> new EmeraldPopeEffect(MobEffectCategory.NEUTRAL, 0x00FF00),
 			"Attack all surrounding enemies. Damage is based on currently player stats and weapons.");
-	public static final SimpleEntry<MobEffect> FLAME = genEffect("flame", "Soul Burning", () -> new FlameEffect(MobEffectCategory.HARMFUL, 0xFF0000),
-			"Continuously damage the entity. Bypass fire resistance, but fire-based mobs are immune to this.");
-	public static final SimpleEntry<MobEffect> ICE = genEffect("frozen", "Frost", () -> new IceEffect(MobEffectCategory.HARMFUL, 0x7f7fff),
+	public static final SimpleEntry<MobEffect> FLAME = genEffect("soul_burning", "Soul Burning", () -> new FlameEffect(MobEffectCategory.HARMFUL, 0xFF0000),
+			"Continuously damage the entity. Bypass fire resistance.");
+	public static final SimpleEntry<MobEffect> ICE = genEffect("frost", "Frost", () -> new IceEffect(MobEffectCategory.HARMFUL, 0x7f7fff),
 			"Slow down entity, and freeze them as if they are on powdered snow.");
 	public static final SimpleEntry<MobEffect> ARMOR_REDUCE = genEffect("armor_reduce", "Armor Corrosion", () -> new ArmorReduceEffect(MobEffectCategory.HARMFUL, 0xFFFFFF),
 			"Reduce armor value significantly.");
-	public static final SimpleEntry<MobEffect> INCARCERATE = genEffect("stone_cage", "Incarceration", () -> new IncarcreationEffect(MobEffectCategory.HARMFUL, 0x000000),
+	public static final SimpleEntry<MobEffect> INCARCERATE = genEffect("incarceration", "Incarceration", () -> new IncarcreationEffect(MobEffectCategory.HARMFUL, 0x000000),
 			"Immobilize the entity. Making it cannot move and unaffected by external forces.");
-	public static final SimpleEntry<MobEffect> CURSE = genEffect("curse", "Cursed", () -> new CurseEffect(MobEffectCategory.HARMFUL, 0x3f3f3f),
+	public static final SimpleEntry<MobEffect> CURSE = genEffect("curse", "Curse", () -> new CurseEffect(MobEffectCategory.HARMFUL, 0x3f3f3f),
 			"Make the entity cannot heal.");
 	public static final SimpleEntry<MobEffect> BLEED = genEffect("bleed", "Bleed", () -> new BleedEffect(MobEffectCategory.HARMFUL, 0x7f0000),
 			"Make the entity lose attack and speed, and damage the entity every 3 seconds. Stacks when applied.");
-	public static final SimpleEntry<MobEffect> CLEANSE = genEffect("cleanse", "Cleansed", () -> new CleanseEffect(MobEffectCategory.NEUTRAL, 0xffff7f),
+	public static final SimpleEntry<MobEffect> CLEANSE = genEffect("cleanse", "Cleanse", () -> new CleanseEffect(MobEffectCategory.NEUTRAL, 0xffff7f),
 			"Clear all potion effects and make the entity immune to potion effects.");
 
 	private static <T extends MobEffect> SimpleEntry<MobEffect> genEffect(String name, NonNullSupplier<T> sup, String desc) {

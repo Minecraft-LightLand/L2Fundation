@@ -60,7 +60,9 @@ public class LCTagGen {
 				MobEffects.HERO_OF_THE_VILLAGE.value(),
 				MobEffects.DOLPHINS_GRACE.value(),
 				MobEffects.CONDUIT_POWER.value(),
-				MobEffects.WATER_BREATHING.value()
+				MobEffects.WATER_BREATHING.value(),
+				LCEffects.CLEANSE.get(),
+				LCEffects.EMERALD.get()
 		);
 		pvd.addTag(L2TagGen.TRACKED_EFFECTS).add(LCEffects.FLAME.get(), LCEffects.EMERALD.get(), LCEffects.ICE.get(),
 				LCEffects.INCARCERATE.get(), LCEffects.BLEED.get(), LCEffects.CLEANSE.get(), LCEffects.CURSE.get());

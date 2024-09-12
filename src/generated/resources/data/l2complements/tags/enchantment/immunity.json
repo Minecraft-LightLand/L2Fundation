@@ -1,0 +1,9 @@
+{
+  "values": [
+    "l2complements:environment_immunity",
+    "l2complements:explosion_immunity",
+    "l2complements:magic_immunity",
+    "l2complements:invincible",
+    "l2complements:friendly_fire_protection"
+  ]
+}

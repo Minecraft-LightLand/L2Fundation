@@ -143,12 +143,14 @@ public class LCEnchantments {
 
 			LIFE_MENDING = REG.ench("life_mending", "Life Mending", "When healing, cost heal amount to repair item durability.",
 					e -> e.items(ItemTags.DURABILITY_ENCHANTABLE).maxLevel(3)
+							.exclusive(HolderSetBuilder.direct(Enchantments.MENDING))
 							.color(green).special(CRAFT, order.of(durable)));
 
 			HARDENED = REG.ench("hardened", "Hardened", "Durability loss will be capped to 1.",
 					e -> e.items(ItemTags.DURABILITY_ENCHANTABLE).effect(b -> b.withEffect(
 							EnchantmentEffectComponents.ITEM_DAMAGE, new LimitValue(() -> 1)
-					)).color(gold).special(CRAFT, order.of(durable)));
+					)).exclusive(HolderSetBuilder.direct(Enchantments.UNBREAKING))
+							.color(gold).special(CRAFT, order.of(durable)));
 
 			STABLE_BODY = REG.ench("stable_body", "Stable Body", "Player won't be knocked back when wearing chestplate with this enchantment.",
 					e -> e.items(ItemTags.CHEST_ARMOR_ENCHANTABLE).group(EquipmentSlotGroup.CHEST).effect(b -> b.withEffect(
@@ -217,27 +219,27 @@ public class LCEnchantments {
 					BannableEnchantment::new);
 
 			IMM_ENVIRONMENT = REG.enchLegacy("environment_immunity", "Environment Immunity", "Makes wearer immune to damage without attacker.",
-					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
+					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).tags(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
 							.color(gold).special(CRAFT, order.of(armor)),
 					BannableEnchantment::new);
 
 			IMM_EXPLOSION = REG.enchLegacy("explosion_immunity", "Explosion Immunity", "Makes wearer immune to explosion damage.",
-					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
+					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).tags(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
 							.color(gold).special(CRAFT, order.of(armor)),
 					BannableEnchantment::new);
 
 			IMM_MAGIC = REG.enchLegacy("magic_immunity", "Magic Immunity", "Makes wearer immune to magic damage.",
-					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
+					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).tags(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
 							.color(gold).special(CRAFT, order.of(armor)),
 					BannableEnchantment::new);
 
 			INVINCIBLE = REG.enchLegacy("invincible", "Invincible (Creative Only)", "Makes wearer immune to all damage.",
-					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
+					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).tags(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
 							.color(gold).special(CRAFT, order.of(armor)),
 					BannableEnchantment::new);
 
 			IMM_MATES = REG.ench("friendly_fire_protection", "Friendly Fire Protection", "Makes wearer immune to damage from its owner and followers.",
-					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
+					e -> e.items(ItemTags.ARMOR_ENCHANTABLE).exclusive(LCTagGen.IMMUNITY).tags(LCTagGen.IMMUNITY).group(EquipmentSlotGroup.ARMOR)
 							.color(gold).special(CRAFT, order.of(armor)));
 		}
 

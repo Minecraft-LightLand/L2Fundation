@@ -32,7 +32,9 @@ public class LCDamageTypes extends DamageTypeAndTagsGen {
 		new DamageTypeHolder(BLEED, new DamageType("bleed", DamageScaling.NEVER, 0.1f))
 				.add(DamageTypeTags.BYPASSES_ARMOR, L2DamageTypes.NO_SCALE, DamageTypeTags.NO_KNOCKBACK).add(L2DamageTypes.BYPASS_MAGIC);
 		new DamageTypeHolder(LIFE_SYNC, new DamageType("life_sync", DamageScaling.NEVER, 0f))
-				.add(DamageTypeTags.BYPASSES_ARMOR, L2DamageTypes.NO_SCALE, DamageTypeTags.NO_KNOCKBACK).add(L2DamageTypes.BYPASS_MAGIC);
+				.add(DamageTypeTags.BYPASSES_ARMOR, L2DamageTypes.NO_SCALE,
+						DamageTypeTags.NO_KNOCKBACK, DamageTypeTags.NO_IMPACT,
+						DamageTypeTags.BYPASSES_COOLDOWN).add(L2DamageTypes.BYPASS_MAGIC);
 		new DamageTypeHolder(VOID_EYE, new DamageType("void_eye", DamageScaling.NEVER, 0f))
 				.add(DamageTypeTags.NO_KNOCKBACK).add(L2DamageTypes.BYPASS_INVUL);
 	}

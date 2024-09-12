@@ -18,6 +18,7 @@
       }
     ]
   },
+  "exclusive_set": "minecraft:mending",
   "max_cost": {
     "base": 10,
     "per_level_above_first": 5

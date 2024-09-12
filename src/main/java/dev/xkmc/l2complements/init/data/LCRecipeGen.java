@@ -284,6 +284,21 @@ public class LCRecipeGen {
 					.define('C', Items.NETHERRACK)
 					.define('A', LCItems.BLACKSTONE_CORE.get())
 					.save(cond, getID(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE));
+
+			unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.BREEZE_ROD, 1)::unlockedBy, LCItems.STORM_CORE.get())
+					.pattern(" BC").pattern("BAB").pattern("CB ")
+					.define('B', LCItems.CAPTURED_WIND.get())
+					.define('C', LCItems.HARD_ICE.get())
+					.define('A', LCItems.STORM_CORE.get())
+					.save(cond, getID(Items.BREEZE_ROD));
+
+			unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.HEAVY_CORE, 1)::unlockedBy, LCItems.BLACKSTONE_CORE.get())
+					.pattern("ABA").pattern("BCB").pattern("ABA")
+					.define('B', LCItems.EXPLOSION_SHARD.get())
+					.define('C', LCItems.BLACKSTONE_CORE.get())
+					.define('A', Items.ANVIL)
+					.save(cond, getID(Items.HEAVY_CORE));
+
 		}
 
 		currentFolder = "vanilla/upgrade/";
@@ -744,6 +759,16 @@ public class LCRecipeGen {
 						.define('D', Items.SNOWBALL)
 						.save(cond, getID(Items.STRAY_SPAWN_EGG));
 
+				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.BOGGED_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
+						.pattern("ADA").pattern("1B2").pattern("ACA")
+						.define('A', Items.BONE)
+						.define('B', LCItems.CURSED_DROPLET.get())
+						.define('C', Items.EGG)
+						.define('D', Items.MOSS_BLOCK)
+						.define('1', Items.RED_MUSHROOM)
+						.define('2', Items.BROWN_MUSHROOM)
+						.save(cond, getID(Items.BOGGED_SPAWN_EGG));
+
 				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.WITHER_SKELETON_SPAWN_EGG, 1)::unlockedBy, LCItems.CURSED_DROPLET.get())
 						.pattern("ADA").pattern("ABA").pattern("ACA")
 						.define('A', Items.BONE)
@@ -917,6 +942,14 @@ public class LCRecipeGen {
 						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
 						.define('C', Items.TURTLE_EGG)
 						.save(cond, getID(Items.TURTLE_SPAWN_EGG));
+
+				unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.MISC, Items.ARMADILLO_SPAWN_EGG, 1)::unlockedBy, LCItems.LIFE_ESSENCE.get())
+						.pattern("AAA").pattern("LBL").pattern("ACA")
+						.define('A', Items.ARMADILLO_SCUTE)
+						.define('B', LCItems.LIFE_ESSENCE.get())
+						.define('L', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('C', Items.EGG)
+						.save(cond, getID(Items.ARMADILLO_SPAWN_EGG));
 
 				// panda
 				// polar bear

@@ -2,10 +2,13 @@ package dev.xkmc.l2complements.content.item.equipments;
 
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCLang;
+import dev.xkmc.l2complements.init.materials.LCMats;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2core.base.effects.EffectUtil;
 import dev.xkmc.l2damagetracker.contents.materials.generic.ExtraArmorConfig;
 import net.minecraft.ChatFormatting;
+import net.minecraft.Util;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Unit;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -22,8 +25,41 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.NeoForgeMod;
 
 import java.util.List;
+import java.util.function.Function;
 
 public class PoseiditeArmor extends ExtraArmorConfig {
+
+	private static ItemAttributeModifiers modifyDynamicAttributes(ArmorItem.Type type) {
+		var builder = ItemAttributeModifiers.builder();
+		LCMats.POSEIDITE.defaultAttributes(builder, type);
+		double factor = type.getSlot() == EquipmentSlot.CHEST || type.getSlot() == EquipmentSlot.LEGS ? 1.5 : 1;
+		var group = EquipmentSlotGroup.bySlot(type.getSlot());
+
+		builder.add(Attributes.ARMOR, new AttributeModifier(
+				L2Complements.loc("poseidite_armor." + type.getName()),
+				4 * factor,
+				AttributeModifier.Operation.ADD_VALUE), group);
+
+		builder.add(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(
+				L2Complements.loc("poseidite_toughness." + type.getName()),
+				2 * factor,
+				AttributeModifier.Operation.ADD_VALUE), group);
+
+		builder.add(Attributes.MOVEMENT_SPEED, new AttributeModifier(
+				L2Complements.loc("poseidite_walk." + type.getName()),
+				0.1 * factor,
+				AttributeModifier.Operation.ADD_MULTIPLIED_BASE), group);
+		return builder.build();
+	}
+
+	private static ItemAttributeModifiers originalAttributes(ArmorItem.Type type) {
+		return LCMats.POSEIDITE.getArmor(type.getSlot()).getDefaultInstance().get(DataComponents.ATTRIBUTE_MODIFIERS);
+	}
+
+	private static final Function<ArmorItem.Type, ItemAttributeModifiers> ATTRS =
+			Util.memoize(PoseiditeArmor::modifyDynamicAttributes);
+	private static final Function<ArmorItem.Type, ItemAttributeModifiers> ORIGINAL =
+			Util.memoize(PoseiditeArmor::originalAttributes);
 
 	@Override
 	public void configureAttributes(ItemAttributeModifiers.Builder builder, EquipmentSlot slot) {
@@ -36,31 +72,11 @@ public class PoseiditeArmor extends ExtraArmorConfig {
 	}
 
 	@Override
-	public void modifyDynamicAttributes(ItemAttributeModifiers.Builder builder, EquipmentSlot slot, ItemStack stack) {
-		if (!stack.has(LCItems.IN_WATER.get())) return;
-		double factor = slot == EquipmentSlot.CHEST || slot == EquipmentSlot.LEGS ? 1.5 : 1;
-		var group = EquipmentSlotGroup.bySlot(slot);
-
-		builder.add(Attributes.ARMOR, new AttributeModifier(
-				L2Complements.loc("poseidite_armor" + slot.getName()),
-				4 * factor,
-				AttributeModifier.Operation.ADD_VALUE), group);
-
-		builder.add(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(
-				L2Complements.loc("poseidite_toughness" + slot.getName()),
-				2 * factor,
-				AttributeModifier.Operation.ADD_VALUE), group);
-
-		builder.add(Attributes.MOVEMENT_SPEED, new AttributeModifier(
-				L2Complements.loc("poseidite_walk" + slot.getName()),
-				0.1 * factor,
-				AttributeModifier.Operation.ADD_MULTIPLIED_BASE), group);
-
-	}
-
-	@Override
 	public void onArmorTick(ItemStack stack, Level world, Player player) {
 		if (player.isInWaterRainOrBubble()) {
+			if (!stack.has(LCItems.IN_WATER.get())) {
+				stack.set(DataComponents.ATTRIBUTE_MODIFIERS, ATTRS.apply(((ArmorItem) stack.getItem()).getType()));
+			}
 			stack.set(LCItems.IN_WATER.get(), Unit.INSTANCE);
 			EquipmentSlot slot = ((ArmorItem) stack.getItem()).getEquipmentSlot();
 			if (slot == EquipmentSlot.HEAD || slot == EquipmentSlot.CHEST) {
@@ -69,7 +85,12 @@ public class PoseiditeArmor extends ExtraArmorConfig {
 			if (slot == EquipmentSlot.LEGS || slot == EquipmentSlot.FEET) {
 				EffectUtil.refreshEffect(player, new MobEffectInstance(MobEffects.DOLPHINS_GRACE, 200), player);
 			}
-		} else stack.remove(LCItems.IN_WATER);
+		} else {
+			if (stack.has(LCItems.IN_WATER.get())) {
+				stack.set(DataComponents.ATTRIBUTE_MODIFIERS, ORIGINAL.apply(((ArmorItem) stack.getItem()).getType()));
+			}
+			stack.remove(LCItems.IN_WATER);
+		}
 	}
 
 	@Override

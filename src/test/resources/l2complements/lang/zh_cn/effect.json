@@ -1,6 +1,6 @@
 {
   "effect.l2complements": {
-	"armor_reduce": "破甲",
+	"armor_corrosion": "破甲",
 	"soul_burning": "魂火",
 	"frost": "寒流",
 	"incarceration": "禁锢",
@@ -22,9 +22,9 @@
 	"resistance": "抗性之箭",
 	"long_resistance": "抗性之箭",
 	"strong_resistance": "抗性之箭",
-	"armor_reduce": "破甲之箭",
-	"long_armor_reduce": "破甲之箭",
-	"strong_armor_reduce": "破甲之箭",
+	"armor_corrosion": "破甲之箭",
+	"long_armor_corrosion": "破甲之箭",
+	"strong_armor_corrosion": "破甲之箭",
 	"emerald_splash": "虫箭-法皇之绿",
 	"long_emerald_splash": "虫箭-法皇之绿",
 	"strong_emerald_splash": "虫箭-法皇之绿",
@@ -59,9 +59,9 @@
 		  "resistance": "抗性药水",
 		  "long_resistance": "抗性药水",
 		  "strong_resistance": "抗性药水",
-		  "armor_reduce": "破甲药水",
-		  "long_armor_reduce": "药水",
-		  "strong_armor_reduce": "破甲药水",
+		  "armor_corrosion": "破甲药水",
+		  "long_armor_corrosion": "破甲药水",
+		  "strong_armor_corrosion": "破甲药水",
 		  "emerald_splash": "绿宝石水花",
 		  "long_emerald_splash": "绿宝石水花",
 		  "strong_emerald_splash": "绿宝石水花",
@@ -77,7 +77,7 @@
 	  "use_dot": true,
 	  "list": [
 		{
-		  "armor_reduce": "大幅降低护甲值",
+		  "armor_corrosion": "大幅降低护甲值",
 		  "bleed": "降低攻击和移动速度，并且每三秒造成一次伤害。可叠加",
 		  "cleanse": "清除所有效果，并且持续免疫药水效果",
 		  "curse": "持续阻止回血",

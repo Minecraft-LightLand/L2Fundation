@@ -1,0 +1,9 @@
+// 1.21.1	2024-09-12T13:34:13.220448	Global Loot Modifiers : l2complements
+a3270468ad3a5e3c38824b394ef76037570edaf4 data/l2complements/loot_modifiers/blackstone_core.json
+2100b5b5475f4ded4ab207cd9062caa0782f3f4b data/l2complements/loot_modifiers/force_field.json
+dcc49cad92be0bcd8b35ad79e726ed82b5e93da9 data/l2complements/loot_modifiers/guardian_eye.json
+cd41fcdd1c5ededab977c814cdda12cfb3b9396b data/l2complements/loot_modifiers/hard_ice.json
+2ec1dd830a80c7c94473c9a7eb3588f9a80faf23 data/l2complements/loot_modifiers/soul_flame.json
+2472145a2997e7bca12b815085b0a058c29bee9e data/l2complements/loot_modifiers/storm_core.json
+e2746f5d7fb2bcdc20954fb2744e15779d6f21d0 data/l2complements/loot_modifiers/warden_bone_shard.json
+cd8d3f259bea8495ceac6ca379f9130ffeab1672 data/neoforge/loot_modifiers/global_loot_modifiers.json

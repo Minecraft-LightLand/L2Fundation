@@ -23,6 +23,7 @@ import dev.xkmc.l2core.init.reg.simple.DCReg;
 import dev.xkmc.l2core.init.reg.simple.DCVal;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -36,6 +37,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.Tags;
@@ -188,6 +190,7 @@ public class LCItems {
 
 			SONIC_SHOOTER = REGISTRATE.item("sonic_shooter", p ->
 							new SonicShooter(p.durability(64).fireResistant().rarity(Rarity.EPIC)))
+					.tag(ItemTags.DURABILITY_ENCHANTABLE)
 					.model((ctx, pvd) -> {
 								var parent = new ModelFile.UncheckedModelFile(pvd.modLoc("item/gun"));
 								var base = pvd.getBuilder(ctx.getName()).parent(parent)
@@ -204,6 +207,7 @@ public class LCItems {
 
 			HELLFIRE_WAND = REGISTRATE.item("hellfire_wand", p ->
 							new HellfireWand(p.durability(64).fireResistant().rarity(Rarity.EPIC)))
+					.tag(ItemTags.DURABILITY_ENCHANTABLE)
 					.model((ctx, pvd) -> pvd.handheld(ctx)).defaultLang().register();
 
 			DIFFUSION_WAND = REGISTRATE.item("diffusion_wand", p ->
@@ -212,6 +216,7 @@ public class LCItems {
 
 			WINTERSTORM_WAND = REGISTRATE.item("winterstorm_wand", p ->
 							new WinterStormWand(p.durability(128).fireResistant().rarity(Rarity.RARE)))
+					.tag(ItemTags.DURABILITY_ENCHANTABLE)
 					.model((ctx, pvd) -> pvd.handheld(ctx)).defaultLang().register();
 		}
 		{

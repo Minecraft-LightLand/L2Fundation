@@ -93,6 +93,7 @@ public class L2Complements {
 		var pvd = event.getLookupProvider();
 		var helper = event.getExistingFileHelper();
 		gen.addProvider(run, new LCSpriteSourceProvider(output, pvd, helper));
+		gen.addProvider(run, new LCGLMGen(output, pvd));
 	}
 
 	public static ResourceLocation loc(String id) {

@@ -188,6 +188,7 @@ public class LCItems {
 
 			SONIC_SHOOTER = REGISTRATE.item("sonic_shooter", p ->
 							new SonicShooter(p.durability(64).fireResistant().rarity(Rarity.EPIC)))
+					.tag(ItemTags.DURABILITY_ENCHANTABLE)
 					.model((ctx, pvd) -> {
 								var parent = new ModelFile.UncheckedModelFile(pvd.modLoc("item/gun"));
 								var base = pvd.getBuilder(ctx.getName()).parent(parent)
@@ -204,6 +205,7 @@ public class LCItems {
 
 			HELLFIRE_WAND = REGISTRATE.item("hellfire_wand", p ->
 							new HellfireWand(p.durability(64).fireResistant().rarity(Rarity.EPIC)))
+					.tag(ItemTags.DURABILITY_ENCHANTABLE)
 					.model((ctx, pvd) -> pvd.handheld(ctx)).defaultLang().register();
 
 			DIFFUSION_WAND = REGISTRATE.item("diffusion_wand", p ->
@@ -212,6 +214,7 @@ public class LCItems {
 
 			WINTERSTORM_WAND = REGISTRATE.item("winterstorm_wand", p ->
 							new WinterStormWand(p.durability(128).fireResistant().rarity(Rarity.RARE)))
+					.tag(ItemTags.DURABILITY_ENCHANTABLE)
 					.model((ctx, pvd) -> pvd.handheld(ctx)).defaultLang().register();
 		}
 		{

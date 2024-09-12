@@ -24,7 +24,7 @@ public class TransformItem extends TooltipItem {
 	public TransformItem(Properties properties,
 						 Supplier<EntityType<? extends Mob>> from,
 						 Supplier<EntityType<? extends Mob>> to) {
-		super(properties, ()-> LCLang.Items.TRANSFORM_RUNE.get(from.get().getDescription(), to.get().getDescription()));
+		super(properties, () -> LCLang.Items.TRANSFORM_RUNE.get(from.get(), to.get()));
 		this.from = from;
 		this.to = to;
 	}

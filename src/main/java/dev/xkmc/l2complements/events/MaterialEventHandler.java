@@ -107,11 +107,6 @@ public class MaterialEventHandler {
 		}
 	}
 
-	@SubscribeEvent
-	public static void onPotionReg(RegisterBrewingRecipesEvent event) {
-		LCEffects.registerBrewingRecipe(event);
-	}
-
 	public static void onItemKill(Level level, Entity entity, ItemStack stack) {
 		BurntRecipe.Inv inv = new BurntRecipe.Inv();
 		inv.setItem(0, stack);

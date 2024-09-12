@@ -5,10 +5,12 @@ import dev.xkmc.l2complements.events.LCAttackListener;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCItems;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.ItemStack;
 
 import javax.annotation.Nullable;
 import java.util.Locale;
@@ -19,9 +21,13 @@ public class LCLang {
 		return Component.translatable(eff.getDescriptionId()).withStyle(eff.getCategory().getTooltipFormatting());
 	}
 
+	public static MutableComponent item(ItemStack item) {
+		return Component.empty().append(item.getHoverName()).withStyle(item.getRarity().getStyleModifier());
+	}
+
 
 	public enum Items {
-		PRECURSOR("tooltip.misc.precursor", "Precursor to [%s] ans [%s].", 2),
+		PRECURSOR("tooltip.misc.precursor", "Precursor to [%s] and [%s].", 2),
 		EXPLOSION_KILL("tooltip.misc.explosion_kill", "Obtained by killing a %s with explosion.", 1),
 		ARROW_KILL("tooltip.misc.arrow_kill", "Obtained by killing a %s with arrow.", 1),
 		STRIKE_KILL("tooltip.misc.strike_kill", "Dropped when %s is killed by lightning strike.", 1),
@@ -53,31 +59,43 @@ public class LCLang {
 		public MutableComponent get(Object... objs) {
 			if (objs.length != count)
 				throw new IllegalArgumentException("for " + name() + ": expect " + count + " parameters, got " + objs.length);
-			return translate(L2Complements.MODID + "." + id, objs);
+			Object[] ans = new Component[count];
+			for (int i = 0; i < count; i++) {
+				Component c = switch (objs[i]) {
+					case ItemStack stack -> item(stack);
+					case MobEffect eff -> eff(eff);
+					case EntityType<?> type ->
+							Component.translatable(type.getDescriptionId()).withStyle(ChatFormatting.AQUA);
+					case Number n -> Component.literal("" + n.intValue()).withStyle(ChatFormatting.AQUA);
+					default -> throw new IllegalArgumentException("Unknown type " + objs[i]);
+				};
+				ans[i] = c;
+			}
+			return translate(L2Complements.MODID + "." + id, ans);
 		}
 
 		public static MutableComponent windBottle() {
-			return PRECURSOR.get(LCItems.CAPTURED_WIND.asStack().getHoverName(), LCItems.CAPTURED_BULLET.asStack().getHoverName());
+			return PRECURSOR.get(LCItems.CAPTURED_WIND.asStack(), LCItems.CAPTURED_BULLET.asStack());
 		}
 
 		public static MutableComponent voidEye() {
-			return VOID_EYE.get(EntityType.ENDERMAN.getDescription(), LCConfig.SERVER.belowVoid.get());
+			return VOID_EYE.get(EntityType.ENDERMAN, LCConfig.SERVER.belowVoid.get());
 		}
 
 		public static MutableComponent sunMembrane() {
-			return SUN_MEMBRANE.get(EntityType.PHANTOM.getDescription(), LCConfig.SERVER.phantomHeight.get());
+			return SUN_MEMBRANE.get(EntityType.PHANTOM, LCConfig.SERVER.phantomHeight.get());
 		}
 
 		public static MutableComponent soulFlame() {
-			return EFFECT_KILL.get(EntityType.GHAST.getDescription(), eff(LCEffects.FLAME.get()));
+			return EFFECT_KILL.get(EntityType.GHAST, LCEffects.FLAME.get());
 		}
 
 		public static MutableComponent capturedWind() {
-			return CAPTURED_WIND.get(LCConfig.SERVER.windSpeed.get() * 20, LCItems.WIND_BOTTLE.asStack().getHoverName());
+			return CAPTURED_WIND.get(LCConfig.SERVER.windSpeed.get() * 20, LCItems.WIND_BOTTLE.asStack());
 		}
 
 		public static MutableComponent capturedBullet() {
-			return CLICK.get(EntityType.SHULKER_BULLET.getDescription(), LCItems.WIND_BOTTLE.asStack().getHoverName());
+			return CLICK.get(EntityType.SHULKER_BULLET, LCItems.WIND_BOTTLE.asStack());
 		}
 
 		public static MutableComponent explosionShard() {
@@ -85,31 +103,31 @@ public class LCLang {
 		}
 
 		public static MutableComponent hardIce() {
-			return HARD_ICE.get(EntityType.DROWNED.getDescription());
+			return HARD_ICE.get(EntityType.DROWNED);
 		}
 
 		public static MutableComponent stormCore() {
-			return EXPLOSION_KILL.get(EntityType.PHANTOM.getDescription());
+			return EXPLOSION_KILL.get(EntityType.PHANTOM);
 		}
 
 		public static MutableComponent blackstoneCore() {
-			return EFFECT_KILL.get(EntityType.PIGLIN_BRUTE.getDescription(), eff(LCEffects.INCARCERATE.get()));
+			return EFFECT_KILL.get(EntityType.PIGLIN_BRUTE, LCEffects.INCARCERATE.get());
 		}
 
 		public static MutableComponent resonantFeather() {
-			return RESONANT_FEATHER.get(EntityType.CHICKEN.getDescription());
+			return RESONANT_FEATHER.get(EntityType.CHICKEN);
 		}
 
 		public static MutableComponent forceField() {
-			return ARROW_KILL.get(EntityType.WITHER.getDescription());
+			return ARROW_KILL.get(EntityType.WITHER);
 		}
 
 		public static MutableComponent wardenBoneShard() {
-			return PLAYER_KILL.get(EntityType.WARDEN.getDescription());
+			return PLAYER_KILL.get(EntityType.WARDEN);
 		}
 
 		public static MutableComponent guardianEye() {
-			return STRIKE_KILL.get(EntityType.ELDER_GUARDIAN.getDescription());
+			return STRIKE_KILL.get(EntityType.ELDER_GUARDIAN);
 		}
 
 		@Nullable
@@ -178,6 +196,9 @@ public class LCLang {
 	}
 
 	public static void addTranslations(RegistrateLangProvider pvd) {
+		for (Items id : Items.values()) {
+			pvd.add(L2Complements.MODID + "." + id.id, id.def);
+		}
 		for (IDS id : IDS.values()) {
 			pvd.add(L2Complements.MODID + "." + id.id, id.def);
 		}

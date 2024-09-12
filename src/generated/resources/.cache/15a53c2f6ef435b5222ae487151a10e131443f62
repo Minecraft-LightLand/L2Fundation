@@ -1,12 +1,12 @@
-// 1.21.1	2024-09-12T09:13:16.098893	Registrate Provider for l2complements [Data Maps, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Patchouli Provider, Tags (mob_effect), Tags (attribute), Registries, Tags (enchantment), Tags (damage_type), Recipes]
+// 1.21.1	2024-09-12T10:41:34.221961	Registrate Provider for l2complements [Data Maps, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Patchouli Provider, Tags (mob_effect), Tags (attribute), Registries, Tags (enchantment), Tags (damage_type), Recipes]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
 b2a769b51ddce14c173a64b5457cccb4d8ef6a45 assets/l2complements/blockstates/sculkium_block.json
 2b88df6f8b01f3c72273ce13dbcb556f7dab321d assets/l2complements/blockstates/shulkerate_block.json
 65262ae0f886f61c163059f15c2ad1a7ba9c264a assets/l2complements/blockstates/totemic_gold_block.json
-403337a214b1f19792eff5a0717d12194e0cb860 assets/l2complements/lang/en_ud.json
-d7c6280b0ff9a6b0835a18829d6ab75c5e22ea04 assets/l2complements/lang/en_us.json
+e773c0fbbc3a3bf0c703d443dd1698a2104e9755 assets/l2complements/lang/en_ud.json
+251ccfbe67a31cb2e4d2541042311ddfc463c2ad assets/l2complements/lang/en_us.json
 bb63c088704d714f1763cb16cec8af6cd1006d66 assets/l2complements/models/block/eternium_block.json
 a45ee09acc262fd67be22de093136ad757f08e61 assets/l2complements/models/block/poseidite_block.json
 a52909a3a44a80695da32b5c3c5f931a0f72f74d assets/l2complements/models/block/sculkium_block.json
@@ -834,6 +834,7 @@ b0ad167a9b1ff9d27b746621f0945ae180ec8998 data/minecraft/tags/damage_type/bypasse
 e37ba910b8c93bc8d4baf7b90643a6b16e56e0bb data/minecraft/tags/item/anvil.json
 2e35375853c52aed8eebea49b004a031e7cd7944 data/minecraft/tags/item/axes.json
 dd515d3f4b06e1fc884572007bbb8fa84ca0b3fc data/minecraft/tags/item/chest_armor.json
+0f6017d533bea9bcf91a11b355f0b2342e0295fa data/minecraft/tags/item/enchantable/durability.json
 fd164107c6c9780424b95cac45176d5b3bc50868 data/minecraft/tags/item/foot_armor.json
 7fa9246e87c255e58e7d59ece7e9b0eebb6e4647 data/minecraft/tags/item/head_armor.json
 2476c6a13fb51a29d0e7feea0b2cf2b6a88a36ef data/minecraft/tags/item/hoes.json

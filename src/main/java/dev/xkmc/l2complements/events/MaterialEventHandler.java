@@ -4,16 +4,12 @@ import dev.xkmc.l2complements.content.item.misc.WarpStone;
 import dev.xkmc.l2complements.content.recipe.BurntRecipe;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCConfig;
-import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2complements.init.registrate.LCRecipes;
-import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.monster.*;
-import net.minecraft.world.entity.monster.piglin.PiglinBrute;
-import net.minecraft.world.entity.monster.warden.Warden;
+import net.minecraft.world.entity.monster.EnderMan;
+import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ShulkerBullet;
 import net.minecraft.world.item.ItemStack;
@@ -22,7 +18,6 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.GrindstoneEvent;
-import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
@@ -46,41 +41,6 @@ public class MaterialEventHandler {
 						phantom.spawnAtLocation(LCItems.SUN_MEMBRANE.asStack());
 					}
 				}
-				if (event.getSource().is(DamageTypeTags.IS_EXPLOSION)) {
-					phantom.spawnAtLocation(LCItems.STORM_CORE.asStack());
-				}
-			}
-		}
-		if (event.getEntity() instanceof Drowned drowned) {
-			Level level = drowned.level();
-			if (!level.isClientSide() && event.getSource().is(DamageTypeTags.IS_FREEZING)) {
-				drowned.spawnAtLocation(LCItems.HARD_ICE.asStack());
-			}
-		}
-		if (event.getEntity() instanceof PiglinBrute brute) {
-			if (!brute.level().isClientSide() && brute.hasEffect(LCEffects.INCARCERATE.holder())) {
-				brute.spawnAtLocation(LCItems.BLACKSTONE_CORE.asStack());
-			}
-		}
-		if (event.getEntity() instanceof ElderGuardian guardian) {
-			if (!guardian.level().isClientSide() && event.getSource().is(DamageTypeTags.IS_LIGHTNING)) {
-				guardian.spawnAtLocation(LCItems.GUARDIAN_EYE.asStack());
-			}
-		}
-		if (event.getEntity() instanceof WitherBoss wither) {
-			if (!wither.level().isClientSide() && event.getSource().is(DamageTypeTags.IS_PROJECTILE)) {
-				wither.spawnAtLocation(LCItems.FORCE_FIELD.asStack());
-			}
-		}
-		if (event.getEntity() instanceof Warden warden) {
-			if (!warden.level().isClientSide() && event.getSource().getEntity() instanceof Player) {
-				warden.spawnAtLocation(LCItems.WARDEN_BONE_SHARD.asStack());
-			}
-		}
-		if (event.getEntity() instanceof Ghast ghast) {
-			Level level = ghast.level();
-			if (!level.isClientSide() && ghast.hasEffect(LCEffects.FLAME.holder())) {
-				ghast.spawnAtLocation(LCItems.SOUL_FLAME.asStack());
 			}
 		}
 	}

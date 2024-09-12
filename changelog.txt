@@ -1,3 +1,8 @@
+3.0.2+7
+- Fix enchantability of several items
+- Use GLM for drops and parametrize tooltip
+- Add potions to creative tabs
+
 3.0.2+6
 - Fix Poseidite and Sculkium armor attributes
 - Fix Poseidite armor and weapon attributes in wet

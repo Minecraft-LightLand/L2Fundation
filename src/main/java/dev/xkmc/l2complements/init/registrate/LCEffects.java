@@ -6,6 +6,7 @@ import dev.xkmc.l2complements.content.effect.*;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2core.init.reg.registrate.PotionBuilder;
 import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffects;
@@ -14,7 +15,7 @@ import net.minecraft.world.item.alchemy.Potions;
 
 public class LCEffects {
 
-	public static final SimpleEntry<MobEffect> EMERALD = genEffect("emerald_splash","Emerald Splash", () -> new EmeraldPopeEffect(MobEffectCategory.NEUTRAL, 0x00FF00),
+	public static final SimpleEntry<MobEffect> EMERALD = genEffect("emerald_splash", "Emerald Splash", () -> new EmeraldPopeEffect(MobEffectCategory.NEUTRAL, 0x00FF00),
 			"Attack all surrounding enemies. Damage is based on currently player stats and weapons.");
 	public static final SimpleEntry<MobEffect> FLAME = genEffect("soul_burning", "Soul Burning", () -> new FlameEffect(MobEffectCategory.HARMFUL, 0xFF0000),
 			"Continuously damage the entity. Bypass fire resistance.");
@@ -31,24 +32,29 @@ public class LCEffects {
 	public static final SimpleEntry<MobEffect> CLEANSE = genEffect("cleanse", "Cleanse", () -> new CleanseEffect(MobEffectCategory.NEUTRAL, 0xffff7f),
 			"Clear all potion effects and make the entity immune to potion effects.");
 
+	public static final PotionBuilder BUILDER = new PotionBuilder(L2Complements.REGISTRATE);
+
+	static {
+		BUILDER.regPotion3("soul_burning", FLAME, LCItems.SOUL_FLAME, 400, 600, 1000, 0, 1);
+		BUILDER.regPotion2("frost", ICE, LCItems.HARD_ICE, 3600, 9600);
+		BUILDER.regPotion2("incarceration", INCARCERATE, LCItems.BLACKSTONE_CORE, 1200, 3600);
+		BUILDER.regPotion2("curse", CURSE, LCItems.CURSED_DROPLET, 3600, 9600);
+		BUILDER.regPotion2("cleanse", CLEANSE, LCItems.LIFE_ESSENCE, 3600, 9600);
+		BUILDER.interleave("armor_reduce", ARMOR_REDUCE, 600, 1200, 3600, 0, 1,
+				Items.MAGMA_CREAM, Potions.WEAKNESS, Potions.LONG_WEAKNESS, null,
+				Items.FERMENTED_SPIDER_EYE, Potions.FIRE_RESISTANCE, Potions.LONG_FIRE_RESISTANCE, null
+		);
+		BUILDER.regPotion2("levitation", MobEffects.LEVITATION, LCItems.CAPTURED_BULLET, 200, 600);
+		BUILDER.regPotion3("resistance", MobEffects.DAMAGE_RESISTANCE, LCItems.EXPLOSION_SHARD, 400, 600, 1200, 1, 2);
+		BUILDER.regPotion3("emerald_splash", EMERALD, LCItems.EMERALD, 1200, 1200, 2400, 0, 1, LCItems.FORCE_FIELD, LCItems.RESONANT_FEATHER);
+		L2Complements.REGISTRATE.addRegisterCallback(Registries.ITEM, () -> BUILDER.regTab(LCItems.TAB_ITEM.key()));
+	}
+
 	private static <T extends MobEffect> SimpleEntry<MobEffect> genEffect(String name, String lang, NonNullSupplier<T> sup, String desc) {
 		return new SimpleEntry<>(L2Complements.REGISTRATE.effect(name, sup, desc).lang(MobEffect::getDescriptionId, lang).register());
 	}
 
 	public static void register() {
-		var builder = new PotionBuilder(L2Complements.REGISTRATE);
-		builder.regPotion3("soul_burning", FLAME, LCItems.SOUL_FLAME, 400, 600, 1000, 0, 1);
-		builder.regPotion2("frost", ICE, LCItems.HARD_ICE, 3600, 9600);
-		builder.regPotion2("incarceration", INCARCERATE, LCItems.BLACKSTONE_CORE, 1200, 3600);
-		builder.regPotion2("curse", CURSE, LCItems.CURSED_DROPLET, 3600, 9600);
-		builder.regPotion2("cleanse", CLEANSE, LCItems.LIFE_ESSENCE, 3600, 9600);
-		builder.interleave("armor_reduce", ARMOR_REDUCE, 600, 1200, 3600, 0, 1,
-				Items.MAGMA_CREAM, Potions.WEAKNESS, Potions.LONG_WEAKNESS, null,
-				Items.FERMENTED_SPIDER_EYE, Potions.FIRE_RESISTANCE, Potions.LONG_FIRE_RESISTANCE, null
-		);
-		builder.regPotion2("levitation", MobEffects.LEVITATION, LCItems.CAPTURED_BULLET, 200, 600);
-		builder.regPotion3("resistance", MobEffects.DAMAGE_RESISTANCE, LCItems.EXPLOSION_SHARD, 400, 600, 1200, 1, 2);
-		builder.regPotion3("emerald_splash", EMERALD, LCItems.EMERALD, 1200, 1200, 2400, 0, 1, LCItems.FORCE_FIELD, LCItems.RESONANT_FEATHER);
 	}
 
 }

@@ -1,0 +1,24 @@
+{
+  "type": "l2core:add_item",
+  "conditions": [
+    {
+      "condition": "minecraft:entity_properties",
+      "entity": "this",
+      "predicate": {
+        "type": "minecraft:wither"
+      }
+    },
+    {
+      "condition": "minecraft:damage_source_properties",
+      "predicate": {
+        "tags": [
+          {
+            "expected": true,
+            "id": "minecraft:is_projectile"
+          }
+        ]
+      }
+    }
+  ],
+  "item": "l2complements:force_field"
+}

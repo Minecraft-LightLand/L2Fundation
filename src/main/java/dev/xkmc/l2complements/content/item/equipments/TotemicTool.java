@@ -20,7 +20,7 @@ public class TotemicTool extends ExtraToolConfig {
 
 	@Override
 	public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, @Nullable T entity) {
-		if (entity instanceof Player player) {
+		if (entity instanceof LivingEntity player) {
 			player.heal(amount);
 		}
 		return super.damageItem(stack, amount, entity);

@@ -1,4 +1,4 @@
-// 1.21.1	2024-09-12T16:30:13.639884	Registrate Provider for l2complements [Data Maps, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Patchouli Provider, Tags (mob_effect), Tags (attribute), Registries, Tags (enchantment), Tags (damage_type), Recipes]
+// 1.21.1	2024-09-19T15:45:14.813914	Registrate Provider for l2complements [Data Maps, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Patchouli Provider, Tags (mob_effect), Tags (attribute), Registries, Tags (enchantment), Tags (damage_type), Recipes]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
@@ -799,7 +799,6 @@ afbd7483402b68f7c7e706babc4e8c8d4bf3d737 data/l2complements/recipe/vanilla/upgra
 514959a6250f4c1cb678c066951055680ea33b38 data/l2complements/recipe/vanilla/upgrade/iron_shovel.json
 8ba8c44d56b71e050b7dca9ff785046b50b182c2 data/l2complements/recipe/vanilla/upgrade/iron_sword.json
 76c776fed1a51a9fab0264a084fef21bc8cc0f6b data/l2complements/tags/block/as_leaf.json
-bfdfab925d3aae515709e426b963be6ae6fc0d4b data/l2complements/tags/block/requires_sculk_tool.json
 6805261536155ac2ac5af19d94cc179036ad03b7 data/l2complements/tags/enchantment/applicable_on_wand.json
 3738929924cba52d7cf4e1d0455a5426f34fee86 data/l2complements/tags/enchantment/immunity.json
 44612d52d455ccd05a0120f226bafad5e08300c3 data/l2complements/tags/enchantment/thorn.json

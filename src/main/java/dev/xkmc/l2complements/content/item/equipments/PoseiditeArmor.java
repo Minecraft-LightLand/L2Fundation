@@ -13,11 +13,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.util.Unit;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
@@ -71,19 +72,22 @@ public class PoseiditeArmor extends ExtraArmorConfig {
 				AttributeModifier.Operation.ADD_MULTIPLIED_BASE), group);
 	}
 
+
 	@Override
-	public void onArmorTick(ItemStack stack, Level world, Player player) {
-		if (player.isInWaterRainOrBubble()) {
+	public void inventoryTick(ItemStack stack, Level level, Entity entity, int index, boolean selected) {
+		if (!(entity instanceof LivingEntity le)) return;
+		var slot = ((ArmorItem) stack.getItem()).getEquipmentSlot();
+		if (le.getItemBySlot(slot) != stack) return;
+		if (le.isInWaterRainOrBubble()) {
 			if (!stack.has(LCItems.IN_WATER.get())) {
 				stack.set(DataComponents.ATTRIBUTE_MODIFIERS, ATTRS.apply(((ArmorItem) stack.getItem()).getType()));
 			}
 			stack.set(LCItems.IN_WATER.get(), Unit.INSTANCE);
-			EquipmentSlot slot = ((ArmorItem) stack.getItem()).getEquipmentSlot();
 			if (slot == EquipmentSlot.HEAD || slot == EquipmentSlot.CHEST) {
-				EffectUtil.refreshEffect(player, new MobEffectInstance(MobEffects.CONDUIT_POWER, 200), player);
+				EffectUtil.refreshEffect(le, new MobEffectInstance(MobEffects.CONDUIT_POWER, 200), le);
 			}
 			if (slot == EquipmentSlot.LEGS || slot == EquipmentSlot.FEET) {
-				EffectUtil.refreshEffect(player, new MobEffectInstance(MobEffects.DOLPHINS_GRACE, 200), player);
+				EffectUtil.refreshEffect(le, new MobEffectInstance(MobEffects.DOLPHINS_GRACE, 200), le);
 			}
 		} else {
 			if (stack.has(LCItems.IN_WATER.get())) {

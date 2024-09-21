@@ -1,3 +1,10 @@
+3.0.2+10
+- Fix totemic equipments on non-player
+- Fix totemic and poseidite armors on non-player
+
+3.0.2+8
+- Fix compat with WTHIT
+
 3.0.2+7
 - Fix enchantability of several items
 - Use GLM for drops and parametrize tooltip

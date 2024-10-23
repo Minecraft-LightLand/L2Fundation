@@ -15,7 +15,7 @@
     "item": "l2complements:eternium_block"
   },
   "base": {
-    "tag": "minecraft:leg_armor"
+    "tag": "minecraft:chest_armor"
   },
   "result": {
     "count": 1,

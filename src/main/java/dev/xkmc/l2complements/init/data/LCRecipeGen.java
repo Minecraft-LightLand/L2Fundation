@@ -43,10 +43,10 @@ public class LCRecipeGen {
 
 	@SuppressWarnings("unchecked")
 	private static final TagKey<Item>[] TOOLS = List.of(
-			ItemTags.HEAD_ARMOR,
-			ItemTags.CHEST_ARMOR,
-			ItemTags.LEG_ARMOR,
 			ItemTags.FOOT_ARMOR,
+			ItemTags.LEG_ARMOR,
+			ItemTags.CHEST_ARMOR,
+			ItemTags.HEAD_ARMOR,
 			ItemTags.SWORDS,
 			ItemTags.AXES,
 			ItemTags.SHOVELS,

@@ -1,6 +1,10 @@
-3.0.3+3
+3.0.3+6
+- Fix enchantments appearing on modded weapons in loot
+
+3.0.3+5
 - Fix sculkium armor buff
 - Fix armor upgrade recipes
+- Fix transparent enchantment on mobs
 - Update L2DamageTracker
 
 3.0.2+10

@@ -12,14 +12,17 @@ import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2core.base.effects.ForceAddEffectEvent;
 import dev.xkmc.l2core.events.SchedulerHandler;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -31,6 +34,8 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
+
+import java.util.stream.Stream;
 
 @EventBusSubscriber(modid = L2Complements.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class MagicEventHandler {
@@ -173,6 +178,10 @@ public class MagicEventHandler {
 		var ent = DiggerHelper.getDigger(stack);
 		if (ent == null) return;
 		ent.digger().onBlockBreak(player, event.getPos(), stack, Math.min(ent.ench().value().getMaxLevel(), ent.level()));
+	}
+
+	public static Stream<Holder<Enchantment>> lootEnch(Stream<Holder<Enchantment>> instance) {
+		return instance.filter(e -> e.is(EnchantmentTags.ON_RANDOM_LOOT));
 	}
 
 }

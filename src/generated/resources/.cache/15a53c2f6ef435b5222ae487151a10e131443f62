@@ -1,12 +1,12 @@
-// 1.21.1	2024-10-23T15:19:27.962137	Registrate Provider for l2complements [Data Maps, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Patchouli Provider, Tags (mob_effect), Tags (attribute), Registries, Tags (enchantment), Tags (damage_type), Recipes]
+// 1.21.1	2024-11-22T23:48:21.034809	Registrate Provider for l2complements [Data Maps, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Patchouli Provider, Tags (mob_effect), Tags (attribute), Registries, Tags (enchantment), Tags (damage_type), Recipes]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
 b2a769b51ddce14c173a64b5457cccb4d8ef6a45 assets/l2complements/blockstates/sculkium_block.json
 2b88df6f8b01f3c72273ce13dbcb556f7dab321d assets/l2complements/blockstates/shulkerate_block.json
 65262ae0f886f61c163059f15c2ad1a7ba9c264a assets/l2complements/blockstates/totemic_gold_block.json
-59c3573745902cb02151c270c1a40de2d8de5c28 assets/l2complements/lang/en_ud.json
-67e290fb88a614dd09604a33fb3fc5d93bf0c114 assets/l2complements/lang/en_us.json
+e2f427e615317ceca918bcbf3e575e43bb899e1c assets/l2complements/lang/en_ud.json
+9108bcc030f707649c47a08593cccc7518dc109e assets/l2complements/lang/en_us.json
 bb63c088704d714f1763cb16cec8af6cd1006d66 assets/l2complements/models/block/eternium_block.json
 a45ee09acc262fd67be22de093136ad757f08e61 assets/l2complements/models/block/poseidite_block.json
 a52909a3a44a80695da32b5c3c5f931a0f72f74d assets/l2complements/models/block/sculkium_block.json

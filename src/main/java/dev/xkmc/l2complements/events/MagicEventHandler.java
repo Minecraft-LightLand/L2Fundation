@@ -12,11 +12,11 @@ import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2core.base.effects.ForceAddEffectEvent;
 import dev.xkmc.l2core.events.SchedulerHandler;
+import dev.xkmc.l2core.init.reg.ench.LegacyEnchantment;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -148,6 +148,7 @@ public class MagicEventHandler {
 
 	@SubscribeEvent
 	public static void onPotionTest(MobEffectEvent.Applicable event) {
+		if (event.getEffectInstance() == null) return;
 		if (event.getEntity().hasEffect(LCEffects.CLEANSE.holder())) {
 			if (isSkill(event.getEffectInstance(), event.getEntity())) return;
 			event.setResult(MobEffectEvent.Applicable.Result.DO_NOT_APPLY);
@@ -181,7 +182,7 @@ public class MagicEventHandler {
 	}
 
 	public static Stream<Holder<Enchantment>> lootEnch(Stream<Holder<Enchantment>> instance) {
-		return instance.filter(e -> e.is(EnchantmentTags.ON_RANDOM_LOOT));
+		return instance.filter(e -> LegacyEnchantment.firstOf(e, LCEnchantments.CRAFT) == null);
 	}
 
 }

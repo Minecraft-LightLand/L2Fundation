@@ -31,7 +31,6 @@ import java.util.Arrays;
 
 public class LCTagGen {
 
-	public static final TagKey<Block> REQUIRES_SCULK_TOOL = BlockTags.create(L2Complements.loc("requires_sculk_tool"));
 	public static final TagKey<Block> AS_LEAF = BlockTags.create(L2Complements.loc("as_leaf"));
 	public static final TagKey<Item> DAMPENS_VIBRATION = ItemTags.create(L2Complements.loc("dampens_vibration"));
 	public static final TagKey<Item> HIDE_WITH_INVISIBILITY = ItemTags.create(L2Complements.loc("hide_with_invisibility"));
@@ -48,7 +47,6 @@ public class LCTagGen {
 	public static final TagKey<Item> WEAPON_MINING_ENCHANTABLE = ItemTags.create(L2Complements.loc("enchantable/weapon_mining"));
 
 	public static void onBlockTagGen(RegistrateTagsProvider.IntrinsicImpl<Block> pvd) {
-		pvd.addTag(REQUIRES_SCULK_TOOL).add(Blocks.REINFORCED_DEEPSLATE);
 		pvd.addTag(BlockTags.MINEABLE_WITH_PICKAXE).add(Blocks.REINFORCED_DEEPSLATE);
 		pvd.addTag(AS_LEAF).addTag(BlockTags.LEAVES).addTag(BlockTags.WART_BLOCKS).add(Blocks.SHROOMLIGHT);
 	}

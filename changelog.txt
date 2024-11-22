@@ -1,3 +1,19 @@
+3.0.3+6
+- Fix enchantments appearing on modded weapons in loot
+
+3.0.3+5
+- Fix sculkium armor buff
+- Fix armor upgrade recipes
+- Fix transparent enchantment on mobs
+- Update L2DamageTracker
+
+3.0.2+10
+- Fix totemic equipments on non-player
+- Fix totemic and poseidite armors on non-player
+
+3.0.2+8
+- Fix compat with WTHIT
+
 3.0.2+7
 - Fix enchantability of several items
 - Use GLM for drops and parametrize tooltip

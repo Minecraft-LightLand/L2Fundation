@@ -205,15 +205,6 @@ public class LCLang {
 		for (var lang : LCKeys.values()) {
 			pvd.add(lang.id, lang.def);
 		}
-
-		pvd.add("death.attack.soul_flame", "%s has its soul burnt out");
-		pvd.add("death.attack.soul_flame.player", "%s has its soul burnt out by %s");
-		pvd.add("death.attack.life_sync", "%s was drained");
-		pvd.add("death.attack.void_eye", "%s was cursed by void eye");
-		pvd.add("death.attack.emerald", "%s was killed by emerald splash");
-		pvd.add("death.attack.emerald.player", "%s was killed by emerald splash by %s");
-		pvd.add("death.attack.bleed", "%s bleed to death");
-
 	}
 
 	public static String asId(String name) {

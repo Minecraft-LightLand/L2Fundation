@@ -6,8 +6,9 @@ import dev.xkmc.l2core.events.SchedulerHandler;
 import dev.xkmc.l2damagetracker.contents.materials.generic.ExtraArmorConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
@@ -16,16 +17,18 @@ import java.util.List;
 public class TotemicArmor extends ExtraArmorConfig {
 
 	@Override
-	public void onArmorTick(ItemStack stack, Level world, Player player) {
-		super.onArmorTick(stack, world, player);
-		if (player.tickCount % LCConfig.SERVER.totemicHealDuration.get() == 0) {
-			player.heal(LCConfig.SERVER.totemicHealAmount.get());
+	public void inventoryTick(ItemStack stack, Level level, Entity entity, int index, boolean selected) {
+		if (!(entity instanceof LivingEntity le)) return;
+		var slot = ((ArmorItem) stack.getItem()).getEquipmentSlot();
+		if (le.getItemBySlot(slot) != stack) return;
+		if (le.tickCount % LCConfig.SERVER.totemicHealDuration.get() == 0) {
+			le.heal(LCConfig.SERVER.totemicHealAmount.get());
 		}
 	}
 
 	@Override
 	public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, T entity) {
-		if (entity instanceof Player player) {
+		if (entity instanceof LivingEntity player) {
 			SchedulerHandler.schedule(() -> player.heal(amount));
 		}
 		return super.damageItem(stack, amount, entity);

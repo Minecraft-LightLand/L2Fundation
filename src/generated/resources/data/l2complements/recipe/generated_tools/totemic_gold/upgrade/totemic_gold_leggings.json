@@ -15,7 +15,7 @@
     "item": "l2complements:totemic_gold_block"
   },
   "base": {
-    "tag": "minecraft:chest_armor"
+    "tag": "minecraft:leg_armor"
   },
   "result": {
     "count": 1,

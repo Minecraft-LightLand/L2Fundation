@@ -21,12 +21,12 @@ public class SculkiumArmor extends ExtraArmorConfig {
 		double factor = slot == EquipmentSlot.CHEST || slot == EquipmentSlot.LEGS ? 1.5 : 1;
 		var group = EquipmentSlotGroup.bySlot(slot);
 		if (slot == EquipmentSlot.HEAD || slot == EquipmentSlot.CHEST) {
-			builder.add(Attributes.MAX_HEALTH, new AttributeModifier(
+			builder.add(Attributes.ATTACK_SPEED, new AttributeModifier(
 					L2Complements.loc("sculkium_attack_" + slot.getName()),
 					0.06 * factor,
 					AttributeModifier.Operation.ADD_MULTIPLIED_BASE), group);
 		} else {
-			builder.add(Attributes.MAX_HEALTH, new AttributeModifier(
+			builder.add(Attributes.MOVEMENT_SPEED, new AttributeModifier(
 					L2Complements.loc("sculkium_walk_" + slot.getName()),
 					0.1 * factor,
 					AttributeModifier.Operation.ADD_MULTIPLIED_BASE), group);

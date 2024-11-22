@@ -15,7 +15,7 @@
     "item": "minecraft:diamond_block"
   },
   "base": {
-    "tag": "minecraft:head_armor"
+    "tag": "minecraft:foot_armor"
   },
   "result": {
     "count": 1,

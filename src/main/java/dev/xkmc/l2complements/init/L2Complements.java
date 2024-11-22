@@ -67,6 +67,7 @@ public class L2Complements {
 		LCRecipes.register();
 		LCConfig.init();
 		SoulBoundPlayerData.register();
+		DamageTypeGen.register();
 		new L2ComplementsClick(new ResourceLocation(MODID, "main"));
 		AttackEventHandler.register(5000, new MaterialDamageListener());
 		REGISTRATE.addDataGenerator(ProviderType.LANG, LangData::addTranslations);

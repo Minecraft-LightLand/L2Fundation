@@ -20,11 +20,18 @@ import java.util.concurrent.CompletableFuture;
 
 public class DamageTypeGen extends DamageTypeAndTagsGen {
 
-	public static final ResourceKey<DamageType> EMERALD = create("emerald");
-	public static final ResourceKey<DamageType> SOUL_FLAME = create("soul_flame");
-	public static final ResourceKey<DamageType> BLEED = create("bleed");
-	public static final ResourceKey<DamageType> LIFE_SYNC = create("life_sync");
-	public static final ResourceKey<DamageType> VOID_EYE = create("void_eye");
+	public static final ResourceKey<DamageType> BLEED = create("bleed", "%s bleed to death");
+	public static final ResourceKey<DamageType> LIFE_SYNC = create("life_sync", "%s was drained");
+	public static final ResourceKey<DamageType> VOID_EYE = create("void_eye", "%s was cursed by void eye");
+
+	public static final ResourceKey<DamageType> EMERALD = create("emerald",
+			"%s was killed by emerald splash", "%s was killed by emerald splash from %s");
+	public static final ResourceKey<DamageType> SOUL_FLAME = create("soul_flame",
+			"%s has its soul burnt out", "%s has its soul burnt out by %s");
+
+	public static void register() {
+
+	}
 
 	public DamageTypeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> pvd, ExistingFileHelper helper) {
 		super(output, pvd, helper, L2Complements.MODID);
@@ -43,6 +50,21 @@ public class DamageTypeGen extends DamageTypeAndTagsGen {
 
 	public static Holder<DamageType> forKey(Level level, ResourceKey<DamageType> key) {
 		return level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(key);
+	}
+
+	private static ResourceKey<DamageType> create(String id, String msg) {
+		return create(id, msg, msg);
+	}
+
+	private static ResourceKey<DamageType> create(String id, String msg, String player) {
+		return create(id, msg, player, player);
+	}
+
+	private static ResourceKey<DamageType> create(String id, String msg, String player, String item) {
+		L2Complements.REGISTRATE.addRawLang("death.attack." + id, msg);
+		L2Complements.REGISTRATE.addRawLang("death.attack." + id + ".player", player);
+		L2Complements.REGISTRATE.addRawLang("death.attack." + id + ".item", item);
+		return create(id);
 	}
 
 	private static ResourceKey<DamageType> create(String id) {

@@ -4,7 +4,7 @@ import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import dev.xkmc.l2complements.content.enchantment.special.LifeSyncEnchantment;
-import dev.xkmc.l2complements.events.MagicEventHandler;
+import dev.xkmc.l2complements.events.EnchUtils;
 import dev.xkmc.l2complements.events.SpecialEquipmentEvents;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.data.TagGen;
@@ -21,6 +21,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.extensions.IForgeItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
@@ -31,6 +32,9 @@ import java.util.function.Consumer;
 
 @Mixin(ItemStack.class)
 public abstract class ItemStackMixin implements IForgeItemStack {
+
+	@Shadow
+	public abstract boolean isEnchanted();
 
 	@ModifyVariable(at = @At("LOAD"), method = "hurtAndBreak", argsOnly = true)
 	public int l2complements_hurtAndBreak_hardened(int pAmount) {
@@ -97,7 +101,8 @@ public abstract class ItemStackMixin implements IForgeItemStack {
 	@ModifyReturnValue(at = @At("RETURN"), method = "getMaxDamage")
 	public int l2complements_getMaxDamage_durabilityEnchantment(int max) {
 		ItemStack self = (ItemStack) (Object) this;
-		int lv = self.getEnchantmentLevel(LCEnchantments.DURABLE_ARMOR.get());
+		if (!isEnchanted()) return max;
+		int lv = EnchUtils.getTagEnchantmentLevel(LCEnchantments.DURABLE_ARMOR.get(), self);
 		return max * (1 + lv);
 	}
 

@@ -1,3 +1,7 @@
+2.4.43
+- Fix lag when used with Tetra and Apotheosis
+- Now ender reach works for experiences as well
+
 2.4.42
 - Improve death message text
 

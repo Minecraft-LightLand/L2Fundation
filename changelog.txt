@@ -1,3 +1,7 @@
+2.4.44
+- Client chain digging display
+- Prevent particle spam
+
 2.4.43
 - Fix lag when used with Tetra and Apotheosis
 - Now ender reach works for experiences as well

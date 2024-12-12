@@ -2,6 +2,7 @@ package dev.xkmc.l2complements.events;
 
 
 import com.mojang.datafixers.util.Either;
+import dev.xkmc.l2complements.content.client.RangeDiggingOutliner;
 import dev.xkmc.l2complements.content.enchantment.core.CustomDescEnchantment;
 import dev.xkmc.l2complements.content.feature.EntityFeature;
 import dev.xkmc.l2complements.init.L2Complements;
@@ -9,16 +10,22 @@ import dev.xkmc.l2complements.init.data.LCKeys;
 import dev.xkmc.l2complements.network.RotateDiggerToServer;
 import dev.xkmc.l2itemselector.events.GenericKeyEvent;
 import dev.xkmc.l2library.util.Proxy;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.contents.LiteralContents;
 import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderBlockScreenEffectEvent;
+import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -36,7 +43,7 @@ public class ClientEventHandler {
 	@SubscribeEvent
 	public static void onScreenEffect(RenderBlockScreenEffectEvent event) {
 		if (event.getOverlayType() == RenderBlockScreenEffectEvent.OverlayType.FIRE) {
-			if (EntityFeature.FIRE_REJECT.test(event.getPlayer())){
+			if (EntityFeature.FIRE_REJECT.test(event.getPlayer())) {
 				event.setCanceled(true);
 			}
 		}
@@ -92,6 +99,31 @@ public class ClientEventHandler {
 			list.clear();
 			list.addAll(compound.stream().flatMap(e -> e.map(Stream::of, Collection::stream)).toList());
 		}
+	}
+
+	@SubscribeEvent
+	public static void renderLevel(RenderLevelStageEvent event) {
+		if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_BLOCK_ENTITIES)
+			renderOutline(event, true);
+		if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_PARTICLES)
+			renderOutline(event, false);
+	}
+
+	private static void renderOutline(RenderLevelStageEvent event, boolean outline) {
+		var level = Minecraft.getInstance().level;
+		if (level == null) return;
+		var cam = event.getCamera();
+		if (!(cam.getEntity() instanceof Player player)) return;
+		if (!Minecraft.getInstance().gameRenderer.shouldRenderBlockOutline()) return;
+		if (!(Minecraft.getInstance().hitResult instanceof BlockHitResult bhit)) return;
+		BlockPos pos = bhit.getBlockPos();
+		BlockState state = level.getBlockState(pos);
+		if (state.isAir() || !level.getWorldBorder().isWithinBounds(pos)) return;
+		var vec = cam.getPosition();
+		double x = vec.x;
+		double y = vec.y;
+		double z = vec.z;
+		RangeDiggingOutliner.renderMoreOutlines(player, pos, Minecraft.getInstance().renderBuffers().bufferSource(), event.getPoseStack(), x, y, z, outline);
 	}
 
 }

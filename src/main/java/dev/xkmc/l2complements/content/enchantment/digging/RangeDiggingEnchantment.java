@@ -50,6 +50,14 @@ public class RangeDiggingEnchantment extends UnobtainableEnchantment implements 
 		}
 	}
 
+	public static void breakBlockWrapped(ServerPlayer player, BlockPos pos) {
+		player.gameMode.destroyBlock(pos);
+	}
+
+	public static boolean isSuppressed(UUID uuid) {
+		return BREAKER.contains(uuid);
+	}
+
 	private static Direction getFace(Player player) {
 		Level level = player.level();
 		Vec3 base = player.getEyePosition(0);
@@ -100,7 +108,7 @@ public class RangeDiggingEnchantment extends UnobtainableEnchantment implements 
 			int max = LCConfig.COMMON.chainDiggingDelayThreshold.get();
 			if (blocks.size() <= max) {
 				for (var i : blocks) {
-					player.gameMode.destroyBlock(i);
+					breakBlockWrapped(player, i);
 				}
 			} else {
 				if (LCConfig.COMMON.delayDiggingRequireEnder.get()) {

@@ -1,41 +1,32 @@
+3.0.5
+- Client chain digging display
+- Prevent chain digging particle spam
+- Now ender reach works for experiences as well
+
 3.0.4
 - Fix piglin / ancient city cannot produce sneak / soul speed enchantment
 - Improve death message of custom damage types
 
-3.0.3+6
+3.0.3+x
 - Fix enchantments appearing on modded weapons in loot
-
-3.0.3+5
 - Fix sculkium armor buff
 - Fix armor upgrade recipes
 - Fix transparent enchantment on mobs
 - Update L2DamageTracker
 
-3.0.2+10
+3.0.2+x
 - Fix totemic equipments on non-player
 - Fix totemic and poseidite armors on non-player
-
-3.0.2+8
 - Fix compat with WTHIT
-
-3.0.2+7
 - Fix enchantability of several items
 - Use GLM for drops and parametrize tooltip
 - Add potions to creative tabs
-
-3.0.2+6
 - Fix Poseidite and Sculkium armor attributes
 - Fix Poseidite armor and weapon attributes in wet
 - Fix Armor immunity
-
-3.0.2+5
 - Fix Bleed and Armor Corrosion effect, utilize NeoForge 163
-
-3.0.2+4
 - Fix LifeSync
 - Fix effect rendering
 - Fix empty click for L2Weaponry
 - Fix effect icon rendering (through L2Library 3.0.2+1)
-
-3.0.2+2
 - Add Breeze Rod, Heavy Core, Bogged spawn egg, Armadillo spawn egg

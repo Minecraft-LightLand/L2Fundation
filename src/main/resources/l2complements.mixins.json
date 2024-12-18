@@ -6,6 +6,7 @@
 	"mixins": [
 		"AnvilBlockMixin",
 		"BlockBehaviorMixin",
+		"BlockMixin",
 		"EnchantRandomlyFunctionMixin",
 		"EntityMixin",
 		"IItemStackExtensionMixin",

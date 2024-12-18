@@ -198,7 +198,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
             "l2-artifacts",
             "modulargolems",
             "the-twilight-forest")
-    mainFile.releaseType = "beta"
+    mainFile.releaseType = "release"
     disableVersionDetection()
 }
 
@@ -207,7 +207,7 @@ modrinth {
     projectId = project.modrinth_project
     versionName = "L2Complements ${project.mod_version}"
     versionNumber = project.mod_version
-    versionType = "beta"
+    versionType = "release"
     uploadFile = new File("./build/libs/${mod_id}-${mod_version}.jar")
     gameVersions = ["1.21.1"]
     loaders = ["neoforge"]

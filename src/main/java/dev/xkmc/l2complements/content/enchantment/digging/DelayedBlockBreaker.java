@@ -33,7 +33,7 @@ public class DelayedBlockBreaker {
 		RangeDiggingEnchantment.execute(player, () -> {
 			int n = LCConfig.SERVER.chainDiggingBlockPerTick.get();
 			for (int i = 0; i < n; i++) {
-				player.gameMode.destroyBlock(list.get(count));
+				RangeDiggingEnchantment.breakBlockWrapped(player, list.get(count));
 				count++;
 				if (count >= list.size()) return;
 			}

@@ -8,10 +8,13 @@ import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.LCTagGen;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
@@ -20,12 +23,14 @@ import net.minecraft.world.level.block.PowderSnowBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Stack;
 
@@ -87,30 +92,53 @@ public class SpecialEquipmentEvents {
 
 	}
 
+	public static void dropExp(ServerLevel level, Vec3 pos, int exp, Operation<Void> original, @Nullable Player player) {
+		if (player == null) return;
+		if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.ENDER_TRANSPORT.holder()) > 0) {
+			pos = player.position();
+		}
+		original.call(level, pos, exp);
+	}
+
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void onEntityJoinLevel(EntityJoinLevelEvent event) {
 		var players = PLAYER.get();
 		if (players.isEmpty()) return;
 		ServerPlayer player = players.peek().getFirst();
-		if (!(event.getEntity() instanceof ItemEntity e)) return;
-		if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.SMELT.holder()) > 0) {
-			ItemStack result = process(event.getLevel(), e.getItem());
-			e.setItem(result);
-		}
-		if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.ENDER_TRANSPORT.holder()) > 0) {
-			EnderPickupEvent ender = new EnderPickupEvent(player, e.getItem().copy());
-			NeoForge.EVENT_BUS.post(ender);
-			ItemStack stack = ender.getStack();
-			if (!stack.isEmpty() && !player.getInventory().add(stack)) {
-				e.setItem(stack);
-				e.teleportTo(player.getX(), player.getY(), player.getZ());
-			} else {
-				event.setCanceled(true);
-				return;
+		if (event.getEntity() instanceof ItemEntity e) {
+			if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.SMELT.holder()) > 0) {
+				ItemStack result = process(event.getLevel(), e.getItem());
+				e.setItem(result);
+			}
+			if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.ENDER_TRANSPORT.holder()) > 0) {
+				EnderPickupEvent ender = new EnderPickupEvent(player, e.getItem().copy());
+				NeoForge.EVENT_BUS.post(ender);
+				ItemStack stack = ender.getStack();
+				if (!stack.isEmpty() && !player.getInventory().add(stack)) {
+					e.setItem(stack);
+					e.teleportTo(player.getX(), player.getY(), player.getZ());
+				} else {
+					event.setCanceled(true);
+					return;
+				}
+			}
+			if (player.dampensVibrations()) {
+				e.getPersistentData().putBoolean("dampensVibrations", true);
 			}
 		}
-		if (player.dampensVibrations()) {
-			e.getPersistentData().putBoolean("dampensVibrations", true);
+		if (event.getEntity() instanceof ExperienceOrb e) {
+			if (player.getMainHandItem().getEnchantmentLevel(LCEnchantments.ENDER_TRANSPORT.holder()) > 0) {
+				player.takeXpDelay = 0;
+				e.playerTouch(player);
+				if (e.isRemoved()) {
+					event.setCanceled(true);
+					return;
+				}
+				e.teleportTo(player.getX(), player.getY(), player.getZ());
+			}
+			if (player.dampensVibrations()) {
+				e.getPersistentData().putBoolean("dampensVibrations", true);
+			}
 		}
 	}
 

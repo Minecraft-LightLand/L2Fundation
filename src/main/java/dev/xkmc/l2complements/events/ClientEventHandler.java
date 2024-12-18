@@ -23,6 +23,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderBlockScreenEffectEvent;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
@@ -115,15 +116,15 @@ public class ClientEventHandler {
 		var cam = event.getCamera();
 		if (!(cam.getEntity() instanceof Player player)) return;
 		if (!Minecraft.getInstance().gameRenderer.shouldRenderBlockOutline()) return;
-		if (!(Minecraft.getInstance().hitResult instanceof BlockHitResult bhit)) return;
+		var hit = Minecraft.getInstance().hitResult;
+		if (hit == null || hit.getType() == HitResult.Type.MISS) return;
+		if (!(hit instanceof BlockHitResult bhit)) return;
 		BlockPos pos = bhit.getBlockPos();
 		BlockState state = level.getBlockState(pos);
 		if (state.isAir() || !level.getWorldBorder().isWithinBounds(pos)) return;
-		var vec = cam.getPosition();
-		double x = vec.x;
-		double y = vec.y;
-		double z = vec.z;
-		RangeDiggingOutliner.renderMoreOutlines(player, pos, Minecraft.getInstance().renderBuffers().bufferSource(), event.getPoseStack(), x, y, z, outline);
+		var vec = cam.getPosition().toVector3f();
+		var buffer = Minecraft.getInstance().renderBuffers().bufferSource();
+		RangeDiggingOutliner.renderMoreOutlines(player, pos, buffer, event.getPoseStack(), vec.x, vec.y, vec.z, outline);
 	}
 
 }

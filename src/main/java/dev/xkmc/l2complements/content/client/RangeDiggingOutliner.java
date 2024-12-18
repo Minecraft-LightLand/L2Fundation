@@ -12,14 +12,10 @@ import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
 
-import java.util.List;
 import java.util.OptionalDouble;
 
 public class RangeDiggingOutliner {
@@ -52,10 +48,10 @@ public class RangeDiggingOutliner {
 	}
 
 	private static CacheKey KEY = null;
-	private static List<BlockPos> CACHE = null;
+	private static ClusterBitSet CACHE = null;
 	private static int tick = 0;
 
-	public static void renderMoreOutlines(Player player, BlockPos pos, MultiBufferSource.BufferSource buffer, PoseStack pose, double x, double y, double z, boolean outline) {
+	public static void renderMoreOutlines(Player player, BlockPos pos, MultiBufferSource.BufferSource buffer, PoseStack pose, float x, float y, float z, boolean outline) {
 		ItemStack stack = player.getMainHandItem();
 		var dir = Minecraft.getInstance().hitResult instanceof BlockHitResult bhit ? bhit.getDirection() : Direction.DOWN;
 		var e = DiggerHelper.getDigger(stack);
@@ -72,42 +68,32 @@ public class RangeDiggingOutliner {
 		if (KEY == null || CACHE == null || e.getFirst() != KEY.ench() || e.getSecond() != KEY.lv() ||
 				!pos.equals(KEY.pos) || dir != KEY.dir() || stack != KEY.stack()) {
 			KEY = new CacheKey(e.getFirst(), e.getSecond(), pos, dir, stack);
-			CACHE = e.getFirst().getTargets(player, pos, stack, e.getSecond());
+			CACHE = ClusterBitSet.of(pos, e.getFirst().getTargets(player, pos, stack, e.getSecond()));
 		}
-		RenderType type;
-		float a;
 		if (outline) {
-			type = DiggingRenderType.OUTLINE;
-			a = 0.4f;
+			RenderType type = DiggingRenderType.OUTLINE;
+			var v = buffer.getBuffer(type);
+			CACHE.render(false, (x0, y0, z0, x1, y1, z1) -> renderShape(pose, v, x0, y0, z0, x1, y1, z1, -x, -y, -z, 0.4f, 0.4f, 0.4f, 1));
+			CACHE.render(true, (x0, y0, z0, x1, y1, z1) -> renderShape(pose, v, x0, y0, z0, x1, y1, z1, -x, -y, -z, 0.7f, 0.7f, 0.7f, 1));
 		} else {
-			type = RenderType.lines();
-			a = 1f;
-		}
-		var v = buffer.getBuffer(type);
-		render(pose, v, x, y, z, pos, a);
-		for (var p : CACHE) {
-			render(pose, v, x, y, z, p, a);
+			RenderType type = RenderType.lines();
+			var v = buffer.getBuffer(type);
+			CACHE.render(true, (x0, y0, z0, x1, y1, z1) -> renderShape(pose, v, x0, y0, z0, x1, y1, z1, -x, -y, -z, 1, 1, 1, 1));
+
 		}
 	}
 
-
-	private static void render(PoseStack pose, VertexConsumer vc, double x, double y, double z, BlockPos pos, float a) {
-		renderShape(pose, vc, Shapes.block(), (double) pos.getX() - x, (double) pos.getY() - y, (double) pos.getZ() - z, a, a, a, 1);
-	}
-
-	public static void renderShape(PoseStack pose, VertexConsumer vc, VoxelShape shape, double dx, double dy, double dz, float r, float g, float b, float a) {
+	public static void renderShape(
+			PoseStack pose, VertexConsumer vc,
+			float x0, float y0, float z0, float x1, float y1, float z1,
+			float dx, float dy, float dz,
+			float r, float g, float b, float a) {
 		PoseStack.Pose mat = pose.last();
-		shape.forAllEdges((x0, y0, z0, x1, y1, z1) -> {
-			float rx = (float) (x1 - x0);
-			float ry = (float) (y1 - y0);
-			float rz = (float) (z1 - z0);
-			float len = Mth.sqrt(rx * rx + ry * ry + rz * rz);
-			rx /= len;
-			ry /= len;
-			rz /= len;
-			vc.vertex(mat.pose(), (float) (x0 + dx), (float) (y0 + dy), (float) (z0 + dz)).color(r, g, b, a).normal(mat.normal(), rx, ry, rz).endVertex();
-			vc.vertex(mat.pose(), (float) (x1 + dx), (float) (y1 + dy), (float) (z1 + dz)).color(r, g, b, a).normal(mat.normal(), rx, ry, rz).endVertex();
-		});
+		float rx = x1 - x0;
+		float ry = y1 - y0;
+		float rz = z1 - z0;
+		vc.vertex(mat.pose(), x0 + dx, y0 + dy, z0 + dz).color(r, g, b, a).normal(mat.normal(), rx, ry, rz).endVertex();
+		vc.vertex(mat.pose(), x1 + dx, y1 + dy, z1 + dz).color(r, g, b, a).normal(mat.normal(), rx, ry, rz).endVertex();
 	}
 
 

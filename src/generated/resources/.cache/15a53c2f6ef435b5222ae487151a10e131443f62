@@ -1,4 +1,4 @@
-// 1.21.1	2024-11-22T23:48:21.034809	Registrate Provider for l2complements [Data Maps, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Patchouli Provider, Tags (mob_effect), Tags (attribute), Registries, Tags (enchantment), Tags (damage_type), Recipes]
+// 1.21.1	2024-12-31T21:51:32.764978	Registrate Provider for l2complements [Data Maps, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Patchouli Provider, Tags (mob_effect), Tags (attribute), Registries, Tags (enchantment), Tags (damage_type), Recipes]
 88a7338b7748dc865dfa6385e6ab8a7d8c51d9e5 assets/l2complements/blockstates/eternal_anvil.json
 a44dc95a8b23a9a3a34ebedf5c56b08dbde6cf0e assets/l2complements/blockstates/eternium_block.json
 896090a34932dc7eac905366381145086122a95d assets/l2complements/blockstates/poseidite_block.json
@@ -845,3 +845,5 @@ ffafe5187c5335776931d711661d66d6648bd197 data/minecraft/tags/item/swords.json
 8dfa95c4fbc2acb115714fc7f071fb14b931b5e5 data/minecraft/tags/item/trimmable_armor.json
 b376083721f28306ed48a8752be7f13fd2bb0d3c data/modulargolems/tags/item/sculk_materials.json
 eef3476cb56d3eb5a86642dbeec6d062a55fb809 data/neoforge/tags/damage_type/is_magic.json
+8c79cc8b251cc60f27a9a722af6f1b61073261ec data/twilightforest/tags/item/banned_uncraftables.json
+fdc504265c73665e2952b114a767cbe1cfea025a data/twilightforest/tags/item/banned_uncrafting_ingredients.json

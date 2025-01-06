@@ -1,3 +1,6 @@
+3.0.6
+- Add some items to Twilight uncrafting blacklist
+
 3.0.5
 - Client chain digging display
 - Prevent chain digging particle spam

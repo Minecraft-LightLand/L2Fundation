@@ -178,6 +178,8 @@ dependencies {
     implementation "mezz.jei:jei-${jei_minecraft_version}:${jei_version}"
     implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
     compileOnly "curse.maven:mouse-tweaks-60089:5437296"
+
+    implementation "curse.maven:the-twilight-forest-227639:5983260"
 }
 
 tasks.register('publishCurseForge', TaskPublishCurseForge) {

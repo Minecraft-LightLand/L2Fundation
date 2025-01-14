@@ -12,6 +12,7 @@ import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2core.events.SchedulerHandler;
 import dev.xkmc.l2core.util.Proxy;
+import dev.xkmc.l2core.util.ServerProxy;
 import dev.xkmc.l2serial.util.Wrappers;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -54,7 +55,7 @@ public abstract class ItemStackMixin implements IItemStackExtension {
 
 		int max = self.getMaxDamage();
 		if (max <= val + 1 && self.getEnchantmentLevel(LCEnchantments.SAFEGUARD.holder()) > 0) {
-			var opt = Proxy.getServer();
+			var opt = ServerProxy.getServer();
 			if (opt.isPresent()) {
 				int old = self.getDamageValue();
 				long time = LCItems.SAFEGUARD_TIME.getOrDefault(self, 0L);

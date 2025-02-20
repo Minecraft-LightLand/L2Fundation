@@ -1,8 +1,12 @@
+3.0.8
+- Fix Void Touch calculation priority
+
 3.0.7
 - Fix dedicated server crash when using safeguard enchantment
 
 3.0.6
 - Add some items to Twilight uncrafting blacklist
+
 
 3.0.5
 - Client chain digging display

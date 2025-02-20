@@ -69,7 +69,7 @@ public class VoidTouchEnchantment extends LegacyEnchantment implements CustomDes
 	public static void initDamage(DamageData.Defence cache, ItemStack weapon) {
 		if (!allow(cache, weapon)) return;
 		float finalDamage = Math.max(cache.getDamageOriginal(), cache.getDamageIncoming());
-		cache.addDealtModifier(DamageModifier.nonlinearPre(5000, e -> Math.max(e, finalDamage), VOID_DAMAGE));
+		cache.addDealtModifier(DamageModifier.nonlinearMiddle(102, e -> Math.max(e, finalDamage), VOID_DAMAGE));
 	}
 
 	@Override

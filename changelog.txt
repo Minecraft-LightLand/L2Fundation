@@ -1,3 +1,12 @@
+2.5.2
+- Add support for ModularGolems to use wand items
+- Makes wand particle effects visible to other players
+- Now Hellfire wand has gradient damage up to 3 seconds
+
+2.5.0
+- Add KubeJS template for L2DamageTracker AttackListener
+
+
 2.4.44
 - Client chain digging display
 - Prevent chain digging particle spam

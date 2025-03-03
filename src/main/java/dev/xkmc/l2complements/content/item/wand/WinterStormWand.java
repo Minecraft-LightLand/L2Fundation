@@ -42,36 +42,46 @@ public class WinterStormWand extends Item {
 	public void onUseTick(Level level, LivingEntity user, ItemStack stack, int remain) {
 		if (!(user instanceof Player player)) return;
 		var center = player.position();
-		int time = Math.min(CHARGE, getUseDuration(stack) - remain);
-		if (remain % 20 == 0) {
-			stack.hurtAndBreak(1, user, e -> e.broadcastBreakEvent(e.getUsedItemHand()));
+		int time = getUseDuration(stack) - remain;
+		if (!level.isClientSide()) {
+			if (remain % 20 == 0) {
+				stack.hurtAndBreak(1, user, e -> e.broadcastBreakEvent(e.getUsedItemHand()));
+			}
+			tickServer(user, level, center, time);
 		}
-		double radius = SIZE_0 + time * 1.0 * SIZE_1 / CHARGE;
-		if (level.isClientSide()) {
-			for (int i = 0; i < 5; i++) {
-				float tpi = (float) (Math.PI * 2);
-				Vec3 v = new Vec3(0, 1, 0);
-				v = v.xRot(tpi / 4).yRot(level.getRandom().nextFloat() * tpi);
-				Vec3 v0 = v.scale(radius);
-				Vec3 v1 = v.yRot(tpi * 0.375f);
-				level.addAlwaysVisibleParticle(ParticleTypes.SNOWFLAKE,
-						center.x + v0.x,
-						center.y + v0.y + 0.5f,
-						center.z + v0.z, v1.x, v1.y, v1.z);
+	}
+
+	public static void tickServer(LivingEntity user, Level level, Vec3 center, int time) {
+		WandEffectToClient.Type.WINTERSTORM.send(user, center, time);
+		double radius = SIZE_0 + Math.min(CHARGE, time) * 1.0 * SIZE_1 / CHARGE;
+		List<? extends LivingEntity> list = level.getEntities(EntityTypeTest.forClass(LivingEntity.class),
+				user.getBoundingBox().inflate(radius),
+				e -> e instanceof Mob && e != user &&
+						!e.isAlliedTo(user) && !user.isAlliedTo(e));
+		for (var e : list) {
+			double dist = user.distanceTo(e) / radius;
+			if (dist > 1) continue;
+			Vec3 vec = e.position().subtract(user.position()).normalize().scale((1 - dist) * 0.2);
+			e.push(vec.x, vec.y, vec.z);
+			if (e.getTicksFrozen() < 140) {
+				e.setTicksFrozen(140);
 			}
-		} else {
-			List<? extends LivingEntity> list = player.level().getEntities(EntityTypeTest.forClass(LivingEntity.class),
-					player.getBoundingBox().inflate(radius), e -> e instanceof Mob);
-			for (var e : list) {
-				double dist = player.distanceTo(e) / radius;
-				if (dist > 1) continue;
-				Vec3 vec = e.position().subtract(player.position()).normalize().scale((1 - dist) * 0.2);
-				e.push(vec.x, vec.y, vec.z);
-				if (e.getTicksFrozen() < 140) {
-					e.setTicksFrozen(140);
-				}
-				EffectUtil.refreshEffect(e, new MobEffectInstance(LCEffects.ICE.get(), 40), EffectUtil.AddReason.NONE, player);
-			}
+			EffectUtil.refreshEffect(e, new MobEffectInstance(LCEffects.ICE.get(), 40), EffectUtil.AddReason.NONE, user);
+		}
+	}
+
+	public static void tickClient(Level level, Vec3 center, int time) {
+		double radius = SIZE_0 + Math.min(CHARGE, time) * 1.0 * SIZE_1 / CHARGE;
+		for (int i = 0; i < 5; i++) {
+			float tpi = (float) (Math.PI * 2);
+			Vec3 v = new Vec3(0, 1, 0);
+			v = v.xRot(tpi / 4).yRot(level.getRandom().nextFloat() * tpi);
+			Vec3 v0 = v.scale(radius);
+			Vec3 v1 = v.yRot(tpi * 0.375f);
+			level.addAlwaysVisibleParticle(ParticleTypes.SNOWFLAKE,
+					center.x + v0.x,
+					center.y + v0.y + 0.5f,
+					center.z + v0.z, v1.x, v1.y, v1.z);
 		}
 	}
 

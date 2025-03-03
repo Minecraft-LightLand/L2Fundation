@@ -191,9 +191,9 @@ dependencies {
     implementation fg.deobf("dev.xkmc.l2itemselector:l2itemselector:0.1.8")
     implementation fg.deobf("dev.xkmc.l2tabs:l2tabs:0.3.2")
 
-    implementation fg.deobf(jarJar("dev.xkmc.l2damagetracker:l2damagetracker:0.3.9")) {
+    implementation fg.deobf(jarJar("dev.xkmc.l2damagetracker:l2damagetracker:0.4.0")) {
         transitive = false
-        jarJar.ranged(it, "[0.3.9,)")
+        jarJar.ranged(it, "[0.4.0,)")
     }
 
     runtimeOnly fg.deobf("dev.xkmc.pandora:pandora:0.1.9-slim")
@@ -242,7 +242,7 @@ dependencies {
 tasks.register('publishCurseForge', TaskPublishCurseForge) {
     apiToken = secrets.get("curseforge_token")
     def mainFile = upload(project.curseforge_project, new File("./build/libs/${modid}-${ll_version}.jar"))
-    mainFile.changelog = new File('./changelog.txt')
+    mainFile.changelog = new File('./changelog.txt').text.split("\n\n\n")[0]
     mainFile.addEnvironment("Client", "Server")
     mainFile.addGameVersion("1.20.1")
     mainFile.addModLoader("Forge", "NeoForge")

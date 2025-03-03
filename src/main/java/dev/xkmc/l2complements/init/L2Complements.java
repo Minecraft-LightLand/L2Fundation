@@ -5,6 +5,7 @@ import com.stal111.forbidden_arcanus.core.registry.FARegistries;
 import com.tterrag.registrate.providers.ProviderType;
 import dev.xkmc.l2complements.compat.forbidden.FaARecipe;
 import dev.xkmc.l2complements.content.enchantment.special.SoulBoundPlayerData;
+import dev.xkmc.l2complements.content.item.wand.WandEffectToClient;
 import dev.xkmc.l2complements.events.L2ComplementsClick;
 import dev.xkmc.l2complements.events.MaterialDamageListener;
 import dev.xkmc.l2complements.init.data.*;
@@ -39,6 +40,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.Arrays;
 import java.util.Map;
 
+import static net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT;
 import static net.minecraftforge.network.NetworkDirection.PLAY_TO_SERVER;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -48,9 +50,10 @@ public class L2Complements {
 
 	public static final String MODID = "l2complements";
 	public static final PacketHandlerWithConfig HANDLER = new PacketHandlerWithConfig(
-			new ResourceLocation(MODID, "main"), 3,
+			new ResourceLocation(MODID, "main"), 4,
 			e -> e.create(EmptyRightClickToServer.class, PLAY_TO_SERVER),
-			e -> e.create(RotateDiggerToServer.class, PLAY_TO_SERVER)
+			e -> e.create(RotateDiggerToServer.class, PLAY_TO_SERVER),
+			e -> e.create(WandEffectToClient.class, PLAY_TO_CLIENT)
 	);
 	public static final Logger LOGGER = LogManager.getLogger();
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);

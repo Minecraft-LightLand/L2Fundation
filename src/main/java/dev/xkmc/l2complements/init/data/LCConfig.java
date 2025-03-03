@@ -142,7 +142,7 @@ public class LCConfig {
 						.defineInRange("emeraldBaseRange", 10, 1, 100);
 				sonicShooterDamage = builder.comment("Sonic Shooter Damage")
 						.defineInRange("sonicShooterDamage", 10, 1, 1000);
-				hellfireWandDamage = builder.comment("Hellfire Wand Damage")
+				hellfireWandDamage = builder.comment("Hellfire Wand Damage per second charged (max 3 seconds charged)")
 						.defineInRange("hellfireWandDamage", 10, 1, 1000);
 				iceEnchantDuration = builder.comment("Base duration for iceBlade")
 						.defineInRange("iceEnchantDuration", 100, 1, 10000);
